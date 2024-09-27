@@ -67,4 +67,10 @@ public class MinisterController {
         this.ministerService.createMinister(ministerDTO);
         return "redirect:/ministers/Mins";
     }
+    @GetMapping({"/list"})
+    public String minpublic(Model model) {
+        List<Minister> Mins = this.ministerService.findAll();
+        model.addAttribute("Mins", Mins);
+        return "notAuthenticated/minister/minlist";
+    }
 }
