@@ -17,21 +17,18 @@ public class Minister {
     private LocalDate startFrom;
     private LocalDate until;
 
-    @ManyToOne
-    @JoinColumn(name = "photo_id", referencedColumnName = "id")
-    private Multimedia photo;
+
 
     // Constructors
     public Minister() {}
 
-    public Minister(String firstName, String lastName, LocalDate birthday, String address, LocalDate startFrom, LocalDate until, Multimedia photo) {
+    public Minister(String firstName, String lastName, LocalDate birthday, String address, LocalDate startFrom, LocalDate until) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthday = birthday;
         this.address = address;
         this.startFrom = startFrom;
         this.until = until;
-        this.photo = photo;
     }
 
     // Getters and Setters
@@ -91,11 +88,12 @@ public class Minister {
         this.until = until;
     }
 
-    public Multimedia getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(Multimedia photo) {
-        this.photo = photo;
-    }
 }
+
+   /*  publics Multimedia getPhoto() {
+        return photo;
+    }*/
+
+   /*  public void setPhoto(Multimedia photo) {
+        this.photo = photo;
+    }*/

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="authenticated/fragments/header::header(${'title'},${'description'},${'keywords'})">
+</head>
+
+
+<body>
+
+<!-- ======= Header ======= -->
+<header th:replace="authenticated/fragments/navbar::header"></header>
+<!-- End Header -->
+
+<!-- ======= Sidebar ======= -->
+<aside th:replace="authenticated/fragments/navside::sidebar"></aside>
+<!-- End Sidebar-->
+
+
+<main id="main" class="main">
+    <div class="card">
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between">
+                <div class="p-2"><h5 class="card-title">Users list</h5></div>
+                <div class="p-2">
+                    <a type="button" class="btn btn-outline-dark p-2 mt-3" th:href="@{'/ministers/add'}">Add Minister</a>
+                </div>
+            </div>
+
+            <!-- Table with stripped rows -->
+            <table class="table datatable">
+                <thead>
+                <tr>
+                    <th>
+                        <b>I</b>d
+                    </th>
+                    <th>
+                        firstname
+                    </th>
+                    <th>
+                        lastname
+                    </th>
+                    <th data-type="date" data-format="YYYY/DD/MM">Start Date</th>
+                    <th data-type="date" data-format="YYYY/DD/MM">Terminate Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user : ${Mins}">
+                    <td><span th:text="${user.getId()}"></span></td>
+                    <td><span th:text="${user.getFirstName()}"></span></td>
+                    <td><span th:text="${user.getLastName()}"></span></td>
+                    <td><span th:text="${user.getStartFrom()}"></span></td>
+                    <td><span th:text="${user.getUntil()}"></span></td>
+                </tr>
+                </tbody>
+            </table>
+            <!-- End Table with stripped rows -->
+        </div>
+    </div>
+</main><!-- End #main -->
+
+
+<!-- ======= Footer ======= -->
+<footer th:replace="authenticated/fragments/footer::footer" class="footer">
+</footer><!-- End Footer -->
+
+<!-- Template Main JS File -->
+<div th:replace="authenticated/fragments/js::js"></div>
+
+
+</body>
+</html>

@@ -44,6 +44,11 @@ public class Multimedia {
     private Etablissement etablissement;
     @ManyToOne
     @JoinColumn(
+        name = "minister_id"
+                )
+    private Minister minister;
+    @ManyToOne
+    @JoinColumn(
             name = "tv_id"
     )
     private TV tv;
@@ -108,6 +113,9 @@ public class Multimedia {
     public Etablissement getEtablissement() {
         return this.etablissement;
     }
+    public Minister getMinister() {
+        return this.minister;
+    }
 
     public TV getTv() {
         return this.tv;
@@ -164,7 +172,9 @@ public class Multimedia {
     public void setEtablissement(final Etablissement etablissement) {
         this.etablissement = etablissement;
     }
-
+    public void setMinister(final Minister minister) {
+        this.minister = minister;
+    }
     public void setTv(final TV tv) {
         this.tv = tv;
     }

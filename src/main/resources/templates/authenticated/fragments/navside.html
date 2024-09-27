@@ -35,6 +35,26 @@
         </li><!-- End Icons Nav -->
 
         <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#min-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-people-fill"></i><span>Ministers</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="min-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+                <li>
+                    <a th:href="@{/ministers/add}">
+                        <i class="bi bi-circle"></i><span>Add Minister</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a th:href="@{/ministers/Mins}">
+                        <i class="bi bi-circle"></i><span>Liste Minister</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Icons Nav -->
+
+        <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#etablissement-nav" data-bs-toggle="collapse" href="#">
                 <i class="bx bxs-business"></i><span>Etablissement</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>

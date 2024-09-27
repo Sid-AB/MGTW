@@ -13,19 +13,19 @@ public class MinisterDTO {
     private String address;
     private LocalDate startFrom;
     private LocalDate until;
-    private String photoUrl;
+  //  private String photoUrl;
 
     // Constructors
     public MinisterDTO() {}
 
-    public MinisterDTO(String firstName, String lastName, LocalDate birthday, String address, LocalDate startFrom, LocalDate until, String photoUrl) {
+    public MinisterDTO(String firstName, String lastName, LocalDate birthday, String address, LocalDate startFrom, LocalDate until/*, String photoUrl */) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthday = birthday;
         this.address = address;
         this.startFrom = startFrom;
         this.until = until;
-        this.photoUrl = photoUrl;
+      //  this.photoUrl = photoUrl;
     }
 
     // Getters and Setters
@@ -77,11 +77,12 @@ public class MinisterDTO {
         this.until = until;
     }
 
-    public String getPhotoUrl() {
+ 
+}
+/*   public String getPhotoUrl() {
         return photoUrl;
     }
 
     public void setPhotoUrl(String photoUrl) {
         this.photoUrl = photoUrl;
-    }
-}
+    }*/ 

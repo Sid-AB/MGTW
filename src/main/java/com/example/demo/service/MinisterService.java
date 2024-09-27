@@ -9,6 +9,9 @@ import com.example.demo.repository.MinisterRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -31,11 +34,6 @@ public class MinisterService {
         minister.setStartFrom(ministerDTO.getStartFrom());
         minister.setUntil(ministerDTO.getUntil());
 
-        if (ministerDTO.getPhotoUrl() != null) {
-            Optional<Multimedia> multimedia = multimediaRepository.findById(Long.parseLong(ministerDTO.getPhotoUrl()));
-            multimedia.ifPresent(minister::setPhoto);
-        }
-
         ministerRepository.save(minister);
         return mapToDTO(minister);
     }
@@ -53,9 +51,9 @@ public class MinisterService {
         ministerDTO.setAddress(minister.getAddress());
         ministerDTO.setStartFrom(minister.getStartFrom());
         ministerDTO.setUntil(minister.getUntil());
-        if (minister.getPhoto() != null) {
-            ministerDTO.setPhotoUrl(minister.getPhoto().getFilePath());
-        }
         return ministerDTO;
+    }
+    public List<Minister> findAll() {
+        return this.ministerRepository.findAll();
     }
 }
