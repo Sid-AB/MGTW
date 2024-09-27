@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="authenticated/fragments/header::header(${'title'},${'description'},${'keywords'})">
+</head>
+
+
+<body>
+
+<!-- ======= Header ======= -->
+<header th:replace="authenticated/fragments/navbar::header"></header>
+<!-- End Header -->
+
+<!-- ======= Sidebar ======= -->
+<aside th:replace="authenticated/fragments/navside::sidebar"></aside>
+<!-- End Sidebar-->
+
+
+<main id="main" class="main">
+    <div class="card">
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between">
+                <div class="p-2"><h5 class="card-title">Radio list</h5></div>
+                <div class="p-2">
+                    <a type="button" class="btn btn-outline-dark p-2 mt-3" th:href="@{'/tv/add'}">Add TV</a>
+                </div>
+            </div>
+
+            <!-- Table with stripped rows -->
+            <table class="table datatable">
+                <thead>
+                <tr>
+                    <th>
+                        <b>I</b>d
+                    </th>
+                    <th>
+                        name
+                    </th>
+                    <th>Description</th>
+                    <th>web site</th>
+                    <th>streaming link</th>
+                    <th>Complexe</th>
+                    <th>Caracterstique</th>
+                    <th>Documents</th>
+
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr th:each="radio : ${radios}">
+                    <td><span th:text="${radio.getId()}"></span></td>
+                    <td><span th:text="${radio.getName()}"></span></td>
+                    <td><span th:text="${radio.getDescription()}"></span></td>
+                    <td><span th:text="${radio.getWebsite()}"></span></td>
+                    <td><span th:text="${radio.getStreaminglink()}"></span></td>
+                    <td><span th:text="${radio.getComplexe().getName()}"></span></td>
+
+                    <td>
+
+                        <div>
+                            <div class="d-flex justify-content-end">
+                                <div class="p-2">
+                                    <a type="button" class="btn btn-outline-dark p-2 mt-3" th:href="@{'/caracterstique/radio/'+${radio.getId()}+'/add'}">Add
+                                        Caracterstique</a>
+                                </div>
+                            </div>
+
+                            <table class="table ">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        <b>I</b>d
+                                    </th>
+                                    <th>
+                                        satellite
+                                    </th>
+                                    <th>Frequency</th>
+                                    <th>Polarization</th>
+                                    <th>symbol rate</th>
+                                    <th>FEC</th>
+                                    <th>transmission</th>
+                                    <th>modulation</th>
+
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <tr th:each="radioc : ${radio.getCaracteristiqueList()}">
+                                    <td><span th:text="${radioc.getId()}"></span></td>
+                                    <td><span th:text="${radioc.getSatellite()}"></span></td>
+                                    <td><span th:text="${radioc.getFrequency()}"></span></td>
+                                    <td><span th:text="${radioc.getPolarization()}"></span></td>
+                                    <td><span th:text="${radioc.getSymbolrate()}"></span></td>
+                                    <td><span th:text="${radioc.getFec()}"></span></td>
+                                    <td><span th:text="${radioc.getTransmission()}"></span></td>
+                                    <td><span th:text="${radioc.getModulation()}"></span></td>
+
+                                    <td>
+                                        <div class="pt-2">
+                                            <a href="#" class="btn btn-danger btn-sm" title="Remove"><i
+                                                    class="bi bi-trash"></i></a>
+                                        </div>
+                                    </td>
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                    <td>
+                        <ul>
+                            <li th:each="multimedia : ${radio.getMultimediaList()}">
+
+                                <a th:href="@{'/presse/multimedia/'+${multimedia.getFilePath()}+'/'+${multimedia.getFileName()}}"
+                                   th:text="${multimedia.getFilePath()}" target="_blank"></a>
+                                <!-- Add other multimedia details as needed -->
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <div class="pt-2">
+                            <a th:href="@{'/radio/'+${radio.getId()}+'/userDetail'}"
+                               class="btn btn-success btn-sm"
+                               title="Detail">
+                                <i class="bx bxs-user-detail"></i>
+                            </a>
+                            <a th:href="@{'/radio/userEdit/'+${radio.getId()}}" class="btn btn-info btn-sm"
+                               title="Update"><i class="ri-edit-2-line text-white"></i></a>
+
+                            <a href="#" class="btn btn-danger btn-sm" title="Remove"><i class="bi bi-trash"></i></a>
+                        </div>
+                    </td>
+
+                </tr>
+
+                </tbody>
+            </table>
+            <!-- End Table with stripped rows -->
+        </div>
+    </div>
+</main><!-- End #main -->
+
+
+<!-- ======= Footer ======= -->
+<footer th:replace="authenticated/fragments/footer::footer" class="footer">
+</footer><!-- End Footer -->
+
+<!-- Template Main JS File -->
+<div th:replace="authenticated/fragments/js::js"></div>
+
+
+</body>
+</html>

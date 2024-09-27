@@ -1,0 +1,56 @@
+<!-- Vendor JS Files -->
+<div th:fragment="js">
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script th:src="@{/authenticated/assets/vendor/apexcharts/apexcharts.min.js}"></script>
+    <script th:src="@{/authenticated/assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/authenticated/assets/vendor/chart.js/chart.umd.js}"></script>
+    <script th:src="@{/authenticated/assets/vendor/echarts/echarts.min.js}"></script>
+    <script th:src="@{/authenticated/assets/vendor/quill/quill.min.js}"></script>
+    <script th:src="@{/authenticated/assets/vendor/simple-datatables/simple-datatables.js}"></script>
+    <script th:src="@{/authenticated/assets/vendor/tinymce/tinymce.min.js}"></script>
+    <script th:src="@{/authenticated/assets/vendor/php-email-form/validate.js}"></script>
+
+    <!-- Template Main JS File -->
+    <script th:src="@{/authenticated/assets/js/main.js}"></script>
+
+    <script>
+        function uploadImage() {
+            var fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            // Listen for file input changes
+            fileInput.addEventListener('change', function () {
+                if (fileInput.files && fileInput.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        // Display the selected image directly in the img element
+                        document.getElementById('profileImage').src = e.target.result;
+                    };
+                    reader.readAsDataURL(fileInput.files[0]);
+                }
+            });
+
+            // Trigger the file input click
+            fileInput.click();
+        }
+
+        function removeImage() {
+            // Reset the image source to a default or placeholder image
+            document.getElementById('profileImage').src = '/assets/img/profile-img.jpg';
+
+            // TODO: Perform an AJAX request to delete the file on the server
+            // You need to implement a server-side endpoint in Spring Boot to handle the file deletion
+        }
+    </script>
+
+
+    <!-- Include jQuery and Bootstrap JS for functionality -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+
+
+
+</div>

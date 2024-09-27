@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="authenticated/fragments/header::header(${'title'},${'description'},${'keywords'})">
+</head>
+
+
+<body>
+
+<!-- ======= Header ======= -->
+<header th:replace="authenticated/fragments/navbar::header"></header>
+<!-- End Header -->
+
+<!-- ======= Sidebar ======= -->
+<aside th:replace="authenticated/fragments/navside::sidebar"></aside>
+<!-- End Sidebar-->
+
+
+<main id="main" class="main">
+    <div class="card">
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between">
+                <div class="p-2"><h5 class="card-title">TV Add</h5></div>
+            </div>
+
+            <form id="profileForm" th:action="@{/tv/save}" method="post" enctype="multipart/form-data">
+
+
+                <div class="row mb-3 ">
+                    <label for="name" class="col-md-4 col-lg-3 col-form-label"> Name</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="name" type="text" class="form-control"
+                               id="name" placeholder="name" required>
+                    </div>
+                </div>
+
+
+                <div class="row mb-3">
+                    <label for="description" class="col-md-4 col-lg-3 col-form-label">Description</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="description" type="text" class="form-control" id="description"
+                               placeholder="description" required>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="website" class="col-md-4 col-lg-3 col-form-label">web site</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="website" type="text" class="form-control" id="website"
+                               placeholder="website" required >
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="streaminglink" class="col-md-4 col-lg-3 col-form-label">streaming link</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="streaminglink" type="text" class="form-control" id="streaminglink"
+                               placeholder="streaminglink" required >
+                    </div>
+                </div>
+
+
+                <div class="row mb-3">
+                    <label for="complexe" class="col-md-4 col-lg-3 col-form-label">Complexe</label>
+                    <div class="col-md-8 col-lg-9">
+                        <select id="complexe" name="complexe" class="form-control"
+                                onchange="">
+                            <option value="" disabled>Select Complexe</option>
+                            <option th:each="complexe : ${complexes}" th:value="${complexe.id}"
+                                    th:text="${complexe.name}"></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="adresse" class="col-md-4 col-lg-3 col-form-label">adresse</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="adresse" type="text" class="form-control" id="adresse"
+                               placeholder="adresse" required >
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="phone" class="col-md-4 col-lg-3 col-form-label">phone</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="phone" type="text" class="form-control" id="phone"
+                               placeholder="phone" required >
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="email" class="col-md-4 col-lg-3 col-form-label">email</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="email" type="text" class="form-control" id="email"
+                               placeholder="email" required >
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="localisation" class="col-md-4 col-lg-3 col-form-label">localisation</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="localisation" type="text" class="form-control" id="localisation"
+                               placeholder="localisation" required >
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="fax" class="col-md-4 col-lg-3 col-form-label">fax</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="fax" type="text" class="form-control" id="fax"
+                               placeholder="fax" required >
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="complexe" class="col-md-4 col-lg-3 col-form-label">Categorie Chaines</label>
+                    <div class="col-md-8 col-lg-9">
+                        <select id="categorieChaines" name="categorieChaines" class="form-control"
+                                onchange="">
+                            <option value="" disabled>Select Categorie Chaine</option>
+                            <option th:each="categorieChaine : ${categorieChaines}" th:value="${categorieChaine.id}"
+                                    th:text="${categorieChaine.name}"></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="type" class="col-md-4 col-lg-3 col-form-label">Type chaine</label>
+                    <div class="col-md-8 col-lg-9">
+                        <select id="type" name="type" class="form-control" onchange="">
+                            <option value="" disabled>Select type</option>
+                            <option value="public">Public</option>
+                            <option value="prive">Prive</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="satellite" class="col-md-4 col-lg-3 col-form-label">satellite</label>
+                    <div class="col-md-8 col-lg-9">
+                        <select id="satellite" name="satellite" class="form-control" onchange="">
+                            <option value="" disabled>Select satellite</option>
+                            <option value="eutlsat">Eutelsat </option>
+                            <option value="nilsat">Nilsat</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="Frequency" class="col-md-4 col-lg-3 col-form-label">Frequency</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="frequency" type="text" class="form-control" id="frequency"
+                               placeholder="Frequency" required >
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="Polarization" class="col-md-4 col-lg-3 col-form-label">Polarization</label>
+                    <div class="col-md-8 col-lg-9">
+                        <select id="Polarization" name="polarization" class="form-control" onchange="">
+                            <option value="" disabled>Select Polarization</option>
+                            <option value="">Horizontal</option>
+                            <option value="nilsat">Vertical</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="row mb-3">
+                    <label for="symbolrate" class="col-md-4 col-lg-3 col-form-label">symbol rate</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="symbolrate" type="text" class="form-control" id="symbolrate"
+                               placeholder="Symbol rate" required >
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="fec" class="col-md-4 col-lg-3 col-form-label">FEC</label>
+                    <div class="col-md-8 col-lg-9">
+                        <select id="fec" name="fec" class="form-control" onchange="">
+                            <option value="" disabled>Select FEC</option>
+                            <option value="2/3">2/3 </option>
+                            <option value="3/4">3/4</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div hidden="hidden" class="row mb-3">
+                    <label for="transmission" class="col-md-4 col-lg-3 col-form-label">transmission</label>
+                    <div class="col-md-8 col-lg-9">
+                        <select id="transmission" name="transmission" class="form-control" onchange="">
+                            <option value="" disabled>Select transmission</option>
+                            <option value="DVB-S">DVB-S </option>
+                            <option value="DVB-S2">DVB-S2</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div hidden="hidden" class="row mb-3">
+                    <label for="modulation" class="col-md-4 col-lg-3 col-form-label">modulation</label>
+                    <div class="col-md-8 col-lg-9">
+                        <select id="modulation" name="modulation" class="form-control" onchange="">
+                            <option value="" disabled>Select modulation</option>
+                            <option value="8PSK">8PSK</option>
+                            <option value="QPSK">QPSK</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="profilFiles" class="col-md-4 col-lg-3 col-form-label"> Files</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input type="file" class="form-control-file" id="profilFiles"
+                               name="profilFiles" accept="image/*" >
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit"
+                            class="btn btn-primary">Save
+                    </button>
+                </div>
+            </form><!-- End Profile Edit Form -->
+
+        </div>
+    </div>
+</main><!-- End #main -->
+
+
+<!-- ======= Footer ======= -->
+<footer th:replace="authenticated/fragments/footer::footer" class="footer">
+</footer><!-- End Footer -->
+
+<!-- Template Main JS File -->
+<div th:replace="authenticated/fragments/js::js"></div>
+
+
+</body>
+</html>

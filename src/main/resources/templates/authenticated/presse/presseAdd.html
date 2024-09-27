@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="authenticated/fragments/header::header(${'title'},${'description'},${'keywords'})">
+</head>
+
+
+<body>
+
+<!-- ======= Header ======= -->
+<header th:replace="authenticated/fragments/navbar::header"></header>
+<!-- End Header -->
+
+<!-- ======= Sidebar ======= -->
+<aside th:replace="authenticated/fragments/navside::sidebar"></aside>
+<!-- End Sidebar-->
+
+
+<main id="main" class="main">
+    <div class="card">
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between">
+                <div class="p-2"><h5 class="card-title">Presse Add</h5></div>
+            </div>
+
+            <form id="profileForm" th:action="@{/presse/save}" method="post" enctype="multipart/form-data">
+
+
+                <div class="row mb-3 ">
+                    <label for="name" class="col-md-4 col-lg-3 col-form-label"> Name</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="name" type="text" class="form-control"
+                               id="name" placeholder="name" required>
+                    </div>
+                </div>
+
+
+                <div class="row mb-3">
+                    <label for="description" class="col-md-4 col-lg-3 col-form-label">Description</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="description" type="text" class="form-control" id="description"
+                               placeholder="description" required >
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="website" class="col-md-4 col-lg-3 col-form-label">web site</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="website" type="text" class="form-control" id="website"
+                               placeholder="website" required >
+                    </div>
+                </div>
+
+
+
+                <div class="row mb-3">
+                    <label for="complexe" class="col-md-4 col-lg-3 col-form-label">Complexe</label>
+                    <div class="col-md-8 col-lg-9">
+                        <select id="complexe" name="complexe" class="form-control"
+                                onchange="">
+                            <option value="">Select Complexe</option>
+                            <option th:each="complexe : ${complexes}" th:value="${complexe.id}"
+                                    th:text="${complexe.name}"></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="type" class="col-md-4 col-lg-3 col-form-label">Type </label>
+                    <div class="col-md-8 col-lg-9">
+                        <select id="type" name="type" class="form-control" onchange="">
+                            <option value="" disabled>Select type</option>
+                            <option value="public">Public</option>
+                            <option value="prive">Prive</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label
+                            class="col-md-4 col-lg-3 col-form-label">Categorie</label>
+                    <div class="col-md-8 col-lg-9">
+
+
+                        <div class="form-control d-flex justify-content-start">
+                            <div class="form-check mr-2 " th:each="presseCategorie : ${presseCategories}">
+                                <input type="checkbox" th:field="*{presseDTO.selectedCategorie}"
+                                       th:value="${presseCategorie.id}"/>
+                                <label th:for="${'presseCategorie_' + presseCategorie.id}" th:text="${presseCategorie.name}"></label>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+                <div hidden="hidden" class="row mb-3">
+                    <label for="type" class="col-md-4 col-lg-3 col-form-label">Categorie </label>
+                    <div class="col-md-8 col-lg-9">
+                        <select id="categorie" name="categorie" class="form-control" onchange="">
+                            <option value=""   >Select categorie</option>
+                            <option value="ecrit">Ecrit</option>
+                            <option value="electronique">Electronique</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="adresse" class="col-md-4 col-lg-3 col-form-label">adresse</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="adresse" type="text" class="form-control" id="adresse"
+                               placeholder="adresse" required >
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="phone" class="col-md-4 col-lg-3 col-form-label">phone</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="phone" type="text" class="form-control" id="phone"
+                               placeholder="phone" required >
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="email" class="col-md-4 col-lg-3 col-form-label">email</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="email" type="text" class="form-control" id="email"
+                               placeholder="email" required >
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="site" class="col-md-4 col-lg-3 col-form-label">site</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="site" type="text" class="form-control" id="site"
+                               placeholder="site" required >
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="fax" class="col-md-4 col-lg-3 col-form-label">fax</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="fax" type="text" class="form-control" id="fax"
+                               placeholder="fax" required >
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="localisation" class="col-md-4 col-lg-3 col-form-label">localisation</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="localisation" type="text" class="form-control" id="localisation"
+                               placeholder="localisation" required >
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="profilFiles" class="col-md-4 col-lg-3 col-form-label"> Files</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input type="file" class="form-control-file" id="profilFiles"
+                               name="profilFiles"  accept="image/*">
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit"
+                            class="btn btn-primary">Save
+                    </button>
+                </div>
+            </form><!-- End Profile Edit Form -->
+
+        </div>
+    </div>
+</main><!-- End #main -->
+
+
+<!-- ======= Footer ======= -->
+<footer th:replace="authenticated/fragments/footer::footer" class="footer">
+</footer><!-- End Footer -->
+
+<!-- Template Main JS File -->
+<div th:replace="authenticated/fragments/js::js"></div>
+
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+
+<head th:fragment="head(title,description,keywords)">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title th:text="${'بوابة الاعلام الجزائري'}"></title>
+
+    <meta th:if="${'بوابة الاعلام الجزائري'}" name="description" th:content="${description}"/>
+    <meta th:if="${keywords}" name="keywords" th:content="${keywords}"/>
+
+    <!-- Favicons -->
+    <link th:href="@{/notAuthenticated/assets/img/Frame 5.png}" rel="icon">
+    <link th:href="@{/notAuthenticated/assets/img/Frame 5.png}" rel="apple-touch-icon">
+
+    <!-- Favicons -->
+    <link th:href="@{/notAuthenticated/assets/img/Frame 5.png}"  rel="icon">
+    <link th:href="@{/notAuthenticated/assets/img/Frame 5.png}" rel="apple-touch-icon">
+
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/amiko" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link th:href="@{/notAuthenticated/assets/vendor/aos/aos.css}" rel="stylesheet">
+    <link th:href="@{/notAuthenticated/assets/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/notAuthenticated/assets/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet">
+    <link th:href="@{/notAuthenticated/assets/vendor/boxicons/css/boxicons.min.css}" rel="stylesheet">
+    <link th:href="@{/notAuthenticated/assets/vendor/glightbox/css/glightbox.min.css}" rel="stylesheet">
+    <link th:href="@{/notAuthenticated/assets/vendor/remixicon/remixicon.css}" rel="stylesheet">
+    <link th:href="@{/notAuthenticated/assets/vendor/swiper/swiper-bundle.min.css}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link th:href="@{/notAuthenticated/assets/css/style.css}" rel="stylesheet">
+    <link th:href="@{/notAuthenticated/assets/css/font-family.css}" rel="stylesheet">
+
+
+
+    <!-- Libraries Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+
+</head>

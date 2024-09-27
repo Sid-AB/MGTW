@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="authenticated/fragments/header::header(${'title'},${'description'},${'keywords'})">
+</head>
+
+
+<body>
+
+<!-- ======= Header ======= -->
+<header th:replace="authenticated/fragments/navbar::header"></header>
+<!-- End Header -->
+
+<!-- ======= Sidebar ======= -->
+<aside th:replace="authenticated/fragments/navside::sidebar"></aside>
+<!-- End Sidebar-->
+
+
+<main id="main" class="main">
+    <div class="card">
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between">
+                <div class="p-2"><h5 class="card-title">Users list</h5></div>
+                <div class="p-2">
+                    <a type="button" class="btn btn-outline-dark p-2 mt-3" th:href="@{'/user/add'}">Add User</a>
+                </div>
+            </div>
+
+            <!-- Table with stripped rows -->
+            <table class="table datatable">
+                <thead>
+                <tr>
+                    <th>
+                        <b>I</b>d
+                    </th>
+                    <th>
+                        Username
+                    </th>
+                    <th>Email</th>
+                    <th>Fonction</th>
+                    <th>Role</th>
+                    <th data-type="date" data-format="YYYY/DD/MM">Start Date</th>
+                    <th>Password</th>
+                    <th>Documents</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user : ${users}">
+                    <td><span th:text="${user.getId()}"></span></td>
+                    <td><span th:text="${user.getUsername()}"></span></td>
+                    <td><span th:text="${user.getEmail()}"></span></td>
+                    <td><span th:text="${user.getFonction()}"></span></td>
+                    <td><span th:text="${user.getRole()}"></span></td>
+
+
+
+                    <td><span th:text="${user.getCreatedAt()}"></span></td>
+
+                    <td><span th:text="${user.getPassword()}"></span></td>
+                    <td>
+                        <ul>
+                            <li th:each="multimedia : ${user.getMultimediaList()}">
+
+                                <a th:href="@{'/user/multimedia/'+${multimedia.getFilePath()}+'/'+${multimedia.getFileName()}}"
+                                   th:text="${multimedia.getFilePath()}" target="_blank"></a>
+                                <!-- Add other multimedia details as needed -->
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <div class="pt-2">
+                            <a th:href="@{'/user/'+${user.getId()}+'/userDetail'}" class="btn btn-success btn-sm"
+                               title="Detail">
+                                <i class="bx bxs-user-detail"></i>
+                            </a>
+                            <a th:href="@{'/user/userEdit/'+${user.getId()}}" class="btn btn-info btn-sm"
+                               title="Update"><i class="ri-edit-2-line text-white"></i></a>
+
+                            <a href="#" class="btn btn-danger btn-sm" title="Remove"><i class="bi bi-trash"></i></a>
+                        </div>
+                    </td>
+
+                </tr>
+
+                </tbody>
+            </table>
+            <!-- End Table with stripped rows -->
+        </div>
+    </div>
+</main><!-- End #main -->
+
+
+<!-- ======= Footer ======= -->
+<footer th:replace="authenticated/fragments/footer::footer" class="footer">
+</footer><!-- End Footer -->
+
+<!-- Template Main JS File -->
+<div th:replace="authenticated/fragments/js::js"></div>
+
+
+</body>
+</html>

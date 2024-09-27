@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="authenticated/fragments/header::header(${'title'},${'description'},${'keywords'})">
+</head>
+
+
+<body>
+
+<!-- ======= Header ======= -->
+<header th:replace="authenticated/fragments/navbar::header"></header>
+<!-- End Header -->
+
+<!-- ======= Sidebar ======= -->
+<aside th:replace="authenticated/fragments/navside::sidebar"></aside>
+<!-- End Sidebar-->
+
+
+<main id="main" class="main">
+    <div class="card">
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between">
+                <div class="p-2"><h5 class="card-title"> Add Caracterstique for : <span style="font-size: 20px ; color: black"  th:text="${media.getName()}"></span> </h5></div>
+            </div>
+
+            <form id="profileForm" th:action="@{/caracterstique/saveradio}" method="post" enctype="multipart/form-data">
+                <input type="text" hidden="hidden" th:id="idmedia"   th:name="idmedia" th:value="${media.getId()}">
+
+                <div class="row mb-3">
+                    <label for="satellite" class="col-md-4 col-lg-3 col-form-label">satellite</label>
+                    <div class="col-md-8 col-lg-9">
+                        <select id="satellite" name="satellite" class="form-control" onchange="">
+                            <option value="" disabled>Select satellite</option>
+                            <option value="eutlsat">Eutelsat </option>
+                            <option value="nilsat">Nilsat</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="Frequency" class="col-md-4 col-lg-3 col-form-label">Frequency</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="frequency" type="text" class="form-control" id="frequency"
+                               placeholder="Frequency">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="Polarization" class="col-md-4 col-lg-3 col-form-label">Polarization</label>
+                    <div class="col-md-8 col-lg-9">
+                        <select id="Polarization" name="polarization" class="form-control" onchange="">
+                            <option value="" disabled>Select Polarization</option>
+                            <option value="">Horizontal</option>
+                            <option value="nilsat">Vertical</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="row mb-3">
+                    <label for="symbolrate" class="col-md-4 col-lg-3 col-form-label">symbol rate</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="symbolrate" type="text" class="form-control" id="symbolrate"
+                               placeholder="Symbol rate">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="fec" class="col-md-4 col-lg-3 col-form-label">FEC</label>
+                    <div class="col-md-8 col-lg-9">
+                        <select id="fec" name="fec" class="form-control" onchange="">
+                            <option value="" disabled>Select FEC</option>
+                            <option value="2/3">2/3 </option>
+                            <option value="3/4">3/4</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="row mb-3">
+                    <label for="transmission" class="col-md-4 col-lg-3 col-form-label">transmission</label>
+                    <div class="col-md-8 col-lg-9">
+                        <select id="transmission" name="transmission" class="form-control" onchange="">
+                            <option value="" disabled>Select transmission</option>
+                            <option value="DVB-S">DVB-S </option>
+                            <option value="DVB-S2">DVB-S2</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="modulation" class="col-md-4 col-lg-3 col-form-label">modulation</label>
+                    <div class="col-md-8 col-lg-9">
+                        <select id="modulation" name="modulation" class="form-control" onchange="">
+                            <option value="" disabled>Select modulation</option>
+                            <option value="8PSK">8PSK</option>
+                            <option value="QPSK">QPSK</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit"
+                            class="btn btn-primary">Save
+                    </button>
+                </div>
+            </form><!-- End Profile Edit Form -->
+
+        </div>
+    </div>
+</main><!-- End #main -->
+
+
+<!-- ======= Footer ======= -->
+<footer th:replace="authenticated/fragments/footer::footer" class="footer">
+</footer><!-- End Footer -->
+
+<!-- Template Main JS File -->
+<div th:replace="authenticated/fragments/js::js"></div>
+
+
+</body>
+</html>

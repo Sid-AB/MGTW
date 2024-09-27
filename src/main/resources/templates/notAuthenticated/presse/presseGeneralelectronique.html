@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head th:replace="notAuthenticated/fragments/head::head(${'title'},${'description'},${'keywords'})">
+</head>
+<body>
+
+
+<header th:include="notAuthenticated/fragments/header::header" style="background-color: #0E2F4A"
+        th:with="myObject=${complexesForNavBar},myObjectlFNBar=${loisForNavBar}"></header>
+
+
+
+<main id="main">
+
+    <div style="height: 70px"
+    ></div>
+
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section th:if="pressesElectroniquePublic" id="publicEcrit" class="breadcrumbs m-0">
+        <div class="container">
+
+            <h2> الصحافة الالكترونية </h2>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Portfolio Details Section ======= -->
+    <!-- Start Blog Section -->
+    <div class="blog-section">
+        <div class="container">
+
+            <div class="row">
+
+                <div th:if="pressesElectroniquePublic" th:each="presseElectroniquePublic:${pressesElectroniquePublic}"
+                     class="col-6 col-sm-3 col-md-3 mb-5">
+                    <div class="post-entry">
+                        <a th:href="@{'/presse/'+${presseElectroniquePublic.getId().toString()}}"
+                           class="post-thumbnail"><img
+                                th:src="@{${'/presse/lugo/'+presseElectroniquePublic.getId()}}"
+                                style="height: 100px ; width: 100px" alt="Image"
+                                class="img-fluid"></a>
+                        <div class="post-content-entry">
+                            <h3 style="font-size: 20px"><a
+                                    th:href="@{'/presse/'+${presseElectroniquePublic.getId().toString()}}"
+                                    th:text="${presseElectroniquePublic.getName()}"></a></h3>
+
+                            <div class="meta">
+                                <p><a th:href="@{'/presse/'+${presseElectroniquePublic.getId().toString()}}"
+                                      th:text="${presseElectroniquePublic.getDescription()}">Kristin Watson</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div th:if="pressesElectroniquePrive" th:each="presseElectroniquePrive:${pressesElectroniquePrive}"
+                     class="col-6 col-sm-3 col-md-3 mb-5">
+                    <div class="post-entry">
+                        <a th:href="@{'/presse/'+${presseElectroniquePrive.getId().toString()}}" class="post-thumbnail"><img
+                                th:src="@{${'/presse/lugo/'+presseElectroniquePrive.getId()}}"
+                                style="height: 100px ; width: 100px" alt="Image"
+                                class="img-fluid"></a>
+                        <div class="post-content-entry">
+                            <h3 style="font-size: 20px"><a
+                                    th:href="@{'/presse/'+${presseElectroniquePrive.getId().toString()}}"
+
+                                    th:text="${presseElectroniquePrive.getName()}"></a></h3>
+
+                            <div class="meta">
+                                <p><a th:href="@{'/presse/'+${presseElectroniquePrive.getId().toString()}}"
+
+                                      th:text="${presseElectroniquePrive.getDescription()}"></a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div> <!-- ======= Breadcrumbs ======= -->
+    <section hidden="hidden" th:if="pressesElectroniquePrive" id="publicElectronique" class="breadcrumbs m-0">
+        <div class="container">
+
+            <h2> الصحافة الاكترونية الخاصة </h2>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Portfolio Details Section ======= -->
+    <!-- Start Blog Section -->
+    <div class="blog-section">
+        <div class="container">
+
+            <div hidden="hidden" class="row">
+
+                <div th:if="pressesElectroniquePrive" th:each="presseElectroniquePrive:${pressesElectroniquePrive}"
+                     class="col-6 col-sm-3 col-md-3 mb-5">
+                    <div class="post-entry">
+                        <a th:href="@{'/presse/'+${presseElectroniquePrive.getId().toString()}}" class="post-thumbnail"><img
+                                th:src="@{${'/presse/lugo/'+presseElectroniquePrive.getId()}}"
+                                style="height: 100px ; width: 100px" alt="Image"
+                                class="img-fluid"></a>
+                        <div class="post-content-entry">
+                            <h3 style="font-size: 20px"><a
+                                    th:href="@{'/presse/'+${presseElectroniquePrive.getId().toString()}}"
+
+                                    th:text="${presseElectroniquePrive.getName()}"></a></h3>
+
+                            <div class="meta">
+                                <p><a th:href="@{'/presse/'+${presseElectroniquePrive.getId().toString()}}"
+
+                                      th:text="${presseElectroniquePrive.getDescription()}"></a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+</main><!-- End #main -->
+
+
+<footer th:replace="notAuthenticated/fragments/footer::footer" class="footer">
+</footer>
+
+<div id="preloader"></div>
+
+<div th:replace="notAuthenticated/fragments/js::js"></div>
+
+</body>
+
+</html>

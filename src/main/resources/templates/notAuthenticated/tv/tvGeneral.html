@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+       lang="ar" dir="rtl" >
+
+
+<head th:replace="notAuthenticated/fragments/head::head(${'title'},${'description'},${'keywords'})">
+</head>
+<body>
+
+
+<!-- Add image before the header -->
+<header th:include="notAuthenticated/fragments/header::header" style="background-color: #0E2F4A"
+        th:with="myObject=${complexesForNavBar},myObjectlFNBar=${loisForNavBar}"></header>
+
+
+</div>
+
+<main id="main" style="background-color: white">
+
+
+    <img hidden="hidden" th:src="@{'/tv/lugoz/1'}"
+
+
+         height="100px" width="100px"
+         class="rounded-circle">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div th:if="${!complexes.isEmpty() }" class="container">
+
+            <h2 th:text="${complexes.get(0).getName()}"></h2>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Portfolio Details Section ======= -->
+    <section id="portfolio-details" class="portfolio-details">
+        <div class="container">
+            <div class="row gy-4">
+
+                <div class="col-lg-8">
+                    <section id="portfolio" class="portfolio ">
+                        <div class="container" data-aos="fade-up">
+
+                            <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up"
+                                data-aos-delay="100">
+                                <li data-filter="*" class="filter-active">جميع القنوات</li>
+
+                                <li th:if="tvListDistinctByCategorieChaines"
+                                    th:each="tvListDistinctByCategorieChaine : ${tvListDistinctByCategorieChaines}"
+                                    th:attr="data-filter='.' + ${tvListDistinctByCategorieChaine.getName()}"
+                                    th:text="${tvListDistinctByCategorieChaine.getName()}">
+                                </li>
+                            </ul>
+
+                            <div  th:if="${!tvs.isEmpty()}" class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+
+                                <div th:if="${tvs}" th:each="tv:${tvs}"
+                                     th:attr="class=${'col-lg-4 col-md-6 portfolio-item ' +tv.getCategorieChaine().getName()}">
+
+                                    <div class="portfolio-img"><img
+                                            th:src="@{${'/tv/lugo/'+tv.getId()}}"
+                                            class="img-fluid" alt="">
+                                    </div>
+
+                                    <div class="  portfolio-info d-flex justify-content-end">
+
+
+                                        <p><h4 th:text="${tv.getName()}">الجزائرية الاولى </h4></p>
+                                        <a hidden="hidden" th:href="@{ ${'/tv/lugo/'+tv.getId()}}" data-gallery="portfolioGallery"
+                                           class="portfolio-lightbox preview-link" title="الارضية "><i
+                                                class="bx bx-plus"></i></a>
+                                        <a th:href="@{'/tv/'+${tv.getId().toString()}}" class="details-link"
+                                           title="تفاصيل اكثر "><i
+                                                class="bx bx-link"></i></a>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </section><!-- End Portfolio Section -->
+                </div>
+
+                <div th:if="${!complexes.isEmpty()}" class="col-lg-4">
+                    <div class="portfolio-description">
+                        <h2 th:text="${complexes.get(0).getName()}"></h2>
+                        <p th:text="${complexes.get(0).getDescription()}"></p>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>الخصائص </h3>
+                        <ul>
+                            <li><strong th:text="'العنوان : '+ ${  complexes.get(0).getAdresse()}"> </strong></li>
+                            <li><strong>الهاتف :</strong><strong style="direction: ltr;" th:text="${complexes.get(0).getPhone()}"> </strong></li>
+                            <li><strong>البريد الالكتروتي :</strong><strong style="direction: ltr;"th:text=" ${  complexes.get(0).getEmail()}"> </strong>
+                            </li>
+                            <li><strong>الموقع الالكتروتي :</strong><a style="direction: ltr;" th:href="${complexes.get(0).getSite()}" th:text=" ${  complexes.get(0).getSite()}"> </a>
+                            </li>
+
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Portfolio Details Section -->
+
+</main><!-- End #main -->
+
+<footer th:replace="notAuthenticated/fragments/footer::footer" class="footer">
+</footer>
+
+<div id="preloader"></div>
+
+<div th:replace="notAuthenticated/fragments/js::js"></div>
+
+</body>
+
+</html>

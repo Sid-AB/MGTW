@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="authenticated/fragments/header::header(${'title'},${'description'},${'keywords'})">
+</head>
+
+
+<body>
+
+<!-- ======= Header ======= -->
+<header th:replace="authenticated/fragments/navbar::header"></header>
+<!-- End Header -->
+
+<!-- ======= Sidebar ======= -->
+<aside th:replace="authenticated/fragments/navside::sidebar"></aside>
+<!-- End Sidebar-->
+
+
+<main id="main" class="main">
+    <div class="card">
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between">
+                <div class="p-2"><h5 class="card-title">complexe list</h5></div>
+                <div class="p-2">
+                    <a type="button" class="btn btn-outline-dark p-2 mt-3" th:href="@{'/complexe/add'}">Add complexe</a>
+                </div>
+            </div>
+
+            <!-- Table with stripped rows -->
+            <table class="table datatable">
+                <thead>
+                <tr>
+                    <th>
+                        <b>I</b>d
+                    </th>
+                    <th>
+                        name
+                    </th>
+                    <th>Description</th>
+                    <th>Agrument</th>
+                    <th>type</th>
+
+
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr th:each="complexe : ${complexes}">
+                    <td><span th:text="${complexe.getId()}"></span></td>
+                    <td><span th:text="${complexe.getName()}"></span></td>
+                    <td><span th:text="${complexe.getDescription()}"></span></td>
+                    <td><span th:text="${complexe.getType()}"></span></td>
+
+                    <td>
+                        <ul>
+                            <li th:each="agrument : ${complexe.getAgrumentList()}">
+
+                                <span th:text="${agrument.getName()}"></span>
+                                <!-- Add other multimedia details as needed -->
+                            </li>
+                        </ul>
+                    </td>
+
+
+
+
+                    <td>
+                        <div class="pt-2">
+                            <a th:href="@{'/complexe/'+${complexe.getId()}+'/userDetail'}"
+                               class="btn btn-success btn-sm"
+                               title="Detail">
+                                <i class="bx bxs-user-detail"></i>
+                            </a>
+                            <a th:href="@{'/complexe/userEdit/'+${complexe.getId()}}" class="btn btn-info btn-sm"
+                               title="Update"><i class="ri-edit-2-line text-white"></i></a>
+
+                            <a href="#" class="btn btn-danger btn-sm" title="Remove"><i class="bi bi-trash"></i></a>
+                        </div>
+                    </td>
+
+                </tr>
+
+                </tbody>
+            </table>
+            <!-- End Table with stripped rows -->
+        </div>
+    </div>
+</main><!-- End #main -->
+
+
+<!-- ======= Footer ======= -->
+<footer th:replace="authenticated/fragments/footer::footer" class="footer">
+</footer><!-- End Footer -->
+
+<!-- Template Main JS File -->
+<div th:replace="authenticated/fragments/js::js"></div>
+
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="authenticated/fragments/header::header(${'title'},${'description'},${'keywords'})">
+</head>
+
+
+<body>
+
+<!-- ======= Header ======= -->
+<header th:replace="authenticated/fragments/navbar::header"></header>
+<!-- End Header -->
+
+<!-- ======= Sidebar ======= -->
+<aside th:replace="authenticated/fragments/navside::sidebar"></aside>
+<!-- End Sidebar-->
+
+
+<main id="main" class="main">
+    <div class="card">
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between">
+                <div class="p-2"><h5 class="card-title">Presse list</h5></div>
+                <div class="p-2">
+                    <a type="button" class="btn btn-outline-dark p-2 mt-3" th:href="@{'/presse/add'}">Add Presse</a>
+                </div>
+            </div>
+
+            <!-- Table with stripped rows -->
+            <table class="table datatable">
+                <thead>
+                <tr>
+                    <th>
+                        <b>I</b>d
+                    </th>
+                    <th>
+                        name
+                    </th>
+                    <th>Description</th>
+                    <th>web site</th>
+
+                    <th>Complexe</th>
+                    <th>Categorie</th>
+                    <th>Documents</th>
+
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr th:each="presse : ${presses}">
+                    <td><span th:text="${presse.getId()}"></span></td>
+                    <td><span th:text="${presse.getName()}"></span></td>
+                    <td><span th:text="${presse.getDescription()}"></span></td>
+                    <td><span th:text="${presse.getWebsite()}"></span></td>
+                    <td><span th:text="${presse.getComplexe().getName()}"></span></td>
+                    <td>
+                        <ul>
+                            <li th:each="presse : ${presse.getPresseCategories()}">
+
+                                <span th:text="${presse.getName()}"></span>
+                                <!-- Add other multimedia details as needed -->
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li th:each="multimedia : ${presse.getMultimediaList()}">
+
+                                <a th:href="@{'/presse/multimedia/'+${multimedia.getFilePath()}+'/'+${multimedia.getFileName()}}"
+                                   th:text="${multimedia.getFilePath()}" target="_blank"></a>
+                                <!-- Add other multimedia details as needed -->
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <div class="pt-2">
+                            <a th:href="@{'/presse/'+${presse.getId()}+'/userDetail'}"
+                               class="btn btn-success btn-sm"
+                               title="Detail">
+                                <i class="bx bxs-user-detail"></i>
+                            </a>
+                            <a th:href="@{'/presse/userEdit/'+${presse.getId()}}" class="btn btn-info btn-sm"
+                               title="Update"><i class="ri-edit-2-line text-white"></i></a>
+
+                            <a href="#" class="btn btn-danger btn-sm" title="Remove"><i class="bi bi-trash"></i></a>
+                        </div>
+                    </td>
+
+                </tr>
+
+                </tbody>
+            </table>
+            <!-- End Table with stripped rows -->
+        </div>
+    </div>
+</main><!-- End #main -->
+
+
+<!-- ======= Footer ======= -->
+<footer th:replace="authenticated/fragments/footer::footer" class="footer">
+</footer><!-- End Footer -->
+
+<!-- Template Main JS File -->
+<div th:replace="authenticated/fragments/js::js"></div>
+
+
+</body>
+</html>

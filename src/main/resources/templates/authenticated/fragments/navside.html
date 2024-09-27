@@ -1,0 +1,229 @@
+<!-- ======= Sidebar ======= -->
+<aside th:fragment="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+        <li class="nav-item">
+            <a class="nav-link " th:href="@{/home}">
+                <i class="bi bi-grid"></i>
+                <span>Dashboard</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
+
+
+
+
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#users-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-people-fill"></i><span>Users</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="users-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+                <li>
+                    <a th:href="@{/user/add}">
+                        <i class="bi bi-circle"></i><span>Add user</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a th:href="@{/user/users}">
+                        <i class="bi bi-circle"></i><span>Liste User</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Icons Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#etablissement-nav" data-bs-toggle="collapse" href="#">
+                <i class="bx bxs-business"></i><span>Etablissement</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+
+            <ul id="etablissement-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+                <li>
+                    <a th:href="@{/etablissement/add}">
+                        <i class="bi bi-circle"></i><span>Add Etablissement</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/etablissement/etablissements}">
+                        <i class="bi bi-circle"></i><span>Etablissement list</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Icons Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#complexe-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Complexe</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="complexe-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a th:href="@{/complexe/add}">
+                        <i class="bi bi-circle"></i><span>Add Complexe</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/complexe/complexes}">
+                        <i class="bi bi-circle"></i><span>Complexe list</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Components Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#categorieChaine-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Categorie Chaine</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="categorieChaine-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a th:href="@{/categorieChaine/add}">
+                        <i class="bi bi-circle"></i><span>Add Categorie Chaine</span>
+                    </a>
+                </li>
+                <li hidden="hidden">
+                    <a th:href="@{/tv/tvs}">
+                        <i class="bi bi-circle"></i><span>TV list</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Components Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#tv-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>TV</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="tv-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a th:href="@{/tv/add}">
+                        <i class="bi bi-circle"></i><span>Add TV</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/tv/tvs}">
+                        <i class="bi bi-circle"></i><span>TV list</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Components Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#radio-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Radio</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="radio-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a th:href="@{/radio/add}">
+                        <i class="bi bi-circle"></i><span>Add Radio</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/radio/radios}">
+                        <i class="bi bi-circle"></i><span>Radio list</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Components Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#agrument-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Agrument</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="agrument-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a th:href="@{/agrument/add}">
+                        <i class="bi bi-circle"></i><span>Add Agrument</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/agrument/agruments}">
+                        <i class="bi bi-circle"></i><span>Agrument list</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Components Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#presse-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Presse</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="presse-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a th:href="@{/presse/add}">
+                        <i class="bi bi-circle"></i><span>Add Presse</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/presse/presses}">
+                        <i class="bi bi-circle"></i><span>Presse list</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Components Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#pressecategorie-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Presse categorie</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="pressecategorie-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a th:href="@{/pressecategorie/add}">
+                        <i class="bi bi-circle"></i><span>Add presse categorie</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/pressecategorie/pressecategories}">
+                        <i class="bi bi-circle"></i><span>presse categories list</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Components Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#lois-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Lois</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="lois-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a th:href="@{/lois/add}">
+                        <i class="bi bi-circle"></i><span>Add Lois</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/lois/lois}">
+                        <i class="bi bi-circle"></i><span>Lois list</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Components Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#textJuridique-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Text Juridique</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="textJuridique-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a th:href="@{/textJuridique/add}">
+                        <i class="bi bi-circle"></i><span>Add Text Juridique</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/textJuridique/textJuridiques}">
+                        <i class="bi bi-circle"></i><span>Text Juridique list</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Components Nav -->
+
+
+        <li hidden="hidden" class="nav-item">
+            <a class="nav-link collapsed" href="pages-login.html">
+                <i class="bi bi-box-arrow-in-right"></i>
+                <span>Login</span>
+            </a>
+        </li><!-- End Login Page Nav -->
+
+
+    </ul>
+
+</aside><!-- End Sidebar-->

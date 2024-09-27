@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head th:replace="notAuthenticated/fragments/head::head(${'title'},${'description'},${'keywords'})">
+</head>
+<body>
+
+
+<header th:include="notAuthenticated/fragments/header::header" style="background-color: #0E2F4A"
+        th:with="myObject=${complexesForNavBar},myObjectlFNBar=${loisForNavBar}"></header>
+
+
+<main>
+    <div class="container">
+        <section class="section register  d-flex flex-column align-items-center justify-content-center m-0">
+            <div class="container">
+                <h1>نتائج البحث</h1>
+                <h3 th:if="${!etablissements.isEmpty()}">المؤسسات</h3>
+                <ul th:if="${!etablissements.isEmpty()}">
+                    <li th:each="etablissement : ${etablissements}">
+                        <!-- Display search results -->
+                        <a th:href="@{${'/etablissement/'+etablissement.getId()}}">
+                            <span th:text="${etablissement.getName()}"></span></a>
+                    </li>
+                </ul>
+                <h3 th:if="${!tvs.isEmpty()}">القنوات التلفزيونية </h3>
+                <ul th:if="${!tvs.isEmpty()}">
+                    <li th:each="tv : ${tvs}">
+                        <!-- Display search results -->
+                        <a th:href="@{${'/tv/'+tv.getId()}}">
+
+                            <span th:text="${tv.getName()}"></span>
+                        </a>
+                    </li>
+                </ul>
+
+                <h3 th:if="${!radios.isEmpty()}">القنوات الاذاعية </h3>
+                <ul th:if="${!radios.isEmpty()}">
+                    <li th:each="radio : ${radios}">
+                        <!-- Display search results -->
+                        <a th:href="@{${'/radio/'+radio.getId()}}">
+                        <span th:text="${radio.getName()}"></span>
+                        </a>
+                    </li>
+                </ul>
+
+                <h3 th:if="${!presses.isEmpty()}">الصحافة </h3>
+                <ul th:if="${!presses.isEmpty()}">
+                    <li th:each="presse : ${presses}">
+                        <!-- Display search results -->
+                        <a th:href="@{${'/presse/'+presse.getId()}}">
+                        <span th:text="${presse.getName()}"></span>
+                        </a>
+                    </li>
+                </ul>
+                <h3 th:if="${!textJuridiques.isEmpty()}">النصوص القانونية </h3>
+                <ul th:if="${!textJuridiques.isEmpty()}">
+                    <li th:each="textJuridique : ${textJuridiques}">
+                        <!-- Display search results -->
+                        <span th:text="${textJuridique.getName()}"></span>
+                    </li>
+                </ul>
+            </div>
+            <h3  th:if="${tvs.isEmpty()and etablissements.isEmpty()and radios.isEmpty()and presses.isEmpty()and textJuridiques.isEmpty()}"><i style="color:red;" class="bi bi-x-lg"></i>  لا توجد نتائج    </h3>
+
+        </section>
+
+    </div>
+</main><!-- End #main -->
+
+<footer th:replace="notAuthenticated/fragments/footer::footer" class="footer">
+</footer>
+
+<div id="preloader"></div>
+
+<div th:replace="notAuthenticated/fragments/js::js"></div>
+
+</body>
+
+</html>

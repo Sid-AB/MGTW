@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="ar" dir="rtl" >
+
+<head th:replace="notAuthenticated/fragments/head::head(${'title'},${'description'},${'keywords'})">
+</head>
+<body>
+
+
+<!-- Add image before the header -->
+
+<header th:include="notAuthenticated/fragments/header::header" style="background-color: #0E2F4A"
+        th:with="myObject=${complexesForNavBar},myObjectlFNBar=${loisForNavBar}"></header>
+
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center" style="background-color: #0E2F4A ;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
+                 data-aos="fade-up" data-aos-delay="200">
+                <h1>بوابة الاعلام الجزائري </h1>
+                <h2> بوابة الاعلام الجزائري بوابة الاعلام الجزائري بوابة الاعلام الجزائري بوابة الاعلام الجزائري </h2>
+                <div class="d-flex justify-content-center justify-content-lg-start">
+
+                    <form class="form-inline d-flex justify-content-center " action="#" th:action="@{/search}" method="get">
+                        <input class="form-control mr-sm-2 w-100"  id="query" name="query" required type="search" placeholder="بحث" aria-label="بحث ">
+                        <button class="btn btn-outline-success my-2 my-sm-0 mx-2 " type="submit"><i
+                                class="ri-search-2-line"></i></button>
+                    </form>
+
+                </div>
+            </div>
+            <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+                <img th:src="@{notAuthenticated/assets/img/media city.png}" class="img-fluid animated" alt="">
+            </div>
+
+        </div>
+    </div>
+
+</section><!-- End Hero -->
+
+<main id="main">
+
+    <!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients section-bg">
+        <div class="container">
+
+            <div class="row" data-aos="zoom-in">
+
+                <div class="col-lg-8 col-md-8 col-8 flex-column align-items-star ">
+                    <h1 style="text-align: start">بوابة الاعلام الجزائري </h1>
+                    <h2 style="text-align: start; font-size: 25px"> بوابة الاعلام الجزائري بوابة الاعلام الجزائري بوابة
+                        الاعلام </h2>
+
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-4 d-flex align-items-center justify-content-center">
+                    <button class="btn btn-outline-success my-2 my-sm-0 mx-2 " style="font-size: 30px" type="submit"><i
+                            class=""></i> اقرأ
+                    </button>
+                </div>
+
+
+            </div>
+
+        </div>
+    </section><!-- End Cliens Section -->
+
+
+    <!-- ======= Services Section ======= -->
+    <section id="Soustutelle" class="services ">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>تحت الوصاية</h2>
+
+            </div>
+            <br>
+            <div class="row">
+                <div th:if="etablissementsSoustutelle" th:each="etablissementSoustutelle:${etablissementsSoustutelle}" class="col-6 col-sm-3 col-md-3  d-flex align-items-stretch " data-aos="zoom-in" data-aos-delay="100">
+                    <div class="icon-box">
+                        <div class="icon"><img
+                                th:src="@{${'/etablissement/lugo/'+etablissementSoustutelle.getId()}}"
+                                width="50px" height="50px">
+                        </div>
+                        <h4><a
+                                th:href="${'/etablissement/'+etablissementSoustutelle.getId()}"
+                                th:text="${etablissementSoustutelle.getName()}"
+                        > </a></h4>
+                        <p    th:href="${'/etablissement/'+etablissementSoustutelle.getId()}"
+                           th:text="${etablissementSoustutelle.getDescription().toString().substring(0,(etablissementSoustutelle.getDescription().length() &lt; 100 ? etablissementSoustutelle.getDescription().length() : 100 ))+'...'}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="Reglementationsectorielle" class="services ">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>تنظيم القطاع </h2>
+
+            </div>
+            <br>
+
+            <div class=" d-flex justify-content-center" >
+
+                <div class="row" hidden="hidden">
+                    <div th:if="etablissementsReglementationsectorielle" th:each="ers:${etablissementsReglementationsectorielle}" class="col-6 col-sm-3 col-md-3  d-flex align-items-stretch " data-aos="zoom-in" data-aos-delay="100">
+                        <div class="icon-box">
+                            <div class="icon"><img
+                                    th:src="@{${'/etablissement/lugo/'+ers.getId()}}"
+                                    width="50px" height="50px">
+                            </div>
+                            <h4><a
+                                    th:href="${'/etablissement/'+ers.getId()}"
+                                    th:text="${ers.getName()}"
+                            > </a></h4>
+                            <p  th:href="${'/etablissement/'+ers.getId()}"
+                                 th:text="${ers.getDescription().toString().substring(0,(ers.getDescription().length() &lt; 100 ? ers.getDescription().length() : 100 ))+'...'}"></p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="">
+                    <div class="img-wrap">
+                        <a href="">
+                        <img th:src="@{${'/notAuthenticated/assets/img/histograme.png'}}" alt="Image" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </section><!-- End Services Section -->
+
+
+</main><!-- End #main -->
+<footer th:replace="notAuthenticated/fragments/footer::footer" class="footer">
+</footer>
+
+<div id="preloader"></div>
+
+<div th:replace="notAuthenticated/fragments/js::js"></div>
+
+</body>
+
+</html>
