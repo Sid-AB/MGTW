@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+
 @Controller
 @RequestMapping({"/ministers"})
 public class MinisterController {
@@ -35,10 +36,11 @@ public class MinisterController {
     private FilesStorageService filesStorageService;
     @Autowired
     private MultimediaService multimediaService;
-
+    
     public MinisterController()
     {
-        
+       
+
     }
 
     @PostMapping
@@ -70,6 +72,7 @@ public class MinisterController {
     @GetMapping({"/list"})
     public String minpublic(Model model) {
         List<Minister> Mins = this.ministerService.findAll();
+        //System.out.println("Nombre de ministres trouvés: " + Mins.size());
         model.addAttribute("Mins", Mins);
         return "notAuthenticated/minister/minlist";
     }
