@@ -1924,3 +1924,210 @@ section {
   font-weight: 600; }
 .blog-section .post-entry:hover .post-thumbnail img, .blog-section .post-entry:focus .post-thumbnail img {
   opacity: .7; }
+
+  /***--------------- image clickabe ----------------------*****/
+  .RDC
+  {
+    display: flex;
+    position: absolute;
+    z-index: 10000;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    height: 100%;
+    width: 155vh;
+  }
+  .level-one
+  {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgba(104, 113, 247, 0.548);
+    height: 17%;
+    width: 100%;
+    border: 1px dotted;
+  }
+  .level-two
+  {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background-color: rgba(67, 250, 60, 0.486);
+    height: 25%;
+    width: 100%;
+  }
+  .level-th
+  {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(240, 238, 118, 0.534);
+    height: 17%;
+    width: 100%;
+
+  }
+  .Diouan
+  {
+    
+    width: 100px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.288);
+
+  }
+  .ouazir
+  {
+    
+    width: 100px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.288);
+
+  }
+  .inspictiong
+  {
+    width: 100px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.288);
+  }
+  .secgen
+  {
+    width: 100px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.288);
+  }
+.level-one div:hover
+{
+  cursor: pointer;
+}
+.level-two div:hover
+{
+  cursor: pointer;
+}
+.level-th div:hover
+{
+  cursor: pointer;
+}
+.dam
+{
+  width: 100px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.288);
+}
+.dloi
+{
+  width: 100px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.288);
+}
+.daf
+{
+  width: 100px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.288);
+}
+.dev
+{
+  width: 100px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.288);
+}
+.emedia
+{
+  width: 100px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.288);
+}
+.media
+{
+  width: 100px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.288);
+}
+
+
+@media (min-width: 1400px) {
+  /* Styles for screens larger than 1400px */
+  .RDC {
+    width: 141vh;
+  }
+  .level-one
+  {
+   height: 18%; 
+  }
+  .level-two{
+    height: 27%;
+  }
+  .level-th
+  {
+    height: 17%;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+  /* Styles for screens between 1200px and 1400px */
+  .RDC {
+    width: 122vh;
+  }
+  .level-one
+  {
+    height: 19%; 
+  }
+  .level-two{
+    height: 22%;
+  }
+  .level-th
+  {
+    height: 14%;
+  }
+}
+@media (min-width: 991px) and (max-width: 1199px) {
+  /* Styles for screens between 1200px and 1400px */
+  .RDC {
+    width: 102vh;
+  }
+  .level-one
+  {
+    height: 13%;
+  }
+  .level-two{
+    height: 18%;
+  }
+  .level-th
+  {
+    height: 14%;
+  }
+}
+@media (min-width: 768px) and (max-width: 990px) {
+  /* Styles for screens between 1200px and 1400px */
+  .RDC {
+    width: 76vh;
+  }
+  .level-one
+  {
+    height: 10%;
+  }
+  .level-two{
+    height: 13%;
+  }
+  .level-th
+  {
+    height: 11%;
+  }
+}
+@media (max-width: 767px) {
+  /* Styles for screens between 1200px and 1400px */
+  .RDC {
+    width: 56vh;
+  }
+  .level-one
+  {
+    height: 8%;
+  }
+  .level-two{
+    height: 9%;
+  }
+  .level-th
+  {
+    height: 7%;
+  }
+}
