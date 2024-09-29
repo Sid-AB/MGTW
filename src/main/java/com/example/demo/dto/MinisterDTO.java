@@ -2,8 +2,12 @@
 package com.example.demo.dto;
 
 import com.example.demo.entities.Minister;
+
+import org.hibernate.mapping.List;
 import org.springframework.web.multipart.MultipartFile;
 import java.time.LocalDate;
+
+import java.util.List;
 
 public class MinisterDTO {
     
@@ -13,7 +17,7 @@ public class MinisterDTO {
     private String address;
     private LocalDate startFrom;
     private LocalDate until;
-  //  private String photoUrl;
+    private List<MultipartFile> photoUrl;
 
     // Constructors
     public MinisterDTO() {}
