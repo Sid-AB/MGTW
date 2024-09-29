@@ -2046,7 +2046,7 @@ section {
 }
 
 
-@media (min-width: 1400px) {
+@media screen and (min-width: 1400px) {
   /* Styles for screens larger than 1400px */
   .RDC {
     width: 141vh;
@@ -2063,10 +2063,10 @@ section {
     height: 17%;
   }
 }
-@media (min-width: 1200px) and (max-width: 1399px) {
+@media screen and (min-width: 1200px) and (max-width: 1399px) {
   /* Styles for screens between 1200px and 1400px */
   .RDC {
-    width: 122vh;
+    width: 121vh;
   }
   .level-one
   {
@@ -2080,7 +2080,7 @@ section {
     height: 14%;
   }
 }
-@media (min-width: 991px) and (max-width: 1199px) {
+@media screen and (min-width: 991px) and (max-width: 1199px) {
   /* Styles for screens between 1200px and 1400px */
   .RDC {
     width: 102vh;
@@ -2097,7 +2097,7 @@ section {
     height: 14%;
   }
 }
-@media (min-width: 768px) and (max-width: 990px) {
+@media screen and (min-width: 768px) and (max-width: 990px) {
   /* Styles for screens between 1200px and 1400px */
   .RDC {
     width: 76vh;
@@ -2114,7 +2114,7 @@ section {
     height: 11%;
   }
 }
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
   /* Styles for screens between 1200px and 1400px */
   .RDC {
     width: 56vh;
