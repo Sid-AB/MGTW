@@ -7,6 +7,8 @@ import com.example.demo.entities.Minister;
 import com.example.demo.service.MinisterService;
 import com.example.demo.service.MultimediaService;
 import com.example.demo.service.FilesStorageService;
+import com.example.demo.repository.MultimediaRepository;
+import com.example.demo.repository.MinisterRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -30,24 +33,30 @@ import java.util.Optional;
 @RequestMapping({"/ministers"})
 public class MinisterController {
 
+    @Value("${upload.path}")
+    private String uploadPath;
     @Autowired
     private MinisterService ministerService;
     @Autowired
     private FilesStorageService filesStorageService;
     @Autowired
     private MultimediaService multimediaService;
-    
+    @Autowired
+    private MinisterRepository ministerRepository;
+    @Autowired
+    private MultimediaRepository multimediaRepository;
     public MinisterController()
     {
        
 
     }
 
-    @PostMapping
+   /*  @PostMapping
     public ResponseEntity<MinisterDTO> createMinister(@RequestBody MinisterDTO ministerDTO) {
         MinisterDTO createdMinister = ministerService.createMinister(ministerDTO);
+     
         return ResponseEntity.ok(createdMinister);
-    }
+    }*/
 
     @GetMapping({"/{id}"})
     public ResponseEntity<MinisterDTO> getMinister(@PathVariable Long id) {
@@ -66,8 +75,13 @@ public class MinisterController {
     }
     @PostMapping({"/save"})
     public String saveMin(@ModelAttribute("MinisterDTO") MinisterDTO ministerDTO) {
-        this.ministerService.createMinister(ministerDTO);
-        return "redirect:/ministers/Mins";
+        try {
+            Minister savedMinister = ministerService.addMinisterWithProfilePicture(ministerDTO);
+            return "redirect:/ministers/Mins";
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "Error while saving minister: " + e.getMessage();
+        }
     }
     @GetMapping({"/list"})
     public String minpublic(Model model) {

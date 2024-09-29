@@ -7,7 +7,7 @@ import org.hibernate.mapping.List;
 import org.springframework.web.multipart.MultipartFile;
 import java.time.LocalDate;
 
-import java.util.List;
+//import java.util.List;
 
 public class MinisterDTO {
     
@@ -17,19 +17,23 @@ public class MinisterDTO {
     private String address;
     private LocalDate startFrom;
     private LocalDate until;
-    private List<MultipartFile> photoUrl;
+    private MultipartFile profilePicture;
 
     // Constructors
-    public MinisterDTO() {}
+    public MinisterDTO()
+     {
 
-    public MinisterDTO(String firstName, String lastName, LocalDate birthday, String address, LocalDate startFrom, LocalDate until/*, String photoUrl */) {
+     }
+
+
+    public MinisterDTO(String firstName, String lastName, LocalDate birthday, String address, LocalDate startFrom, LocalDate until, MultipartFile profilePicture ) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthday = birthday;
         this.address = address;
         this.startFrom = startFrom;
         this.until = until;
-      //  this.photoUrl = photoUrl;
+        this.profilePicture = profilePicture;
     }
 
     // Getters and Setters
@@ -80,13 +84,12 @@ public class MinisterDTO {
     public void setUntil(LocalDate until) {
         this.until = until;
     }
-
- 
-}
-/*   public String getPhotoUrl() {
-        return photoUrl;
+   public MultipartFile getprofilePicture() {
+        return profilePicture;
     }
 
-    public void setPhotoUrl(String photoUrl) {
-        this.photoUrl = photoUrl;
-    }*/ 
+    public void setprofilePicture(MultipartFile profilePicture) {
+        this.profilePicture = profilePicture;
+    }
+ 
+}

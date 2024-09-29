@@ -9,14 +9,22 @@ import com.example.demo.repository.MinisterRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 @Service
 public class MinisterService {
-
+    @Value("${upload.path}")
+    private String uploadPath;
     @Autowired
     private MinisterRepository ministerRepository;
 
@@ -25,7 +33,21 @@ public class MinisterService {
     @Autowired
     private MultimediaRepository multimediaRepository;
 
-    public MinisterDTO createMinister(MinisterDTO ministerDTO) {
+    public Minister addMinisterWithProfilePicture(MinisterDTO ministerDTO) throws IOException {
+        MultipartFile profilePicture = ministerDTO.getprofilePicture();
+
+        // Save the profile picture to the server
+        byte[] bytes = profilePicture.getBytes();
+        Path path = Paths.get(uploadPath + profilePicture.getOriginalFilename());
+        Files.write(path, bytes);
+
+        // Save multimedia entry for the profile picture
+        Multimedia multimedia = new Multimedia();
+        multimedia.setFileName(profilePicture.getOriginalFilename());
+        multimedia.setFilePath(path.toString());
+        multimediaRepository.save(multimedia);
+
+        // Create and save the Minister entity
         Minister minister = new Minister();
         minister.setFirstName(ministerDTO.getFirstName());
         minister.setLastName(ministerDTO.getLastName());
@@ -33,9 +55,9 @@ public class MinisterService {
         minister.setAddress(ministerDTO.getAddress());
         minister.setStartFrom(ministerDTO.getStartFrom());
         minister.setUntil(ministerDTO.getUntil());
+        minister.setprofilePicture(multimedia); // Associate profile picture
 
-        ministerRepository.save(minister);
-        return mapToDTO(minister);
+        return ministerRepository.save(minister);
     }
 
     public MinisterDTO getMinister(Long id) {
