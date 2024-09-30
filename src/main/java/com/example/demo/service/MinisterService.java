@@ -3,6 +3,7 @@ package com.example.demo.service;
 
 import com.example.demo.dto.MinisterDTO;
 import com.example.demo.entities.Multimedia;
+import com.example.demo.entities.Radio;
 import com.example.demo.entities.Minister;
 import com.example.demo.repository.MultimediaRepository;
 import com.example.demo.repository.MinisterRepository;
@@ -77,5 +78,12 @@ public class MinisterService {
     }
     public List<Minister> findAll() {
         return this.ministerRepository.findAll();
+    }
+    public Minister findMinisterById(Long id) {
+        return this.ministerRepository.findMinisterById(id);
+    }
+
+    public String getMinisterImagePath(Long ministerId) {
+        return ministerRepository.findImagePathByMinisterId(ministerId);
     }
 }

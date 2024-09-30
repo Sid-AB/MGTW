@@ -3,6 +3,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.MinisterDTO;
 import com.example.demo.entities.Multimedia;
+import com.example.demo.entities.Radio;
 import com.example.demo.entities.Minister;
 import com.example.demo.service.MinisterService;
 import com.example.demo.service.MultimediaService;
@@ -13,6 +14,9 @@ import com.example.demo.repository.MinisterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.ResponseEntity.BodyBuilder;
@@ -24,9 +28,12 @@ import org.springframework.beans.factory.annotation.Value;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 
 
 @Controller
@@ -90,4 +97,43 @@ public class MinisterController {
         model.addAttribute("Mins", Mins);
         return "notAuthenticated/minister/minlist";
     }
+        
+  /*  @GetMapping({"/pic/{id}"})
+    public ResponseEntity<byte[]> getMinisterImage(@PathVariable Long id) {
+            Minister mins=this.ministerRepository.findMinisterById(id);
+            Optional<Multimedia> multimedia = this.multimediaRepository.findFirstByMinister(mins);
+            System.out.println("testing"+multimedia);
+            if (multimedia.isPresent()) {
+            Multimedia multi = multimedia.get();
+            byte[] imageBytes = java.util.Base64.getDecoder().decode(multi.getFilePath());
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.IMAGE_JPEG);
+            return new ResponseEntity<>(imageBytes, headers, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(new byte[0], HttpStatus.NOT_FOUND);
+        }
+    }*/
+    
+    @GetMapping({"/pic/{id}"})
+    public ResponseEntity<Resource> getImage(@PathVariable("id") Long id) {
+        try{
+        //String folder = "images";
+      /*  Minister minister = this.ministerService.findMinisterById(id);
+        Optional<Multimedia> multimedia = this.multimediaService.findFirstByMinister(minister);*/
+        final String baseDirectory = "src/main/resources/static/multimedia/";
+       String pathnew= ministerService.getMinisterImagePath(id);
+     //   System.out.println("-"+minister.getId());
+           Path filePath = Paths.get(baseDirectory).resolve(pathnew).normalize();
+            Resource filename = new UrlResource(filePath.toUri());
+        if (filename.exists() && filename.isReadable()) {
+            return ((BodyBuilder)ResponseEntity.ok().header("Content-Disposition", new String[]{"attachment; filename=\"" + filename.getFilename() + "\""})).body(filename);
+        } else {
+            Resource file = this.filesStorageService.load("staticImage".concat("/profile-img.jpg"));
+            return ((BodyBuilder)ResponseEntity.ok().header("Content-Disposition", new String[]{"attachment; filename=\"" + filename.getFilename() + "\""})).body(filename);
+        }
+    }catch (Exception e) {
+        return ResponseEntity.status(500).build();
+    }
+    }
+
 }

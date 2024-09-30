@@ -25,4 +25,6 @@ public interface MultimediaRepository extends JpaRepository<Multimedia, Long> {
     Optional<Multimedia> findFirstByEtablissement(Etablissement etablissement);
 
     Optional<Multimedia> findFirstByTextJuridique(TextJuridique textJuridique);
+
+    Optional<Multimedia> findFirstByMinister(Minister minister);
 }

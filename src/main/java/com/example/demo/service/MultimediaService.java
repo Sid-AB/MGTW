@@ -41,6 +41,10 @@ public class MultimediaService {
         return this.multimediaRepository.findFirstByRadio(radio);
     }
 
+    public Optional<Multimedia> findFirstByMinister(Minister radio) {
+        return this.multimediaRepository.findFirstByMinister(radio);
+    }
+
     public Optional<Multimedia> findFirstByPresse(Presse presse) {
         return this.multimediaRepository.findFirstByPresse(presse);
     }
