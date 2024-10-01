@@ -5,6 +5,16 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+
+function changeDirection(language) {
+  if (language === 'ar') {
+      console.log('testing'+language)
+      document.documentElement.setAttribute("dir", "rtl");  // Set direction to 'rtl' for Arabic
+  } else {
+      document.documentElement.setAttribute("dir", "ltr");  // Set direction to 'ltr' for other languages
+  }
+}
+
 (function() {
   "use strict";
 
@@ -257,4 +267,8 @@
 
 })()
 
-
+ // On page load, set direction based on current locale
+ document.addEventListener("DOMContentLoaded", function() {
+  var currentLang = document.documentElement.getAttribute("lang");  // Get the lang attribute
+  changeDirection(currentLang);
+});

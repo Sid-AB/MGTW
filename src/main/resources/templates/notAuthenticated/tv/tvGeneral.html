@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-       lang="ar" dir="rtl" >
+      xmlns:th="http://www.thymeleaf.org" dir="rtl" th:lang="${#locale.language}">
 
 
 <head th:replace="notAuthenticated/fragments/head::head(${'title'},${'description'},${'keywords'})">
