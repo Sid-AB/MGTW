@@ -21,7 +21,7 @@
                 <li>Portfolio Details</li>
             </ol>
             <div class="d-flex justify-content-start">
-                <a th:href="${tv.getWebsite()}"><img th:src="@{${'/tv/lugo/'+tv.getId()}}" width="50px" height="30px" class="img-fluid mx-3" alt=""></a>
+                <a th:href="${tv.getWebsite()}" target="_blank"><img th:src="@{${'/tv/lugo/'+tv.getId()}}" width="50px" height="30px" class="img-fluid mx-3" alt=""></a>
                 <h2 th:text="${tv.getName()}"></h2></div>
 
 
@@ -47,7 +47,7 @@
                             <li><strong> البريد الإليكتروني </strong>: <a
                                     th:text="${tv.getEmail()}"></a></li>
                             <li><strong>الموقع الالكتروني </strong>: <a
-                                    th:href="${tv.getWebsite()}" th:text="${tv.getWebsite() }"></a></li>
+                                    th:href="${tv.getWebsite()}" th:text="${tv.getWebsite() }" target="_blank"></a></li>
                             <li><span style="display: flex"><strong>الفاكس </strong>: <a
                                    style="direction: ltr;" th:text="${tv.getFax()}"></a></span></li>
                             <li><strong>العنوان </strong>: <a
@@ -75,7 +75,7 @@
                             <li><strong>معامل التصحيح </strong>: <a
                                     th:text="${caracteristique.getFec()}"></a></li>
                             <li><strong>الموقع الالكتروني </strong>: <a th:href="${tv.getWebsite()}"
-                                                                        th:text="${tv.getWebsite()}"></a></li>
+                                                                        th:text="${tv.getWebsite()}" target="_blank"></a></li>
 
                             <hr />
                         </ul >

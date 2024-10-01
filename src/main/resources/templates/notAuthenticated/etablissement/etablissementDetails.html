@@ -22,7 +22,7 @@
                 <li>Portfolio Details</li>
             </ol>
             <div class="d-flex justify-content-start">
-                <a th:href="${etablissement.getSite()}"><img th:src="@{${'/etablissement/lugo/'+etablissement.getId()}}" width="50px" height="30px" class="img-fluid mx-3"
+                <a th:href="${etablissement.getSite()}" target="_blank"><img th:src="@{${'/etablissement/lugo/'+etablissement.getId()}}" width="50px" height="30px" class="img-fluid mx-3"
                                                              alt=""></a>
                 <h2 th:text="${etablissement.getName()}"></h2></div>
 
@@ -49,7 +49,7 @@
                             <li><strong>البريد الإلكتروني </strong>: <a
                                     th:text="${etablissement.getEmail()}"></a></li>
                             <li><strong>الموقع الالكتروني </strong>: <a
-                                    th:href="${etablissement.getSite()}" th:text="${etablissement.getSite()}"></a></li>
+                                    th:href="${etablissement.getSite()}" th:text="${etablissement.getSite()}" target="_blank"></a></li>
                             <li><span style="display: flex"><strong>الفاكس </strong>: <a
                                     style="direction: ltr;"   th:text="${etablissement.getFax()}"></a></span></li>
 

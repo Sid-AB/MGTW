@@ -74,7 +74,7 @@
                                     <li>
                                         <div>
                                             <a th:href="${presse.getWebsite()}"
-                                               th:text="${presse.getWebsite()}"></a></div>
+                                               th:text="${presse.getWebsite()}" target="_blank"></a></div>
                                     </li>
                                 </ul>
                             </li>
@@ -101,7 +101,7 @@
                 </div>
                 <div class="col-lg-6 d-flex align-items-center img-wrap" data-aos="fade-right" data-aos-delay="100">
 
-                    <a th:href="${presse.getWebsite()}">
+                    <a th:href="${presse.getWebsite()}" target="_blank">
                     <img  th:src="@{${'/presse/lugo/'+presse.getId()}}"
                          style="border:0; width: 500px; height: 290px;" class="img-fluid  mx-3"
                          alt="">
