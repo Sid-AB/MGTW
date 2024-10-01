@@ -13,7 +13,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-    public SecurityConfig() {
+  public SecurityConfig() {
     }
 
     @Bean
@@ -32,5 +32,5 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable);
         http.headers(AbstractHttpConfigurer::disable);
         return (SecurityFilterChain)http.build();
-    }
+    } 
 }

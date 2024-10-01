@@ -7,6 +7,8 @@ import com.example.demo.service.ComplexeService;
 import com.example.demo.service.EtablissementService;
 import com.example.demo.service.LoisService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +23,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class DefaultController {
+    @Autowired
+    private MessageSource messageSource;
     @Autowired
     private ComplexeService complexeService;
     @Autowired
@@ -41,6 +45,7 @@ public class DefaultController {
 
     @GetMapping({"/index", "", "/"})
     public String index(Model model) {
+     //    String greetingMessage = messageSource.getMessage("etablissement", null, LocaleContextHolder.getLocale());
         List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
         model.addAttribute("complexesForNavBar", complexesForNavBar);
         List<Lois> loisForNavBar = this.loisService.findAll();
@@ -49,6 +54,7 @@ public class DefaultController {
         model.addAttribute("etablissementsSoustutelle", etablissementsSoustutelle);
         List<Etablissement> etablissementsReglementationsectorielle = this.etablissementService.findEtablissementsByType("reglementationsectorielle");
         model.addAttribute("etablissementsReglementationsectorielle", etablissementsReglementationsectorielle);
+      //  model.addAttribute("etablissement", greetingMessage);
         return "notAuthenticated/index";
     }
 
