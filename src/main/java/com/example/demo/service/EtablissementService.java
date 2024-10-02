@@ -63,10 +63,10 @@ public class EtablissementService {
         return this.etablissementRepository.findByDescriptionContainingIgnoreCase(keyword);
     }
     public List<Etablissement> findByDescription_frContainingIgnoreCase(String keyword) {
-        return this.etablissementRepository.findByDescriptionContainingIgnoreCase(keyword);
+        return this.etablissementRepository.findByDescription_frContainingIgnoreCase(keyword);
     }
     public List<Etablissement> findByDescription_enContainingIgnoreCase(String keyword) {
-        return this.etablissementRepository.findByDescriptionContainingIgnoreCase(keyword);
+        return this.etablissementRepository.findByDescription_enContainingIgnoreCase(keyword);
     }
     public Etablissement saveUserAndMultimedias(List<Multimedia> multimedias, Etablissement etablissement) {
         this.etablissementRepository.save(etablissement);
