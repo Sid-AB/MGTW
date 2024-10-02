@@ -34,6 +34,11 @@ public class EtablissementService {
         return this.etablissementRepository.findEtablissementByName(username);
     }
 
+    // Méthode pour rechercher par nom arabe
+    public Optional<Etablissement> findEtablissementByName_fr(String name_fr) {
+        return this.etablissementRepository.findEtablissementByName_fr(name_fr);
+    }
+
     public List<Etablissement> findEtablissementsByType(String type) {
         return this.etablissementRepository.findEtablissementsByType(type);
     }
@@ -55,6 +60,12 @@ public class EtablissementService {
         return etablissement1;
     }
     public List<Etablissement> findByDescriptionContainingIgnoreCase(String keyword) {
+        return this.etablissementRepository.findByDescriptionContainingIgnoreCase(keyword);
+    }
+    public List<Etablissement> findByDescription_frContainingIgnoreCase(String keyword) {
+        return this.etablissementRepository.findByDescriptionContainingIgnoreCase(keyword);
+    }
+    public List<Etablissement> findByDescription_enContainingIgnoreCase(String keyword) {
         return this.etablissementRepository.findByDescriptionContainingIgnoreCase(keyword);
     }
     public Etablissement saveUserAndMultimedias(List<Multimedia> multimedias, Etablissement etablissement) {
