@@ -1,60 +1,60 @@
 
-<footer  th:fragment="footer" id="footer" style="background-color: #0E2F4A">
+<footer  th:fragment="footer" id="footer" >
 
     <div class="footer-top " style="background-color: #f3f5fa">
-        <div class="container ">
+        <div class="container " >
             <div class="row">
 
                 <div class="col-lg-3 col-md-6 footer-contact">
-                    <h3>بوابة الاعلام الجزائري </h3>
+                    <h3 th:text="#{porteilgetway}">بوابة الاعلام الجزائري </h3>
                     <p>
                         03, شارع الإخوة بوعدو <br>
                         بئر مراد رايس <br>
                         الجزائر العاصمة <br><br>
-                        <span style="display: flex"> <strong>الهاتف:</strong> <strong style="direction: ltr">+213(0)21-54-10-10</strong></span><br>
-                        <span style="display: flex"><strong>الفاكس:</strong><strong style="direction: ltr">+213(0)21-54-12-08</strong> </span><br>
-                        <strong>البريد الالكتروني:</strong> contact@ministerecommunication.gov.dz<br>
+                        <span style="display: flex"> <strong th:text="#{telep}">الهاتف:</strong> <strong style="direction: ltr">+213(0)21-54-10-10</strong></span><br>
+                        <span style="display: flex" ><strong th:text="#{fax}">الفاكس:</strong><strong style="direction: ltr">+213(0)21-54-12-08</strong> </span><br>
+                        <strong th:text="#{email}">البريد الالكتروني:</strong> contact@ministerecommunication.gov.dz<br>
                     </p>
                 </div>
 
                 <div class="col-lg-3 col-md-6 footer-links">
-                    <h4>روابط سريعة</h4>
+                    <h4 th:text="#{quicklink}">روابط سريعة</h4>
                     <ul>
 
 
-                        <li><i class="bx bx-chevron-left" style="color: #0E2F4A"></i><a href="#">الرئسية</a></li>
-                        <li><i class="bx bx-chevron-left" style="color: #0E2F4A"></i><a href="#">المؤسسات الإعلامية </a></li>
-                        <li><i class="bx bx-chevron-left" style="color: #0E2F4A"></i><a href="#">تنظيم القطاع</a></li>
-                        <li><i class="bx bx-chevron-left" style="color: #0E2F4A"></i> <a href="#">القنوات التلفزيونية
+                        <li><i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i><a href="#" th:text="#{principal}">الرئسية</a></li>
+                        <li><i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i><a href="#" th:text="#{etablissement}">المؤسسات الإعلامية </a></li>
+                        <li><i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i><a href="#" th:text="#{organigrame}">تنظيم القطاع</a></li>
+                        <li><i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i> <a href="#" th:text="#{channel} +' '+ #{public}">القنوات التلفزيونية
                             العمومية </a></li>
-                        <li><i class="bx bx-chevron-left" style="color: #0E2F4A"></i> <a href="#">القنوات التلفزيونية
+                        <li><i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i> <a href="#" th:text="#{channel}+' '+ #{prive}">القنوات التلفزيونية
                             الخاصة</a></li>
-                        <li><i class="bx bx-chevron-left" style="color: #0E2F4A"></i> <a href="#">النصوص القانونية </a>
+                        <li><i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i> <a href="#" th:text="#{textju}">النصوص القانونية </a>
                         </li>
 
                     </ul>
                 </div>
 
                 <div class="col-lg-3 col-md-6 footer-links">
-                    <h4>روابط مهمة</h4>
+                    <h4 th:text="#{linkimport}">روابط مهمة</h4>
                     <ul>
-                        <li><i class="bx bx-chevron-left" style="color: #0E2F4A"></i> <a href="#">الاذاعات المحلية </a>
+                        <li><i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i> <a href="#" th:text="#{radio} +' '+ #{local}">الاذاعات المحلية </a>
                         </li>
-                        <li><i class="bx bx-chevron-left" style="color: #0E2F4A"></i> <a href="#">الاذاعات الخاصة </a>
+                        <li><i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i> <a href="#"  th:text="#{radio} +' '+ #{prive}">الاذاعات الخاصة </a>
                         </li>
-                        <li><i class="bx bx-chevron-left" style="color: #0E2F4A"></i> <a href="#">الصحافة المكتوبة
+                        <li><i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i> <a href="#" th:text="#{pressEcrit} +' '+ #{public}">الصحافة المكتوبة
                             العمومية </a></li>
-                        <li><i class="bx bx-chevron-left" style="color: #0E2F4A"></i><a href="#">الصحافة المكتوبة
+                        <li><i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i><a href="#"  th:text="#{pressEcrit} +' '+ #{prive}">الصحافة المكتوبة
                             الخاصة</a></li>
-                        <li><i class="bx bx-chevron-left" style="color: #0E2F4A"></i> <a href="#">الصحافة
+                        <li><i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i> <a href="#" th:text="#{pressElect}">الصحافة
                             الالكترونية </a></li>
 
                     </ul>
                 </div>
 
                 <div class="col-lg-3 col-md-6 footer-links">
-                    <h4>شبكاتنا الاجتماعية</h4>
-                    <p> يمكنكم متابعاتنا على مواقع التواصل الاجتماعي عبر الروابط الاتية </p>
+                    <h4 th:text="#{socialMedia}">شبكاتنا الاجتماعية</h4>
+                    <p th:text="#{textsocial}"> يمكنكم متابعاتنا على مواقع التواصل الاجتماعي عبر الروابط الاتية </p>
                     <div class="social-links mt-3">
                         <a href="#" class="" style="background-color: #0E2F4A" target="_blank"><i class="bi bi-twitter-x"></i></a>
                         <a href="https://www.facebook.com/ministerecomdz/" class="facebook" style="background-color: #0E2F4A" target="_blank"><i

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html dir="rtl" th:lang="${#locale.language}">
 <head th:replace="notAuthenticated/fragments/head::head(${'title'},${'description'},${'keywords'})">
 </head>
 <body>
@@ -39,18 +39,18 @@
                         <p th:text="${tv.getDescription()}"></p>
                     </div>
                     <div class="portfolio-info">
-                        <h3>الخصائص  </h3>
+                        <h3 th:text="#{carast}">الخصائص  </h3>
                         <ul >
-                            <li><span style="display: flex"><strong>  رقم الهاتف
-                            </strong> <span style="direction: ltr" th:text="${tv.getPhone()}"></span>
+                            <li><span style="display: flex"><strong th:text="#{telep}">  رقم الهاتف
+                            </strong> <span th:text="${tv.getPhone()}"></span>
                             </span></li>
-                            <li><strong> البريد الإليكتروني </strong>: <a
+                            <li><strong th:text="#{email}"> البريد الإليكتروني </strong>: <a
                                     th:text="${tv.getEmail()}"></a></li>
-                            <li><strong>الموقع الالكتروني </strong>: <a
+                            <li><strong th:text="#{citeweb}">الموقع الالكتروني </strong>: <a
                                     th:href="${tv.getWebsite()}" th:text="${tv.getWebsite() }" target="_blank"></a></li>
-                            <li><span style="display: flex"><strong>الفاكس </strong>: <a
+                            <li><span style="display: flex"><strong th:text="#{fax}">الفاكس </strong>: <a
                                    style="direction: ltr;" th:text="${tv.getFax()}"></a></span></li>
-                            <li><strong>العنوان </strong>: <a
+                            <li><strong th:text="#{address}">العنوان </strong>: <a
                                     th:text="${tv.getAdresse()}"></a></li>
                         </ul >
                     </div>
@@ -59,22 +59,22 @@
 
 
                     <div class="portfolio-info">
-                        <h3>الخصائص التقنية </h3>
+                        <h3 th:text="carattech">الخصائص التقنية </h3>
                         <ul th:if="${caracteristique}" th:each="caracteristique:${tv.getCaracteristiqueList()}">
-                            <li><strong> القمر الصناعي
+                            <li><strong th:text="#{stalit}"> القمر الصناعي
                             </strong> <span th:text="${caracteristique.getSatellite()}"></span>
                             </li>
 
 
-                            <li><strong>التردد </strong>: <a
+                            <li><strong th:text="#{frequence}">التردد </strong>: <a
                                     th:text="${caracteristique.getFrequency()}"></a></li>
-                            <li><strong>معامل الترميز </strong>: <a
+                            <li><strong th:text="#{modlu}">معامل الترميز </strong>: <a
                                     th:text="${caracteristique.getSymbolrate()}"></a></li>
-                            <li><strong>الاستقاب </strong>: <a
+                            <li><strong th:text="#{polizar}">الاستقاب </strong>: <a
                                     th:text="${caracteristique.getPolarization()}"></a></li>
-                            <li><strong>معامل التصحيح </strong>: <a
+                            <li><strong th:text="#{fec}">معامل التصحيح </strong>: <a
                                     th:text="${caracteristique.getFec()}"></a></li>
-                            <li><strong>الموقع الالكتروني </strong>: <a th:href="${tv.getWebsite()}"
+                            <li><strong th:text="#{citeweb}">الموقع الالكتروني </strong>: <a th:href="${tv.getWebsite()}"
                                                                         th:text="${tv.getWebsite()}" target="_blank"></a></li>
 
                             <hr />
@@ -96,7 +96,7 @@
 
 
 </main><!-- End #main -->
-<h5 class="fw-bold text-center section-success text-uppercase mt-5">انظر ايضا</h5>
+<h5 class="fw-bold text-center section-success text-uppercase mt-5" th:text="#{lookher}">انظر ايضا</h5>
 
 <div class="container-fluid py-0 wow fadeInUp " data-wow-delay="0.1s" dir="ltr">
     <div class="container py-5 mb-2">

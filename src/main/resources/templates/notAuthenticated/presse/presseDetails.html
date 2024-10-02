@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html dir="rtl" th:lang="${#locale.language}">
 <head th:replace="notAuthenticated/fragments/head::head(${'title'},${'description'},${'keywords'})">
 </head>
 <body>
@@ -41,10 +41,10 @@
                         <p th:text="${presse.getDescription()}"></p>
                     </div>
                     <div class="portfolio-info">
-                        <h3>الخصائص </h3>
+                        <h3 th:text="#{carast}">الخصائص </h3>
                         <ul th:if="${presse}">
                             <li>
-                                <strong>طبيعة الصحيفة
+                                <strong th:text="#{catpress}">طبيعة الصحيفة
                                 </strong>:
                                 <ul>
 
@@ -58,18 +58,18 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><span style="display: flex"><strong> رقم الهاتف
+                            <li><span style="display: flex"><strong th:text="#{telep}"> رقم الهاتف
                             </strong>: <span style="direction: ltr" th:text="${presse.getPhone()}"></span>
                             </span></li>
-                            <li><strong>البريد الإليكتروني </strong>: <a
+                            <li><strong th:text="#{email}">البريد الإليكتروني </strong>: <a
                                     th:text="${presse.getEmail()}"></a></li>
 
 
-                            <li><span style="display: flex"><strong>الفاكس </strong>: <a
+                            <li><span style="display: flex"><strong th:text="#{fax}">الفاكس </strong>: <a
                                    style="direction: ltr;" th:text="${presse.getFax()}"></a></span></li>
 
 
-                            <li><strong>الموقع الالكتروني </strong>:
+                            <li><strong th:text="#{email}">الموقع الالكتروني </strong>:
                                 <ul>
                                     <li>
                                         <div>
@@ -78,14 +78,14 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><strong>نوع الصحيفة </strong>:
+                            <li><strong th:text="#{typpress}">نوع الصحيفة </strong>:
 
                                 <ul>
                                     <li th:each="presse : ${presse.getPresseCategories()}">
 
                                         <div th:switch="${presse.getName()}">
-                                            <span th:case="'ecrit'" th:text="${'مكتوبة'}"></span>
-                                            <span th:case="'electronique'" th:text="${'الكترونية'}"></span>
+                                            <span th:case="'ecrit'" th:text="#{pressEcrit}"></span>
+                                            <span th:case="'electronique'" th:text="#{pressElect}"></span>
 
                                         </div>
 
@@ -93,7 +93,7 @@
                                 </ul>
 
                             </li>
-                            <li><strong>العنوان </strong>: <a
+                            <li><strong th:text="#{address}">العنوان </strong>: <a
                                     th:text="${presse.getAdresse()}"></a></li>
                         </ul>
                     </div>
@@ -114,7 +114,7 @@
 
 
 </main><!-- End #main -->
-<h5 class="fw-bold text-center section-success text-uppercase mt-5">انظر ايضا</h5>
+<h5 class="fw-bold text-center section-success text-uppercase mt-5" th:text="#{lookher}">انظر ايضا</h5>
 
 <div class="container-fluid py-0 wow fadeInUp " data-wow-delay="0.1s" dir="ltr">
     <div class="container py-5 mb-2">

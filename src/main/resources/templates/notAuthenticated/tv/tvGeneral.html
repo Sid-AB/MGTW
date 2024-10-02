@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-       lang="ar" dir="rtl" >
+      xmlns:th="http://www.thymeleaf.org" dir="rtl" th:lang="${#locale.language}">
 
 
 <head th:replace="notAuthenticated/fragments/head::head(${'title'},${'description'},${'keywords'})">
@@ -46,7 +45,7 @@
 
                             <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up"
                                 data-aos-delay="100">
-                                <li data-filter="*" class="filter-active">جميع القنوات</li>
+                                <li data-filter="*" class="filter-active" th:text="#{channel}">جميع القنوات</li>
 
                                 <li th:if="tvListDistinctByCategorieChaines"
                                     th:each="tvListDistinctByCategorieChaine : ${tvListDistinctByCategorieChaines}"
@@ -74,7 +73,7 @@
                                            class="portfolio-lightbox preview-link" title="الارضية "><i
                                                 class="bx bx-plus"></i></a>
                                         <a th:href="@{'/tv/'+${tv.getId().toString()}}" class="details-link"
-                                           title="تفاصيل اكثر "><i
+                                           th:title="#{plusdet} "><i
                                                 class="bx bx-link"></i></a>
 
                                     </div>
@@ -93,13 +92,13 @@
                         <p th:text="${complexes.get(0).getDescription()}"></p>
                     </div>
                     <div class="portfolio-info">
-                        <h3>الخصائص </h3>
+                        <h3 th:text="#{carast}">الخصائص </h3>
                         <ul>
-                            <li><strong th:text="'العنوان : '+ ${  complexes.get(0).getAdresse()}"> </strong></li>
-                            <li><strong>الهاتف :</strong><strong style="direction: ltr;" th:text="${complexes.get(0).getPhone()}"> </strong></li>
-                            <li><strong>البريد الالكتروتي :</strong><strong style="direction: ltr;"th:text=" ${  complexes.get(0).getEmail()}"> </strong>
+                            <li><strong th:text="#{address} +' : '+ ${  complexes.get(0).getAdresse()}"> </strong></li>
+                            <li><strong th:text="#{telep}">الهاتف :</strong><strong style="direction: ltr;" th:text="${complexes.get(0).getPhone()}"> </strong></li>
+                            <li><strong th:text="#{email}">البريد الالكتروتي :</strong><strong style="direction: ltr;"th:text=" ${  complexes.get(0).getEmail()}"> </strong>
                             </li>
-                            <li><strong>الموقع الالكتروتي :</strong><a style="direction: ltr;" th:href="${complexes.get(0).getSite()}" th:text=" ${  complexes.get(0).getSite()}"> </a>
+                            <li><strong th:text="#{citeweb}">الموقع الالكتروتي :</strong><a style="direction: ltr;" th:href="${complexes.get(0).getSite()}" th:text=" ${  complexes.get(0).getSite()}"> </a>
                             </li>
 
 
