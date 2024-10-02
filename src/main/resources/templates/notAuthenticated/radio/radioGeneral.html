@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html dir="rtl" th:lang="${#locale.language}">
 <head th:replace="notAuthenticated/fragments/head::head(${'title'},${'description'},${'keywords'})">
 </head>
 <body>
@@ -26,7 +26,7 @@
     <section id="national" class="breadcrumbs m-0" >
         <div class="container">
 
-            <h2 > الاذاعات الوطنية</h2>
+            <h2 th:text="#{radio} +' '+#{national}"> الاذاعات الوطنية</h2>
 
         </div>
     </section><!-- End Breadcrumbs -->
@@ -68,7 +68,7 @@
     <section id="local" class="breadcrumbs m-0" >
         <div class="container">
 
-            <h2 > الاذاعات المحلية </h2>
+            <h2 th:text="#{radio} +' '+#{local}"> الاذاعات المحلية </h2>
 
         </div>
     </section><!-- End Breadcrumbs -->

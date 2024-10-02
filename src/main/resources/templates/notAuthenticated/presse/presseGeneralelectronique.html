@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html dir="rtl" th:lang="${#locale.language}">
 <head th:replace="notAuthenticated/fragments/head::head(${'title'},${'description'},${'keywords'})">
 </head>
 <body>
@@ -20,7 +20,7 @@
     <section th:if="pressesElectroniquePublic" id="publicEcrit" class="breadcrumbs m-0">
         <div class="container">
 
-            <h2> الصحافة الالكترونية </h2>
+            <h2 th:text="#{pressElect}"> الصحافة الالكترونية </h2>
 
         </div>
     </section><!-- End Breadcrumbs -->

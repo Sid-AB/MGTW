@@ -6,6 +6,11 @@
                  class="img-fluid animated">
 
         </div>
+        <nav style="background-color: green;">
+            <a href="?lang=en">English</a> |
+            <a href="?lang=fr">Français</a> |
+            <a href="?lang=ar">العربية</a>
+        </nav>
     </div>
 
     <div class="d-flex justify-content-around">
@@ -16,19 +21,19 @@
 
                 <li><a hidden="hidden" class="nav-link scrollto active" href="index.html">الرئسية</a></li>
 
-                <li class="dropdown "><a th:href="@{'/'}"><span> الرئسية </span> <i
+                <li class="dropdown "><a th:href="@{'/'}"><span th:text="#{principal}"> الرئسية </span> <i
                         class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a th:href="@{'/#Soustutelle'}">  المؤسسات الإعلامية</a></li>
-                        <li><a th:href="@{'/#Reglementationsectorielle'}" > تنظيم القطاع </a></li>
+                        <li><a th:href="@{'/#Soustutelle'}" th:text="#{etablissement}">  المؤسسات الإعلامية</a></li>
+                        <li><a th:href="@{'/#Reglementationsectorielle'}" th:text="#{organigrame}" > تنظيم القطاع </a></li>
 
                     </ul>
                 </li>
 
-                <li class="dropdown " ><a  th:href="@{'#'}"><span style="color: white" >القنوات التلفزيونية</span> <i class="bi bi-chevron-down"></i></a>
+                <li class="dropdown " ><a  th:href="@{'#'}"><span style="color: white" th:text="#{channel}" >القنوات التلفزيونية</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a th:href="@{'/tv/public'}">العمومية</a></li>
-                        <li class="dropdown "><a href="#"><span>الخاصة</span> <i class="bi bi-chevron-left"></i></a>
+                        <li><a th:href="@{'/tv/public'}" th:text="#{public}">العمومية</a></li>
+                        <li class="dropdown "><a href="#"><span th:text="#{prive}">الخاصة</span> <i class="bi bi-chevron-left"></i></a>
                             <ul style="left: -100%">
 
 
@@ -43,23 +48,23 @@
                 </li>
 
 
-                <li class="dropdown"><a  th:href="@{'/radio/public'}"><span> الاذاعات </span>  <i class="bi bi-chevron-down"></i></a>
+                <li class="dropdown"><a  th:href="@{'/radio/public'}"><span th:text="#{radio}"> الاذاعات </span>  <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a th:href="@{'/radio/public/#national'}">الوطنية </a></li>
-                        <li><a th:href="@{'/radio/public/#local'}"> المحلية </a></li>
+                        <li><a th:href="@{'/radio/public/#national'}" th:text="#{national}">الوطنية </a></li>
+                        <li><a th:href="@{'/radio/public/#local'}" th:text="#{local}"> المحلية </a></li>
 
                     </ul>
                 </li>
 
-                <li class="dropdown"><a th:href="@{'/presse/public'}"><span> الصحافة المكتوبة </span> <i class="bi bi-chevron-down"></i></a>
+                <li class="dropdown"><a th:href="@{'/presse/public'}"><span th:text="#{pressEcrit}"> الصحافة المكتوبة </span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a th:href="@{'/presse/public/#publicEcrit'}">العمومية </a></li>
-                        <li><a th:href="@{'/presse/public/#publicElectronique'}"> الخاصة </a></li>
+                        <li><a th:href="@{'/presse/public/#publicEcrit'}" th:text="#{public}">العمومية </a></li>
+                        <li><a th:href="@{'/presse/public/#publicElectronique'}" th:text="#{prive}"> الخاصة </a></li>
 
                     </ul>
                 </li>
 
-                <li><a th:href="@{'/presse/public/electronique'}"> الصحافة الالكترونية </a></li>
+                <li><a th:href="@{'/presse/public/electronique'}" th:text="#{pressElect}"> الصحافة الالكترونية </a></li>
 
                 <li hidden="hidden" class="dropdown"><a th:href="@{'/presse/public/electronique'}"><span> الصحافة الالكترونية </span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
@@ -74,17 +79,22 @@
 
 
 
-                <li class="dropdown"> <a  th:href="@{'#'}"> <span  style="color: white"> النصوص القانونية </span> <i class="bi bi-chevron-down"></i></a>
+                <li class="dropdown"> <a  th:href="@{'#'}"> <span  style="color: white" th:text="#{textju}"> النصوص القانونية </span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li th:each="lois:${myObjectlFNBar}"  ><a  th:href="@{'/lois/'+${lois.getId()}}" th:text="${lois.getName()}"></a></li>
 
 
                     </ul>
                 </li>
-                <li class="dropdown"><a th:href="@{'/ministers/list'}"><span> الوزارة </span> <i class="bi bi-chevron-down"></i></a>
+                <li class="dropdown"><a th:href="@{'/ministers/list'}"><span th:text="#{Mins}"> الوزارة </span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
+<<<<<<< HEAD
                         <li><a href="#">  وزراء القطاع منذ 1958 </a></li>
                         <li><a href="#"> الطاقم الوزاري </a></li>
+=======
+                        <li><a href="#" th:text="#{listMins}">قائمة الوزارء </a></li>
+                        <li><a href="#" th:text="#{cadresMins}"> الطاقم الوزاري </a></li>
+>>>>>>> 54b303558a14459c2f4eebf800735091392c258d
 
                     </ul>
                 </li>

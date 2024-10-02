@@ -8,6 +8,8 @@ import java.util.List;
 public class EtablissementDTO {
     private String name;
     private String description;
+    private String name_fr;  // Ajout de name_fr
+    private String description_fr;  // Ajout de description_fr
     private String type;
     private List<MultipartFile> etablissementFiles;
     private String adresse;
@@ -19,8 +21,11 @@ public class EtablissementDTO {
 
     public Etablissement toEtablissement() {
         Etablissement etablissement = new Etablissement();
-        etablissement.setName(this.getName());
-        etablissement.setDescription(this.getDescription());
+        etablissement.setName(this.getName()); // Assigner name arabe
+        etablissement.setDescription(this.getDescription()); // Assigner description arabe
+        etablissement.setName_fr(this.getName_fr());  // Assigner name_fr et en
+        etablissement.setDescription_fr(this.getDescription_fr());  // Assigner description_fr
+        etablissement.setDescription_en(this.getDescription_en());  // Assigner description_en
         etablissement.setType(this.getType());
         etablissement.setAdresse(this.getAdresse());
         etablissement.setPhone(this.getPhone());
@@ -35,7 +40,7 @@ public class EtablissementDTO {
         return new com.example.demo.dto.EtablissementDTO.EtablissementDTOBuilder();
     }
 
-    public EtablissementDTO(final String name, final String description, final String type, final List<MultipartFile> etablissementFiles, final String adresse, final String phone, final String fax, final String email, final String site, final String localisation) {
+    public EtablissementDTO(final String name, final String description, final String type, final List<MultipartFile> etablissementFiles, final String adresse, final String phone, final String fax, final String email, final String site, final String localisation, final String name_fr, final String description_fr) {
         this.name = name;
         this.description = description;
         this.type = type;
@@ -46,6 +51,8 @@ public class EtablissementDTO {
         this.email = email;
         this.site = site;
         this.localisation = localisation;
+        this.name_fr = name_fr;  // Initialiser name_fr
+        this.description_fr = description_fr;  // Initialiser description_fr
     }
 
     public EtablissementDTO() {
@@ -57,6 +64,22 @@ public class EtablissementDTO {
 
     public String getDescription() {
         return this.description;
+    }
+
+    public String getName_fr() {  // Getter pour name_fr
+        return this.name_fr;
+    }
+
+    public String getDescription_fr() {  // Getter pour description_fr
+        return this.description_fr;
+    }
+
+    public String getName_en() {  // Getter pour name_en
+        return this.name_fr;
+    }
+
+    public String getDescription_en() {  // Getter pour description_en
+        return this.description_fr;
     }
 
     public String getType() {
@@ -91,12 +114,28 @@ public class EtablissementDTO {
         return this.localisation;
     }
 
-    public void setName(final String name) {
+    public void setName(final String name) { // Setter pour name arabe
         this.name = name;
     }
 
     public void setDescription(final String description) {
         this.description = description;
+    }
+
+    public void setName_fr(final String name_fr) {  // Setter pour name_fr et en
+        this.name_fr = name_fr;
+    }
+
+    public void setDescription_fr(final String description_fr) {  // Setter pour description_fr
+        this.description_fr = description_fr;
+    }
+
+    public void setName_en(final String name_fr) {  // Setter pour name_fr en en
+        this.name_fr = name_fr;
+    }
+
+    public void setDescription_en(final String description_fr) {  // Setter pour description_en
+        this.description_fr = description_fr;
     }
 
     public void setType(final String type) {
@@ -131,136 +170,175 @@ public class EtablissementDTO {
         this.localisation = localisation;
     }
 
-    public boolean equals(final Object o) {
-        if (o == this) {
-            return true;
-        } else if (!(o instanceof EtablissementDTO)) {
+public boolean equals(final Object o) {
+    if (o == this) {
+        return true;
+    } else if (!(o instanceof EtablissementDTO)) {
+        return false;
+    } else {
+        EtablissementDTO other = (EtablissementDTO)o;
+        if (!other.canEqual(this)) {
             return false;
         } else {
-            EtablissementDTO other = (EtablissementDTO)o;
-            if (!other.canEqual(this)) {
+            // Vérification pour 'name arabe'
+            Object this$name = this.getName();
+            Object other$name = other.getName();
+            if (this$name == null) {
+                if (other$name != null) {
+                    return false;
+                }
+            } else if (!this$name.equals(other$name)) {
                 return false;
-            } else {
-                Object this$name = this.getName();
-                Object other$name = other.getName();
-                if (this$name == null) {
-                    if (other$name != null) {
-                        return false;
-                    }
-                } else if (!this$name.equals(other$name)) {
+            }
+
+            // Vérification pour 'name_fr et en'
+            Object this$name_fr = this.getName_fr();
+            Object other$name_fr = other.getName_fr();
+            if (this$name_fr == null) {
+                if (other$name_fr != null) {
                     return false;
                 }
+            } else if (!this$name_fr.equals(other$name_fr)) {
+                return false;
+            }
 
-                Object this$description = this.getDescription();
-                Object other$description = other.getDescription();
-                if (this$description == null) {
-                    if (other$description != null) {
-                        return false;
-                    }
-                } else if (!this$description.equals(other$description)) {
+            // Vérification pour 'description arabe'
+            Object this$description = this.getDescription();
+            Object other$description = other.getDescription();
+            if (this$description == null) {
+                if (other$description != null) {
                     return false;
                 }
+            } else if (!this$description.equals(other$description)) {
+                return false;
+            }
 
-                Object this$type = this.getType();
-                Object other$type = other.getType();
-                if (this$type == null) {
-                    if (other$type != null) {
-                        return false;
-                    }
-                } else if (!this$type.equals(other$type)) {
+            // Vérification pour 'description_fr'
+            Object this$description_fr = this.getDescription_fr();
+            Object other$description_fr = other.getDescription_fr();
+            if (this$description_fr == null) {
+                if (other$description_fr != null) {
                     return false;
                 }
+            } else if (!this$description_fr.equals(other$description_fr)) {
+                return false;
+            }
 
-                label110: {
-                    Object this$etablissementFiles = this.getEtablissementFiles();
-                    Object other$etablissementFiles = other.getEtablissementFiles();
-                    if (this$etablissementFiles == null) {
-                        if (other$etablissementFiles == null) {
-                            break label110;
-                        }
-                    } else if (this$etablissementFiles.equals(other$etablissementFiles)) {
+            // Vérification pour 'description_en'
+            Object this$description_en = this.getDescription_en();
+            Object other$description_en = other.getDescription_en();
+            if (this$description_en == null) {
+                if (other$description_en != null) {
+                    return false;
+                }
+            } else if (!this$description_en.equals(other$description_en)) {
+                return false;
+            }
+
+            // Vérification pour 'type'
+            Object this$type = this.getType();
+            Object other$type = other.getType();
+            if (this$type == null) {
+                if (other$type != null) {
+                    return false;
+                }
+            } else if (!this$type.equals(other$type)) {
+                return false;
+            }
+
+            // Vérification pour 'etablissementFiles'
+            label110: {
+                Object this$etablissementFiles = this.getEtablissementFiles();
+                Object other$etablissementFiles = other.getEtablissementFiles();
+                if (this$etablissementFiles == null) {
+                    if (other$etablissementFiles == null) {
                         break label110;
                     }
-
-                    return false;
+                } else if (this$etablissementFiles.equals(other$etablissementFiles)) {
+                    break label110;
                 }
+                return false;
+            }
 
-                label103: {
-                    Object this$adresse = this.getAdresse();
-                    Object other$adresse = other.getAdresse();
-                    if (this$adresse == null) {
-                        if (other$adresse == null) {
-                            break label103;
-                        }
-                    } else if (this$adresse.equals(other$adresse)) {
+            // Vérification pour 'adresse'
+            label103: {
+                Object this$adresse = this.getAdresse();
+                Object other$adresse = other.getAdresse();
+                if (this$adresse == null) {
+                    if (other$adresse == null) {
                         break label103;
                     }
+                } else if (this$adresse.equals(other$adresse)) {
+                    break label103;
+                }
+                return false;
+            }
 
+            // Vérification pour 'phone'
+            Object this$phone = this.getPhone();
+            Object other$phone = other.getPhone();
+            if (this$phone == null) {
+                if (other$phone != null) {
                     return false;
                 }
+            } else if (!this$phone.equals(other$phone)) {
+                return false;
+            }
 
-                Object this$phone = this.getPhone();
-                Object other$phone = other.getPhone();
-                if (this$phone == null) {
-                    if (other$phone != null) {
-                        return false;
-                    }
-                } else if (!this$phone.equals(other$phone)) {
-                    return false;
-                }
-
-                label89: {
-                    Object this$fax = this.getFax();
-                    Object other$fax = other.getFax();
-                    if (this$fax == null) {
-                        if (other$fax == null) {
-                            break label89;
-                        }
-                    } else if (this$fax.equals(other$fax)) {
+            // Vérification pour 'fax'
+            label89: {
+                Object this$fax = this.getFax();
+                Object other$fax = other.getFax();
+                if (this$fax == null) {
+                    if (other$fax == null) {
                         break label89;
                     }
-
-                    return false;
+                } else if (this$fax.equals(other$fax)) {
+                    break label89;
                 }
+                return false;
+            }
 
-                label82: {
-                    Object this$email = this.getEmail();
-                    Object other$email = other.getEmail();
-                    if (this$email == null) {
-                        if (other$email == null) {
-                            break label82;
-                        }
-                    } else if (this$email.equals(other$email)) {
+            // Vérification pour 'email'
+            label82: {
+                Object this$email = this.getEmail();
+                Object other$email = other.getEmail();
+                if (this$email == null) {
+                    if (other$email == null) {
                         break label82;
                     }
-
-                    return false;
+                } else if (this$email.equals(other$email)) {
+                    break label82;
                 }
-
-                Object this$site = this.getSite();
-                Object other$site = other.getSite();
-                if (this$site == null) {
-                    if (other$site != null) {
-                        return false;
-                    }
-                } else if (!this$site.equals(other$site)) {
-                    return false;
-                }
-
-                Object this$localisation = this.getLocalisation();
-                Object other$localisation = other.getLocalisation();
-                if (this$localisation == null) {
-                    if (other$localisation != null) {
-                        return false;
-                    }
-                } else if (!this$localisation.equals(other$localisation)) {
-                    return false;
-                }
-
-                return true;
+                return false;
             }
+
+            // Vérification pour 'site'
+            Object this$site = this.getSite();
+            Object other$site = other.getSite();
+            if (this$site == null) {
+                if (other$site != null) {
+                    return false;
+                }
+            } else if (!this$site.equals(other$site)) {
+                return false;
+            }
+
+            // Vérification pour 'localisation'
+            Object this$localisation = this.getLocalisation();
+            Object other$localisation = other.getLocalisation();
+            if (this$localisation == null) {
+                if (other$localisation != null) {
+                    return false;
+                }
+            } else if (!this$localisation.equals(other$localisation)) {
+                return false;
+            }
+
+            return true;
         }
     }
+}
 
     protected boolean canEqual(final Object other) {
         return other instanceof EtablissementDTO;
@@ -269,33 +347,66 @@ public class EtablissementDTO {
     public int hashCode() {
         boolean PRIME = true;
         int result = 1;
+        
         Object $name = this.getName();
-         result = result * 59 + ($name == null ? 43 : $name.hashCode());
+        result = result * 59 + ($name == null ? 43 : $name.hashCode());
+        
+        Object $name_fr = this.getName_fr();
+        result = result * 59 + ($name_fr == null ? 43 : $name_fr.hashCode());
+        
         Object $description = this.getDescription();
         result = result * 59 + ($description == null ? 43 : $description.hashCode());
+        
+        Object $description_fr = this.getDescription_fr();
+        result = result * 59 + ($description_fr == null ? 43 : $description_fr.hashCode());
+
+        Object $description_en = this.getDescription_en();
+        result = result * 59 + ($description_en == null ? 43 : $description_en.hashCode());
+        
         Object $type = this.getType();
         result = result * 59 + ($type == null ? 43 : $type.hashCode());
+        
         Object $etablissementFiles = this.getEtablissementFiles();
         result = result * 59 + ($etablissementFiles == null ? 43 : $etablissementFiles.hashCode());
+        
         Object $adresse = this.getAdresse();
         result = result * 59 + ($adresse == null ? 43 : $adresse.hashCode());
+        
         Object $phone = this.getPhone();
         result = result * 59 + ($phone == null ? 43 : $phone.hashCode());
+        
         Object $fax = this.getFax();
         result = result * 59 + ($fax == null ? 43 : $fax.hashCode());
+        
         Object $email = this.getEmail();
         result = result * 59 + ($email == null ? 43 : $email.hashCode());
+        
         Object $site = this.getSite();
         result = result * 59 + ($site == null ? 43 : $site.hashCode());
+        
         Object $localisation = this.getLocalisation();
         result = result * 59 + ($localisation == null ? 43 : $localisation.hashCode());
+        
         return result;
     }
-
+    
     public String toString() {
         String var10000 = this.getName();
-        return "EtablissementDTO(name=" + var10000 + ", description=" + this.getDescription() + ", type=" + this.getType() + ", etablissementFiles=" + String.valueOf(this.getEtablissementFiles()) + ", adresse=" + this.getAdresse() + ", phone=" + this.getPhone() + ", fax=" + this.getFax() + ", email=" + this.getEmail() + ", site=" + this.getSite() + ", localisation=" + this.getLocalisation() + ")";
+        return "EtablissementDTO(name=" + var10000 + 
+               ", name_fr=" + this.getName_fr() + 
+               ", description=" + this.getDescription() + 
+               ", description_fr=" + this.getDescription_fr() + 
+               ", description_en=" + this.getDescription_en() + 
+               ", type=" + this.getType() + 
+               ", etablissementFiles=" + String.valueOf(this.getEtablissementFiles()) + 
+               ", adresse=" + this.getAdresse() + 
+               ", phone=" + this.getPhone() + 
+               ", fax=" + this.getFax() + 
+               ", email=" + this.getEmail() + 
+               ", site=" + this.getSite() + 
+               ", localisation=" + this.getLocalisation() + ")";
     }
+    
 
     public static class EtablissementDTOBuilder {
     }

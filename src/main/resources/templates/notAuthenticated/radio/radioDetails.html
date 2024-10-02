@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html  dir="rtl" th:lang="${#locale.language}">
 <head th:replace="notAuthenticated/fragments/head::head(${'title'},${'description'},${'keywords'})">
 </head>
 <body>
@@ -42,16 +42,16 @@
                         <p th:text="${radio.getDescription()}"></p>
                     </div>
                     <div class="portfolio-info">
-                        <h3>الخصائص  </h3>
+                        <h3 th:text="#{carast}">الخصائص  </h3>
                         <ul >
-                            <li><span style="display: flex" ><strong> رقم الهاتف
+                            <li><span style="display: flex" ><strong th:text="#{telep}"> رقم الهاتف
                             </strong>: <span style="direction: ltr" th:text="${radio.getPhone()}"></span>
                             </span></li>
-                            <li> <strong>البريد الإليكتروني </strong>: <a
+                            <li> <strong th:text="#{email}">البريد الإليكتروني </strong>: <a
                                     th:text="${radio.getEmail()}"></a></li>
-                            <li><strong>الموقع الالكتروني </strong>: <a
+                            <li><strong th:text="#{citeweb}">الموقع الالكتروني </strong>: <a
                                    th:href="${radio.getWebsite()}" th:text="${radio.getWebsite()}" target="_blank"></a></li>
-                            <li><span style="display: flex"><strong>الفاكس </strong>: <a
+                            <li><span style="display: flex"><strong th:text="#{fax}">الفاكس </strong>: <a
                                 style="direction: ltr;"  th:text="${radio.getFax()}"></a></span></li>
 
                         </ul >
@@ -61,7 +61,7 @@
                     <div class="portfolio-info">
 
 
-                        <h3>الخصائص التقنية </h3>
+                        <h3 th:text="#{carattech}">الخصائص التقنية </h3>
                         <ul th:if="${caracteristique}" th:each="caracteristique:${radio.getCaracteristiqueList()}">
                             <li hidden="hidden"><strong> القمر الصناعي
                             </strong> <span th:text="${caracteristique.getSatellite()}"></span>
@@ -70,7 +70,7 @@
                             <li hidden="hidden" ><strong>الموقع الالكتروني </strong>: <a th:href="${radio.getWebsite()}"
                                                                         th:text="${radio.getWebsite()}" target="_blank"></a></li>
 
-                            <li><strong>التردد </strong>: <a
+                            <li><strong th:text="#{frequence}">التردد </strong>: <a
                                     th:text="${caracteristique.getFrequency()}"></a></li>
                             <li hidden="hidden"><strong>معامل الترميز </strong>: <a
                                     th:text="${caracteristique.getModulation()}"></a></li>
@@ -98,7 +98,7 @@
 
 
 </main><!-- End #main -->
-<h5 class="fw-bold text-center section-success text-uppercase mt-5">انظر ايضا</h5>
+<h5 class="fw-bold text-center section-success text-uppercase mt-5" th:text="#{lookher}">انظر ايضا</h5>
 
 <div class="container-fluid py-0 wow fadeInUp " data-wow-delay="0.1s" dir="ltr">
     <div class="container py-5 mb-2">

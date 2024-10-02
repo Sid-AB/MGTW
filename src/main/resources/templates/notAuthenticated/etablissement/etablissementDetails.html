@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html dir="rtl" th:lang="${#locale.language}">
 <head th:replace="notAuthenticated/fragments/head::head(${'title'},${'description'},${'keywords'})">
 </head>
 <body>
@@ -43,17 +43,17 @@
                     <div class="portfolio-info">
                         <h3>الخصائص  </h3>
                         <ul >
-                            <li><span style="display: flex"><strong> رقم الهاتف
-                            </strong> <span style="direction: ltr" th:text="${etablissement.getPhone()}"></span>
+                            <li><span style="display: flex"><strong th:text="#{telep}"> رقم الهاتف
+                            </strong> <span th:text="${etablissement.getPhone()}"></span>
                             </span></li>
-                            <li><strong>البريد الإلكتروني </strong>: <a
+                            <li><strong th:text="#{email}">البريد الإلكتروني </strong>: <a
                                     th:text="${etablissement.getEmail()}"></a></li>
-                            <li><strong>الموقع الالكتروني </strong>: <a
+                            <li><strong th:text="#{citeweb}">الموقع الالكتروني </strong>: <a
                                     th:href="${etablissement.getSite()}" th:text="${etablissement.getSite()}" target="_blank"></a></li>
-                            <li><span style="display: flex"><strong>الفاكس </strong>: <a
-                                    style="direction: ltr;"   th:text="${etablissement.getFax()}"></a></span></li>
+                            <li><span style="display: flex"><strong th:text="#{fax}">الفاكس </strong>: <a
+                                   th:text="${etablissement.getFax()}"></a></span></li>
 
-                            <li><strong>العنوان </strong>: <a
+                            <li><strong th:text="address">العنوان </strong>: <a
                                     th:text="${etablissement.getAdresse()}"></a></li>
 
                         </ul >
@@ -75,7 +75,7 @@
 
 
 </main><!-- End #main -->
-<h5 class="fw-bold text-center section-success text-uppercase mt-5">انظر ايضا</h5>
+<h5 class="fw-bold text-center section-success text-uppercase mt-5" th:text="#{lookher}">انظر ايضا</h5>
 
 <div class="container-fluid py-0 wow fadeInUp " data-wow-delay="0.1s" dir="ltr">
     <div class="container py-5 mb-2">
