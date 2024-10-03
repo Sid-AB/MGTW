@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="authenticated/fragments/header::header(${'title'},${'description'},${'keywords'})">
+</head>
+
+
+<body>
+
+<!-- ======= Header ======= -->
+<header th:replace="authenticated/fragments/navbar::header"></header>
+<!-- End Header -->
+
+<!-- ======= Sidebar ======= -->
+<aside th:replace="authenticated/fragments/navside::sidebar"></aside>
+<!-- End Sidebar-->
+
+
+<main id="main" class="main">
+    <div class="card">
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between">
+                <div class="p-2"><h5 class="card-title">User Add</h5></div>
+            </div>
+            <form id="profileForm" th:action="@{/Direction/save}" method="post" enctype="multipart/form-data">
+           
+                <div class="row mb-3 ">
+                    <label for="NomDirection" class="col-md-4 col-lg-3 col-form-label">Nom Direction</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="NomDirection" type="text" class="form-control"
+                               id="NomDirection" placeholder="Nom Direction" required >
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="NomDirecteur" class="col-md-4 col-lg-3 col-form-label">Nom Directeur</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="NomDirecteur" type="text" class="form-control" id="NomDirecteur" placeholder="Nom Directeur" required >
+
+                    </div>
+                </div>
+
+                <div class="row mb-3 ">
+                    <label for="PrenomDirecteur" class="col-md-4 col-lg-3 col-form-label">Prenom Directeur</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="PrenomDirecteur" type="text" class="form-control"
+                               id="PrenomDirecteur" placeholder="Prenom Directeur" required >
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="EmailDirecteur" class="col-md-4 col-lg-3 col-form-label">Email Directeur</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="EmailDirecteur" type="text" class="form-control" id="EmailDirecteur" placeholder=" Email Directeur" required >
+
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="PhoneDirecteur" class="col-md-4 col-lg-3 col-form-label"> Phone Directeur</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="PhoneDirecteur" type="text" class="form-control" id="PhoneDirecteur" placeholder=" Phone Directeur" required >
+
+                    </div>
+                </div>
+
+                <!--onclick="submitForm('direction','departement','service')"-->
+                <div class="text-center">
+                    <button type="submit"
+                            class="btn btn-primary">Save
+                    </button>
+                </div>
+            </form><!-- End Profile Edit Form -->
+
+        </div>
+    </div>
+</main><!-- End #main -->
+
+
+<!-- ======= Footer ======= -->
+<footer th:replace="authenticated/fragments/footer::footer" class="footer">
+</footer><!-- End Footer -->
+
+<!-- Template Main JS File -->
+<div th:replace="authenticated/fragments/js::js"></div>
+
+
+</body>
+</html>
