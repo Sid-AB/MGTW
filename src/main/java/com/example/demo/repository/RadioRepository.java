@@ -13,4 +13,6 @@ public interface RadioRepository extends JpaRepository<Radio, Long> {
 
     List<Radio> findRadioByCategorie(String string);
     List<Radio> findByDescriptionContainingIgnoreCase(String keyword);
+    List<Radio> findByDescriptionFrContainingIgnoreCase(String keyword);
+    List<Radio> findByDescriptionEnContainingIgnoreCase(String keyword);
 }
