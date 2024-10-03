@@ -55,7 +55,7 @@ public class TVController {
         TV tv = this.tvService.findTVById(id);
         List tvs;
         if (tv.getType().toString().equals("public")) {
-            tvs = this.tvService.findTVSPublic();
+            tvs = this.tvService.findTVSPublic();  // Appel avec paramètres
         } else {
             tvs = this.tvService.findTVSPrive(tv.getComplexe().getName());
         }
@@ -85,6 +85,7 @@ public class TVController {
 
     @GetMapping({"/public"})
     public String cPublic(Model model) {
+        
         List<TV> tvsPublic = this.tvService.findTVSPublic();
         List<CategorieChaine> categorieChaines = this.categorieChaineService.findAll();
         List<Agrument> agruments = new ArrayList();

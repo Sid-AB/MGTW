@@ -10,4 +10,6 @@ public interface CategorieChaineRepository extends JpaRepository<CategorieChaine
     CategorieChaine findCategorieChaineById(Long id);
 
     CategorieChaine findCategorieChaineByName(String string);
+    CategorieChaine findCategorieChaineByNameFr(String string);
+    CategorieChaine findCategorieChaineByNameEn(String string);
 }

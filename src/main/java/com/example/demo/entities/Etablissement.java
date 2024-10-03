@@ -542,6 +542,7 @@ public String toString() {
         + ", name=" + this.getName() 
         + ", description=" + this.getDescription() 
         + ", nameFr=" + this.getNameFr() // Ajout de nameFr
+        + ", nameEn=" + this.getNameEn() // Ajout de nameEn
         + ", descriptionFr=" + this.getDescriptionFr() // Ajout de descriptionFr
         + ", descriptionEn=" + this.getDescriptionEn() // Ajout de descriptionEn
         + ", type=" + this.getType() 
@@ -564,9 +565,9 @@ public Etablissement(final Long id,
 final String name, 
 final String description, 
 final String nameFr, 
+final String nameEn, // Ajout de nameEn
 final String descriptionFr, 
 final String descriptionEn, 
-final String nameEn, // Ajout de nameEn
 final String type, 
 final String adresse, 
 final String phone, 
@@ -582,9 +583,9 @@ this.id = id;
 this.name = name;
 this.description = description;
 this.nameFr = nameFr; // Initialisation de nameFr
+this.nameEn = nameEn; // Initialisation de nameEn
 this.descriptionFr = descriptionFr; // Initialisation de descriptionFr
 this.descriptionEn = descriptionEn; // Initialisation de descriptionEn
-this.nameEn = nameEn; // Initialisation de nameEn
 this.type = type;
 this.adresse = adresse;
 this.phone = phone;
@@ -609,9 +610,9 @@ public static class EtablissementBuilder {
     private String name;
     private String description;
     private String nameFr; // Ajout de nameFr
+    private String nameEn; // Ajout de nameEn
     private String descriptionFr; // Ajout de descriptionFr
     private String descriptionEn; // Ajout de descriptionEn
-    private String nameEn; // Ajout de nameEn
     private String type;
     private String adresse;
     private String phone;
@@ -724,9 +725,9 @@ public static class EtablissementBuilder {
                 this.name,
                 this.description,
                 this.nameFr,
+                this.nameEn, // Ajout de nameEn ici
                 this.descriptionFr,
                 this.descriptionEn, 
-                this.nameEn, // Ajout de nameEn ici
                 this.type,
                 this.adresse,
                 this.phone,
@@ -748,9 +749,9 @@ public static class EtablissementBuilder {
                    ", name=" + this.name + 
                    ", description=" + this.description + 
                    ", nameFr=" + this.nameFr + 
+                   ", nameEn=" + this.nameEn + // Ajout de nameEn ici
                    ", descriptionFr=" + this.descriptionFr + 
                    ", descriptionEn=" + this.descriptionEn + 
-                   ", nameEn=" + this.nameEn + // Ajout de nameEn ici
                    ", type=" + this.type + 
                    ", adresse=" + this.adresse + 
                    ", phone=" + this.phone + 
