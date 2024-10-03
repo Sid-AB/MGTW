@@ -78,7 +78,7 @@ public class EtablissementController {
         }
     }
 
-    @GetMapping({"/{id}"})
+    @GetMapping({"/EditEtablissement/{id}"})
     public String findTVById(Model model, @PathVariable Long id) {
         Etablissement etablissement = this.etablissementService.findEtablissementById(id);
         List etablissements;
@@ -94,6 +94,14 @@ public class EtablissementController {
         model.addAttribute("complexesForNavBar", complexesForNavBar);
         List<Lois> loisForNavBar = this.loisService.findAll();
         model.addAttribute("loisForNavBar", loisForNavBar);
-        return "notAuthenticated/etablissement/etablissementDetails";
+        return "authenticated/etablissement/etablissementsEdit.html";
+    }
+    @PutMapping({"/update/{id}"})
+    public String updatedEtablissement(@PathVariable Long id,@RequestBody  Etablissement updateEtablissement)
+    {
+        Etablissement etablissement = this.etablissementService.findEtablissementById(id);
+       // Optional<Multimedia> multimedia=this.multimediaService.findFirstByEtablissement(etablissement);
+        this.etablissementService.updateDataEtablissement(updateEtablissement,id/*,multimedia */);
+        return "redirect:authenticated/etablissement/etablissements";
     }
 }

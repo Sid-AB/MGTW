@@ -35,8 +35,8 @@ public class EtablissementService {
     }
 
     // Méthode pour rechercher par nom arabe
-    public Optional<Etablissement> findEtablissementByName_fr(String name_fr) {
-        return this.etablissementRepository.findEtablissementByName_fr(name_fr);
+    public Optional<Etablissement> findEtablissementByNameFr(String name_fr) {
+        return this.etablissementRepository.findEtablissementByNameFr(name_fr);
     }
 
     public List<Etablissement> findEtablissementsByType(String type) {
@@ -62,11 +62,11 @@ public class EtablissementService {
     public List<Etablissement> findByDescriptionContainingIgnoreCase(String keyword) {
         return this.etablissementRepository.findByDescriptionContainingIgnoreCase(keyword);
     }
-    public List<Etablissement> findByDescription_frContainingIgnoreCase(String keyword) {
-        return this.etablissementRepository.findByDescription_frContainingIgnoreCase(keyword);
+    public List<Etablissement> findByDescriptionFrContainingIgnoreCase(String keyword) {
+        return this.etablissementRepository.findByDescriptionFrContainingIgnoreCase(keyword);
     }
-    public List<Etablissement> findByDescription_enContainingIgnoreCase(String keyword) {
-        return this.etablissementRepository.findByDescription_enContainingIgnoreCase(keyword);
+    public List<Etablissement> findByDescriptionEnContainingIgnoreCase(String keyword) {
+        return this.etablissementRepository.findByDescriptionEnContainingIgnoreCase(keyword);
     }
     public Etablissement saveUserAndMultimedias(List<Multimedia> multimedias, Etablissement etablissement) {
         this.etablissementRepository.save(etablissement);
@@ -83,21 +83,24 @@ public class EtablissementService {
         return etablissement;
     }
 
-    public Etablissement updateDataEtablissement(Etablissement updatedEtablissement, Long userId, List<Multimedia> multimedias) {
+    public Etablissement updateDataEtablissement(@RequestBody Map<String, Object> fields, Long userId/*, Optional<Multimedia> multimedias */) {
         Etablissement existingEtablissement = this.etablissementRepository.findEtablissementById(userId);
-        existingEtablissement.setName(updatedEtablissement.getName());
-        existingEtablissement.setType(updatedEtablissement.getType());
-        existingEtablissement.setDescription(updatedEtablissement.getDescription());
+        existingEtablissement.setName((String)fields.get('name'));
+        existingEtablissement.setNameFr((String)fields.get());
+        existingEtablissement.setType((String)fields.get());
+        existingEtablissement.setDescription((String)fields.get());
+        existingEtablissement.setDescriptionFr((String)fields.get());
+        existingEtablissement.setDescriptionEn((String)fields.get());
         this.etablissementRepository.save(existingEtablissement);
-        if (multimedias != null && !multimedias.isEmpty()) {
+      /*  if (multimedias.isPresent()) {
             List<Multimedia> savedMultimedias = new ArrayList();
-            multimedias.forEach((multimedia) -> {
+            multimedias.ifPresent((multimedia) -> {
                 multimedia.setEtablissement(existingEtablissement);
             });
-            savedMultimedias.addAll(multimedias);
-            existingEtablissement.setMultimediaList(savedMultimedias);
+            multimedias.ifPresent(savedMultimedias::addAll);
+            savedMultimedias.ifPresent(existingEtablissement::setMultimediaList);
             this.multimediaRepository.saveAll(savedMultimedias);
-        }
+        } */
 
         return existingEtablissement;
     }

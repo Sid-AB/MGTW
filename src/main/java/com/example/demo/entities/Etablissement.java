@@ -44,17 +44,17 @@ public class Etablissement {
     private String description; // Description de l'établissement
     
     @Column(name = "name_fr") // Nom de la colonne dans la base de données
-    private String name_fr; // Nom de l'établissement en fr et en
+    private String nameFr; // Nom de l'établissement en fr et en
 
     @Column(name = "description_fr", // Nom de la colonne dans la base de données
             columnDefinition = "TEXT" // Type de la colonne
     )
-    private String description_fr; // Description de l'établissement en fr
+    private String descriptionFr; // Description de l'établissement en fr
 
     @Column(name = "description_en", // Nom de la colonne dans la base de données
             columnDefinition = "TEXT" // Type de la colonne
     )
-    private String description_en; // Description de l'établissement en en
+    private String descriptionEn; // Description de l'établissement en en
     
     private String type; // Type de l'établissement
     private String adresse; // Adresse de l'établissement
@@ -111,18 +111,18 @@ public class Etablissement {
     }
 
     // Getter pour name_fr et en
-    public String getName_fr() { 
-        return this.name_fr; 
+    public String getNameFr() { 
+        return this.nameFr; 
     }
 
     // Getter pour description_fr
-    public String getDescription_fr() { 
-        return this.description_fr; 
+    public String getDescriptionFr() { 
+        return this.descriptionFr; 
     }
 
     // Getter pour description_en
-    public String getDescription_en() { 
-        return this.description_en; 
+    public String getDescriptionEn() { 
+        return this.descriptionEn; 
     }
 
     public String getType() {
@@ -183,18 +183,18 @@ public class Etablissement {
     }
 
      // Setter pour name_fr
-     public void setName_fr(final String name_fr) {
-        this.name_fr = name_fr;
+     public void setNameFr(final String name_fr) {
+        this.nameFr = name_fr;
     }
 
     // Setter pour description_fr
-    public void setDescription_fr(final String description_fr) {
-        this.description_fr = description_fr;
+    public void setDescriptionFr(final String description_fr) {
+        this.descriptionFr = description_fr;
     }
 
     // Setter pour description_en
-    public void setDescription_en(final String description_en) {
-        this.description_en = description_en;
+    public void setDescriptionEn(final String description_en) {
+        this.descriptionEn = description_en;
     }
 
     public void setType(final String type) {
@@ -284,8 +284,8 @@ public class Etablissement {
                 }
 
                  // Vérification pour name_fr et en
-            Object this$name_fr = this.getName_fr();
-            Object other$name_fr = other.getName_fr();
+            Object this$name_fr = this.getNameFr();
+            Object other$name_fr = other.getNameFr();
             if (this$name_fr == null) {
                 if (other$name_fr != null) {
                     return false; // Un est nul, l'autre non
@@ -295,8 +295,8 @@ public class Etablissement {
             }
 
             // Vérification pour description_fr
-            Object this$description_fr = this.getDescription_fr();
-            Object other$description_fr = other.getDescription_fr();
+            Object this$description_fr = this.getDescriptionFr();
+            Object other$description_fr = other.getDescriptionFr();
             if (this$description_fr == null) {
                 if (other$description_fr != null) {
                     return false; // Un est nul, l'autre non
@@ -306,8 +306,8 @@ public class Etablissement {
             }
 
             // Vérification pour description_en
-            Object this$description_en = this.getDescription_en();
-            Object other$description_en = other.getDescription_en();
+            Object this$description_en = this.getDescriptionEn();
+            Object other$description_en = other.getDescriptionEn();
             if (this$description_en == null) {
                 if (other$description_en != null) {
                     return false; // Un est nul, l'autre non
@@ -471,11 +471,11 @@ public class Etablissement {
         result = result * 59 + ($name == null ? 43 : $name.hashCode()); // Ajout du nom au code de hachage
         Object $description = this.getDescription(); // Récupération de la description
         result = result * 59 + ($description == null ? 43 : $description.hashCode()); // Ajout de la description au code de hachage
-        Object $name_fr = this.getName_fr(); // Récupération du nom en arabe
+        Object $name_fr = this.getNameFr(); // Récupération du nom en arabe
         result = result * 59 + ($name_fr == null ? 43 : $name_fr.hashCode()); // Ajout du nom en arabe au code de hachage
-        Object $description_fr = this.getDescription_fr(); // Récupération de la description en arabe
+        Object $description_fr = this.getDescriptionFr(); // Récupération de la description en arabe
         result = result * 59 + ($description_fr == null ? 43 : $description_fr.hashCode()); // Ajout de la description en arabe au code de hachage
-        Object $description_en = this.getDescription_en(); // Récupération de la description en en
+        Object $description_en = this.getDescriptionEn(); // Récupération de la description en en
         result = result * 59 + ($description_en == null ? 43 : $description_en.hashCode()); // Ajout de la description en arabe au code de hachage
         Object $type = this.getType();
         result = result * 59 + ($type == null ? 43 : $type.hashCode());
@@ -508,9 +508,9 @@ public class Etablissement {
         return "Etablissement(id=" + var10000 
             + ", name=" + this.getName() 
             + ", description=" + this.getDescription() 
-            + ", name_fr=" + this.getName_fr() // Ajout de name_fr
-            + ", description_fr=" + this.getDescription_fr() // Ajout de description_fr
-            + ", description_en=" + this.getDescription_en() // Ajout de description_en
+            + ", name_fr=" + this.getNameFr() // Ajout de name_fr
+            + ", description_fr=" + this.getDescriptionFr() // Ajout de description_fr
+            + ", description_en=" + this.getDescriptionEn() // Ajout de description_en
             + ", type=" + this.getType() 
             + ", adresse=" + this.getAdresse() 
             + ", phone=" + this.getPhone() 
@@ -530,9 +530,9 @@ public class Etablissement {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.name_fr = name_fr; // Initialisation de name_fr
-        this.description_fr = description_fr; // Initialisation de description_fr
-        this.description_en = description_en; // Initialisation de description_en
+        this.nameFr = nameFr; // Initialisation de name_fr
+        this.descriptionFr = description_fr; // Initialisation de description_fr
+        this.descriptionEn = description_en; // Initialisation de description_en
         this.type = type;
         this.adresse = adresse;
         this.phone = phone;
@@ -555,9 +555,9 @@ public class Etablissement {
         private Long id;
         private String name;
         private String description;
-        private String name_fr; // Ajout de name_fr
-        private String description_fr; // Ajout de description_fr
-        private String description_en; // Ajout de description_en
+        private String nameFr; // Ajout de name_fr
+        private String descriptionFr; // Ajout de description_fr
+        private String descriptionEn; // Ajout de description_en
         private String type;
         private String adresse;
         private String phone;
@@ -589,18 +589,18 @@ public class Etablissement {
             return this;
         }
     
-        public Etablissement.EtablissementBuilder name_fr(final String name_fr) { // Ajout de la méthode pour name_fr
-            this.name_fr = name_fr;
+        public Etablissement.EtablissementBuilder nameFr(final String name_fr) { // Ajout de la méthode pour name_fr
+            this.nameFr = name_fr;
             return this; // Retourne l'instance de builder
         }
     
-        public Etablissement.EtablissementBuilder description_fr(final String description_fr) { // Ajout de la méthode pour description_fr
-            this.description_fr = description_fr;
+        public Etablissement.EtablissementBuilder descriptionFr(final String description_fr) { // Ajout de la méthode pour description_fr
+            this.descriptionFr = description_fr;
             return this; // Retourne l'instance de builder
         }
 
-        public Etablissement.EtablissementBuilder description_en(final String description_en) { // Ajout de la méthode pour description_en
-            this.description_en = description_en;
+        public Etablissement.EtablissementBuilder descriptionEn(final String description_en) { // Ajout de la méthode pour description_en
+            this.descriptionEn = description_en;
             return this; // Retourne l'instance de builder
         }
     
@@ -660,7 +660,7 @@ public class Etablissement {
         }
     
         public Etablissement build() {
-            return new Etablissement(this.id, this.name, this.description, this.name_fr, this.description_fr,this.description_en, this.type, this.adresse, this.phone, this.fax, this.email, this.site, this.localisation, this.complexe, this.multimediaList, this.createdAt, this.updatedAt);
+            return new Etablissement(this.id, this.name, this.description, this.nameFr, this.descriptionFr,this.descriptionEn, this.type, this.adresse, this.phone, this.fax, this.email, this.site, this.localisation, this.complexe, this.multimediaList, this.createdAt, this.updatedAt);
         }
     
         public String toString() {
@@ -668,9 +668,9 @@ public class Etablissement {
             return "Etablissement.EtablissementBuilder(id=" + var10000 + 
                    ", name=" + this.name + 
                    ", description=" + this.description + 
-                   ", name_fr=" + this.name_fr + 
-                   ", description_fr=" + this.description_fr + 
-                   ", description_en=" + this.description_en + 
+                   ", name_fr=" + this.nameFr + 
+                   ", description_fr=" + this.descriptionFr + 
+                   ", description_en=" + this.descriptionEn + 
                    ", type=" + this.type + 
                    ", adresse=" + this.adresse + 
                    ", phone=" + this.phone + 
