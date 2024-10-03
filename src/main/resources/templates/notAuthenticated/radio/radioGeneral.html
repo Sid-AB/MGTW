@@ -46,7 +46,7 @@
                                      style="height: 150px;width: 150px"
                                      class="img-fluid product-thumbnail">
                                 <h3 class="product-title" style="font-size: 20px" th:text="${radioNational.getName()}"></h3>
-                                <h5 class="product-price" style="font-size: 15px" th:text="${radioNational.getDescription()}" ></h5>
+                                <h5 class="product-price" style="overflow: hidden;height: 90px;font-size: 15px" th:text="${radioNational.getDescription()}" ></h5>
 
                                 <span class="icon-cross">
 								<img th:src="@{${'/radio/lugo/'+radioNational.getId()}}" class="img-fluid">
@@ -88,7 +88,7 @@
                                      style="height: 150px;width: 150px"
                                      class="img-fluid product-thumbnail">
                                 <h3 class="product-title" style="font-size: 20px" th:text="${radioLocal.getName()}"></h3>
-                                <h5 class="product-price" style="font-size: 15px; overflow: hidden; height: 90px;" th:text="${radioLocal.getDescription()}" ></h5>
+                                <h5 class="product-price" style="overflow: hidden;height: 90px;font-size: 15px" th:text="${radioLocal.getDescription()}" ></h5>
 
                                 <span class="icon-cross">
 								<img th:src="@{${'/radio/lugo/'+radioLocal.getId()}}" class="img-fluid">

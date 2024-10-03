@@ -46,7 +46,10 @@
                                     th:text="${presseEcritPublic.getName()}"></a></h3>
 
                             <div class="meta">
-                                <p><a th:href="@{'/presse/'+${presseEcritPublic.getId().toString()}}"
+                                <p style="
+                                overflow: hidden;
+                                height: 85px;
+                            "><a th:href="@{'/presse/'+${presseEcritPublic.getId().toString()}}"
 
                                       th:text="${presseEcritPublic.getDescription()}">Kristin Watson</a></p>
                             </div>
