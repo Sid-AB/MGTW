@@ -85,9 +85,7 @@
                                     th:text="${presseEcritPrive.getName()}"></a></h3>
 
                             <div class="meta">
-                                <p><a th:href="@{'/presse/'+${presseEcritPrive.getId().toString()}}"
-
-                                      th:text="${presseEcritPrive.getDescription()}"></a></p>
+                                <a th:href="@{'/presse/'+${presseEcritPrive.getId().toString()}}"><p  th:text="${presseEcritPrive.getDescription()}"></p></a>
                             </div>
                         </div>
                     </div>

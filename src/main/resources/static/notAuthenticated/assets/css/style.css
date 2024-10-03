@@ -2845,3 +2845,17 @@ section {
   }
 }
 /***** end of 840 x 940 height *****/
+
+
+/***----------------------------------------****/
+.lng-holder
+{
+  
+  border-radius: 45%;
+  position: absolute;
+  left: -15%;
+  width: 50px;
+  background: radial-gradient(rgb(172 172 223), rgb(14, 47, 74));
+
+}
+/***-----------------------------------------**/

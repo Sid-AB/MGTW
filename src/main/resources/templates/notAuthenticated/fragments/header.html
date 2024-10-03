@@ -6,11 +6,6 @@
                  class="img-fluid animated">
 
         </div>
-        <nav style="background-color: green;">
-            <a href="?lang=en">English</a> |
-            <a href="?lang=fr">Français</a> |
-            <a href="?lang=ar">العربية</a>
-        </nav>
     </div>
 
     <div class="d-flex justify-content-around">
@@ -88,14 +83,16 @@
                 </li>
                 <li class="dropdown"><a th:href="@{'/ministers/list'}"><span th:text="#{Mins}"> الوزارة </span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
-<<<<<<< HEAD
-                        <li><a href="#">  وزراء القطاع منذ 1958 </a></li>
-                        <li><a href="#"> الطاقم الوزاري </a></li>
-=======
                         <li><a href="#" th:text="#{listMins}">قائمة الوزارء </a></li>
                         <li><a href="#" th:text="#{cadresMins}"> الطاقم الوزاري </a></li>
->>>>>>> 54b303558a14459c2f4eebf800735091392c258d
 
+                    </ul>
+                </li>
+                <li class="dropdown lng-holder"><a href="#" style="padding-right:5px ;"><span th:text="#{langage}"> الوزارة </span> <i class="bi bi-chevron-down"></i></a>
+                    <ul style="width: 80px;">
+                        <li><a href="?lang=ar">العربية</a></li>
+                        <li><a href="?lang=en">English</a> </li>
+                        <li><a href="?lang=fr">Français</a></li>
                     </ul>
                 </li>
             </ul>

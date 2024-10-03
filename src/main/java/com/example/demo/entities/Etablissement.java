@@ -44,17 +44,17 @@ public class Etablissement {
     private String description; // Description de l'établissement
     
     @Column(name = "name_fr") // Nom de la colonne dans la base de données
-    private String name_fr; // Nom de l'établissement en fr et en
+    private String nameFr; // Nom de l'établissement en fr et en
 
     @Column(name = "description_fr", // Nom de la colonne dans la base de données
             columnDefinition = "TEXT" // Type de la colonne
     )
-    private String description_fr; // Description de l'établissement en fr
+    private String descriptionFr; // Description de l'établissement en fr
 
     @Column(name = "description_en", // Nom de la colonne dans la base de données
             columnDefinition = "TEXT" // Type de la colonne
     )
-    private String description_en; // Description de l'établissement en en
+    private String descriptionEn; // Description de l'établissement en en
     
     private String type; // Type de l'établissement
     private String adresse; // Adresse de l'établissement
@@ -112,17 +112,17 @@ public class Etablissement {
 
     // Getter pour name_fr et en
     public String getName_fr() { 
-        return this.name_fr; 
+        return this.nameFr; 
     }
 
     // Getter pour description_fr
     public String getDescription_fr() { 
-        return this.description_fr; 
+        return this.descriptionFr; 
     }
 
     // Getter pour description_en
     public String getDescription_en() { 
-        return this.description_en; 
+        return this.descriptionEn; 
     }
 
     public String getType() {
@@ -184,17 +184,17 @@ public class Etablissement {
 
      // Setter pour name_fr
      public void setName_fr(final String name_fr) {
-        this.name_fr = name_fr;
+        this.nameFr = name_fr;
     }
 
     // Setter pour description_fr
     public void setDescription_fr(final String description_fr) {
-        this.description_fr = description_fr;
+        this.descriptionFr = description_fr;
     }
 
     // Setter pour description_en
     public void setDescription_en(final String description_en) {
-        this.description_en = description_en;
+        this.descriptionEn = description_en;
     }
 
     public void setType(final String type) {
@@ -526,13 +526,13 @@ public class Etablissement {
     }
 
     // Constructeur
-    public Etablissement(final Long id, final String name, final String description, final String name_fr, final String description_fr,final String description_en, final String type, final String adresse, final String phone, final String fax, final String email, final String site, final String localisation, final Complexe complexe, final List<Multimedia> multimediaList, final LocalDateTime createdAt, final LocalDateTime updatedAt) {
+    public Etablissement(final Long id, final String name, final String description, final String nameFr, final String descriptionFr,final String descriptionEn, final String type, final String adresse, final String phone, final String fax, final String email, final String site, final String localisation, final Complexe complexe, final List<Multimedia> multimediaList, final LocalDateTime createdAt, final LocalDateTime updatedAt) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.name_fr = name_fr; // Initialisation de name_fr
-        this.description_fr = description_fr; // Initialisation de description_fr
-        this.description_en = description_en; // Initialisation de description_en
+        this.nameFr = nameFr; // Initialisation de name_fr
+        this.descriptionFr = descriptionFr; // Initialisation de description_fr
+        this.descriptionEn = descriptionEn; // Initialisation de description_en
         this.type = type;
         this.adresse = adresse;
         this.phone = phone;
