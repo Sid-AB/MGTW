@@ -44,9 +44,9 @@
                             <li><span style="display: flex"><strong th:text="#{telep}">  رقم الهاتف
                             </strong> <span th:text="${tv.getPhone()}"></span>
                             </span></li>
-                            <li><strong th:text="#{email}"> البريد الإليكتروني </strong>: <a
+                            <li><strong th:text="#{email}" > البريد الإليكتروني </strong>: <a
                                     th:text="${tv.getEmail()}"></a></li>
-                            <li><strong th:text="#{citeweb}">الموقع الالكتروني </strong>: <a
+                            <li><strong th:text="#{citeweb}"> الموقع الالكتروني </strong>: <a
                                     th:href="${tv.getWebsite()}" th:text="${tv.getWebsite() }" target="_blank"></a></li>
                             <li><span style="display: flex"><strong th:text="#{fax}">الفاكس </strong>: <a
                                    style="direction: ltr;" th:text="${tv.getFax()}"></a></span></li>
