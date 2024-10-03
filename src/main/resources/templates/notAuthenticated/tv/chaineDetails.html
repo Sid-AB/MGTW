@@ -59,7 +59,7 @@
 
 
                     <div class="portfolio-info">
-                        <h3 th:text="carattech">الخصائص التقنية </h3>
+                        <h3 th:text="#{carattech}">الخصائص التقنية </h3>
                         <ul th:if="${caracteristique}" th:each="caracteristique:${tv.getCaracteristiqueList()}">
                             <li><strong th:text="#{stalit}"> القمر الصناعي
                             </strong> <span th:text="${caracteristique.getSatellite()}"></span>
@@ -74,8 +74,8 @@
                                     th:text="${caracteristique.getPolarization()}"></a></li>
                             <li><strong th:text="#{fec}">معامل التصحيح </strong>: <a
                                     th:text="${caracteristique.getFec()}"></a></li>
-                            <li><strong th:text="#{citeweb}">الموقع الالكتروني </strong>: <a th:href="${tv.getWebsite()}"
-                                                                        th:text="${tv.getWebsite()}" target="_blank"></a></li>
+                            <!--li><strong th:text="#{citeweb}">الموقع الالكتروني </strong>: <a th:href="${tv.getWebsite()}"
+                                                                        th:text="${tv.getWebsite()}" target="_blank"></a></li-->
 
                             <hr />
                         </ul >
