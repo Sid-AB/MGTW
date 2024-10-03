@@ -39,6 +39,23 @@ public class Presse {
             columnDefinition = "TEXT"
     )
     private String description;
+
+    @Column(name = "name_fr") // Nom de la colonne dans la base de données
+    private String nameFr; // Nom de l'établissement en fr et en
+
+    @Column(name = "name_en") // Nom de la colonne dans la base de données
+    private String nameEn; // Nom de l'établissement en anglais
+
+    @Column(name = "description_fr", // Nom de la colonne dans la base de données
+            columnDefinition = "TEXT" // Type de la colonne
+    )
+    private String descriptionFr; // Description de l'établissement en fr
+
+    @Column(name = "descriptio_en", // Nom de la colonne dans la base de données
+            columnDefinition = "TEXT" // Type de la colonne
+    )
+    private String descriptionEn; // Description de l'établissement en en
+
     private String website;
     private String typepbpr;
     private String categorieelec;
@@ -100,8 +117,27 @@ public class Presse {
         return this.name;
     }
 
+    public String getNameEn() {
+        return nameEn;
+    }
+
     public String getDescription() {
         return this.description;
+    }
+
+    // Getter pour nameFr et en
+    public String getNameFr() { 
+        return this.nameFr; 
+    }
+
+    // Getter pour descriptionFr
+    public String getDescriptionFr() { 
+        return this.descriptionFr; 
+    }
+
+    // Getter pour descriptionEn
+    public String getDescriptionEn() { 
+        return this.descriptionEn; 
     }
 
     public String getWebsite() {
@@ -168,8 +204,27 @@ public class Presse {
         this.name = name;
     }
 
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
+    }
+    
     public void setDescription(final String description) {
         this.description = description;
+    }
+
+    // Setter pour nameFr
+    public void setNameFr(final String nameFr) {
+        this.nameFr = nameFr;
+    }
+
+    // Setter pour descriptionFr
+    public void setDescriptionFr(final String descriptionFr) {
+        this.descriptionFr = descriptionFr;
+    }
+
+    // Setter pour descriptionEn
+    public void setDescriptionEn(final String descriptionEn) {
+        this.descriptionEn = descriptionEn;
     }
 
     public void setWebsite(final String website) {
@@ -262,6 +317,27 @@ public class Presse {
                 } else if (!this$name.equals(other$name)) {
                     return false;
                 }
+            
+                Object this$nameFr = this.getNameFr();
+                Object other$nameFr = other.getNameFr();
+                if (this$nameFr == null) {
+                    if (other$nameFr != null) {
+                        return false;
+                    }
+                } else if (!this$nameFr.equals(other$nameFr)) {
+                    return false;
+                }
+            
+                Object this$nameEn = this.getNameEn(); // Ajout du champ nameEn
+                Object other$nameEn = other.getNameEn();
+                if (this$nameEn == null) {
+                    if (other$nameEn != null) {
+                        return false;
+                    }
+                } else if (!this$nameEn.equals(other$nameEn)) {
+                    return false;
+                }
+
 
                 label201: {
                     Object this$description = this.getDescription();
@@ -276,6 +352,35 @@ public class Presse {
 
                     return false;
                 }
+
+                label202: {
+                    Object this$descriptionFr = this.getDescriptionFr();
+                    Object other$descriptionFr = other.getDescriptionFr();
+                    if (this$descriptionFr == null) {
+                        if (other$descriptionFr == null) {
+                            break label202;
+                        }
+                    } else if (this$descriptionFr.equals(other$descriptionFr)) {
+                        break label202;
+                    }
+                
+                    return false;
+                }
+
+                label203: {
+                    Object this$descriptionEn = this.getDescriptionEn();
+                    Object other$descriptionEn = other.getDescriptionEn();
+                    if (this$descriptionEn == null) {
+                        if (other$descriptionEn == null) {
+                            break label203;
+                        }
+                    } else if (this$descriptionEn.equals(other$descriptionEn)) {
+                        break label203;
+                    }
+                
+                    return false;
+                }
+                
 
                 Object this$website = this.getWebsite();
                 Object other$website = other.getWebsite();
@@ -450,70 +555,128 @@ public class Presse {
         return other instanceof Presse;
     }
 
-    public int hashCode() {
-        boolean PRIME = true;
-        int result = 1;
-        Object $id = this.getId();
-         result = result * 59 + ($id == null ? 43 : $id.hashCode());
-        Object $name = this.getName();
-        result = result * 59 + ($name == null ? 43 : $name.hashCode());
-        Object $description = this.getDescription();
-        result = result * 59 + ($description == null ? 43 : $description.hashCode());
-        Object $website = this.getWebsite();
-        result = result * 59 + ($website == null ? 43 : $website.hashCode());
-        Object $typepbpr = this.getTypepbpr();
-        result = result * 59 + ($typepbpr == null ? 43 : $typepbpr.hashCode());
-        Object $categorieelec = this.getCategorieelec();
-        result = result * 59 + ($categorieelec == null ? 43 : $categorieelec.hashCode());
-        Object $adresse = this.getAdresse();
-        result = result * 59 + ($adresse == null ? 43 : $adresse.hashCode());
-        Object $phone = this.getPhone();
-        result = result * 59 + ($phone == null ? 43 : $phone.hashCode());
-        Object $fax = this.getFax();
-        result = result * 59 + ($fax == null ? 43 : $fax.hashCode());
-        Object $email = this.getEmail();
-        result = result * 59 + ($email == null ? 43 : $email.hashCode());
-        Object $site = this.getSite();
-        result = result * 59 + ($site == null ? 43 : $site.hashCode());
-        Object $localisation = this.getLocalisation();
-        result = result * 59 + ($localisation == null ? 43 : $localisation.hashCode());
-        Object $presseCategories = this.getPresseCategories();
-        result = result * 59 + ($presseCategories == null ? 43 : $presseCategories.hashCode());
-        Object $complexe = this.getComplexe();
-        result = result * 59 + ($complexe == null ? 43 : $complexe.hashCode());
-        Object $multimediaList = this.getMultimediaList();
-        result = result * 59 + ($multimediaList == null ? 43 : $multimediaList.hashCode());
-        Object $createdAt = this.getCreatedAt();
-        result = result * 59 + ($createdAt == null ? 43 : $createdAt.hashCode());
-        Object $updatedAt = this.getUpdatedAt();
-        result = result * 59 + ($updatedAt == null ? 43 : $updatedAt.hashCode());
-        return result;
-    }
+    @Override
+public int hashCode() {
+    boolean PRIME = true;
+    int result = 1;
 
-    public String toString() {
-        Long var10000 = this.getId();
-        return "Presse(id=" + var10000 + ", name=" + this.getName() + ", description=" + this.getDescription() + ", website=" + this.getWebsite() + ", typepbpr=" + this.getTypepbpr() + ", categorieelec=" + this.getCategorieelec() + ", adresse=" + this.getAdresse() + ", phone=" + this.getPhone() + ", fax=" + this.getFax() + ", email=" + this.getEmail() + ", site=" + this.getSite() + ", localisation=" + this.getLocalisation() + ", presseCategories=" + String.valueOf(this.getPresseCategories()) + ", complexe=" + String.valueOf(this.getComplexe()) + ", multimediaList=" + String.valueOf(this.getMultimediaList()) + ", createdAt=" + String.valueOf(this.getCreatedAt()) + ", updatedAt=" + String.valueOf(this.getUpdatedAt()) + ")";
-    }
+    Object $id = this.getId();
+    result = result * 59 + ($id == null ? 43 : $id.hashCode());
 
-    public Presse(final Long id, final String name, final String description, final String website, final String typepbpr, final String categorieelec, final String adresse, final String phone, final String fax, final String email, final String site, final String localisation, final List<PresseCategorie> presseCategories, final Complexe complexe, final List<Multimedia> multimediaList, final LocalDateTime createdAt, final LocalDateTime updatedAt) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.website = website;
-        this.typepbpr = typepbpr;
-        this.categorieelec = categorieelec;
-        this.adresse = adresse;
-        this.phone = phone;
-        this.fax = fax;
-        this.email = email;
-        this.site = site;
-        this.localisation = localisation;
-        this.presseCategories = presseCategories;
-        this.complexe = complexe;
-        this.multimediaList = multimediaList;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
+    Object $name = this.getName();
+    result = result * 59 + ($name == null ? 43 : $name.hashCode());
+
+    Object $description = this.getDescription();
+    result = result * 59 + ($description == null ? 43 : $description.hashCode());
+
+    Object $nameFr = this.getNameFr();
+    result = result * 59 + ($nameFr == null ? 43 : $nameFr.hashCode());
+
+    Object $descriptionFr = this.getDescriptionFr();
+    result = result * 59 + ($descriptionFr == null ? 43 : $descriptionFr.hashCode());
+
+    Object $descriptionEn = this.getDescriptionEn();
+    result = result * 59 + ($descriptionEn == null ? 43 : $descriptionEn.hashCode());
+
+    Object $nameEn = this.getNameEn(); // Ajout du champ nameEn
+    result = result * 59 + ($nameEn == null ? 43 : $nameEn.hashCode()); // Ajout du calcul pour nameEn
+
+    Object $website = this.getWebsite();
+    result = result * 59 + ($website == null ? 43 : $website.hashCode());
+
+    Object $typepbpr = this.getTypepbpr();
+    result = result * 59 + ($typepbpr == null ? 43 : $typepbpr.hashCode());
+
+    Object $categorieelec = this.getCategorieelec();
+    result = result * 59 + ($categorieelec == null ? 43 : $categorieelec.hashCode());
+
+    Object $adresse = this.getAdresse();
+    result = result * 59 + ($adresse == null ? 43 : $adresse.hashCode());
+
+    Object $phone = this.getPhone();
+    result = result * 59 + ($phone == null ? 43 : $phone.hashCode());
+
+    Object $fax = this.getFax();
+    result = result * 59 + ($fax == null ? 43 : $fax.hashCode());
+
+    Object $email = this.getEmail();
+    result = result * 59 + ($email == null ? 43 : $email.hashCode());
+
+    Object $site = this.getSite();
+    result = result * 59 + ($site == null ? 43 : $site.hashCode());
+
+    Object $localisation = this.getLocalisation();
+    result = result * 59 + ($localisation == null ? 43 : $localisation.hashCode());
+
+    Object $presseCategories = this.getPresseCategories();
+    result = result * 59 + ($presseCategories == null ? 43 : $presseCategories.hashCode());
+
+    Object $complexe = this.getComplexe();
+    result = result * 59 + ($complexe == null ? 43 : $complexe.hashCode());
+
+    Object $multimediaList = this.getMultimediaList();
+    result = result * 59 + ($multimediaList == null ? 43 : $multimediaList.hashCode());
+
+    Object $createdAt = this.getCreatedAt();
+    result = result * 59 + ($createdAt == null ? 43 : $createdAt.hashCode());
+
+    Object $updatedAt = this.getUpdatedAt();
+    result = result * 59 + ($updatedAt == null ? 43 : $updatedAt.hashCode());
+
+    return result;
+}
+
+
+public String toString() {
+    Long var10000 = this.getId();
+    return "Presse(id=" + var10000 
+        + ", name=" + this.getName() 
+        + ", nameFr=" + this.getNameFr() // Correction de la concaténation pour nameFr
+        + ", nameEn=" + this.getNameEn() // Ajout du champ nameEn
+        + ", description=" + this.getDescription() 
+        + ", descriptionFr=" + this.getDescriptionFr() 
+        + ", descriptionEn=" + this.getDescriptionEn() 
+        + ", website=" + this.getWebsite() 
+        + ", typepbpr=" + this.getTypepbpr() 
+        + ", categorieelec=" + this.getCategorieelec() 
+        + ", adresse=" + this.getAdresse() 
+        + ", phone=" + this.getPhone() 
+        + ", fax=" + this.getFax() 
+        + ", email=" + this.getEmail() 
+        + ", site=" + this.getSite() 
+        + ", localisation=" + this.getLocalisation() 
+        + ", presseCategories=" + String.valueOf(this.getPresseCategories()) 
+        + ", complexe=" + String.valueOf(this.getComplexe()) 
+        + ", multimediaList=" + String.valueOf(this.getMultimediaList()) 
+        + ", createdAt=" + String.valueOf(this.getCreatedAt()) 
+        + ", updatedAt=" + String.valueOf(this.getUpdatedAt()) 
+        + ")";
+}
+
+public Presse(final Long id, final String name, final String nameFr, final String nameEn, final String description, final String descriptionFr, final String descriptionEn, final String website, final String typepbpr, final String categorieelec, final String adresse, final String phone, final String fax, final String email, final String site, final String localisation, final List<PresseCategorie> presseCategories, final Complexe complexe, final List<Multimedia> multimediaList, final LocalDateTime createdAt, final LocalDateTime updatedAt) {
+    this.id = id;
+    this.name = name; // Assignation du nom en arabe ou français
+    this.nameFr = nameFr; // Nom en français
+    this.nameEn = nameEn; // Nom en anglais
+    this.description = description;
+    this.descriptionFr = descriptionFr;
+    this.descriptionEn = descriptionEn;
+    this.website = website;
+    this.typepbpr = typepbpr;
+    this.categorieelec = categorieelec;
+    this.adresse = adresse;
+    this.phone = phone;
+    this.fax = fax;
+    this.email = email;
+    this.site = site;
+    this.localisation = localisation;
+    this.presseCategories = presseCategories;
+    this.complexe = complexe;
+    this.multimediaList = multimediaList;
+    this.createdAt = createdAt;
+    this.updatedAt = updatedAt;
+}
+
 
     public Presse() {
     }
@@ -521,7 +684,11 @@ public class Presse {
     public static class PresseBuilder {
         private Long id;
         private String name;
+        private String nameFr;  // Nom en français
+        private String nameEn;  // Nom en anglais
         private String description;
+        private String descriptionFr;
+        private String descriptionEn;
         private String website;
         private String typepbpr;
         private String categorieelec;
@@ -554,6 +721,26 @@ public class Presse {
             this.description = description;
             return this;
         }
+
+        public Presse.PresseBuilder nameFr(final String nameFr) {
+            this.nameFr = nameFr;
+            return this;
+        }
+        
+        public PresseBuilder nameEn(String nameEn) {
+            this.nameEn = nameEn;  // Ajout de la méthode pour définir nameEn
+            return this;
+        }
+
+        public Presse.PresseBuilder descriptionFr(final String descriptionFr) {
+            this.descriptionFr = descriptionFr;
+            return this;
+        }
+        
+        public Presse.PresseBuilder descriptionEn(final String descriptionEn) {
+            this.descriptionEn = descriptionEn;
+            return this;
+        }        
 
         public Presse.PresseBuilder website(final String website) {
             this.website = website;
@@ -626,13 +813,37 @@ public class Presse {
             return this;
         }
 
+        // Méthode pour construire l'objet Presse
         public Presse build() {
-            return new Presse(this.id, this.name, this.description, this.website, this.typepbpr, this.categorieelec, this.adresse, this.phone, this.fax, this.email, this.site, this.localisation, this.presseCategories, this.complexe, this.multimediaList, this.createdAt, this.updatedAt);
+            return new Presse(id, name, nameFr, nameEn, description, descriptionFr, descriptionEn, website, typepbpr,
+                    categorieelec, adresse, phone, fax, email, site, localisation, presseCategories, complexe,
+                    multimediaList, createdAt, updatedAt);
         }
 
         public String toString() {
             Long var10000 = this.id;
-            return "Presse.PresseBuilder(id=" + var10000 + ", name=" + this.name + ", description=" + this.description + ", website=" + this.website + ", typepbpr=" + this.typepbpr + ", categorieelec=" + this.categorieelec + ", adresse=" + this.adresse + ", phone=" + this.phone + ", fax=" + this.fax + ", email=" + this.email + ", site=" + this.site + ", localisation=" + this.localisation + ", presseCategories=" + String.valueOf(this.presseCategories) + ", complexe=" + String.valueOf(this.complexe) + ", multimediaList=" + String.valueOf(this.multimediaList) + ", createdAt=" + String.valueOf(this.createdAt) + ", updatedAt=" + String.valueOf(this.updatedAt) + ")";
+            return "Presse.PresseBuilder(id=" + var10000 + 
+                   ", name=" + this.name + 
+                   ", nameFr=" + this.nameFr + 
+                   ", nameEn=" + this.nameEn +   // Ajout de nameEn
+                   ", description=" + this.description + 
+                   ", descriptionFr=" + this.descriptionFr + 
+                   ", descriptionEn=" + this.descriptionEn + 
+                   ", website=" + this.website + 
+                   ", typepbpr=" + this.typepbpr + 
+                   ", categorieelec=" + this.categorieelec + 
+                   ", adresse=" + this.adresse + 
+                   ", phone=" + this.phone + 
+                   ", fax=" + this.fax + 
+                   ", email=" + this.email + 
+                   ", site=" + this.site + 
+                   ", localisation=" + this.localisation + 
+                   ", presseCategories=" + String.valueOf(this.presseCategories) + 
+                   ", complexe=" + String.valueOf(this.complexe) + 
+                   ", multimediaList=" + String.valueOf(this.multimediaList) + 
+                   ", createdAt=" + String.valueOf(this.createdAt) + 
+                   ", updatedAt=" + String.valueOf(this.updatedAt) + ")";
         }
+
     }
 }

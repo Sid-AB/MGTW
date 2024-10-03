@@ -32,11 +32,20 @@ public class TV {
     )
     private Long id;
     private String name;
-    @Column(
-            name = "description",
-            columnDefinition = "TEXT"
-    )
+    @Column(name = "name_fr")
+    private String nameFr; // Nouveau champ pour le nom en français
+
+    @Column(name = "name_en")
+    private String nameEn; // Nouveau champ pour le nom en anglais
+    
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
+
+    @Column(name = "description_fr", columnDefinition = "TEXT") // Nouveau champ pour la description en français
+    private String descriptionFr;
+
+    @Column(name = "description_en", columnDefinition = "TEXT") // Nouveau champ pour la description en anglais
+    private String descriptionEn;
     private String type;
     private String website;
     private String streaminglink;

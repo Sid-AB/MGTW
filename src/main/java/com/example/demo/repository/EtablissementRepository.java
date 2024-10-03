@@ -13,13 +13,14 @@ public interface EtablissementRepository extends JpaRepository<Etablissement, Lo
     Etablissement findEtablissementById(Long id);
 
     Optional<Etablissement> findEtablissementByName(String name);
-    //Optional<Etablissement> findEtablissementByName_fr(String name_fr);
+    Optional<Etablissement> findEtablissementByNameFr(String nameFr);
+    Optional<Etablissement> findEtablissementByNameEn(String nameEn);  // Ajout pour le nom en anglais
 
 
     List<Etablissement> findEtablissementsByType(String type);
     List<Etablissement> findByDescriptionContainingIgnoreCase(String keyword);
-   // List<Etablissement> findByDescription_frContainingIgnoreCase(String keyword);
-    //List<Etablissement> findByDescription_enContainingIgnoreCase(String keyword);
+    List<Etablissement> findByDescriptionFrContainingIgnoreCase(String keyword);
+    List<Etablissement> findByDescriptionEnContainingIgnoreCase(String keyword);
 
 
 }

@@ -46,6 +46,12 @@ public class RadioService {
     public List<Radio> findByDescriptionContainingIgnoreCase(String keyword) {
         return this.radioRepository.findByDescriptionContainingIgnoreCase(keyword);
     }
+    public List<Radio> findByDescriptionFrContainingIgnoreCase(String keyword) {
+        return this.radioRepository.findByDescriptionFrContainingIgnoreCase(keyword);
+    }
+    public List<Radio> findByDescriptionEnContainingIgnoreCase(String keyword) {
+        return this.radioRepository.findByDescriptionEnContainingIgnoreCase(keyword);
+    }
     public Radio saveRadio(RadioDTO radioDTO) {
         Radio radio = radioDTO.toERadio();
         this.radioRepository.save(radio);

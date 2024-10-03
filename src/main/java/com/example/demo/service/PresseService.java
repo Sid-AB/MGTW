@@ -51,7 +51,12 @@ public class PresseService {
     public List<Presse> findByDescriptionContainingIgnoreCase(String keyword) {
         return this.presseRepository.findByDescriptionContainingIgnoreCase(keyword);
     }
-
+    public List<Presse> findByDescriptionFrContainingIgnoreCase(String keyword) {
+        return this.presseRepository.findByDescriptionFrContainingIgnoreCase(keyword);
+    }
+    public List<Presse> findByDescriptionEnContainingIgnoreCase(String keyword) {
+        return this.presseRepository.findByDescriptionEnContainingIgnoreCase(keyword);
+    }
     public Presse saveRadio(PresseDTO presseDTO) {
         Presse presse = presseDTO.toEPresse();
         this.presseRepository.save(presse);
