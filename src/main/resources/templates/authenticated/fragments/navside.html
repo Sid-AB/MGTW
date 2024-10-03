@@ -35,6 +35,25 @@
         </li><!-- End Icons Nav -->
 
         <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#radio-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Direction</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="radio-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a th:href="@{/Direction/add}">
+                        <i class="bi bi-circle"></i><span>Add Direction</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/Direction/direction}">
+                        <i class="bi bi-circle"></i><span>Direction list</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+        <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#min-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-people-fill"></i><span>Ministers</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
@@ -236,24 +255,7 @@
         </li><!-- End Components Nav -->
 
         
-        <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#radio-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Direction</span><i class="bi bi-chevron-down ms-auto"></i>
-            </a>
-            <ul id="radio-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                <li>
-                    <a th:href="@{/Direction/add}">
-                        <i class="bi bi-circle"></i><span>Add Direction</span>
-                    </a>
-                </li>
-                <li>
-                    <a th:href="@{/radio/radios}">
-                        <i class="bi bi-circle"></i><span>Direction list</span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-
+      
 
         <li hidden="hidden" class="nav-item">
             <a class="nav-link collapsed" href="pages-login.html">

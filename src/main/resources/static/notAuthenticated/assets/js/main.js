@@ -15,6 +15,9 @@ function changeDirection(language) {
   }
 }
 
+
+
+
 (function() {
   "use strict";
 
@@ -271,4 +274,23 @@ function changeDirection(language) {
  document.addEventListener("DOMContentLoaded", function() {
   var currentLang = document.documentElement.getAttribute("lang");  // Get the lang attribute
   changeDirection(currentLang);
+});
+
+window.addEventListener('load', function() {
+  const flashContainer = document.getElementById('flash-container');
+  const mainContent = document.getElementById('main-content');
+  const flashVideo = document.getElementById('flash-video');
+
+ /* flashVideo.addEventListener('ended', () => {
+    flashContainer.classList.add('fade-out');
+    mainContent.classList.add('show-content');
+}); */
+  // Set a timeout to hide the flash video after a few seconds
+  setTimeout(() => {
+      // Add fade-out effect to the video container
+      flashContainer.classList.add('fade-out');
+      // Show the main content after the video fades out
+      mainContent.classList.add('show-content');
+  }, 5000); // Video will play for 5 seconds before fading out
+  
 });

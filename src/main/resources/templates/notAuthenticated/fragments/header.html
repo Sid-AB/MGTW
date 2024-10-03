@@ -7,7 +7,13 @@
 
         </div>
     </div>
-
+        <!--div class="">
+            <form>
+                <label for="search" th:text="#{search}">Search</label>
+                <input id="search" type="search" id="query" name="query" required type="search" th:placeholder="#{search}" aria-label="بحث ">
+                <span class="caret"></span>
+            </form>
+        </div-->
     <div class="d-flex justify-content-around">
 
         <nav id="navbar" class="navbar pb-3 " style="background-color: #0E2F4A">
@@ -88,7 +94,7 @@
 
                     </ul>
                 </li>
-                <li class="dropdown lng-holder"><a href="#" style="padding-right:5px ;"><span th:text="#{langage}"> الوزارة </span> <i class="bi bi-chevron-down"></i></a>
+                <li class="dropdown" th:classappend="${#locale.language == 'ar'} ? 'lng-holder-ar' : 'lng-holder'"><a href="#" style="padding-right:5px ;"><span th:text="#{langage}"> الوزارة </span> <i class="bi bi-chevron-down"></i></a>
                     <ul style="width: 80px;">
                         <li><a href="?lang=ar">العربية</a></li>
                         <li><a href="?lang=en">English</a> </li>
