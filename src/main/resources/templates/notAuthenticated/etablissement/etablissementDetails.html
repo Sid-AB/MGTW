@@ -39,7 +39,7 @@
                     <div>
                         <div class="portfolio-description">
                             <h2 th:text="${etablissement.getName()}"></h2></div>
-                        <p th:text="${etablissement.getDescription()}"></p>
+                        <p th:text="${#locale.language == 'ar' ?etablissement.getDescription() : etablissement.getDescriptionFr()}"></p>
                     </div>
                     <div class="portfolio-info">
                        <h3 th:text="#{carast}">الخصائص  </h3>  
