@@ -30,13 +30,19 @@ public class EtablissementService {
         return this.etablissementRepository.findEtablissementById(id);
     }
 
-    Optional<Etablissement> findEtablissementByName(String username) {
-        return this.etablissementRepository.findEtablissementByName(username);
+    // Méthode pour rechercher par nom arabe
+    public Optional<Etablissement> findEtablissementByName(String name) {
+        return this.etablissementRepository.findEtablissementByName(name);
     }
 
-    // Méthode pour rechercher par nom arabe
-    public Optional<Etablissement> findEtablissementByName_fr(String name_fr) {
-        return this.etablissementRepository.findEtablissementByName_fr(name_fr);
+    // Méthode pour rechercher par nom français
+    public Optional<Etablissement> findEtablissementByNameFr(String nameFr) {
+        return this.etablissementRepository.findEtablissementByNameFr(nameFr);
+    }
+
+    // Méthode pour rechercher par nom en anglais
+    public Optional<Etablissement> findEtablissementByNameEn(String nameEn) {
+        return this.etablissementRepository.findEtablissementByNameEn(nameEn);
     }
 
     public List<Etablissement> findEtablissementsByType(String type) {
@@ -62,11 +68,11 @@ public class EtablissementService {
     public List<Etablissement> findByDescriptionContainingIgnoreCase(String keyword) {
         return this.etablissementRepository.findByDescriptionContainingIgnoreCase(keyword);
     }
-    public List<Etablissement> findByDescription_frContainingIgnoreCase(String keyword) {
-        return this.etablissementRepository.findByDescription_frContainingIgnoreCase(keyword);
+    public List<Etablissement> findByDescriptionFrContainingIgnoreCase(String keyword) {
+        return this.etablissementRepository.findByDescriptionFrContainingIgnoreCase(keyword);
     }
-    public List<Etablissement> findByDescription_enContainingIgnoreCase(String keyword) {
-        return this.etablissementRepository.findByDescription_enContainingIgnoreCase(keyword);
+    public List<Etablissement> findByDescriptionEnContainingIgnoreCase(String keyword) {
+        return this.etablissementRepository.findByDescriptionEnContainingIgnoreCase(keyword);
     }
     public Etablissement saveUserAndMultimedias(List<Multimedia> multimedias, Etablissement etablissement) {
         this.etablissementRepository.save(etablissement);
@@ -85,12 +91,19 @@ public class EtablissementService {
 
     public Etablissement updateDataEtablissement(Etablissement updatedEtablissement, Long userId, List<Multimedia> multimedias) {
         Etablissement existingEtablissement = this.etablissementRepository.findEtablissementById(userId);
+        
         existingEtablissement.setName(updatedEtablissement.getName());
+        existingEtablissement.setNameFr(updatedEtablissement.getNameFr());
+        existingEtablissement.setNameEn(updatedEtablissement.getNameEn()); // Ajout de nameEn
         existingEtablissement.setType(updatedEtablissement.getType());
         existingEtablissement.setDescription(updatedEtablissement.getDescription());
+        existingEtablissement.setDescriptionFr(updatedEtablissement.getDescriptionFr());
+        existingEtablissement.setDescriptionEn(updatedEtablissement.getDescriptionEn());
+    
         this.etablissementRepository.save(existingEtablissement);
+    
         if (multimedias != null && !multimedias.isEmpty()) {
-            List<Multimedia> savedMultimedias = new ArrayList();
+            List<Multimedia> savedMultimedias = new ArrayList<>();
             multimedias.forEach((multimedia) -> {
                 multimedia.setEtablissement(existingEtablissement);
             });
@@ -98,7 +111,8 @@ public class EtablissementService {
             existingEtablissement.setMultimediaList(savedMultimedias);
             this.multimediaRepository.saveAll(savedMultimedias);
         }
-
+    
         return existingEtablissement;
     }
+    
 }

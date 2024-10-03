@@ -16,5 +16,14 @@ public interface PresseRepository extends JpaRepository<Presse, Long> {
 
     List<Presse> findPresseByPresseCategoriesAndTypepbpr(List<PresseCategorie> categories, String string);
     List<Presse> findByDescriptionContainingIgnoreCase(String keyword);
+    List<Presse> findByDescriptionFrContainingIgnoreCase(String keyword);
+    List<Presse> findByDescriptionEnContainingIgnoreCase(String keyword);
+
+    // Méthodes pour rechercher par name et nameFr
+    List<Presse> findByNameContainingIgnoreCase(String name);
+    
+    List<Presse> findByNameFrContainingIgnoreCase(String nameFr);
+    
+    List<Presse> findByNameEnContainingIgnoreCase(String nameEn); 
 }
 
