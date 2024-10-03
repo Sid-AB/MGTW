@@ -18,7 +18,10 @@ public class MinisterDTO {
     private LocalDate startFrom;
     private LocalDate until;
     private MultipartFile profilePicture;
+    private String formattedStartFrom; // Nouveau champ pour stocker la date formatée
 
+    
+    
     // Constructors
     public MinisterDTO()
      {
@@ -91,5 +94,11 @@ public class MinisterDTO {
     public void setprofilePicture(MultipartFile profilePicture) {
         this.profilePicture = profilePicture;
     }
- 
+    public String getFormattedStartFrom() {
+        return formattedStartFrom;
+    }
+
+    public void setFormattedStartFrom(String formattedStartFrom) {
+        this.formattedStartFrom = formattedStartFrom;
+    }
 }

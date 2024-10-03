@@ -8,8 +8,8 @@ import java.util.List;
 public class EtablissementDTO {
     private String name;
     private String description;
-    private String name_fr;  // Ajout de name_fr
-    private String description_fr;  // Ajout de description_fr
+   /* private String name_fr;  // Ajout de name_fr
+    private String description_fr;  // Ajout de description_fr*/
     private String type;
     private List<MultipartFile> etablissementFiles;
     private String adresse;
@@ -23,9 +23,9 @@ public class EtablissementDTO {
         Etablissement etablissement = new Etablissement();
         etablissement.setName(this.getName()); // Assigner name arabe
         etablissement.setDescription(this.getDescription()); // Assigner description arabe
-        etablissement.setName_fr(this.getName_fr());  // Assigner name_fr et en
+        /*etablissement.setName_fr(this.getName_fr());  // Assigner name_fr et en
         etablissement.setDescription_fr(this.getDescription_fr());  // Assigner description_fr
-        etablissement.setDescription_en(this.getDescription_en());  // Assigner description_en
+        etablissement.setDescription_en(this.getDescription_en());  // Assigner description_en*/
         etablissement.setType(this.getType());
         etablissement.setAdresse(this.getAdresse());
         etablissement.setPhone(this.getPhone());
@@ -40,7 +40,7 @@ public class EtablissementDTO {
         return new com.example.demo.dto.EtablissementDTO.EtablissementDTOBuilder();
     }
 
-    public EtablissementDTO(final String name, final String description, final String type, final List<MultipartFile> etablissementFiles, final String adresse, final String phone, final String fax, final String email, final String site, final String localisation, final String name_fr, final String description_fr) {
+    public EtablissementDTO(final String name, final String description, final String type, final List<MultipartFile> etablissementFiles, final String adresse, final String phone, final String fax, final String email, final String site, final String localisation/*,final String name_fr, final String description_fr*/) {
         this.name = name;
         this.description = description;
         this.type = type;
@@ -51,8 +51,8 @@ public class EtablissementDTO {
         this.email = email;
         this.site = site;
         this.localisation = localisation;
-        this.name_fr = name_fr;  // Initialiser name_fr
-        this.description_fr = description_fr;  // Initialiser description_fr
+      //  this.name_fr = name_fr;  // Initialiser name_fr
+        //this.description_fr = description_fr;  // Initialiser description_fr
     }
 
     public EtablissementDTO() {
@@ -66,7 +66,7 @@ public class EtablissementDTO {
         return this.description;
     }
 
-    public String getName_fr() {  // Getter pour name_fr
+   /*  public String getName_fr() {  // Getter pour name_fr
         return this.name_fr;
     }
 
@@ -81,7 +81,7 @@ public class EtablissementDTO {
     public String getDescription_en() {  // Getter pour description_en
         return this.description_fr;
     }
-
+*/
     public String getType() {
         return this.type;
     }
@@ -122,7 +122,7 @@ public class EtablissementDTO {
         this.description = description;
     }
 
-    public void setName_fr(final String name_fr) {  // Setter pour name_fr et en
+   /*  public void setName_fr(final String name_fr) {  // Setter pour name_fr et en
         this.name_fr = name_fr;
     }
 
@@ -137,7 +137,7 @@ public class EtablissementDTO {
     public void setDescription_en(final String description_fr) {  // Setter pour description_en
         this.description_fr = description_fr;
     }
-
+*/
     public void setType(final String type) {
         this.type = type;
     }
@@ -192,7 +192,7 @@ public boolean equals(final Object o) {
             }
 
             // Vérification pour 'name_fr et en'
-            Object this$name_fr = this.getName_fr();
+          /*   Object this$name_fr = this.getName_fr();
             Object other$name_fr = other.getName_fr();
             if (this$name_fr == null) {
                 if (other$name_fr != null) {
@@ -201,7 +201,7 @@ public boolean equals(final Object o) {
             } else if (!this$name_fr.equals(other$name_fr)) {
                 return false;
             }
-
+*/
             // Vérification pour 'description arabe'
             Object this$description = this.getDescription();
             Object other$description = other.getDescription();
@@ -214,7 +214,7 @@ public boolean equals(final Object o) {
             }
 
             // Vérification pour 'description_fr'
-            Object this$description_fr = this.getDescription_fr();
+           /*  Object this$description_fr = this.getDescription_fr();
             Object other$description_fr = other.getDescription_fr();
             if (this$description_fr == null) {
                 if (other$description_fr != null) {
@@ -234,7 +234,7 @@ public boolean equals(final Object o) {
             } else if (!this$description_en.equals(other$description_en)) {
                 return false;
             }
-
+*/
             // Vérification pour 'type'
             Object this$type = this.getType();
             Object other$type = other.getType();
@@ -351,17 +351,17 @@ public boolean equals(final Object o) {
         Object $name = this.getName();
         result = result * 59 + ($name == null ? 43 : $name.hashCode());
         
-        Object $name_fr = this.getName_fr();
-        result = result * 59 + ($name_fr == null ? 43 : $name_fr.hashCode());
+       /* Object $name_fr = this.getName_fr();
+        result = result * 59 + ($name_fr == null ? 43 : $name_fr.hashCode());*/
         
         Object $description = this.getDescription();
         result = result * 59 + ($description == null ? 43 : $description.hashCode());
         
-        Object $description_fr = this.getDescription_fr();
+      /*   Object $description_fr = this.getDescription_fr();
         result = result * 59 + ($description_fr == null ? 43 : $description_fr.hashCode());
 
         Object $description_en = this.getDescription_en();
-        result = result * 59 + ($description_en == null ? 43 : $description_en.hashCode());
+        result = result * 59 + ($description_en == null ? 43 : $description_en.hashCode());*/
         
         Object $type = this.getType();
         result = result * 59 + ($type == null ? 43 : $type.hashCode());
@@ -393,10 +393,10 @@ public boolean equals(final Object o) {
     public String toString() {
         String var10000 = this.getName();
         return "EtablissementDTO(name=" + var10000 + 
-               ", name_fr=" + this.getName_fr() + 
+             //  ", name_fr=" + this.getName_fr() + 
                ", description=" + this.getDescription() + 
-               ", description_fr=" + this.getDescription_fr() + 
-               ", description_en=" + this.getDescription_en() + 
+              // ", description_fr=" + this.getDescription_fr() + 
+              // ", description_en=" + this.getDescription_en() + 
                ", type=" + this.getType() + 
                ", etablissementFiles=" + String.valueOf(this.getEtablissementFiles()) + 
                ", adresse=" + this.getAdresse() + 
