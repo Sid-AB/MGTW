@@ -110,6 +110,7 @@ public class PresseService {
             Presse press = existingPress.get();
             press.setName(Presse.getName());
             press.setNameFr(Presse.getNameFr());
+            press.setNameEn(Presse.getNameEn());
             press.setDescription(Presse.getDescription());
             press.setDescriptionFr(Presse.getDescriptionFr());
             press.setDescriptionEn(Presse.getDescriptionEn());

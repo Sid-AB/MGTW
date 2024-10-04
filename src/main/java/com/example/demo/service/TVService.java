@@ -155,6 +155,7 @@ public class TVService {
             TV tv = existingTV.get();
             tv.setName(TV.getName());
             tv.setNameFr(TV.getNameFr());
+            tv.setNameEn(TV.getNameEn());
             tv.setDescription(TV.getDescription());
             tv.setDescriptionFr(TV.getDescriptionFr());
             tv.setDescriptionEn(TV.getDescriptionEn());

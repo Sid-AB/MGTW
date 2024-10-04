@@ -98,6 +98,7 @@ public class EtablissementService {
             Etablissement Etabbliss = existingMinister.get();
             Etabbliss.setName(etablissement.getName());
             Etabbliss.setNameFr(etablissement.getNameFr());
+            Etabbliss.setNameEn(etablissement.getNameEn());
             Etabbliss.setDescription(etablissement.getDescription());
             Etabbliss.setDescriptionFr(etablissement.getDescriptionFr());
             Etabbliss.setDescriptionEn(etablissement.getDescriptionEn());
