@@ -4,11 +4,15 @@ package com.example.demo.dto;
 
 public class LoisDTO {
     private String name;
+    private String nameFr;
+    private String nameEn;
     private String description;
 
     public Lois toLois() {
         Lois lois = new Lois();
         lois.setName(this.getName());
+        lois.setNameFr(this.getNameFr());
+        lois.setNameEn(this.getNameEn());
         lois.setDescription(this.getDescription());
         return lois;
     }
@@ -28,6 +32,12 @@ public class LoisDTO {
     public String getName() {
         return this.name;
     }
+    public String getNameFr() {
+        return this.nameFr;
+    }
+    public String getNameEn() {
+        return this.nameEn;
+    }
 
     public String getDescription() {
         return this.description;
@@ -35,6 +45,14 @@ public class LoisDTO {
 
     public void setName(final String name) {
         this.name = name;
+    }
+
+    public void setNameFr(final String name) {
+        this.nameFr = name;
+    }
+
+    public void setNameEn(final String name) {
+        this.nameEn = name;
     }
 
     public void setDescription(final String description) {
@@ -53,6 +71,26 @@ public class LoisDTO {
             } else {
                 Object this$name = this.getName();
                 Object other$name = other.getName();
+                if (this$name == null) {
+                    if (other$name != null) {
+                        return false;
+                    }
+                } else if (!this$name.equals(other$name)) {
+                    return false;
+                }
+
+                Object this$nameFr = this.getNameFr();
+                Object other$nameFr = other.getNameFr();
+                if (this$name == null) {
+                    if (other$name != null) {
+                        return false;
+                    }
+                } else if (!this$name.equals(other$name)) {
+                    return false;
+                }
+
+                Object this$nameEn = this.getNameEn();
+                Object other$nameEn = other.getNameEn();
                 if (this$name == null) {
                     if (other$name != null) {
                         return false;
@@ -84,6 +122,10 @@ public class LoisDTO {
         boolean PRIME = true;
         int result = 1;
         Object $name = this.getName();
+         result = result * 59 + ($name == null ? 43 : $name.hashCode());
+         Object $nameFr = this.getNameFr();
+         result = result * 59 + ($name == null ? 43 : $name.hashCode());
+         Object $nameEn = this.getNameEn();
          result = result * 59 + ($name == null ? 43 : $name.hashCode());
         Object $description = this.getDescription();
         result = result * 59 + ($description == null ? 43 : $description.hashCode());

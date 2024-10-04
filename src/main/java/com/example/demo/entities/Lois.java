@@ -30,10 +30,21 @@ public class Lois {
     private Long id;
     private String name;
     @Column(
+            name = "name_fr",
+            columnDefinition = "TEXT"
+    )
+    private String nameFr;
+    @Column(
+            name = "name_En",
+            columnDefinition = "TEXT"
+    )
+    private String nameEn;
+    @Column(
             name = "description",
             columnDefinition = "TEXT"
     )
     private String description;
+    
     @OneToMany(
             mappedBy = "lois",
             cascade = {CascadeType.ALL}
@@ -61,6 +72,13 @@ public class Lois {
     public String getName() {
         return this.name;
     }
+    public String getNameFr() {
+        return this.nameFr;
+    }
+    public String getNameEn() {
+        return this.nameEn;
+    }
+
 
     public String getDescription() {
         return this.description;
@@ -84,6 +102,12 @@ public class Lois {
 
     public void setName(final String name) {
         this.name = name;
+    }
+    public void setNameFr(final String name) {
+        this.nameFr = name;
+    }
+    public void setNameEn(final String name) {
+        this.nameEn = name;
     }
 
     public void setDescription(final String description) {
@@ -124,6 +148,25 @@ public class Lois {
 
                 Object this$name = this.getName();
                 Object other$name = other.getName();
+                if (this$name == null) {
+                    if (other$name != null) {
+                        return false;
+                    }
+                } else if (!this$name.equals(other$name)) {
+                    return false;
+                }
+
+                Object this$nameFr = this.getNameFr();
+                Object other$nameFr = other.getNameFr();
+                if (this$name == null) {
+                    if (other$name != null) {
+                        return false;
+                    }
+                } else if (!this$name.equals(other$name)) {
+                    return false;
+                }
+                Object this$nameEn = this.getNameEn();
+                Object other$nameEn = other.getNameEn();
                 if (this$name == null) {
                     if (other$name != null) {
                         return false;
@@ -196,6 +239,10 @@ public class Lois {
          result = result * 59 + ($id == null ? 43 : $id.hashCode());
         Object $name = this.getName();
         result = result * 59 + ($name == null ? 43 : $name.hashCode());
+        Object $nameFr = this.getNameFr();
+        result = result * 59 + ($name == null ? 43 : $name.hashCode());
+        Object $nameEn = this.getNameEn();
+        result = result * 59 + ($name == null ? 43 : $name.hashCode());
         Object $description = this.getDescription();
         result = result * 59 + ($description == null ? 43 : $description.hashCode());
         Object $textJuridiqueList = this.getTextJuridiqueList();
@@ -209,12 +256,14 @@ public class Lois {
 
     public String toString() {
         Long var10000 = this.getId();
-        return "Lois(id=" + var10000 + ", name=" + this.getName() + ", description=" + this.getDescription() + ", textJuridiqueList=" + String.valueOf(this.getTextJuridiqueList()) + ", createdAt=" + String.valueOf(this.getCreatedAt()) + ", updatedAt=" + String.valueOf(this.getUpdatedAt()) + ")";
+        return "Lois(id=" + var10000 + ", name=" + this.getName() + ", name_fr=" + this.getNameFr() + ",name_en=" + this.getNameEn() + ",description=" + this.getDescription() + ", textJuridiqueList=" + String.valueOf(this.getTextJuridiqueList()) + ", createdAt=" + String.valueOf(this.getCreatedAt()) + ", updatedAt=" + String.valueOf(this.getUpdatedAt()) + ")";
     }
 
-    public Lois(final Long id, final String name, final String description, final List<TextJuridique> textJuridiqueList, final LocalDateTime createdAt, final LocalDateTime updatedAt) {
+    public Lois(final Long id, final String name, final String name_fr,final String name_en,final String description, final List<TextJuridique> textJuridiqueList, final LocalDateTime createdAt, final LocalDateTime updatedAt) {
         this.id = id;
         this.name = name;
+        this.nameFr = name_fr;
+        this.nameEn = name_en;
         this.description = description;
         this.textJuridiqueList = textJuridiqueList;
         this.createdAt = createdAt;
@@ -227,6 +276,8 @@ public class Lois {
     public static class LoisBuilder {
         private Long id;
         private String name;
+        private String nameFr;
+        private String nameEn;
         private String description;
         private List<TextJuridique> textJuridiqueList;
         private LocalDateTime createdAt;
@@ -242,6 +293,16 @@ public class Lois {
 
         public Lois.LoisBuilder name(final String name) {
             this.name = name;
+            return this;
+        }
+
+        public Lois.LoisBuilder nameFr(final String name) {
+            this.nameFr = name;
+            return this;
+        }
+
+        public Lois.LoisBuilder nameEn(final String name) {
+            this.nameEn = name;
             return this;
         }
 
@@ -266,12 +327,12 @@ public class Lois {
         }
 
         public Lois build() {
-            return new Lois(this.id, this.name, this.description, this.textJuridiqueList, this.createdAt, this.updatedAt);
+            return new Lois(this.id, this.name,this.nameFr,this.nameEn, this.description, this.textJuridiqueList, this.createdAt, this.updatedAt);
         }
 
         public String toString() {
             Long var10000 = this.id;
-            return "Lois.LoisBuilder(id=" + var10000 + ", name=" + this.name + ", description=" + this.description + ", textJuridiqueList=" + String.valueOf(this.textJuridiqueList) + ", createdAt=" + String.valueOf(this.createdAt) + ", updatedAt=" + String.valueOf(this.updatedAt) + ")";
+            return "Lois.LoisBuilder(id=" + var10000 + ", name_fr=" + this.nameFr + ", name_en=" + this.nameEn + ",name=" + this.name + ",description=" + this.description + ", textJuridiqueList=" + String.valueOf(this.textJuridiqueList) + ", createdAt=" + String.valueOf(this.createdAt) + ", updatedAt=" + String.valueOf(this.updatedAt) + ")";
         }
     }
 }

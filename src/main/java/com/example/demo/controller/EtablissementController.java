@@ -118,13 +118,13 @@ public class EtablissementController {
         return "authenticated/etablissement/etablissementsEdit.html";
     }
     @PostMapping({"/update/{id}"})
-    public String updatedEtablissement(@PathVariable Long id,@ModelAttribute  Etablissement updateEtablissement)
+    public RedirectView updatedEtablissement(@PathVariable Long id,@ModelAttribute  Etablissement updateEtablissement)
     {
         Etablissement etablissement = this.etablissementService.findEtablissementById(id);
        // Optional<Multimedia> multimedia=this.multimediaService.findFirstByEtablissement(etablissement);
        Optional<Etablissement> existingEtablissement = this.etablissementService.findById(id);
        Boolean  check= this.etablissementService.updateDataEtablissement(updateEtablissement,id,existingEtablissement/*,multimedia */);
-       return "authenticated/etablissement/etablissementsEdit.html";
+       return new RedirectView("/etablissement/etablissements");
       //  return "redirect:authenticated/etablissement/etablissements";
     }
 }
