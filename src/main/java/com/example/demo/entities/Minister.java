@@ -18,8 +18,23 @@ public class Minister {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "last_name")
     private String lastName;
+
+    @Column(name = "first_name_fr")
+    private String firstNameFr;
+
+    @Column(name = "first_name_en")
+    private String firstNameEn;
+
+    @Column(name = "last_name_fr")
+    private String lastNameFr;
+
+    @Column(name = "last_name_en")
+    private String lastNameEn;
     private LocalDate birthday;
     private String address;
 
@@ -41,16 +56,21 @@ public class Minister {
     // Constructors
     public Minister() {}
 
-    public Minister(String firstName, String lastName, LocalDate birthday, String address, LocalDate startFrom, LocalDate until,final List<Multimedia> multimediaList,Multimedia profilePicture) {
+    public Minister(String firstName, String lastName, LocalDate birthday, String address, LocalDate startFrom, LocalDate until, 
+                    List<Multimedia> multimediaList, Multimedia profilePicture, 
+                    String firstNameFr, String firstNameEn, String lastNameFr, String lastNameEn) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthday = birthday;
         this.address = address;
         this.startFrom = startFrom;
         this.until = until;
-        this.multimediaList=multimediaList;
-        this.profilePicture=profilePicture;
-
+        this.multimediaList = multimediaList;
+        this.profilePicture = profilePicture;
+        this.firstNameFr = firstNameFr;
+        this.firstNameEn = firstNameEn;
+        this.lastNameFr = lastNameFr;
+        this.lastNameEn = lastNameEn;
     }
 
     // Getters and Setters
@@ -78,6 +98,38 @@ public class Minister {
         this.lastName = lastName;
     }
 
+    public String getFirstNameFr() {
+        return firstNameFr;
+    }
+
+    public void setFirstNameFr(String firstNameFr) {
+        this.firstNameFr = firstNameFr;
+    }
+
+    public String getFirstNameEn() {
+        return firstNameEn;
+    }
+
+    public void setFirstNameEn(String firstNameEn) {
+        this.firstNameEn = firstNameEn;
+    }
+
+    public String getLastNameFr() {
+        return lastNameFr;
+    }
+
+    public void setLastNameFr(String lastNameFr) {
+        this.lastNameFr = lastNameFr;
+    }
+
+    public String getLastNameEn() {
+        return lastNameEn;
+    }
+
+    public void setLastNameEn(String lastNameEn) {
+        this.lastNameEn = lastNameEn;
+    }
+    
     public LocalDate getBirthday() {
         return birthday;
     }

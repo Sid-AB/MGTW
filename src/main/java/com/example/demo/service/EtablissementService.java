@@ -40,8 +40,13 @@ public class EtablissementService {
     }
 
     // Méthode pour rechercher par nom arabe
-    public Optional<Etablissement> findEtablissementByNameFr(String name_fr) {
-        return this.etablissementRepository.findEtablissementByNameFr(name_fr);
+    public Optional<Etablissement> findEtablissementByNameFr(String nameFr) {
+        return this.etablissementRepository.findEtablissementByNameFr(nameFr);
+    }
+
+    // Méthode pour rechercher par nom arabe
+    public Optional<Etablissement> findEtablissementByNameEn(String nameEn) {
+        return this.etablissementRepository.findEtablissementByNameEn(nameEn);
     }
 
     public List<Etablissement> findEtablissementsByType(String type) {
@@ -93,6 +98,7 @@ public class EtablissementService {
             Etablissement Etabbliss = existingMinister.get();
             Etabbliss.setName(etablissement.getName());
             Etabbliss.setNameFr(etablissement.getNameFr());
+            Etabbliss.setNameEn(etablissement.getNameEn());
             Etabbliss.setDescription(etablissement.getDescription());
             Etabbliss.setDescriptionFr(etablissement.getDescriptionFr());
             Etabbliss.setDescriptionEn(etablissement.getDescriptionEn());

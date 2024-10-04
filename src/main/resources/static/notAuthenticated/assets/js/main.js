@@ -8,10 +8,11 @@
 
 function changeDirection(language) {
   if (language === 'ar') {
-      console.log('testing'+language)
+      console.log('testing '+language)
       document.documentElement.setAttribute("dir", "rtl");  // Set direction to 'rtl' for Arabic
   } else {
-      document.documentElement.setAttribute("dir", "ltr");  // Set direction to 'ltr' for other languages
+      document.documentElement.setAttribute("dir", "ltr");
+      console.log('testing '+language)  // Set direction to 'ltr' for other languages
   }
 }
 

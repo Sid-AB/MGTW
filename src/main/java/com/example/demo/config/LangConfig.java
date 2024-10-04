@@ -30,7 +30,7 @@ public class LangConfig implements WebMvcConfigurer  {
     @Bean
     public LocaleResolver localeResolver() {
         CookieLocaleResolver localeResolver = new CookieLocaleResolver();
-        localeResolver.setDefaultLocale(new Locale("ar"));
+        localeResolver.setDefaultLocale(Locale.forLanguageTag("ar"));
         return localeResolver;
     }
     @Bean

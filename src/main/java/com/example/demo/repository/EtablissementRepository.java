@@ -15,6 +15,7 @@ public interface EtablissementRepository extends JpaRepository<Etablissement, Lo
 
     Optional<Etablissement> findEtablissementByName(String name);
     Optional<Etablissement> findEtablissementByNameFr(String name_fr);
+    Optional<Etablissement> findEtablissementByNameEn(String name_en);
 
 
     List<Etablissement> findEtablissementsByType(String type);

@@ -118,7 +118,10 @@
 <footer th:replace="notAuthenticated/fragments/footer::footer" class="footer">
 </footer>
 
-<div id="preloader"></div>
+<div id="preloader" class="waitting">
+    <svg th:include="notAuthenticated/fragments/logosvg::logosvg" width="120" height="120" viewBox="0 0 2342 2004" version="1.1" class="inSide">
+    </svg>  
+</div>
 
 <div th:replace="notAuthenticated/fragments/js::js"></div>
 

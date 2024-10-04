@@ -13,6 +13,13 @@ public class ComplexeDTO {
     private String phone;
     private String email;
     private String site;
+    // Ajout des nouveaux champs
+    private String nameFr;
+    private String nameEn;
+    private String descriptionFr;
+    private String descriptionEn;
+    private String adresseFr;  // Nouveau champ
+    private String adresseEn;  // Nouveau champ
 
     public Complexe toComplexe() {
         Complexe complexe = new Complexe();
@@ -23,6 +30,13 @@ public class ComplexeDTO {
         complexe.setPhone(this.getPhone());
         complexe.setEmail(this.getEmail());
         complexe.setSite(this.getSite());
+        // Ajout des nouveaux champs dans la méthode toComplexe()
+        complexe.setNameFr(this.getNameFr());
+        complexe.setNameEn(this.getNameEn());
+        complexe.setDescriptionFr(this.getDescriptionFr());
+        complexe.setDescriptionEn(this.getDescriptionEn());
+        complexe.setAdresseFr(this.getAdresseFr());  // Ajout
+        complexe.setAdresseEn(this.getAdresseEn());  // Ajout
         return complexe;
     }
 
@@ -30,7 +44,11 @@ public class ComplexeDTO {
         return new com.example.demo.dto.ComplexeDTO.ComplexeDTOBuilder();
     }
 
-    public ComplexeDTO(final String name, final String description, final String type, final List<Long> selectedAgrument, final String adresse, final String phone, final String email, final String site) {
+    public ComplexeDTO(final String name, final String description, final String type,
+            final List<Long> selectedAgrument, final String adresse, final String phone, final String email,
+            final String site,
+            final String nameFr, final String nameEn, final String descriptionFr, final String descriptionEn,
+            final String adresseFr, final String adresseEn) { // Modifié
         this.name = name;
         this.description = description;
         this.type = type;
@@ -39,6 +57,12 @@ public class ComplexeDTO {
         this.phone = phone;
         this.email = email;
         this.site = site;
+        this.nameFr = nameFr;
+        this.nameEn = nameEn;
+        this.descriptionFr = descriptionFr;
+        this.descriptionEn = descriptionEn;
+        this.adresseFr = adresseFr; // Ajout
+        this.adresseEn = adresseEn; // Ajout
     }
 
     public ComplexeDTO() {
@@ -51,6 +75,56 @@ public class ComplexeDTO {
     public String getDescription() {
         return this.description;
     }
+
+     // Getters et setters pour les nouveaux champs
+     public String getNameFr() {
+        return nameFr;
+    }
+
+    public void setNameFr(String nameFr) {
+        this.nameFr = nameFr;
+    }
+
+    public String getNameEn() {
+        return nameEn;
+    }
+
+    public String getAdresseFr() {  // Ajout
+        return adresseFr;
+    }
+
+    public void setAdresseFr(String adresseFr) {  // Ajout
+        this.adresseFr = adresseFr;
+    }
+
+    public String getAdresseEn() {  // Ajout
+        return adresseEn;
+    }
+
+    public void setAdresseEn(String adresseEn) {  // Ajout
+        this.adresseEn = adresseEn;
+    }
+
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
+    }
+
+    public String getDescriptionFr() {
+        return descriptionFr;
+    }
+
+    public void setDescriptionFr(String descriptionFr) {
+        this.descriptionFr = descriptionFr;
+    }
+
+    public String getDescriptionEn() {
+        return descriptionEn;
+    }
+
+    public void setDescriptionEn(String descriptionEn) {
+        this.descriptionEn = descriptionEn;
+    }
+
 
     public String getType() {
         return this.type;
@@ -114,7 +188,7 @@ public class ComplexeDTO {
         } else if (!(o instanceof ComplexeDTO)) {
             return false;
         } else {
-            ComplexeDTO other = (ComplexeDTO)o;
+            ComplexeDTO other = (ComplexeDTO) o;
             if (!other.canEqual(this)) {
                 return false;
             } else {
@@ -132,6 +206,26 @@ public class ComplexeDTO {
                     return false;
                 }
 
+                label108: {
+                    // Comparaison pour nameFr
+                    Object this$nameFr = this.getNameFr();
+                    Object other$nameFr = other.getNameFr();
+                    if (this$nameFr == null) {
+                        if (other$nameFr != null) return false;
+                    } else if (!this$nameFr.equals(other$nameFr)) return false;
+                    break label108; // Ajout du break pour sortir du label
+                }
+                
+                label109: {
+                    // Comparaison pour nameEn
+                    Object this$nameEn = this.getNameEn();
+                    Object other$nameEn = other.getNameEn();
+                    if (this$nameEn == null) {
+                        if (other$nameEn != null) return false;
+                    } else if (!this$nameEn.equals(other$nameEn)) return false;
+                    break label109; // Ajout du break pour sortir du label
+                }
+
                 Object this$description = this.getDescription();
                 Object other$description = other.getDescription();
                 if (this$description == null) {
@@ -141,6 +235,24 @@ public class ComplexeDTO {
                 } else if (!this$description.equals(other$description)) {
                     return false;
                 }
+
+                // Comparaison pour descriptionFr
+                Object this$descriptionFr = this.getDescriptionFr();
+                Object other$descriptionFr = other.getDescriptionFr();
+                if (this$descriptionFr == null) {
+                    if (other$descriptionFr != null)
+                        return false;
+                } else if (!this$descriptionFr.equals(other$descriptionFr))
+                    return false;
+
+                // Comparaison pour descriptionEn
+                Object this$descriptionEn = this.getDescriptionEn();
+                Object other$descriptionEn = other.getDescriptionEn();
+                if (this$descriptionEn == null) {
+                    if (other$descriptionEn != null)
+                        return false;
+                } else if (!this$descriptionEn.equals(other$descriptionEn))
+                    return false;
 
                 Object this$type = this.getType();
                 Object other$type = other.getType();
@@ -178,6 +290,26 @@ public class ComplexeDTO {
                     }
 
                     return false;
+                }
+
+                label80: {
+                    // Comparaison pour adresseFr
+                    Object this$adresseFr = this.getAdresseFr();
+                    Object other$adresseFr = other.getAdresseFr();
+                    if (this$adresseFr == null) {
+                        if (other$adresseFr != null) return false;
+                    } else if (!this$adresseFr.equals(other$adresseFr)) return false;
+                    break label80; // Ajout du break pour sortir du label
+                }
+                
+                label81: {
+                    // Comparaison pour adresseEn
+                    Object this$adresseEn = this.getAdresseEn();
+                    Object other$adresseEn = other.getAdresseEn();
+                    if (this$adresseEn == null) {
+                        if (other$adresseEn != null) return false;
+                    } else if (!this$adresseEn.equals(other$adresseEn)) return false;
+                    break label81; // Ajout du break pour sortir du label
                 }
 
                 label72: {
@@ -227,15 +359,36 @@ public class ComplexeDTO {
         boolean PRIME = true;
         int result = 1;
         Object $name = this.getName();
-         result = result * 59 + ($name == null ? 43 : $name.hashCode());
+        result = result * 59 + ($name == null ? 43 : $name.hashCode());
+        Object $nameFr = this.getNameFr(); // Ajout de nameFr
+        result = result * 59 + ($nameFr == null ? 43 : $nameFr.hashCode()); // Calcul du hashCode pour nameFr
+
+        Object $nameEn = this.getNameEn(); // Ajout de nameEn
+        result = result * 59 + ($nameEn == null ? 43 : $nameEn.hashCode()); // Calcul du hashCode pour nameEn
+
         Object $description = this.getDescription();
         result = result * 59 + ($description == null ? 43 : $description.hashCode());
+
+        Object $descriptionFr = this.getDescriptionFr(); // Ajout de descriptionFr
+        result = result * 59 + ($descriptionFr == null ? 43 : $descriptionFr.hashCode()); // Calcul du hashCode pour
+                                                                                          // descriptionFr
+
+        Object $descriptionEn = this.getDescriptionEn(); // Ajout de descriptionEn
+        result = result * 59 + ($descriptionEn == null ? 43 : $descriptionEn.hashCode()); // Calcul du hashCode pour
+                                                                                          // descriptionEn
+
         Object $type = this.getType();
         result = result * 59 + ($type == null ? 43 : $type.hashCode());
         Object $selectedAgrument = this.getSelectedAgrument();
         result = result * 59 + ($selectedAgrument == null ? 43 : $selectedAgrument.hashCode());
         Object $adresse = this.getAdresse();
         result = result * 59 + ($adresse == null ? 43 : $adresse.hashCode());
+        Object $adresseFr = this.getAdresseFr(); // Ajout de adresseFr
+        result = result * 59 + ($adresseFr == null ? 43 : $adresseFr.hashCode()); // Calcul du hashCode pour adresseFr
+
+        Object $adresseEn = this.getAdresseEn(); // Ajout de adresseEn
+        result = result * 59 + ($adresseEn == null ? 43 : $adresseEn.hashCode()); // Calcul du hashCode pour adresseEn
+
         Object $phone = this.getPhone();
         result = result * 59 + ($phone == null ? 43 : $phone.hashCode());
         Object $email = this.getEmail();
@@ -247,8 +400,23 @@ public class ComplexeDTO {
 
     public String toString() {
         String var10000 = this.getName();
-        return "ComplexeDTO(name=" + var10000 + ", description=" + this.getDescription() + ", type=" + this.getType() + ", selectedAgrument=" + String.valueOf(this.getSelectedAgrument()) + ", adresse=" + this.getAdresse() + ", phone=" + this.getPhone() + ", email=" + this.getEmail() + ", site=" + this.getSite() + ")";
+        return "ComplexeDTO(name=" + var10000 + 
+               ", nameFr=" + this.getNameFr() + // Ajout de nameFr
+               ", nameEn=" + this.getNameEn() + // Ajout de nameEn
+               ", description=" + this.getDescription() + 
+               ", descriptionFr=" + this.getDescriptionFr() + // Ajout de descriptionFr
+               ", descriptionEn=" + this.getDescriptionEn() + // Ajout de descriptionEn
+               ", type=" + this.getType() + 
+               ", selectedAgrument=" + String.valueOf(this.getSelectedAgrument()) + 
+               ", adresse=" + this.getAdresse() + 
+               ", adresseFr=" + this.getAdresseFr() + // Ajout de adresseFr
+               ", adresseEn=" + this.getAdresseEn() +  // Ajout de adresseEn
+               ", phone=" + this.getPhone() + 
+               ", email=" + this.getEmail() + 
+               ", site=" + this.getSite() + 
+               ")";
     }
+    
 
     public static class ComplexeDTOBuilder {
     }

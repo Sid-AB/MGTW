@@ -39,7 +39,7 @@ public class DirectionController {
     // récupérer un directeur par son id
     @GetMapping({"/{id}"})
     public ResponseEntity<DirectionDTO> getdirecteurById(@PathVariable Long id) {
-        DirectionDTO directionDTO = directionService.getdirecteurById(id);
+        DirectionDTO directionDTO = this.directionService.getDirecteurById(id);
         return ResponseEntity.ok(directionDTO);
     }
   

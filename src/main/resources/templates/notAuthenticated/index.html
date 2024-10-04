@@ -97,14 +97,40 @@
                                 th:src="@{${'/etablissement/lugo/'+etablissementSoustutelle.getId()}}"
                                 width="50px" height="50px">
                         </div>
-                        <h4><a
+                        <h4 th:switch="${#locale.language}">
+                            <a  th:case="${'ar'}"
+                                th:if="#{locale.language == 'ar'}"
                                 th:href="${'/etablissement/'+etablissementSoustutelle.getId()}"
-                                th:text="${etablissementSoustutelle.getName()}"
-                        > </a></h4>
-                        <p    th:href="${'/etablissement/'+etablissementSoustutelle.getId()}"
-                           th:text="${#locale.language == 'ar' ? etablissementSoustutelle.getDescription().toString().substring(0,(etablissementSoustutelle.getDescription().length() &lt; 100 ? etablissementSoustutelle.getDescription().length() : 100 ))+'...' :
-                           
-                           etablissementSoustutelle.getDescriptionFr().toString().substring(0,(etablissementSoustutelle.getDescriptionFr().length() &lt; 100 ? etablissementSoustutelle.getDescriptionFr().length() : 100 ))+'...'}"></p>
+                                th:text="${etablissementSoustutelle.getName()}">
+                            </a>
+                            <a  th:case="${'fr'}"
+                                th:if="#{locale.language == 'fr'}"
+                                th:href="${'/etablissement/'+etablissementSoustutelle.getId()}"
+                                th:text="${etablissementSoustutelle.getNameFr()}">
+                            </a>
+                            <a  th:case="${'en'}"
+                                th:if="#{locale.language == 'en'}"
+                                th:href="${'/etablissement/'+etablissementSoustutelle.getId()}"
+                                th:text="${etablissementSoustutelle.getNameEn()}">
+                            </a>
+                    </h4>
+                       <div th:switch="${#locale.language}">
+                        <p th:case="${'ar'}"
+                        th:if="#{locale.language == 'ar'}"
+                           th:href="${'/etablissement/'+etablissementSoustutelle.getId()}"
+                           th:text="${etablissementSoustutelle.getDescription().toString().substring(0,(etablissementSoustutelle.getDescription().length() &lt; 100 ? etablissementSoustutelle.getDescription().length() : 100 ))+'...' }">
+                        </p>
+                        <p th:case="${'fr'}"
+                        th:if="#{locale.language == 'fr'}"
+                           th:href="${'/etablissement/'+etablissementSoustutelle.getId()}"
+                           th:text="${etablissementSoustutelle.getDescriptionFr().toString().substring(0,(etablissementSoustutelle.getDescriptionFr().length() &lt; 100 ? etablissementSoustutelle.getDescriptionFr().length() : 100 ))+'...' }">
+                        </p>
+                        <p th:case="${'en'}"
+                        th:if="#{locale.language == 'en'}"
+                           th:href="${'/etablissement/'+etablissementSoustutelle.getId()}"
+                           th:text="${etablissementSoustutelle.getDescriptionEn().toString().substring(0,(etablissementSoustutelle.getDescriptionEn().length() &lt; 100 ? etablissementSoustutelle.getDescriptionEn().length() : 100 ))+'...' }">
+                        </p>
+                        </div>
                     </div>
                 </div>
             </div>      
@@ -207,7 +233,10 @@
 <footer th:replace="notAuthenticated/fragments/footer::footer" class="footer">
 </footer>
 
-<div id="preloader"></div>
+<div id="preloader" class="waitting">
+    <svg th:include="notAuthenticated/fragments/logosvg::logosvg" width="120" height="120" viewBox="0 0 2342 2004" version="1.1" class="inSide">
+    </svg>  
+</div>
 
 <div th:replace="notAuthenticated/fragments/js::js"></div>
 <script>
