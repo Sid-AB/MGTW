@@ -29,7 +29,10 @@
     <section id="breadcrumbs" class="breadcrumbs">
         <div th:if="${!complexes.isEmpty() }" class="container">
 
-            <h2 th:text="${complexes.get(0).getName()}"></h2>
+           
+            <!-- <h2 th:text="${complexes.get(0).getName()}"></h2> -->
+            <h2 th:text="${#locale.language == 'fr' ? complexes.get(0).getNameFr() : (#locale.language == 'en' ? complexes.get(0).getNameEn() : complexes.get(0).getName())}"></h2>
+
 
         </div>
     </section><!-- End Breadcrumbs -->
@@ -50,9 +53,9 @@
                                 <li th:if="tvListDistinctByCategorieChaines"
                                     th:each="tvListDistinctByCategorieChaine : ${tvListDistinctByCategorieChaines}"
                                     th:attr="data-filter='.' + ${tvListDistinctByCategorieChaine.getName()}"
-                                    th:text="${tvListDistinctByCategorieChaine.getName()}">
+                                    th:text="${#locale.language == 'fr' ? tvListDistinctByCategorieChaine.getNameFr() : (#locale.language == 'en' ? tvListDistinctByCategorieChaine.getNameEn() : tvListDistinctByCategorieChaine.getName())}">
                                 </li>
-                            </ul>
+                                </ul>
 
                             <div  th:if="${!tvs.isEmpty()}" class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
 
@@ -88,8 +91,13 @@
 
                 <div th:if="${!complexes.isEmpty()}" class="col-lg-4">
                     <div class="portfolio-description">
-                        <h2 th:text="${complexes.get(0).getName()}"></h2>
-                        <p th:text="${complexes.get(0).getDescription()}"></p>
+                        <!-- Affichage du nom selon la langue -->
+                        <h2 th:text="${#locale.language == 'fr' ? complexes.get(0).getNameFr() : (#locale.language == 'en' ? complexes.get(0).getNameEn() : complexes.get(0).getName())}">
+                        </h2>
+                    
+                        <!-- Affichage de la description selon la langue -->
+                        <p th:text="${#locale.language == 'fr' ? complexes.get(0).getDescriptionFr() : (#locale.language == 'en' ? complexes.get(0).getDescriptionEn() : complexes.get(0).getDescription())}">
+                        </p>
                     </div>
                     <div class="portfolio-info">
                         <h3 th:text="#{carast}">الخصائص </h3>
