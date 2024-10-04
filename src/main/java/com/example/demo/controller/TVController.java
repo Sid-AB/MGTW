@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity.BodyBuilder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -144,5 +145,25 @@ public class TVController {
             Resource file = this.filesStorageService.load("staticImage".concat("/profile-img.jpg"));
             return ((BodyBuilder)ResponseEntity.ok().header("Content-Disposition", new String[]{"attachment; filename=\"" + file.getFilename() + "\""})).body(file);
         }
+    }
+
+    @GetMapping({"/TVEdit/{id}"})
+    public String FindTVById(Model model, @PathVariable Long id)
+    {
+        TV TV=this.tvService.findTVById(id);
+        model.addAttribute("tv",TV);
+        return "authenticated/tv/TVEdit";
+    }
+
+
+    @PostMapping({"/update/{id}"})
+    public RedirectView  updatedTV(@PathVariable Long id,@ModelAttribute  TV updateTV)
+    {
+        TV tv = this.tvService.findTVById(id);
+       // Optional<Multimedia> multimedia=this.multimediaService.findFirstByEtablissement(etablissement);
+       Optional<TV> existingTV = this.tvService.findById(id);
+       Boolean  check= this.tvService.updateDataTV(updateTV,id,existingTV/*,multimedia */);
+       //return "authenticated/etablissement/etablissementsEdit.html";
+       return new RedirectView("/tv/tvs");
     }
 }

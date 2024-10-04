@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity.BodyBuilder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -124,13 +125,13 @@ public class RadioController {
 
 
     @PostMapping({"/update/{id}"})
-    public String updatedRadio(@PathVariable Long id,@ModelAttribute  Radio updateRadio)
+    public RedirectView updatedRadio(@PathVariable Long id,@ModelAttribute  Radio updateRadio)
     {
         Radio presse = this.radioService.findRadioById(id);
        // Optional<Multimedia> multimedia=this.multimediaService.findFirstByEtablissement(etablissement);
        Optional<Radio> existingRadio = this.radioService.findById(id);
        Boolean  check= this.radioService.updateDataRadio(updateRadio,id,existingRadio/*,multimedia */);
        //return "authenticated/etablissement/etablissementsEdit.html";
-        return "authenticated/presse/presses";
+       return new RedirectView("/radio/radios");
     }
 }

@@ -18,6 +18,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
@@ -43,6 +44,9 @@ public class TVService {
     public TVService() {
     }
 
+    public Optional<TV> findById(Long id) {
+        return this.tvRepository.findById(id);
+    }
     public TV findTVById(Long id) {
         return this.tvRepository.findTVById(id);
     }
@@ -146,6 +150,31 @@ public class TVService {
         return tvs;
     }
 
-   
+    public Boolean updateDataTV(TV TV, Long userId,Optional<TV> existingTV/*, Optional<Multimedia> multimedias */) {
+        if (existingTV.isPresent()) {
+            TV tv = existingTV.get();
+            tv.setName(TV.getName());
+            tv.setNameFr(TV.getNameFr());
+            tv.setDescription(TV.getDescription());
+            tv.setDescriptionFr(TV.getDescriptionFr());
+            tv.setDescriptionEn(TV.getDescriptionEn());
+            this.tvRepository.save(tv);
+      /*  if (multimedias.isPresent()) {
+            List<Multimedia> savedMultimedias = new ArrayList();
+            multimedias.ifPresent((multimedia) -> {
+                multimedia.settv(existingTV);
+            });
+            multimedias.ifPresent(savedMultimedias::addAll);
+            savedMultimedias.ifPresent(existingTV::setMultimediaList);
+            this.multimediaRepository.saveAll(savedMultimedias);
+        } */
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+      //  return existingTV;
+    }
     
 }

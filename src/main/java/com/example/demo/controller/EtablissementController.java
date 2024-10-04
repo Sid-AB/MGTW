@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -77,6 +78,25 @@ public class EtablissementController {
             Resource file = this.filesStorageService.load("staticImage".concat("/profile-img.jpg"));
             return ((BodyBuilder)ResponseEntity.ok().header("Content-Disposition", new String[]{"attachment; filename=\"" + file.getFilename() + "\""})).body(file);
         }
+    }
+
+    @GetMapping({"/{id}"})
+    public String findTVById(Model model, @PathVariable Long id) {
+        Etablissement etablissement = this.etablissementService.findEtablissementById(id);
+        List etablissements;
+        if (etablissement.getType().toString().equals("soustutelle")) {
+            etablissements = this.etablissementService.findEtablissementsByType("soustutelle");
+        } else {
+            etablissements = this.etablissementService.findEtablissementsByType("reglementationsectorielle");
+        }
+
+        model.addAttribute("etablissement", etablissement);
+        model.addAttribute("etablissements", etablissements);
+        List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
+        model.addAttribute("complexesForNavBar", complexesForNavBar);
+        List<Lois> loisForNavBar = this.loisService.findAll();
+        model.addAttribute("loisForNavBar", loisForNavBar);
+        return "notAuthenticated/etablissement/etablissementDetails";
     }
 
     @GetMapping({"/EditEtablissement/{id}"})

@@ -23,9 +23,28 @@
             </ol>
           
             <div class="d-flex justify-content-start">
-                <a th:href="${etablissement.getSite()}" target="_blank"><img th:src="@{${'/etablissement/lugo/'+etablissement.getId()}}" width="50px" height="30px" class="img-fluid mx-3"
-                                                             alt=""></a>
-                <h2 th:text="${etablissement.getName()}"></h2></div>
+                <a th:href="${etablissement.getSite()}" target="_blank">
+                  <img th:src="@{${'/etablissement/lugo/'+etablissement.getId()}}" width="50px" height="30px" class="img-fluid mx-3"
+                                                             alt="">
+                </a>
+                <h2 th:switch="${#locale.language}">
+                    <span th:case="${'ar'}"
+                    th:if="#{locale.language == 'ar'}"
+                    th:text="${etablissement.getName()}">
+
+                    </span>
+                    <span th:case="${'fr'}"
+                    th:if="#{locale.language == 'fr'}"
+                    th:text="${etablissement.getNameFr()}">
+
+                    </span>
+                    <span th:case="${'en'}"
+                    th:if="#{locale.language == 'en'}"
+                    th:text="${etablissement.getNameEn()}">
+
+                    </span>
+                </h2>
+               </div>
 
 
         </div>
@@ -38,8 +57,37 @@
                 <div class="col-lg-6">
                     <div>
                         <div class="portfolio-description">
-                            <h2 th:text="${etablissement.getName()}"></h2></div>
-                        <p th:text="${#locale.language == 'ar' ?etablissement.getDescription() : etablissement.getDescriptionFr()}"></p>
+                            <h2 th:switch="${#locale.language}">
+                                <span th:case="${'ar'}"
+                                th:if="#{locale.language == 'ar'}"
+                                th:text="${etablissement.getName()}">
+
+                                </span>
+                                <span th:case="${'fr'}"
+                                th:if="#{locale.language == 'fr'}"
+                                th:text="${etablissement.getNameFr()}">
+
+                                </span>
+                                <span th:case="${'en'}"
+                                th:if="#{locale.language == 'en'}"
+                                th:text="${etablissement.getNameEn()}">
+
+                                </span>
+                            </h2></div>
+                            <div th:switch="${#locale.language}">
+                                <p th:case="${'ar'}"
+                                th:if="#{locale.language == 'ar'}"
+                                   th:text="${etablissement.getDescription().toString().substring(0,(etablissement.getDescription().length() &lt; 100 ? etablissement.getDescription().length() : 100 ))+'...' }">
+                                </p>
+                                <p th:case="${'fr'}"
+                                th:if="#{locale.language == 'fr'}"
+                                   th:text="${etablissement.getDescriptionFr().toString().substring(0,(etablissement.getDescriptionFr().length() &lt; 100 ? etablissement.getDescriptionFr().length() : 100 ))+'...' }">
+                                </p>
+                                <p th:case="${'en'}"
+                                th:if="#{locale.language == 'en'}"
+                                   th:text="${etablissement.getDescriptionEn().toString().substring(0,(etablissement.getDescriptionEn().length() &lt; 100 ? etablissement.getDescriptionEn().length() : 100 ))+'...' }">
+                                </p>
+                                </div>
                     </div>
                     <div class="portfolio-info">
                        <h3 th:text="#{carast}">الخصائص  </h3>  
