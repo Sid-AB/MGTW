@@ -102,15 +102,25 @@
                     <div class="portfolio-info">
                         <h3 th:text="#{carast}">الخصائص </h3>
                         <ul>
-                            <li><strong th:text="#{address} +' : '+ ${  complexes.get(0).getAdresse()}"> </strong></li>
-                            <li><strong th:text="#{telep}">الهاتف :</strong><strong style="direction: ltr;" th:text="${complexes.get(0).getPhone()}"> </strong></li>
-                            <li><strong th:text="#{email}">البريد الالكتروتي :</strong><strong style="direction: ltr;"th:text=" ${  complexes.get(0).getEmail()}"> </strong>
+                            <li>
+                                <strong th:text="#{address} + ' : '"></strong>&nbsp;
+                                <span th:text="${#locale.language == 'fr' ? complexes.get(0).getAdresseFr() : (#locale.language == 'en' ? complexes.get(0).getAdresseEn() : complexes.get(0).getAdresse())}"></span>
                             </li>
-                            <li><strong th:text="#{citeweb}">الموقع الالكتروتي :</strong><a style="direction: ltr;" th:href="${complexes.get(0).getSite()}" th:text=" ${  complexes.get(0).getSite()}"> </a>
+                            <li>
+                                <strong th:text="#{telep} + ' : '">الهاتف :</strong>&nbsp;
+                                <strong style="direction: ltr;" th:text="${complexes.get(0).getPhone()}"></strong>
                             </li>
-
-
+                            <li>
+                                <strong th:text="#{email} + ' : '">البريد الإلكتروني :</strong>&nbsp;
+                                <strong style="direction: ltr;" th:text="${complexes.get(0).getEmail()}"></strong>
+                            </li>
+                            <li>
+                                <strong th:text="#{citeweb} + ' : '">الموقع الإلكتروني :</strong>&nbsp;
+                                <a style="direction: ltr;" th:href="${complexes.get(0).getSite()}" th:text="${complexes.get(0).getSite()}"></a>
+                            </li>
                         </ul>
+                        
+                        
 
                     </div>
 
