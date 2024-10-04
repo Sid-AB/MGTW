@@ -39,20 +39,9 @@ public class EtablissementService {
         return this.etablissementRepository.findEtablissementByName(name);
     }
 
-<<<<<<< HEAD
     // Méthode pour rechercher par nom arabe
     public Optional<Etablissement> findEtablissementByNameFr(String name_fr) {
         return this.etablissementRepository.findEtablissementByNameFr(name_fr);
-=======
-    // Méthode pour rechercher par nom français
-    public Optional<Etablissement> findEtablissementByNameFr(String nameFr) {
-        return this.etablissementRepository.findEtablissementByNameFr(nameFr);
-    }
-
-    // Méthode pour rechercher par nom en anglais
-    public Optional<Etablissement> findEtablissementByNameEn(String nameEn) {
-        return this.etablissementRepository.findEtablissementByNameEn(nameEn);
->>>>>>> cb3f5d367d498769acf935d94d172e80f9cfce83
     }
 
     public List<Etablissement> findEtablissementsByType(String type) {

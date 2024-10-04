@@ -91,12 +91,12 @@
                                 th:text="${etablissementSoustutelle.getName()}"
                         > </a></h4>
                         <p    th:href="${'/etablissement/'+etablissementSoustutelle.getId()}"
-                           th:text="${#locale.language == 'ar'etablissementSoustutelle.getDescription().toString().substring(0,(etablissementSoustutelle.getDescription().length() &lt; 100 ? etablissementSoustutelle.getDescription().length() : 100 ))+'...'} :
+                           th:text="${#locale.language == 'ar' ? etablissementSoustutelle.getDescription().toString().substring(0,(etablissementSoustutelle.getDescription().length() &lt; 100 ? etablissementSoustutelle.getDescription().length() : 100 ))+'...' :
                            
-                           etablissementSoustutelle.getDescriptionFr().toString().substring(0,(etablissementSoustutelle.getDescription()Fr.length() &lt; 100 ? etablissementSoustutelle.getDescription()Fr.length() : 100 ))+'...'"></p>
+                           etablissementSoustutelle.getDescriptionFr().toString().substring(0,(etablissementSoustutelle.getDescriptionFr().length() &lt; 100 ? etablissementSoustutelle.getDescriptionFr().length() : 100 ))+'...'}"></p>
                     </div>
                 </div>
-            </div>
+            </div>      
         </div>
     </section><!-- End Services Section -->
 

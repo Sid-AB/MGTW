@@ -105,7 +105,6 @@ public class EtablissementController {
        Optional<Etablissement> existingEtablissement = this.etablissementService.findById(id);
        Boolean  check= this.etablissementService.updateDataEtablissement(updateEtablissement,id,existingEtablissement/*,multimedia */);
        return "authenticated/etablissement/etablissementsEdit.html";
-       
       //  return "redirect:authenticated/etablissement/etablissements";
     }
 }

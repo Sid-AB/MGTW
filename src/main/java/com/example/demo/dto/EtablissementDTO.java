@@ -8,16 +8,10 @@ import java.util.List;
 public class EtablissementDTO {
     private String name;
     private String description;
-<<<<<<< HEAD
-    private String nameFr;  // Ajout de name_fr
-    private String descriptionFr;  // Ajout de description_fr
-    private String descriptionEn;  // Ajout de description_fr
-=======
     private String nameFr;  // Ajout de nameFr
     private String nameEn;  // Ajout de nameFr
     private String descriptionFr;  // Ajout de descriptionFr
     private String descriptionEn;  // Ajout de descriptionFr
->>>>>>> cb3f5d367d498769acf935d94d172e80f9cfce83
     private String type;
     private List<MultipartFile> etablissementFiles;
     private String adresse;
@@ -31,16 +25,10 @@ public class EtablissementDTO {
         Etablissement etablissement = new Etablissement();
         etablissement.setName(this.getName()); // Assigner name arabe
         etablissement.setDescription(this.getDescription()); // Assigner description arabe
-<<<<<<< HEAD
-        etablissement.setNameFr(this.getNameFr());  // Assigner name_fr et en
-        etablissement.setDescriptionFr(this.getDescriptionFr());  // Assigner description_fr
-        etablissement.setDescriptionEn(this.getDescriptionEn());  // Assigner description_en
-=======
         etablissement.setNameFr(this.getNameFr());  // Assigner nameFr
         etablissement.setDescriptionFr(this.getDescriptionFr());  // Assigner descriptionFr
         etablissement.setDescriptionEn(this.getDescriptionEn());  // Assigner descriptionEn
         etablissement.setNameEn(this.getNameEn());  // Assigner nameEn
->>>>>>> cb3f5d367d498769acf935d94d172e80f9cfce83
         etablissement.setType(this.getType());
         etablissement.setAdresse(this.getAdresse());
         etablissement.setPhone(this.getPhone());
@@ -56,11 +44,7 @@ public class EtablissementDTO {
         return new com.example.demo.dto.EtablissementDTO.EtablissementDTOBuilder();
     }
 
-<<<<<<< HEAD
-    public EtablissementDTO(final String name, final String description, final String type, final List<MultipartFile> etablissementFiles, final String adresse, final String phone, final String fax, final String email, final String site, final String localisation, final String name_fr, final String description_fr,final String description_en) {
-=======
     public EtablissementDTO(final String name, final String nameFr, final String nameEn, final String descriptionFr, final String descriptionEn, final String description, final String type, final List<MultipartFile> etablissementFiles, final String adresse, final String phone, final String fax, final String email, final String site, final String localisation) {
->>>>>>> cb3f5d367d498769acf935d94d172e80f9cfce83
         this.name = name;
         this.description = description;
         this.type = type;
@@ -71,16 +55,10 @@ public class EtablissementDTO {
         this.email = email;
         this.site = site;
         this.localisation = localisation;
-<<<<<<< HEAD
-        this.nameFr = name_fr;  // Initialiser name_fr
-        this.descriptionFr = description_fr;  // Initialiser description_fr
-        this.descriptionEn = description_en;  // Initialiser description_fr
-=======
         this.nameFr = nameFr;  // Initialiser nameFr
         this.descriptionFr = descriptionFr;  // Initialiser descriptionFr
         this.descriptionEn = descriptionEn;  // Initialiser descriptionEn
         this.nameEn = nameEn;  // Initialiser nameEn
->>>>>>> cb3f5d367d498769acf935d94d172e80f9cfce83
     }
     
 
@@ -95,21 +73,6 @@ public class EtablissementDTO {
         return this.description;
     }
 
-<<<<<<< HEAD
-    public String getNameFr() {  // Getter pour name_fr
-        return this.nameFr;
-    }
-
-    public String getDescriptionFr() {  // Getter pour description_fr
-        return this.descriptionFr;
-    }
-
-    public String getNameEn() {  // Getter pour name_en
-        return this.nameFr;
-    }
-
-    public String getDescriptionEn() {  // Getter pour description_en
-=======
     // Ajouter le getter pour nameEn
     public String getNameEn() { // Getter pour nameEn
         return this.nameEn;
@@ -125,7 +88,6 @@ public class EtablissementDTO {
 
 
     public String getDescriptionEn() {  // Getter pour descriptionEn
->>>>>>> cb3f5d367d498769acf935d94d172e80f9cfce83
         return this.descriptionEn;
     }
 
@@ -169,22 +131,6 @@ public class EtablissementDTO {
         this.description = description;
     }
 
-<<<<<<< HEAD
-    public void setNameFr(final String name_fr) {  // Setter pour name_fr et en
-        this.nameFr = name_fr;
-    }
-
-    public void setDescriptionFr(final String description_fr) {  // Setter pour description_fr
-        this.descriptionFr = description_fr;
-    }
-
-    public void setName_en(final String name_fr) {  // Setter pour name_fr en en
-        this.nameFr = name_fr;
-    }
-
-    public void setDescriptionEn(final String description_fr) {  // Setter pour description_en
-        this.descriptionEn = description_fr;
-=======
     public void setNameFr(final String nameFr) {  // Setter pour nameFr et en
         this.nameFr = nameFr;
     }
@@ -200,7 +146,6 @@ public class EtablissementDTO {
 
     public void setDescriptionEn(final String descriptionEn) {  // Setter pour descriptionEn
         this.descriptionEn = descriptionEn;
->>>>>>> cb3f5d367d498769acf935d94d172e80f9cfce83
     }
 
     public void setType(final String type) {
@@ -256,19 +201,11 @@ public boolean equals(final Object o) {
                 return false;
             }
 
-<<<<<<< HEAD
-            // Vérification pour 'name_fr et en'
-            Object this$name_fr = this.getNameFr();
-            Object other$name_fr = other.getNameFr();
-            if (this$name_fr == null) {
-                if (other$name_fr != null) {
-=======
             // Vérification pour 'nameFr et en'
             Object this$nameFr = this.getNameFr();
             Object other$nameFr = other.getNameFr();
             if (this$nameFr == null) {
                 if (other$nameFr != null) {
->>>>>>> cb3f5d367d498769acf935d94d172e80f9cfce83
                     return false;
                 }
             } else if (!this$nameFr.equals(other$nameFr)) {
@@ -296,38 +233,22 @@ public boolean equals(final Object o) {
                 return false;
             }
 
-<<<<<<< HEAD
-            // Vérification pour 'description_fr'
-            Object this$description_fr = this.getDescriptionFr();
-            Object other$description_fr = other.getDescriptionFr();
-            if (this$description_fr == null) {
-                if (other$description_fr != null) {
-=======
             // Vérification pour 'descriptionFr'
             Object this$descriptionFr = this.getDescriptionFr();
             Object other$descriptionFr = other.getDescriptionFr();
             if (this$descriptionFr == null) {
                 if (other$descriptionFr != null) {
->>>>>>> cb3f5d367d498769acf935d94d172e80f9cfce83
                     return false;
                 }
             } else if (!this$descriptionFr.equals(other$descriptionFr)) {
                 return false;
             }
 
-<<<<<<< HEAD
-            // Vérification pour 'description_en'
-            Object this$description_en = this.getDescriptionEn();
-            Object other$description_en = other.getDescriptionEn();
-            if (this$description_en == null) {
-                if (other$description_en != null) {
-=======
             // Vérification pour 'descriptionEn'
             Object this$descriptionEn = this.getDescriptionEn();
             Object other$descriptionEn = other.getDescriptionEn();
             if (this$descriptionEn == null) {
                 if (other$descriptionEn != null) {
->>>>>>> cb3f5d367d498769acf935d94d172e80f9cfce83
                     return false;
                 }
             } else if (!this$descriptionEn.equals(other$descriptionEn)) {
@@ -450,34 +371,21 @@ public boolean equals(final Object o) {
         Object $name = this.getName();
         result = result * 59 + ($name == null ? 43 : $name.hashCode());
         
-<<<<<<< HEAD
-        Object $name_fr = this.getNameFr();
-        result = result * 59 + ($name_fr == null ? 43 : $name_fr.hashCode());
-=======
         Object $nameFr = this.getNameFr();
         result = result * 59 + ($nameFr == null ? 43 : $nameFr.hashCode());
 
         // Ajouter nameEn
         Object $nameEn = this.getNameEn();
         result = result * 59 + ($nameEn == null ? 43 : $nameEn.hashCode());
->>>>>>> cb3f5d367d498769acf935d94d172e80f9cfce83
         
         Object $description = this.getDescription();
         result = result * 59 + ($description == null ? 43 : $description.hashCode());
         
-<<<<<<< HEAD
-        Object $description_fr = this.getDescriptionFr();
-        result = result * 59 + ($description_fr == null ? 43 : $description_fr.hashCode());
-
-        Object $description_en = this.getDescriptionEn();
-        result = result * 59 + ($description_en == null ? 43 : $description_en.hashCode());
-=======
         Object $descriptionFr = this.getDescriptionFr();
         result = result * 59 + ($descriptionFr == null ? 43 : $descriptionFr.hashCode());
 
         Object $descriptionEn = this.getDescriptionEn();
         result = result * 59 + ($descriptionEn == null ? 43 : $descriptionEn.hashCode());
->>>>>>> cb3f5d367d498769acf935d94d172e80f9cfce83
         
         Object $type = this.getType();
         result = result * 59 + ($type == null ? 43 : $type.hashCode());
@@ -509,18 +417,11 @@ public boolean equals(final Object o) {
     public String toString() {
         String var10000 = this.getName();
         return "EtablissementDTO(name=" + var10000 + 
-<<<<<<< HEAD
-               ", name_fr=" + this.getNameFr() + 
-               ", description=" + this.getDescription() + 
-               ", description_fr=" + this.getDescriptionFr() + 
-               ", description_en=" + this.getDescriptionEn() + 
-=======
                ", nameFr=" + this.getNameFr() + 
                ", nameEn=" + this.getNameEn() +  // Ajout de nameEn
                ", description=" + this.getDescription() + 
                ", descriptionFr=" + this.getDescriptionFr() + 
                ", descriptionEn=" + this.getDescriptionEn() + 
->>>>>>> cb3f5d367d498769acf935d94d172e80f9cfce83
                ", type=" + this.getType() + 
                ", etablissementFiles=" + String.valueOf(this.getEtablissementFiles()) + 
                ", adresse=" + this.getAdresse() + 
