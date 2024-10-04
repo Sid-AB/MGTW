@@ -102,6 +102,7 @@ private String adresseEn; // Adresse de l'établissement en anglais
         return this.name;
     }
 
+
      // Getters et Setters pour les nouveaux attributs
      public String getNameFr() {
         return nameFr;
