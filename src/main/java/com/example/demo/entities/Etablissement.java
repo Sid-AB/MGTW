@@ -19,7 +19,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.ArrayList<>;
 import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -104,7 +104,7 @@ public class Etablissement {
     @OneToMany(mappedBy = "etablissement", // Propriété de l'autre entité qui est mappée
             cascade = { CascadeType.ALL } // Cascade toutes les opérations
     )
-    private List<Multimedia> multimediaList = new ArrayList(); // Liste des multimédias associés à l'établissement
+    private List<Multimedia> multimediaList = new ArrayList<>(); // Liste des multimédias associés à l'établissement
     @CreationTimestamp // Annotation pour indiquer que ce champ sera rempli automatiquement avec la
                        // date de création
     @Column(name = "created_at" // Nom de la colonne pour la date de création
@@ -722,10 +722,10 @@ public class Etablissement {
             final String nameEn, // Ajout de nameEn
             final String descriptionFr,
             final String descriptionEn,
-            final String type,
-            final String adresse,
             final String adresseFr, // Ajout de adresseFr
             final String adresseEn, // Ajout de adresseEn
+            final String type,
+            final String adresse,
             final String phone,
             final String fax,
             final String email,
@@ -744,10 +744,10 @@ public class Etablissement {
         this.nameEn = nameEn; // Initialisation de nameEn
         this.descriptionFr = descriptionFr; // Initialisation de descriptionFr
         this.descriptionEn = descriptionEn; // Initialisation de descriptionEn
-        this.type = type;
-        this.adresse = adresse;
         this.adresseFr = adresseFr; // Initialisation de adresseFr
         this.adresseEn = adresseEn; // Initialisation de adresseEn
+        this.type = type;
+        this.adresse = adresse;
         this.phone = phone;
         this.fax = fax;
         this.email = email;
@@ -773,10 +773,10 @@ public class Etablissement {
         private String nameEn; // Ajout de nameEn
         private String descriptionFr; // Ajout de descriptionFr
         private String descriptionEn; // Ajout de descriptionEn
-        private String type;
-        private String adresse;
         private String adresseFr; // Ajout de adresseFr
         private String adresseEn; // Ajout de adresseEn
+        private String type;
+        private String adresse;
         private String phone;
         private String fax;
         private String email;
@@ -808,24 +808,22 @@ public class Etablissement {
             return this;
         }
 
-        public Etablissement.EtablissementBuilder nameFr(final String nameFr) { // Ajout de la méthode pour nameFr
+        public Etablissement.EtablissementBuilder nameFr(final String nameFr) { 
             this.nameFr = nameFr;
             return this; // Retourne l'instance de builder
         }
 
-        public EtablissementBuilder nameEn(final String nameEn) {
+        public Etablissement.EtablissementBuilder nameEn(final String nameEn) {
             this.nameEn = nameEn; // Setter pour nameEn
             return this;
         }
 
-        public Etablissement.EtablissementBuilder descriptionFr(final String descriptionFr) { // Ajout de la méthode
-                                                                                              // pour descriptionFr
+        public Etablissement.EtablissementBuilder descriptionFr(final String descriptionFr) { 
             this.descriptionFr = descriptionFr;
             return this; // Retourne l'instance de builder
         }
 
-        public Etablissement.EtablissementBuilder descriptionEn(final String descriptionEn) { // Ajout de la méthode
-                                                                                              // pour descriptionEn
+        public Etablissement.EtablissementBuilder descriptionEn(final String descriptionEn) { 
             this.descriptionEn = descriptionEn;
             return this; // Retourne l'instance de builder
         }
@@ -840,12 +838,12 @@ public class Etablissement {
             return this;
         }
 
-        public EtablissementBuilder setAdresseFr(String adresseFr) {
+        public Etablissement.EtablissementBuilder setAdresseFr(String adresseFr) {
             this.adresseFr = adresseFr;
             return this;
         }
 
-        public EtablissementBuilder setAdresseEn(String adresseEn) {
+        public Etablissement.EtablissementBuilder setAdresseEn(String adresseEn) {
             this.adresseEn = adresseEn;
             return this;
         }
@@ -875,12 +873,12 @@ public class Etablissement {
             return this;
         }
 
-        public EtablissementBuilder setLocalisationFr(String localisationFr) {
+        public Etablissement.EtablissementBuilder setLocalisationFr(String localisationFr) {
             this.localisationFr = localisationFr;
             return this;
         }
 
-        public EtablissementBuilder setLocalisationEn(String localisationEn) {
+        public Etablissement.EtablissementBuilder setLocalisationEn(String localisationEn) {
             this.localisationEn = localisationEn;
             return this;
         }
@@ -914,10 +912,10 @@ public class Etablissement {
                     this.nameEn, // Ajout de nameEn ici
                     this.descriptionFr,
                     this.descriptionEn,
-                    this.type,
-                    this.adresse,
                     this.adresseFr, // Ajout de adresseFr ici
                     this.adresseEn, // Ajout de adresseEn ici
+                    this.type,
+                    this.adresse,
                     this.phone,
                     this.fax,
                     this.email,
@@ -940,10 +938,10 @@ public class Etablissement {
                     ", nameEn=" + this.nameEn + // Ajout de nameEn ici
                     ", descriptionFr=" + this.descriptionFr +
                     ", descriptionEn=" + this.descriptionEn +
-                    ", type=" + this.type +
-                    ", adresse=" + this.adresse +
                     ", adresseFr=" + this.adresseFr + // Ajout de adresseFr ici
                     ", adresseEn=" + this.adresseEn + // Ajout de adresseEn ici
+                    ", type=" + this.type +
+                    ", adresse=" + this.adresse +
                     ", phone=" + this.phone +
                     ", fax=" + this.fax +
                     ", email=" + this.email +
