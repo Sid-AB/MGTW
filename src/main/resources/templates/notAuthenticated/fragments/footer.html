@@ -9,9 +9,9 @@
                 <div class="col-lg-3 col-md-6 footer-contact">
                     <h3 th:text="#{porteilgetway}">بوابة الاعلام الجزائري </h3>
                     <p>
-                        03, شارع الإخوة بوعدو <br>
-                        بئر مراد رايس <br>
-                        الجزائر العاصمة <br><br>
+                        <span th:text="#{adress}">03, شارع الإخوة بوعدو <br>
+                            بئر مراد رايس <br>
+                            الجزائر العاصمة <br><br></span>
                         <span style="display: flex"> <strong th:text="#{telep}">الهاتف:</strong> <strong style="direction: ltr">+213(0)21-54-10-10</strong></span><br>
                         <span style="display: flex" ><strong th:text="#{fax}">الفاكس:</strong><strong style="direction: ltr">+213(0)21-54-12-08</strong> </span><br>
                         <strong th:text="#{email}">البريد الالكتروني:</strong> contact@ministerecommunication.gov.dz<br>
@@ -74,7 +74,10 @@
 
     <div class="container footer-bottom clearfix">
         <div class="copyright">
-            <strong><span> &copy; بوابة الاعلام الجزائري  </span></strong> جميع الحقوق محفوظة 2024 .
+            <span>
+                &copy; <strong th:text="#{siteName}"> بوابة الاعلام الجزائري</strong>
+                <span th:text="#{copyright}">جميع الحقوق محفوظة 2024.</span>
+            </span>
         </div>
         <div class="credits" hidden="hidden">
             Designed by <a href=""></a>
