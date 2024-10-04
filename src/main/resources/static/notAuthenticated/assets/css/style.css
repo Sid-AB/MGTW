@@ -25,7 +25,7 @@ h6 {
 /*--------------------------------------------------------------
 # Preloader
 --------------------------------------------------------------*/
-#preloader {
+.waitting {
   position: fixed;
   top: 0;
   left: 0;
@@ -36,11 +36,11 @@ h6 {
   background: #37517e;
 }
 
-#preloader:before {
-  content: "";
+.waitting:before {
+  text-align: center;
   position: fixed;
-  top: calc(50% - 30px);
-  left: calc(50% - 30px);
+  top: 50%;
+  left: 50%;
   border: 6px solid #37517e;
   border-top-color: #fff;
   border-bottom-color: #fff;
@@ -153,7 +153,7 @@ h6 {
   align-items: center;
   justify-content: space-between;
   padding: 10px 0 10px 30px;
-  font-size: 15px;
+  font-size: 20px;
   font-weight: 500;
   color: #fff;
   white-space: nowrap;
@@ -2929,3 +2929,72 @@ section {
 }
 
 /***/
+/*****--------------------------------------***/
+@keyframes circleichi {
+  0% {
+    transform: rotate(0deg);
+  }
+  /*50% {
+    transform: rotate(180deg);
+  }*/
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes circlenino {
+  0% {
+    transform: rotate(360deg);
+  }
+  /*50% {
+    transform: rotate(180deg);
+  }*/
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes bounce
+{
+  0%
+  {
+    transform: translateY(0px);
+  }
+  50%
+  {
+    transform: translateY(80px);
+  }
+  100%
+  {
+    transform: translateY(0px);
+  }
+}
+#circlRed
+{
+  transform-origin: 50% 50%;
+  animation: circleichi 10s linear infinite;
+}
+#circlGreen
+{
+  transform-origin: 50% 50%;
+  animation: circlenino 5s linear infinite;
+}
+.inSide #circlRed
+{
+  transform-origin: 50% 50%;
+  animation: circlenino 2s linear infinite;
+}
+.inSide #circlGreen
+{
+  transform-origin: 50% 50%;
+  animation: circlenino 20s linear infinite;
+}
+.inSide
+{
+  background-color: #000000b0;
+  position: fixed;
+  top: 50%;
+  right: 50%;
+  border-radius: 50%;
+  max-width: 100%;
+  height: auto;
+}
+/*****---------------------------------------**/

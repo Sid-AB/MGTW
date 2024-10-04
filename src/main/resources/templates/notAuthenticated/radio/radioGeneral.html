@@ -46,7 +46,7 @@
                                      style="height: 150px;width: 150px"
                                      class="img-fluid product-thumbnail">
                                 <h3 class="product-title" style="font-size: 20px" th:text="${radioNational.getName()}"></h3>
-                                <h5 class="product-price" style="font-size: 15px" th:text="${radioNational.getDescription()}" ></h5>
+                                <h5 class="product-price" style="font-size: 15px ;overflow: hidden; height: 85px;" th:text="${radioNational.getDescription().toString().substring(0,(radioNational.getDescription().length() &lt; 100 ? radioNational.getDescription().length() : 100 ))+'...'}" ></h5>
 
                                 <span class="icon-cross">
 								<img th:src="@{${'/radio/lugo/'+radioNational.getId()}}" class="img-fluid">
@@ -88,7 +88,7 @@
                                      style="height: 150px;width: 150px"
                                      class="img-fluid product-thumbnail">
                                 <h3 class="product-title" style="font-size: 20px" th:text="${radioLocal.getName()}"></h3>
-                                <h5 class="product-price" style="font-size: 15px" th:text="${radioLocal.getDescription()}" ></h5>
+                                <h5 class="product-price" style="font-size: 15px ;overflow: hidden; height: 85px;" th:text="${radioLocal.getDescription().toString().substring(0,(radioLocal.getDescription().length() &lt; 100 ? radioLocal.getDescription().length() : 100 ))+'...'}" ></h5>
 
                                 <span class="icon-cross">
 								<img th:src="@{${'/radio/lugo/'+radioLocal.getId()}}" class="img-fluid">
@@ -111,9 +111,10 @@
 
 <footer th:replace="notAuthenticated/fragments/footer::footer" class="footer">
 </footer>
-
-<div id="preloader"></div>
-
+<div id="preloader" class="waitting">
+    <svg th:include="notAuthenticated/fragments/logosvg::logosvg" width="120" height="120" viewBox="0 0 2342 2004" version="1.1" class="inSide">
+    </svg>  
+</div>
 <div th:replace="notAuthenticated/fragments/js::js"></div>
 
 </body>
