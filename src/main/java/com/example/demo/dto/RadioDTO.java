@@ -18,6 +18,8 @@ public class RadioDTO {
     private String website;
     private String streaminglink;
     private String adresse;
+    private String adresseFr; // Ajout de adresseFr
+    private String adresseEn; // Ajout de adresseEn
     private String phone;
     private String fax;
     private String email;
@@ -42,6 +44,8 @@ public class RadioDTO {
         radio.setDescriptionEn(this.getDescriptionEn()); // Inclure descriptionEn
         radio.setType(this.getType());
         radio.setAdresse(this.getAdresse());
+        radio.setAdresseFr(this.getAdresseFr()); // Assigner adresseFr
+        radio.setAdresseEn(this.getAdresseEn());
         radio.setCategorie(this.getCategorie());
         radio.setWebsite(this.getWebsite());
         radio.setStreaminglink(this.getStreaminglink());
@@ -71,7 +75,8 @@ public class RadioDTO {
     public RadioDTO(final String name, final String nameFr, final String nameEn, 
     final String description, final String descriptionFr, final String descriptionEn, 
     final String type, final String categorie, final String website, 
-    final String streaminglink, final String adresse, final String phone, 
+    final String streaminglink, final String adresse, final String adresseFr,
+    final String adresseEn, final String phone, 
     final String fax, final String email, final String satellite, 
     final String frequency, final String polarization, 
     final String symbolrate, final String fec, 
@@ -84,6 +89,8 @@ this.nameEn = nameEn; // Ajout de nameEn
 this.description = description;
 this.descriptionFr = descriptionFr; // Ajout de descriptionFr
 this.descriptionEn = descriptionEn; // Ajout de descriptionEn
+this.adresseFr = adresseFr; // Initialiser adresseFr
+this.adresseEn = adresseEn; // Initialiser adresseEn
 this.type = type;
 this.categorie = categorie;
 this.website = website;
@@ -148,6 +155,22 @@ this.profilFiles = profilFiles;
 
     public String getAdresse() {
         return this.adresse;
+    }
+
+    public String getAdresseFr() {
+        return adresseFr;
+    }
+
+    public void setAdresseFr(String adresseFr) {
+        this.adresseFr = adresseFr;
+    }
+
+    public String getAdresseEn() {
+        return adresseEn;
+    }
+
+    public void setAdresseEn(String adresseEn) {
+        this.adresseEn = adresseEn;
     }
 
     public String getPhone() {
@@ -443,6 +466,34 @@ this.profilFiles = profilFiles;
                     return false;
                 }
 
+
+                 // Vérification pour 'adresseFr'
+                 label203: {
+                    Object this$adresseFr = this.getAdresseFr();
+                    Object other$adresseFr = other.getAdresseFr();
+                    if (this$adresseFr == null) {
+                        if (other$adresseFr == null) {
+                            break label203;
+                        }
+                    } else if (this$adresseFr.equals(other$adresseFr)) {
+                        break label203;
+                    }
+                    return false;
+                }
+
+                // Vérification pour 'adresseEn'
+                label204: {
+                    Object this$adresseEn = this.getAdresseEn();
+                    Object other$adresseEn = other.getAdresseEn();
+                    if (this$adresseEn == null) {
+                        if (other$adresseEn == null) {
+                            break label204;
+                        }
+                    } else if (this$adresseEn.equals(other$adresseEn)) {
+                        break label204;
+                    }
+                    return false;
+                }
                 Object this$phone = this.getPhone();
                 Object other$phone = other.getPhone();
                 if (this$phone == null) {
@@ -629,6 +680,14 @@ this.profilFiles = profilFiles;
         Object $adresse = this.getAdresse();
         result = result * 59 + ($adresse == null ? 43 : $adresse.hashCode());
         
+        // Ajout de adresseFr
+        Object $adresseFr = this.getAdresseFr();
+        result = result * 59 + ($adresseFr == null ? 43 : $adresseFr.hashCode());
+
+        // Ajout de adresseEn
+        Object $adresseEn = this.getAdresseEn();
+        result = result * 59 + ($adresseEn == null ? 43 : $adresseEn.hashCode());
+
         Object $phone = this.getPhone();
         result = result * 59 + ($phone == null ? 43 : $phone.hashCode());
         
@@ -681,6 +740,8 @@ this.profilFiles = profilFiles;
                 ", website=" + this.getWebsite() +
                 ", streaminglink=" + this.getStreaminglink() +
                 ", adresse=" + this.getAdresse() +
+                ", adresseFr=" + this.getAdresseFr() + // Ajout de adresseFr
+                ", adresseEn=" + this.getAdresseEn() + // Ajout de adresseEn
                 ", phone=" + this.getPhone() +
                 ", fax=" + this.getFax() +
                 ", email=" + this.getEmail() +

@@ -13,4 +13,6 @@ public interface TextJuridiqueRepository extends JpaRepository<TextJuridique, Lo
     TextJuridique findTextJuridiqueById(Long id);
     Optional<TextJuridique> findById(Long id);
     List<TextJuridique> findByDescriptionContainingIgnoreCase(String keyword);
+    List<TextJuridique> findByDescriptionFrContainingIgnoreCase(String keyword);
+    List<TextJuridique> findByDescriptionEnContainingIgnoreCase(String keyword);
 }

@@ -37,25 +37,19 @@ public class Etablissement {
     private Long id; // Identifiant unique de l'établissement
     private String name; // Nom de l'établissement
 
-    @Column(name = "description", // Nom de la colonne dans la base de données
-            columnDefinition = "TEXT" // Type de la colonne
-    )
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description; // Description de l'établissement
 
-    @Column(name = "name_fr") // Nom de la colonne dans la base de données
-    private String nameFr; // Nom de l'établissement en français
+    @Column(name = "name_fr") 
+    private String nameFr; 
 
-    @Column(name = "name_en") // Nom de la colonne pour l'anglais
-    private String nameEn; // Nom de l'établissement en anglais
+    @Column(name = "name_en") 
+    private String nameEn; 
 
-    @Column(name = "description_fr", // Nom de la colonne dans la base de données
-            columnDefinition = "TEXT" // Type de la colonne
-    )
+    @Column(name = "description_fr", columnDefinition = "TEXT")
     private String descriptionFr; // Description de l'établissement en fr
 
-    @Column(name = "description_en", // Nom de la colonne dans la base de données
-            columnDefinition = "TEXT" // Type de la colonne
-    )
+    @Column(name = "description_en", columnDefinition = "TEXT")
     private String descriptionEn; // Description de l'établissement en en
 
     private String type; // Type de l'établissement
@@ -83,21 +77,15 @@ public class Etablissement {
     private String localisationEn; // Localisation de l'établissement en anglais
 
     // Adresse en arabe (ou langue par défaut)
-    @Column(name = "adresse", // Nom de la colonne pour l'adresse
-            columnDefinition = "TEXT" // Type de la colonne
-    )
+    @Column(name = "adresse", columnDefinition = "TEXT")
     private String adresse; // Adresse de l'établissement
 
     // Adresse en français
-    @Column(name = "adresse_fr", // Nom de la colonne pour l'adresse en français
-            columnDefinition = "TEXT" // Type de la colonne
-    )
+    @Column(name = "adresse_fr", columnDefinition = "TEXT")
     private String adresseFr; // Adresse de l'établissement en français
 
     // Adresse en anglais
-    @Column(name = "adresse_en", // Nom de la colonne pour l'adresse en anglais
-            columnDefinition = "TEXT" // Type de la colonne
-    )
+    @Column(name = "adresse_en", columnDefinition = "TEXT")
     private String adresseEn; // Adresse de l'établissement en anglais
 
     @OneToOne(cascade = { CascadeType.ALL }, // Cascade toutes les opérations (ajout, mise à jour, suppression)
@@ -110,7 +98,7 @@ public class Etablissement {
     @OneToMany(mappedBy = "etablissement", // Propriété de l'autre entité qui est mappée
             cascade = { CascadeType.ALL } // Cascade toutes les opérations
     )
-    private List<Multimedia> multimediaList = new ArrayList(); // Liste des multimédias associés à l'établissement
+    private List<Multimedia> multimediaList = new ArrayList<>(); // Liste des multimédias associés à l'établissement
     @CreationTimestamp // Annotation pour indiquer que ce champ sera rempli automatiquement avec la
                        // date de création
     @Column(name = "created_at" // Nom de la colonne pour la date de création
@@ -359,49 +347,49 @@ public class Etablissement {
                     return false;
                 }
 
-                // Vérification pour nameFr
-                Object this$nameFr = this.getNameFr();
-                Object other$nameFr = other.getNameFr();
-                if (this$nameFr == null) {
-                    if (other$nameFr != null) {
-                        return false; // Un est nul, l'autre non
+                    // Vérification pour nameFr
+                    Object this$nameFr = this.getNameFr();
+                    Object other$nameFr = other.getNameFr();
+                    if (this$nameFr == null) {
+                        if (other$nameFr != null) {
+                            return false; // Un est nul, l'autre non
+                        }
+                    } else if (!this$nameFr.equals(other$nameFr)) {
+                        return false; // Noms en français différents
                     }
-                } else if (!this$nameFr.equals(other$nameFr)) {
-                    return false; // Noms en français différents
-                }
 
-                // Vérification pour nameEn
-                Object this$nameEn = this.getNameEn();
-                Object other$nameEn = other.getNameEn();
-                if (this$nameEn == null) {
-                    if (other$nameEn != null) {
-                        return false; // Un est nul, l'autre non
+                    // Vérification pour nameEn
+                    Object this$nameEn = this.getNameEn();
+                    Object other$nameEn = other.getNameEn();
+                    if (this$nameEn == null) {
+                        if (other$nameEn != null) {
+                            return false; // Un est nul, l'autre non
+                        }
+                    } else if (!this$nameEn.equals(other$nameEn)) {
+                        return false; // Noms en anglais différents
                     }
-                } else if (!this$nameEn.equals(other$nameEn)) {
-                    return false; // Noms en anglais différents
-                }
 
-                // Vérification pour descriptionFr
-                Object this$descriptionFr = this.getDescriptionFr();
-                Object other$descriptionFr = other.getDescriptionFr();
-                if (this$descriptionFr == null) {
-                    if (other$descriptionFr != null) {
-                        return false; // Un est nul, l'autre non
+                    // Vérification pour descriptionFr
+                    Object this$descriptionFr = this.getDescriptionFr();
+                    Object other$descriptionFr = other.getDescriptionFr();
+                    if (this$descriptionFr == null) {
+                        if (other$descriptionFr != null) {
+                            return false; // Un est nul, l'autre non
+                        }
+                    } else if (!this$descriptionFr.equals(other$descriptionFr)) {
+                        return false; // Descriptions en arabe différentes
                     }
-                } else if (!this$descriptionFr.equals(other$descriptionFr)) {
-                    return false; // Descriptions en arabe différentes
-                }
 
-                // Vérification pour descriptionEn
-                Object this$descriptionEn = this.getDescriptionEn();
-                Object other$descriptionEn = other.getDescriptionEn();
-                if (this$descriptionEn == null) {
-                    if (other$descriptionEn != null) {
-                        return false; // Un est nul, l'autre non
+                    // Vérification pour descriptionEn
+                    Object this$descriptionEn = this.getDescriptionEn();
+                    Object other$descriptionEn = other.getDescriptionEn();
+                    if (this$descriptionEn == null) {
+                        if (other$descriptionEn != null) {
+                            return false; // Un est nul, l'autre non
+                        }
+                    } else if (!this$descriptionEn.equals(other$descriptionEn)) {
+                        return false; // Descriptions en arabe différentes
                     }
-                } else if (!this$descriptionEn.equals(other$descriptionEn)) {
-                    return false; // Descriptions en arabe différentes
-                }
 
                 label158: {
                     Object this$type = this.getType();
@@ -728,10 +716,10 @@ public class Etablissement {
             final String nameEn, // Ajout de nameEn
             final String descriptionFr,
             final String descriptionEn,
-            final String type,
-            final String adresse,
             final String adresseFr, // Ajout de adresseFr
             final String adresseEn, // Ajout de adresseEn
+            final String type,
+            final String adresse,
             final String phone,
             final String fax,
             final String email,
@@ -750,10 +738,10 @@ public class Etablissement {
         this.nameEn = nameEn; // Initialisation de nameEn
         this.descriptionFr = descriptionFr; // Initialisation de descriptionFr
         this.descriptionEn = descriptionEn; // Initialisation de descriptionEn
-        this.type = type;
-        this.adresse = adresse;
         this.adresseFr = adresseFr; // Initialisation de adresseFr
         this.adresseEn = adresseEn; // Initialisation de adresseEn
+        this.type = type;
+        this.adresse = adresse;
         this.phone = phone;
         this.fax = fax;
         this.email = email;
@@ -779,10 +767,10 @@ public class Etablissement {
         private String nameEn; // Ajout de nameEn
         private String descriptionFr; // Ajout de descriptionFr
         private String descriptionEn; // Ajout de descriptionEn
-        private String type;
-        private String adresse;
         private String adresseFr; // Ajout de adresseFr
         private String adresseEn; // Ajout de adresseEn
+        private String type;
+        private String adresse;
         private String phone;
         private String fax;
         private String email;
@@ -814,24 +802,22 @@ public class Etablissement {
             return this;
         }
 
-        public Etablissement.EtablissementBuilder nameFr(final String nameFr) { // Ajout de la méthode pour nameFr
+        public Etablissement.EtablissementBuilder nameFr(final String nameFr) { 
             this.nameFr = nameFr;
             return this; // Retourne l'instance de builder
         }
 
-        public EtablissementBuilder nameEn(final String nameEn) {
+        public Etablissement.EtablissementBuilder nameEn(final String nameEn) {
             this.nameEn = nameEn; // Setter pour nameEn
             return this;
         }
 
-        public Etablissement.EtablissementBuilder descriptionFr(final String descriptionFr) { // Ajout de la méthode
-                                                                                              // pour descriptionFr
+        public Etablissement.EtablissementBuilder descriptionFr(final String descriptionFr) { 
             this.descriptionFr = descriptionFr;
             return this; // Retourne l'instance de builder
         }
 
-        public Etablissement.EtablissementBuilder descriptionEn(final String descriptionEn) { // Ajout de la méthode
-                                                                                              // pour descriptionEn
+        public Etablissement.EtablissementBuilder descriptionEn(final String descriptionEn) { 
             this.descriptionEn = descriptionEn;
             return this; // Retourne l'instance de builder
         }
@@ -846,12 +832,12 @@ public class Etablissement {
             return this;
         }
 
-        public EtablissementBuilder setAdresseFr(String adresseFr) {
+        public Etablissement.EtablissementBuilder setAdresseFr(String adresseFr) {
             this.adresseFr = adresseFr;
             return this;
         }
 
-        public EtablissementBuilder setAdresseEn(String adresseEn) {
+        public Etablissement.EtablissementBuilder setAdresseEn(String adresseEn) {
             this.adresseEn = adresseEn;
             return this;
         }
@@ -881,12 +867,12 @@ public class Etablissement {
             return this;
         }
 
-        public EtablissementBuilder setLocalisationFr(String localisationFr) {
+        public Etablissement.EtablissementBuilder setLocalisationFr(String localisationFr) {
             this.localisationFr = localisationFr;
             return this;
         }
 
-        public EtablissementBuilder setLocalisationEn(String localisationEn) {
+        public Etablissement.EtablissementBuilder setLocalisationEn(String localisationEn) {
             this.localisationEn = localisationEn;
             return this;
         }
@@ -920,10 +906,10 @@ public class Etablissement {
                     this.nameEn, // Ajout de nameEn ici
                     this.descriptionFr,
                     this.descriptionEn,
-                    this.type,
-                    this.adresse,
                     this.adresseFr, // Ajout de adresseFr ici
                     this.adresseEn, // Ajout de adresseEn ici
+                    this.type,
+                    this.adresse,
                     this.phone,
                     this.fax,
                     this.email,
@@ -946,10 +932,10 @@ public class Etablissement {
                     ", nameEn=" + this.nameEn + // Ajout de nameEn ici
                     ", descriptionFr=" + this.descriptionFr +
                     ", descriptionEn=" + this.descriptionEn +
-                    ", type=" + this.type +
-                    ", adresse=" + this.adresse +
                     ", adresseFr=" + this.adresseFr + // Ajout de adresseFr ici
                     ", adresseEn=" + this.adresseEn + // Ajout de adresseEn ici
+                    ", type=" + this.type +
+                    ", adresse=" + this.adresse +
                     ", phone=" + this.phone +
                     ", fax=" + this.fax +
                     ", email=" + this.email +

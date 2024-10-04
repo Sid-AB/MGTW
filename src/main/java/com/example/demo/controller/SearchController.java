@@ -43,11 +43,26 @@ public class SearchController {
         model.addAttribute("complexesForNavBar", complexesForNavBar);
         List<Lois> loisForNavBar = this.loisService.findAll();
         model.addAttribute("loisForNavBar", loisForNavBar);
+
         model.addAttribute("textJuridiques", this.textJuridiqueService.findByDescriptionContainingIgnoreCase(query));
+        model.addAttribute("textJuridiques", this.textJuridiqueService.findByDescriptionFrContainingIgnoreCase(query));
+        model.addAttribute("textJuridiques", this.textJuridiqueService.findByDescriptionEnContainingIgnoreCase(query));
+
         model.addAttribute("presses", this.presseService.findByDescriptionContainingIgnoreCase(query));
+        model.addAttribute("presses", this.presseService.findByDescriptionFrContainingIgnoreCase(query));
+        model.addAttribute("presses", this.presseService.findByDescriptionEnContainingIgnoreCase(query));
+
         model.addAttribute("radios", this.radioService.findByDescriptionContainingIgnoreCase(query));
+        model.addAttribute("radios", this.radioService.findByDescriptionFrContainingIgnoreCase(query));
+        model.addAttribute("radios", this.radioService.findByDescriptionEnContainingIgnoreCase(query));
+
         model.addAttribute("etablissements", this.etablissementService.findByDescriptionContainingIgnoreCase(query));
+        model.addAttribute("etablissements", this.etablissementService.findByDescriptionFrContainingIgnoreCase(query));
+        model.addAttribute("etablissements", this.etablissementService.findByDescriptionEnContainingIgnoreCase(query));
+
         model.addAttribute("tvs", this.tvService.findByDescriptionContainingIgnoreCase(query));
+        model.addAttribute("tvs", this.tvService.findByDescriptionFrContainingIgnoreCase(query));
+        model.addAttribute("tvs", this.tvService.findByDescriptionEnContainingIgnoreCase(query));
         return "notAuthenticated/search";
     }
 }
