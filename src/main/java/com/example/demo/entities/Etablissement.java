@@ -19,7 +19,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
-import java.util.ArrayList<>;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -77,21 +77,15 @@ public class Etablissement {
     private String localisationEn; // Localisation de l'établissement en anglais
 
     // Adresse en arabe (ou langue par défaut)
-    @Column(name = "adresse", // Nom de la colonne pour l'adresse
-            columnDefinition = "TEXT" // Type de la colonne
-    )
+    @Column(name = "adresse", columnDefinition = "TEXT")
     private String adresse; // Adresse de l'établissement
 
     // Adresse en français
-    @Column(name = "adresse_fr", // Nom de la colonne pour l'adresse en français
-            columnDefinition = "TEXT" // Type de la colonne
-    )
+    @Column(name = "adresse_fr", columnDefinition = "TEXT")
     private String adresseFr; // Adresse de l'établissement en français
 
     // Adresse en anglais
-    @Column(name = "adresse_en", // Nom de la colonne pour l'adresse en anglais
-            columnDefinition = "TEXT" // Type de la colonne
-    )
+    @Column(name = "adresse_en", columnDefinition = "TEXT")
     private String adresseEn; // Adresse de l'établissement en anglais
 
     @OneToOne(cascade = { CascadeType.ALL }, // Cascade toutes les opérations (ajout, mise à jour, suppression)
@@ -353,49 +347,49 @@ public class Etablissement {
                     return false;
                 }
 
-                // Vérification pour nameFr
-                Object this$nameFr = this.getNameFr();
-                Object other$nameFr = other.getNameFr();
-                if (this$nameFr == null) {
-                    if (other$nameFr != null) {
-                        return false; // Un est nul, l'autre non
+                    // Vérification pour nameFr
+                    Object this$nameFr = this.getNameFr();
+                    Object other$nameFr = other.getNameFr();
+                    if (this$nameFr == null) {
+                        if (other$nameFr != null) {
+                            return false; // Un est nul, l'autre non
+                        }
+                    } else if (!this$nameFr.equals(other$nameFr)) {
+                        return false; // Noms en français différents
                     }
-                } else if (!this$nameFr.equals(other$nameFr)) {
-                    return false; // Noms en français différents
-                }
 
-                // Vérification pour nameEn
-                Object this$nameEn = this.getNameEn();
-                Object other$nameEn = other.getNameEn();
-                if (this$nameEn == null) {
-                    if (other$nameEn != null) {
-                        return false; // Un est nul, l'autre non
+                    // Vérification pour nameEn
+                    Object this$nameEn = this.getNameEn();
+                    Object other$nameEn = other.getNameEn();
+                    if (this$nameEn == null) {
+                        if (other$nameEn != null) {
+                            return false; // Un est nul, l'autre non
+                        }
+                    } else if (!this$nameEn.equals(other$nameEn)) {
+                        return false; // Noms en anglais différents
                     }
-                } else if (!this$nameEn.equals(other$nameEn)) {
-                    return false; // Noms en anglais différents
-                }
 
-                // Vérification pour descriptionFr
-                Object this$descriptionFr = this.getDescriptionFr();
-                Object other$descriptionFr = other.getDescriptionFr();
-                if (this$descriptionFr == null) {
-                    if (other$descriptionFr != null) {
-                        return false; // Un est nul, l'autre non
+                    // Vérification pour descriptionFr
+                    Object this$descriptionFr = this.getDescriptionFr();
+                    Object other$descriptionFr = other.getDescriptionFr();
+                    if (this$descriptionFr == null) {
+                        if (other$descriptionFr != null) {
+                            return false; // Un est nul, l'autre non
+                        }
+                    } else if (!this$descriptionFr.equals(other$descriptionFr)) {
+                        return false; // Descriptions en arabe différentes
                     }
-                } else if (!this$descriptionFr.equals(other$descriptionFr)) {
-                    return false; // Descriptions en arabe différentes
-                }
 
-                // Vérification pour descriptionEn
-                Object this$descriptionEn = this.getDescriptionEn();
-                Object other$descriptionEn = other.getDescriptionEn();
-                if (this$descriptionEn == null) {
-                    if (other$descriptionEn != null) {
-                        return false; // Un est nul, l'autre non
+                    // Vérification pour descriptionEn
+                    Object this$descriptionEn = this.getDescriptionEn();
+                    Object other$descriptionEn = other.getDescriptionEn();
+                    if (this$descriptionEn == null) {
+                        if (other$descriptionEn != null) {
+                            return false; // Un est nul, l'autre non
+                        }
+                    } else if (!this$descriptionEn.equals(other$descriptionEn)) {
+                        return false; // Descriptions en arabe différentes
                     }
-                } else if (!this$descriptionEn.equals(other$descriptionEn)) {
-                    return false; // Descriptions en arabe différentes
-                }
 
                 label158: {
                     Object this$type = this.getType();

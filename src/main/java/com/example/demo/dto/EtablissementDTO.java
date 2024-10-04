@@ -30,9 +30,9 @@ public class EtablissementDTO {
         etablissement.setName(this.getName()); // Assigner name arabe
         etablissement.setDescription(this.getDescription()); // Assigner description arabe
         etablissement.setNameFr(this.getNameFr()); // Assigner nameFr
+        etablissement.setNameEn(this.getNameEn()); // Assigner nameEn
         etablissement.setDescriptionFr(this.getDescriptionFr()); // Assigner descriptionFr
         etablissement.setDescriptionEn(this.getDescriptionEn()); // Assigner descriptionEn
-        etablissement.setNameEn(this.getNameEn()); // Assigner nameEn
         etablissement.setType(this.getType());
         etablissement.setAdresse(this.getAdresse());
         etablissement.setAdresseFr(this.getAdresseFr()); // Assigner adresseFr
@@ -57,6 +57,10 @@ public class EtablissementDTO {
             final String adresseEn, final String phone, final String fax, final String email, final String site,
             final String localisation, final String localisationFr, final String localisationEn) {
         this.name = name;
+        this.nameFr = nameFr; // Initialiser nameFr
+        this.nameEn = nameEn; // Initialiser nameEn
+        this.descriptionFr = descriptionFr; // Initialiser descriptionFr
+        this.descriptionEn = descriptionEn; // Initialiser descriptionEn
         this.description = description;
         this.type = type;
         this.etablissementFiles = etablissementFiles;
@@ -70,10 +74,6 @@ public class EtablissementDTO {
         this.localisation = localisation;
         this.localisationFr = localisationFr; // Initialiser localisationFr
         this.localisationEn = localisationEn; // Initialiser localisationEn
-        this.nameFr = nameFr; // Initialiser nameFr
-        this.descriptionFr = descriptionFr; // Initialiser descriptionFr
-        this.descriptionEn = descriptionEn; // Initialiser descriptionEn
-        this.nameEn = nameEn; // Initialiser nameEn
     }
 
     public EtablissementDTO() {
