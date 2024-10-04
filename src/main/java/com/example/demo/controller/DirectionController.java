@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ import com.example.demo.repository.DirectionRepository;
 
 
 import com.example.demo.service.DirectionService;
+
+import jakarta.persistence.EntityNotFoundException;
 
 
 
@@ -42,15 +45,15 @@ public class DirectionController {
   
 
      // ajouter un directeur
-    @PostMapping("/save")
+   /*  @PostMapping("/save")
     public ResponseEntity<DirectionDTO> addDirecteur(@RequestBody DirectionDTO directionDTO) {
         DirectionDTO newDirection = directionService.addDirecteur(directionDTO);
         return ResponseEntity.ok(newDirection);
-    }
+    }*/
 
     @GetMapping({"/add"})
     public String dirAdd(Model model) {
-        return "authenticated/direction/directionAdd";
+        return "authenticated/Direction/direction.Add";
     }
      // récupérer tous les directeurs
      @GetMapping("/all")
@@ -58,12 +61,29 @@ public class DirectionController {
         List<DirectionDTO> directions = directionService.getAllDirecteurs();
         return ResponseEntity.ok(directions);
     }
-    
+    @PostMapping({"/save"})
+    public String saveDir(@ModelAttribute("DirectionDTO") DirectionDTO directionDTO) {
+        try {
+            // Appeler la méthode addDirecteur pour sauvegarder l'entité Direction
+            DirectionDTO savedDirectionDTO = directionService.addDirecteur(directionDTO);
+            
+            // Rediriger vers la liste des directeurs après la sauvegarde réussie
+            return "redirect:/Direction/direction"; 
+        } catch (EntityNotFoundException  e) {
+            e.printStackTrace();
+            // Retourne un message d'erreur en français
+            return "Erreur lors de la sauvegarde du directeur : " + e.getMessage();
+        } catch (Exception e) { // Capture toutes les autres exceptions
+            e.printStackTrace();
+            // Message d'erreur général
+            return "Erreur inattendue : " + e.getMessage();
+        }
+    }
     @GetMapping({"/direction"})
     public String direction(Model model) {
         List<Direction> direction = this.directionService.findAll();
         model.addAttribute("direction", direction);
-        return "authenticated/direction/direcreurs";
+        return "authenticated/Direction/directeurs";
     }
 
    /* // update un directeur

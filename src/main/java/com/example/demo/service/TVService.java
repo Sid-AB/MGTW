@@ -62,6 +62,12 @@ public class TVService {
     public List<TV> findByDescriptionContainingIgnoreCase(@Param("text") String keyword) {
         return this.tvRepository.findByDescriptionContainingIgnoreCase(keyword);
     }
+    public List<TV> findByDescriptionFrContainingIgnoreCase(@Param("text") String keyword) {
+        return this.tvRepository.findByDescriptionFrContainingIgnoreCase(keyword);
+    }
+    public List<TV> findByDescriptionEnContainingIgnoreCase(@Param("text") String keyword) {
+        return this.tvRepository.findByDescriptionEnContainingIgnoreCase(keyword);
+    }
 
     public TV saveTV(TVDTO tvdto) {
         TV tv = tvdto.toETV();
@@ -121,7 +127,7 @@ public class TVService {
 
         return tvs;
     }
-
+    
     public List<TV> findTVSPrive(String name) {
         List<Agrument> agruments = new ArrayList();
         agruments.add(this.agrumentRepository.findAgrumentByName("tv"));
@@ -139,4 +145,7 @@ public class TVService {
 
         return tvs;
     }
+
+   
+    
 }

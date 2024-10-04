@@ -44,7 +44,10 @@ public class Etablissement {
     private String description; // Description de l'établissement
     
     @Column(name = "name_fr") // Nom de la colonne dans la base de données
-    private String nameFr; // Nom de l'établissement en fr et en
+    private String nameFr; // Nom de l'établissement en français
+    
+    @Column(name = "name_en") // Nom de la colonne pour l'anglais
+    private String nameEn; // Nom de l'établissement en anglais
 
     @Column(name = "description_fr", // Nom de la colonne dans la base de données
             columnDefinition = "TEXT" // Type de la colonne
@@ -110,17 +113,22 @@ public class Etablissement {
         return this.description;
     }
 
-    // Getter pour name_fr et en
+    // Getter pour nameFr et en
     public String getNameFr() { 
         return this.nameFr; 
     }
 
-    // Getter pour description_fr
+    // Getter pour nameEn
+    public String getNameEn() {
+        return this.nameEn;
+    }
+
+    // Getter pour descriptionFr
     public String getDescriptionFr() { 
         return this.descriptionFr; 
     }
 
-    // Getter pour description_en
+    // Getter pour descriptionEn
     public String getDescriptionEn() { 
         return this.descriptionEn; 
     }
@@ -182,19 +190,24 @@ public class Etablissement {
         this.description = description;
     }
 
-     // Setter pour name_fr
-     public void setNameFr(final String name_fr) {
-        this.nameFr = name_fr;
+     // Setter pour nameFr
+     public void setNameFr(final String nameFr) {
+        this.nameFr = nameFr;
     }
 
-    // Setter pour description_fr
-    public void setDescriptionFr(final String description_fr) {
-        this.descriptionFr = description_fr;
+    // Setter pour nameEn
+    public void setNameEn(final String nameEn) {
+        this.nameEn = nameEn;
     }
 
-    // Setter pour description_en
-    public void setDescriptionEn(final String description_en) {
-        this.descriptionEn = description_en;
+    // Setter pour descriptionFr
+    public void setDescriptionFr(final String descriptionFr) {
+        this.descriptionFr = descriptionFr;
+    }
+
+    // Setter pour descriptionEn
+    public void setDescriptionEn(final String descriptionEn) {
+        this.descriptionEn = descriptionEn;
     }
 
     public void setType(final String type) {
@@ -283,36 +296,47 @@ public class Etablissement {
                     return false;
                 }
 
-                 // Vérification pour name_fr et en
-            Object this$name_fr = this.getNameFr();
-            Object other$name_fr = other.getNameFr();
-            if (this$name_fr == null) {
-                if (other$name_fr != null) {
-                    return false; // Un est nul, l'autre non
+                // Vérification pour nameFr
+                Object this$nameFr = this.getNameFr();
+                Object other$nameFr = other.getNameFr();
+                if (this$nameFr == null) {
+                    if (other$nameFr != null) {
+                        return false; // Un est nul, l'autre non
+                    }
+                } else if (!this$nameFr.equals(other$nameFr)) {
+                    return false; // Noms en français différents
                 }
-            } else if (!this$name_fr.equals(other$name_fr)) {
-                return false; // Noms en arabe différents
-            }
 
-            // Vérification pour description_fr
-            Object this$description_fr = this.getDescriptionFr();
-            Object other$description_fr = other.getDescriptionFr();
-            if (this$description_fr == null) {
-                if (other$description_fr != null) {
+                // Vérification pour nameEn
+                Object this$nameEn = this.getNameEn();
+                Object other$nameEn = other.getNameEn();
+                if (this$nameEn == null) {
+                    if (other$nameEn != null) {
+                        return false; // Un est nul, l'autre non
+                    }
+                } else if (!this$nameEn.equals(other$nameEn)) {
+                    return false; // Noms en anglais différents
+                }
+
+            // Vérification pour descriptionFr
+            Object this$descriptionFr = this.getDescriptionFr();
+            Object other$descriptionFr = other.getDescriptionFr();
+            if (this$descriptionFr == null) {
+                if (other$descriptionFr != null) {
                     return false; // Un est nul, l'autre non
                 }
-            } else if (!this$description_fr.equals(other$description_fr)) {
+            } else if (!this$descriptionFr.equals(other$descriptionFr)) {
                 return false; // Descriptions en arabe différentes
             }
 
-            // Vérification pour description_en
-            Object this$description_en = this.getDescriptionEn();
-            Object other$description_en = other.getDescriptionEn();
-            if (this$description_en == null) {
-                if (other$description_en != null) {
+            // Vérification pour descriptionEn
+            Object this$descriptionEn = this.getDescriptionEn();
+            Object other$descriptionEn = other.getDescriptionEn();
+            if (this$descriptionEn == null) {
+                if (other$descriptionEn != null) {
                     return false; // Un est nul, l'autre non
                 }
-            } else if (!this$description_en.equals(other$description_en)) {
+            } else if (!this$descriptionEn.equals(other$descriptionEn)) {
                 return false; // Descriptions en arabe différentes
             }
 
@@ -467,16 +491,25 @@ public class Etablissement {
         int result = 1;// Initialisation du résultat
         Object $id = this.getId();// Récupération de l'id
         result = result * 59 + ($id == null ? 43 : $id.hashCode());// Ajout de l'id au code de hachage
+
         Object $name = this.getName(); // Récupération du nom
         result = result * 59 + ($name == null ? 43 : $name.hashCode()); // Ajout du nom au code de hachage
+        
+        Object $nameFr = this.getNameFr(); // Récupération du nom en français
+        result = result * 59 + ($nameFr == null ? 43 : $nameFr.hashCode()); // Ajout du nom en français au code de hachage
+        
+        Object $nameEn = this.getNameEn(); // Récupération du nom en anglais
+        result = result * 59 + ($nameEn == null ? 43 : $nameEn.hashCode()); // Ajout du nom en anglais au code de hachage
+        
         Object $description = this.getDescription(); // Récupération de la description
         result = result * 59 + ($description == null ? 43 : $description.hashCode()); // Ajout de la description au code de hachage
-        Object $name_fr = this.getNameFr(); // Récupération du nom en arabe
-        result = result * 59 + ($name_fr == null ? 43 : $name_fr.hashCode()); // Ajout du nom en arabe au code de hachage
-        Object $description_fr = this.getDescriptionFr(); // Récupération de la description en arabe
-        result = result * 59 + ($description_fr == null ? 43 : $description_fr.hashCode()); // Ajout de la description en arabe au code de hachage
-        Object $description_en = this.getDescriptionEn(); // Récupération de la description en en
-        result = result * 59 + ($description_en == null ? 43 : $description_en.hashCode()); // Ajout de la description en arabe au code de hachage
+        
+        Object $descriptionFr = this.getDescriptionFr(); // Récupération de la description en arabe
+        result = result * 59 + ($descriptionFr == null ? 43 : $descriptionFr.hashCode()); // Ajout de la description en arabe au code de hachage
+
+        Object $descriptionEn = this.getDescriptionEn(); // Récupération de la description en en
+        result = result * 59 + ($descriptionEn == null ? 43 : $descriptionEn.hashCode()); // Ajout de la description en arabe au code de hachage
+
         Object $type = this.getType();
         result = result * 59 + ($type == null ? 43 : $type.hashCode());
         Object $adresse = this.getAdresse();
@@ -502,73 +535,95 @@ public class Etablissement {
         return result;
     }
 
-    // Méthode pour convertir l'objet en chaîne de caractères
-    public String toString() {
-        Long var10000 = this.getId(); // Récupération de l'id
-        return "Etablissement(id=" + var10000 
-            + ", name=" + this.getName() 
-            + ", description=" + this.getDescription() 
-            + ", name_fr=" + this.getNameFr() // Ajout de name_fr
-            + ", description_fr=" + this.getDescriptionFr() // Ajout de description_fr
-            + ", description_en=" + this.getDescriptionEn() // Ajout de description_en
-            + ", type=" + this.getType() 
-            + ", adresse=" + this.getAdresse() 
-            + ", phone=" + this.getPhone() 
-            + ", fax=" + this.getFax() 
-            + ", email=" + this.getEmail() 
-            + ", site=" + this.getSite() 
-            + ", localisation=" + this.getLocalisation() 
-            + ", complexe=" + String.valueOf(this.getComplexe()) 
-            + ", multimediaList=" + String.valueOf(this.getMultimediaList()) 
-            + ", createdAt=" + String.valueOf(this.getCreatedAt()) 
-            + ", updatedAt=" + String.valueOf(this.getUpdatedAt()) 
-            + ")"; // Retourne la chaîne formatée
-    }
+   // Méthode pour convertir l'objet en chaîne de caractères
+public String toString() {
+    Long var10000 = this.getId(); // Récupération de l'id
+    return "Etablissement(id=" + var10000 
+        + ", name=" + this.getName() 
+        + ", description=" + this.getDescription() 
+        + ", nameFr=" + this.getNameFr() // Ajout de nameFr
+        + ", nameEn=" + this.getNameEn() // Ajout de nameEn
+        + ", descriptionFr=" + this.getDescriptionFr() // Ajout de descriptionFr
+        + ", descriptionEn=" + this.getDescriptionEn() // Ajout de descriptionEn
+        + ", type=" + this.getType() 
+        + ", adresse=" + this.getAdresse() 
+        + ", phone=" + this.getPhone() 
+        + ", fax=" + this.getFax() 
+        + ", email=" + this.getEmail() 
+        + ", site=" + this.getSite() 
+        + ", localisation=" + this.getLocalisation() 
+        + ", complexe=" + String.valueOf(this.getComplexe()) 
+        + ", multimediaList=" + String.valueOf(this.getMultimediaList()) 
+        + ", createdAt=" + String.valueOf(this.getCreatedAt()) 
+        + ", updatedAt=" + String.valueOf(this.getUpdatedAt()) 
+        + ")"; // Retourne la chaîne formatée
+}
+
 
     // Constructeur
-    public Etablissement(final Long id, final String name, final String description, final String name_fr, final String description_fr,final String description_en, final String type, final String adresse, final String phone, final String fax, final String email, final String site, final String localisation, final Complexe complexe, final List<Multimedia> multimediaList, final LocalDateTime createdAt, final LocalDateTime updatedAt) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.nameFr = nameFr; // Initialisation de name_fr
-        this.descriptionFr = description_fr; // Initialisation de description_fr
-        this.descriptionEn = description_en; // Initialisation de description_en
-        this.type = type;
-        this.adresse = adresse;
-        this.phone = phone;
-        this.fax = fax;
-        this.email = email;
-        this.site = site;
-        this.localisation = localisation;
-        this.complexe = complexe;
-        this.multimediaList = multimediaList;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
+public Etablissement(final Long id, 
+final String name, 
+final String description, 
+final String nameFr, 
+final String nameEn, // Ajout de nameEn
+final String descriptionFr, 
+final String descriptionEn, 
+final String type, 
+final String adresse, 
+final String phone, 
+final String fax, 
+final String email, 
+final String site, 
+final String localisation, 
+final Complexe complexe, 
+final List<Multimedia> multimediaList, 
+final LocalDateTime createdAt, 
+final LocalDateTime updatedAt) {
+this.id = id;
+this.name = name;
+this.description = description;
+this.nameFr = nameFr; // Initialisation de nameFr
+this.nameEn = nameEn; // Initialisation de nameEn
+this.descriptionFr = descriptionFr; // Initialisation de descriptionFr
+this.descriptionEn = descriptionEn; // Initialisation de descriptionEn
+this.type = type;
+this.adresse = adresse;
+this.phone = phone;
+this.fax = fax;
+this.email = email;
+this.site = site;
+this.localisation = localisation;
+this.complexe = complexe;
+this.multimediaList = multimediaList;
+this.createdAt = createdAt;
+this.updatedAt = updatedAt;
+}
+
     
     
     public Etablissement() {
     }
     
-    // Classe interne pour le constructeur de type builder
-    public static class EtablissementBuilder {
-        private Long id;
-        private String name;
-        private String description;
-        private String nameFr; // Ajout de name_fr
-        private String descriptionFr; // Ajout de description_fr
-        private String descriptionEn; // Ajout de description_en
-        private String type;
-        private String adresse;
-        private String phone;
-        private String fax;
-        private String email;
-        private String site;
-        private String localisation;
-        private Complexe complexe;
-        private List<Multimedia> multimediaList;
-        private LocalDateTime createdAt;
-        private LocalDateTime updatedAt;
+   // Classe interne pour le constructeur de type builder
+public static class EtablissementBuilder {
+    private Long id;
+    private String name;
+    private String description;
+    private String nameFr; // Ajout de nameFr
+    private String nameEn; // Ajout de nameEn
+    private String descriptionFr; // Ajout de descriptionFr
+    private String descriptionEn; // Ajout de descriptionEn
+    private String type;
+    private String adresse;
+    private String phone;
+    private String fax;
+    private String email;
+    private String site;
+    private String localisation;
+    private Complexe complexe;
+    private List<Multimedia> multimediaList;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
         
         EtablissementBuilder() {
         }
@@ -589,18 +644,23 @@ public class Etablissement {
             return this;
         }
     
-        public Etablissement.EtablissementBuilder nameFr(final String name_fr) { // Ajout de la méthode pour name_fr
-            this.nameFr = name_fr;
-            return this; // Retourne l'instance de builder
-        }
-    
-        public Etablissement.EtablissementBuilder descriptionFr(final String description_fr) { // Ajout de la méthode pour description_fr
-            this.descriptionFr = description_fr;
+        public Etablissement.EtablissementBuilder nameFr(final String nameFr) { // Ajout de la méthode pour nameFr
+            this.nameFr = nameFr;
             return this; // Retourne l'instance de builder
         }
 
-        public Etablissement.EtablissementBuilder descriptionEn(final String description_en) { // Ajout de la méthode pour description_en
-            this.descriptionEn = description_en;
+        public EtablissementBuilder nameEn(final String nameEn) {
+            this.nameEn = nameEn; // Setter pour nameEn
+            return this;
+        }
+    
+        public Etablissement.EtablissementBuilder descriptionFr(final String descriptionFr) { // Ajout de la méthode pour descriptionFr
+            this.descriptionFr = descriptionFr;
+            return this; // Retourne l'instance de builder
+        }
+
+        public Etablissement.EtablissementBuilder descriptionEn(final String descriptionEn) { // Ajout de la méthode pour descriptionEn
+            this.descriptionEn = descriptionEn;
             return this; // Retourne l'instance de builder
         }
     
@@ -660,17 +720,38 @@ public class Etablissement {
         }
     
         public Etablissement build() {
-            return new Etablissement(this.id, this.name, this.description, this.nameFr, this.descriptionFr,this.descriptionEn, this.type, this.adresse, this.phone, this.fax, this.email, this.site, this.localisation, this.complexe, this.multimediaList, this.createdAt, this.updatedAt);
+            return new Etablissement(
+                this.id,
+                this.name,
+                this.description,
+                this.nameFr,
+                this.nameEn, // Ajout de nameEn ici
+                this.descriptionFr,
+                this.descriptionEn, 
+                this.type,
+                this.adresse,
+                this.phone,
+                this.fax,
+                this.email,
+                this.site,
+                this.localisation,
+                this.complexe,
+                this.multimediaList,
+                this.createdAt,
+                this.updatedAt
+            );
         }
+        
     
         public String toString() {
             Long var10000 = this.id;
             return "Etablissement.EtablissementBuilder(id=" + var10000 + 
                    ", name=" + this.name + 
                    ", description=" + this.description + 
-                   ", name_fr=" + this.nameFr + 
-                   ", description_fr=" + this.descriptionFr + 
-                   ", description_en=" + this.descriptionEn + 
+                   ", nameFr=" + this.nameFr + 
+                   ", nameEn=" + this.nameEn + // Ajout de nameEn ici
+                   ", descriptionFr=" + this.descriptionFr + 
+                   ", descriptionEn=" + this.descriptionEn + 
                    ", type=" + this.type + 
                    ", adresse=" + this.adresse + 
                    ", phone=" + this.phone + 
@@ -683,6 +764,7 @@ public class Etablissement {
                    ", createdAt=" + String.valueOf(this.createdAt) + 
                    ", updatedAt=" + String.valueOf(this.updatedAt) + ")";
         }
+        
     }
     
 }

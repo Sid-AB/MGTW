@@ -9,7 +9,11 @@ import java.util.List;
 
 public class TVDTO {
     private String name;
+    private String nameFr;            // Ajout de nameFr
+    private String nameEn;            // Ajout de nameEn
     private String description;
+    private String descriptionFr;     // Ajout de descriptionFr
+    private String descriptionEn;     // Ajout de descriptionEn
     private String type;
     private String website;
     private String streaminglink;
@@ -32,7 +36,11 @@ public class TVDTO {
     public TV toETV() {
         TV tv = new TV();
         tv.setName(this.getName());
+        tv.setNameFr(this.getNameFr());                   // Ajout de nameFr
+        tv.setNameEn(this.getNameEn());                   // Ajout de nameEn
         tv.setDescription(this.getDescription());
+        tv.setDescriptionFr(this.getDescriptionFr());     // Ajout de descriptionFr
+        tv.setDescriptionEn(this.getDescriptionEn());     // Ajout de descriptionEn
         tv.setType(this.getType());
         tv.setWebsite(this.getWebsite());
         tv.setStreaminglink(this.getStreaminglink());
@@ -60,9 +68,21 @@ public class TVDTO {
         return new com.example.demo.dto.TVDTO.TVDTOBuilder();
     }
 
-    public TVDTO(final String name, final String description, final String type, final String website, final String streaminglink, final String satellite, final String frequency, final String polarization, final String symbolrate, final String fec, final String transmission, final String modulation, final Long categorieChaines, final Long complexe, final String adresse, final String phone, final String fax, final String email, final String localisation, final List<MultipartFile> profilFiles) {
+    public TVDTO(final String name, final String nameFr, final String nameEn, // Ajout des nouveaux paramètres
+            final String description, final String descriptionFr, final String descriptionEn,
+            final String type, final String website, final String streaminglink,
+            final String satellite, final String frequency, final String polarization,
+            final String symbolrate, final String fec, final String transmission,
+            final String modulation, final Long categorieChaines, final Long complexe,
+            final String adresse, final String phone, final String fax,
+            final String email, final String localisation,
+            final List<MultipartFile> profilFiles) {
         this.name = name;
+        this.nameFr = nameFr; // Assignation de nameFr
+        this.nameEn = nameEn; // Assignation de nameEn
         this.description = description;
+        this.descriptionFr = descriptionFr; // Assignation de descriptionFr
+        this.descriptionEn = descriptionEn; // Assignation de descriptionEn
         this.type = type;
         this.website = website;
         this.streaminglink = streaminglink;
@@ -90,10 +110,43 @@ public class TVDTO {
         return this.name;
     }
 
+    public String getNameFr() {
+        return nameFr;
+    }
+
+    public void setNameFr(String nameFr) {
+        this.nameFr = nameFr;
+    }
+
+    public String getNameEn() {
+        return nameEn;
+    }
+
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
+    }
+
+    public String getDescriptionFr() {
+        return descriptionFr;
+    }
+
+    public void setDescriptionFr(String descriptionFr) {
+        this.descriptionFr = descriptionFr;
+    }
+
+    public String getDescriptionEn() {
+        return descriptionEn;
+    }
+
+    public void setDescriptionEn(String descriptionEn) {
+        this.descriptionEn = descriptionEn;
+    }
+
     public String getDescription() {
         return this.description;
     }
 
+    
     public String getType() {
         return this.type;
     }
@@ -290,6 +343,28 @@ public class TVDTO {
                     return false;
                 }
 
+                // Comparaison pour nameFr
+                Object this$nameFr = this.getNameFr(); // Ajoutez la méthode pour récupérer nameFr
+                Object other$nameFr = other.getNameFr(); // Idem pour l'autre objet
+                if (this$nameFr == null) {
+                    if (other$nameFr != null) {
+                        return false;
+                    }
+                } else if (!this$nameFr.equals(other$nameFr)) {
+                    return false;
+                }
+
+                // Comparaison pour nameEn
+                Object this$nameEn = this.getNameEn(); // Ajoutez la méthode pour récupérer nameEn
+                Object other$nameEn = other.getNameEn(); // Idem pour l'autre objet
+                if (this$nameEn == null) {
+                    if (other$nameEn != null) {
+                        return false;
+                    }
+                } else if (!this$nameEn.equals(other$nameEn)) {
+                    return false;
+                }
+
                 label230: {
                     Object this$description = this.getDescription();
                     Object other$description = other.getDescription();
@@ -316,6 +391,38 @@ public class TVDTO {
                     }
 
                     return false;
+                }
+
+                // Comparaison pour descriptionFr
+                label231: {
+                    Object this$descriptionFr = this.getDescriptionFr(); // Ajoutez la méthode pour récupérer
+                                                                         // descriptionFr
+                    Object other$descriptionFr = other.getDescriptionFr(); // Idem pour l'autre objet
+                    if (this$descriptionFr == null) {
+                        if (other$descriptionFr != null) {
+                            return false;
+                        }
+                    } else if (this$descriptionFr.equals(other$descriptionFr)) {
+                        break label231; // Passer à la prochaine vérification
+                    }
+
+                    return false; // Si les descriptions ne correspondent pas
+                }
+
+                // Comparaison pour descriptionEn
+                label232: {
+                    Object this$descriptionEn = this.getDescriptionEn(); // Ajoutez la méthode pour récupérer
+                                                                         // descriptionEn
+                    Object other$descriptionEn = other.getDescriptionEn(); // Idem pour l'autre objet
+                    if (this$descriptionEn == null) {
+                        if (other$descriptionEn != null) {
+                            return false;
+                        }
+                    } else if (this$descriptionEn.equals(other$descriptionEn)) {
+                        break label232; // Passer à la prochaine vérification
+                    }
+
+                    return false; // Si les descriptions ne correspondent pas
                 }
 
                 label216: {
@@ -501,56 +608,118 @@ public class TVDTO {
         return other instanceof TVDTO;
     }
 
+  
     public int hashCode() {
         boolean PRIME = true;
         int result = 1;
+    
+        // Ajout des attributs existants
         Object $categorieChaines = this.getCategorieChaines();
-         result = result * 59 + ($categorieChaines == null ? 43 : $categorieChaines.hashCode());
+        result = result * 59 + ($categorieChaines == null ? 43 : $categorieChaines.hashCode());
+        
         Object $complexe = this.getComplexe();
         result = result * 59 + ($complexe == null ? 43 : $complexe.hashCode());
+        
         Object $name = this.getName();
         result = result * 59 + ($name == null ? 43 : $name.hashCode());
+        
         Object $description = this.getDescription();
         result = result * 59 + ($description == null ? 43 : $description.hashCode());
+        
         Object $type = this.getType();
         result = result * 59 + ($type == null ? 43 : $type.hashCode());
+        
         Object $website = this.getWebsite();
         result = result * 59 + ($website == null ? 43 : $website.hashCode());
+        
         Object $streaminglink = this.getStreaminglink();
         result = result * 59 + ($streaminglink == null ? 43 : $streaminglink.hashCode());
+        
         Object $satellite = this.getSatellite();
         result = result * 59 + ($satellite == null ? 43 : $satellite.hashCode());
+        
         Object $frequency = this.getFrequency();
         result = result * 59 + ($frequency == null ? 43 : $frequency.hashCode());
+        
         Object $polarization = this.getPolarization();
         result = result * 59 + ($polarization == null ? 43 : $polarization.hashCode());
+        
         Object $symbolrate = this.getSymbolrate();
         result = result * 59 + ($symbolrate == null ? 43 : $symbolrate.hashCode());
+        
         Object $fec = this.getFec();
         result = result * 59 + ($fec == null ? 43 : $fec.hashCode());
+        
         Object $transmission = this.getTransmission();
         result = result * 59 + ($transmission == null ? 43 : $transmission.hashCode());
+        
         Object $modulation = this.getModulation();
         result = result * 59 + ($modulation == null ? 43 : $modulation.hashCode());
+        
         Object $adresse = this.getAdresse();
         result = result * 59 + ($adresse == null ? 43 : $adresse.hashCode());
+        
         Object $phone = this.getPhone();
         result = result * 59 + ($phone == null ? 43 : $phone.hashCode());
+        
         Object $fax = this.getFax();
         result = result * 59 + ($fax == null ? 43 : $fax.hashCode());
+        
         Object $email = this.getEmail();
         result = result * 59 + ($email == null ? 43 : $email.hashCode());
+        
         Object $localisation = this.getLocalisation();
         result = result * 59 + ($localisation == null ? 43 : $localisation.hashCode());
+        
         Object $profilFiles = this.getProfilFiles();
         result = result * 59 + ($profilFiles == null ? 43 : $profilFiles.hashCode());
+        
+        // Ajout des nouveaux attributs
+        Object $nameFr = this.getNameFr(); // Assurez-vous d'avoir cette méthode
+        result = result * 59 + ($nameFr == null ? 43 : $nameFr.hashCode());
+        
+        Object $nameEn = this.getNameEn(); // Assurez-vous d'avoir cette méthode
+        result = result * 59 + ($nameEn == null ? 43 : $nameEn.hashCode());
+        
+        Object $descriptionFr = this.getDescriptionFr(); // Assurez-vous d'avoir cette méthode
+        result = result * 59 + ($descriptionFr == null ? 43 : $descriptionFr.hashCode());
+        
+        Object $descriptionEn = this.getDescriptionEn(); // Assurez-vous d'avoir cette méthode
+        result = result * 59 + ($descriptionEn == null ? 43 : $descriptionEn.hashCode());
+        
         return result;
     }
+    
 
     public String toString() {
         String var10000 = this.getName();
-        return "TVDTO(name=" + var10000 + ", description=" + this.getDescription() + ", type=" + this.getType() + ", website=" + this.getWebsite() + ", streaminglink=" + this.getStreaminglink() + ", satellite=" + this.getSatellite() + ", frequency=" + this.getFrequency() + ", polarization=" + this.getPolarization() + ", symbolrate=" + this.getSymbolrate() + ", fec=" + this.getFec() + ", transmission=" + this.getTransmission() + ", modulation=" + this.getModulation() + ", categorieChaines=" + this.getCategorieChaines() + ", complexe=" + this.getComplexe() + ", adresse=" + this.getAdresse() + ", phone=" + this.getPhone() + ", fax=" + this.getFax() + ", email=" + this.getEmail() + ", localisation=" + this.getLocalisation() + ", profilFiles=" + String.valueOf(this.getProfilFiles()) + ")";
+        return "TVDTO(name=" + var10000 + 
+               ", nameFr=" + this.getNameFr() +   // Ajout de nameFr
+               ", nameEn=" + this.getNameEn() +   // Ajout de nameEn
+               ", description=" + this.getDescription() + 
+               ", descriptionFr=" + this.getDescriptionFr() + // Ajout de descriptionFr
+               ", descriptionEn=" + this.getDescriptionEn() + // Ajout de descriptionEn
+               ", type=" + this.getType() + 
+               ", website=" + this.getWebsite() + 
+               ", streaminglink=" + this.getStreaminglink() + 
+               ", satellite=" + this.getSatellite() + 
+               ", frequency=" + this.getFrequency() + 
+               ", polarization=" + this.getPolarization() + 
+               ", symbolrate=" + this.getSymbolrate() + 
+               ", fec=" + this.getFec() + 
+               ", transmission=" + this.getTransmission() + 
+               ", modulation=" + this.getModulation() + 
+               ", categorieChaines=" + this.getCategorieChaines() + 
+               ", complexe=" + this.getComplexe() + 
+               ", adresse=" + this.getAdresse() + 
+               ", phone=" + this.getPhone() + 
+               ", fax=" + this.getFax() + 
+               ", email=" + this.getEmail() + 
+               ", localisation=" + this.getLocalisation() + 
+               ", profilFiles=" + String.valueOf(this.getProfilFiles()) + 
+               ")";
     }
+    
 
     public static class TVDTOBuilder {
     }

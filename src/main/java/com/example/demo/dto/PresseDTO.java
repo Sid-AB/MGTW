@@ -8,7 +8,11 @@ import java.util.List;
 
 public class PresseDTO {
     private String name;
+    private String nameEn;
+    private String nameFr;
     private String description;
+    private String descriptionFr;
+    private String descriptionEn;
     private String type;
     private String website;
     private String categorie;
@@ -24,27 +28,36 @@ public class PresseDTO {
 
     public Presse toEPresse() {
         Presse presse = new Presse();
-        presse.setName(this.getName());
-        presse.setDescription(this.getDescription());
-        presse.setTypepbpr(this.getType());
-        presse.setWebsite(this.getWebsite());
-        presse.setCategorieelec(this.getCategorie());
-        presse.setAdresse(this.getAdresse());
-        presse.setPhone(this.getPhone());
-        presse.setFax(this.getFax());
-        presse.setEmail(this.getEmail());
-        presse.setSite(this.getSite());
-        presse.setLocalisation(this.getLocalisation());
+        presse.setName(this.getName()); // Nom en arabe
+        presse.setDescription(this.getDescription()); // Description en arabe
+        presse.setNameFr(this.getNameFr()); // Nom en français
+        presse.setDescriptionFr(this.getDescriptionFr()); // Description en français
+        presse.setDescriptionEn(this.getDescriptionEn()); // Description en anglais
+        presse.setTypepbpr(this.getType()); // Type
+        presse.setWebsite(this.getWebsite()); // Site web
+        presse.setCategorieelec(this.getCategorie()); // Catégorie
+        presse.setAdresse(this.getAdresse()); // Adresse
+        presse.setPhone(this.getPhone()); // Téléphone
+        presse.setFax(this.getFax()); // Fax
+        presse.setEmail(this.getEmail()); // Email
+        presse.setSite(this.getSite()); // Autre site
+        presse.setLocalisation(this.getLocalisation()); // Localisation
+        presse.setNameEn(this.getNameEn()); // Ajout de nameEn
         return presse;
     }
+    
 
     public static com.example.demo.dto.PresseDTO.PresseDTOBuilder builder() {
         return new com.example.demo.dto.PresseDTO.PresseDTOBuilder();
     }
 
-    public PresseDTO(final String name, final String description, final String type, final String website, final String categorie, final List<Long> selectedCategorie, final Long complexe, final String adresse, final String phone, final String fax, final String email, final String site, final String localisation, final List<MultipartFile> profilFiles) {
-        this.name = name;
-        this.description = description;
+    public PresseDTO(final String name, final String nameFr, final String nameEn, final String description, final String descriptionFr, final String descriptionEn, final String type, final String website, final String categorie, final List<Long> selectedCategorie, final Long complexe, final String adresse, final String phone, final String fax, final String email, final String site, final String localisation, final List<MultipartFile> profilFiles) {
+        this.name = name; // Nom en arabe
+        this.nameFr = nameFr; // Nom en français
+        this.nameEn = nameEn; // Nom en anglais (ajouté)
+        this.description = description; // Description en arabe
+        this.descriptionFr = descriptionFr; // Description en français
+        this.descriptionEn = descriptionEn; // Description en anglais
         this.type = type;
         this.website = website;
         this.categorie = categorie;
@@ -58,6 +71,7 @@ public class PresseDTO {
         this.localisation = localisation;
         this.profilFiles = profilFiles;
     }
+    
 
     public PresseDTO() {
     }
@@ -66,8 +80,22 @@ public class PresseDTO {
         return this.name;
     }
 
+    public String getNameFr() {
+        return this.nameFr;
+    }
+
+    // Ajoutez les getters et setters pour nameEn
+    public String getNameEn() {
+        return nameEn;
+    }
     public String getDescription() {
         return this.description;
+    }
+    public String getDescriptionFr() {
+        return this.descriptionFr;
+    }
+    public String getDescriptionEn() {
+        return this.descriptionEn;
     }
 
     public String getType() {
@@ -122,8 +150,24 @@ public class PresseDTO {
         this.name = name;
     }
 
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
+    }
+
     public void setDescription(final String description) {
         this.description = description;
+    }
+
+    public void setNameFr(final String nameFr) {
+        this.nameFr = nameFr;
+    }
+    
+    public void setDescriptionFr(final String descriptionFr) {
+        this.descriptionFr = descriptionFr;
+    }
+
+    public void setDescriptionEn(final String descriptionEn) {
+        this.descriptionEn = descriptionEn;
     }
 
     public void setType(final String type) {
@@ -194,13 +238,25 @@ public class PresseDTO {
                     return false;
                 }
 
-                Object this$name = this.getName();
-                Object other$name = other.getName();
-                if (this$name == null) {
-                    if (other$name != null) {
+                // Comparaison pour nameFr
+                Object this$nameFr = this.getNameFr();
+                Object other$nameFr = other.getNameFr();
+                if (this$nameFr == null) {
+                    if (other$nameFr != null) {
                         return false;
                     }
-                } else if (!this$name.equals(other$name)) {
+                } else if (!this$nameFr.equals(other$nameFr)) {
+                    return false;
+                }
+
+                // Comparaison pour nameEn (ajouté)
+                Object this$nameEn = this.getNameEn(); // Assurez-vous d'avoir cette méthode dans votre classe
+                Object other$nameEn = other.getNameEn(); // Assurez-vous d'avoir cette méthode dans votre classe
+                if (this$nameEn == null) {
+                    if (other$nameEn != null) {
+                        return false;
+                    }
+                } else if (!this$nameEn.equals(other$nameEn)) {
                     return false;
                 }
 
@@ -213,6 +269,27 @@ public class PresseDTO {
                 } else if (!this$description.equals(other$description)) {
                     return false;
                 }
+
+                Object this$descriptionFr = this.getDescriptionFr();
+                Object other$descriptionFr = other.getDescriptionFr();
+                if (this$descriptionFr == null) {
+                    if (other$descriptionFr != null) {
+                        return false;
+                    }
+                } else if (!this$descriptionFr.equals(other$descriptionFr)) {
+                    return false;
+                }
+
+                Object this$descriptionEn = this.getDescriptionEn();
+                Object other$descriptionEn = other.getDescriptionEn();
+                if (this$descriptionEn == null) {
+                    if (other$descriptionEn != null) {
+                        return false;
+                    }
+                } else if (!this$descriptionEn.equals(other$descriptionEn)) {
+                    return false;
+                }
+
 
                 label158: {
                     Object this$type = this.getType();
@@ -360,41 +437,88 @@ public class PresseDTO {
     public int hashCode() {
         boolean PRIME = true;
         int result = 1;
+    
         Object $complexe = this.getComplexe();
-         result = result * 59 + ($complexe == null ? 43 : $complexe.hashCode());
+        result = result * 59 + ($complexe == null ? 43 : $complexe.hashCode());
+    
         Object $name = this.getName();
         result = result * 59 + ($name == null ? 43 : $name.hashCode());
+    
         Object $description = this.getDescription();
         result = result * 59 + ($description == null ? 43 : $description.hashCode());
+    
+        Object $nameFr = this.getNameFr();
+        result = result * 59 + ($nameFr == null ? 43 : $nameFr.hashCode());
+    
+        Object $descriptionFr = this.getDescriptionFr();
+        result = result * 59 + ($descriptionFr == null ? 43 : $descriptionFr.hashCode());
+    
+        Object $descriptionEn = this.getDescriptionEn();
+        result = result * 59 + ($descriptionEn == null ? 43 : $descriptionEn.hashCode());
+    
+        Object $nameEn = this.getNameEn(); // Ajouté pour le champ nameEn
+        result = result * 59 + ($nameEn == null ? 43 : $nameEn.hashCode()); // Ajout de la ligne pour le hashCode de nameEn
+    
         Object $type = this.getType();
         result = result * 59 + ($type == null ? 43 : $type.hashCode());
+    
         Object $website = this.getWebsite();
         result = result * 59 + ($website == null ? 43 : $website.hashCode());
+    
         Object $categorie = this.getCategorie();
         result = result * 59 + ($categorie == null ? 43 : $categorie.hashCode());
+    
         Object $selectedCategorie = this.getSelectedCategorie();
         result = result * 59 + ($selectedCategorie == null ? 43 : $selectedCategorie.hashCode());
+    
         Object $adresse = this.getAdresse();
         result = result * 59 + ($adresse == null ? 43 : $adresse.hashCode());
+    
         Object $phone = this.getPhone();
         result = result * 59 + ($phone == null ? 43 : $phone.hashCode());
+    
         Object $fax = this.getFax();
         result = result * 59 + ($fax == null ? 43 : $fax.hashCode());
+    
         Object $email = this.getEmail();
         result = result * 59 + ($email == null ? 43 : $email.hashCode());
+    
         Object $site = this.getSite();
         result = result * 59 + ($site == null ? 43 : $site.hashCode());
+    
         Object $localisation = this.getLocalisation();
         result = result * 59 + ($localisation == null ? 43 : $localisation.hashCode());
+    
         Object $profilFiles = this.getProfilFiles();
         result = result * 59 + ($profilFiles == null ? 43 : $profilFiles.hashCode());
+    
         return result;
     }
+    
 
     public String toString() {
         String var10000 = this.getName();
-        return "PresseDTO(name=" + var10000 + ", description=" + this.getDescription() + ", type=" + this.getType() + ", website=" + this.getWebsite() + ", categorie=" + this.getCategorie() + ", selectedCategorie=" + String.valueOf(this.getSelectedCategorie()) + ", complexe=" + this.getComplexe() + ", adresse=" + this.getAdresse() + ", phone=" + this.getPhone() + ", fax=" + this.getFax() + ", email=" + this.getEmail() + ", site=" + this.getSite() + ", localisation=" + this.getLocalisation() + ", profilFiles=" + String.valueOf(this.getProfilFiles()) + ")";
+        return "PresseDTO(name=" + var10000 + 
+               ", nameFr=" + this.getNameFr() + 
+               ", description=" + this.getDescription() + 
+               ", descriptionFr=" + this.getDescriptionFr() + 
+               ", descriptionEn=" + this.getDescriptionEn() + 
+               ", nameEn=" + this.getNameEn() +  // Ajout du champ nameEn
+               ", type=" + this.getType() + 
+               ", website=" + this.getWebsite() + 
+               ", categorie=" + this.getCategorie() + 
+               ", selectedCategorie=" + String.valueOf(this.getSelectedCategorie()) + 
+               ", complexe=" + this.getComplexe() + 
+               ", adresse=" + this.getAdresse() + 
+               ", phone=" + this.getPhone() + 
+               ", fax=" + this.getFax() + 
+               ", email=" + this.getEmail() + 
+               ", site=" + this.getSite() + 
+               ", localisation=" + this.getLocalisation() + 
+               ", profilFiles=" + String.valueOf(this.getProfilFiles()) + 
+               ")";
     }
+    
 
     public static class PresseDTOBuilder {
     }

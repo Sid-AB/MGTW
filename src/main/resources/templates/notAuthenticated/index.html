@@ -18,13 +18,8 @@
         <div class="row">
             <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
                  data-aos="fade-up" data-aos-delay="200">
-<<<<<<< HEAD
-                <h1>بوابة الاعلام الجزائري </h1>
-                <h2> بوابة الإعلام  الجزائري  منصتكم المتكاملة التي تربطكم بعالم الإعلام بكافة أشكالها, هنا تجدون محتوى شامل يغطي الصحافة الإلكترونية، الصحافة المكتوبة، والإعلام السمعي البصري، بالإضافة إلى معلومات عن أبرز المؤسسات الإعلامية
-=======
                 <h1 th:text="#{porteilgetway}">بوابة الاعلام الجزائري </h1>
-                <h2> بوابة الإعلام  الجزائري  منصتكم المتكاملة التي تربطكم بعالم الإعلام بكافة أشكاله هنا تجدون محتوى شامل يغطي الصحافة الإلكترونية، الصحافة المكتوبة، والإعلام السمعي البصري، بالإضافة إلى معلومات عن أبرز المؤسسات الإعلامية
->>>>>>> 54b303558a14459c2f4eebf800735091392c258d
+                <h2 th:text="#{textt}"> بوابة الإعلام  الجزائري  منصتكم المتكاملة التي تربطكم بعالم الإعلام بكافة أشكاله هنا تجدون محتوى شامل يغطي الصحافة الإلكترونية، الصحافة المكتوبة، والإعلام السمعي البصري، بالإضافة إلى معلومات عن أبرز المؤسسات الإعلامية
                     هدفنا هو أن نكون مصدركم الأول للاطلاع على كل جديد في عالم الإعلام الحديث والمتجدد
                    </h2>
                 <div class="d-flex justify-content-center justify-content-lg-start">
@@ -38,7 +33,8 @@
                 </div>
             </div>
             <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-                <img th:src="@{notAuthenticated/assets/img/media city.png}" class="img-fluid animated" alt="">
+                <!--a href="/videos/mediaCity.mp4" target="_blank"--> <!-- Chemin vers la vidéo -->
+                    <img th:src="@{notAuthenticated/assets/img/media city.png}" class="img-fluid animated" alt="Vidéo à regarder">
             </div>
 
         </div>
@@ -56,7 +52,7 @@
 
                 <div class="col-lg-8 col-md-8 col-8 flex-column align-items-star ">
                     <h1 style="text-align: start" th:text="#{porteilgetway}">بوابة الاعلام الجزائري </h1>
-                    <h2 style="text-align: start; font-size: 25px"> بوابة الاعلام الجزائري بوابة الاعلام الجزائري بوابة
+                    <h2 style="text-align: start; font-size: 25px" th:text="#{text}"> بوابة الاعلام الجزائري بوابة الاعلام الجزائري بوابة
                         الاعلام </h2>
 
                 </div>
@@ -95,7 +91,9 @@
                                 th:text="${etablissementSoustutelle.getName()}"
                         > </a></h4>
                         <p    th:href="${'/etablissement/'+etablissementSoustutelle.getId()}"
-                           th:text="${etablissementSoustutelle.getDescription().toString().substring(0,(etablissementSoustutelle.getDescription().length() &lt; 100 ? etablissementSoustutelle.getDescription().length() : 100 ))+'...'}"></p>
+                           th:text="${#locale.language == 'ar'etablissementSoustutelle.getDescription().toString().substring(0,(etablissementSoustutelle.getDescription().length() &lt; 100 ? etablissementSoustutelle.getDescription().length() : 100 ))+'...'} :
+                           
+                           etablissementSoustutelle.getDescriptionFr().toString().substring(0,(etablissementSoustutelle.getDescription()Fr.length() &lt; 100 ? etablissementSoustutelle.getDescription()Fr.length() : 100 ))+'...'"></p>
                     </div>
                 </div>
             </div>

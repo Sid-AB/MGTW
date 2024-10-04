@@ -11,6 +11,7 @@ import java.util.Optional;
 @Repository
 public interface EtablissementRepository extends JpaRepository<Etablissement, Long> {
     Etablissement findEtablissementById(Long id);
+    Optional<Etablissement> findById(Long id);
 
     Optional<Etablissement> findEtablissementByName(String name);
     Optional<Etablissement> findEtablissementByNameFr(String name_fr);

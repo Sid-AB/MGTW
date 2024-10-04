@@ -32,11 +32,20 @@ public class TV {
     )
     private Long id;
     private String name;
-    @Column(
-            name = "description",
-            columnDefinition = "TEXT"
-    )
+    @Column(name = "name_fr")
+    private String nameFr; // Nouveau champ pour le nom en français
+
+    @Column(name = "name_en")
+    private String nameEn; // Nouveau champ pour le nom en anglais
+
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
+
+    @Column(name = "description_fr", columnDefinition = "TEXT") // Nouveau champ pour la description en français
+    private String descriptionFr;
+
+    @Column(name = "description_en", columnDefinition = "TEXT") // Nouveau champ pour la description en anglais
+    private String descriptionEn;
     private String type;
     private String website;
     private String streaminglink;
@@ -90,6 +99,22 @@ public class TV {
 
     public String getName() {
         return this.name;
+    }
+
+    public String getNameFr() {
+        return this.nameFr; // Getter pour le nom en français
+    }
+    
+    public String getNameEn() {
+        return this.nameEn; // Getter pour le nom en anglais
+    }
+    
+    public String getDescriptionFr() {
+        return this.descriptionFr; // Getter pour la description en français
+    }
+    
+    public String getDescriptionEn() {
+        return this.descriptionEn; // Getter pour la description en anglais
     }
 
     public String getDescription() {
@@ -158,6 +183,22 @@ public class TV {
 
     public void setName(final String name) {
         this.name = name;
+    }
+
+    public void setNameFr(String nameFr) {
+        this.nameFr = nameFr; // Setter pour le nom en français
+    }
+    
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn; // Setter pour le nom en anglais
+    }
+    
+    public void setDescriptionFr(String descriptionFr) {
+        this.descriptionFr = descriptionFr; // Setter pour la description en français
+    }
+    
+    public void setDescriptionEn(String descriptionEn) {
+        this.descriptionEn = descriptionEn; // Setter pour la description en anglais
     }
 
     public void setDescription(final String description) {
@@ -254,6 +295,28 @@ public class TV {
                     return false;
                 }
 
+                // Comparaison pour nameFr
+                Object this$nameFr = this.getNameFr();
+                Object other$nameFr = other.getNameFr();
+                if (this$nameFr == null) {
+                    if (other$nameFr != null) {
+                        return false;
+                    }
+                } else if (!this$nameFr.equals(other$nameFr)) {
+                    return false;
+                }
+
+                // Comparaison pour nameEn
+                Object this$nameEn = this.getNameEn();
+                Object other$nameEn = other.getNameEn();
+                if (this$nameEn == null) {
+                    if (other$nameEn != null) {
+                        return false;
+                    }
+                } else if (!this$nameEn.equals(other$nameEn)) {
+                    return false;
+                }
+                // Comparaison pour description
                 label201: {
                     Object this$description = this.getDescription();
                     Object other$description = other.getDescription();
@@ -263,6 +326,36 @@ public class TV {
                         }
                     } else if (this$description.equals(other$description)) {
                         break label201;
+                    }
+
+                    return false;
+                }
+
+                // Comparaison pour descriptionFr
+                label202: {
+                    Object this$descriptionFr = this.getDescriptionFr();
+                    Object other$descriptionFr = other.getDescriptionFr();
+                    if (this$descriptionFr == null) {
+                        if (other$descriptionFr == null) {
+                            break label202;
+                        }
+                    } else if (this$descriptionFr.equals(other$descriptionFr)) {
+                        break label202;
+                    }
+
+                    return false;
+                }
+
+                // Comparaison pour descriptionEn
+                label203: {
+                    Object this$descriptionEn = this.getDescriptionEn();
+                    Object other$descriptionEn = other.getDescriptionEn();
+                    if (this$descriptionEn == null) {
+                        if (other$descriptionEn == null) {
+                            break label203;
+                        }
+                    } else if (this$descriptionEn.equals(other$descriptionEn)) {
+                        break label203;
                     }
 
                     return false;
@@ -443,53 +536,110 @@ public class TV {
 
     public int hashCode() {
         boolean PRIME = true;
-        int  result = 1;
+        int result = 1;
+    
         Object $id = this.getId();
-         result = result * 59 + ($id == null ? 43 : $id.hashCode());
+        result = result * 59 + ($id == null ? 43 : $id.hashCode());
+        
         Object $name = this.getName();
         result = result * 59 + ($name == null ? 43 : $name.hashCode());
+        
+        Object $nameFr = this.getNameFr();
+        result = result * 59 + ($nameFr == null ? 43 : $nameFr.hashCode());
+        
+        Object $nameEn = this.getNameEn();
+        result = result * 59 + ($nameEn == null ? 43 : $nameEn.hashCode());
+    
         Object $description = this.getDescription();
         result = result * 59 + ($description == null ? 43 : $description.hashCode());
+        
+        Object $descriptionFr = this.getDescriptionFr();
+        result = result * 59 + ($descriptionFr == null ? 43 : $descriptionFr.hashCode());
+        
+        Object $descriptionEn = this.getDescriptionEn();
+        result = result * 59 + ($descriptionEn == null ? 43 : $descriptionEn.hashCode());
+    
         Object $type = this.getType();
         result = result * 59 + ($type == null ? 43 : $type.hashCode());
+        
         Object $website = this.getWebsite();
         result = result * 59 + ($website == null ? 43 : $website.hashCode());
+        
         Object $streaminglink = this.getStreaminglink();
         result = result * 59 + ($streaminglink == null ? 43 : $streaminglink.hashCode());
+        
         Object $adresse = this.getAdresse();
         result = result * 59 + ($adresse == null ? 43 : $adresse.hashCode());
+        
         Object $phone = this.getPhone();
         result = result * 59 + ($phone == null ? 43 : $phone.hashCode());
+        
         Object $fax = this.getFax();
         result = result * 59 + ($fax == null ? 43 : $fax.hashCode());
+        
         Object $email = this.getEmail();
         result = result * 59 + ($email == null ? 43 : $email.hashCode());
+        
         Object $localisation = this.getLocalisation();
         result = result * 59 + ($localisation == null ? 43 : $localisation.hashCode());
+        
         Object $complexe = this.getComplexe();
         result = result * 59 + ($complexe == null ? 43 : $complexe.hashCode());
+        
         Object $categorieChaine = this.getCategorieChaine();
         result = result * 59 + ($categorieChaine == null ? 43 : $categorieChaine.hashCode());
+        
         Object $caracteristiqueList = this.getCaracteristiqueList();
         result = result * 59 + ($caracteristiqueList == null ? 43 : $caracteristiqueList.hashCode());
+        
         Object $multimediaList = this.getMultimediaList();
         result = result * 59 + ($multimediaList == null ? 43 : $multimediaList.hashCode());
+        
         Object $createdAt = this.getCreatedAt();
         result = result * 59 + ($createdAt == null ? 43 : $createdAt.hashCode());
+        
         Object $updatedAt = this.getUpdatedAt();
         result = result * 59 + ($updatedAt == null ? 43 : $updatedAt.hashCode());
+    
         return result;
     }
+    
 
     public String toString() {
         Long var10000 = this.getId();
-        return "TV(id=" + var10000 + ", name=" + this.getName() + ", description=" + this.getDescription() + ", type=" + this.getType() + ", website=" + this.getWebsite() + ", streaminglink=" + this.getStreaminglink() + ", adresse=" + this.getAdresse() + ", phone=" + this.getPhone() + ", fax=" + this.getFax() + ", email=" + this.getEmail() + ", localisation=" + this.getLocalisation() + ", complexe=" + String.valueOf(this.getComplexe()) + ", categorieChaine=" + String.valueOf(this.getCategorieChaine()) + ", caracteristiqueList=" + String.valueOf(this.getCaracteristiqueList()) + ", multimediaList=" + String.valueOf(this.getMultimediaList()) + ", createdAt=" + String.valueOf(this.getCreatedAt()) + ", updatedAt=" + String.valueOf(this.getUpdatedAt()) + ")";
+        return "Radio(id=" + var10000 
+                + ", name=" + this.getName() 
+                + ", nameFr=" + this.getNameFr() 
+                + ", nameEn=" + this.getNameEn() 
+                + ", description=" + this.getDescription() 
+                + ", descriptionFr=" + this.getDescriptionFr() 
+                + ", descriptionEn=" + this.getDescriptionEn() 
+                + ", type=" + this.getType() 
+                + ", website=" + this.getWebsite() 
+                + ", streaminglink=" + this.getStreaminglink() 
+                + ", adresse=" + this.getAdresse() 
+                + ", phone=" + this.getPhone() 
+                + ", fax=" + this.getFax() 
+                + ", email=" + this.getEmail() 
+                + ", localisation=" + this.getLocalisation() 
+                + ", complexe=" + String.valueOf(this.getComplexe()) 
+                + ", categorieChaine=" + String.valueOf(this.getCategorieChaine()) 
+                + ", caracteristiqueList=" + String.valueOf(this.getCaracteristiqueList()) 
+                + ", multimediaList=" + String.valueOf(this.getMultimediaList()) 
+                + ", createdAt=" + String.valueOf(this.getCreatedAt()) 
+                + ", updatedAt=" + String.valueOf(this.getUpdatedAt()) 
+                + ")";
     }
+    
 
-    public TV(final Long id, final String name, final String description, final String type, final String website, final String streaminglink, final String adresse, final String phone, final String fax, final String email, final String localisation, final Complexe complexe, final CategorieChaine categorieChaine, final List<Caracteristique> caracteristiqueList, final List<Multimedia> multimediaList, final LocalDateTime createdAt, final LocalDateTime updatedAt) {
+    public TV(final Long id, final String name, final String nameFr, final String nameEn, final String description, final String descriptionFr, final String descriptionEn, final String type, final String website, final String streaminglink, final String adresse, final String phone, final String fax, final String email, final String localisation, final Complexe complexe, final CategorieChaine categorieChaine, final List<Caracteristique> caracteristiqueList, final List<Multimedia> multimediaList, final LocalDateTime createdAt, final LocalDateTime updatedAt) {
         this.id = id;
         this.name = name;
+        this.nameFr = nameFr;                // Initialisation du nom en français
+        this.nameEn = nameEn;                // Initialisation du nom en anglais
         this.description = description;
+        this.descriptionFr = descriptionFr;  // Initialisation de la description en français
+        this.descriptionEn = descriptionEn;  // Initialisation de la description en anglais
         this.type = type;
         this.website = website;
         this.streaminglink = streaminglink;
@@ -505,6 +655,7 @@ public class TV {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
+    
 
     public TV() {
     }
@@ -512,7 +663,11 @@ public class TV {
     public static class TVBuilder {
         private Long id;
         private String name;
+        private String nameFr;               // Ajout du nom en français
+        private String nameEn;               // Ajout du nom en anglais
         private String description;
+        private String descriptionFr;        // Ajout de la description en français
+        private String descriptionEn;        // Ajout de la description en anglais
         private String type;
         private String website;
         private String streaminglink;
@@ -546,6 +701,26 @@ public class TV {
             return this;
         }
 
+        // Ajout des méthodes pour setter les nouveaux champs
+        public TVBuilder nameFr(String nameFr) {
+            this.nameFr = nameFr;
+            return this;
+        }
+
+        public TVBuilder nameEn(String nameEn) {
+            this.nameEn = nameEn;
+            return this;
+        }
+
+        public TVBuilder descriptionFr(String descriptionFr) {
+            this.descriptionFr = descriptionFr;
+            return this;
+        }
+
+        public TVBuilder descriptionEn(String descriptionEn) {
+            this.descriptionEn = descriptionEn;
+            return this;
+        }
         public TV.TVBuilder type(final String type) {
             this.type = type;
             return this;
@@ -616,13 +791,39 @@ public class TV {
             return this;
         }
 
+        // Méthode build mise à jour pour inclure les nouveaux attributs
         public TV build() {
-            return new TV(this.id, this.name, this.description, this.type, this.website, this.streaminglink, this.adresse, this.phone, this.fax, this.email, this.localisation, this.complexe, this.categorieChaine, this.caracteristiqueList, this.multimediaList, this.createdAt, this.updatedAt);
+            return new TV(this.id, this.name, this.nameFr, this.nameEn, this.description, this.descriptionFr,
+                    this.descriptionEn, this.type, this.website, this.streaminglink, this.adresse, this.phone, this.fax,
+                    this.email, this.localisation, this.complexe, this.categorieChaine, this.caracteristiqueList,
+                    this.multimediaList, this.createdAt, this.updatedAt);
         }
 
         public String toString() {
             Long var10000 = this.id;
-            return "TV.TVBuilder(id=" + var10000 + ", name=" + this.name + ", description=" + this.description + ", type=" + this.type + ", website=" + this.website + ", streaminglink=" + this.streaminglink + ", adresse=" + this.adresse + ", phone=" + this.phone + ", fax=" + this.fax + ", email=" + this.email + ", localisation=" + this.localisation + ", complexe=" + String.valueOf(this.complexe) + ", categorieChaine=" + String.valueOf(this.categorieChaine) + ", caracteristiqueList=" + String.valueOf(this.caracteristiqueList) + ", multimediaList=" + String.valueOf(this.multimediaList) + ", createdAt=" + String.valueOf(this.createdAt) + ", updatedAt=" + String.valueOf(this.updatedAt) + ")";
+            return "TV.TVBuilder(id=" + var10000 +
+                    ", name=" + this.name +
+                    ", nameFr=" + this.nameFr +               // Ajout de nameFr
+                    ", nameEn=" + this.nameEn +               // Ajout de nameEn
+                    ", description=" + this.description +
+                    ", descriptionFr=" + this.descriptionFr + // Ajout de descriptionFr
+                    ", descriptionEn=" + this.descriptionEn + // Ajout de descriptionEn
+                    ", type=" + this.type +
+                    ", website=" + this.website +
+                    ", streaminglink=" + this.streaminglink +
+                    ", adresse=" + this.adresse +
+                    ", phone=" + this.phone +
+                    ", fax=" + this.fax +
+                    ", email=" + this.email +
+                    ", localisation=" + this.localisation +
+                    ", complexe=" + String.valueOf(this.complexe) +
+                    ", categorieChaine=" + String.valueOf(this.categorieChaine) +
+                    ", caracteristiqueList=" + String.valueOf(this.caracteristiqueList) +
+                    ", multimediaList=" + String.valueOf(this.multimediaList) +
+                    ", createdAt=" + String.valueOf(this.createdAt) +
+                    ", updatedAt=" + String.valueOf(this.updatedAt) +
+                    ")";
         }
+        
     }
 }

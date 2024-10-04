@@ -23,7 +23,7 @@
             <div class="d-flex justify-content-between">
                 <div class="p-2"><h5 class="card-title">User Add</h5></div>
             </div>
-
+            <form id="profileForm" th:action="@{/Direction/save}" method="post" enctype="multipart/form-data">
            
                 <div class="row mb-3 ">
                     <label for="NomDirection" class="col-md-4 col-lg-3 col-form-label">Nom Direction</label>
@@ -64,7 +64,7 @@
 
                     </div>
                 </div>
-                
+
                 <!--onclick="submitForm('direction','departement','service')"-->
                 <div class="text-center">
                     <button type="submit"

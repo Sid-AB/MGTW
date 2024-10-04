@@ -27,4 +27,10 @@ public interface TVRepository extends JpaRepository<TV, Long> {
     List<TV> findAllByCategorieChaine(CategorieChaine categorieChaine);
 
     List<TV> findByDescriptionContainingIgnoreCase(@Param("text") String keyword);
+
+    // Ajout de la recherche par descriptionFr
+    List<TV> findByDescriptionFrContainingIgnoreCase(@Param("text") String keyword);
+
+    // Ajout de la recherche par descriptionEn
+    List<TV> findByDescriptionEnContainingIgnoreCase(@Param("text") String keyword);
 }
