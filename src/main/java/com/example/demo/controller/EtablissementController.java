@@ -12,6 +12,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.ResponseEntity.BodyBuilder;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -96,12 +97,15 @@ public class EtablissementController {
         model.addAttribute("loisForNavBar", loisForNavBar);
         return "authenticated/etablissement/etablissementsEdit.html";
     }
-    @PutMapping({"/update/{id}"})
-    public String updatedEtablissement(@PathVariable Long id,@RequestBody  Etablissement updateEtablissement)
+    @PostMapping({"/update/{id}"})
+    public String updatedEtablissement(@PathVariable Long id,@ModelAttribute  Etablissement updateEtablissement)
     {
         Etablissement etablissement = this.etablissementService.findEtablissementById(id);
        // Optional<Multimedia> multimedia=this.multimediaService.findFirstByEtablissement(etablissement);
-        this.etablissementService.updateDataEtablissement(updateEtablissement,id/*,multimedia */);
-        return "redirect:authenticated/etablissement/etablissements";
+       Optional<Etablissement> existingEtablissement = this.etablissementService.findById(id);
+       Boolean  check= this.etablissementService.updateDataEtablissement(updateEtablissement,id,existingEtablissement/*,multimedia */);
+       return "authenticated/etablissement/etablissementsEdit.html";
+       
+      //  return "redirect:authenticated/etablissement/etablissements";
     }
 }

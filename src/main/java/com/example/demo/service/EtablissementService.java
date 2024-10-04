@@ -26,6 +26,10 @@ public class EtablissementService {
     public EtablissementService() {
     }
 
+    public Optional<Etablissement> findById(Long id) {
+        return this.etablissementRepository.findById(id);
+    }
+
     public Etablissement findEtablissementById(Long id) {
         return this.etablissementRepository.findEtablissementById(id);
     }
@@ -83,15 +87,15 @@ public class EtablissementService {
         return etablissement;
     }
 
-    public Etablissement updateDataEtablissement(@RequestBody Map<String, Object> fields, Long userId/*, Optional<Multimedia> multimedias */) {
-        Etablissement existingEtablissement = this.etablissementRepository.findEtablissementById(userId);
-        existingEtablissement.setName((String)fields.get('name'));
-        existingEtablissement.setNameFr((String)fields.get());
-        existingEtablissement.setType((String)fields.get());
-        existingEtablissement.setDescription((String)fields.get());
-        existingEtablissement.setDescriptionFr((String)fields.get());
-        existingEtablissement.setDescriptionEn((String)fields.get());
-        this.etablissementRepository.save(existingEtablissement);
+    public Boolean updateDataEtablissement(Etablissement etablissement, Long userId,Optional<Etablissement> existingMinister/*, Optional<Multimedia> multimedias */) {
+        if (existingMinister.isPresent()) {
+            Etablissement Etabbliss = existingMinister.get();
+            Etabbliss.setName(etablissement.getName());
+            Etabbliss.setNameFr(etablissement.getNameFr());
+            Etabbliss.setDescription(etablissement.getDescription());
+            Etabbliss.setDescriptionFr(etablissement.getDescriptionFr());
+            Etabbliss.setDescriptionEn(etablissement.getDescriptionEn());
+            this.etablissementRepository.save(Etabbliss);
       /*  if (multimedias.isPresent()) {
             List<Multimedia> savedMultimedias = new ArrayList();
             multimedias.ifPresent((multimedia) -> {
@@ -101,7 +105,12 @@ public class EtablissementService {
             savedMultimedias.ifPresent(existingEtablissement::setMultimediaList);
             this.multimediaRepository.saveAll(savedMultimedias);
         } */
-
-        return existingEtablissement;
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+      //  return existingEtablissement;
     }
 }
