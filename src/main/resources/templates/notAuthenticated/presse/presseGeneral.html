@@ -46,9 +46,9 @@
                                     th:text="${presseEcritPublic.getName()}"></a></h3>
 
                             <div class="meta">
-                                <p><a th:href="@{'/presse/'+${presseEcritPublic.getId().toString()}}"
+                                <p style="overflow: hidden; height: 85px;"><a th:href="@{'/presse/'+${presseEcritPublic.getId().toString()}}"
 
-                                      th:text="${presseEcritPublic.getDescription()}">Kristin Watson</a></p>
+                                      th:text="${presseEcritPublic.getDescription().toString().substring(0,(presseEcritPublic.getDescription().length() &lt; 100 ? presseEcritPublic.getDescription().length() : 100 ))+'...'}">Kristin Watson</a></p>
                             </div>
                         </div>
                     </div>
@@ -85,9 +85,9 @@
                                     th:text="${presseEcritPrive.getName()}"></a></h3>
 
                             <div class="meta">
-                                <p><a th:href="@{'/presse/'+${presseEcritPrive.getId().toString()}}"
+                                <p style="overflow: hidden; height: 85px;"><a th:href="@{'/presse/'+${presseEcritPrive.getId().toString()}}"
 
-                                      th:text="${presseEcritPrive.getDescription()}"></a></p>
+                                      th:text="${presseEcritPrive.getDescription().toString().substring(0,(presseEcritPrive.getDescription().length() &lt; 100 ? presseEcritPrive.getDescription().length() : 100 ))+'...'}"></a></p>
                             </div>
                         </div>
                     </div>
@@ -106,7 +106,10 @@
 <footer th:replace="notAuthenticated/fragments/footer::footer" class="footer">
 </footer>
 
-<div id="preloader"></div>
+<div id="preloader" class="waitting">
+    <svg th:include="notAuthenticated/fragments/logosvg::logosvg" width="120" height="120" viewBox="0 0 2342 2004" version="1.1" class="inSide">
+    </svg>  
+</div>
 
 <div th:replace="notAuthenticated/fragments/js::js"></div>
 
