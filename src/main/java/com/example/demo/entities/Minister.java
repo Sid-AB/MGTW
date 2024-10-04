@@ -7,6 +7,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.context.i18n.LocaleContextHolder;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import java.time.format.DateTimeFormatter;
 @Entity
 public class Minister {
 
@@ -18,8 +22,14 @@ public class Minister {
     private String lastName;
     private LocalDate birthday;
     private String address;
+
     private LocalDate startFrom;
+ 
     private LocalDate until;
+      // Champs formatés pour l'affichage
+      private String formattedStartFrom;
+      private String formattedUntil;
+  
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "profile_picture_id")
@@ -115,6 +125,23 @@ public class Minister {
      public void setprofilePicture(Multimedia profilePicture) {
         this.profilePicture = profilePicture;
     }
+    public String getFormattedStartFrom() {
+        return formattedStartFrom;
+    }
+
+    public void setFormattedStartFrom(String formattedStartFrom) {
+        this.formattedStartFrom = formattedStartFrom;
+    }
+
+    public String getFormattedUntil() {
+        return formattedUntil;
+    }
+
+    public void setFormattedUntil(String formattedUntil) {
+        this.formattedUntil = formattedUntil;
+    }
+
+ 
 }
 
   

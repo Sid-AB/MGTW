@@ -6,6 +6,7 @@ import com.example.demo.entities.Minister;
 import org.hibernate.mapping.List;
 import org.springframework.web.multipart.MultipartFile;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 //import java.util.List;
 
@@ -20,7 +21,8 @@ public class MinisterDTO {
     private MultipartFile profilePicture;
     private String formattedStartFrom; // Nouveau champ pour stocker la date formatée
 
-    
+    private String formattedDateDebut;
+    private String formattedDateFin;
     
     // Constructors
     public MinisterDTO()
@@ -94,11 +96,23 @@ public class MinisterDTO {
     public void setprofilePicture(MultipartFile profilePicture) {
         this.profilePicture = profilePicture;
     }
-    public String getFormattedStartFrom() {
-        return formattedStartFrom;
+   
+
+
+    public String getFormattedDateDebut() {
+        return formattedDateDebut;
     }
 
-    public void setFormattedStartFrom(String formattedStartFrom) {
-        this.formattedStartFrom = formattedStartFrom;
+    public void setFormattedDateDebut(String formattedDateDebut) {
+        this.formattedDateDebut = formattedDateDebut;
     }
+
+    public String getFormattedDateFin() {
+        return formattedDateFin;
+    }
+
+    public void setFormattedDateFin(String formattedDateFin) {
+        this.formattedDateFin = formattedDateFin;
+    }
+  
 }

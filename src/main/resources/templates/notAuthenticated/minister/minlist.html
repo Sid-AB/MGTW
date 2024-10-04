@@ -26,19 +26,16 @@
         </div>
     </section><!-- End Breadcrumbs -->
 
-    <!-- ======= Portfolio Details Section ======= -->
-    <section id="portfolio-details" class="portfolio-details">
-        <div class="container">
-            <div class="product-section pt-0">
-                <div class="container">
-                    <div class="row">
-
-
-                        <!-- Start Column 2 -->
-                          <!-- Boucle pour afficher chaque ministre -->
-                          <div th:each="minister : ${Mins}" class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+        <!-- ======= Portfolio Details Section ======= -->
+        <section id="portfolio-details" class="portfolio-details">
+            <div class="container">
+                <div class="product-section pt-0">
+                    <div class="container">
+                        <div class="row">
+                           <!-- Boucle pour afficher chaque ministre -->
+                        <div th:each="minister : ${Mins}" class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
                             <a class="product-item" href="">
-                                <img th:src="@{${'/ministers/pic/'+minister.Id}}"
+                                <img th:src="@{${'/ministers/pic/' + minister.Id}}"
                                      style="height: 150px;width: 150px"
                                      class="img-fluid product-thumbnail">
                                      <!--h3 class="product-title" style="font-size: 20px" th:text="${minister.firstName}">اسم الوزير </h3>
@@ -46,38 +43,35 @@
 
                                      <h3 class="product-title" style="font-size: 20px" th:text="${minister.lastName}">لقب الوزير </h3-->
                                      <h3 class="product-title" style="font-size: 20px" th:text="${minister.firstName} + ' ' + ${minister.lastName}"></h3>
-
-                                     <h5 class="product-price" style="font-size: 15px" th:text="'منذ : ' + ${minister.startFrom}"></h5>
-
-                                     <h5 class="product-price" style="font-size: 15px" th:text="${minister.until != null} ? 'إلى غاية : ' + ${minister.until} : 'الى يومنا هذا'"></h5>
-                                      <span class="icon-cross">
+                                     <!-- Affichage des dates -->
+                                     <h5 class="product-price" style="font-size: 15px">
+                                        <span>منذ : </span>
+                                        <span id="startFromDate" data-start-from-date="${minister.formattedStartFrom}"></span>
+                                    </h5>
+                                    <h5 class="product-price" style="font-size: 15px">
+                                        <span id="untilDateText" data-until-date="${minister.formattedUntil}"></span>
+                                    </h5>
+                                    
+                                  <span class="icon-cross">
                                     <img th:src="@{/notAuthenticated/assets/img/Frame 5.png}" class="img-fluid">
                                 </span>
 
-                            </a>
+                                </a>
+                            </div>
+                            <!-- End Column 2 -->
                         </div>
                     </div>
-                        <!-- End Column 2 -->
-
-
-                    </div>
                 </div>
+                <!-- End Product Section -->
             </div>
-            <!-- End Product Section -->
+        </section><!-- End Portfolio Details Section -->
+    </main><!-- End #main -->
 
-        </div>
-    </section><!-- End Portfolio Details Section -->
+    <footer th:replace="notAuthenticated/fragments/footer::footer" class="footer"></footer>
+    <div id="preloader"></div>
+    <div th:replace="notAuthenticated/fragments/js::js"></div>
 
-</main><!-- End #main -->
-
-
-<footer th:replace="notAuthenticated/fragments/footer::footer" class="footer">
-</footer>
-
-<div id="preloader"></div>
-
-<div th:replace="notAuthenticated/fragments/js::js"></div>
-
+    
+    
 </body>
-
 </html>
