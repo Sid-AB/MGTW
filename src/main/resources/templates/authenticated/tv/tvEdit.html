@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml">
+
+<head th:replace="authenticated/fragments/header::header(${'title'},${'description'},${'keywords'})">
+</head>
+
+
+<body>
+
+<!-- ======= Header ======= -->
+<header th:replace="authenticated/fragments/navbar::header"></header>
+<!-- End Header -->
+
+<!-- ======= Sidebar ======= -->
+<aside th:replace="authenticated/fragments/navside::sidebar"></aside>
+<!-- End Sidebar-->
+
+
+<main id="main" class="main">
+    <div class="card">
+
+        <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+            <!--img th:src="@{'/user/imgPro/'+${user.getId()}+'/images/profileImage'}"
+
+
+                 height="100px" width="100px"
+                 class="rounded-circle"-->
+
+            <!--h2 th:text="${user.getFirstname()+'  '+user.getLastname()}"></h2>
+            <h3 th:text="${user.getFonction()}"></h3-->
+            <div class="social-links mt-2" hidden="hidden">
+                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="tab-pane fade show active profile-overview" th:fragment="profile-signIn(message)"
+                         id="profile-signIn">
+
+                        <h5 class="card-title"> Modification Of Etablissement</h5>
+                        <!-- Profile Edit Form "-->
+                        <form id="profileForm" th:action="@{'/etablissement/update/'+${etablissement.getId()}}" method="post">
+
+                            <div class="row mb-3">
+                                <label for="name" class="col-md-4 col-lg-12 col-form-label">Name Arabe</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="name" type="text" class="form-control" id="name"
+                                           placeholder="Name"
+                                           th:value="${etablissement.getName()}">
+
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="nameFr" class="col-md-4 col-lg-12 col-form-label">Name Latin</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="nameFr" type="text" class="form-control" id="nameFr"
+                                           placeholder="Name"
+                                           th:value="${etablissement.getNameFr()}">
+
+                                </div>
+                            </div>
+
+
+
+
+                            <!--div class="row mb-3">
+                                <label for="role"
+                                       class="col-md-4 col-lg-12 col-form-label">Role</label>
+                                <div class="col-md-8 col-lg-9">
+
+                                    <select id="role" name="role" class="form-control">
+                                        <option disabled value="">Select Role</option>
+                                        <option th:selected="${user.getRole()=='ADMIN'}" selected value="ADMIN"> 1 -
+                                            ADMIN
+                                        </option>
+                                        <option th:selected="${user.getRole()=='USER'}" selected value="USER"> 2 -
+                                            USER
+                                        </option>
+
+                                    </select>
+
+                                </div>
+                            </div-->
+
+
+                            <div class="row mb-3">
+                                <label for="Address" class="col-md-4 col-lg-12 col-form-label">Address
+                                    (Office)</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="address" type="text" class="form-control" id="address"
+                                           placeholder="Address (Office)"
+                                           th:value="${etablissement.getAdresse()}">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="phone" class="col-md-4 col-lg-12 col-form-label">Phone
+                                    (office)</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="phone" type="number" class="form-control" id="phone"
+                                           placeholder="phone"
+                                           th:value="${etablissement.getPhone()}"
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="Phone" class="col-md-4 col-lg-12 col-form-label">Fax</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="fax" type="number" class="form-control" id="fax"
+                                           placeholder="fax"
+                                           th:value="${etablissement.getFax()}"
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="descriptionAr" class="col-md-4 col-lg-12 col-form-label">description arab</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="description" type="text" class="form-control" id="description"
+                                           placeholder="description arabic"
+                                           th:value="${etablissement.getDescription()}"
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="descriptionFr" class="col-md-4 col-lg-12 col-form-label">description French</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="descriptionFr" type="text" class="form-control" id="descriptionFr"
+                                           placeholder="description en francais"
+                                           th:value="${etablissement.getDescriptionFr()}"
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="descriptionEn" class="col-md-4 col-lg-12 col-form-label">description english</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="descriptionEn" type="text" class="form-control" id="descriptionEn"
+                                           placeholder="description in English"
+                                           th:value="${etablissement.getDescriptionEn()}"
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="Email" class="col-md-4 col-lg-12 col-form-label">Email</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="email" type="email" class="form-control" id="email" placeholder="Email"
+                                           th:value="${etablissement.getEmail()}"
+                                    >
+                                </div>
+                            </div>
+
+                            <!--div class="row mb-3">
+                                <label for="profileImage" class="col-md-4 col-lg-12 col-form-label">Profile Files</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input type="file" class="form-control-file" id="profilFiles"
+                                           name="profilFiles" multiple>
+
+                                </div>
+                            </div-->
+
+                            <!--onclick="submitForm('direction','departement','service')"-->
+                            <div class="text-center">
+                                <button type="submit"
+                                        class="btn btn-primary">Save
+                                </button>
+                            </div>
+                        </form><!-- End Profile Edit Form -->
+                    </div>
+
+                </div>
+                <div class="col-6">
+
+                    <div class="">
+                        <div class="card-body">
+                            <h5 class="card-title">Documents</h5>
+                            <!-- Active Table -->
+                            <!--table class="table table-borderless">
+                                <thead>
+                                <tr>
+                                    <th hidden="hidden" scope="col-12">Name</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+
+                                <tr>
+
+                                    <td th:if="${!user.getMultimediaList().isEmpty()}">
+                                        <div class="">
+                                            <div class="col">
+                                                <ul class="list-group">
+                                                    <li class="list-group-item"
+                                                        th:each="multimedia : ${user.getMultimediaList()}">
+                                                        <div class="row d-flex ">
+                                                            <div class="col p-2">
+
+
+                                                                <i th:if="${multimedia.getFilePath()=='images'}"
+                                                                   class=" bx bxs-file-image"></i>
+                                                                <i th:if="${multimedia.getFilePath()=='pdfs'}"
+                                                                   class=" bx bxs-file-pdf"></i>
+                                                                <i th:if="${multimedia.getFilePath()=='videos'}"
+                                                                   class=" bx bxs-video"></i>
+                                                                <i th:if="${multimedia.getFilePath()=='other'}"
+                                                                   class="bi bi-file-text-fill"></i>
+
+                                                                <a th:href="@{'/user/multimedia/'+${multimedia.getFilePath()}+'/'+${multimedia.getFileName()}}"
+                                                                   th:text="${#strings.arraySplit(multimedia.getFileName(), '_')[1] }"
+                                                                   target="_blank"
+                                                                ></a>
+                                                                <span th:if="${multimedia.getDocType()=='profileImage'}"
+                                                                      th:text="'( Profile picture )'"></span>
+                                                                <!-- Add other multimedia details as needed -->
+
+
+                                                            <!--/div>
+                                                            <div class="col-2 p-2" onclick="return confirm('Êtes-vous sûr de bien vouloir supprimer cet élément ?');">
+
+                                                                <a  th:href="@{'/multimedia/delete/'+${multimedia.getId()}+'/'+${user.getId()}}"
+                                                                    class="fa-regular fa-trash-can icon-dark btn-delete"
+                                                                   title="Remove"><i
+                                                                        class="bi bi-trash"></i></a>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </li>
+
+                                                </ul>
+                                                <!-- Add other multimedia details as needed -->
+                                            <!--/div>
+
+                                        </div>
+                                    </td>
+
+                                    <th hidden="hidden" th:if="${!user.getMultimediaList().isEmpty()}"
+                                        th:text="Documents"
+                                        scope="row"></th>
+                                </tr>
+                                </tbody>
+                            </table-->
+                            <!-- End Tables without borders -->
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+</main><!-- End #main -->
+
+
+<!-- ======= Footer ======= -->
+<footer th:replace="authenticated/fragments/footer::footer" class="footer">
+</footer><!-- End Footer -->
+
+<!-- Template Main JS File -->
+<div th:replace="authenticated/fragments/js::js"></div>
+
+
+</body>
+</html>

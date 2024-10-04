@@ -10,11 +10,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
 
 
 @Repository
 public interface TVRepository extends JpaRepository<TV, Long> {
     TV findTVById(Long id);
+    Optional<TV> findById(Long id);
 
     List<TV> findTVSByComplexe(Complexe complexe);
 

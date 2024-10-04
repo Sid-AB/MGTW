@@ -80,7 +80,7 @@ public class EtablissementController {
     }
 
     @GetMapping({"/EditEtablissement/{id}"})
-    public String findTVById(Model model, @PathVariable Long id) {
+    public String findEtablisById(Model model, @PathVariable Long id) {
         Etablissement etablissement = this.etablissementService.findEtablissementById(id);
         List etablissements;
         if (etablissement.getType().toString().equals("soustutelle")) {

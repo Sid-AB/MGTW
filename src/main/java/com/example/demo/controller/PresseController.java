@@ -166,4 +166,24 @@ public class PresseController {
             return ((BodyBuilder)ResponseEntity.ok().header("Content-Disposition", new String[]{"attachment; filename=\"" + file.getFilename() + "\""})).body(file);
         }
     }
+
+    @GetMapping({"/pressesEdit/{id}"})
+    public String FindPressById(Model model, @PathVariable Long id)
+    {
+        Presse press=this.presseService.findPresseById(id);
+        model.addAttribute("press",press);
+        return "authenticated/presse/pressEdit";
+    }
+
+
+    @PostMapping({"/update/{id}"})
+    public String updatedEtablissement(@PathVariable Long id,@ModelAttribute  Presse updatePress)
+    {
+        Presse presse = this.presseService.findPresseById(id);
+       // Optional<Multimedia> multimedia=this.multimediaService.findFirstByEtablissement(etablissement);
+       Optional<Presse> existingPress = this.presseService.findById(id);
+       Boolean  check= this.presseService.updateDataPresse(updatePress,id,existingPress/*,multimedia */);
+       //return "authenticated/etablissement/etablissementsEdit.html";
+        return "authenticated/presse/presses";
+    }
 }
