@@ -3,7 +3,6 @@ package com.example.demo.service;
 
 import com.example.demo.dto.MinisterDTO;
 import com.example.demo.entities.Multimedia;
-import com.example.demo.entities.Radio;
 import com.example.demo.entities.Minister;
 import com.example.demo.repository.MultimediaRepository;
 import com.example.demo.repository.MinisterRepository;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.beans.factory.annotation.Value;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,6 +50,10 @@ public class MinisterService {
         Minister minister = new Minister();
         minister.setFirstName(ministerDTO.getFirstName());
         minister.setLastName(ministerDTO.getLastName());
+        minister.setFirstNameFr(ministerDTO.getFirstNameFr()); // Set first name in French
+minister.setFirstNameEn(ministerDTO.getFirstNameEn()); // Set first name in English
+minister.setLastNameFr(ministerDTO.getLastNameFr());   // Set last name in French
+minister.setLastNameEn(ministerDTO.getLastNameEn());   // Set last name in English
         minister.setBirthday(ministerDTO.getBirthday());
         minister.setAddress(ministerDTO.getAddress());
         minister.setStartFrom(ministerDTO.getStartFrom());
@@ -70,6 +72,10 @@ public class MinisterService {
         MinisterDTO ministerDTO = new MinisterDTO();
         ministerDTO.setFirstName(minister.getFirstName());
         ministerDTO.setLastName(minister.getLastName());
+        ministerDTO.setFirstNameFr(minister.getFirstNameFr()); // Set first name in French
+        ministerDTO.setFirstNameEn(minister.getFirstNameEn()); // Set first name in English
+        ministerDTO.setLastNameFr(minister.getLastNameFr());   // Set last name in French
+        ministerDTO.setLastNameEn(minister.getLastNameEn());   // Set last name in English
         ministerDTO.setBirthday(minister.getBirthday());
         ministerDTO.setAddress(minister.getAddress());
         ministerDTO.setStartFrom(minister.getStartFrom());

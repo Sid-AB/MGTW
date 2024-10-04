@@ -1,4 +1,3 @@
-
 package com.example.demo.dto;
 
 import com.example.demo.entities.Minister;
@@ -10,7 +9,7 @@ import java.time.LocalDate;
 //import java.util.List;
 
 public class MinisterDTO {
-    
+
     private String firstName;
     private String lastName;
     private LocalDate birthday;
@@ -20,16 +19,20 @@ public class MinisterDTO {
     private MultipartFile profilePicture;
     private String formattedStartFrom; // Nouveau champ pour stocker la date formatée
 
-    
-    
+    // Ajout des champs pour les noms en français et en anglais
+    private String firstNameFr;
+    private String firstNameEn;
+    private String lastNameFr;
+    private String lastNameEn;
+
     // Constructors
-    public MinisterDTO()
-     {
+    public MinisterDTO() {
 
-     }
+    }
 
-
-    public MinisterDTO(String firstName, String lastName, LocalDate birthday, String address, LocalDate startFrom, LocalDate until, MultipartFile profilePicture ) {
+    public MinisterDTO(String firstName, String lastName, LocalDate birthday, String address,
+            LocalDate startFrom, LocalDate until, MultipartFile profilePicture,
+            String firstNameFr, String firstNameEn, String lastNameFr, String lastNameEn) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthday = birthday;
@@ -37,6 +40,10 @@ public class MinisterDTO {
         this.startFrom = startFrom;
         this.until = until;
         this.profilePicture = profilePicture;
+        this.firstNameFr = firstNameFr;
+        this.firstNameEn = firstNameEn;
+        this.lastNameFr = lastNameFr;
+        this.lastNameEn = lastNameEn;
     }
 
     // Getters and Setters
@@ -54,6 +61,39 @@ public class MinisterDTO {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    // Getters et Setters pour firstNameFr, firstNameEn, lastNameFr, lastNameEn
+    public String getFirstNameFr() {
+        return firstNameFr;
+    }
+
+    public void setFirstNameFr(String firstNameFr) {
+        this.firstNameFr = firstNameFr;
+    }
+
+    public String getFirstNameEn() {
+        return firstNameEn;
+    }
+
+    public void setFirstNameEn(String firstNameEn) {
+        this.firstNameEn = firstNameEn;
+    }
+
+    public String getLastNameFr() {
+        return lastNameFr;
+    }
+
+    public void setLastNameFr(String lastNameFr) {
+        this.lastNameFr = lastNameFr;
+    }
+
+    public String getLastNameEn() {
+        return lastNameEn;
+    }
+
+    public void setLastNameEn(String lastNameEn) {
+        this.lastNameEn = lastNameEn;
     }
 
     public LocalDate getBirthday() {
@@ -87,13 +127,15 @@ public class MinisterDTO {
     public void setUntil(LocalDate until) {
         this.until = until;
     }
-   public MultipartFile getprofilePicture() {
+
+    public MultipartFile getprofilePicture() {
         return profilePicture;
     }
 
     public void setprofilePicture(MultipartFile profilePicture) {
         this.profilePicture = profilePicture;
     }
+
     public String getFormattedStartFrom() {
         return formattedStartFrom;
     }

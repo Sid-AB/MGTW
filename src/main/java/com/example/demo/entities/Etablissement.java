@@ -37,25 +37,19 @@ public class Etablissement {
     private Long id; // Identifiant unique de l'établissement
     private String name; // Nom de l'établissement
 
-    @Column(name = "description", // Nom de la colonne dans la base de données
-            columnDefinition = "TEXT" // Type de la colonne
-    )
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description; // Description de l'établissement
 
-    @Column(name = "name_fr") // Nom de la colonne dans la base de données
-    private String nameFr; // Nom de l'établissement en français
+    @Column(name = "name_fr") 
+    private String nameFr; 
 
-    @Column(name = "name_en") // Nom de la colonne pour l'anglais
-    private String nameEn; // Nom de l'établissement en anglais
+    @Column(name = "name_en") 
+    private String nameEn; 
 
-    @Column(name = "description_fr", // Nom de la colonne dans la base de données
-            columnDefinition = "TEXT" // Type de la colonne
-    )
+    @Column(name = "description_fr", columnDefinition = "TEXT")
     private String descriptionFr; // Description de l'établissement en fr
 
-    @Column(name = "description_en", // Nom de la colonne dans la base de données
-            columnDefinition = "TEXT" // Type de la colonne
-    )
+    @Column(name = "description_en", columnDefinition = "TEXT")
     private String descriptionEn; // Description de l'établissement en en
 
     private String type; // Type de l'établissement

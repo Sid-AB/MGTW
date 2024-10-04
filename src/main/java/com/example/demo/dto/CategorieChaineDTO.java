@@ -20,8 +20,10 @@ public class CategorieChaineDTO {
         return new com.example.demo.dto.CategorieChaineDTO.CategorieChaineDTOBuilder();
     }
 
-    public CategorieChaineDTO(final String name) {
+    public CategorieChaineDTO(final String name, final String nameFr, final String nameEn) {
         this.name = name;
+        this.nameEn = nameEn;
+        this.nameFr = nameFr;
     }
 
     public CategorieChaineDTO() {

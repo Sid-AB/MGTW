@@ -41,7 +41,7 @@ public class CategorieChaine {
             mappedBy = "categorieChaine",
             cascade = {CascadeType.ALL}
     )
-    private List<TV> tvList = new ArrayList();
+    private List<TV> tvList = new ArrayList<>();
     @CreationTimestamp
     @Column(
             name = "created_at"
