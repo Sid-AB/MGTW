@@ -4,8 +4,7 @@ package com.example.demo.dto;
 
 public class LoisDTO {
     private String name;
-    private String nameFr;
-    private String nameEn;
+
     private String description;
     private String nameFr; // Ajout de nameFr
     private String nameEn; // Ajout de nameEn
@@ -47,12 +46,6 @@ public class LoisDTO {
     public String getName() {
         return this.name;
     }
-    public String getNameFr() {
-        return this.nameFr;
-    }
-    public String getNameEn() {
-        return this.nameEn;
-    }
 
     public String getDescription() {
         return this.description;
@@ -80,14 +73,6 @@ public class LoisDTO {
 
     public void setName(final String name) {
         this.name = name;
-    }
-
-    public void setNameFr(final String name) {
-        this.nameFr = name;
-    }
-
-    public void setNameEn(final String name) {
-        this.nameEn = name;
     }
 
     public void setDescription(final String description) {

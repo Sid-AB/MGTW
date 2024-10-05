@@ -64,12 +64,7 @@ public class Lois {
     public String getName() {
         return this.name;
     }
-    public String getNameFr() {
-        return this.nameFr;
-    }
-    public String getNameEn() {
-        return this.nameEn;
-    }
+    
 
 
     public String getDescription() {
@@ -115,13 +110,7 @@ public class Lois {
     public void setName(final String name) {
         this.name = name;
     }
-    public void setNameFr(final String name) {
-        this.nameFr = name;
-    }
-    public void setNameEn(final String name) {
-        this.nameEn = name;
-    }
-
+  
     public void setDescription(final String description) {
         this.description = description;
     }
@@ -188,7 +177,7 @@ public class Lois {
                     return false;
                 }
 
-                Object this$nameFr = this.getNameFr();
+                /*Object this$nameFr = this.getNameFr();
                 Object other$nameFr = other.getNameFr();
                 if (this$name == null) {
                     if (other$name != null) {
@@ -205,7 +194,7 @@ public class Lois {
                     }
                 } else if (!this$name.equals(other$name)) {
                     return false;
-                }
+                }*/
 
                 Object this$description = this.getDescription();
                 Object other$description = other.getDescription();
@@ -362,8 +351,7 @@ public class Lois {
             final LocalDateTime createdAt, final LocalDateTime updatedAt, final String nameFr,final String nameEn,final String descriptionFr,final String descriptionEn) {
         this.id = id;
         this.name = name;
-        this.nameFr = name_fr;
-        this.nameEn = name_en;
+       
         this.description = description;
         this.nameFr = nameFr; // Initialisation de nameFr
         this.nameEn = nameEn; // Initialisation de nameEn
@@ -380,8 +368,7 @@ public class Lois {
     public static class LoisBuilder {
         private Long id;
         private String name;
-        private String nameFr;
-        private String nameEn;
+    
         private String description;
         private String nameFr; // Ajout de nameFr
         private String nameEn; // Ajout de nameEn
@@ -401,16 +388,6 @@ public class Lois {
 
         public Lois.LoisBuilder name(final String name) {
             this.name = name;
-            return this;
-        }
-
-        public Lois.LoisBuilder nameFr(final String name) {
-            this.nameFr = name;
-            return this;
-        }
-
-        public Lois.LoisBuilder nameEn(final String name) {
-            this.nameEn = name;
             return this;
         }
 
@@ -455,15 +432,15 @@ public class Lois {
             return this;
         }
 
+        public Lois build() {
+            return new Lois(this.id, this.name, this.description,this.textJuridiqueList, this.createdAt, this.updatedAt,this.nameFr, this.nameEn, this.descriptionFr,
+                    this.descriptionEn);
+        } 
+
        /* public Lois build() {
             return new Lois(this.id, this.name, this.description, this.nameFr, this.nameEn, this.descriptionFr,
                     this.descriptionEn, this.textJuridiqueList, this.createdAt, this.updatedAt);
-        } */
-
-        public Lois build() {
-            return new Lois(this.id, this.name, this.description, this.nameFr, this.nameEn, this.descriptionFr,
-                    this.descriptionEn, this.textJuridiqueList, this.createdAt, this.updatedAt);
-        }
+        }*/
         public String toString() {
             return "Lois.LoisBuilder(id=" + this.id +
                     ", name=" + this.name +

@@ -32,11 +32,22 @@
 
                 </div>
             </div>
-            <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-                <!--a href="/videos/mediaCity.mp4" target="_blank"--> <!-- Chemin vers la vidéo -->
+            <!--div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+                <a href="/videos/mediaCity.mp4" target="_blank"> < Chemin vers la vidéo >
                     <img th:src="@{notAuthenticated/assets/img/media city.png}" class="img-fluid animated" alt="Vidéo à regarder">
+            </div-->
+            <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+                <img th:src="@{notAuthenticated/assets/img/media city.png}" class="img-fluid animated" alt="Vidéo à regarder" id="videoTrigger" style="cursor: pointer;">
             </div>
-
+           
+        <!--div class="video-container" id="videoContainer" style="display: none;">
+            <video width="600" controls>
+                <source th:src="@{videos/mediaCity.mp4}" type="video/mp4">
+               
+            </video>
+        </div-->
+            
+            
         </div>
     </div>
 
@@ -228,6 +239,20 @@
 </div>
 
 <div th:replace="notAuthenticated/fragments/js::js"></div>
+<script>
+    var im_in= /*[[${#locale.language}]]*/ 'ar';
+    if(im_in !== 'ar')
+    {
+        document.body.style.fontFamily = "Helvetica, Arial, sans-serif";
+    }
+    // JavaScript to open the video in a new window when the image is clicked
+    document.getElementById('videoTrigger').addEventListener('click', function () {
+        // Specify the URL of the video file
+        var videoUrl = 'notAuthenticated/assets/videos/mediaCity.mp4'; // Change this if necessary
+        // Open a new window with the video
+        window.open(videoUrl, '_blank');
+    });
+</script>
 
 </body>
 
