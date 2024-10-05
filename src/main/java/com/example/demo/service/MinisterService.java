@@ -51,14 +51,11 @@ public class MinisterService {
         minister.setFirstName(ministerDTO.getFirstName());
         minister.setLastName(ministerDTO.getLastName());
         minister.setFirstNameFr(ministerDTO.getFirstNameFr()); // Set first name in French
-minister.setFirstNameEn(ministerDTO.getFirstNameEn()); // Set first name in English
 minister.setLastNameFr(ministerDTO.getLastNameFr());   // Set last name in French
-minister.setLastNameEn(ministerDTO.getLastNameEn());   // Set last name in English
         minister.setBirthday(ministerDTO.getBirthday());
         minister.setAddress(ministerDTO.getAddress());
         minister.setStartFrom(ministerDTO.getStartFrom());
         minister.setUntil(ministerDTO.getUntil());
-        minister.setprofilePicture(multimedia); // Associate profile picture
 
         return ministerRepository.save(minister);
     }
@@ -72,10 +69,8 @@ minister.setLastNameEn(ministerDTO.getLastNameEn());   // Set last name in Engli
         MinisterDTO ministerDTO = new MinisterDTO();
         ministerDTO.setFirstName(minister.getFirstName());
         ministerDTO.setLastName(minister.getLastName());
-        ministerDTO.setFirstNameFr(minister.getFirstNameFr()); // Set first name in French
-        ministerDTO.setFirstNameEn(minister.getFirstNameEn()); // Set first name in English
-        ministerDTO.setLastNameFr(minister.getLastNameFr());   // Set last name in French
-        ministerDTO.setLastNameEn(minister.getLastNameEn());   // Set last name in English
+        ministerDTO.setFirstNameFr(minister.getFirstNameFr()); // Set first name in French     
+        ministerDTO.setLastNameFr(minister.getLastNameFr());   // Set last name in French      
         ministerDTO.setBirthday(minister.getBirthday());
         ministerDTO.setAddress(minister.getAddress());
         ministerDTO.setStartFrom(minister.getStartFrom());

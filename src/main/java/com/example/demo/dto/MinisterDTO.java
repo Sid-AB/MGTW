@@ -26,9 +26,8 @@ public class MinisterDTO {
 
     // Ajout des champs pour les noms en français et en anglais
     private String firstNameFr;
-    private String firstNameEn;
+   
     private String lastNameFr;
-    private String lastNameEn;
 
     // Constructors
     public MinisterDTO() {
@@ -40,7 +39,7 @@ public MinisterDTO ( String firstName, String lastName, String formattedDateDebu
 
     public MinisterDTO(String firstName, String lastName, LocalDate birthday, String address,
             LocalDate startFrom, LocalDate until, MultipartFile profilePicture,
-            String firstNameFr, String firstNameEn, String lastNameFr, String lastNameEn) {
+            String firstNameFr, String lastNameFr) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthday = birthday;
@@ -49,9 +48,7 @@ public MinisterDTO ( String firstName, String lastName, String formattedDateDebu
         this.until = until;
         this.profilePicture = profilePicture;
         this.firstNameFr = firstNameFr;
-        this.firstNameEn = firstNameEn;
         this.lastNameFr = lastNameFr;
-        this.lastNameEn = lastNameEn;
     }
 
     // Getters and Setters
@@ -80,13 +77,7 @@ public MinisterDTO ( String firstName, String lastName, String formattedDateDebu
         this.firstNameFr = firstNameFr;
     }
 
-    public String getFirstNameEn() {
-        return firstNameEn;
-    }
-
-    public void setFirstNameEn(String firstNameEn) {
-        this.firstNameEn = firstNameEn;
-    }
+   
 
     public String getLastNameFr() {
         return lastNameFr;
@@ -96,13 +87,7 @@ public MinisterDTO ( String firstName, String lastName, String formattedDateDebu
         this.lastNameFr = lastNameFr;
     }
 
-    public String getLastNameEn() {
-        return lastNameEn;
-    }
-
-    public void setLastNameEn(String lastNameEn) {
-        this.lastNameEn = lastNameEn;
-    }
+  
 
     public LocalDate getBirthday() {
         return birthday;

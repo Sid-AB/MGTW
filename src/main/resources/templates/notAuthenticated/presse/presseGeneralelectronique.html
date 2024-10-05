@@ -40,16 +40,35 @@
                                 th:src="@{${'/presse/lugo/'+presseElectroniquePublic.getId()}}"
                                 style="height: 100px ; width: 100px" alt="Image"
                                 class="img-fluid"></a>
-                        <div class="post-content-entry">
+                        <!-- <div class="post-content-entry">
                             <h3 style="font-size: 20px"><a
                                     th:href="@{'/presse/'+${presseElectroniquePublic.getId().toString()}}"
-                                    th:text="${presseElectroniquePublic.getName()}"></a></h3>
+                                    th:text="${presseElectroniquePublic.getNameFr()}"></a></h3>
 
                             <div class="meta">
                                 <p><a th:href="@{'/presse/'+${presseElectroniquePublic.getId().toString()}}"
-                                      th:text="${presseElectroniquePublic.getDescription()}">Kristin Watson</a></p>
+                                      th:text="${presseElectroniquePublic.getDescriptionFr()}">Kristin Watson</a></p>
+                            </div>
+                        </div> -->
+                        <div class="post-content-entry">
+                            <h3 style="font-size: 20px">
+                                <a th:href="@{'/presse/'+${presseElectroniquePublic.getId().toString()}}"
+                                   th:text="${#locale.language == 'fr' ? presseElectroniquePublic.getNameFr() 
+                                            : (#locale.language == 'en' ? presseElectroniquePublic.getNameEn() 
+                                            : presseElectroniquePublic.getName())}"></a>
+                            </h3>
+                        
+                            <div class="meta">
+                                <p>
+                                    <a th:href="@{'/presse/'+${presseElectroniquePublic.getId().toString()}}"
+                                       th:text="${#locale.language == 'fr' ? presseElectroniquePublic.getDescriptionFr() 
+                                                : (#locale.language == 'en' ? presseElectroniquePublic.getDescriptionEn() 
+                                                : presseElectroniquePublic.getDescription())}">Kristin Watson</a>
+                                </p>
                             </div>
                         </div>
+                        
+                        
                     </div>
                 </div>
 

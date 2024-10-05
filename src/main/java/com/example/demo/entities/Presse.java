@@ -43,15 +43,15 @@ public class Presse {
     @Column(name = "name_fr") // Nom de la colonne dans la base de données
     private String nameFr; // Nom de l'établissement en fr et en
 
-    @Column(name = "name_en") // Nom de la colonne dans la base de données
-    private String nameEn; // Nom de l'établissement en anglais
+    @Column(name = "name_en") 
+    private String nameEn; 
 
     @Column(name = "description_fr", // Nom de la colonne dans la base de données
             columnDefinition = "TEXT" // Type de la colonne
     )
     private String descriptionFr; // Description de l'établissement en fr
 
-    @Column(name = "descriptio_en", // Nom de la colonne dans la base de données
+    @Column(name = "description_en", // Nom de la colonne dans la base de données
             columnDefinition = "TEXT" // Type de la colonne
     )
     private String descriptionEn; // Description de l'établissement en en
@@ -64,11 +64,10 @@ public class Presse {
     private String fax;
     private String email;
     private String site;
-    @Column(
-            name = "localisation",
-            columnDefinition = "TEXT"
-    )
-    private String localisation;
+    @Column(name = "adresse_fr", columnDefinition = "TEXT")
+    private String adresseFr;
+    @Column(name = "adresse_en", columnDefinition = "TEXT")
+    private String adresseEn;
     @ManyToMany(
             cascade = {CascadeType.ALL},
             fetch = FetchType.LAZY
@@ -156,6 +155,14 @@ public class Presse {
         return this.adresse;
     }
 
+    public String getAdresseFr() {
+        return this.adresseFr;
+    }
+
+    public String getAdresseEn() {
+        return this.adresseEn;
+    }
+
     public String getPhone() {
         return this.phone;
     }
@@ -172,9 +179,7 @@ public class Presse {
         return this.site;
     }
 
-    public String getLocalisation() {
-        return this.localisation;
-    }
+
 
     public List<PresseCategorie> getPresseCategories() {
         return this.presseCategories;
@@ -243,6 +248,12 @@ public class Presse {
         this.adresse = adresse;
     }
 
+    public void setAdresseFr(final String adresseFr) {
+        this.adresseFr = adresseFr;
+    }
+    public void setAdresseEn(final String adresseEn) {
+        this.adresseEn = adresseEn;
+    }
     public void setPhone(final String phone) {
         this.phone = phone;
     }
@@ -259,9 +270,7 @@ public class Presse {
         this.site = site;
     }
 
-    public void setLocalisation(final String localisation) {
-        this.localisation = localisation;
-    }
+   
 
     @JsonIgnore
     public void setPresseCategories(final List<PresseCategorie> presseCategories) {
@@ -430,6 +439,34 @@ public class Presse {
                     return false;
                 }
 
+                label174: {
+                    Object this$adresseFr = this.getAdresseFr();
+                    Object other$adresseFr = other.getAdresseFr();
+                    if (this$adresseFr == null) {
+                        if (other$adresseFr == null) {
+                            break label174;
+                        }
+                    } else if (this$adresseFr.equals(other$adresseFr)) {
+                        break label174;
+                    }
+
+                    return false;
+                }
+
+                label175: {
+                    Object this$adresseEn = this.getAdresseEn();
+                    Object other$adresseEn = other.getAdresseEn();
+                    if (this$adresseEn == null) {
+                        if (other$adresseEn == null) {
+                            break label175;
+                        }
+                    } else if (this$adresseEn.equals(other$adresseEn)) {
+                        break label175;
+                    }
+
+                    return false;
+                }
+
                 label166: {
                     Object this$phone = this.getPhone();
                     Object other$phone = other.getPhone();
@@ -482,15 +519,7 @@ public class Presse {
                     return false;
                 }
 
-                Object this$localisation = this.getLocalisation();
-                Object other$localisation = other.getLocalisation();
-                if (this$localisation == null) {
-                    if (other$localisation != null) {
-                        return false;
-                    }
-                } else if (!this$localisation.equals(other$localisation)) {
-                    return false;
-                }
+               
 
                 Object this$presseCategories = this.getPresseCategories();
                 Object other$presseCategories = other.getPresseCategories();
@@ -592,6 +621,10 @@ public int hashCode() {
 
     Object $adresse = this.getAdresse();
     result = result * 59 + ($adresse == null ? 43 : $adresse.hashCode());
+    Object $adresseFr = this.getAdresseFr();
+    result = result * 59 + ($adresseFr == null ? 43 : $adresseFr.hashCode());
+    Object $adresseEn = this.getAdresseEn();
+    result = result * 59 + ($adresseEn == null ? 43 : $adresseEn.hashCode());
 
     Object $phone = this.getPhone();
     result = result * 59 + ($phone == null ? 43 : $phone.hashCode());
@@ -605,8 +638,7 @@ public int hashCode() {
     Object $site = this.getSite();
     result = result * 59 + ($site == null ? 43 : $site.hashCode());
 
-    Object $localisation = this.getLocalisation();
-    result = result * 59 + ($localisation == null ? 43 : $localisation.hashCode());
+   
 
     Object $presseCategories = this.getPresseCategories();
     result = result * 59 + ($presseCategories == null ? 43 : $presseCategories.hashCode());
@@ -640,11 +672,12 @@ public String toString() {
         + ", typepbpr=" + this.getTypepbpr() 
         + ", categorieelec=" + this.getCategorieelec() 
         + ", adresse=" + this.getAdresse() 
+        + ", adresseFr=" + this.getAdresseFr() 
+        + ", adresseEn=" + this.getAdresseEn() 
         + ", phone=" + this.getPhone() 
         + ", fax=" + this.getFax() 
         + ", email=" + this.getEmail() 
         + ", site=" + this.getSite() 
-        + ", localisation=" + this.getLocalisation() 
         + ", presseCategories=" + String.valueOf(this.getPresseCategories()) 
         + ", complexe=" + String.valueOf(this.getComplexe()) 
         + ", multimediaList=" + String.valueOf(this.getMultimediaList()) 
@@ -653,7 +686,12 @@ public String toString() {
         + ")";
 }
 
-public Presse(final Long id, final String name, final String nameFr, final String nameEn, final String description, final String descriptionFr, final String descriptionEn, final String website, final String typepbpr, final String categorieelec, final String adresse, final String phone, final String fax, final String email, final String site, final String localisation, final List<PresseCategorie> presseCategories, final Complexe complexe, final List<Multimedia> multimediaList, final LocalDateTime createdAt, final LocalDateTime updatedAt) {
+public Presse(final Long id, final String name, final String nameFr, final String nameEn, final String description,
+        final String descriptionFr, final String descriptionEn, final String website, final String typepbpr,
+        final String categorieelec, final String adresse, final String adresseFr, final String adresseEn, final String phone, final String fax, final String email,
+        final String site, final List<PresseCategorie> presseCategories,
+        final Complexe complexe, final List<Multimedia> multimediaList, final LocalDateTime createdAt,
+        final LocalDateTime updatedAt) {
     this.id = id;
     this.name = name; // Assignation du nom en arabe ou français
     this.nameFr = nameFr; // Nom en français
@@ -665,18 +703,18 @@ public Presse(final Long id, final String name, final String nameFr, final Strin
     this.typepbpr = typepbpr;
     this.categorieelec = categorieelec;
     this.adresse = adresse;
+    this.adresseFr = adresseFr;
+    this.adresseEn = adresseEn;
     this.phone = phone;
     this.fax = fax;
     this.email = email;
     this.site = site;
-    this.localisation = localisation;
     this.presseCategories = presseCategories;
     this.complexe = complexe;
     this.multimediaList = multimediaList;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
 }
-
 
     public Presse() {
     }
@@ -693,11 +731,12 @@ public Presse(final Long id, final String name, final String nameFr, final Strin
         private String typepbpr;
         private String categorieelec;
         private String adresse;
+        private String adresseFr;
+        private String adresseEn;
         private String phone;
         private String fax;
         private String email;
         private String site;
-        private String localisation;
         private List<PresseCategorie> presseCategories;
         private Complexe complexe;
         private List<Multimedia> multimediaList;
@@ -761,7 +800,14 @@ public Presse(final Long id, final String name, final String nameFr, final Strin
             this.adresse = adresse;
             return this;
         }
-
+        public Presse.PresseBuilder adresseFr(final String adresseFr) {
+            this.adresseFr = adresseFr;
+            return this;
+        }
+        public Presse.PresseBuilder adresseEn(final String adresseEn) {
+            this.adresseEn = adresseEn;
+            return this;
+        }
         public Presse.PresseBuilder phone(final String phone) {
             this.phone = phone;
             return this;
@@ -782,10 +828,7 @@ public Presse(final Long id, final String name, final String nameFr, final Strin
             return this;
         }
 
-        public Presse.PresseBuilder localisation(final String localisation) {
-            this.localisation = localisation;
-            return this;
-        }
+       
 
         @JsonIgnore
         public Presse.PresseBuilder presseCategories(final List<PresseCategorie> presseCategories) {
@@ -816,7 +859,7 @@ public Presse(final Long id, final String name, final String nameFr, final Strin
         // Méthode pour construire l'objet Presse
         public Presse build() {
             return new Presse(id, name, nameFr, nameEn, description, descriptionFr, descriptionEn, website, typepbpr,
-                    categorieelec, adresse, phone, fax, email, site, localisation, presseCategories, complexe,
+                    categorieelec, adresse, adresseEn, adresseFr, phone, fax, email, site, presseCategories, complexe,
                     multimediaList, createdAt, updatedAt);
         }
 
@@ -833,11 +876,12 @@ public Presse(final Long id, final String name, final String nameFr, final Strin
                    ", typepbpr=" + this.typepbpr + 
                    ", categorieelec=" + this.categorieelec + 
                    ", adresse=" + this.adresse + 
+                   ", adresseFr=" + this.adresseFr + 
+                   ", adresseEn=" + this.adresseEn + 
                    ", phone=" + this.phone + 
                    ", fax=" + this.fax + 
                    ", email=" + this.email + 
                    ", site=" + this.site + 
-                   ", localisation=" + this.localisation + 
                    ", presseCategories=" + String.valueOf(this.presseCategories) + 
                    ", complexe=" + String.valueOf(this.complexe) + 
                    ", multimediaList=" + String.valueOf(this.multimediaList) + 

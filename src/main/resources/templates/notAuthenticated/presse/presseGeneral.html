@@ -7,7 +7,7 @@
 
 <!-- Add image before the header -->
 <header th:include="notAuthenticated/fragments/header::header" style="background-color: #0E2F4A"
-        th:with="myObject=${complexesForNavBar},myObjectlFNBar=${loisForNavBar}"></header>
+        th:with="myObject=${complexesForNavB},myObjectlFNB=${loisForNavB}"></header>
 
 
 
@@ -27,32 +27,66 @@
     </section><!-- End Breadcrumbs -->
 
     <!-- ======= Portfolio Details Section ======= -->
-    <!-- Start Blog Section -->
+    <!-- Stt Blog Section -->
     <div class="blog-section">
         <div class="container">
 
             <div class="row">
 
-                <div th:if="pressesEcritPublic" th:each="presseEcritPublic:${pressesEcritPublic}"
-                     class="col-6 col-sm-3 col-md-3 mb-5">
+                <!-- <div th:if="${pressesEcritPublic}" th:each="presseEcritPublic : ${pressesEcritPublic}" class="col-6 col-sm-3 col-md-3 mb-5">
                     <div class="post-entry">
-                        <a th:href="@{'/presse/'+${presseEcritPublic.getId().toString()}}" class="post-thumbnail"><img
-                                th:src="@{${'/presse/lugo/'+presseEcritPublic.getId()}}"
-                                style="height: 100px ; width: 100px" alt="Image"
-                                class="img-fluid"></a>
+                        <a th:href="@{'/presse/' + ${presseEcritPublic.getId().toString()}}" class="post-thumbnail">
+                            <img th:src="@{${'/presse/lugo/' + presseEcritPublic.getId()}}"
+                                 style="height: 100px; width: 100px;" alt="Image" class="img-fluid">
+                        </a>
                         <div class="post-content-entry">
-                            <h3 style="font-size: 20px"><a
-                                    th:href="@{'/presse/'+${presseEcritPublic.getId().toString()}}"
-                                    th:text="${presseEcritPublic.getName()}"></a></h3>
-
+                            <h3 style="font-size: 20px">
+                                <a th:href="@{'/presse/' + ${presseEcritPublic.getId().toString()}}" 
+                                   th:text="${#locale.language == 'fr' ? presseEcritPublic.getNameFr() : 
+                                             #locale.language == 'en' ? presseEcritPublic.getNameEn() : 
+                                             presseEcritPublic.getName()}">
+                                </a>
+                            </h3>
                             <div class="meta">
-                                <p style="overflow: hidden; height: 85px;"><a th:href="@{'/presse/'+${presseEcritPublic.getId().toString()}}"
-
-                                      th:text="${presseEcritPublic.getDescription().toString().substring(0,(presseEcritPublic.getDescription().length() &lt; 100 ? presseEcritPublic.getDescription().length() : 100 ))+'...'}">Kristin Watson</a></p>
+                                <p style="overflow: hidden; height: 85px;">
+                                    <a th:href="@{'/presse/' + ${presseEcritPublic.getId().toString()}}"
+                                       th:text="${#locale.language == 'fr' ? presseEcritPublic.getDescriptionFr() : 
+                                                 #locale.language == 'en' ? presseEcritPublic.getDescriptionEn() : 
+                                                 presseEcritPublic.getDescription()}">
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <div th:if="${pressesEcritPublic}" th:each="presseEcritPublic : ${pressesEcritPublic}" class="col-6 col-sm-3 col-md-3 mb-5">
+                    <div class="post-entry">
+                        <a th:href="@{'/presse/' + ${presseEcritPublic.getId().toString()}}" class="post-thumbnail">
+                            <img th:src="@{${'/presse/lugo/' + presseEcritPublic.getId()}}"
+                                 style="height: 100px; width: 100px;" alt="Image" class="img-fluid">
+                        </a>
+                        <div class="post-content-entry">
+                            <h3 style="font-size: 20px">
+                                <a th:href="@{'/presse/' + ${presseEcritPublic.getId().toString()}}" 
+                                   th:text="${#locale.language == 'fr' ? presseEcritPublic.getNameFr() : 
+                                             #locale.language == 'en' ? presseEcritPublic.getNameEn() : 
+                                             presseEcritPublic.getNameAr()}">
+                                </a>
+                            </h3>
+                            <div class="meta">
+                                <p style="overflow: hidden; height: 85px;">
+                                    <a th:href="@{'/presse/' + ${presseEcritPublic.getId().toString()}}"
+                                       th:text="${#locale.language == 'fr' ? presseEcritPublic.getDescriptionFr() : 
+                                                 #locale.language == 'en' ? presseEcritPublic.getDescriptionEn() : 
+                                                 presseEcritPublic.getDescriptionAr()}">
+                                    </a>
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
+                
+                
             </div>
         </div>
     </div> <!-- ======= Breadcrumbs ======= -->
@@ -66,13 +100,13 @@
     </section><!-- End Breadcrumbs -->
 
     <!-- ======= Portfolio Details Section ======= -->
-    <!-- Start Blog Section -->
+    <!-- Stt Blog Section -->
     <div class="blog-section">
         <div class="container">
 
             <div class="row">
 
-                <div th:if="pressesEcritPrive" th:each="presseEcritPrive:${pressesEcritPrive}"
+                <!-- <div th:if="pressesEcritPrive" th:each="presseEcritPrive:${pressesEcritPrive}"
                      class="col-6 col-sm-3 col-md-3 mb-5">
                     <div class="post-entry">
                         <a th:href="@{'/presse/'+${presseEcritPrive.getId().toString()}}"
@@ -91,7 +125,34 @@
                             </div>
                         </div>
                     </div>
+                </div> -->
+                <div th:if="${pressesEcritPrive}" th:each="presseEcritPrive : ${pressesEcritPrive}" class="col-6 col-sm-3 col-md-3 mb-5">
+                    <div class="post-entry">
+                        <a th:href="@{'/presse/' + ${presseEcritPrive.getId().toString()}}" class="post-thumbnail">
+                            <img th:src="@{${'/presse/lugo/' + presseEcritPrive.getId()}}"
+                                 style="height: 100px; width: 100px;" alt="Image" class="img-fluid">
+                        </a>
+                        <div class="post-content-entry">
+                            <h3 style="font-size: 20px">
+                                <a th:href="@{'/presse/' + ${presseEcritPrive.getId().toString()}}"
+                                   th:text="${#locale.language == 'fr' ? presseEcritPrive.getNameFr() : 
+                                             #locale.language == 'en' ? presseEcritPrive.getNameEn() : 
+                                             presseEcritPrive.getNameAr()}">
+                                </a>
+                            </h3>
+                            <div class="meta">
+                                <p style="overflow: hidden; height: 85px;">
+                                    <a th:href="@{'/presse/' + ${presseEcritPrive.getId().toString()}}"
+                                       th:text="${#locale.language == 'fr' ? presseEcritPrive.getDescriptionFr() : 
+                                                 #locale.language == 'en' ? presseEcritPrive.getDescriptionEn() : 
+                                                 presseEcritPrive.getDescriptionAr()}">
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                
 
 
             </div>
