@@ -987,12 +987,15 @@ section {
   font-weight: 600;
   color: #fff;
   margin-bottom: 0px;
+  /* margin-right: 30px; */
+  margin-right: 30px;
 }
 
 .portfolio .portfolio-item .portfolio-info p {
   color: #f9fcfe;
   font-size: 14px;
   margin-bottom: 0;
+ 
 }
 
 .portfolio .portfolio-item .portfolio-info .preview-link,
