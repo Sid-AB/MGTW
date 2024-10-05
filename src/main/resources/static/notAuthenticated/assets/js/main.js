@@ -18,6 +18,7 @@ function changeDirection(language) {
   }
 }
 
+
 (function() {
   "use strict";
 
