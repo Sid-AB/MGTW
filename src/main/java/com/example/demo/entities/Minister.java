@@ -177,17 +177,44 @@ public class Minister {
      public void setprofilePicture(Multimedia profilePicture) {
         this.profilePicture = profilePicture;
     }
-    public String getFormattedStartFrom() {
-        return formattedStartFrom;
+
+    public String formatDate(LocalDate date) {
+        if (date == null) {
+            return "";
+        }
+
+        // Si le jour est 01 et le mois est 01, afficher seulement l'année
+        if (date.getDayOfMonth() == 1 && date.getMonthValue() == 1) {
+            return date.format(DateTimeFormatter.ofPattern("yyyy"));
+        }
+        // Si le jour est 01, afficher le mois et l'année
+        else if (date.getDayOfMonth() == 1) {
+            return date.format(DateTimeFormatter.ofPattern("MMMM yyyy", LocaleContextHolder.getLocale()));
+        }
+        // Sinon, afficher le jour, le mois et l'année
+        else {
+            return date.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        }
     }
 
+   /*/ public String getFormattedStartFrom() {
+        return formatDate(startFrom);
+    }
+ public String getFormattedUntil() {
+        return formatDate(until);
+
+    }*/
     public void setFormattedStartFrom(String formattedStartFrom) {
         this.formattedStartFrom = formattedStartFrom;
     }
-
-    public String getFormattedUntil() {
-        return formattedUntil;
+    public String getFormattedStartFrom() {
+        return formattedStartFrom;
     }
+ public String getFormattedUntil() {
+        return formattedUntil;
+
+    }
+   
 
     public void setFormattedUntil(String formattedUntil) {
         this.formattedUntil = formattedUntil;

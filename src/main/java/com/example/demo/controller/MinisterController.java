@@ -92,27 +92,16 @@ public class MinisterController {
             e.printStackTrace();
             return "Error while saving minister: " + e.getMessage();
         }
-    }    @GetMapping({"/list"})
+    }   
+    @GetMapping({"/list"})
     public String minpublic(Model model) {
         List<Minister> Mins = this.ministerService.findAll();
         //System.out.println("Nombre de ministres trouvés: " + Mins.size());
-          // Créez un formatter pour le format de date
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
-        // Formatez les dates pour chaque ministre
-        for (Minister minister : Mins) {
-            String formattedStartFrom = minister.getStartFrom() != null ? minister.getStartFrom().format(formatter) : null;
-            String formattedUntil = (minister.getUntil() != null) ? minister.getUntil().format(formatter) : null;
-
-            // Remplacez les LocalDate par leurs chaînes formatées
-            minister.setFormattedStartFrom(formattedStartFrom);
-            minister.setFormattedUntil(formattedUntil);
-        }
-
+  
         model.addAttribute("Mins", Mins);
         return "notAuthenticated/minister/minlist";
     }
-    /* @GetMapping({"/list"})
+    /*@GetMapping({"/list"})
     public String minpublic(Model model) {
         // Récupérer votre liste de ministres
         List<Minister> ministers = this.ministerService.findAll(); // Assurez-vous que cette ligne récupère la liste
@@ -146,8 +135,8 @@ public class MinisterController {
        // System.out.println("Number of ministerDTOs: " + ministerDTOs.size());
         return "notAuthenticated/minister/minlist"; // Retourner le nom de la vue
     }
-    
-    private String formatDate(LocalDate date, DateTimeFormatter formatterYear, DateTimeFormatter formatterMonth) {
+    */
+    /*private String formatDate(LocalDate date, DateTimeFormatter formatterYear, DateTimeFormatter formatterMonth) {
         if (date == null) {
             System.out.println("Date is null."); // Ajoutez ceci pour vérifier les dates nulles
             return "Aucune date"; // Gérer le cas où la date est nulle
