@@ -71,7 +71,12 @@
                                     <div class="  portfolio-info d-flex justify-content-end">
 
 
-                                        <p><h4 th:text="${tv.getName()}">الجزائرية الاولى </h4></p>
+                                        <p>
+                                            <h4  th:style="${#locale.language == 'fr' || #locale.language == 'en' ? 'direction: ltr;' : 'direction: rtl;'}" th:text="${#locale.language == 'fr' ? tv.getNameFr() : (#locale.language == 'en' ? tv.getNameEn() : tv.getName())}" 
+                                            >
+                                            </h4>
+                                        </p>
+                                        
                                         <a hidden="hidden" th:href="@{ ${'/tv/lugo/'+tv.getId()}}" data-gallery="portfolioGallery"
                                            class="portfolio-lightbox preview-link" title="الارضية "><i
                                                 class="bx bx-plus"></i></a>

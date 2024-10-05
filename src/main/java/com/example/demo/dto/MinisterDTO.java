@@ -20,20 +20,15 @@ public class MinisterDTO {
     private MultipartFile profilePicture;
     private String formattedStartFrom; // Nouveau champ pour stocker la date formatée
 
-<<<<<<< HEAD
     private String formattedDateDebut;
     private String formattedDateFin;
     
-    // Constructors
-    public MinisterDTO()
-     {
-=======
+
     // Ajout des champs pour les noms en français et en anglais
     private String firstNameFr;
     private String firstNameEn;
     private String lastNameFr;
     private String lastNameEn;
->>>>>>> 950003de621cb477acd6e1a6ca4109eb823d59b0
 
     // Constructors
     public MinisterDTO() {
@@ -145,9 +140,7 @@ public class MinisterDTO {
     public void setprofilePicture(MultipartFile profilePicture) {
         this.profilePicture = profilePicture;
     }
-<<<<<<< HEAD
    
-
 
     public String getFormattedDateDebut() {
         return formattedDateDebut;
@@ -159,11 +152,10 @@ public class MinisterDTO {
 
     public String getFormattedDateFin() {
         return formattedDateFin;
-=======
+    }
 
     public String getFormattedStartFrom() {
         return formattedStartFrom;
->>>>>>> 950003de621cb477acd6e1a6ca4109eb823d59b0
     }
 
     public void setFormattedDateFin(String formattedDateFin) {

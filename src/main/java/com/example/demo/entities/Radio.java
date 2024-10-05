@@ -683,13 +683,12 @@ public String toString() {
 
 public Radio(final Long id, final String name, final String nameFr, final String nameEn,
 final String description, final String descriptionFr, final String descriptionEn,
-final String adresse, final String localisation, final String type, 
+final String adresse,final String adresseFr,final String adresseEn,final String localisation, final String type, 
 final String categorie, final String phone, final String fax, 
 final String email, final String website, final String streaminglink, 
 final Complexe complexe, final List<Caracteristique> caracteristiqueList, 
 final List<Multimedia> multimediaList, 
-final LocalDateTime createdAt, final LocalDateTime updatedAt, final String adresseFr, 
-final String adresseEn) {
+final LocalDateTime createdAt, final LocalDateTime updatedAt) {
 this.id = id;
 this.name = name;
 this.nameFr = nameFr;  // Ajout de l'attribut nameFr
@@ -859,7 +858,7 @@ this.updatedAt = updatedAt;
             this.updatedAt = updatedAt;
             return this;
         }
-      
+
         public Radio build() {
             return new Radio(
                 this.id,
