@@ -34,6 +34,9 @@ public class MinisterDTO {
     public MinisterDTO() {
 
     }
+public MinisterDTO ( String firstName, String lastName, String formattedDateDebut,
+ String formattedDateFin){}
+
 
     public MinisterDTO(String firstName, String lastName, LocalDate birthday, String address,
             LocalDate startFrom, LocalDate until, MultipartFile profilePicture,
