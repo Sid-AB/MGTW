@@ -240,6 +240,11 @@
 
 <div th:replace="notAuthenticated/fragments/js::js"></div>
 <script>
+    var im_in= /*[[${#locale.language}]]*/ 'ar';
+    if(im_in !== 'ar')
+    {
+        document.body.style.fontFamily = "Helvetica, Arial, sans-serif";
+    }
     // JavaScript to open the video in a new window when the image is clicked
     document.getElementById('videoTrigger').addEventListener('click', function () {
         // Specify the URL of the video file

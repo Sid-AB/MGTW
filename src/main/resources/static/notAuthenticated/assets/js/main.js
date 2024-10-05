@@ -12,6 +12,8 @@ function changeDirection(language) {
       document.documentElement.setAttribute("dir", "rtl");  // Set direction to 'rtl' for Arabic
   } else {
       document.documentElement.setAttribute("dir", "ltr");
+          document.documentElement.style.fontFamily = "Helvetica, Arial, sans-serif";
+          document.body.style.fontFamily = "Helvetica, Arial, sans-serif";
       console.log('testing '+language)  // Set direction to 'ltr' for other languages
   }
 }
