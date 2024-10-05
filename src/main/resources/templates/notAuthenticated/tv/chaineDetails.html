@@ -20,9 +20,13 @@
                 <li><a href="index.html">Home</a></li>
                 <li>Portfolio Details</li>
             </ol>
-            <div class="d-flex justify-content-start">
-                <a th:href="${tv.getWebsite()}" target="_blank"><img th:src="@{${'/tv/lugo/'+tv.getId()}}" width="50px" height="30px" class="img-fluid mx-3" alt=""></a>
-                <h2 th:text="${tv.getName()}"></h2></div>
+                <div class="d-flex align-items-center justify-content-start">
+                    <a th:href="${tv.getWebsite()}" target="_blank">
+                        <img th:src="@{${'/tv/lugo/'+tv.getId()}}" width="50px" height="30px" class="img-fluid mx-3" alt="">
+                    </a>
+                    <h2 th:text="${#locale.language == 'fr' ? tv.getNameFr() : (#locale.language == 'en' ? tv.getNameEn() : tv.getName())}" class="mb-0"></h2>
+                </div>
+                
 
 
         </div>
@@ -35,50 +39,103 @@
                 <div class="col-lg-6">
                     <div>
                         <div class="portfolio-description">
-                            <h2 th:text="${tv.getName()}"></h2></div>
-                        <p th:text="${tv.getDescription()}"></p>
+                            <h2 th:text="${#locale.language == 'fr' ? tv.getNameFr() : (#locale.language == 'en' ? tv.getNameEn() : tv.getName())}"></h2>
+                        </div>
+                        <p th:text="${#locale.language == 'fr' ? tv.getDescriptionFr() : (#locale.language == 'en' ? tv.getDescriptionEn() : tv.getDescription())}"></p>
                     </div>
+                    
                     <div class="portfolio-info">
                         <h3 th:text="#{carast}">الخصائص  </h3>
-                        <ul >
-                            <li><span style="display: flex"><strong th:text="#{telep}">  رقم الهاتف
-                            </strong> <span th:text="${tv.getPhone()}"></span>
-                            </span></li>
-                            <li><strong th:text="#{email}" > البريد الإليكتروني </strong>: <a
-                                    th:text="${tv.getEmail()}"></a></li>
-                            <li><strong th:text="#{citeweb}"> الموقع الالكتروني </strong>: <a
-                                    th:href="${tv.getWebsite()}" th:text="${tv.getWebsite() }" target="_blank"></a></li>
-                            <li><span style="display: flex"><strong th:text="#{fax}">الفاكس </strong>: <a
-                                   style="direction: ltr;" th:text="${tv.getFax()}"></a></span></li>
-                            <li><strong th:text="#{address}">العنوان </strong>: <a
-                                    th:text="${tv.getAdresse()}"></a></li>
-                        </ul >
+                       
+                        <ul>
+                            <!-- Téléphone avec flexbox pour aligner l'étiquette et la valeur -->
+                            <li>
+                                <span style="display: flex; align-items: center;">
+                                    <strong th:text="#{telep}+':'">رقم الهاتف</strong>&nbsp; <!-- Espace pour séparer -->
+                                    <span th:text="${tv.getPhone()}" style="direction: ltr;"></span>
+                                </span>
+                            </li>
+                        
+                            <!-- Email -->
+                            <li>
+                                <strong th:text="#{email}+':'">البريد الإلكتروني</strong>&nbsp; <!-- Espace pour séparer -->
+                                <a th:text="${tv.getEmail()}"></a>
+                            </li>
+                        
+                            <!-- Site Web -->
+                            <li>
+                                <strong th:text="#{citeweb}+':'">الموقع الإلكتروني</strong>&nbsp; <!-- Espace pour séparer -->
+                                <a th:href="${tv.getWebsite()}" th:text="${tv.getWebsite()}" target="_blank"></a>
+                            </li>
+                        
+                            <!-- Fax avec direction LTR pour aligner les chiffres correctement -->
+                            <li>
+                                <span style="display: flex; align-items: center;">
+                                    <strong th:text="#{fax}+':'">الفاكس</strong>&nbsp; <!-- Espace pour séparer -->
+                                    <span style="direction: ltr;" th:text="${tv.getFax()}"></span>
+                                </span>
+                            </li>
+                        
+                            <!-- Adresse avec condition sur la langue -->
+                            <li>
+                                <strong th:text="#{address}+':'">العنوان</strong>&nbsp; <!-- Espace pour séparer -->
+                                <span th:text="${#locale.language == 'fr' ? tv.getAdresseFr() : (#locale.language == 'en' ? tv.getAdresseEn() : tv.getAdresse())}"></span>
+                            </li>
+                        </ul>
+                        
                     </div>
 
 
 
 
                     <div class="portfolio-info">
-                        <h3 th:text="#{carattech}">الخصائص التقنية </h3>
-                        <ul th:if="${caracteristique}" th:each="caracteristique:${tv.getCaracteristiqueList()}">
-                            <li><strong th:text="#{stalit}"> القمر الصناعي
-                            </strong> <span th:text="${caracteristique.getSatellite()}"></span>
+                        <h3 th:text="#{carattech}+':'">الخصائص التقنية </h3>
+                        <ul th:if="${caracteristique}" th:each="caracteristique : ${tv.getCaracteristiqueList()}">
+    
+                            <!-- Satellite -->
+                            <li>
+                                <span style="display: flex; align-items: center;">
+                                    <strong th:text="#{stalit}+':'">القمر الصناعي</strong>&nbsp; <!-- Espace pour séparer -->
+                                    <span th:text="${caracteristique.getSatellite()}"></span>
+                                </span>
                             </li>
-
-
-                            <li><strong th:text="#{frequence}">التردد </strong>: <a
-                                    th:text="${caracteristique.getFrequency()}"></a></li>
-                            <li><strong th:text="#{modlu}">معامل الترميز </strong>: <a
-                                    th:text="${caracteristique.getSymbolrate()}"></a></li>
-                            <li><strong th:text="#{polizar}">الاستقاب </strong>: <a
-                                    th:text="${caracteristique.getPolarization()}"></a></li>
-                            <li><strong th:text="#{fec}">معامل التصحيح </strong>: <a
-                                    th:text="${caracteristique.getFec()}"></a></li>
-                            <!--li><strong th:text="#{citeweb}">الموقع الالكتروني </strong>: <a th:href="${tv.getWebsite()}"
-                                                                        th:text="${tv.getWebsite()}" target="_blank"></a></li-->
-
+                        
+                            <!-- Fréquence avec direction LTR pour les chiffres -->
+                            <li>
+                                <span style="display: flex; align-items: center;">
+                                    <strong th:text="#{frequence}+':'">التردد</strong>&nbsp; <!-- Espace pour séparer -->
+                                    <span style="direction: ltr;" th:text="${caracteristique.getFrequency()}"></span>
+                                </span>
+                            </li>
+                        
+                            <!-- Symbolrate avec direction LTR pour les chiffres -->
+                            <li>
+                                <span style="display: flex; align-items: center;">
+                                    <strong th:text="#{modlu}+':'">معامل الترميز</strong>&nbsp; <!-- Espace pour séparer -->
+                                    <span style="direction: ltr;" th:text="${caracteristique.getSymbolrate()}"></span>
+                                </span>
+                            </li>
+                        
+                            <!-- Polarization -->
+                            <li>
+                                <span style="display: flex; align-items: center;">
+                                    <strong th:text="#{polizar}+':'">الاستقاب</strong>&nbsp; <!-- Espace pour séparer -->
+                                    <span th:text="${caracteristique.getPolarization()}"></span>
+                                </span>
+                            </li>
+                        
+                            <!-- FEC avec direction LTR pour les chiffres -->
+                            <li>
+                                <span style="display: flex; align-items: center;">
+                                    <strong th:text="#{fec }+':'">معامل التصحيح</strong>&nbsp; <!-- Espace pour séparer -->
+                                    <span style="direction: ltr;" th:text="${caracteristique.getFec()}"></span>
+                                </span>
+                            </li>
+                        
+                            <!-- Ligne horizontale pour la séparation des caractéristiques -->
                             <hr />
-                        </ul >
+                        </ul>
+                        
                     </div>
 
                 </div>

@@ -41,80 +41,64 @@
     <section id="portfolio-details" class="portfolio-details">
         <div class="container">
             <div class="row gy-4">
-
+    
                 <div class="col-lg-8">
                     <section id="portfolio" class="portfolio ">
                         <div class="container" data-aos="fade-up">
-
+    
                             <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up"
                                 data-aos-delay="100">
                                 <li data-filter="*" class="filter-active" th:text="#{channel}">جميع القنوات</li>
-
+    
                                 <li th:if="tvListDistinctByCategorieChaines"
                                     th:each="tvListDistinctByCategorieChaine : ${tvListDistinctByCategorieChaines}"
                                     th:attr="data-filter='.' + ${tvListDistinctByCategorieChaine.getName()}"
                                     th:text="${#locale.language == 'fr' ? tvListDistinctByCategorieChaine.getNameFr() : (#locale.language == 'en' ? tvListDistinctByCategorieChaine.getNameEn() : tvListDistinctByCategorieChaine.getName())}">
                                 </li>
-                                </ul>
-
-                            <div  th:if="${!tvs.isEmpty()}" class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
-
+                            </ul>
+    
+                            <div th:if="${!tvs.isEmpty()}" class="row portfolio-container" data-aos="fade-up"
+                                data-aos-delay="200">
+    
+    
                                 <div th:if="${tvs}" th:each="tv:${tvs}"
-                                     th:attr="class=${'col-lg-4 col-md-6 portfolio-item ' +tv.getCategorieChaine().getName()}">
-
-                                    <div class="portfolio-img"><img
-                                            th:src="@{${'/tv/lugo/'+tv.getId()}}"
-                                            class="img-fluid" alt="">
+                                    th:attr="class=${'col-lg-4 col-md-6 portfolio-item ' +tv.getCategorieChaine().getName()}">
+    
+                                    <div class="portfolio-img"><img th:src="@{${'/tv/lugo/'+tv.getId()}}" class="img-fluid"
+                                            alt="">
                                     </div>
-
-                                <!-- <div class="portfolio-info d-flex">
-                                    <h4 th:style="${#locale.language == 'fr' || #locale.language == 'en' ? 'direction: ltr; text-align: left;' : 'direction: rtl; text-align: right;'}"
-                                        th:text="${#locale.language == 'fr' ? tv.getNameFr() : (#locale.language == 'en' ? tv.getNameEn() : tv.getName())}">
-                                    </h4>
-                                    
-                                    <a hidden="hidden" th:href="@{ ${'/tv/lugo/'+tv.getId()}}" data-gallery="portfolioGallery"
-                                        class="portfolio-lightbox preview-link" title="الارضية"><i class="bx bx-plus"></i></a>
-                                    <a th:href="@{'/tv/'+${tv.getId().toString()}}" class="details-link" th:title="#{plusdet}">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <i class="bx bx-link"></i>
-                                    </a>
-                                   
-                                      
-                                </div> -->
-                                <div class="portfolio-info d-flex" 
-                                th:style="${#locale.language == 'fr' || #locale.language == 'en' ? 'direction: ltr; justify-content: flex-end;' : 'direction: rtl; justify-content: flex-start;'}">
-                               
-                               <h4 th:style="${#locale.language == 'fr' || #locale.language == 'en' ? 'text-align: left; margin-right: 20px;' : 'text-align: right; margin-left: 20px;'}"
-                                   th:text="${#locale.language == 'fr' ? tv.getNameFr() : (#locale.language == 'en' ? tv.getNameEn() : tv.getName())}">
-                               </h4>
-                               
-                               <a hidden="hidden" th:href="@{ ${'/tv/lugo/'+tv.getId()}}" data-gallery="portfolioGallery"
-                                  class="portfolio-lightbox preview-link" title="الارضية">
-                                   <i class="bx bx-plus"></i>
-                               </a> 
-                               
-                               
-                                <a th:href="@{'/tv/'+${tv.getId().toString()}}" 
-                                class="details-link" 
-                                th:title="#{plusdet}" 
-                                th:style="${#locale.language == 'fr' || #locale.language == 'en' ? 'margin-right: 0;' : 'margin-left: 30px;'}">
-                                 <i class="bx bx-link"></i>
-                             </a>
-                           </div>
-                           
-
-
-                                   
-                               
-
-                                    
+                                    <div class="portfolio-info d-flex"
+                                        th:style="${#locale.language == 'fr' || #locale.language == 'en' ? 'direction: ltr; justify-content: flex-end;' : 'direction: rtl; justify-content: flex-start;'}">
+    
+                                        <h4 th:style="${#locale.language == 'fr' || #locale.language == 'en' ? 'text-align: left; margin-right: 20px;' : 'text-align: right; margin-left: 20px;'}"
+                                            th:text="${#locale.language == 'fr' ? tv.getNameFr() : (#locale.language == 'en' ? tv.getNameEn() : tv.getName())}">
+                                        </h4>
+    
+                                        <a hidden="hidden" th:href="@{ ${'/tv/lugo/'+tv.getId()}}"
+                                            data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"
+                                            title="الارضية">
+                                            <i class="bx bx-plus"></i>
+                                        </a>
+    
+    
+                                        <a th:href="@{'/tv/'+${tv.getId().toString()}}" class="details-link"
+                                            th:title="#{plusdet}"
+                                            th:style="${#locale.language == 'fr' || #locale.language == 'en' ? 'margin-right: 0;' : 'margin-left: 30px;'}">
+                                            <i class="bx bx-link"></i>
+                                        </a>
+                                    </div>
+    
+    
+    
+    
+    
+    
+    
                                 </div>
-
-
+    
+    
                             </div>
-
+    
                         </div>
                     </section><!-- End Portfolio Section -->
                 </div>
