@@ -13,16 +13,19 @@
     <div class="container">
         <section class="section register  d-flex flex-column align-items-center justify-content-center m-0">
             <div class="container">
-                <h1>نتائج البحث</h1>
-                <h3 th:if="${!etablissements.isEmpty()}">المؤسسات</h3>
+
+                <h1 th:text="#{result}"></h1>
+
+                <h3 th:if="${!etablissements.isEmpty()}" th:text="#{institutions}"></h3>
                 <ul th:if="${!etablissements.isEmpty()}">
                     <li th:each="etablissement : ${etablissements}">
                         <!-- Display search results -->
                         <a th:href="@{${'/etablissement/'+etablissement.getId()}}">
                             <span th:text="${etablissement.getName()}"></span></a>
+                            
                     </li>
                 </ul>
-                <h3 th:if="${!tvs.isEmpty()}">القنوات التلفزيونية </h3>
+                <h3 th:if="${!tvs.isEmpty()}" th:text="#{tv_channels}"></h3> 
                 <ul th:if="${!tvs.isEmpty()}">
                     <li th:each="tv : ${tvs}">
                         <!-- Display search results -->
@@ -33,7 +36,7 @@
                     </li>
                 </ul>
 
-                <h3 th:if="${!radios.isEmpty()}">القنوات الاذاعية </h3>
+                <h3 th:if="${!radios.isEmpty()}"th:text="#{radio_stations}">  </h3>
                 <ul th:if="${!radios.isEmpty()}">
                     <li th:each="radio : ${radios}">
                         <!-- Display search results -->
@@ -43,7 +46,7 @@
                     </li>
                 </ul>
 
-                <h3 th:if="${!presses.isEmpty()}">الصحافة </h3>
+                <h3 th:if="${!presses.isEmpty()}"th:text="#{press}"> </h3>
                 <ul th:if="${!presses.isEmpty()}">
                     <li th:each="presse : ${presses}">
                         <!-- Display search results -->
@@ -52,7 +55,7 @@
                         </a>
                     </li>
                 </ul>
-                <h3 th:if="${!textJuridiques.isEmpty()}">النصوص القانونية </h3>
+                <h3 th:if="${!textJuridiques.isEmpty()}"th:text="#{legal_texts}"></h3>
                 <ul th:if="${!textJuridiques.isEmpty()}">
                     <li th:each="textJuridique : ${textJuridiques}">
                         <!-- Display search results -->
@@ -60,8 +63,11 @@
                     </li>
                 </ul>
             </div>
-            <h3  th:if="${tvs.isEmpty()and etablissements.isEmpty()and radios.isEmpty()and presses.isEmpty()and textJuridiques.isEmpty()}"><i style="color:red;" class="bi bi-x-lg"></i>  لا توجد نتائج    </h3>
-
+                    <!-- Affichage du message "Aucun résultat" -->
+        <h3 th:if="${tvs.isEmpty() and etablissements.isEmpty() and radios.isEmpty() and presses.isEmpty() and textJuridiques.isEmpty()}">
+            <i style="color:red;" class="bi bi-x-lg"></i>
+            <span th:text="#{no_results}">لا توجد نتائج</span>
+        </h3>
         </section>
 
     </div>

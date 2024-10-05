@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface ComplexeRepository extends JpaRepository<Complexe, Long> {
     Complexe findComplexeById(Long id);
-
+ 
     List<Complexe> findComplexesByType(String string);
 
     List<Complexe> findComplexeByAgrumentListAndType(List<Agrument> agruments, String string);
