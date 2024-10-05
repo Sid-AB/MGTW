@@ -89,10 +89,10 @@ public class TVController {
         
         List<TV> tvsPublic = this.tvService.findTVSPublic();
         List<CategorieChaine> categorieChaines = this.categorieChaineService.findAll();
-        List<Agrument> agruments = new ArrayList();
+        List<Agrument> agruments = new ArrayList<>();
         agruments.add(this.agrumentRepository.findAgrumentByName("tv"));
         List<Complexe> complexes = this.complexeService.findComplexeByAgrumentListAndType(agruments, "public");
-        List<CategorieChaine> tvListDistinctByCategorieChaine = new ArrayList();
+        List<CategorieChaine> tvListDistinctByCategorieChaine = new ArrayList<>();
         if (!tvsPublic.isEmpty()) {
             tvListDistinctByCategorieChaine = this.tvService.findDistinctCategorieChaineByComplexe(((TV)tvsPublic.get(0)).getComplexe());
         }
@@ -110,7 +110,7 @@ public class TVController {
     @GetMapping({"/prive/{name}"})
     public String cPrive(Model model, @PathVariable String name) {
         List<TV> tvsPrive = this.tvService.findTVSPrive(name);
-        List<Agrument> agruments = new ArrayList();
+        List<Agrument> agruments = new ArrayList<>();
         agruments.add(this.agrumentRepository.findAgrumentByName("tv"));
         List<Complexe> complexes = this.complexeService.findComplexeByAgrumentListAndTypeAndName(agruments, "prive", name);
         List<CategorieChaine> tvListDistinctByCategorieChaine = this.tvService.findDistinctCategorieChaineByComplexe(((TV)tvsPrive.get(0)).getComplexe());

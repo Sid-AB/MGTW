@@ -7,66 +7,107 @@
             <div class="row">
 
                 <div class="col-lg-3 col-md-6 footer-contact">
-                    <h3 th:text="#{porteilgetway}">بوابة الاعلام الجزائري </h3>
+                    <!-- Titre de la section -->
+                    <h3 th:text="#{porteilgetway}">بوابة الاعلام الجزائري</h3>
+                
                     <p>
-                        <span th:text="#{adress}">03, شارع الإخوة بوعدو <br>
-                            بئر مراد رايس <br>
-                            الجزائر العاصمة <br><br></span>
-                        <span style="display: flex"> <strong th:text="#{telep}">الهاتف:</strong> <strong style="direction: ltr">+213(0)21-54-10-10</strong></span><br>
-                        <span style="display: flex" ><strong th:text="#{fax}">الفاكس:</strong><strong style="direction: ltr">+213(0)21-54-12-08</strong> </span><br>
-                        <strong th:text="#{email}">البريد الالكتروني:</strong> contact@ministerecommunication.gov.dz<br>
+                        <!-- Adresse avec direction LTR pour les parties numériques -->
+                        <span style="display: block;">
+                            <strong th:text="#{address } + ' : '">العنوان:</strong><br> <!-- Nouvelle ligne pour plus de lisibilité -->
+                            <strong th:text="#{adress}"style="direction: ltr;">
+                            </strong>
+                        </span>
+                
+                        <!-- Téléphone avec direction LTR pour le numéro -->
+                        <span style="display: flex; align-items: center;">
+                            <strong th:text="#{telep} + ' : '">الهاتف:</strong>&nbsp; <!-- Espace insécable -->
+                            <strong style="direction: ltr;">+213(0)21-54-10-10</strong>
+                        </span><br>
+                
+                        <!-- Fax avec direction LTR pour le numéro -->
+                        <span style="display: flex; align-items: center;">
+                            <strong th:text="#{fax} + ' : '">الفاكس:</strong>&nbsp; <!-- Espace insécable -->
+                            <strong style="direction: ltr;">+213(0)21-54-12-08</strong>
+                        </span><br>
+                
+                        <!-- Email -->
+                        <strong th:text="#{email} + ' : '">البريد الالكتروني:</strong> 
+                        <a href="mailto:contact@ministerecommunication.gov.dz">contact@ministerecommunication.gov.dz</a><br>
                     </p>
                 </div>
-
+                
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h4 th:text="#{quicklink}">روابط سريعة</h4>
                     <ul>
-
-
-                        <li><i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i><a href="#" th:text="#{principal}">الرئسية</a></li>
-                        <li><i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i><a href="#" th:text="#{etablissement}">المؤسسات الإعلامية </a></li>
-                        <li><i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i><a href="#" th:text="#{organigrame}">تنظيم القطاع</a></li>
-                        <li><i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i> <a href="#" th:text="#{channel} +' '+ #{public}">القنوات التلفزيونية
-                            العمومية </a></li>
-                        <li><i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i> <a href="#" th:text="#{channel}+' '+ #{prive}">القنوات التلفزيونية
-                            الخاصة</a></li>
-                        <li><i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i> <a href="#" th:text="#{textju}">النصوص القانونية </a>
+                        <!-- Gestion de la direction pour le chevron -->
+                        <li>
+                            <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
+                            <a href="#" th:text="#{principal}">الرئسية</a>
                         </li>
-
+                        <li>
+                            <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
+                            <a href="#" th:text="#{etablissement}">المؤسسات الإعلامية</a>
+                        </li>
+                        <li>
+                            <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
+                            <a href="#" th:text="#{organigrame}">تنظيم القطاع</a>
+                        </li>
+                        <li>
+                            <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
+                            <a href="#" th:text="#{channel} + ' ' + #{public}">القنوات التلفزيونية العمومية</a>
+                        </li>
+                        <li>
+                            <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
+                            <a href="#" th:text="#{channel} + ' ' + #{prive}">القنوات التلفزيونية الخاصة</a>
+                        </li>
+                        <li>
+                            <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
+                            <a href="#" th:text="#{textju}">النصوص القانونية</a>
+                        </li>
                     </ul>
                 </div>
+                
+                
 
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h4 th:text="#{linkimport}">روابط مهمة</h4>
                     <ul>
-                        <li><i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i> <a href="#" th:text="#{radio} +' '+ #{local}">الاذاعات المحلية </a>
+                        <!-- Gestion de la direction pour le chevron -->
+                        <li>
+                            <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
+                            <a href="#" th:text="#{radio} + ' ' + #{local}">الاذاعات المحلية</a>
                         </li>
-                        <li><i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i> <a href="#"  th:text="#{radio} +' '+ #{prive}">الاذاعات الخاصة </a>
+                        <li>
+                            <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
+                            <a href="#" th:text="#{radio} + ' ' + #{prive}">الاذاعات الخاصة</a>
                         </li>
-                        <li><i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i> <a href="#" th:text="#{pressEcrit} +' '+ #{public}">الصحافة المكتوبة
-                            العمومية </a></li>
-                        <li><i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i><a href="#"  th:text="#{pressEcrit} +' '+ #{prive}">الصحافة المكتوبة
-                            الخاصة</a></li>
-                        <li><i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i> <a href="#" th:text="#{pressElect}">الصحافة
-                            الالكترونية </a></li>
-
+                        <li>
+                            <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
+                            <a href="#" th:text="#{pressEcrit} + ' ' + #{public}">الصحافة المكتوبة العمومية</a>
+                        </li>
+                        <li>
+                            <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
+                            <a href="#" th:text="#{pressEcrit} + ' ' + #{prive}">الصحافة المكتوبة الخاصة</a>
+                        </li>
+                        <li>
+                            <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
+                            <a href="#" th:text="#{pressElect}">الصحافة الالكترونية</a>
+                        </li>
                     </ul>
                 </div>
-
+                
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h4 th:text="#{socialMedia}">شبكاتنا الاجتماعية</h4>
-                    <p th:text="#{textsocial}"> يمكنكم متابعاتنا على مواقع التواصل الاجتماعي عبر الروابط الاتية </p>
+                    <p th:text="#{textsocial}">يمكنكم متابعاتنا على مواقع التواصل الاجتماعي عبر الروابط الاتية</p>
                     <div class="social-links mt-3">
-                        <a href="#" class="" style="background-color: #0E2F4A" target="_blank"><i class="bi bi-twitter-x"></i></a>
-                        <a href="https://www.facebook.com/ministerecomdz/" class="facebook" style="background-color: #0E2F4A" target="_blank"><i
-                                class="bx bxl-facebook"></i></a>
+                        <a href="https://www.facebook.com/ministerecomdz/" class="facebook" style="background-color: #0E2F4A" target="_blank"><i class="bx bxl-facebook"></i></a>
+                        <!-- <a href="#" class="" style="background-color: #0E2F4A" target="_blank"><i class="bi bi-twitter-x"></i></a>
                         <a href="#" class="instagram" style="background-color: #0E2F4A" target="_blank"><i class="bx bxl-instagram"></i></a>
-                        <a href="#" class="google-plus" style="background-color: #0E2F4A" target="_blank"><i
-                                class="bx bxl-skype"></i></a>
-                        <a href="#" class="linkedin" style="background-color: #0E2F4A" target="_blank"><i
-                                class="bx bxl-linkedin"></i></a>
+                        <a href="#" class="google-plus" style="background-color: #0E2F4A" target="_blank"><i class="bx bxl-skype"></i></a>
+                        <a href="#" class="linkedin" style="background-color: #0E2F4A" target="_blank"><i class="bx bxl-linkedin"></i></a> -->
                     </div>
                 </div>
+                
 
             </div>
         </div>

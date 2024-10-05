@@ -104,6 +104,7 @@ function changeDirection(language) {
     onscroll(document, headerScrolled)
   }
 
+
   /**
    * Back to top button
    */
