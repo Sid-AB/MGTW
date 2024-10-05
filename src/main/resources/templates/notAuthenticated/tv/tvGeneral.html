@@ -68,23 +68,48 @@
                                             class="img-fluid" alt="">
                                     </div>
 
-                                    <div class="  portfolio-info d-flex justify-content-end">
+                                <!-- <div class="portfolio-info d-flex">
+                                    <h4 th:style="${#locale.language == 'fr' || #locale.language == 'en' ? 'direction: ltr; text-align: left;' : 'direction: rtl; text-align: right;'}"
+                                        th:text="${#locale.language == 'fr' ? tv.getNameFr() : (#locale.language == 'en' ? tv.getNameEn() : tv.getName())}">
+                                    </h4>
+                                    
+                                    <a hidden="hidden" th:href="@{ ${'/tv/lugo/'+tv.getId()}}" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox preview-link" title="الارضية"><i class="bx bx-plus"></i></a>
+                                    <a th:href="@{'/tv/'+${tv.getId().toString()}}" class="details-link" th:title="#{plusdet}">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <i class="bx bx-link"></i>
+                                    </a>
+                                   
+                                      
+                                </div> -->
+                                <div class="portfolio-info d-flex" 
+                                th:style="${#locale.language == 'fr' || #locale.language == 'en' ? 'direction: ltr; justify-content: flex-end;' : 'direction: rtl; justify-content: flex-start;'}">
+                               
+                               <h4 th:style="${#locale.language == 'fr' || #locale.language == 'en' ? 'text-align: left; margin-right: 20px;' : 'text-align: right; margin-left: 20px;'}"
+                                   th:text="${#locale.language == 'fr' ? tv.getNameFr() : (#locale.language == 'en' ? tv.getNameEn() : tv.getName())}">
+                               </h4>
+                               
+                               <a hidden="hidden" th:href="@{ ${'/tv/lugo/'+tv.getId()}}" data-gallery="portfolioGallery"
+                                  class="portfolio-lightbox preview-link" title="الارضية">
+                                   <i class="bx bx-plus"></i>
+                               </a> 
+                               
+                               
+                                <a th:href="@{'/tv/'+${tv.getId().toString()}}" 
+                                class="details-link" 
+                                th:title="#{plusdet}" 
+                                th:style="${#locale.language == 'fr' || #locale.language == 'en' ? 'margin-right: 0;' : 'margin-left: 30px;'}">
+                                 <i class="bx bx-link"></i>
+                             </a>
+                           </div>
+                           
 
 
-                                        <p>
-                                            <h4  th:style="${#locale.language == 'fr' || #locale.language == 'en' ? 'direction: ltr;' : 'direction: rtl;'}" th:text="${#locale.language == 'fr' ? tv.getNameFr() : (#locale.language == 'en' ? tv.getNameEn() : tv.getName())}" 
-                                            >
-                                            </h4>
-                                        </p>
-                                        
-                                        <a hidden="hidden" th:href="@{ ${'/tv/lugo/'+tv.getId()}}" data-gallery="portfolioGallery"
-                                           class="portfolio-lightbox preview-link" title="الارضية "><i
-                                                class="bx bx-plus"></i></a>
-                                        <a th:href="@{'/tv/'+${tv.getId().toString()}}" class="details-link"
-                                           th:title="#{plusdet} "><i
-                                                class="bx bx-link"></i></a>
+                                   
+                               
 
-                                    </div>
+                                    
                                 </div>
 
 
