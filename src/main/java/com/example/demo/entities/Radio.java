@@ -859,7 +859,7 @@ this.updatedAt = updatedAt;
             this.updatedAt = updatedAt;
             return this;
         }
-
+      
         public Radio build() {
             return new Radio(
                 this.id,
