@@ -72,9 +72,9 @@
 
 
                                         <p>
-                                            <h4  th:style="${#locale.language == 'fr' || #locale.language == 'en' ? 'direction: ltr;' : 'direction: rtl;'}" th:text="${#locale.language == 'fr' ? tv.getNameFr() : (#locale.language == 'en' ? tv.getNameEn() : tv.getName())}" 
-                                            >
-                                            </h4>
+                                        <h4 th:style="${#locale.language == 'fr' || #locale.language == 'en' ? 'direction: ltr;' : 'direction: rtl;'}"
+                                            th:text="${#locale.language == 'fr' ? tv.getNameFr() : (#locale.language == 'en' ? tv.getNameEn() : tv.getName())}">
+                                        </h4>
                                         </p>
                                         
                                         <a hidden="hidden" th:href="@{ ${'/tv/lugo/'+tv.getId()}}" data-gallery="portfolioGallery"
