@@ -231,6 +231,44 @@
 
 
         </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Portfolio Details Section ======= -->
+    <!-- Start Blog Section -->
+    <div class="blog-section">
+        <div class="container">
+
+            <div hidden="hidden" class="row">
+
+                <div th:if="pressesElectroniquePrive" th:each="presseElectroniquePrive:${pressesElectroniquePrive}"
+                     class="col-6 col-sm-3 col-md-3 mb-5">
+                    <div class="post-entry">
+                        <a th:href="@{'/presse/'+${presseElectroniquePrive.getId().toString()}}" class="post-thumbnail"><img
+                                th:src="@{${'/presse/lugo/'+presseElectroniquePrive.getId()}}"
+                                style="height: 100px ; width: 100px" alt="Image"
+                                class="img-fluid"></a>
+                        <div class="post-content-entry">
+                            <h3 style="font-size: 20px"><a
+                                    th:href="@{'/presse/'+${presseElectroniquePrive.getId().toString()}}"
+
+                                    th:text="${presseElectroniquePrive.getName()}"></a></h3>
+
+                            <div class="meta">
+                                <p style="
+                                overflow: hidden;
+                                height: 85px;
+                            "><a th:href="@{'/presse/'+${presseElectroniquePrive.getId().toString()}}"
+
+                                      th:text="${presseElectroniquePrive.getDescription()}"></a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
     </div>
 
 </div> <!-- ======= Breadcrumbs ======= -->

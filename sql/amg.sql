@@ -268,7 +268,7 @@ CREATE TABLE IF NOT EXISTS `direction` (
   `prenom_directeur_en` varchar(255) DEFAULT NULL,
   `prenom_directeur_fr` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 -- --------------------------------------------------------
 
@@ -388,7 +388,7 @@ CREATE TABLE IF NOT EXISTS `minister` (
   `formatted_until` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_eqosespnllwcj7bdqatuc4uyb` (`profile_picture_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 -- --------------------------------------------------------
 

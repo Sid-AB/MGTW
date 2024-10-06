@@ -6,6 +6,8 @@
 </head>
 <body>
 
+<!--   demarrage ou b1 star flash -->
+
 
 <!-- Add image before the header -->
 
@@ -42,7 +44,7 @@
             </div>
            
 
-            <!--div id="videoModal" class="modal">
+            <div id="videoModal" class="modal">
                 <div class="modal-content">
                     <span class="close" onclick="closeVideo()"><i class='bx bx-window-close'></i></span>
                     <video id="videoPlayer" width="100%" controls>
@@ -50,7 +52,7 @@
                         Your browser does not support the video tag.
                     </video>
                 </div>
-            </div-->
+            </div>
 
 
         <!--div class="video-container" id="videoContainer" style="display: none;">
@@ -264,14 +266,14 @@
 <div th:replace="notAuthenticated/fragments/js::js"></div>
 <script>
     // JavaScript to open the video in a new window when the image is clicked
-    document.getElementById('videoTrigger').addEventListener('click', function () {
+ /*   document.getElementById('videoTrigger').addEventListener('click', function () {
         // Specify the URL of the video file
         var videoUrl = 'notAuthenticated/assets/videos/mediaCity.mp4'; // Change this if necessary
         // Open a new window with the video
         window.open(videoUrl, '_blank');
-    });
+    });*/
 
- /*   function openVideo() {
+   function openVideo() {
     var modal = document.getElementById("videoModal");
     var video = document.getElementById("videoPlayer");
     
@@ -293,7 +295,7 @@
     // Pause and reset the video
     video.pause();
     video.currentTime = 0;
-  }*/
+  }
   $.ajax({
     url:'/Direction/all',
     type:'GET',
