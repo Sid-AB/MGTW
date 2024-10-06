@@ -88,7 +88,10 @@
                                     th:text="${presseEcritPrive.getName()}"></a></h3>
 
                             <div class="meta">
-                                <a th:href="@{'/presse/'+${presseEcritPrive.getId().toString()}}"><p  th:text="${presseEcritPrive.getDescription()}"></p></a>
+                                <a th:href="@{'/presse/'+${presseEcritPrive.getId().toString()}}"><p style="
+                                    overflow: hidden;
+                                    height: 85px;
+                                " th:text="${presseEcritPrive.getDescription()}"></p></a>
                             </div>
                         </div>
                     </div>

@@ -38,7 +38,7 @@
                     <div>
                         <div class="portfolio-description">
                             <h2 th:text="${etablissement.getName()}"></h2></div>
-                        <p th:text="${etablissement.getDescription()}"></p>
+                        <p th:text="${#loca.language='ar' etablissement.getDescription() : etablissement.getDescriptionFr()}"></p>
                     </div>
                     <div class="portfolio-info">
                         <h3>الخصائص  </h3>

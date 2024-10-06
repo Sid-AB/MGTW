@@ -62,7 +62,6 @@ public class EtablissementController {
         String contentType = Files.probeContentType(file.getFile().toPath());
         return ((BodyBuilder)ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType)).header("Content-Disposition", new String[]{"inline; filename=\"" + file.getFilename() + "\""})).body(new InputStreamResource(file.getInputStream()));
     }
-
     @GetMapping({"/lugo/{id}"})
     public ResponseEntity<Resource> getImage(@PathVariable("id") Long id) {
         String folder = "images";
@@ -73,10 +72,11 @@ public class EtablissementController {
             Resource file = this.filesStorageService.load(folder.concat("/" + filename));
             return ((BodyBuilder)ResponseEntity.ok().header("Content-Disposition", new String[]{"attachment; filename=\"" + file.getFilename() + "\""})).body(file);
         } else {
-            Resource file = this.filesStorageService.load("staticImage".concat("/profile-img.jpg"));
+            Resource file = this.filesStorageService.load(folder.concat("/Frame 4.png"));
             return ((BodyBuilder)ResponseEntity.ok().header("Content-Disposition", new String[]{"attachment; filename=\"" + file.getFilename() + "\""})).body(file);
         }
     }
+
 
     @GetMapping({"/{id}"})
     public String findTVById(Model model, @PathVariable Long id) {

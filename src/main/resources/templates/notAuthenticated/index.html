@@ -7,15 +7,8 @@
 
 <!--   demarrage ou b1 star flash -->
 
-<div class="flash-container" id="flash-container">
-    <video autoplay class="responsive-video" id="flash-video">
-        <source src="@{/notAuthenticated/assets/videos/logo.mp4}" type="video/mp4">
-        Your browser does not support HTML5 video.
-    </video>
-</div>
 
 <!-- Add image before the header -->
-<div class="main-content" id="main-content">
 
 <header th:include="notAuthenticated/fragments/header::header" style="background-color: #0E2F4A"
         th:with="myObject=${complexesForNavBar},myObjectlFNBar=${loisForNavBar}"></header>
@@ -98,8 +91,11 @@
                                 th:href="${'/etablissement/'+etablissementSoustutelle.getId()}"
                                 th:text="${etablissementSoustutelle.getName()}"
                         > </a></h4>
-                        <p    th:href="${'/etablissement/'+etablissementSoustutelle.getId()}"
-                           th:text="${etablissementSoustutelle.getDescription().toString().substring(0,(etablissementSoustutelle.getDescription().length() &lt; 100 ? etablissementSoustutelle.getDescription().length() : 100 ))+'...'}"></p>
+                        <p    th:href="${'/etablissement/'+etablissementSoustutelle.getId()}">
+                            <span th:if="${#locale.language == 'ar'}"  th:text="${etablissementSoustutelle.getDescription().toString().substring(0,(etablissementSoustutelle.getDescription().length() &lt; 100 ? etablissementSoustutelle.getDescription().length() : 100 ))+'...'}"></span>
+                            <span th:elseif="${#locale.language == 'fr'}"  th:text="${etablissementSoustutelle.getDescriptionFr().toString().substring(0,(etablissementSoustutelle.getDescriptionFr().length() &lt; 100 ? etablissementSoustutelle.getDescriptionFr().length() : 100 ))+'...'}"></span>
+                            <span th:else  th:text="${etablissementSoustutelle.getDescriptionEn().toString().substring(0,(etablissementSoustutelle.getDescriptionEn().length() &lt; 100 ? etablissementSoustutelle.getDescriptionEn().length() : 100 ))+'...'}"></span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -136,7 +132,7 @@
                 </div>
 
 
-                <!--div class="" >
+                <div class="" >
 
 
                  <div class="RDC">
@@ -181,7 +177,7 @@
                         
 
                     </div>
-                 </div -->
+                 </div>
 
 
                     <div class="img-wrap">
@@ -205,7 +201,7 @@
 <div id="preloader"></div>
 
 <div th:replace="notAuthenticated/fragments/js::js"></div>
-</div>
+
 </body>
 
 </html>
