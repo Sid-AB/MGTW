@@ -87,6 +87,6 @@ public class ComplexeController {
        Optional<Complexe> existingTV = this.complexeService.findById(id);
        Boolean  check= this.complexeService.updateDataComplexe(updateComplexe,id,existingTV/*,multimedia */);
        //return "authenticated/etablissement/etablissementsEdit.html";
-       return new RedirectView("/tv/tvs");
+       return new RedirectView("/complexe/complexes");
     }
 }
