@@ -107,7 +107,6 @@ public class TextJuridiqueController {
 
     @GetMapping("/pdf/{id}/{lang}")
     public ResponseEntity<Resource> getImage(@PathVariable("id") Long id, @PathVariable("lang") String lang) {
-        System.out.println("getImage appelée avec id: " + id + " et lang: " + lang); // Log d'entrée
         String folder = "pdfs";
         TextJuridique textJuridique = this.textJuridiqueService.findTextJuridiqueById(id);
         Optional<Multimedia> multimedia = this.multimediaService.findFirstByTextJuridique(textJuridique);
@@ -123,7 +122,6 @@ public class TextJuridiqueController {
     
             // Construire le chemin du fichier
             String filePath = folder.concat("/" + lang + "/" + filename);
-            System.out.println("Chemin du fichier : " + filePath); // Log du chemin
     
             Resource file = this.filesStorageService.load(filePath);
             String contentType;
