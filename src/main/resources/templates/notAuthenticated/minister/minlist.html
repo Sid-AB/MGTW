@@ -27,8 +27,14 @@
                                     <img th:src="@{${'/ministers/pic/' + minister.id}}" style="height: 150px;width: 150px" class="img-fluid product-thumbnail">
                                     
                                     <h3 class="product-title" style="font-size: 20px" 
-                                        th:text="${#locale.language == 'fr' ? minister.firstName+ ' ' + minister.lastName : minister.firstName + ' ' + minister.lastName}"></h3>
-                                        
+                                    th:text="${#locale.language == 'ar' ? 
+                                    minister.firstName + ' ' + minister.lastName : 
+                                    (#locale.language == 'fr' && minister.firstNameFr.startsWith('Docteur') ? 
+                                          minister.firstNameFr + ' ' + minister.lastNameFr : 
+                                          'Doctor ' + (minister.firstNameFr.startsWith('Docteur') ? 
+                                          minister.firstNameFr.substring('Docteur '.length) : 
+                                          minister.firstNameFr) + ' ' + minister.lastNameFr)}"></h3>
+                                     
                                     <h5 class="date-to-format start-date" style="font-size: 15px">
                                         <span th:text="${minister.startFrom}"></span>
                                     </h5>
