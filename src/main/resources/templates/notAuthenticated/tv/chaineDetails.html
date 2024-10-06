@@ -95,7 +95,7 @@
                             <!-- Satellite -->
                             <li>
                                 <span style="display: flex; align-items: center;">
-                                    <strong th:text="#{stalit}+':'">القمر الصناعي</strong>&nbsp; <!-- Espace pour séparer -->
+                                    <strong th:text="#{satellite}+':'">القمر الصناعي</strong>&nbsp; <!-- Espace pour séparer -->
                                     <span th:text="${caracteristique.getSatellite()}"></span>
                                 </span>
                             </li>
@@ -111,7 +111,7 @@
                             <!-- Symbolrate avec direction LTR pour les chiffres -->
                             <li>
                                 <span style="display: flex; align-items: center;">
-                                    <strong th:text="#{modlu}+':'">معامل الترميز</strong>&nbsp; <!-- Espace pour séparer -->
+                                    <strong th:text="#{modulation}+':'">معامل الترميز</strong>&nbsp; <!-- Espace pour séparer -->
                                     <span style="direction: ltr;" th:text="${caracteristique.getSymbolrate()}"></span>
                                 </span>
                             </li>
@@ -119,7 +119,7 @@
                             <!-- Polarization -->
                             <li>
                                 <span style="display: flex; align-items: center;">
-                                    <strong th:text="#{polizar}+':'">الاستقاب</strong>&nbsp; <!-- Espace pour séparer -->
+                                    <strong  th:text="#{polarization}+':'">الاستقاب</strong>&nbsp; <!-- Espace pour séparer -->
                                     <span th:text="${caracteristique.getPolarization()}"></span>
                                 </span>
                             </li>
