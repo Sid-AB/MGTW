@@ -28,7 +28,7 @@
             </div>
 
             <!-- Table with stripped rows -->
-            <table class="table datatable">
+            <table class="table datatable" id="PressTable">
                 <thead>
                 <tr>
                     <th>
@@ -40,7 +40,7 @@
                     <th>Description</th>
                     <th>web site</th>
 
-                    <th>Complexe</th>
+                    <!--th>Complexe</th-->
                     <th>Categorie</th>
                     <th>Documents</th>
 
@@ -54,7 +54,7 @@
                     <td><span th:text="${presse.getName()}"></span></td>
                     <td><span th:text="${presse.getDescription()}"></span></td>
                     <td><span th:text="${presse.getWebsite()}"></span></td>
-                    <td><span th:text="${presse.getComplexe().getName()}"></span></td>
+                    <!--td><span th:text="${presse.getComplexe().getName()}"></span></td-->
                     <td>
                         <ul>
                             <li th:each="presse : ${presse.getPresseCategories()}">
@@ -76,12 +76,12 @@
                     </td>
                     <td>
                         <div class="pt-2">
-                            <a th:href="@{'/presse/'+${presse.getId()}+'/userDetail'}"
+                            <a th:href="@{'/presse/pressesEdit/'+${presse.getId()}}"
                                class="btn btn-success btn-sm"
                                title="Detail">
                                 <i class="bx bxs-user-detail"></i>
                             </a>
-                            <a th:href="@{'/presse/userEdit/'+${presse.getId()}}" class="btn btn-info btn-sm"
+                            <a th:href="@{'/presse/pressesEdit/'+${presse.getId()}}" class="btn btn-info btn-sm"
                                title="Update"><i class="ri-edit-2-line text-white"></i></a>
 
                             <a href="#" class="btn btn-danger btn-sm" title="Remove"><i class="bi bi-trash"></i></a>

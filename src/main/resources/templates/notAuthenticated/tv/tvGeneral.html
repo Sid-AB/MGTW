@@ -29,7 +29,10 @@
     <section id="breadcrumbs" class="breadcrumbs">
         <div th:if="${!complexes.isEmpty() }" class="container">
 
-            <h2 th:text="${complexes.get(0).getName()}"></h2>
+           
+            <!-- <h2 th:text="${complexes.get(0).getName()}"></h2> -->
+            <h2 th:text="${#locale.language == 'fr' ? complexes.get(0).getNameFr() : (#locale.language == 'en' ? complexes.get(0).getNameEn() : complexes.get(0).getName())}"></h2>
+
 
         </div>
     </section><!-- End Breadcrumbs -->
@@ -38,71 +41,100 @@
     <section id="portfolio-details" class="portfolio-details">
         <div class="container">
             <div class="row gy-4">
-
+    
                 <div class="col-lg-8">
                     <section id="portfolio" class="portfolio ">
                         <div class="container" data-aos="fade-up">
-
+    
                             <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up"
                                 data-aos-delay="100">
                                 <li data-filter="*" class="filter-active" th:text="#{channel}">جميع القنوات</li>
-
+    
                                 <li th:if="tvListDistinctByCategorieChaines"
                                     th:each="tvListDistinctByCategorieChaine : ${tvListDistinctByCategorieChaines}"
                                     th:attr="data-filter='.' + ${tvListDistinctByCategorieChaine.getName()}"
-                                    th:text="${tvListDistinctByCategorieChaine.getName()}">
+                                    th:text="${#locale.language == 'fr' ? tvListDistinctByCategorieChaine.getNameFr() : (#locale.language == 'en' ? tvListDistinctByCategorieChaine.getNameEn() : tvListDistinctByCategorieChaine.getName())}">
                                 </li>
                             </ul>
-
-                            <div  th:if="${!tvs.isEmpty()}" class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
-
+    
+                            <div th:if="${!tvs.isEmpty()}" class="row portfolio-container" data-aos="fade-up"
+                                data-aos-delay="200">
+    
+    
                                 <div th:if="${tvs}" th:each="tv:${tvs}"
-                                     th:attr="class=${'col-lg-4 col-md-6 portfolio-item ' +tv.getCategorieChaine().getName()}">
-
-                                    <div class="portfolio-img"><img
-                                            th:src="@{${'/tv/lugo/'+tv.getId()}}"
-                                            class="img-fluid" alt="">
+                                    th:attr="class=${'col-lg-4 col-md-6 portfolio-item ' +tv.getCategorieChaine().getName()}">
+    
+                                    <div class="portfolio-img"><img th:src="@{${'/tv/lugo/'+tv.getId()}}" class="img-fluid"
+                                            alt="">
                                     </div>
-
-                                    <div class="  portfolio-info d-flex justify-content-end">
-
-
-                                        <p><h4 th:text="${tv.getName()}">الجزائرية الاولى </h4></p>
-                                        <a hidden="hidden" th:href="@{ ${'/tv/lugo/'+tv.getId()}}" data-gallery="portfolioGallery"
-                                           class="portfolio-lightbox preview-link" title="الارضية "><i
-                                                class="bx bx-plus"></i></a>
+                                    <div class="portfolio-info d-flex"
+                                        th:style="${#locale.language == 'fr' || #locale.language == 'en' ? 'direction: ltr; justify-content: flex-end;' : 'direction: rtl; justify-content: flex-start;'}">
+    
+                                        <h4 th:style="${#locale.language == 'fr' || #locale.language == 'en' ? 'text-align: left; margin-right: 20px;' : 'text-align: right; margin-left: 20px;'}"
+                                            th:text="${#locale.language == 'fr' ? tv.getNameFr() : (#locale.language == 'en' ? tv.getNameEn() : tv.getName())}">
+                                        </h4>
+    
+                                        <a hidden="hidden" th:href="@{ ${'/tv/lugo/'+tv.getId()}}"
+                                            data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"
+                                            title="الارضية">
+                                            <i class="bx bx-plus"></i>
+                                        </a>
+    
+    
                                         <a th:href="@{'/tv/'+${tv.getId().toString()}}" class="details-link"
-                                           th:title="#{plusdet} "><i
-                                                class="bx bx-link"></i></a>
-
+                                            th:title="#{plusdet}"
+                                            th:style="${#locale.language == 'fr' || #locale.language == 'en' ? 'margin-right: 0;' : 'margin-left: 30px;'}">
+                                            <i class="bx bx-link"></i>
+                                        </a>
                                     </div>
+    
+    
+    
+    
+    
+    
+    
                                 </div>
-
-
+    
+    
                             </div>
-
+    
                         </div>
                     </section><!-- End Portfolio Section -->
                 </div>
 
                 <div th:if="${!complexes.isEmpty()}" class="col-lg-4">
                     <div class="portfolio-description">
-                        <h2 th:text="${complexes.get(0).getName()}"></h2>
-                        <p th:text="${complexes.get(0).getDescription()}"></p>
+                        <!-- Affichage du nom selon la langue -->
+                        <h2 th:text="${#locale.language == 'fr' ? complexes.get(0).getNameFr() : (#locale.language == 'en' ? complexes.get(0).getNameEn() : complexes.get(0).getName())}">
+                        </h2>
+                    
+                        <!-- Affichage de la description selon la langue -->
+                        <p th:text="${#locale.language == 'fr' ? complexes.get(0).getDescriptionFr() : (#locale.language == 'en' ? complexes.get(0).getDescriptionEn() : complexes.get(0).getDescription())}">
+                        </p>
                     </div>
                     <div class="portfolio-info">
                         <h3 th:text="#{carast}">الخصائص </h3>
                         <ul>
-                            <li><strong th:text="#{address} +' : '+ ${  complexes.get(0).getAdresse()}"> </strong></li>
-                            <li><strong th:text="#{telep}">الهاتف :</strong><strong style="direction: ltr;" th:text="${complexes.get(0).getPhone()}"> </strong></li>
-                            <li><strong th:text="#{email}">البريد الالكتروتي :</strong><strong style="direction: ltr;"th:text=" ${  complexes.get(0).getEmail()}"> </strong>
+                            <li>
+                                <strong th:text="#{address} + ' : '"></strong>&nbsp;
+                                <span th:text="${#locale.language == 'fr' ? complexes.get(0).getAdresseFr() : (#locale.language == 'en' ? complexes.get(0).getAdresseEn() : complexes.get(0).getAdresse())}"></span>
                             </li>
-                            <li><strong th:text="#{citeweb}">الموقع الالكتروتي :</strong><a style="direction: ltr;" th:href="${complexes.get(0).getSite()}" th:text=" ${  complexes.get(0).getSite()}"> </a>
+                            <li>
+                                <strong th:text="#{telep} + ' : '">الهاتف :</strong>&nbsp;
+                                <strong style="direction: ltr;" th:text="${complexes.get(0).getPhone()}"></strong>
                             </li>
-
-
+                            <li>
+                                <strong th:text="#{email} + ' : '">البريد الإلكتروني :</strong>&nbsp;
+                                <strong style="direction: ltr;" th:text="${complexes.get(0).getEmail()}"></strong>
+                            </li>
+                            <li>
+                                <strong th:text="#{citeweb} + ' : '">الموقع الإلكتروني :</strong>&nbsp;
+                                <a style="direction: ltr;" th:href="${complexes.get(0).getSite()}" th:text="${complexes.get(0).getSite()}"></a>
+                            </li>
                         </ul>
+                        
+                        
 
                     </div>
 
@@ -118,7 +150,10 @@
 <footer th:replace="notAuthenticated/fragments/footer::footer" class="footer">
 </footer>
 
-<div id="preloader"></div>
+<div id="preloader" class="waitting">
+    <svg th:include="notAuthenticated/fragments/logosvg::logosvg" width="120" height="120" viewBox="0 0 2342 2004" version="1.1" class="inSide">
+    </svg>  
+</div>
 
 <div th:replace="notAuthenticated/fragments/js::js"></div>
 

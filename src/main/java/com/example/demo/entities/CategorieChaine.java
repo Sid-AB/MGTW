@@ -30,11 +30,18 @@ public class CategorieChaine {
     )
     private Long id;
     private String name;
+
+    @Column(name = "name_fr") // Nom de la colonne dans la base de données
+    private String nameFr; // Nom de l'établissement en français
+    
+    @Column(name = "name_en") // Nom de la colonne pour l'anglais
+    private String nameEn; // Nom de l'établissement en anglais
+
     @OneToMany(
             mappedBy = "categorieChaine",
             cascade = {CascadeType.ALL}
     )
-    private List<TV> tvList = new ArrayList();
+    private List<TV> tvList = new ArrayList<>();
     @CreationTimestamp
     @Column(
             name = "created_at"
@@ -58,6 +65,16 @@ public class CategorieChaine {
         return this.name;
     }
 
+     // Getter pour nameFr et en
+     public String getNameFr() { 
+        return this.nameFr; 
+    }
+
+    // Getter pour nameEn
+    public String getNameEn() {
+        return this.nameEn;
+    }
+
     public List<TV> getTvList() {
         return this.tvList;
     }
@@ -76,6 +93,16 @@ public class CategorieChaine {
 
     public void setName(final String name) {
         this.name = name;
+    }
+
+     // Setter pour nameFr
+     public void setNameFr(final String nameFr) {
+        this.nameFr = nameFr;
+    }
+
+    // Setter pour nameEn
+    public void setNameEn(final String nameEn) {
+        this.nameEn = nameEn;
     }
 
     public void setTvList(final List<TV> tvList) {
@@ -123,6 +150,28 @@ public class CategorieChaine {
                 } else if (!this$name.equals(other$name)) {
                     return false;
                 }
+
+                 // Vérification pour nameFr
+                 Object this$nameFr = this.getNameFr();
+                 Object other$nameFr = other.getNameFr();
+                 if (this$nameFr == null) {
+                     if (other$nameFr != null) {
+                         return false; // Un est nul, l'autre non
+                     }
+                 } else if (!this$nameFr.equals(other$nameFr)) {
+                     return false; // Noms en français différents
+                 }
+ 
+                 // Vérification pour nameEn
+                 Object this$nameEn = this.getNameEn();
+                 Object other$nameEn = other.getNameEn();
+                 if (this$nameEn == null) {
+                     if (other$nameEn != null) {
+                         return false; // Un est nul, l'autre non
+                     }
+                 } else if (!this$nameEn.equals(other$nameEn)) {
+                     return false; // Noms en anglais différents
+                 }
 
                 label57: {
                     Object this$tvList = this.getTvList();
@@ -174,6 +223,11 @@ public class CategorieChaine {
          result = result * 59 + ($id == null ? 43 : $id.hashCode());
         Object $name = this.getName();
         result = result * 59 + ($name == null ? 43 : $name.hashCode());
+        Object $nameFr = this.getNameFr(); // Récupération du nom en français
+        result = result * 59 + ($nameFr == null ? 43 : $nameFr.hashCode()); // Ajout du nom en français au code de hachage
+        
+        Object $nameEn = this.getNameEn(); // Récupération du nom en anglais
+        result = result * 59 + ($nameEn == null ? 43 : $nameEn.hashCode()); // Ajout du nom en anglais au code de hachage
         Object $tvList = this.getTvList();
         result = result * 59 + ($tvList == null ? 43 : $tvList.hashCode());
         Object $createdAt = this.getCreatedAt();
@@ -185,12 +239,21 @@ public class CategorieChaine {
 
     public String toString() {
         Long var10000 = this.getId();
-        return "CategorieChaine(id=" + var10000 + ", name=" + this.getName() + ", tvList=" + String.valueOf(this.getTvList()) + ", createdAt=" + String.valueOf(this.getCreatedAt()) + ", updatedAt=" + String.valueOf(this.getUpdatedAt()) + ")";
+        return "CategorieChaine(id=" + var10000 + ", name=" + this.getName()
+                + ", nameFr=" + this.getNameFr() // Ajout de nameFr
+                + ", nameEn=" + this.getNameEn() // Ajout de nameEn
+                + ", tvList=" + String.valueOf(this.getTvList())
+                + ", createdAt=" + String.valueOf(this.getCreatedAt())
+                + ", updatedAt=" + String.valueOf(this.getUpdatedAt())
+                + ")";
     }
 
-    public CategorieChaine(final Long id, final String name, final List<TV> tvList, final LocalDateTime createdAt, final LocalDateTime updatedAt) {
+    public CategorieChaine(final Long id, final String name, final String nameFr, final String nameEn,
+            final List<TV> tvList, final LocalDateTime createdAt, final LocalDateTime updatedAt) {
         this.id = id;
         this.name = name;
+        this.nameFr = nameFr; // Initialisation de nameFr
+        this.nameEn = nameEn; // Initialisation de nameEn
         this.tvList = tvList;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
@@ -202,6 +265,8 @@ public class CategorieChaine {
     public static class CategorieChaineBuilder {
         private Long id;
         private String name;
+        private String nameFr; // Ajout de nameFr
+        private String nameEn; // Ajout de nameEn
         private List<TV> tvList;
         private LocalDateTime createdAt;
         private LocalDateTime updatedAt;
@@ -216,6 +281,14 @@ public class CategorieChaine {
 
         public CategorieChaine.CategorieChaineBuilder name(final String name) {
             this.name = name;
+            return this;
+        }
+        public CategorieChaine.CategorieChaineBuilder nameFr(final String nameFr) {
+            this.nameFr = nameFr;
+            return this;
+        }
+        public CategorieChaine.CategorieChaineBuilder nameEn(final String nameEn) {
+            this.nameEn = nameEn;
             return this;
         }
 
@@ -235,12 +308,19 @@ public class CategorieChaine {
         }
 
         public CategorieChaine build() {
-            return new CategorieChaine(this.id, this.name, this.tvList, this.createdAt, this.updatedAt);
+            return new CategorieChaine(this.id, this.name, this.nameFr,
+            this.nameEn, this.tvList, this.createdAt, this.updatedAt);
         }
 
         public String toString() {
             Long var10000 = this.id;
-            return "CategorieChaine.CategorieChaineBuilder(id=" + var10000 + ", name=" + this.name + ", tvList=" + String.valueOf(this.tvList) + ", createdAt=" + String.valueOf(this.createdAt) + ", updatedAt=" + String.valueOf(this.updatedAt) + ")";
+            return "CategorieChaine.CategorieChaineBuilder(id=" + var10000 
+            + ", name=" + this.name  
+            +", nameFr=" + this.nameFr 
+            +", nameEn=" + this.nameEn 
+            + ", tvList=" + String.valueOf(this.tvList) 
+            + ", createdAt=" + String.valueOf(this.createdAt) 
+            + ", updatedAt=" + String.valueOf(this.updatedAt) + ")";
         }
     }
 }

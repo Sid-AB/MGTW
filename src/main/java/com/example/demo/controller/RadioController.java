@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity.BodyBuilder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -112,5 +113,25 @@ public class RadioController {
             Resource file = this.filesStorageService.load("staticImage".concat("/profile-img.jpg"));
             return ((BodyBuilder)ResponseEntity.ok().header("Content-Disposition", new String[]{"attachment; filename=\"" + file.getFilename() + "\""})).body(file);
         }
+    }
+
+    @GetMapping({"/RadioEdit/{id}"})
+    public String FindRadioById(Model model, @PathVariable Long id)
+    {
+        Radio radio=this.radioService.findRadioById(id);
+        model.addAttribute("radio",radio);
+        return "authenticated/radio/radioEdit";
+    }
+
+
+    @PostMapping({"/update/{id}"})
+    public RedirectView updatedRadio(@PathVariable Long id,@ModelAttribute  Radio updateRadio)
+    {
+        Radio presse = this.radioService.findRadioById(id);
+       // Optional<Multimedia> multimedia=this.multimediaService.findFirstByEtablissement(etablissement);
+       Optional<Radio> existingRadio = this.radioService.findById(id);
+       Boolean  check= this.radioService.updateDataRadio(updateRadio,id,existingRadio/*,multimedia */);
+       //return "authenticated/etablissement/etablissementsEdit.html";
+       return new RedirectView("/radio/radios");
     }
 }

@@ -10,11 +10,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
 
 
 @Repository
 public interface TVRepository extends JpaRepository<TV, Long> {
     TV findTVById(Long id);
+    Optional<TV> findById(Long id);
 
     List<TV> findTVSByComplexe(Complexe complexe);
 
@@ -27,4 +29,10 @@ public interface TVRepository extends JpaRepository<TV, Long> {
     List<TV> findAllByCategorieChaine(CategorieChaine categorieChaine);
 
     List<TV> findByDescriptionContainingIgnoreCase(@Param("text") String keyword);
+
+    // Ajout de la recherche par descriptionFr
+    List<TV> findByDescriptionFrContainingIgnoreCase(@Param("text") String keyword);
+
+    // Ajout de la recherche par descriptionEn
+    List<TV> findByDescriptionEnContainingIgnoreCase(@Param("text") String keyword);
 }

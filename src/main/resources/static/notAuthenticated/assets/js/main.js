@@ -8,14 +8,15 @@
 
 function changeDirection(language) {
   if (language === 'ar') {
-      console.log('testing'+language)
+      console.log('testing '+language)
       document.documentElement.setAttribute("dir", "rtl");  // Set direction to 'rtl' for Arabic
   } else {
-      document.documentElement.setAttribute("dir", "ltr");  // Set direction to 'ltr' for other languages
+      document.documentElement.setAttribute("dir", "ltr");
+          document.documentElement.style.fontFamily = "Helvetica, Arial, sans-serif";
+          document.body.style.fontFamily = "Helvetica, Arial, sans-serif";
+      console.log('testing '+language)  // Set direction to 'ltr' for other languages
   }
 }
-
-
 
 
 (function() {
@@ -103,6 +104,7 @@ function changeDirection(language) {
     window.addEventListener('load', headerScrolled)
     onscroll(document, headerScrolled)
   }
+
 
   /**
    * Back to top button

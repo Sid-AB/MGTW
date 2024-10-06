@@ -11,10 +11,11 @@ import java.util.Optional;
 @Repository
 public interface EtablissementRepository extends JpaRepository<Etablissement, Long> {
     Etablissement findEtablissementById(Long id);
+    Optional<Etablissement> findById(Long id);
 
     Optional<Etablissement> findEtablissementByName(String name);
-    Optional<Etablissement> findEtablissementByNameFr(String nameFr);
-    Optional<Etablissement> findEtablissementByNameEn(String nameEn);  // Ajout pour le nom en anglais
+    Optional<Etablissement> findEtablissementByNameFr(String name_fr);
+    Optional<Etablissement> findEtablissementByNameEn(String name_en);
 
 
     List<Etablissement> findEtablissementsByType(String type);

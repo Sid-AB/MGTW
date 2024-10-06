@@ -19,11 +19,12 @@ public class PresseDTO {
     private List<Long> selectedCategorie;
     private Long complexe;
     private String adresse;
+    private String adresseFr;
+    private String adresseEn;
     private String phone;
     private String fax;
     private String email;
     private String site;
-    private String localisation;
     private List<MultipartFile> profilFiles;
 
     public Presse toEPresse() {
@@ -37,11 +38,12 @@ public class PresseDTO {
         presse.setWebsite(this.getWebsite()); // Site web
         presse.setCategorieelec(this.getCategorie()); // Catégorie
         presse.setAdresse(this.getAdresse()); // Adresse
+        presse.setAdresseFr(this.getAdresseFr()); // Adresse
+        presse.setAdresseEn(this.getAdresseEn()); // Adresse
         presse.setPhone(this.getPhone()); // Téléphone
         presse.setFax(this.getFax()); // Fax
         presse.setEmail(this.getEmail()); // Email
         presse.setSite(this.getSite()); // Autre site
-        presse.setLocalisation(this.getLocalisation()); // Localisation
         presse.setNameEn(this.getNameEn()); // Ajout de nameEn
         return presse;
     }
@@ -51,7 +53,11 @@ public class PresseDTO {
         return new com.example.demo.dto.PresseDTO.PresseDTOBuilder();
     }
 
-    public PresseDTO(final String name, final String nameFr, final String nameEn, final String description, final String descriptionFr, final String descriptionEn, final String type, final String website, final String categorie, final List<Long> selectedCategorie, final Long complexe, final String adresse, final String phone, final String fax, final String email, final String site, final String localisation, final List<MultipartFile> profilFiles) {
+    public PresseDTO(final String name, final String nameFr, final String nameEn, final String description,
+            final String descriptionFr, final String descriptionEn, final String type, final String website,
+            final String categorie, final List<Long> selectedCategorie, final Long complexe, final String adresse,final String adresseFr, final String adresseEn,
+            final String phone, final String fax, final String email, final String site, final String localisation,
+            final List<MultipartFile> profilFiles) {
         this.name = name; // Nom en arabe
         this.nameFr = nameFr; // Nom en français
         this.nameEn = nameEn; // Nom en anglais (ajouté)
@@ -64,11 +70,12 @@ public class PresseDTO {
         this.selectedCategorie = selectedCategorie;
         this.complexe = complexe;
         this.adresse = adresse;
+        this.adresseFr = adresseFr;
+        this.adresseEn = adresseEn;
         this.phone = phone;
         this.fax = fax;
         this.email = email;
         this.site = site;
-        this.localisation = localisation;
         this.profilFiles = profilFiles;
     }
     
@@ -122,6 +129,12 @@ public class PresseDTO {
         return this.adresse;
     }
 
+    public String getAdresseFr() {
+        return this.adresseFr;
+    }
+    public String getAdresseEn() {
+        return this.adresseEn;
+    }
     public String getPhone() {
         return this.phone;
     }
@@ -138,9 +151,6 @@ public class PresseDTO {
         return this.site;
     }
 
-    public String getLocalisation() {
-        return this.localisation;
-    }
 
     public List<MultipartFile> getProfilFiles() {
         return this.profilFiles;
@@ -194,6 +204,12 @@ public class PresseDTO {
         this.adresse = adresse;
     }
 
+    public void setAdresseFr(final String adresseFr) {
+        this.adresseFr = adresseFr;
+    }
+    public void setAdresseEn(final String adresseEn) {
+        this.adresseEn = adresseEn;
+    }
     public void setPhone(final String phone) {
         this.phone = phone;
     }
@@ -210,9 +226,6 @@ public class PresseDTO {
         this.site = site;
     }
 
-    public void setLocalisation(final String localisation) {
-        this.localisation = localisation;
-    }
 
     public void setProfilFiles(final List<MultipartFile> profilFiles) {
         this.profilFiles = profilFiles;
@@ -357,6 +370,34 @@ public class PresseDTO {
                     return false;
                 }
 
+                label131: {
+                    Object this$adresseFr = this.getAdresseFr();
+                    Object other$adresseFr = other.getAdresseFr();
+                    if (this$adresseFr == null) {
+                        if (other$adresseFr == null) {
+                            break label131;
+                        }
+                    } else if (this$adresseFr.equals(other$adresseFr)) {
+                        break label131;
+                    }
+
+                    return false;
+                }
+
+                label132: {
+                    Object this$adresseEn = this.getAdresseEn();
+                    Object other$adresseEn = other.getAdresseEn();
+                    if (this$adresseEn == null) {
+                        if (other$adresseEn == null) {
+                            break label132;
+                        }
+                    } else if (this$adresseEn.equals(other$adresseEn)) {
+                        break label132;
+                    }
+
+                    return false;
+                }
+
                 Object this$phone = this.getPhone();
                 Object other$phone = other.getPhone();
                 if (this$phone == null) {
@@ -405,15 +446,7 @@ public class PresseDTO {
                     return false;
                 }
 
-                Object this$localisation = this.getLocalisation();
-                Object other$localisation = other.getLocalisation();
-                if (this$localisation == null) {
-                    if (other$localisation != null) {
-                        return false;
-                    }
-                } else if (!this$localisation.equals(other$localisation)) {
-                    return false;
-                }
+               
 
                 Object this$profilFiles = this.getProfilFiles();
                 Object other$profilFiles = other.getProfilFiles();
@@ -473,6 +506,12 @@ public class PresseDTO {
     
         Object $adresse = this.getAdresse();
         result = result * 59 + ($adresse == null ? 43 : $adresse.hashCode());
+
+        Object $adresseFr = this.getAdresseFr();
+        result = result * 59 + ($adresseFr == null ? 43 : $adresseFr.hashCode());
+
+        Object $adresseEn = this.getAdresseEn();
+        result = result * 59 + ($adresseEn == null ? 43 : $adresseEn.hashCode());
     
         Object $phone = this.getPhone();
         result = result * 59 + ($phone == null ? 43 : $phone.hashCode());
@@ -485,9 +524,6 @@ public class PresseDTO {
     
         Object $site = this.getSite();
         result = result * 59 + ($site == null ? 43 : $site.hashCode());
-    
-        Object $localisation = this.getLocalisation();
-        result = result * 59 + ($localisation == null ? 43 : $localisation.hashCode());
     
         Object $profilFiles = this.getProfilFiles();
         result = result * 59 + ($profilFiles == null ? 43 : $profilFiles.hashCode());
@@ -510,11 +546,12 @@ public class PresseDTO {
                ", selectedCategorie=" + String.valueOf(this.getSelectedCategorie()) + 
                ", complexe=" + this.getComplexe() + 
                ", adresse=" + this.getAdresse() + 
+               ", adresseFr=" + this.getAdresseFr() + 
+               ", adresseEn=" + this.getAdresseEn() + 
                ", phone=" + this.getPhone() + 
                ", fax=" + this.getFax() + 
                ", email=" + this.getEmail() + 
                ", site=" + this.getSite() + 
-               ", localisation=" + this.getLocalisation() + 
                ", profilFiles=" + String.valueOf(this.getProfilFiles()) + 
                ")";
     }

@@ -37,6 +37,10 @@ public class PresseService {
         return this.presseRepository.findPresseById(id);
     }
 
+    public Optional<Presse> findById(Long id) {
+        return this.presseRepository.findById(id);
+    }
+
     public List<Presse> findAll() {
         return this.presseRepository.findAll();
     }
@@ -85,7 +89,7 @@ public class PresseService {
         return presse1;
     }
 
-    public Presse saveUserAndMultimedias(List<Multimedia> multimedias, Presse presse) {
+     public Presse saveUserAndMultimedias(List<Multimedia> multimedias, Presse presse) {
         this.presseRepository.save(presse);
         if (multimedias != null && !multimedias.isEmpty()) {
             List<Multimedia> savedMultimedias = new ArrayList();
@@ -98,5 +102,34 @@ public class PresseService {
         }
 
         return presse;
+    }
+
+
+    public Boolean updateDataPresse(Presse Presse, Long userId,Optional<Presse> existingPress/*, Optional<Multimedia> multimedias */) {
+        if (existingPress.isPresent()) {
+            Presse press = existingPress.get();
+            press.setName(Presse.getName());
+            press.setNameFr(Presse.getNameFr());
+            press.setNameEn(Presse.getNameEn());
+            press.setDescription(Presse.getDescription());
+            press.setDescriptionFr(Presse.getDescriptionFr());
+            press.setDescriptionEn(Presse.getDescriptionEn());
+            this.presseRepository.save(press);
+      /*  if (multimedias.isPresent()) {
+            List<Multimedia> savedMultimedias = new ArrayList();
+            multimedias.ifPresent((multimedia) -> {
+                multimedia.setPresse(existingPresse);
+            });
+            multimedias.ifPresent(savedMultimedias::addAll);
+            savedMultimedias.ifPresent(existingPresse::setMultimediaList);
+            this.multimediaRepository.saveAll(savedMultimedias);
+        } */
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+      //  return existingPresse;
     }
 }

@@ -26,6 +26,10 @@ public class EtablissementService {
     public EtablissementService() {
     }
 
+    public Optional<Etablissement> findById(Long id) {
+        return this.etablissementRepository.findById(id);
+    }
+
     public Etablissement findEtablissementById(Long id) {
         return this.etablissementRepository.findEtablissementById(id);
     }
@@ -35,12 +39,12 @@ public class EtablissementService {
         return this.etablissementRepository.findEtablissementByName(name);
     }
 
-    // Méthode pour rechercher par nom français
+    // Méthode pour rechercher par nom arabe
     public Optional<Etablissement> findEtablissementByNameFr(String nameFr) {
         return this.etablissementRepository.findEtablissementByNameFr(nameFr);
     }
 
-    // Méthode pour rechercher par nom en anglais
+    // Méthode pour rechercher par nom arabe
     public Optional<Etablissement> findEtablissementByNameEn(String nameEn) {
         return this.etablissementRepository.findEtablissementByNameEn(nameEn);
     }
@@ -89,30 +93,32 @@ public class EtablissementService {
         return etablissement;
     }
 
-    public Etablissement updateDataEtablissement(Etablissement updatedEtablissement, Long userId, List<Multimedia> multimedias) {
-        Etablissement existingEtablissement = this.etablissementRepository.findEtablissementById(userId);
-        
-        existingEtablissement.setName(updatedEtablissement.getName());
-        existingEtablissement.setNameFr(updatedEtablissement.getNameFr());
-        existingEtablissement.setNameEn(updatedEtablissement.getNameEn()); // Ajout de nameEn
-        existingEtablissement.setType(updatedEtablissement.getType());
-        existingEtablissement.setDescription(updatedEtablissement.getDescription());
-        existingEtablissement.setDescriptionFr(updatedEtablissement.getDescriptionFr());
-        existingEtablissement.setDescriptionEn(updatedEtablissement.getDescriptionEn());
-    
-        this.etablissementRepository.save(existingEtablissement);
-    
-        if (multimedias != null && !multimedias.isEmpty()) {
-            List<Multimedia> savedMultimedias = new ArrayList<>();
-            multimedias.forEach((multimedia) -> {
+    public Boolean updateDataEtablissement(Etablissement etablissement, Long userId,Optional<Etablissement> existingMinister/*, Optional<Multimedia> multimedias */) {
+        if (existingMinister.isPresent()) {
+            Etablissement Etabbliss = existingMinister.get();
+            Etabbliss.setName(etablissement.getName());
+            Etabbliss.setNameFr(etablissement.getNameFr());
+            Etabbliss.setNameEn(etablissement.getNameEn());
+            Etabbliss.setDescription(etablissement.getDescription());
+            Etabbliss.setDescriptionFr(etablissement.getDescriptionFr());
+            Etabbliss.setDescriptionEn(etablissement.getDescriptionEn());
+            this.etablissementRepository.save(Etabbliss);
+      /*  if (multimedias.isPresent()) {
+            List<Multimedia> savedMultimedias = new ArrayList();
+            multimedias.ifPresent((multimedia) -> {
                 multimedia.setEtablissement(existingEtablissement);
             });
-            savedMultimedias.addAll(multimedias);
-            existingEtablissement.setMultimediaList(savedMultimedias);
+            multimedias.ifPresent(savedMultimedias::addAll);
+            savedMultimedias.ifPresent(existingEtablissement::setMultimediaList);
             this.multimediaRepository.saveAll(savedMultimedias);
-        }
-    
-        return existingEtablissement;
+        } */
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+      //  return existingEtablissement;
     }
     
 }

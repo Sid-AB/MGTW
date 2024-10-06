@@ -38,22 +38,39 @@
                 <div class="container">
                     <div class="row">
 
-
                         <!-- Start Column 2 -->
-                        <div th:if="radiosNational" th:each="radioNational:${radiosNational}" class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-                            <a class="product-item" th:href="@{'/radio/'+${radioNational.getId().toString()}}">
-                                <img th:src="@{${'/radio/lugo/'+radioNational.getId()}}"
-                                     style="height: 150px;width: 150px"
+                        <div th:if="${radiosNational}" th:each="radioNational : ${radiosNational}" class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+                            <a class="product-item" th:href="@{'/radio/' + ${radioNational.getId().toString()}}">
+                                <img th:src="@{${'/radio/lugo/' + radioNational.getId()}}" style="height: 150px; width: 150px"
                                      class="img-fluid product-thumbnail">
-                                <h3 class="product-title" style="font-size: 20px" th:text="${radioNational.getName()}"></h3>
-                                <h5 class="product-price" style="overflow: hidden;height: 90px;font-size: 15px" th:text="${radioNational.getDescription()}" ></h5>
-
+                                
+                                <h3 class="product-title" style="font-size: 20px" 
+                                    th:text="${#locale.language == 'fr' ? radioNational.getNameFr() : 
+                                              (#locale.language == 'en' ? radioNational.getNameEn() : radioNational.getName())}">
+                                </h3>
+                                
+                                <h5 class="product-price" style="font-size: 15px; overflow: hidden; height: 85px;" 
+                                    th:text="${#locale.language == 'fr' ? 
+                                              (radioNational.getDescriptionFr() != null && radioNational.getDescriptionFr().length() < 100 ? 
+                                              radioNational.getDescriptionFr() : 
+                                              radioNational.getDescriptionFr().substring(0, 100) + '...') : 
+                                              (#locale.language == 'en' ? 
+                                              (radioNational.getDescriptionEn() != null && radioNational.getDescriptionEn().length() < 100 ? 
+                                              radioNational.getDescriptionEn() : 
+                                              radioNational.getDescriptionEn().substring(0, 100) + '...') : 
+                                              (radioNational.getDescription() != null && radioNational.getDescription().length() < 100 ? 
+                                              radioNational.getDescription() : 
+                                              radioNational.getDescription().substring(0, 100) + '...'))}">
+                                </h5>
+                        
                                 <span class="icon-cross">
-								<img th:src="@{${'/radio/lugo/'+radioNational.getId()}}" class="img-fluid">
-							</span>
+                                    <img th:src="@{${'/radio/lugo/' + radioNational.getId()}}" class="img-fluid">
+                                </span>
                             </a>
                         </div>
-                        <!-- End Column 2 -->
+                        
+                        
+<!-- End Column 2 -->
 
 
                     </div>
@@ -82,20 +99,52 @@
 
 
                         <!-- Start Column 2 -->
-                        <div th:if="radiosLocal" th:each="radioLocal:${radiosLocal}" class="col-6 col-md-2 col-lg-2 mb-5 mb-md-0">
+                        <!-- <div th:if="radiosLocal" th:each="radioLocal:${radiosLocal}" class="col-6 col-md-2 col-lg-2 mb-5 mb-md-0">
                             <a class="product-item" th:href="@{'/radio/'+${radioLocal.getId().toString()}}">
                                 <img th:src="@{${'/radio/lugo/'+radioLocal.getId()}}"
                                      style="height: 150px;width: 150px"
                                      class="img-fluid product-thumbnail">
                                 <h3 class="product-title" style="font-size: 20px" th:text="${radioLocal.getName()}"></h3>
-                                <h5 class="product-price" style="overflow: hidden;height: 90px;font-size: 15px" th:text="${radioLocal.getDescription()}" ></h5>
+                                <h5 class="product-price" style="font-size: 15px ;overflow: hidden; height: 85px;" th:text="${radioLocal.getDescription().toString().substring(0,(radioLocal.getDescription().length() &lt; 100 ? radioLocal.getDescription().length() : 100 ))+'...'}" ></h5>
 
                                 <span class="icon-cross">
 								<img th:src="@{${'/radio/lugo/'+radioLocal.getId()}}" class="img-fluid">
 							</span>
                             </a>
-                        </div>
+                        </div> -->
                         <!-- End Column 2 -->
+
+                        <!-- Start Column 2 -->
+<div th:if="${radiosLocal}" th:each="radioLocal : ${radiosLocal}" class="col-6 col-md-2 col-lg-2 mb-5 mb-md-0">
+    <a class="product-item" th:href="@{'/radio/' + ${radioLocal.getId().toString()}}">
+        <img th:src="@{${'/radio/lugo/' + radioLocal.getId()}}" style="height: 150px; width: 150px"
+             class="img-fluid product-thumbnail">
+        
+        <h3 class="product-title" style="font-size: 20px" 
+            th:text="${#locale.language == 'fr' ? radioLocal.getNameFr() : 
+                      (#locale.language == 'en' ? radioLocal.getNameEn() : radioLocal.getName())}">
+        </h3>
+        
+        <h5 class="product-price" style="font-size: 15px; overflow: hidden; height: 85px;" 
+            th:text="${#locale.language == 'fr' ? 
+                      (radioLocal.getDescriptionFr() != null && radioLocal.getDescriptionFr().length() < 100 ? 
+                      radioLocal.getDescriptionFr() : 
+                      radioLocal.getDescriptionFr().substring(0, 100) + '...') : 
+                      (#locale.language == 'en' ? 
+                      (radioLocal.getDescriptionEn() != null && radioLocal.getDescriptionEn().length() < 100 ? 
+                      radioLocal.getDescriptionEn() : 
+                      radioLocal.getDescriptionEn().substring(0, 100) + '...') : 
+                      (radioLocal.getDescription() != null && radioLocal.getDescription().length() < 100 ? 
+                      radioLocal.getDescription() : 
+                      radioLocal.getDescription().substring(0, 100) + '...'))}">
+        </h5>
+
+        <span class="icon-cross">
+            <img th:src="@{${'/radio/lugo/' + radioLocal.getId()}}" class="img-fluid">
+        </span>
+    </a>
+</div>
+<!-- End Column 2 -->
 
 
                     </div>
@@ -111,9 +160,10 @@
 
 <footer th:replace="notAuthenticated/fragments/footer::footer" class="footer">
 </footer>
-
-<div id="preloader"></div>
-
+<div id="preloader" class="waitting">
+    <svg th:include="notAuthenticated/fragments/logosvg::logosvg" width="120" height="120" viewBox="0 0 2342 2004" version="1.1" class="inSide">
+    </svg>  
+</div>
 <div th:replace="notAuthenticated/fragments/js::js"></div>
 
 </body>

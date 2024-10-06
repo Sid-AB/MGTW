@@ -22,6 +22,7 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequestMapping({"/user"})
@@ -114,5 +115,10 @@ public class UserController {
         this.getImage(user.getId(), "images", "profileImage");
         model.addAttribute("user", user);
         return "authenticated/user/userEdit";
+    }
+
+    @GetMapping("/watch/{videoName}")
+    public RedirectView watchVideo(@PathVariable String videoName) {
+        return new RedirectView("/videos/" + videoName);
     }
 }

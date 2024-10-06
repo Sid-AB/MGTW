@@ -320,6 +320,27 @@
     });
   })
 
+/**
+ * 
+ * JS Data Table
+ * 
+ */
+
+// Press
+/*document.addEventListener("DOMContentLoaded", function() {
+  const table = document.getElementById("PressTable");
+  new simpleDatatables.DataTable(table);  // Initialize Simple-DataTables
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  const table = document.getElementById("TvTable");
+  new simpleDatatables.DataTable(table);  // Initialize Simple-DataTables
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  const table = document.getElementById("TvTable");
+  new simpleDatatables.DataTable(table);  // Initialize Simple-DataTables
+});*/
   /**
    * Autoresize echart charts
    */

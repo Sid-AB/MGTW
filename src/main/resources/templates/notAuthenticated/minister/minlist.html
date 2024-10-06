@@ -5,79 +5,158 @@
 <body>
     <header th:include="notAuthenticated/fragments/header::header" style="background-color: #0E2F4A"
     th:with="myObject=${complexesForNavBar},myObjectlFNBar=${loisForNavBar}"></header>
-<main id="main">
+    
+    <main id="main">
+        <div style="height: 70px"></div>
 
-<div style="height: 70px"
-></div>
+        <img hidden="hidden" th:src="@{'/tv/lugoz/1'}" height="100px" width="100px" class="rounded-circle">
 
-    <img hidden="hidden" th:src="@{'/tv/lugoz/1'}"
+        <section id="national" class="breadcrumbs m-0">
+            <div class="container">
+                <h2>قائمة الوزراء المتعاقبين ابتداء من الحكومة المؤقتة</h2>
+            </div>
+        </section>
 
-
-         height="100px" width="100px"
-         class="rounded-circle">
-
-    <!-- ======= Breadcrumbs ======= -->
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="national" class="breadcrumbs m-0" >
-        <div class="container">
-
-            <h2 >  قائمة الوزراء المتعاقبين ابتداء من الحكومة المؤقتة  </h2>
-
-        </div>
-    </section><!-- End Breadcrumbs -->
-
-    <!-- ======= Portfolio Details Section ======= -->
-    <section id="portfolio-details" class="portfolio-details">
-        <div class="container">
-            <div class="product-section pt-0">
-                <div class="container">
-                    <div class="row">
-
-
-                        <!-- Start Column 2 -->
-                          <!-- Boucle pour afficher chaque ministre -->
-                          <div th:each="minister : ${Mins}" class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-                            <a class="product-item" href="">
-                                <img th:src="@{${'/ministers/pic/'+minister.Id}}"
-                                     style="height: 150px;width: 150px"
-                                     class="img-fluid product-thumbnail">
-                                     <!--h3 class="product-title" style="font-size: 20px" th:text="${minister.firstName}">اسم الوزير </h3>
-
-
-                                     <h3 class="product-title" style="font-size: 20px" th:text="${minister.lastName}">لقب الوزير </h3-->
-                                     <h3 class="product-title" style="font-size: 20px" th:text="${minister.firstName} + ' ' + ${minister.lastName}"></h3>
-
-                                     <h5 class="product-price" style="font-size: 15px" th:text="'منذ : ' + ${minister.startFrom}"></h5>
-
-                                     <h5 class="product-price" style="font-size: 15px" th:text="${minister.until != null} ? 'إلى غاية : ' + ${minister.until} : 'الى يومنا هذا'"></h5>
-                                      <span class="icon-cross">
-                                    <img th:src="@{/notAuthenticated/assets/img/Frame 5.png}" class="img-fluid">
-                                </span>
-
-                            </a>
+        <section id="portfolio-details" class="portfolio-details">
+            <div class="container">
+                <div class="product-section pt-0">
+                    <div class="container">
+                        <div class="row">
+                            <div th:each="minister : ${Mins}" class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+                                <a class="product-item" href="">
+                                    <img th:src="@{${'/ministers/pic/' + minister.id}}" style="height: 150px;width: 150px" class="img-fluid product-thumbnail">
+                                    
+                                    <h3 class="product-title" style="font-size: 20px" 
+                                        th:text="${#locale.language == 'fr' ? minister.firstName+ ' ' + minister.lastName : minister.firstName + ' ' + minister.lastName}"></h3>
+                                        
+                                    <h5 class="date-to-format start-date" style="font-size: 15px">
+                                        <span th:text="${minister.startFrom}"></span>
+                                    </h5>
+                                    
+                                    <div th:if="${minister.until != null && minister.until != ''}">
+                                        <h5 class="date-to-format until-date" style="font-size: 15px">
+                                          
+                                            <span th:text="${minister.until}"></span>
+                                        </h5>
+                                    </div>
+                                    <div th:if="${minister.until == null || minister.until == ''}">
+                                        <h5 class="date-to-format until-date" style="font-size: 15px">
+                                            <span th:if="${#locale.language == 'ar'}">الى يومنا هذا</span>
+                                            <span th:if="${#locale.language == 'fr'}">jusqu'à ce jour</span>
+                                            <span th:if="${#locale.language == 'en'}">up to this day</span>
+                                       </h5>
+                                    </div>
+                                    
+                                  
+                                    
+                                
+                                    <span class="icon-cross">
+                                        <img th:src="@{/notAuthenticated/assets/img/Frame 5.png}" class="img-fluid">
+                                    </span>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                        <!-- End Column 2 -->
-
-
-                    </div>
                 </div>
-            </div>
-            <!-- End Product Section -->
+            </section>
+        </main>
 
+        <footer th:replace="notAuthenticated/fragments/footer::footer" class="footer"></footer>
+        
+        <div id="preloader" class="waitting">
+            <svg th:include="notAuthenticated/fragments/logosvg::logosvg" width="120" height="120" viewBox="0 0 2342 2004" version="1.1" class="inSide"></svg>  
         </div>
-    </section><!-- End Portfolio Details Section -->
+        
+        <div th:replace="notAuthenticated/fragments/js::js"></div>
 
-</main><!-- End #main -->
-
-
-<footer th:replace="notAuthenticated/fragments/footer::footer" class="footer">
-</footer>
-
-<div id="preloader"></div>
-
-<div th:replace="notAuthenticated/fragments/js::js"></div>
-
-</body>
-
+        <script th:inline="javascript">
+            var currentLang = /*[[${#locale.language}]]*/ 'en'; // par défaut
+            console.log('Current language: ', currentLang);
+            
+            document.addEventListener('DOMContentLoaded', function() {
+                // sélection des éléments avec les classes de date
+                var startDateElements = document.querySelectorAll('.start-date');
+                var untilDateElements = document.querySelectorAll('.until-date');
+                
+                // traiter les dates de début
+                startDateElements.forEach(function(element) {
+                    var dateText = element.innerText.trim();
+                    var dateParts = dateText.split('-'); // diviser la date en parties
+                    if (dateParts.length === 3) { 
+                        var day = dateParts[2]; // récupérer le jour
+                        var month = dateParts[1]; // récupérer le mois
+                        var year = dateParts[0]; // récupérer l'année
+        
+                        // vrification pour afficher juste l'année
+                        if (day === '01' && month === '01') {
+                            if (currentLang === 'ar') {
+                                element.innerText = 'منذ: ' + year; 
+                            } else if (currentLang === 'fr') {
+                                element.innerText = 'Depuis: ' + year;
+                            } else {
+                                element.innerText = 'Since: ' + year;
+                            }
+                        } else {
+                            // noms des mois
+                            var monthNamesAr = [ "جانفي", "فيفري", "مارس", "أفريل", "ماي", "جوان", "جويلية", "اوت", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر" ];
+                            var monthNamesFr = [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ];
+                            var monthNamesEn = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+        
+                            var monthIndex = parseInt(month, 10) - 1; // Convertir le mois en index
+        
+                            if (currentLang === 'ar') {
+                                element.innerText = 'منذ: ' + monthNamesAr[monthIndex] + ' ' + year; 
+                            } else if (currentLang === 'fr') {
+                                element.innerText = 'Depuis: ' + monthNamesFr[monthIndex] + ' ' + year; 
+                            } else {
+                                element.innerText = 'Since: ' + monthNamesEn[monthIndex] + ' ' + year; 
+                            }
+                        }
+                    }
+                });
+        
+                // traiter les dates until
+                untilDateElements.forEach(function(element) {
+                    var dateText = element.innerText.trim();
+                    var dateParts = dateText.split('-'); 
+                    if (dateParts.length === 3) { 
+                        var day = dateParts[2]; 
+                        var month = dateParts[1]; 
+                        var year = dateParts[0]; 
+    
+                        // vérification pour afficher que l'année
+                        if (day === '01' && month === '01') {
+                            if (currentLang === 'ar') {
+                                    element.innerText = 'الى غاية: ' + year; 
+                                } else if (currentLang === 'fr') {
+                                    element.innerText = 'Jusqu\'à: ' + year; 
+                                } else {
+                                    element.innerText = 'Until: ' + year; 
+                                }
+                        } else {
+                           
+                            var monthNamesAr = [ "جانفي", "فيفري", "مارس", "أفريل", "ماي", "جوان", "جويلية", "اوت", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر" ];
+                            var monthNamesFr = [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ];
+                            var monthNamesEn = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+        
+                            var monthIndex = parseInt(month, 10) - 1; // Convertir le mois en index
+        
+                            if (currentLang === 'ar') {
+                                    element.innerText = 'الى غاية: ' + monthNamesAr[monthIndex] + ' ' + year; 
+                                } else if (currentLang === 'fr') {
+                                    element.innerText = 'Jusqu\'à: ' + monthNamesFr[monthIndex] + ' ' + year; 
+                                 }
+                                 else{ element.innerText = 'Until: ' + monthNamesEn[monthIndex] + ' ' + year; 
+                                   }
+                        }
+                    }
+                
+                });
+        
+            });            
+                  
+        </script>
+        
+        
+    </body>
 </html>

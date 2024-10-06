@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" dir="rtl" th:lang="${#locale.language}">
 
 <head th:replace="notAuthenticated/fragments/head::head(${'title'},${'description'},${'keywords'})">
+    <script th:src="@{/notAuthenticated/assets/js/vedio.js}"></script>
 </head>
 <body>
 
@@ -21,7 +22,7 @@
             <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
                  data-aos="fade-up" data-aos-delay="200">
                 <h1 th:text="#{porteilgetway}">بوابة الاعلام الجزائري </h1>
-                <h2> بوابة الإعلام  الجزائري  منصتكم المتكاملة التي تربطكم بعالم الإعلام بكافة أشكاله هنا تجدون محتوى شامل يغطي الصحافة الإلكترونية، الصحافة المكتوبة، والإعلام السمعي البصري، بالإضافة إلى معلومات عن أبرز المؤسسات الإعلامية
+                <h2 th:text="#{textt}"> بوابة الإعلام  الجزائري  منصتكم المتكاملة التي تربطكم بعالم الإعلام بكافة أشكاله هنا تجدون محتوى شامل يغطي الصحافة الإلكترونية، الصحافة المكتوبة، والإعلام السمعي البصري، بالإضافة إلى معلومات عن أبرز المؤسسات الإعلامية
                     هدفنا هو أن نكون مصدركم الأول للاطلاع على كل جديد في عالم الإعلام الحديث والمتجدد
                    </h2>
                 <div class="d-flex justify-content-center justify-content-lg-start">
@@ -34,10 +35,34 @@
 
                 </div>
             </div>
-            <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-                <img th:src="@{notAuthenticated/assets/img/media city.png}" class="img-fluid animated" alt="">
+            <!--div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+                <a href="/videos/mediaCity.mp4" target="_blank"> < Chemin vers la vidéo >
+                    <img th:src="@{notAuthenticated/assets/img/media city.png}" class="img-fluid animated" alt="Vidéo à regarder">
+            </div-->
+            <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200" onclick="openVideo()">
+                <img th:src="@{notAuthenticated/assets/img/media city.png}" class="img-fluid animated" alt="Vidéo à regarder" id="videoTrigger" style="cursor: pointer;">
+            </div>
+           
+
+            <div id="videoModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeVideo()"><i class='bx bx-window-close'></i></span>
+                    <video id="videoPlayer" width="100%" controls>
+                        <source src="notAuthenticated/assets/videos/mediaCity.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
             </div>
 
+
+        <!--div class="video-container" id="videoContainer" style="display: none;">
+            <video width="600" controls>
+                <source th:src="@{videos/mediaCity.mp4}" type="video/mp4">
+               
+            </video>
+        </div-->
+            
+            
         </div>
     </div>
 
@@ -53,7 +78,7 @@
 
                 <div class="col-lg-8 col-md-8 col-8 flex-column align-items-star ">
                     <h1 style="text-align: start" th:text="#{porteilgetway}">بوابة الاعلام الجزائري </h1>
-                    <h2 style="text-align: start; font-size: 25px"> بوابة الاعلام الجزائري بوابة الاعلام الجزائري بوابة
+                    <h2 style="text-align: start; font-size: 25px" th:text="#{text}"> بوابة الاعلام الجزائري بوابة الاعلام الجزائري بوابة
                         الاعلام </h2>
 
                 </div>
@@ -81,24 +106,49 @@
             </div>
             <br>
             <div class="row">
-                <div th:if="etablissementsSoustutelle" th:each="etablissementSoustutelle:${etablissementsSoustutelle}" class="col-6 col-sm-3 col-md-3  d-flex align-items-stretch " data-aos="zoom-in" data-aos-delay="100">
+                <div th:if="etablissementsSoustutelle" th:each="etablissementSoustutelle:${etablissementsSoustutelle}" class="col-6 col-sm-3 col-md-4  d-flex align-items-stretch " data-aos="zoom-in" data-aos-delay="100">
                     <div class="icon-box">
                         <div class="icon"><img
                                 th:src="@{${'/etablissement/lugo/'+etablissementSoustutelle.getId()}}"
                                 width="50px" height="50px">
                         </div>
-                        <h4><a
+                        <h4 th:switch="${#locale.language}">
+                            <a  th:case="${'ar'}"
+                                th:if="#{locale.language == 'ar'}"
                                 th:href="${'/etablissement/'+etablissementSoustutelle.getId()}"
-                                th:text="${etablissementSoustutelle.getName()}"
-                        > </a></h4>
-                        <p    th:href="${'/etablissement/'+etablissementSoustutelle.getId()}">
-                            <span th:if="${#locale.language == 'ar'}"  th:text="${etablissementSoustutelle.getDescription().toString().substring(0,(etablissementSoustutelle.getDescription().length() &lt; 100 ? etablissementSoustutelle.getDescription().length() : 100 ))+'...'}"></span>
-                            <span th:elseif="${#locale.language == 'fr'}"  th:text="${etablissementSoustutelle.getDescriptionFr().toString().substring(0,(etablissementSoustutelle.getDescriptionFr().length() &lt; 100 ? etablissementSoustutelle.getDescriptionFr().length() : 100 ))+'...'}"></span>
-                            <span th:else  th:text="${etablissementSoustutelle.getDescriptionEn().toString().substring(0,(etablissementSoustutelle.getDescriptionEn().length() &lt; 100 ? etablissementSoustutelle.getDescriptionEn().length() : 100 ))+'...'}"></span>
+                                th:text="${etablissementSoustutelle.getName()}">
+                            </a>
+                            <a  th:case="${'fr'}"
+                                th:if="#{locale.language == 'fr'}"
+                                th:href="${'/etablissement/'+etablissementSoustutelle.getId()}"
+                                th:text="${etablissementSoustutelle.getNameFr()}">
+                            </a>
+                            <a  th:case="${'en'}"
+                                th:if="#{locale.language == 'en'}"
+                                th:href="${'/etablissement/'+etablissementSoustutelle.getId()}"
+                                th:text="${etablissementSoustutelle.getNameEn()}">
+                            </a>
+                    </h4>
+                       <div th:switch="${#locale.language}">
+                        <p th:case="${'ar'}"
+                        th:if="#{locale.language == 'ar'}"
+                           th:href="${'/etablissement/'+etablissementSoustutelle.getId()}"
+                           th:text="${etablissementSoustutelle.getDescription().toString().substring(0,(etablissementSoustutelle.getDescription().length() &lt; 100 ? etablissementSoustutelle.getDescription().length() : 100 ))+'...' }">
                         </p>
+                        <p th:case="${'fr'}"
+                        th:if="#{locale.language == 'fr'}"
+                           th:href="${'/etablissement/'+etablissementSoustutelle.getId()}"
+                           th:text="${etablissementSoustutelle.getDescriptionFr().toString().substring(0,(etablissementSoustutelle.getDescriptionFr().length() &lt; 100 ? etablissementSoustutelle.getDescriptionFr().length() : 100 ))+'...' }">
+                        </p>
+                        <p th:case="${'en'}"
+                        th:if="#{locale.language == 'en'}"
+                           th:href="${'/etablissement/'+etablissementSoustutelle.getId()}"
+                           th:text="${etablissementSoustutelle.getDescriptionEn().toString().substring(0,(etablissementSoustutelle.getDescriptionEn().length() &lt; 100 ? etablissementSoustutelle.getDescriptionEn().length() : 100 ))+'...' }">
+                        </p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </div>      
         </div>
     </section><!-- End Services Section -->
 
@@ -132,7 +182,7 @@
                 </div>
 
 
-                <div class="" >
+                <div class="">
 
 
                  <div class="RDC">
@@ -179,6 +229,16 @@
                     </div>
                  </div>
 
+                 <div id="InfoModal" class="modal">
+                    <div class="modal-content">
+                        <div class="card">
+                            <p>[[#{name}]] :<strong id="Nom">Alan</strong></p>
+                            <p >[[#{prenom}]] :<strong id="Prenom">abdelkader</strong></p>
+                            <p >[[#{email}]] :<strong id="Email"></strong></p>
+                            <p class="card-footer">Directeur De Direction De Developpement</p>
+                          </div>
+                    </div>
+                </div>
 
                     <div class="img-wrap">
                         <a href="">
@@ -198,9 +258,64 @@
 <footer th:replace="notAuthenticated/fragments/footer::footer" class="footer">
 </footer>
 
-<div id="preloader"></div>
+<div id="preloader" class="waitting">
+    <svg th:include="notAuthenticated/fragments/logosvg::logosvg" width="120" height="120" viewBox="0 0 2342 2004" version="1.1" class="inSide">
+    </svg>  
+</div>
 
 <div th:replace="notAuthenticated/fragments/js::js"></div>
+<script>
+    // JavaScript to open the video in a new window when the image is clicked
+ /*   document.getElementById('videoTrigger').addEventListener('click', function () {
+        // Specify the URL of the video file
+        var videoUrl = 'notAuthenticated/assets/videos/mediaCity.mp4'; // Change this if necessary
+        // Open a new window with the video
+        window.open(videoUrl, '_blank');
+    });*/
+
+   function openVideo() {
+    var modal = document.getElementById("videoModal");
+    var video = document.getElementById("videoPlayer");
+    
+    // Show the modal
+    modal.style.display = "block";
+    
+    // Play the video
+    video.play();
+  }
+  
+  // Function to close the video modal
+  function closeVideo() {
+    var modal = document.getElementById("videoModal");
+    var video = document.getElementById("videoPlayer");
+    
+    // Hide the modal
+    modal.style.display = "none";
+    
+    // Pause and reset the video
+    video.pause();
+    video.currentTime = 0;
+  }
+  $.ajax({
+    url:'/Direction/all',
+    type:'GET',
+    success:function(response)
+    {
+        $('.dev').on('click',function(){
+            $('#InfoModal').css('display','block')
+            $('#Email').text(response[0].emailDirecteur);
+            $('.RDC').css('display','none')
+            $(window).on('click', function(event) {
+        if ($(event.target).is($('#InfoModal'))) {
+            $('#InfoModal').css('display','none')
+            $('.RDC').css('display','flex')
+        }
+    });
+        })
+        
+    }
+  })
+</script>
 
 </body>
 

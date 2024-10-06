@@ -17,6 +17,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
@@ -42,6 +43,9 @@ public class TVService {
     public TVService() {
     }
 
+    public Optional<TV> findById(Long id) {
+        return this.tvRepository.findById(id);
+    }
     public TV findTVById(Long id) {
         return this.tvRepository.findTVById(id);
     }
@@ -61,13 +65,19 @@ public class TVService {
     public List<TV> findByDescriptionContainingIgnoreCase(@Param("text") String keyword) {
         return this.tvRepository.findByDescriptionContainingIgnoreCase(keyword);
     }
+    public List<TV> findByDescriptionFrContainingIgnoreCase(@Param("text") String keyword) {
+        return this.tvRepository.findByDescriptionFrContainingIgnoreCase(keyword);
+    }
+    public List<TV> findByDescriptionEnContainingIgnoreCase(@Param("text") String keyword) {
+        return this.tvRepository.findByDescriptionEnContainingIgnoreCase(keyword);
+    }
 
     public TV saveTV(TVDTO tvdto) {
         TV tv = tvdto.toETV();
         this.tvRepository.save(tv);
         Caracteristique caracteristique = tvdto.toECaractiristique();
         Multimedia multimedia = null;
-        List<Multimedia> multimedias = new ArrayList();
+        List<Multimedia> multimedias = new ArrayList<>();
         if (!((MultipartFile)tvdto.getProfilFiles().get(0)).isEmpty()) {
             multimedias.addAll(this.filesStorageService.saveFiles(tvdto.getProfilFiles(), "profileDoc"));
         }
@@ -90,7 +100,7 @@ public class TVService {
     public TV saveUserAndMultimedias(List<Multimedia> multimedias, TV tv) {
         this.tvRepository.save(tv);
         if (multimedias != null && !multimedias.isEmpty()) {
-            List<Multimedia> savedMultimedias = new ArrayList();
+            List<Multimedia> savedMultimedias = new ArrayList<>();
             multimedias.forEach((multimedia) -> {
                 multimedia.setTv(tv);
             });
@@ -107,10 +117,10 @@ public class TVService {
     }
 
     public List<TV> findTVSPublic() {
-        List<Agrument> agruments = new ArrayList();
+        List<Agrument> agruments = new ArrayList<>();
         agruments.add(this.agrumentRepository.findAgrumentByName("tv"));
         List<Complexe> complexes = this.complexeRepository.findComplexeByAgrumentListAndType(agruments, "public");
-        List<TV> tvs = new ArrayList();
+        List<TV> tvs = new ArrayList<>();
         Iterator var4 = complexes.iterator();
 
         while(var4.hasNext()) {
@@ -120,12 +130,12 @@ public class TVService {
 
         return tvs;
     }
-
+    
     public List<TV> findTVSPrive(String name) {
-        List<Agrument> agruments = new ArrayList();
+        List<Agrument> agruments = new ArrayList<>();
         agruments.add(this.agrumentRepository.findAgrumentByName("tv"));
         List<Complexe> complexes = this.complexeRepository.findComplexeByAgrumentListAndTypeAndName(agruments, "prive", name);
-        List<TV> tvs = new ArrayList();
+        List<TV> tvs = new ArrayList<>();
         Iterator var5 = complexes.iterator();
 
         while(var5.hasNext()) {
@@ -138,4 +148,33 @@ public class TVService {
 
         return tvs;
     }
+
+    public Boolean updateDataTV(TV TV, Long userId,Optional<TV> existingTV/*, Optional<Multimedia> multimedias */) {
+        if (existingTV.isPresent()) {
+            TV tv = existingTV.get();
+            tv.setName(TV.getName());
+            tv.setNameFr(TV.getNameFr());
+            tv.setNameEn(TV.getNameEn());
+            tv.setDescription(TV.getDescription());
+            tv.setDescriptionFr(TV.getDescriptionFr());
+            tv.setDescriptionEn(TV.getDescriptionEn());
+            this.tvRepository.save(tv);
+      /*  if (multimedias.isPresent()) {
+            List<Multimedia> savedMultimedias = new ArrayList<>();
+            multimedias.ifPresent((multimedia) -> {
+                multimedia.settv(existingTV);
+            });
+            multimedias.ifPresent(savedMultimedias::addAll);
+            savedMultimedias.ifPresent(existingTV::setMultimediaList);
+            this.multimediaRepository.saveAll(savedMultimedias);
+        } */
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+      //  return existingTV;
+    }
+    
 }

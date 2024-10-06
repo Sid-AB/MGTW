@@ -22,9 +22,14 @@
                 <li>Portfolio Details</li>
             </ol>
             <div class="d-flex justify-content-start">
-                <a th:href="${presse.getWebsite()}"><img th:src="@{${'/presse/lugo/'+presse.getId()}}" width="50px" height="30px" class="img-fluid mx-3"
-                     alt=""></a>
-                <h2 th:text="${presse.getName()}"></h2></div>
+                <a th:href="${presse.getWebsite()}">
+                    <img th:src="@{${'/presse/lugo/' + presse.getId()}}" width="50px" height="30px" class="img-fluid mx-3" alt="">
+                </a>
+                <h2 th:text="${#locale.language == 'fr' ? presse.getNameFr() : 
+                              #locale.language == 'en' ? presse.getNameEn() : 
+                              presse.getName()}"></h2>
+            </div>
+            
 
 
         </div>
@@ -37,10 +42,15 @@
                 <div class="col-lg-6">
                     <div>
                         <div class="portfolio-description">
-                            <h2 th:text="${presse.getName()}"></h2></div>
-                        <p th:text="${presse.getDescription()}"></p>
+                            <h2 th:text="${#locale.language == 'fr' ? presse.getNameFr() : 
+                                          #locale.language == 'en' ? presse.getNameEn() : 
+                                          presse.getName()}"></h2>
+                        </div>
+                        <p th:text="${#locale.language == 'fr' ? presse.getDescriptionFr() : 
+                                      #locale.language == 'en' ? presse.getDescriptionEn() : 
+                                      presse.getDescription()}"></p>
                     </div>
-                    <div class="portfolio-info">
+                    <!-- <div class="portfolio-info">
                         <h3 th:text="#{carast}">الخصائص </h3>
                         <ul th:if="${presse}">
                             <li>
@@ -51,8 +61,8 @@
 
                                     <li>
                                         <div th:switch="${presse.getTypepbpr()}">
-                                            <span th:case="'public'" th:text="${'عامة'}"></span>
-                                            <span th:case="'prive'" th:text="${'خاصة'}"></span>
+                                            <span th:case="'public'" th:text="#{public}"></span>
+                                            <span th:case="'prive'" th:text="#{prive}"></span>
 
                                         </div>
                                     </li>
@@ -96,7 +106,68 @@
                             <li><strong th:text="#{address}">العنوان </strong>: <a
                                     th:text="${presse.getAdresse()}"></a></li>
                         </ul>
+                    </div> -->
+
+                    <div class="portfolio-info">
+                        <h3 th:text="#{carast}">الخصائص</h3>
+                        <ul th:if="${presse}">
+                            <li>
+                                <span style="display: flex; align-items: center;">
+                                    <strong th:text="#{telep}">رقم الهاتف</strong>:
+                                    <span style="direction: ltr; margin-left: 5px;" th:text="${presse.getPhone()}"></span>
+                                </span>
+                            </li>
+                            <li>
+                                <strong th:text="#{email}">البريد الإلكتروني</strong>:
+                                <a th:href="'mailto:' + ${presse.getEmail()}" th:text="${presse.getEmail()}"></a>
+                            </li>
+                            <li>
+                                <strong th:text="#{citeweb}">الموقع الإلكتروني</strong>:
+                                <a th:href="${presse.getWebsite()}" th:text="${presse.getWebsite()}" target="_blank"></a>
+                            </li>
+                            <li>
+                                <span style="display: flex; align-items: center;">
+                                    <strong th:text="#{fax}">الفاكس</strong>:
+                                    <span style="direction: ltr; margin-left: 5px;">
+                                        <span th:if="${presse.getFax() != null}" th:text="${presse.getFax()}"></span>
+                                        <span th:if="${presse.getFax() == null}">
+                                            <span th:text="#{faxNotAvailable}">رقم الفاكس غير متوفر</span>
+
+                                        </span>
+                                    </span>
+                                </span>
+                            </li>
+                            
+                            <li>
+                                <strong th:text="#{address}">العنوان</strong>:
+                                <span th:text="${#locale.language == 'fr' ? presse.getAdresseFr() : 
+                                                #locale.language == 'en' ? presse.getAdresseEn() : 
+                                                presse.getAdresseAr()}"></span>
+                            </li>
+                            <li>
+                                <strong th:text="#{typpress}">نوع الصحيفة</strong>:
+                                <ul>
+                                    <li th:each="category : ${presse.getPresseCategories()}">
+                                        <div th:switch="${category.getName()}">
+                                            <span th:case="'ecrit'" th:text="#{pressEcrit}"></span>
+                                            <span th:case="'electronique'" th:text="#{pressElect}"></span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                
+                                <strong th:text="#{catpress}">طبيعة الصحيفة</strong>:
+                                <div th:switch="${presse.getTypepbpr()}">
+                                    <span th:case="'public'" th:text="#{public}"></span>
+                                    <span th:case="'prive'" th:text="#{prive}"></span>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
+                    
+                    
+                    
 
                 </div>
                 <div class="col-lg-6 d-flex align-items-center img-wrap" data-aos="fade-right" data-aos-delay="100">
@@ -142,7 +213,10 @@
 <footer th:replace="notAuthenticated/fragments/footer::footer" class="footer">
 </footer>
 
-<div id="preloader"></div>
+<div id="preloader" class="waitting">
+    <svg th:include="notAuthenticated/fragments/logosvg::logosvg" width="120" height="120" viewBox="0 0 2342 2004" version="1.1" class="inSide">
+    </svg>  
+</div>
 
 <div th:replace="notAuthenticated/fragments/js::js"></div>
 

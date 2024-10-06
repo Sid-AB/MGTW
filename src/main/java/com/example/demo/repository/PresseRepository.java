@@ -7,11 +7,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface PresseRepository extends JpaRepository<Presse, Long> {
     Presse findPresseById(Long id);
-
+    Optional<Presse> findById(Long id);
     List<Presse> findPresseByPresseCategories(List<PresseCategorie> categories);
 
     List<Presse> findPresseByPresseCategoriesAndTypepbpr(List<PresseCategorie> categories, String string);

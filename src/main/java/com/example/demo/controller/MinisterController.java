@@ -10,7 +10,7 @@ import com.example.demo.service.MultimediaService;
 import com.example.demo.service.FilesStorageService;
 import com.example.demo.repository.MultimediaRepository;
 import com.example.demo.repository.MinisterRepository;
-
+import java.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
@@ -25,11 +25,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.i18n.LocaleContextHolder;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -89,15 +92,71 @@ public class MinisterController {
             e.printStackTrace();
             return "Error while saving minister: " + e.getMessage();
         }
-    }
+    }   
     @GetMapping({"/list"})
     public String minpublic(Model model) {
         List<Minister> Mins = this.ministerService.findAll();
         //System.out.println("Nombre de ministres trouvés: " + Mins.size());
+  
         model.addAttribute("Mins", Mins);
         return "notAuthenticated/minister/minlist";
     }
-        
+    /*@GetMapping({"/list"})
+    public String minpublic(Model model) {
+        // Récupérer votre liste de ministres
+        List<Minister> ministers = this.ministerService.findAll(); // Assurez-vous que cette ligne récupère la liste
+        //System.out.println("Number of ministers: " + ministers.size());
+        DateTimeFormatter formatterYear = DateTimeFormatter.ofPattern("yyyy");
+        DateTimeFormatter formatterMonth = DateTimeFormatter.ofPattern("yyyy-MM");
+    
+        List<MinisterDTO> ministerDTOs = new ArrayList<>(); // Liste pour les DTOs
+    
+        for (Minister minister : ministers) {
+            MinisterDTO dto = new MinisterDTO();
+            dto.setFirstName(minister.getFirstName());
+            dto.setLastName(minister.getLastName());
+            // Appliquer le formatage
+            String formattedDateDebut = formatDate(minister.getStartFrom(), formatterYear, formatterMonth);
+    String formattedDateFin = formatDate(minister.getUntil(), formatterYear, formatterMonth);
+    
+    dto.setFormattedDateDebut(formattedDateDebut);
+    dto.setFormattedDateFin(formattedDateFin);
+    
+    // Affichez les informations du DTO
+    System.out.println("Minister DTO: " + dto.getFirstName() + " " + dto.getLastName() +
+                       " - Start Date: " + formattedDateDebut +
+                       " - End Date: " + formattedDateFin);
+    
+            ministerDTOs .add(dto); // Ajouter le DTO à la liste
+          
+        }
+    
+        model.addAttribute("ministers",ministerDTOs ); // Passer les DTOs à la vue
+       // System.out.println("Number of ministerDTOs: " + ministerDTOs.size());
+        return "notAuthenticated/minister/minlist"; // Retourner le nom de la vue
+    }
+    */
+    /*private String formatDate(LocalDate date, DateTimeFormatter formatterYear, DateTimeFormatter formatterMonth) {
+        if (date == null) {
+            System.out.println("Date is null."); // Ajoutez ceci pour vérifier les dates nulles
+            return "Aucune date"; // Gérer le cas où la date est nulle
+        }
+    
+        System.out.println("Original date: " + date); // Affichez la date originale
+    
+        String formattedDate;
+        if (date.getDayOfMonth() == 1 && date.getMonthValue() == 1) {
+            formattedDate = date.format(formatterYear); // Affiche uniquement l'année
+        } else if (date.getDayOfMonth() == 1) {
+            formattedDate = date.format(formatterMonth); // Affiche année et mois
+        } else {
+            formattedDate = date.format(formatterMonth); // Affiche année et mois
+        }
+    
+        System.out.println("Formatted date: " + formattedDate); // Affichez la date formatée
+        return formattedDate;
+    }*/
+
   /*  @GetMapping({"/pic/{id}"})
     public ResponseEntity<byte[]> getMinisterImage(@PathVariable Long id) {
             Minister mins=this.ministerRepository.findMinisterById(id);

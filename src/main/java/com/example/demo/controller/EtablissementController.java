@@ -12,9 +12,11 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.ResponseEntity.BodyBuilder;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -95,5 +97,34 @@ public class EtablissementController {
         List<Lois> loisForNavBar = this.loisService.findAll();
         model.addAttribute("loisForNavBar", loisForNavBar);
         return "notAuthenticated/etablissement/etablissementDetails";
+    }
+
+    @GetMapping({"/EditEtablissement/{id}"})
+    public String findEtablisById(Model model, @PathVariable Long id) {
+        Etablissement etablissement = this.etablissementService.findEtablissementById(id);
+        List etablissements;
+        if (etablissement.getType().toString().equals("soustutelle")) {
+            etablissements = this.etablissementService.findEtablissementsByType("soustutelle");
+        } else {
+            etablissements = this.etablissementService.findEtablissementsByType("reglementationsectorielle");
+        }
+
+        model.addAttribute("etablissement", etablissement);
+        model.addAttribute("etablissements", etablissements);
+        List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
+        model.addAttribute("complexesForNavBar", complexesForNavBar);
+        List<Lois> loisForNavBar = this.loisService.findAll();
+        model.addAttribute("loisForNavBar", loisForNavBar);
+        return "authenticated/etablissement/etablissementsEdit.html";
+    }
+    @PostMapping({"/update/{id}"})
+    public RedirectView updatedEtablissement(@PathVariable Long id,@ModelAttribute  Etablissement updateEtablissement)
+    {
+        Etablissement etablissement = this.etablissementService.findEtablissementById(id);
+       // Optional<Multimedia> multimedia=this.multimediaService.findFirstByEtablissement(etablissement);
+       Optional<Etablissement> existingEtablissement = this.etablissementService.findById(id);
+       Boolean  check= this.etablissementService.updateDataEtablissement(updateEtablissement,id,existingEtablissement/*,multimedia */);
+       return new RedirectView("/etablissement/etablissements");
+      //  return "redirect:authenticated/etablissement/etablissements";
     }
 }

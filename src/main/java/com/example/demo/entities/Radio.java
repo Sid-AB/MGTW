@@ -50,7 +50,18 @@ public class Radio {
     @Column(name = "description_en", columnDefinition = "TEXT") // Nom de la colonne pour la description en anglais
     private String descriptionEn;
 
-    private String adresse;
+     // Adresse en arabe (ou langue par défaut)
+     @Column(name = "adresse", columnDefinition = "TEXT")
+     private String adresse; // Adresse de l'établissement
+ 
+     // Adresse en français
+     @Column(name = "adresse_fr", columnDefinition = "TEXT")
+     private String adresseFr; // Adresse de l'établissement en français
+ 
+     // Adresse en anglais
+     @Column(name = "adresse_en", columnDefinition = "TEXT")
+     private String adresseEn; // Adresse de l'établissement en anglais
+
     private String localisation;
     private String type;
     private String categorie;
@@ -68,12 +79,12 @@ public class Radio {
             mappedBy = "radio",
             cascade = {CascadeType.ALL}
     )
-    private List<Caracteristique> caracteristiqueList = new ArrayList();
+    private List<Caracteristique> caracteristiqueList = new ArrayList<>();
     @OneToMany(
             mappedBy = "radio",
             cascade = {CascadeType.ALL}
     )
-    private List<Multimedia> multimediaList = new ArrayList();
+    private List<Multimedia> multimediaList = new ArrayList<>();
     @CreationTimestamp
     @Column(
             name = "created_at"
@@ -110,12 +121,31 @@ public class Radio {
     public String getDescriptionFr() {
         return descriptionFr;
     }
+ 
     public String getDescriptionEn() {
         return descriptionEn;
     }
 
     public String getAdresse() {
         return this.adresse;
+    }
+
+    // Getter et Setter pour adresseFr
+    public String getAdresseFr() {
+        return adresseFr;
+    }
+
+    public void setAdresseFr(String adresseFr) {
+        this.adresseFr = adresseFr;
+    }
+
+    // Getter et Setter pour adresseEn
+    public String getAdresseEn() {
+        return adresseEn;
+    }
+
+    public void setAdresseEn(String adresseEn) {
+        this.adresseEn = adresseEn;
     }
 
     public String getLocalisation() {
@@ -357,6 +387,29 @@ public class Radio {
                 } else if (!this$adresse.equals(other$adresse)) {
                     return false;
                 }
+                // Comparaison pour adresseFr
+
+                Object this$adresseFr = this.getAdresseFr();
+                Object other$adresseFr = other.getAdresseFr();
+                if (this$adresseFr == null) {
+                    if (other$adresseFr != null) {
+                        return false;
+                    }
+                } else if (!this$adresseFr.equals(other$adresseFr)) {
+                    return false;
+                }
+
+                // Comparaison pour adresseEn
+
+                Object this$adresseEn = this.getAdresseEn();
+                Object other$adresseEn = other.getAdresseEn();
+                if (this$adresseEn == null) {
+                    if (other$adresseEn != null) {
+                        return false;
+                    }
+                } else if (!this$adresseEn.equals(other$adresseEn)) {
+                    return false;
+                }
 
                 label187: {
                     Object this$localisation = this.getLocalisation();
@@ -550,6 +603,14 @@ public int hashCode() {
     Object $adresse = this.getAdresse();
     result = result * 59 + ($adresse == null ? 43 : $adresse.hashCode());
     
+     // Ajout de l'adresse en français
+     Object $adresseFr = this.getAdresseFr();
+     result = result * 59 + ($adresseFr == null ? 43 : $adresseFr.hashCode());
+
+     // Ajout de l'adresse en anglais
+     Object $adresseEn = this.getAdresseEn();
+     result = result * 59 + ($adresseEn == null ? 43 : $adresseEn.hashCode());
+
     Object $localisation = this.getLocalisation();
     result = result * 59 + ($localisation == null ? 43 : $localisation.hashCode());
     
@@ -592,38 +653,37 @@ public int hashCode() {
     return result;
 }
 
-
-@Override
 public String toString() {
     Long var10000 = this.getId();
-    return "Radio(id=" + var10000 + 
-           ", name=" + this.getName() + 
-           ", nameFr=" + this.getNameFr() + 
-           ", nameEn=" + this.getNameEn() + 
-           ", description=" + this.getDescription() + 
-           ", descriptionFr=" + this.getDescriptionFr() + 
-           ", descriptionEn=" + this.getDescriptionEn() + 
-           ", adresse=" + this.getAdresse() + 
-           ", localisation=" + this.getLocalisation() + 
-           ", type=" + this.getType() + 
-           ", categorie=" + this.getCategorie() + 
-           ", phone=" + this.getPhone() + 
-           ", fax=" + this.getFax() + 
-           ", email=" + this.getEmail() + 
-           ", website=" + this.getWebsite() + 
-           ", streaminglink=" + this.getStreaminglink() + 
-           ", complexe=" + String.valueOf(this.getComplexe()) + 
-           ", caracteristiqueList=" + String.valueOf(this.getCaracteristiqueList()) + 
-           ", multimediaList=" + String.valueOf(this.getMultimediaList()) + 
-           ", createdAt=" + String.valueOf(this.getCreatedAt()) + 
-           ", updatedAt=" + String.valueOf(this.getUpdatedAt()) + 
-           ")";
+    return "Radio(id=" + var10000 +
+            ", name=" + this.getName() +
+            ", nameFr=" + this.getNameFr() +
+            ", nameEn=" + this.getNameEn() +
+            ", description=" + this.getDescription() +
+            ", descriptionFr=" + this.getDescriptionFr() +
+            ", descriptionEn=" + this.getDescriptionEn() +
+            ", adresse=" + this.getAdresse() +
+            ", adresseFr=" + this.getAdresseFr()
+            + ", adresseEn=" + this.getAdresseEn() +
+            ", localisation=" + this.getLocalisation() +
+            ", type=" + this.getType() +
+            ", categorie=" + this.getCategorie() +
+            ", phone=" + this.getPhone() +
+            ", fax=" + this.getFax() +
+            ", email=" + this.getEmail() +
+            ", website=" + this.getWebsite() +
+            ", streaminglink=" + this.getStreaminglink() +
+            ", complexe=" + String.valueOf(this.getComplexe()) +
+            ", caracteristiqueList=" + String.valueOf(this.getCaracteristiqueList()) +
+            ", multimediaList=" + String.valueOf(this.getMultimediaList()) +
+            ", createdAt=" + String.valueOf(this.getCreatedAt()) +
+            ", updatedAt=" + String.valueOf(this.getUpdatedAt()) +
+            ")";
 }
-
 
 public Radio(final Long id, final String name, final String nameFr, final String nameEn,
 final String description, final String descriptionFr, final String descriptionEn,
-final String adresse, final String localisation, final String type, 
+final String adresse,final String adresseFr,final String adresseEn,final String localisation, final String type, 
 final String categorie, final String phone, final String fax, 
 final String email, final String website, final String streaminglink, 
 final Complexe complexe, final List<Caracteristique> caracteristiqueList, 
@@ -637,6 +697,8 @@ this.description = description;
 this.descriptionFr = descriptionFr;  // Ajout de l'attribut descriptionFr
 this.descriptionEn = descriptionEn;  // Ajout de l'attribut descriptionEn
 this.adresse = adresse;
+this.adresseFr = adresseFr; // Initialisation de adresseFr
+this.adresseEn = adresseEn; // Initialisation de adresseEn
 this.localisation = localisation;
 this.type = type;
 this.categorie = categorie;
@@ -665,6 +727,8 @@ this.updatedAt = updatedAt;
         private String descriptionFr; // Ajout de l'attribut descriptionFr
         private String descriptionEn; // Ajout de l'attribut descriptionEn
         private String adresse;
+        private String adresseFr; // Ajout de adresseFr
+        private String adresseEn; // Ajout de adresseEn
         private String localisation;
         private String type;
         private String categorie;
@@ -719,6 +783,14 @@ this.updatedAt = updatedAt;
 
         public Radio.RadioBuilder adresse(final String adresse) {
             this.adresse = adresse;
+            return this;
+        }
+        public Radio.RadioBuilder adresseFr(final String adresseFr) {
+            this.adresseFr = adresseFr;
+            return this;
+        }
+        public Radio.RadioBuilder adresseEn(final String adresseEn) {
+            this.adresseEn = adresseEn;
             return this;
         }
 
@@ -797,6 +869,8 @@ this.updatedAt = updatedAt;
                 this.descriptionFr, // Ajout de descriptionFr
                 this.descriptionEn, // Ajout de descriptionEn
                 this.adresse,
+                this.adresseFr, // Ajout de adresseFr ici
+                this.adresseEn, // Ajout de adresseEn ici
                 this.localisation,
                 this.type,
                 this.categorie,
@@ -823,8 +897,10 @@ this.updatedAt = updatedAt;
                     + ", description=" + this.description 
                     + ", descriptionFr=" + this.descriptionFr // Ajout de descriptionFr
                     + ", descriptionEn=" + this.descriptionEn // Ajout de descriptionEn
-                    + ", adresse=" + this.adresse 
-                    + ", localisation=" + this.localisation 
+                    + ", adresse=" + this.adresse +
+                    ", adresseFr=" + this.adresseFr + // Ajout de adresseFr ici
+                    ", adresseEn=" + this.adresseEn + // Ajout de adresseEn ici
+                     ", localisation=" + this.localisation 
                     + ", type=" + this.type 
                     + ", categorie=" + this.categorie 
                     + ", phone=" + this.phone 

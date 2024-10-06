@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity.BodyBuilder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -165,5 +166,25 @@ public class PresseController {
             Resource file = this.filesStorageService.load("staticImage".concat("/profile-img.jpg"));
             return ((BodyBuilder)ResponseEntity.ok().header("Content-Disposition", new String[]{"attachment; filename=\"" + file.getFilename() + "\""})).body(file);
         }
+    }
+
+    @GetMapping({"/pressesEdit/{id}"})
+    public String FindPressById(Model model, @PathVariable Long id)
+    {
+        Presse press=this.presseService.findPresseById(id);
+        model.addAttribute("press",press);
+        return "authenticated/presse/pressEdit";
+    }
+
+
+    @PostMapping({"/update/{id}"})
+    public RedirectView updatedPress(@PathVariable Long id,@ModelAttribute  Presse updatePress)
+    {
+        Presse presse = this.presseService.findPresseById(id);
+       // Optional<Multimedia> multimedia=this.multimediaService.findFirstByEtablissement(etablissement);
+       Optional<Presse> existingPress = this.presseService.findById(id);
+       Boolean  check= this.presseService.updateDataPresse(updatePress,id,existingPress/*,multimedia */);
+       //return "authenticated/etablissement/etablissementsEdit.html";
+       return new RedirectView("/presse/presses");
     }
 }

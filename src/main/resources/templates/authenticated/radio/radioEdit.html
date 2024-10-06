@@ -20,14 +20,14 @@
     <div class="card">
 
         <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-            <img th:src="@{'/user/imgPro/'+${user.getId()}+'/images/profileImage'}"
+            <!--img th:src="@{'/user/imgPro/'+${user.getId()}+'/images/profileImage'}"
 
 
                  height="100px" width="100px"
-                 class="rounded-circle">
+                 class="rounded-circle"-->
 
-            <h2 th:text="${user.getFirstname()+'  '+user.getLastname()}"></h2>
-            <h3 th:text="${user.getFonction()}"></h3>
+            <!--h2 th:text="${user.getFirstname()+'  '+user.getLastname()}"></h2>
+            <h3 th:text="${user.getFonction()}"></h3-->
             <div class="social-links mt-2" hidden="hidden">
                 <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -35,63 +35,50 @@
                 <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
             </div>
 
-            <div class="row">
-                <div class="col-6">
+            <div class="row" style="width: 100vh;">
+                <div class="col-13">
                     <div class="tab-pane fade show active profile-overview" th:fragment="profile-signIn(message)"
                          id="profile-signIn">
 
-                        <h5 class="card-title"> Modification de compte</h5>
+                        <h5 class="card-title"> Modification Of radio</h5>
                         <!-- Profile Edit Form "-->
-                        <form id="profileForm" th:action="@{'/user/userEditData/'+${user.getId()}}" method="post"
-                              enctype="multipart/form-data">
+                        <form id="profileForm" th:action="@{'/radio/update/'+${radio.getId()}}" method="post">
 
                             <div class="row mb-3">
-                                <label class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
+                                <label for="name" class="col-md-4 col-lg-12 col-form-label">Name Arabe</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input type="file" class="img-thumbnail" id="profileImage"
-                                           name="profileImage">
-
-                                </div>
-                            </div>
-
-                            <div class="row mb-3 ">
-                                <label for="firstname" class="col-md-4 col-lg-3 col-form-label">First
-                                    Name</label>
-                                <div class="col-md-8 col-lg-9">
-                                    <input name="firstname" type="text" class="form-control"
-                                           id="firstname" placeholder="First name"
-                                           th:value="${user.getFirstname()}">
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="lastname" class="col-md-4 col-lg-3 col-form-label">Last Name</label>
-                                <div class="col-md-8 col-lg-9">
-                                    <input name="lastname" type="text" class="form-control" id="lastname"
-                                           placeholder="Last Name"
-                                           th:value="${user.getLastname()}">
+                                    <input name="name" type="text" class="form-control" id="name"
+                                           placeholder="Name"
+                                           th:value="${radio.getName()}">
 
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label for="username" class="col-md-4 col-lg-3 col-form-label">User Name</label>
+                                <label for="nameFr" class="col-md-4 col-lg-12 col-form-label">Name Latin</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="username" type="text" class="form-control" id="username"
-                                           placeholder="User Name"
-                                           th:value="${user.getUsername()}">
+                                    <input name="nameFr" type="text" class="form-control" id="nameFr"
+                                           placeholder="Name"
+                                           th:value="${radio.getNameFr()}">
 
                                 </div>
                             </div>
 
 
-
-
-
-
                             <div class="row mb-3">
+                                <label for="nameFr" class="col-md-4 col-lg-12 col-form-label">Name English</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="nameEn" type="text" class="form-control" id="nameEn"
+                                           placeholder="Name"
+                                           th:value="${radio.getNameEn()}">
+
+                                </div>
+                            </div>
+
+
+                            <!--div class="row mb-3">
                                 <label for="role"
-                                       class="col-md-4 col-lg-3 col-form-label">Role</label>
+                                       class="col-md-4 col-lg-12 col-form-label">Role</label>
                                 <div class="col-md-8 col-lg-9">
 
                                     <select id="role" name="role" class="form-control">
@@ -106,88 +93,87 @@
                                     </select>
 
                                 </div>
-                            </div>
+                            </div-->
 
 
                             <div class="row mb-3">
-                                <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address
+                                <label for="Address" class="col-md-4 col-lg-12 col-form-label">Address
                                     (Office)</label>
                                 <div class="col-md-8 col-lg-9">
                                     <input name="address" type="text" class="form-control" id="address"
                                            placeholder="Address (Office)"
-                                           th:value="${user.getAddressoffice()}">
+                                           th:value="${radio.getAdresse()}">
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone
+                                <label for="phone" class="col-md-4 col-lg-12 col-form-label">Phone
                                     (office)</label>
                                 <div class="col-md-8 col-lg-9">
                                     <input name="phone" type="number" class="form-control" id="phone"
-                                           placeholder="Phone"
-                                           th:value="${user.getPhoneoffice()}"
+                                           placeholder="phone"
+                                           th:value="${radio.getPhone()}"
                                     >
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Mobile</label>
+                                <label for="Phone" class="col-md-4 col-lg-12 col-form-label">Fax</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="mobile" type="number" class="form-control" id="mobile"
-                                           placeholder="Mobile"
-                                           th:value="${user.getMobile()}"
+                                    <input name="fax" type="number" class="form-control" id="fax"
+                                           placeholder="fax"
+                                           th:value="${radio.getFax()}"
                                     >
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label for="fonction" class="col-md-4 col-lg-3 col-form-label">Fonction</label>
+                                <label for="descriptionAr" class="col-md-4 col-lg-12 col-form-label">description arab</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="fonction" type="text" class="form-control" id="fonction"
-                                           placeholder="Fonction"
-                                           th:value="${user.getFonction()}"
+                                    <input name="description" type="text" class="form-control" id="description"
+                                           placeholder="description arabic"
+                                           th:value="${radio.getDescription()}"
                                     >
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                                <label for="descriptionFr" class="col-md-4 col-lg-12 col-form-label">description French</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="descriptionFr" type="text" class="form-control" id="descriptionFr"
+                                           placeholder="description en francais"
+                                           th:value="${radio.getDescriptionFr()}"
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="descriptionEn" class="col-md-4 col-lg-12 col-form-label">description english</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="descriptionEn" type="text" class="form-control" id="descriptionEn"
+                                           placeholder="description in English"
+                                           th:value="${radio.getDescriptionEn()}"
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="Email" class="col-md-4 col-lg-12 col-form-label">Email</label>
                                 <div class="col-md-8 col-lg-9">
                                     <input name="email" type="email" class="form-control" id="email" placeholder="Email"
-                                           th:value="${user.getEmail()}"
+                                           th:value="${radio.getEmail()}"
                                     >
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
-
-                                <label for="Password"
-                                       class="col-md-4 col-lg-3 col-form-label">Password</label>
-
-                                <div class="col-md-8 col-lg-9">
-                                    <input name="password" type="password" class="form-control"
-                                           id="password" placeholder="Password" th:value="${user.getPassword()}">
-                                </div>
-                            </div>
-
-                            <div class="row mb-3" hidden="hidden">
-                                <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter
-                                    Password</label>
-                                <div class="col-md-8 col-lg-9">
-                                    <input name="renewpassword" type="password" class="form-control"
-                                           id="renewPassword" placeholder="Password">
-                                </div>
-                            </div>
-
-
-                            <div class="row mb-3">
-                                <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Files</label>
+                            <!--div class="row mb-3">
+                                <label for="profileImage" class="col-md-4 col-lg-12 col-form-label">Profile Files</label>
                                 <div class="col-md-8 col-lg-9">
                                     <input type="file" class="form-control-file" id="profilFiles"
                                            name="profilFiles" multiple>
 
                                 </div>
-                            </div>
+                            </div-->
 
                             <!--onclick="submitForm('direction','departement','service')"-->
                             <div class="text-center">
@@ -199,13 +185,13 @@
                     </div>
 
                 </div>
-                <div class="col-6">
+                <!--div class="col-6">
 
                     <div class="">
                         <div class="card-body">
                             <h5 class="card-title">Documents</h5>
                             <!-- Active Table -->
-                            <table class="table table-borderless">
+                            <!--table class="table table-borderless">
                                 <thead>
                                 <tr>
                                     <th hidden="hidden" scope="col-12">Name</th>
@@ -244,7 +230,7 @@
                                                                 <!-- Add other multimedia details as needed -->
 
 
-                                                            </div>
+                                                            <!--/div>
                                                             <div class="col-2 p-2" onclick="return confirm('Êtes-vous sûr de bien vouloir supprimer cet élément ?');">
 
                                                                 <a  th:href="@{'/multimedia/delete/'+${multimedia.getId()}+'/'+${user.getId()}}"
@@ -259,7 +245,7 @@
 
                                                 </ul>
                                                 <!-- Add other multimedia details as needed -->
-                                            </div>
+                                            <!--/div>
 
                                         </div>
                                     </td>
@@ -269,11 +255,11 @@
                                         scope="row"></th>
                                 </tr>
                                 </tbody>
-                            </table>
+                            </table-->
                             <!-- End Tables without borders -->
-                        </div>
+                        <!--/div>
                     </div>
-                </div>
+                </div-->
 
 
             </div>

@@ -43,12 +43,18 @@ public class TextJuridiqueService {
     public List<TextJuridique> findByDescriptionContainingIgnoreCase(String keyword) {
         return this.textJuridiqueRepository.findByDescriptionContainingIgnoreCase(keyword);
     }
+    public List<TextJuridique> findByDescriptionEnContainingIgnoreCase(String keyword) {
+        return this.textJuridiqueRepository.findByDescriptionEnContainingIgnoreCase(keyword);
+    }
+    public List<TextJuridique> findByDescriptionFrContainingIgnoreCase(String keyword) {
+        return this.textJuridiqueRepository.findByDescriptionFrContainingIgnoreCase(keyword);
+    }
 
     public TextJuridique saveTextJuridique(TextJuridiqueDTO textJuridiqueDTO) {
         TextJuridique textJuridique = textJuridiqueDTO.toTextJuridique();
         this.textJuridiqueRepository.save(textJuridique);
         Lois lois = this.loisRepository.findLoisById(textJuridiqueDTO.getLois());
-        List<Multimedia> multimedias = new ArrayList();
+        List<Multimedia> multimedias = new ArrayList<>();
         if (!((MultipartFile)textJuridiqueDTO.getProfilFiles().get(0)).isEmpty()) {
             multimedias.addAll(this.filesStorageService.saveFiles(textJuridiqueDTO.getProfilFiles(), "profileDoc"));
         }
@@ -62,7 +68,7 @@ public class TextJuridiqueService {
     public TextJuridique saveUserAndMultimedias(List<Multimedia> multimedias, TextJuridique textJuridique) {
         this.textJuridiqueRepository.save(textJuridique);
         if (multimedias != null && !multimedias.isEmpty()) {
-            List<Multimedia> savedMultimedias = new ArrayList();
+            List<Multimedia> savedMultimedias = new ArrayList<>();
             multimedias.forEach((multimedia) -> {
                 multimedia.setTextJuridique(textJuridique);
             });

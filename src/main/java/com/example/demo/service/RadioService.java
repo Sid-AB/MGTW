@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RadioService {
@@ -36,6 +37,9 @@ public class RadioService {
         return this.radioRepository.findRadioById(id);
     }
 
+    public Optional<Radio> findById(Long id) {
+        return this.radioRepository.findById(id);
+    }
     public List<Radio> findAll() {
         return this.radioRepository.findAll();
     }
@@ -88,5 +92,33 @@ public class RadioService {
         }
 
         return radio;
+    }
+
+    public Boolean updateDataRadio(Radio Radio, Long userId,Optional<Radio> existingRadio/*, Optional<Multimedia> multimedias */) {
+        if (existingRadio.isPresent()) {
+            Radio radio = existingRadio.get();
+            radio.setName(Radio.getName());
+            radio.setNameFr(Radio.getNameFr());
+            radio.setNameEn(Radio.getNameEn());
+            radio.setDescription(Radio.getDescription());
+            radio.setDescriptionFr(Radio.getDescriptionFr());
+            radio.setDescriptionEn(Radio.getDescriptionEn());
+            this.radioRepository.save(radio);
+      /*  if (multimedias.isPresent()) {
+            List<Multimedia> savedMultimedias = new ArrayList();
+            multimedias.ifPresent((multimedia) -> {
+                multimedia.setRadio(existingRadio);
+            });
+            multimedias.ifPresent(savedMultimedias::addAll);
+            savedMultimedias.ifPresent(existingRadio::setMultimediaList);
+            this.multimediaRepository.saveAll(savedMultimedias);
+        } */
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+      //  return existingRadio;
     }
 }

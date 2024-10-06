@@ -28,7 +28,7 @@
             </div>
 
             <!-- Table with stripped rows -->
-            <table class="table datatable">
+            <table class="table datatable" id="TvTable">
                 <thead>
                 <tr>
                     <th>
@@ -126,12 +126,12 @@
 
                     <td>
                         <div class="pt-2">
-                            <a th:href="@{'/tv/'+${tv.getId()}+'/userDetail'}"
+                            <a th:href="@{'/tv/TVEdit/'+${tv.getId()}}"
                                class="btn btn-success btn-sm"
                                title="Detail">
                                 <i class="bx bxs-user-detail"></i>
                             </a>
-                            <a th:href="@{'/tv/userEdit/'+${tv.getId()}}" class="btn btn-info btn-sm"
+                            <a th:href="@{'/tv/TVEdit/'+${tv.getId()}}" class="btn btn-info btn-sm"
                                title="Update"><i class="ri-edit-2-line text-white"></i></a>
 
                             <a href="#" class="btn btn-danger btn-sm" title="Remove"><i class="bi bi-trash"></i></a>
