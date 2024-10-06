@@ -8,7 +8,7 @@
                     <p style="font-size: 40px;color: aliceblue;">Algerian Media Gateway</p>
                 </div> 
                 <div>
-                    <p style="font-size: 40px;color: aliceblue;">بوابة الإعلام الجزائري</p>
+                    <p style="font-size: 40px;color: aliceblue; font-family: Droid Arabic Kufi;">بوابة الإعلام الجزائري</p>
                 </div>        
         </div>
         <nav>
@@ -51,8 +51,18 @@
                             <ul style="left: -100%">
 
 
-                                <li th:each="complexe:${myObject}"  ><a  th:href="@{'/tv/prive/'+${complexe.getName()}}" th:text="${complexe.getName()}">الشروق</a></li>
-
+                                <!-- <li th:each="complexe:${myObject}">
+                                                                    <a  th:href="@{'/tv/prive/'+${complexe.getName()}}" 
+                                                                    th:text="${complexe.getName()}">
+                                                                </a>
+                                                            </li> -->
+                                <li th:each="complexe : ${myObject}">
+                                    <a th:href="@{'/tv/prive/'+${complexe.getName()}}"
+                                       th:text="${ #locale.language == 'fr' ? complexe.getNameFr() : ( #locale.language == 'ar' ? complexe.getName() : complexe.getNameEn() ) }">
+                                       <!-- Texte alternatif par défaut -->
+                                       الشروق
+                                    </a>
+                                </li>
 
 
 

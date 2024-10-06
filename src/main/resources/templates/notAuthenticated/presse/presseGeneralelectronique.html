@@ -16,11 +16,12 @@
     ></div>
 
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section th:if="pressesElectroniquePublic" id="publicEcrit" class="breadcrumbs m-0">
+   
+
+    <section  th:if="pressesElectroniquePrive" id="publicElectronique" class="breadcrumbs m-0">
         <div class="container">
 
-            <h2 th:text="#{pressElect}"> الصحافة الالكترونية </h2>
+            <h2 th:text="#{pressElect} +' '+#{prive}"> الصحافة الاكترونية الخاصة </h2>
 
         </div>
     </section><!-- End Breadcrumbs -->
@@ -30,9 +31,110 @@
     <div class="blog-section">
         <div class="container">
 
-            <div class="row">
+            <div  class="row">
 
-                <div th:if="pressesElectroniquePublic" th:each="presseElectroniquePublic:${pressesElectroniquePublic}"
+                <!-- <div th:if="pressesElectroniquePrive" th:each="presseElectroniquePrive:${pressesElectroniquePrive}"
+                     class="col-6 col-sm-3 col-md-3 mb-5">
+                    <div class="post-entry">
+                        <a th:href="@{'/presse/'+${presseElectroniquePrive.getId().toString()}}" class="post-thumbnail"><img
+                                th:src="@{${'/presse/lugo/'+presseElectroniquePrive.getId()}}"
+                                style="height: 100px ; width: 100px" alt="Image"
+                                class="img-fluid"></a>
+                        <div class="post-content-entry">
+                            <h3 style="font-size: 20px"><a
+                                    th:href="@{'/presse/'+${presseElectroniquePrive.getId().toString()}}"
+
+                                    th:text="${presseElectroniquePrive.getName()}"></a></h3>
+
+                            <div class="meta">
+                                <p><a th:href="@{'/presse/'+${presseElectroniquePrive.getId().toString()}}"
+
+                                      th:text="${presseElectroniquePrive.getDescription()}"></a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- <div th:if="pressesElectroniquePrive" th:each="presseElectroniquePrive:${pressesElectroniquePrive}"
+                     class="col-6 col-sm-3 col-md-3 mb-5">
+                    <div class="post-entry">
+                        <a th:href="@{'/presse/'+${presseElectroniquePrive.getId().toString()}}" class="post-thumbnail"><img
+                                th:src="@{${'/presse/lugo/'+presseElectroniquePrive.getId()}}"
+                                style="height: 100px ; width: 100px" alt="Image"
+                                class="img-fluid"></a>
+                        <div class="post-content-entry">
+                            <h3 style="font-size: 20px"><a
+                                    th:href="@{'/presse/'+${presseElectroniquePrive.getId().toString()}}"
+
+                                    th:text="${presseElectroniquePrive.getNameFr()}"></a></h3>
+
+                            <div class="meta">
+                                <p style="overflow: hidden; height: 85px;"><a th:href="@{'/presse/'+${presseElectroniquePrive.getId().toString()}}"
+
+                                      th:text="${presseElectroniquePrive.getDescription().toString().substring(0,(presseElectroniquePrive.getDescription().length() &lt; 100 ? presseElectroniquePrive.getDescription().length() : 100 ))+'...'}"></a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <div th:if="${pressesElectroniquePrive.isEmpty()}">
+                    <h3>
+                        <i style="color:red;" class="bi bi-x-lg"></i>
+                        <span th:text="#{no_results}">لا توجد نتائج</span>
+
+                    </h3>
+                </div>
+                
+                <div th:if="${! pressesElectroniquePrive.isEmpty()}" th:each="presseElectroniquePrive : ${pressesElectroniquePrive}" class="col-6 col-sm-3 col-md-3 mb-5">
+                    <div class="post-entry">
+                        <a th:href="@{'/presse/'+${presseElectroniquePrive.getId().toString()}}" class="post-thumbnail">
+                            <img th:src="@{'/presse/lugo/'+${presseElectroniquePrive.getId()}}" style="height: 100px; width: 100px" alt="Image" class="img-fluid">
+                        </a>
+                        <div class="post-content-entry">
+                            <h3 style="font-size: 20px">
+                                <a th:href="@{'/presse/'+${presseElectroniquePrive.getId().toString()}}"
+                                   th:text="${#locale.language == 'fr' ? presseElectroniquePrive.getNameFr() 
+                                            : (#locale.language == 'en' ? presseElectroniquePrive.getNameEn() 
+                                            : presseElectroniquePrive.getName())}">
+                                </a>
+                            </h3>
+                            <div class="meta">
+                                <p style="overflow: hidden; height: 85px;">
+                                    <a th:href="@{'/presse/'+${presseElectroniquePrive.getId().toString()}}"
+                                       th:text="${#locale.language == 'fr' ? presseElectroniquePrive.getDescriptionFr().substring(0, presseElectroniquePrive.getDescriptionFr().length() < 100 ? presseElectroniquePrive.getDescriptionFr().length() : 100) + '...' 
+                                                : (#locale.language == 'en' ? presseElectroniquePrive.getDescriptionEn().substring(0, presseElectroniquePrive.getDescriptionEn().length() < 100 ? presseElectroniquePrive.getDescriptionEn().length() : 100) + '...' 
+                                                : presseElectroniquePrive.getDescription().substring(0, presseElectroniquePrive.getDescription().length() < 100 ? presseElectroniquePrive.getDescription().length() : 100) + '...')}">
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+
+                
+
+            </div>
+        </div>
+
+    </div>
+
+ <!-- ======= Breadcrumbs ======= -->
+ <section th:if="pressesElectroniquePublic" id="publicEcrit" class="breadcrumbs m-0">
+    <div class="container">
+
+        <h2 th:text="#{pressElect}"> الصحافة الالكترونية </h2>
+
+    </div>
+</section><!-- End Breadcrumbs -->
+
+<!-- ======= Portfolio Details Section ======= -->
+<!-- Start Blog Section -->
+<div class="blog-section">
+    <div class="container">
+
+        <div class="row">
+
+            <!-- <div th:if="pressesElectroniquePublic" th:each="presseElectroniquePublic:${pressesElectroniquePublic}"
                      class="col-6 col-sm-3 col-md-3 mb-5">
                     <div class="post-entry">
                         <a th:href="@{'/presse/'+${presseElectroniquePublic.getId().toString()}}"
@@ -40,16 +142,6 @@
                                 th:src="@{${'/presse/lugo/'+presseElectroniquePublic.getId()}}"
                                 style="height: 100px ; width: 100px" alt="Image"
                                 class="img-fluid"></a>
-                        <!-- <div class="post-content-entry">
-                            <h3 style="font-size: 20px"><a
-                                    th:href="@{'/presse/'+${presseElectroniquePublic.getId().toString()}}"
-                                    th:text="${presseElectroniquePublic.getNameFr()}"></a></h3>
-
-                            <div class="meta">
-                                <p><a th:href="@{'/presse/'+${presseElectroniquePublic.getId().toString()}}"
-                                      th:text="${presseElectroniquePublic.getDescriptionFr()}">Kristin Watson</a></p>
-                            </div>
-                        </div> -->
                         <div class="post-content-entry">
                             <h3 style="font-size: 20px">
                                 <a th:href="@{'/presse/'+${presseElectroniquePublic.getId().toString()}}"
@@ -70,38 +162,73 @@
                         
                         
                     </div>
-                </div>
-
-                <div th:if="pressesElectroniquePrive" th:each="presseElectroniquePrive:${pressesElectroniquePrive}"
+                </div> -->
+            <!-- <div th:if="pressesElectroniquePublic" th:each="presseElectroniquePublic:${pressesElectroniquePublic}"
                      class="col-6 col-sm-3 col-md-3 mb-5">
                     <div class="post-entry">
-                        <a th:href="@{'/presse/'+${presseElectroniquePrive.getId().toString()}}" class="post-thumbnail"><img
-                                th:src="@{${'/presse/lugo/'+presseElectroniquePrive.getId()}}"
+                        <a th:href="@{'/presse/'+${presseElectroniquePublic.getId().toString()}}"
+                           class="post-thumbnail"><img
+                                th:src="@{${'/presse/lugo/'+presseElectroniquePublic.getId()}}"
                                 style="height: 100px ; width: 100px" alt="Image"
                                 class="img-fluid"></a>
                         <div class="post-content-entry">
                             <h3 style="font-size: 20px"><a
-                                    th:href="@{'/presse/'+${presseElectroniquePrive.getId().toString()}}"
-
-                                    th:text="${presseElectroniquePrive.getName()}"></a></h3>
+                                    th:href="@{'/presse/'+${presseElectroniquePublic.getId().toString()}}"
+                                    th:text="${presseElectroniquePublic.getNameFr()}"></a></h3>
 
                             <div class="meta">
-                                <p style="overflow: hidden; height: 85px;"><a th:href="@{'/presse/'+${presseElectroniquePrive.getId().toString()}}"
-
-                                      th:text="${presseElectroniquePrive.getDescription().toString().substring(0,(presseElectroniquePrive.getDescription().length() &lt; 100 ? presseElectroniquePrive.getDescription().length() : 100 ))+'...'}"></a></p>
+                                <p><a th:href="@{'/presse/'+${presseElectroniquePublic.getId().toString()}}"
+                                      th:text="${presseElectroniquePublic.getDescriptionFr()}">Kristin Watson</a></p>
                             </div>
+                        </div>
+                        
+                        
+                        
+                    </div>
+                </div> -->
+
+            <!-- Affichage d'un message si la liste des presses électroniques publiques est vide -->
+            <div th:if="${pressesElectroniquePublic.isEmpty()}">
+                <h3>
+                    <i style="color:red;" class="bi bi-x-lg"></i>
+                    <span th:text="#{no_results}">لا توجد نتائج</span>
+                </h3>
+            </div>
+
+            <!-- Affichage des presses électroniques publiques si la liste n'est pas vide -->
+            <div th:if="${not pressesElectroniquePublic.isEmpty()}"
+                th:each="presseElectroniquePublic : ${pressesElectroniquePublic}" class="col-6 col-sm-3 col-md-3 mb-5">
+                <div class="post-entry">
+                    <a th:href="@{'/presse/'+${presseElectroniquePublic.getId().toString()}}" class="post-thumbnail">
+                        <img th:src="@{'/presse/lugo/'+${presseElectroniquePublic.getId()}}"
+                            style="height: 100px ; width: 100px" alt="Image" class="img-fluid">
+                    </a>
+
+                    <div class="post-content-entry">
+                        <h3 style="font-size: 20px">
+                            <a th:href="@{'/presse/'+${presseElectroniquePublic.getId().toString()}}" th:text="${#locale.language == 'fr' ? presseElectroniquePublic.getNameFr() 
+                            : (#locale.language == 'en' ? presseElectroniquePublic.getNameEn() 
+                            : presseElectroniquePublic.getName())}">
+                            </a>
+                        </h3>
+
+                        <div class="meta">
+                            <p>
+                                <a th:href="@{'/presse/'+${presseElectroniquePublic.getId().toString()}}" th:text="${#locale.language == 'fr' ? presseElectroniquePublic.getDescriptionFr() 
+                                : (#locale.language == 'en' ? presseElectroniquePublic.getDescriptionEn() 
+                                : presseElectroniquePublic.getDescription())}">
+                                </a>
+                            </p>
                         </div>
                     </div>
                 </div>
-
             </div>
-        </div>
 
-    </div> <!-- ======= Breadcrumbs ======= -->
-    <section hidden="hidden" th:if="pressesElectroniquePrive" id="publicElectronique" class="breadcrumbs m-0">
-        <div class="container">
 
-            <h2> الصحافة الاكترونية الخاصة </h2>
+            <!-- ======= Breadcrumbs ======= -->
+
+
+
 
         </div>
     </section><!-- End Breadcrumbs -->
@@ -144,6 +271,7 @@
 
     </div>
 
+</div> <!-- ======= Breadcrumbs ======= -->
 
 </main><!-- End #main -->
 

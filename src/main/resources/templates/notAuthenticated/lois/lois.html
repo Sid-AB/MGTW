@@ -90,20 +90,23 @@
                             <p th:if="${#locale.language == 'ar'}" th:text="${textJuridique.getDescription()}"></p>
             
                             <!-- Lien vers le fichier PDF selon la langue -->
-                            <!-- <a th:if="${!textJuridique.getMultimediaList().isEmpty()}"
-                               th:href="@{${'/textJuridique/pdf/' + textJuridique.getId() + ( #locale.language == 'fr' ? '/fr' : #locale.language == 'en' ? '/en' : '/ar' )}}" 
-                               target="_blank"> 
-                               <span th:if="${#locale.language == 'fr'}">Voir le texte</span>
-                               <span th:if="${#locale.language == 'en'}">View the text</span>
-                               <span th:if="${#locale.language == 'ar'}">اطلع على النص</span>
-                            </a> -->
+                            <a th:if="${!textJuridique.getMultimediaList().isEmpty()}"
+                                th:href="@{/textJuridique/pdf/{id}/{lang}(id=${textJuridique.id}, lang=${#locale.language == 'fr' ? 'fr' : (#locale.language == 'en' ? 'fr' : 'ar')})}"
+                                target="_blank">
+                                <span th:if="${#locale.language == 'fr'}">Voir le texte</span>
+                                <span th:if="${#locale.language == 'en'}">View the text</span>
+                                <span th:if="${#locale.language == 'ar'}">اطلع على النص</span>
+                            </a>
+
+
+
                             <!-- Lien vers le fichier PDF -->
-                <a th:if="${!textJuridique.getMultimediaList().isEmpty()}"
+                <!-- <a th:if="${!textJuridique.getMultimediaList().isEmpty()}"
                 th:href="${'/textJuridique/pdf/' + textJuridique.getId()}" target="_blank"> 
                 <span th:if="${#locale.language == 'fr'}">Voir le texte</span>
                 <span th:if="${#locale.language == 'en'}">View the text</span>
                 <span th:if="${#locale.language == 'ar'}">اطلع على النص</span>
-             </a>
+             </a> -->
                         </div>
                     </li>
                 </ul>
