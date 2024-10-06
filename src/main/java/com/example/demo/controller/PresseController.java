@@ -79,11 +79,27 @@ public class PresseController {
         return "notAuthenticated/presse/presseGeneral";
     }
 
-    @GetMapping({"/public/electronique", "/public/electronique/"})
+    /*@GetMapping({"/public/electronique", "/public/electronique/"})
     public String cPublicElectronique(Model model) {
         new ArrayList();
         List<PresseCategorie> presseCategories1 = new ArrayList();
         presseCategories1.add(this.presseCategorieRepository.findPresseCategorieByName("electronique"));
+        List<Presse> pressesElectroniquePublic = this.presseService.findPresseByPresseCategoriesAndTypepbpr(presseCategories1, "public");
+        List<Presse> pressesElectroniquePrive = this.presseService.findPresseByPresseCategoriesAndTypepbpr(presseCategories1, "prive");
+        List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
+        model.addAttribute("complexesForNavBar", complexesForNavBar);
+        List<Lois> loisForNavBar = this.loisService.findAll();
+        model.addAttribute("loisForNavBar", loisForNavBar);
+        model.addAttribute("pressesElectroniquePublic", pressesElectroniquePublic);
+        model.addAttribute("pressesElectroniquePrive", pressesElectroniquePrive);
+        return "notAuthenticated/presse/presseGeneralelectronique";
+    } */
+
+    @GetMapping({"/public/electronique", "/public/electronique/"})
+    public String cPublicElectronique(Model model) {
+        new ArrayList();
+        List<PresseCategorie> presseCategories1 = new ArrayList();
+        presseCategories1.add(this.presseCategorieRepository.findPresseCategorieByName("رقمية"));
         List<Presse> pressesElectroniquePublic = this.presseService.findPresseByPresseCategoriesAndTypepbpr(presseCategories1, "public");
         List<Presse> pressesElectroniquePrive = this.presseService.findPresseByPresseCategoriesAndTypepbpr(presseCategories1, "prive");
         List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
