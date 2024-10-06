@@ -26,9 +26,12 @@
                                 <a class="product-item" href="">
                                     <img th:src="@{${'/ministers/pic/' + minister.id}}" style="height: 150px;width: 150px" class="img-fluid product-thumbnail">
                                     
-                                    <h3 class="product-title" style="font-size: 20px" 
-                                        th:text="${#locale.language == 'fr' ? minister.firstName+ ' ' + minister.lastName : minister.firstName + ' ' + minister.lastName}"></h3>
-                                        
+                                    <h3 class="product-title" style="font-size: 20px"
+                                    th:text="${#locale.language == 'ar' ? minister.firstName + ' ' + minister.lastName :
+                                             #locale.language == 'fr' ? minister.firstNameFr + ' ' + minister.lastNameFr :
+                                             (minister.firstNameFr.startsWith('Docteur') ? 'Doctor ' + minister.firstNameFr.substring(8) + ' ' + minister.lastNameFr : minister.firstNameFr + ' ' + minister.lastNameFr)}">
+                                </h3>            <!--substring(8)  ignore les 8 premiers caractères.récupère juste aprés -->
+                                
                                     <h5 class="date-to-format start-date" style="font-size: 15px">
                                         <span th:text="${minister.startFrom}"></span>
                                     </h5>
