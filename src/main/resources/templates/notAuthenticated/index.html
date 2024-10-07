@@ -523,19 +523,31 @@ $.ajax({
     url: '/Direction/all',
     type: 'GET',
     success: function(response) {
-        // Les indices restent les mêmes pour chaque direction
+        // Les indices pour chaque direction
         const indices = {
-            "dev": 0,
-            "daf": 1,
-            "dam": 2,
-            "emedia": 3,
-            "dloi": 4,
-            "media": 5,
-            "inspictiong": 6,
+            "fr": {
+                "dev": 0,
+                "daf": 1,
+                "dam": 2,
+                "emedia": 3,
+                "dloi": 4,
+                "media": 5,
+                "inspictiong": 6
+            },
+            "ar": {
+                "dev": 1,
+                "daf": 0,
+                "dam": 5,
+                "emedia": 4,
+                "dloi": 3,
+                "media": 2,
+                "inspictiong": 6
+            }
         };
 
-        // fonction pour afficher les informations du directeur
-        function afficherInfo(index) {
+        // Fonction pour afficher les informations du directeur
+        function afficherInfo(directorKey) {
+            var index = indices[currentLang][directorKey]; // Accéder à l'indice selon la langue et la clé
             var nomDirecteur = currentLang === "ar" ? response[index].nomDirecteur : response[index].nomDirecteurFr;
             var prenomDirecteur = currentLang === "ar" ? response[index].prenomDirecteur : response[index].prenomDirecteurFr;
 
@@ -553,7 +565,7 @@ $.ajax({
 
             $('.RDC').css('display', 'none');
 
-            // fermer card en cliquant à l'extérieur
+            // Fermer le modal en cliquant à l'extérieur
             $(window).on('click', function(event) {
                 if ($(event.target).is($('#InfoModal'))) {
                     $('#InfoModal').css('display', 'none');
@@ -562,16 +574,17 @@ $.ajax({
             });
         }
 
-        // ecouteuurs d'événements pour chaque direction 
-        $('.dev').on('click', function() { afficherInfo(indices.dev); });
-        $('.daf').on('click', function() { afficherInfo(indices.daf); });
-        $('.dam').on('click', function() { afficherInfo(indices.dam); });
-        $('.emedia').on('click', function() { afficherInfo(indices.emedia); });
-        $('.media').on('click', function() { afficherInfo(indices.media); });
-        $('.dloi').on('click', function() { afficherInfo(indices.dloi); });
-        $('.inspictiong').on('click', function() { afficherInfo(indices.inspictiong); });
+        // Écouteurs d'événements pour chaque direction 
+        $('.dev').on('click', function() { afficherInfo("dev"); });
+        $('.daf').on('click', function() { afficherInfo("daf"); });
+        $('.dam').on('click', function() { afficherInfo("dam"); });
+        $('.emedia').on('click', function() { afficherInfo("emedia"); });
+        $('.media').on('click', function() { afficherInfo("media"); });
+        $('.dloi').on('click', function() { afficherInfo("dloi"); });
+        $('.inspictiong').on('click', function() { afficherInfo("inspictiong"); });
     }
 });
+
 
 </script>
 
