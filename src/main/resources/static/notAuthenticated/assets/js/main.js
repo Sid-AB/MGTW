@@ -6,6 +6,15 @@
 * License: https://bootstrapmade.com/license/
 */
 
+/**
+ * 
+ */
+
+
+
+/** 
+ * 
+*/
 function changeDirection(language) {
   if (language === 'ar') {
       console.log('testing '+language)
