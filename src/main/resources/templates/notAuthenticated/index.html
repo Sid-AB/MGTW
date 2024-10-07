@@ -335,36 +335,58 @@ $.ajax({
         alert("Erreur lors de la récupération des informations des directeurs.");
     }
 });*/
-  $.ajax({
-    url:'/Direction/all',
-    type:'GET',
-    success:function(response)
-    {
-        $('.dev').on('click',function(){
-            $('#InfoModal').css('display','block')
-            $('#Nom').text(response[0].nomDirecteur);
-            $('#Prenom').text(response[0].prenomDirecteur);
-            $('#Email').text(response[0].emailDirecteur);
-            $('#Phone').text(response[0].phoneDirecteur);
-            $('#Phone').text(response[0].phoneDirecteur);
-            $('#nomDirection').text('Directeur de : ' +response[0].nomDirection);
-            $('.RDC').css('display','none')
+ // Récupération de la locale depuis l'élément HTML
+ /*var currentLang = document.documentElement.getAttribute("lang");  
+    $.ajax({
+        url: '/Direction/all',
+        type: 'GET',
+        success: function(response) {
+            //console.log("Langue actuelle:", currentLang); // Vérifiez la langue actuelle
+
+            $('.dev').on('click', function() {
+            
+                var nomDirecteur = currentLang=== "ar"? response[0].nomDirecteur : response[0].nomDirecteurFr;
+                var prenomDirecteur = currentLang === "ar" ? response[0].prenomDirecteur : response[0].prenomDirecteurFr;
+                console.log(nomDirecteur);
+                $('#InfoModal').css('display', 'block');
+                $('#Nom').text(nomDirecteur);
+                $('#Prenom').text(prenomDirecteur);
+                $('#Email').text(response[0].emailDirecteur);
+                $('#Phone').text(response[0].phoneDirecteur);
+                $('#nomDirection').text(currentLang=== "ar" 
+                    ? 'مدير : ' + response[0].nomDirection 
+                    : currentLang === "fr" 
+                        ? 'Directeur de : ' + response[0].nomDirectionFr 
+                        : 'Director of : ' + response[0].nomDirectionEn
+                );
+            $('.RDC').css('display', 'none');
+
+            // Fermer le modal en cliquant à l'extérieur
             $(window).on('click', function(event) {
-        if ($(event.target).is($('#InfoModal'))) {
-            $('#InfoModal').css('display','none')
-            $('.RDC').css('display','flex')
-        }
-    });
+                if ($(event.target).is($('#InfoModal'))) {
+                    $('#InfoModal').css('display', 'none');
+                    $('.RDC').css('display', 'flex');
+                }
+            });
+  
+    
         })
 
         $('.dam').on('click',function(){
+            var nomDirecteur = currentLang=== "ar"? response[2].nomDirecteur : response[2].nomDirecteurFr;
+            var prenomDirecteur = currentLang === "ar" ? response[2].prenomDirecteur : response[2].prenomDirecteurFr;
             $('#InfoModal').css('display','block')
-            $('#Nom').text(response[2].nomDirecteur);
-            $('#Prenom').text(response[2].prenomDirecteur);
+            $('#Nom').text(nomDirecteur);
+            $('#Prenom').text(prenomDirecteur);
             $('#Email').text(response[2].emailDirecteur);
             $('#Phone').text(response[2].phoneDirecteur);
             $('#Phone').text(response[2].phoneDirecteur);
-            $('#nomDirection').text('Directeur de : ' +response[2].nomDirection);
+            $('#nomDirection').text(currentLang=== "ar" 
+                    ? 'مدير : ' + response[2].nomDirection 
+                    : currentLang === "fr" 
+                        ? 'Directeur de : ' + response[2].nomDirectionFr 
+                        : 'Director of : ' + response[2].nomDirectionEn
+                );;
             $('.RDC').css('display','none')
             $(window).on('click', function(event) {
         if ($(event.target).is($('#InfoModal'))) {
@@ -375,13 +397,20 @@ $.ajax({
         })
 
         $('.dloi').on('click',function(){
+            var nomDirecteur = currentLang=== "ar"? response[4].nomDirecteur : response[4].nomDirecteurFr;
+            var prenomDirecteur = currentLang === "ar" ? response[4].prenomDirecteur : response[4].prenomDirecteurFr;
             $('#InfoModal').css('display','block')
-            $('#Nom').text(response[4].nomDirecteur);
-            $('#Prenom').text(response[4].prenomDirecteur);
+            $('#Nom').text(nomDirecteur);
+            $('#Prenom').text(prenomDirecteur);
             $('#Email').text(response[4].emailDirecteur);
             $('#Phone').text(response[4].phoneDirecteur);
             $('#Phone').text(response[4].phoneDirecteur);
-            $('#nomDirection').text('Directeur de : ' +response[4].nomDirection);
+            $('#nomDirection').text(currentLang=== "ar" 
+                    ? 'مدير : ' + response[4].nomDirection 
+                    : currentLang === "fr" 
+                        ? 'Directeur de : ' + response[4].nomDirectionFr 
+                        : 'Director of : ' + response[4].nomDirectionEn
+                );
             $('.RDC').css('display','none')
             $(window).on('click', function(event) {
         if ($(event.target).is($('#InfoModal'))) {
@@ -392,13 +421,20 @@ $.ajax({
         })
 
         $('.daf').on('click',function(){
+            var nomDirecteur = currentLang=== "ar"? response[1].nomDirecteur : response[1].nomDirecteurFr;
+            var prenomDirecteur = currentLang === "ar" ? response[1].prenomDirecteur : response[1].prenomDirecteurFr;
             $('#InfoModal').css('display','block')
-            $('#Nom').text(response[1].nomDirecteur);
-            $('#Prenom').text(response[1].prenomDirecteur);
+            $('#Nom').text(nomDirecteur);
+            $('#Prenom').text(prenomDirecteur);
             $('#Email').text(response[1].emailDirecteur);
             $('#Phone').text(response[1].phoneDirecteur);
             $('#Phone').text(response[1].phoneDirecteur);
-            $('#nomDirection').text('Directeur de : ' +response[1].nomDirection);
+            $('#nomDirection').text(currentLang=== "ar" 
+                    ? 'مدير : ' + response[1].nomDirection 
+                    : currentLang === "fr" 
+                        ? 'Directeur de : ' + response[1].nomDirectionFr 
+                        : 'Director of : ' + response[1].nomDirectionEn
+                );
             $('.RDC').css('display','none')
             $(window).on('click', function(event) {
         if ($(event.target).is($('#InfoModal'))) {
@@ -409,13 +445,20 @@ $.ajax({
         })
         
         $('.emedia').on('click',function(){
+            var nomDirecteur = currentLang=== "ar"? response[3].nomDirecteur : response[3].nomDirecteurFr;
+            var prenomDirecteur = currentLang === "ar" ? response[3].prenomDirecteur : response[3].prenomDirecteurFr;
             $('#InfoModal').css('display','block')
-            $('#Nom').text(response[3].nomDirecteur);
-            $('#Prenom').text(response[3].prenomDirecteur);
+            $('#Nom').text(nomDirecteur);
+            $('#Prenom').text(prenomDirecteur);
             $('#Email').text(response[3].emailDirecteur);
             $('#Phone').text(response[3].phoneDirecteur);
             $('#Phone').text(response[3].phoneDirecteur);
-            $('#nomDirection').text('Directeur de : ' +response[3].nomDirection);
+            $('#nomDirection').text(currentLang=== "ar" 
+                    ? 'مدير : ' + response[3].nomDirection 
+                    : currentLang === "fr" 
+                        ? 'Directeur de : ' + response[3].nomDirectionFr 
+                        : 'Director of : ' + response[3].nomDirectionEn
+                );
             $('.RDC').css('display','none')
             $(window).on('click', function(event) {
         if ($(event.target).is($('#InfoModal'))) {
@@ -426,13 +469,20 @@ $.ajax({
         })
         
         $('.media').on('click',function(){
+            var nomDirecteur = currentLang=== "ar"? response[5].nomDirecteur : response[5].nomDirecteurFr;
+            var prenomDirecteur = currentLang === "ar" ? response[5].prenomDirecteur : response[5].prenomDirecteurFr;
             $('#InfoModal').css('display','block')
-            $('#Nom').text(response[5].nomDirecteur);
-            $('#Prenom').text(response[5].prenomDirecteur);
+            $('#Nom').text(nomDirecteur);
+            $('#Prenom').text(prenomDirecteur);
             $('#Email').text(response[5].emailDirecteur);
             $('#Phone').text(response[5].phoneDirecteur);
             $('#Phone').text(response[5].phoneDirecteur);
-            $('#nomDirection').text('Directeur de : ' +response[5].nomDirection);
+            $('#nomDirection').text(currentLang=== "ar" 
+                    ? 'مدير : ' + response[5].nomDirection 
+                    : currentLang === "fr" 
+                        ? 'Directeur de : ' + response[5].nomDirectionFr 
+                        : 'Director of : ' + response[5].nomDirectionEn
+                );
             $('.RDC').css('display','none')
             $(window).on('click', function(event) {
         if ($(event.target).is($('#InfoModal'))) {
@@ -443,13 +493,20 @@ $.ajax({
         })
 
         $('.inspictiong').on('click',function(){
+            var nomDirecteur = currentLang=== "ar"? response[6].nomDirecteur : response[6].nomDirecteurFr;
+            var prenomDirecteur = currentLang === "ar" ? response[6].prenomDirecteur : response[6].prenomDirecteurFr;
             $('#InfoModal').css('display','block')
-            $('#Nom').text(response[6].nomDirecteur);
-            $('#Prenom').text(response[6].prenomDirecteur);
+            $('#Nom').text(nomDirecteur);
+            $('#Prenom').text(prenomDirecteur);
             $('#Email').text(response[6].emailDirecteur);
             $('#Phone').text(response[6].phoneDirecteur);
             $('#Phone').text(response[6].phoneDirecteur);
-            $('#nomDirection').text(response[6].nomDirection);
+            $('#nomDirection').text(currentLang=== "ar" 
+                    ? 'مدير : ' + response[6].nomDirection 
+                    : currentLang === "fr" 
+                        ? 'Directeur de : ' + response[6].nomDirectionFr 
+                        : 'Director of : ' + response[6].nomDirectionEn
+                );
             $('.RDC').css('display','none')
             $(window).on('click', function(event) {
         if ($(event.target).is($('#InfoModal'))) {
@@ -460,7 +517,75 @@ $.ajax({
         })
     }
   })
-  
+*/
+var currentLang = document.documentElement.getAttribute("lang");  
+$.ajax({
+    url: '/Direction/all',
+    type: 'GET',
+    success: function(response) {
+        // Les indices pour chaque direction
+        const indices = {
+            "fr": {
+                "dev": 0,
+                "daf": 1,
+                "dam": 2,
+                "emedia": 3,
+                "dloi": 4,
+                "media": 5,
+                "inspictiong": 6
+            },
+            "ar": {
+                "dev": 1,
+                "daf": 0,
+                "dam": 5,
+                "emedia": 4,
+                "dloi": 3,
+                "media": 2,
+                "inspictiong": 6
+            }
+        };
+
+        // Fonction pour afficher les informations du directeur
+        function afficherInfo(directorKey) {
+            var index = indices[currentLang][directorKey]; // Accéder à l'indice selon la langue et la clé
+            var nomDirecteur = currentLang === "ar" ? response[index].nomDirecteur : response[index].nomDirecteurFr;
+            var prenomDirecteur = currentLang === "ar" ? response[index].prenomDirecteur : response[index].prenomDirecteurFr;
+
+            $('#InfoModal').css('display', 'block');
+            $('#Nom').text(nomDirecteur);
+            $('#Prenom').text(prenomDirecteur);
+            $('#Email').text(response[index].emailDirecteur);
+            $('#Phone').text(response[index].phoneDirecteur);
+            $('#nomDirection').text(currentLang === "ar" 
+                ? 'مدير : ' + response[index].nomDirection 
+                : currentLang === "fr" 
+                    ? 'Directeur de : ' + response[index].nomDirectionFr 
+                    : 'Director of : ' + response[index].nomDirectionEn
+            );
+
+            $('.RDC').css('display', 'none');
+
+            // Fermer le modal en cliquant à l'extérieur
+            $(window).on('click', function(event) {
+                if ($(event.target).is($('#InfoModal'))) {
+                    $('#InfoModal').css('display', 'none');
+                    $('.RDC').css('display', 'flex');
+                }
+            });
+        }
+
+        // Écouteurs d'événements pour chaque direction 
+        $('.dev').on('click', function() { afficherInfo("dev"); });
+        $('.daf').on('click', function() { afficherInfo("daf"); });
+        $('.dam').on('click', function() { afficherInfo("dam"); });
+        $('.emedia').on('click', function() { afficherInfo("emedia"); });
+        $('.media').on('click', function() { afficherInfo("media"); });
+        $('.dloi').on('click', function() { afficherInfo("dloi"); });
+        $('.inspictiong').on('click', function() { afficherInfo("inspictiong"); });
+    }
+});
+
+
 </script>
 
 </body>
