@@ -2981,7 +2981,12 @@ section {
 #circlGreen
 {
   transform-origin: 50% 50%;
-  animation: circlenino 5s linear infinite;
+  transform: rotate(45deg);
+  animation: bounce 5s linear infinite;
+}
+#mincontient
+{
+  animation: bounce 5s linear infinite;
 }
 .inSide #circlRed
 {
