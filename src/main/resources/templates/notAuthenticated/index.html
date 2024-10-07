@@ -523,7 +523,7 @@ $.ajax({
     url: '/Direction/all',
     type: 'GET',
     success: function(response) {
-        // Les indices pour chaque direction
+ 
         const indices = {
             "fr": {
                 "dev": 0,
@@ -532,7 +532,9 @@ $.ajax({
                 "emedia": 3,
                 "dloi": 4,
                 "media": 5,
-                "inspictiong": 6
+                "inspictiong": 6,
+                "Diouan":8,
+                "secgen":7,
             },
             "ar": {
                 "dev": 1,
@@ -541,27 +543,52 @@ $.ajax({
                 "emedia": 4,
                 "dloi": 3,
                 "media": 2,
-                "inspictiong": 6
+                "inspictiong": 7,
+                "Diouan":6,
+                "secgen":8,
             }
         };
 
-        // Fonction pour afficher les informations du directeur
-        function afficherInfo(directorKey) {
-            var index = indices[currentLang][directorKey]; // Accéder à l'indice selon la langue et la clé
-            var nomDirecteur = currentLang === "ar" ? response[index].nomDirecteur : response[index].nomDirecteurFr;
-            var prenomDirecteur = currentLang === "ar" ? response[index].prenomDirecteur : response[index].prenomDirecteurFr;
+        // fonction pour afficher les informations du directeur
+         function afficherInfo(directorKey) {
+            var index = indices[currentLang][directorKey]; 
+            var nomDirection;
+            
+            // cas spécifiques 
+            if (directorKey === "inspictiong" || directorKey === "Diouan" || directorKey === "secgen") {
+                nomDirection = currentLang === "ar" ? response[index].nomDirection : response[index].nomDirectionFr;
+                var nomDirecteur = currentLang === "ar" ? response[index].nomDirecteur : response[index].nomDirecteurFr;
+                var prenomDirecteur = currentLang === "ar" ? response[index].prenomDirecteur : response[index].prenomDirecteurFr;
+                // afficher uniquement nom de la direction sans director
+                $('#InfoModal').css('display', 'block');
+                $('#Nom').text(nomDirecteur);
+                $('#Prenom').text(prenomDirecteur);
+                $('#Email').text(response[index].emailDirecteur);
+                $('#Phone').text(response[index].phoneDirecteur);
+                $('#nomDirection').text(currentLang === "ar" 
+                    ? nomDirection 
+                    : currentLang === "fr" 
+                        ?  nomDirectionFr
+                        :  nomDirectionEn 
+                );
+                
+            } else {
+                // affichage des informations pour les autres 
+                var nomDirecteur = currentLang === "ar" ? response[index].nomDirecteur : response[index].nomDirecteurFr;
+                var prenomDirecteur = currentLang === "ar" ? response[index].prenomDirecteur : response[index].prenomDirecteurFr;
 
-            $('#InfoModal').css('display', 'block');
-            $('#Nom').text(nomDirecteur);
-            $('#Prenom').text(prenomDirecteur);
-            $('#Email').text(response[index].emailDirecteur);
-            $('#Phone').text(response[index].phoneDirecteur);
-            $('#nomDirection').text(currentLang === "ar" 
-                ? 'مدير : ' + response[index].nomDirection 
-                : currentLang === "fr" 
-                    ? 'Directeur de : ' + response[index].nomDirectionFr 
-                    : 'Director of : ' + response[index].nomDirectionEn
-            );
+                $('#InfoModal').css('display', 'block');
+                $('#Nom').text(nomDirecteur);
+                $('#Prenom').text(prenomDirecteur);
+                $('#Email').text(response[index].emailDirecteur);
+                $('#Phone').text(response[index].phoneDirecteur);
+                $('#nomDirection').text(currentLang === "ar" 
+                    ? 'مدير : ' + response[index].nomDirection 
+                    : currentLang === "fr" 
+                        ? 'Directeur de : ' + response[index].nomDirectionFr 
+                        : 'Director of : ' + response[index].nomDirectionEn
+                );
+            }
 
             $('.RDC').css('display', 'none');
 
@@ -573,8 +600,7 @@ $.ajax({
                 }
             });
         }
-
-        // Écouteurs d'événements pour chaque direction 
+        //pour afficher les directions
         $('.dev').on('click', function() { afficherInfo("dev"); });
         $('.daf').on('click', function() { afficherInfo("daf"); });
         $('.dam').on('click', function() { afficherInfo("dam"); });
@@ -582,6 +608,8 @@ $.ajax({
         $('.media').on('click', function() { afficherInfo("media"); });
         $('.dloi').on('click', function() { afficherInfo("dloi"); });
         $('.inspictiong').on('click', function() { afficherInfo("inspictiong"); });
+        $('.Diouan').on('click', function() { afficherInfo("Diouan"); });
+        $('.secgen').on('click', function() { afficherInfo("secgen"); });
     }
 });
 
