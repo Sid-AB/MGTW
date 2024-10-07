@@ -21,7 +21,8 @@
                     <li th:each="etablissement : ${etablissements}">
                         <!-- Display search results -->
                         <a th:href="@{${'/etablissement/'+etablissement.getId()}}">
-                            <span th:text="${etablissement.getName()}"></span></a>
+                            <span th:text="${#locale.language == 'ar' ? etablissement.getName() :
+                                             #locale.language == 'fr' ?  etablissement.getNameFr() : etablissement.getNameEn()}"></span></a>
                             
                     </li>
                 </ul>
@@ -31,7 +32,8 @@
                         <!-- Display search results -->
                         <a th:href="@{${'/tv/'+tv.getId()}}">
 
-                            <span th:text="${tv.getName()}"></span>
+                            <span th:text="${#locale.language == 'ar' ? tv.getName() :
+                                                  #locale.language == 'fr' ?  tv.getNameFr() : tv.getNameEn()}"></span>
                         </a>
                     </li>
                 </ul>
@@ -41,7 +43,8 @@
                     <li th:each="radio : ${radios}">
                         <!-- Display search results -->
                         <a th:href="@{${'/radio/'+radio.getId()}}">
-                        <span th:text="${radio.getName()}"></span>
+                        <span th:text="${#locale.language == 'ar' ? radio.getName() :
+                                         #locale.language == 'fr' ?  radio.getNameFr() : radio.getNameEn()}"></span>
                         </a>
                     </li>
                 </ul>
@@ -51,7 +54,8 @@
                     <li th:each="presse : ${presses}">
                         <!-- Display search results -->
                         <a th:href="@{${'/presse/'+presse.getId()}}">
-                        <span th:text="${presse.getName()}"></span>
+                        <span th:text="${#locale.language == 'ar' ? presse.getName() :
+                                         #locale.language == 'fr' ?  presse.getNameFr() : presse.getNameEn()}"></span>
                         </a>
                     </li>
                 </ul>
