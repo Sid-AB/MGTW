@@ -30,7 +30,7 @@ public class SecurityConfig {
                     "/categorieChaine/add", "/categorieChaine/save", "/caracterstique/tv/{id}/add",
                     "/caracterstique/radio/{id}/add", "/caracterstique/saveradio", "/caracterstique/save",
                     "/agrument/agruments", "/agrument/add", "/agrument/save", "/ministers/add", "/ministers/Mins",
-                    "/ministers/save", "/Direction/add", "/Direction/all", "/Direction/direction", "/Direction/save" }))
+                    "/ministers/save", "/Direction/add", "/Direction/all", "/Direction/direction", "/Direction/save" ,"/sousDirection/add", "/sousDirection/all", "/sousDirection/sousdirection", "/sousDirection/save" }))
                     .authenticated();
             ((AuthorizedUrl) authRequest.requestMatchers(new String[] { "/notAuthenticated/**", "/multimedia/**", "/",
                     "/index", "/tv", "/tv/public", "/tv/prive", "/tv/prive/{name}", "/tv/{id}", "/tv/lugo/{id}",

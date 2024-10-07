@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : dim. 06 oct. 2024 à 15:10
+-- Généré le : lun. 07 oct. 2024 à 12:46
 -- Version du serveur : 8.2.0
 -- Version de PHP : 8.2.13
 
@@ -32,8 +32,8 @@ CREATE TABLE IF NOT EXISTS `agrument` (
   `created_at` datetime(6) DEFAULT NULL,
   `id` bigint NOT NULL AUTO_INCREMENT,
   `updated_at` datetime(6) DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_general_ci,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -60,17 +60,17 @@ CREATE TABLE IF NOT EXISTS `caracteristique` (
   `radio_id` bigint DEFAULT NULL,
   `tv_id` bigint DEFAULT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
-  `fec` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `frequency` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `modulation` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `polarization` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `satellite` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `symbolrate` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `transmission` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `fec` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `frequency` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `modulation` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `polarization` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `satellite` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `symbolrate` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `transmission` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK6lrlshlcqe75wn0cqobxwos3k` (`radio_id`),
   KEY `FK5d7jdnxcusvdaulf94k706dvv` (`tv_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=923 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=927 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `caracteristique`
@@ -131,7 +131,11 @@ INSERT INTO `caracteristique` (`created_at`, `id`, `radio_id`, `tv_id`, `updated
 ('2024-04-24 15:32:16.000000', 917, 2043, NULL, '2024-04-24 15:32:16.000000', '2/3', '100.1', '8PSK', '', 'eutlsat', '', 'DVB-S'),
 ('2024-04-24 15:34:49.000000', 918, 2044, NULL, '2024-04-24 15:34:49.000000', '2/3', '100.1', '8PSK', '', 'eutlsat', '', 'DVB-S'),
 ('2024-04-24 15:38:18.000000', 919, 2045, NULL, '2024-04-24 15:38:18.000000', '2/3', ' 96.2', '8PSK', '', 'eutlsat', '', 'DVB-S'),
-('2024-04-25 11:03:50.000000', 922, 1996, NULL, '2024-04-25 11:03:50.000000', '2/3', '891 AM', '8PSK', '', 'eutlsat', '', 'DVB-S');
+('2024-04-25 11:03:50.000000', 922, 1996, NULL, '2024-04-25 11:03:50.000000', '2/3', '891 AM', '8PSK', '', 'eutlsat', '', 'DVB-S'),
+('2024-10-07 11:20:03.000000', 923, NULL, 1737, '2024-10-07 11:20:03.000000', '3/4', '10922', '8PSK', 'nilsat', 'nilsat', '27500', 'DVB-S'),
+('2024-10-07 11:31:05.000000', 924, NULL, 1738, '2024-10-07 11:31:05.000000', '2/3', '11680', '8PSK', '', 'nilsat', '27500', 'DVB-S'),
+('2024-10-07 11:41:36.000000', 925, NULL, 1739, '2024-10-07 11:41:36.000000', '3/4', '11680', '8PSK', 'nilsat', 'nilsat', '27500', 'DVB-S'),
+('2024-10-07 11:42:20.000000', 926, NULL, 1739, '2024-10-07 11:42:20.000000', '3/4', '12054', '8PSK', 'nilsat', 'eutlsat', '27503', 'DVB-S');
 
 -- --------------------------------------------------------
 
@@ -144,9 +148,9 @@ CREATE TABLE IF NOT EXISTS `categorie_chaine` (
   `created_at` datetime(6) DEFAULT NULL,
   `id` bigint NOT NULL AUTO_INCREMENT,
   `updated_at` datetime(6) DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name_en` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name_fr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `name_en` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `name_fr` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -174,19 +178,19 @@ CREATE TABLE IF NOT EXISTS `complexe` (
   `created_at` datetime(6) DEFAULT NULL,
   `id` bigint NOT NULL AUTO_INCREMENT,
   `updated_at` datetime(6) DEFAULT NULL,
-  `adresse` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `site` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `adresse_en` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `adresse_fr` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_en` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_fr` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `name_en` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name_fr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `adresse` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `site` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `type` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_general_ci,
+  `adresse_en` text COLLATE utf8mb4_general_ci,
+  `adresse_fr` text COLLATE utf8mb4_general_ci,
+  `description_en` text COLLATE utf8mb4_general_ci,
+  `description_fr` text COLLATE utf8mb4_general_ci,
+  `name_en` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `name_fr` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -197,20 +201,20 @@ CREATE TABLE IF NOT EXISTS `complexe` (
 INSERT INTO `complexe` (`created_at`, `id`, `updated_at`, `adresse`, `email`, `name`, `phone`, `site`, `type`, `description`, `adresse_en`, `adresse_fr`, `description_en`, `description_fr`, `name_en`, `name_fr`) VALUES
 ('2024-04-17 02:41:58.000000', 1, NULL, 'Blida,Algeria', 'CMX@CMX.com', 'Groupe All', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 ('2024-04-23 10:03:24.000000', 2, '2024-10-06 13:29:00.827439', 'elNAhar', 'elNAhar', 'النهار', '247', 'Cheje', 'public', 'النهار', NULL, NULL, 'Ennahar', 'Ennahar', 'Ennahar', 'Ennahar'),
-('2024-04-23 15:51:41.000000', 4, '2024-10-06 13:29:51.663243', '21 شارع الشهداء، الجزائر العاصمة، الجزائر', 'webtv@entv.dz ', ' المؤسسة العمومية للتلفزيون (EPTV)', '023 53 10 10', ' https://www.entv.dz/', 'public', 'تم بسط السيادة على المؤسسة الوطنية للتلفزيون في 28 أكتوبر 1962، وعرفت عدة تحولات الى مؤسسة البث الإذاعي والتلفزي ثم مؤسسة الإذاعة والتلفزيون الى غاية صدور المرسوم رقم 86-146 المؤرخ في 01 جويلية 1986، والذي بموجبه أنشأت المؤسسة الوطنية للتلفزيون، بعد تحولها إلى مؤسسة عمومية للتلفزيون ذات طابع صناعي وتجاري بموجب المرسوم رقم 91-100 المؤرخ في 20 أفريل 1991، التي تتواجد ب 21 شارع ساحة الشهداء الجزائر العاصمة. تضطلع مؤسسة التلفزيون بمهمة الخدمة العمومية، وتكلف بالمهام التالية: (المادة 5 من المرسوم التنفيذي رقم 91-100 المؤرخ في 5شوال عام 1411 الموافق 20 أفريل1991)     • الإعلام بواسطة بث أو نقل جميع التحقيقات والحصص والبرامج المتعلقة بالأحداث الوطنية أو الجهوية أو المحلية أو الدولية طبقا لأحكام دفتر شروطها.     •  ضمان التعددية الإعلامية واستقلالها طبقا للأحكام الدستورية والنصوص الملحقة ومقررات المجلس الأعلى للإعلام وتوصياته.     •  تلبية الاحتياجات التربوية والترفيهية والثقافية لمختلف الفئات الاجتماعية في حدود وسائلها، وذلك قصد زيادة المعارف وتنمية روح المبادرة لدى المواطنين.     •  المساهمة في تطوير انتاج الأعمال الفكرية.     •  التشجيع على الاتصال الاجتماعي الذي تنظمه الحكومة أو الهيئات التابعة لها.  تسهر مؤسسة التلفزيون الجزائري على مواكبة التقنيات الجديدة وتكنولوجيات الاعلام والاتصال، من خلال توسيع حركية الرقمنة داخل المؤسسة والتركيز على العمل بأجهزة متطورة، وهي تدير حاليا شبكة تلفزيونية واحدة هي التلفزيون الجزائري، بالإضافة الى ثماني قنوات تلفزيونية وطنية، وهي كنال ألجيري، الجزائرية الإخبارية، القناة الامازيغية، قناة القرآن الكريم، الجزائرية السادسة، المعرفة، قناة الذاكرة والبرلمانية. ', NULL, NULL, 'Sovereignty over the National Television Establishment was initiated on October 28, 1962. It underwent several transformations: first into the Radio and Television Broadcasting Establishment, then into the Radio and Television Establishment, until the issuance of Decree No. 86-146 on July 1, 1986, which officially founded the National Television Establishment. Later, by Decree No. 91-100 dated April 20, 1991, the entity was transformed into the Public Television Establishment with an industrial and commercial nature, located at 21 Boulevard des Martyrs.  It undertakes the task of public service, and is entrusted with the following tasks: (Article 5 of Executive Decree No. 91-100 of 5 Shawwal 1411 corresponding to April 20, 1991).', 'La souveraineté sur l\'établissement national de télévision a été établie le 28 octobre 1962,  ce dernier a été transformé en établissement de radiodiffusion et de télévision puis en établissement de radio et de télévision jusqu\'à la promulgation du décret n° 86-146 du 01 juillet 1986, portant création de l\'établissement national de télévision, après sa transformation en établissement public de télévision à caractère industriel et commercial par le décret n° 91-100 du 20 avril 1991, sis au 21 boulevard des Martyrs, Alger. L\'établissement de télévision a une mission de service public et est chargé des tâches suivantes : (Article 5 du décret exécutif n° 91-100 du 5 chaoual 1411 correspondant au 20 avril 1991)', 'National television establishment (EPTV)', 'Etablissement national de télévision (EPTV)'),
-('2024-04-23 15:54:28.000000', 5, '2024-10-06 13:28:35.122661', 'حي سعيدون محمد فيلا رقم 166 - القبة، الجزائر\n', 'info@echorouk.net\n', 'الشروق', '023 71 39 90\n', 'https://www.echoroukonline.com/\n', 'prive', 'الشروق', NULL, NULL, 'El Chourouk', 'El Chourouk', 'El Chourouk', 'El Chourouk'),
-('2024-04-23 17:03:41.000000', 6, '2024-10-06 13:31:03.409586', ' 21 شارع الشهداء، الجزائر العاصمة، الجزائر\n', ' webtv@entv.dz\n', 'المؤسسة العمومية للتلفزيون (EPTV)', '025 30 10 10', ' https://www.entv.dz/\n', 'public', ' تم بسط السيادة على المؤسسة الوطنية للتلفزيون في 28 أكتوبر 1962، وعرفت عدة تحولات الى مؤسسة البث الإذاعي والتلفزي ثم مؤسسة الإذاعة والتلفزيون الى غاية صدور المرسوم رقم 86-146 المؤرخ في 01 جويلية 1986، والذي بموجبه أنشأت المؤسسة الوطنية للتلفزيون، بعد تحولها إلى مؤسسة عمومية للتلفزيون ذات طابع صناعي وتجاري بموجب المرسوم رقم 91-100 المؤرخ في 20 أفريل 1991، التي تتواجد ب 21 شارع ساحة الشهداء الجزائر العاصمة.', NULL, NULL, 'Sovereignty over the National Television Establishment was initiated on October 28, 1962. It underwent several transformations: first into the Radio and Television Broadcasting Establishment, then into the Radio and Television Establishment, until the issuance of Decree No. 86-146 on July 1, 1986, which officially founded the National Television Establishment. Later, by Decree No. 91-100 dated April 20, 1991, the entity was transformed into the Public Television Establishment with an industrial and commercial nature, located at 21 Boulevard des Martyrs.  It undertakes the task of public service, and is entrusted with the following tasks: (Article 5 of Executive Decree No. 91-100 of 5 Shawwal 1411 corresponding to April 20, 1991).', 'La souveraineté sur l\'établissement national de télévision a été établie le 28 octobre 1962,  ce dernier a été transformé en établissement de radiodiffusion et de télévision puis en établissement de radio et de télévision jusqu\'à la promulgation du décret n° 86-146 du 01 juillet 1986, portant création de l\'établissement national de télévision, après sa transformation en établissement public de télévision à caractère industriel et commercial par le décret n° 91-100 du 20 avril 1991, sis au 21 boulevard des Martyrs, Alger. L\'établissement de télévision a une mission de service public et est chargé des tâches suivantes : (Article 5 du décret exécutif n° 91-100 du 5 chaoual 1411 correspondant au 20 avril 1991)', 'National television establishment (EPTV)', 'Etablissement national de télévision (EPTV)'),
-('2024-04-24 09:43:05.000000', 7, '2024-10-06 13:33:45.050162', 'بئر مراد رايس، الجزائر العاصمة', ' ', 'النهار', ' ', ' ', 'public', 'صدرت عام 2007', NULL, NULL, 'Ennahar', 'Ennahar', 'Ennahar', 'Ennahar'),
-('2024-04-24 11:01:44.000000', 8, '2024-10-06 13:34:19.535866', ' بئر مراد رايس، الجزائر العاصمة', ' publicite@ennahartv.tv', 'النهار', ' +21323 59 91 14', 'https://www.ennaharonline.com/', 'prive', 'النهار', NULL, NULL, 'Ennahar', 'Ennahar', 'Ennahar', 'Ennahar'),
+('2024-04-23 15:51:41.000000', 4, '2024-10-06 20:24:26.043127', '21 شارع الشهداء، الجزائر العاصمة، الجزائر', 'webtv@entv.dz ', ' المؤسسة العمومية للتلفزيون (EPTV)', '023 53 10 10', ' https://www.entv.dz/', 'public', 'تم بسط السيادة على المؤسسة الوطنية للتلفزيون في 28 أكتوبر 1962، وعرفت عدة تحولات الى مؤسسة البث الإذاعي والتلفزي ثم مؤسسة الإذاعة والتلفزيون الى غاية صدور المرسوم رقم 86-146 المؤرخ في 01 جويلية 1986، والذي بموجبه أنشأت المؤسسة الوطنية للتلفزيون، بعد تحولها إلى مؤسسة عمومية للتلفزيون ذات طابع صناعي وتجاري بموجب المرسوم رقم 91-100 المؤرخ في 20 أفريل 1991، التي تتواجد ب 21 شارع ساحة الشهداء الجزائر العاصمة. تضطلع مؤسسة التلفزيون بمهمة الخدمة العمومية، وتكلف بالمهام التالية: (المادة 5 من المرسوم التنفيذي رقم 91-100 المؤرخ في 5شوال عام 1411 الموافق 20 أفريل1991)     • الإعلام بواسطة بث أو نقل جميع التحقيقات والحصص والبرامج المتعلقة بالأحداث الوطنية أو الجهوية أو المحلية أو الدولية طبقا لأحكام دفتر شروطها.     •  ضمان التعددية الإعلامية واستقلالها طبقا للأحكام الدستورية والنصوص الملحقة ومقررات المجلس الأعلى للإعلام وتوصياته.     •  تلبية الاحتياجات التربوية والترفيهية والثقافية لمختلف الفئات الاجتماعية في حدود وسائلها، وذلك قصد زيادة المعارف وتنمية روح المبادرة لدى المواطنين.     •  المساهمة في تطوير انتاج الأعمال الفكرية.     •  التشجيع على الاتصال الاجتماعي الذي تنظمه الحكومة أو الهيئات التابعة لها.  تسهر مؤسسة التلفزيون الجزائري على مواكبة التقنيات الجديدة وتكنولوجيات الاعلام والاتصال، من خلال توسيع حركية الرقمنة داخل المؤسسة والتركيز على العمل بأجهزة متطورة، وهي تدير حاليا شبكة تلفزيونية واحدة هي التلفزيون الجزائري، بالإضافة الى ثماني قنوات تلفزيونية وطنية، وهي كنال ألجيري، الجزائرية الإخبارية، القناة الامازيغية، قناة القرآن الكريم، الجزائرية السادسة، المعرفة، قناة الذاكرة والبرلمانية. ', '21 Martyrs Street, Algiers, Algeria', '21 rue des Martyrs, Alger, Algérie', 'Sovereignty over the National Television Establishment was initiated on October 28, 1962. It underwent several transformations: first into the Radio and Television Broadcasting Establishment, then into the Radio and Television Establishment, until the issuance of Decree No. 86-146 on July 1, 1986, which officially founded the National Television Establishment. Later, by Decree No. 91-100 dated April 20, 1991, the entity was transformed into the Public Television Establishment with an industrial and commercial nature, located at 21 Boulevard des Martyrs.  It undertakes the task of public service, and is entrusted with the following tasks: (Article 5 of Executive Decree No. 91-100 of 5 Shawwal 1411 corresponding to April 20, 1991).', 'La souveraineté sur l\'établissement national de télévision a été établie le 28 octobre 1962,  ce dernier a été transformé en établissement de radiodiffusion et de télévision puis en établissement de radio et de télévision jusqu\'à la promulgation du décret n° 86-146 du 01 juillet 1986, portant création de l\'établissement national de télévision, après sa transformation en établissement public de télévision à caractère industriel et commercial par le décret n° 91-100 du 20 avril 1991, sis au 21 boulevard des Martyrs, Alger. L\'établissement de télévision a une mission de service public et est chargé des tâches suivantes : (Article 5 du décret exécutif n° 91-100 du 5 chaoual 1411 correspondant au 20 avril 1991)', 'National television establishment (EPTV)', 'Etablissement national de télévision (EPTV)'),
+('2024-04-23 15:54:28.000000', 5, '2024-10-06 20:24:47.628229', 'حي سعيدون محمد فيلا رقم 166 - القبة، الجزائر', 'info@echorouk.net\n', 'الشروق', '023 71 39 90\n', 'https://www.echoroukonline.com/\n', 'prive', 'الشروق', 'Saidoun Mohamed neighborhood, Villa No. 166 - Kouba, Algeria', 'Quartier Saidoun Mohamed, Villa N°166 - Kobba, Algérie', 'El Chourouk', 'El Chourouk', 'El Chourouk', 'El Chourouk'),
+('2024-04-23 17:03:41.000000', 6, '2024-10-06 20:25:05.974973', ' 21 شارع الشهداء، الجزائر العاصمة، الجزائر', ' webtv@entv.dz\n', 'المؤسسة العمومية للتلفزيون (EPTV)', '025 30 10 10', ' https://www.entv.dz/\n', 'public', ' تم بسط السيادة على المؤسسة الوطنية للتلفزيون في 28 أكتوبر 1962، وعرفت عدة تحولات الى مؤسسة البث الإذاعي والتلفزي ثم مؤسسة الإذاعة والتلفزيون الى غاية صدور المرسوم رقم 86-146 المؤرخ في 01 جويلية 1986، والذي بموجبه أنشأت المؤسسة الوطنية للتلفزيون، بعد تحولها إلى مؤسسة عمومية للتلفزيون ذات طابع صناعي وتجاري بموجب المرسوم رقم 91-100 المؤرخ في 20 أفريل 1991، التي تتواجد ب 21 شارع ساحة الشهداء الجزائر العاصمة.', '21 Martyrs Street, Algiers, Algeria', '21 rue des Martyrs, Alger, Algérie', 'Sovereignty over the National Television Establishment was initiated on October 28, 1962. It underwent several transformations: first into the Radio and Television Broadcasting Establishment, then into the Radio and Television Establishment, until the issuance of Decree No. 86-146 on July 1, 1986, which officially founded the National Television Establishment. Later, by Decree No. 91-100 dated April 20, 1991, the entity was transformed into the Public Television Establishment with an industrial and commercial nature, located at 21 Boulevard des Martyrs.  It undertakes the task of public service, and is entrusted with the following tasks: (Article 5 of Executive Decree No. 91-100 of 5 Shawwal 1411 corresponding to April 20, 1991).', 'La souveraineté sur l\'établissement national de télévision a été établie le 28 octobre 1962,  ce dernier a été transformé en établissement de radiodiffusion et de télévision puis en établissement de radio et de télévision jusqu\'à la promulgation du décret n° 86-146 du 01 juillet 1986, portant création de l\'établissement national de télévision, après sa transformation en établissement public de télévision à caractère industriel et commercial par le décret n° 91-100 du 20 avril 1991, sis au 21 boulevard des Martyrs, Alger. L\'établissement de télévision a une mission de service public et est chargé des tâches suivantes : (Article 5 du décret exécutif n° 91-100 du 5 chaoual 1411 correspondant au 20 avril 1991)', 'National television establishment (EPTV)', 'Etablissement national de télévision (EPTV)'),
+('2024-04-24 09:43:05.000000', 7, '2024-10-06 20:25:46.486957', 'بئر مراد رايس، الجزائر العاصمة', ' ', 'النهار', ' ', ' ', 'public', 'صدرت عام 2007', 'Bir Mourad Rais, Algiers', 'Bir Mourad Raïs, Alger', 'Ennahar', 'Ennahar', 'Ennahar', 'Ennahar'),
+('2024-04-24 11:01:44.000000', 8, '2024-10-06 20:26:26.313135', ' بئر مراد رايس، الجزائر العاصمة', ' publicite@ennahartv.tv', 'النهار', ' +21323 59 91 14', 'https://www.ennaharonline.com/', 'prive', 'النهار', 'Bir Mourad Rais, Algiers', 'Bir Mourad Raïs, Alger', 'Ennahar', 'Ennahar', 'Ennahar', 'Ennahar'),
 ('2024-04-24 11:55:15.000000', 9, '2024-10-06 13:35:49.506070', ' ', ' ', 'الأنيس', ' ', ' ', 'prive', '  الأنيس ', NULL, NULL, 'Alanees', 'Alanees', 'Alanees', 'Alanees'),
 ('2024-04-24 12:00:42.000000', 10, '2024-10-06 13:37:27.686383', ' ', ' ', ' الهقار ', ' ', ' ', 'prive', 'الهقار  ', NULL, NULL, 'Hogar', 'Hogar', 'Hogar', 'Hogar'),
-('2024-04-24 12:03:32.000000', 11, '2024-10-06 13:38:36.171949', 'شارع ديدوش مراد الجزائر العاصمة - الطابق الرابع 52', ' ', ' البلاد', ' ', ' ', 'prive', 'البلاد ', NULL, NULL, 'El bilad', 'El bilad', 'El bilad', 'El bilad'),
+('2024-04-24 12:03:32.000000', 11, '2024-10-06 20:26:51.128853', 'شارع ديدوش مراد الجزائر العاصمة - الطابق الرابع 52', ' ', ' البلاد', ' ', ' ', 'prive', 'البلاد ', 'Didouche Mourad Street, Algiers - 4th floor 52', 'Rue Didouche Mourad, Alger, 4ème étage 52', 'El bilad', 'El bilad', 'El bilad', 'El bilad'),
 ('2024-04-24 12:07:11.000000', 12, '2024-10-06 13:42:01.276005', ' ', ' ', 'نوميديا نيوز', ' ', ' ', 'prive', 'نوميديا نيوز', NULL, NULL, 'Numidia news', 'Numidia news', 'Numidia news', 'Numidia news'),
 ('2024-04-24 12:19:00.000000', 13, '2024-10-06 13:41:25.998751', ' ', ' ', ' دزاير نيوز', '  ', ' ', 'prive', 'دزاير نيوز ', NULL, NULL, 'Dzair News', 'Dzair News', 'Dzair News', 'Dzair News'),
 ('2024-04-24 12:23:49.000000', 14, '2024-10-06 13:42:47.057498', ' ', ' ', 'الهداف', ' ', ' ', 'prive', 'الهداف', NULL, NULL, 'El haddaf', 'El haddaf', 'El haddaf', 'El haddaf'),
 ('2024-04-24 12:26:08.000000', 15, '2024-10-06 13:43:11.097770', ' ', ' ', 'سميرة ', ' ', ' ', 'prive', 'سميرة ', NULL, NULL, 'Samira', 'Samira', 'Samira', 'Samira'),
 ('2024-04-24 12:28:45.000000', 16, '2024-10-06 13:47:06.046143', ' ', ' ', 'الباهية', ' ', ' ', 'prive', 'الباهية', NULL, NULL, 'Bahia', ' Bahia', 'Bahia', 'Bahia'),
-('2024-04-24 15:09:20.000000', 17, '2024-10-06 13:48:39.675515', 'طريق بينام بوزريعة 50 الجزائر', 'dmk@tda.dz', 'مؤسسة البث الاذاعي والتلفزي الجزائري (TDA)', '+213 (0) 23 18 10 01', 'https://www.tda.dz/', 'prive', 'على إثر إعادة هيكلة مؤسسة الإذاعة والتلفزة الجزائرية (ا ت ج)، تم انشاء المؤسسة الوطنية للبث الاذاعي والتلفزي ذات طابع اقتصادي وصيغة اجتماعية وثقافية، بموجب المرسوم رقم 86-148 المؤرخ في 24 شوال عام 1406 الموافق أول يوليو سنة 1986، بعدها تم تغيير تسميتها وصيغتها القانونية بموجب المرسوم التنفيذي رقم 91-98 المؤرخ في 20 أفريل1991، إلى المؤسسة العمومية للبث الاذاعي والتلفزي، ذات طابع صناعي وتجاري، تتمتع بالشخصية المعنوية والاستقلال المالي.', NULL, NULL, 'Under Decree No. 86-148 dated 24 Shawwal 1406, corresponding to July 1, 1986, following the restructuring of the Algerian Radio and Television Establishment (ART), the National Broadcasting Establishment was created as an economic company with a social and cultural nature, Subsequently, its name and legal status were changed under Executive Decree No. 91-98 dated April 20, 1991, to the Public Institution for Radio and Television Broadcasting, characterized by its industrial and commercial nature, enjoying legal personality and financial independence.  The tasks of the establishment, in particular, are as follows: Article 5 of Executive Decree No. 91-98 dated 5 Shawwal 1411, corresponding to April 20, 1991', 'Suite à la restructuration de l\'établissement algérien de radio et de télévision (RTA), l\'entreprise nationale de télédiffusion, à caractère économique, social et culturel, a été créée par le décret n° 86-148 du 24 chaoual 1406, correspondant au 1er juillet 1986, puis rebaptisée par le décret exécutif n° 91-98 du 20 avril 1991, Télédiffusion d’Algérie, à caractère industriel et commercial, dotée de la personnalité morale et de l\'autonomie financière. Les missions de l\'entreprise sont les suivantes : Article 5 du décret exécutif n° 91-98 du 5 chaoual 1411 (20 avril 1991)', 'Public Broadcasting Establishment of Algeria', 'Etablissement Public Télédiffusion d’Algérie TDA');
+('2024-04-24 15:09:20.000000', 17, '2024-10-06 20:27:35.342734', 'طريق بينام بوزريعة 50 الجزائر', 'dmk@tda.dz', 'مؤسسة البث الاذاعي والتلفزي الجزائري (TDA)', '+213 (0) 23 18 10 01', 'https://www.tda.dz/', 'prive', 'على إثر إعادة هيكلة مؤسسة الإذاعة والتلفزة الجزائرية (ا ت ج)، تم انشاء المؤسسة الوطنية للبث الاذاعي والتلفزي ذات طابع اقتصادي وصيغة اجتماعية وثقافية، بموجب المرسوم رقم 86-148 المؤرخ في 24 شوال عام 1406 الموافق أول يوليو سنة 1986، بعدها تم تغيير تسميتها وصيغتها القانونية بموجب المرسوم التنفيذي رقم 91-98 المؤرخ في 20 أفريل1991، إلى المؤسسة العمومية للبث الاذاعي والتلفزي، ذات طابع صناعي وتجاري، تتمتع بالشخصية المعنوية والاستقلال المالي.', 'Benam Bouzareah Road 50 Algeria', 'Route Binam Bouzareah 50, Algérie', 'Under Decree No. 86-148 dated 24 Shawwal 1406, corresponding to July 1, 1986, following the restructuring of the Algerian Radio and Television Establishment (ART), the National Broadcasting Establishment was created as an economic company with a social and cultural nature, Subsequently, its name and legal status were changed under Executive Decree No. 91-98 dated April 20, 1991, to the Public Institution for Radio and Television Broadcasting, characterized by its industrial and commercial nature, enjoying legal personality and financial independence.  The tasks of the establishment, in particular, are as follows: Article 5 of Executive Decree No. 91-98 dated 5 Shawwal 1411, corresponding to April 20, 1991', 'Suite à la restructuration de l\'établissement algérien de radio et de télévision (RTA), l\'entreprise nationale de télédiffusion, à caractère économique, social et culturel, a été créée par le décret n° 86-148 du 24 chaoual 1406, correspondant au 1er juillet 1986, puis rebaptisée par le décret exécutif n° 91-98 du 20 avril 1991, Télédiffusion d’Algérie, à caractère industriel et commercial, dotée de la personnalité morale et de l\'autonomie financière. Les missions de l\'entreprise sont les suivantes : Article 5 du décret exécutif n° 91-98 du 5 chaoual 1411 (20 avril 1991)', 'Public Broadcasting Establishment of Algeria', 'Etablissement Public Télédiffusion d’Algérie TDA');
 
 -- --------------------------------------------------------
 
@@ -245,6 +249,21 @@ INSERT INTO `complexe_agrument` (`agrument_id`, `complexe_id`) VALUES
 (3, 15),
 (3, 16),
 (3, 17),
+(4, 17),
+(3, 6),
+(3, 8),
+(5, 8),
+(6, 8),
+(3, 5),
+(3, 9),
+(3, 10),
+(3, 11),
+(3, 12),
+(3, 13),
+(3, 14),
+(3, 15),
+(3, 16),
+(3, 17),
 (4, 17);
 
 -- --------------------------------------------------------
@@ -256,32 +275,34 @@ INSERT INTO `complexe_agrument` (`agrument_id`, `complexe_id`) VALUES
 DROP TABLE IF EXISTS `direction`;
 CREATE TABLE IF NOT EXISTS `direction` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `email_directeur` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `nom_directeur` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `nom_direction` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `email_directeur` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `nom_directeur` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `nom_direction` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `phone_directeur` int DEFAULT NULL,
-  `prenom_directeur` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `nom_directeur_en` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `nom_directeur_fr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `nom_direction_en` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `nom_direction_fr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `prenom_directeur_en` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `prenom_directeur_fr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `prenom_directeur` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `nom_directeur_en` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `nom_directeur_fr` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `nom_direction_en` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `nom_direction_fr` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `prenom_directeur_en` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `prenom_directeur_fr` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `direction`
 --
 
 INSERT INTO `direction` (`id`, `email_directeur`, `nom_directeur`, `nom_direction`, `phone_directeur`, `prenom_directeur`, `nom_directeur_en`, `nom_directeur_fr`, `nom_direction_en`, `nom_direction_fr`, `prenom_directeur_en`, `prenom_directeur_fr`) VALUES
-(5, 'd.developpement@ministerecommunication.gov.dz', 'علان', 'مديرية التطوير', 23549952, 'عبد القادر', NULL, NULL, NULL, NULL, NULL, NULL),
-(6, 'dcf@ministerecommunication.gov.dz', 'جغادر', 'مدرية التعاون  والتكوين', 23549914, 'عبد الجليل ', NULL, NULL, NULL, NULL, NULL, NULL),
-(7, 'dam@ministerecommunication.gov.dz', 'بلدية', 'مديرية الإدارة والوسائل', 23549941, 'أحمد ', NULL, NULL, NULL, NULL, NULL, NULL),
-(8, 'dci@ministerecommunication.gov.dz', 'تلمات ', 'مديرية الاتصال  ا لمؤسساتي', 23549878, 'عمار رضا', NULL, NULL, NULL, NULL, NULL, NULL),
-(9, 'dajda@ministerecommunication.gov.dz', 'شريف ', 'مديرية الشؤون  القانونية  والتوثيق  والأرشيف', 23549864, 'فاطمة', NULL, NULL, NULL, NULL, NULL, NULL),
-(10, 'd.media@ministerecommunication.gov.dz', 'خليفي ', 'مديرية  وسائل  الإعلام', 23549909, 'خديجة', NULL, NULL, NULL, NULL, NULL, NULL),
-(11, 'inspecteur.g@ministerecommunication.gov. dz', 'بن زليخة ', 'المفتش العام ', 23549938, 'أحمد ', NULL, NULL, NULL, NULL, NULL, NULL);
+(5, 'd.developpement@ministerecommunication.gov.dz', 'علان', 'مديرية التطوير و الاستثمار', 23549952, 'عبد القادر', NULL, 'Alane', 'Directorate of Development and Investment', '\nDirection du Développement et de l\'Investissement', NULL, 'Abdelkader'),
+(6, 'dcf@ministerecommunication.gov.dz', 'جغادر', 'مدرية التعاون  والتكوين', 23549914, 'عبد الجليل ', NULL, 'Djeghadar', 'Directorate of Cooperation and Training', '\nDirection de la Coopération et de la Formation', NULL, 'Abdeljalil'),
+(7, 'dam@ministerecommunication.gov.dz', 'بلدية', 'مديرية الإدارة والوسائل', 23549941, 'أحمد ', NULL, 'Beldia', 'Directorate of Administration and Means', 'Direction de l\'Administration et des Moyens', NULL, 'Ahmed'),
+(8, 'dci@ministerecommunication.gov.dz', 'تلمات عمار', 'مديرية الاتصال المؤسساتي', 23549878, ' رضا ', NULL, 'Talmat Amar', 'Directorate of Institutional Communication', 'Direction de la Communication Institutionnelle', NULL, 'Redha Amine'),
+(9, 'dajda@ministerecommunication.gov.dz', 'شريف ', 'مديرية الشؤون  القانونية  والتوثيق  والأرشيف', 23549864, 'فاطمة', NULL, 'Cherif', 'Directorate of Legal, Documentation and Archive Affairs', 'Direction des Affaires Juridiques, de la Documentation et des Archives', NULL, 'Fatma'),
+(10, 'd.media@ministerecommunication.gov.dz', 'خليفي ', 'مديرية  وسائل  الإعلام', 23549909, 'خديجة', NULL, 'Khelifi', 'Directorate of Media', 'Direction des Médias', NULL, 'Khadidja'),
+(11, 'inspecteur.g@ministerecommunication.gov. dz', 'بن زليخة ', 'المفتش العام ', 23549938, 'أحمد ', NULL, 'Benzlikha', 'General Inspector', 'Inspecteur général', NULL, 'Ahmed'),
+(12, 'sg@ministerecommunication.gov.dz', 'خالدي', 'أمين عام ', 23549807, 'مختار', NULL, 'Khaldi', 'General Secretary', 'Secretaire General', NULL, 'Mokhtar'),
+(13, 'chef.cabinet@ministerecommunication.gov.dz', 'ذبيح', 'رئيس الديوان ', 23549888, ' رضوان ', NULL, 'Debih', 'Chef of Cabinet', 'Chef de cabinet', NULL, 'Radouane');
 
 -- --------------------------------------------------------
 
@@ -295,43 +316,44 @@ CREATE TABLE IF NOT EXISTS `etablissement` (
   `created_at` datetime(6) DEFAULT NULL,
   `id` bigint NOT NULL AUTO_INCREMENT,
   `updated_at` datetime(6) DEFAULT NULL,
-  `adresse` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `fax` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `site` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `localisation` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_en` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_fr` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `name_fr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name_en` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `adresse_en` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `adresse_fr` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `localisation_en` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `localisation_fr` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `adresse` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_general_ci,
+  `email` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `fax` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `site` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `type` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `localisation` text COLLATE utf8mb4_general_ci,
+  `description_en` text COLLATE utf8mb4_general_ci,
+  `description_fr` text COLLATE utf8mb4_general_ci,
+  `name_fr` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `name_en` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `adresse_en` text COLLATE utf8mb4_general_ci,
+  `adresse_fr` text COLLATE utf8mb4_general_ci,
+  `localisation_en` text COLLATE utf8mb4_general_ci,
+  `localisation_fr` text COLLATE utf8mb4_general_ci,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_80odl28njpub882o8qo5u35yg` (`complexe_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1565 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1566 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `etablissement`
 --
 
 INSERT INTO `etablissement` (`complexe_id`, `created_at`, `id`, `updated_at`, `adresse`, `description`, `email`, `fax`, `name`, `phone`, `site`, `type`, `localisation`, `description_en`, `description_fr`, `name_fr`, `name_en`, `adresse_en`, `adresse_fr`, `localisation_en`, `localisation_fr`) VALUES
-(6, '2024-04-24 12:56:36.000000', 1554, '2024-04-24 12:56:36.000000', 'ـ21 شارع الشهداء، الجزائر العاصمة، الجزائر\r\n', 'تم بسط السيادة على المؤسسة الوطنية للتلفزيون في 28 أكتوبر 1962، وعرفت عدة تحولات الى مؤسسة البث الإذاعي والتلفزي ثم مؤسسة الإذاعة والتلفزيون الى غاية صدور المرسوم رقم 86-146 المؤرخ في 01 جويلية 1986، والذي بموجبه أنشأت المؤسسة الوطنية للتلفزيون، بعد تحولها إلى مؤسسة عمومية للتلفزيون ذات طابع صناعي وتجاري بموجب المرسوم رقم 91-100 المؤرخ في 20 أفريل 1991، التي تتواجد ب 21 شارع ساحة الشهداء الجزائر العاصمة.\nتضطلع مؤسسة التلفزيون بمهمة الخدمة العمومية، وتكلف بالمهام التالية: (المادة 5 من المرسوم التنفيذي رقم 91-100 المؤرخ في 5شوال عام 1411 الموافق 20 أفريل1991)\n', 'webtv@entv.dz\r\n', '+21323 53 10 93\r\n+21323 53 19 98\r\n', ' المؤسسة العمومية للتلفزيون (EPTV)', '+21323 53 10 10\r\n', 'https://www.entv.dz/\r\n', 'soustutelle', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3196.7106310586696!2d3.0464917763783355!3d36.75351627032883!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fb27ad162e7d1%3A0x8a03f3a3f2667dac!2zVMOpbMOpdmlzaW9uIFB1YmxpcXVlIEFsZ8Opcmllbm5l!5e0!3m2!1sfr!2sdz!4v1714029807195!5m2!1sfr!2sdz\" width=\"600\" height=\"450\" style=\"border:0;', 'Sovereignty over the National Television Establishment was initiated on October 28, 1962. It underwent several transformations: first into the Radio and Television Broadcasting Establishment, then into the Radio and Television Establishment, until the issuance of Decree No. 86-146 on July 1, 1986, which officially founded the National Television Establishment. Later, by Decree No. 91-100 dated April 20, 1991, the entity was transformed into the Public Television Establishment with an industrial and commercial nature, located at 21 Boulevard des Martyrs. \r\nIt undertakes the task of public service, and is entrusted with the following tasks: (Article 5 of Executive Decree No. 91-100 of 5 Shawwal 1411 corresponding to April 20, 1991).\r\n', 'La souveraineté sur l\'établissement national de télévision a été établie le 28 octobre 1962,  ce dernier a été transformé en établissement de radiodiffusion et de télévision puis en établissement de radio et de télévision jusqu\'à la promulgation du décret n° 86-146 du 01 juillet 1986, portant création de l\'établissement national de télévision, après sa transformation en établissement public de télévision à caractère industriel et commercial par le décret n° 91-100 du 20 avril 1991, sis au 21 boulevard des Martyrs, Alger. L\'établissement de télévision a une mission de service public et est chargé des tâches suivantes : (Article 5 du décret exécutif n° 91-100 du 5 chaoual 1411 correspondant au 20 avril 1991)', 'Etablissement national de télévision (EPTV)', 'National television establishment (EPTV)', NULL, NULL, NULL, NULL),
-(NULL, '2024-04-24 15:45:49.000000', 1555, '2024-04-24 15:45:49.000000', '02 شارع فريد زوييش، القبة، الجزائر العاصمة، الجزائر', 'تم تأسيس المركز الدولي للصحافة بموجب المرسوم التنفيذي رقم 02-117 المؤرخ في 20 محرم 1423 الموافق 3 أفريل2002، ويعد مؤسسة عمومية ذات طابع صناعي وتجاري تتمتع بالشخصية المعنوية والاستقلال المالي.\nلقد أضاف انشاء المركز الدولي للصحافة سنة 1995 إسهاما ملموسا في تحسين ظروف عمل المهنيين وكذا تطوير الاتصال المؤسساتي والحكومي في عدة مناسبات كبرى على الصعيدين الوطني والدولي، حيث أضحت خبرة المركز الدولي للصحافة عبر الأحداث المتتالية وسيلة اتصال ضرورية من خلال مختلف الخدمات التي يقدمها لضمان تغطية إعلامية جيدة، هذا الفضاء سمح أيضا باحتضان مجموعة من النشاطات الثقافية والفنية كوسيلة لقاء وتبادل الخبرات.\n', 'Contact@cipalgerie.com', '(+213) 2370-9034/36', 'المركز الدولي للصحافة', '023 70 90 34', NULL, 'soustutelle', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1344.4443072748!2d3.0937264715329253!3d36.73107494323319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fad527e33e70d%3A0x318654c772eafdeb!2sP3JW%2BG38%2C%20Kouba!5e0!3m2!1sfr!2sdz!4v1714031136712!5m2!1sfr!2sdz\" width=\"600\" height=\"450\" style=\"border:0;\" ', 'Created by Executive Decree No. 02-117 of 20 Muharram 1423, corresponding to April 3, 2002, the International Presse Center is a public industrial and commercial establishment with legal personality and financial autonomy.\r\nThe establishment of the International Presse Center in 1995 made a tangible contribution to improving working conditions for press professionals and to the development of institutional and government communication during several major national and international events. \r\nAs events unfolded, the expertise of the International Presse Center became a necessary communication tool through the various services it offers to ensure effective media coverage. Additionally, this space has enabled the Center to host various cultural and artistic activities, fostering meetings and exchanges of experiences.\r\n', 'Créé par le décret exécutif n° 02-117 du 20 Muharram 1423correspondant au 3 avril 2002, le centre international de presse est un établissement public à caractère industriel et commercial doté de la personnalité morale et de l\'autonomie financière. La création du centre international de presse en 1995 a contribué concrètement à l\'amélioration des conditions de travail des professionnels ainsi qu\'au développement de la communication institutionnelle et gouvernementale, et ce, à l\'occasion de plusieurs événements majeurs au niveau national et international. Au fil des événements successifs, l\'expertise du centre international de presse est devenue un moyen de communication nécessaire à travers les différents services qu\'il offre pour assurer une bonne couverture médiatique, et cet espace lui a également permis d\'accueillir diverses activités culturelles et artistiques comme moyen de rencontre et d\'échange d\'expériences. ', 'Centre International de Presse ', 'International Press Center', NULL, NULL, NULL, NULL),
+(6, '2024-04-24 12:56:36.000000', 1554, '2024-10-06 16:18:13.000000', 'ـ21 شارع الشهداء، الجزائر العاصمة، الجزائر\r\n', 'تم بسط السيادة على المؤسسة الوطنية للتلفزيون في 28 أكتوبر 1962، وعرفت عدة تحولات الى مؤسسة البث الإذاعي والتلفزي ثم مؤسسة الإذاعة والتلفزيون الى غاية صدور المرسوم رقم 86-146 المؤرخ في 01 جويلية 1986، والذي بموجبه أنشأت المؤسسة الوطنية للتلفزيون، بعد تحولها إلى مؤسسة عمومية للتلفزيون ذات طابع صناعي وتجاري بموجب المرسوم رقم 91-100 المؤرخ في 20 أفريل 1991، التي تتواجد ب 21 شارع ساحة الشهداء الجزائر العاصمة.تضطلع مؤسسة التلفزيون بمهمة الخدمة العمومية، وتكلف بالمهام التالية: (المادة 5 من المرسوم التنفيذي رقم 91-100 المؤرخ في 5شوال عام 1411 الموافق 20 أفريل1991)', 'webtv@entv.dz\r\n', '+21323 53 10 93\r\n+21323 53 19 98\r\n', ' المؤسسة العمومية للتلفزيون (EPTV)', '+21323 53 10 10\r\n', 'https://www.entv.dz/\r\n', 'soustutelle', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3196.7106310586696!2d3.0464917763783355!3d36.75351627032883!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fb27ad162e7d1%3A0x8a03f3a3f2667dac!2zVMOpbMOpdmlzaW9uIFB1YmxpcXVlIEFsZ8Opcmllbm5l!5e0!3m2!1sfr!2sdz!4v1714029807195!5m2!1sfr!2sdz\" width=\"600\" height=\"450\" style=\"border:0;', 'Sovereignty over the National Television Establishment was initiated on October 28, 1962. It underwent several transformations: first into the Radio and Television Broadcasting Establishment, then into the Radio and Television Establishment, until the issuance of Decree No. 86-146 on July 1, 1986, which officially founded the National Television Establishment. Later, by Decree No. 91-100 dated April 20, 1991, the entity was transformed into the Public Television Establishment with an industrial and commercial nature, located at 21 Boulevard des Martyrs. It undertakes the task of public service, and is entrusted with the following tasks: (Article 5 of Executive Decree No. 91-100 of 5 Shawwal 1411 corresponding to April 20, 1991).', 'La souveraineté sur l\'établissement national de télévision a été établie le 28 octobre 1962,  ce dernier a été transformé en établissement de radiodiffusion et de télévision puis en établissement de radio et de télévision jusqu\'à la promulgation du décret n° 86-146 du 01 juillet 1986, portant création de l\'établissement national de télévision, après sa transformation en établissement public de télévision à caractère industriel et commercial par le décret n° 91-100 du 20 avril 1991, sis au 21 boulevard des Martyrs, Alger. L\'établissement de télévision a une mission de service public et est chargé des tâches suivantes : (Article 5 du décret exécutif n° 91-100 du 5 chaoual 1411 correspondant au 20 avril 1991)', 'Etablissement national de télévision (EPTV)', 'National television establishment (EPTV)', '21 Martyrs Street, Algiers, Algeria', '-21 rue des Martyrs, Alger, Algérie', NULL, NULL),
+(NULL, '2024-04-24 15:45:49.000000', 1555, '2024-10-06 20:14:05.032037', '02 شارع فريد زوييش، القبة، الجزائر العاصمة، الجزائر', 'تم تأسيس المركز الدولي للصحافة بموجب المرسوم التنفيذي رقم 02-117 المؤرخ في 20 محرم 1423 الموافق 3 أفريل2002، ويعد مؤسسة عمومية ذات طابع صناعي وتجاري تتمتع بالشخصية المعنوية والاستقلال المالي.لقد أضاف انشاء المركز الدولي للصحافة سنة 1995 إسهاما ملموسا في تحسين ظروف عمل المهنيين وكذا تطوير الاتصال المؤسساتي والحكومي في عدة مناسبات كبرى على الصعيدين الوطني والدولي، حيث أضحت خبرة المركز الدولي للصحافة عبر الأحداث المتتالية وسيلة اتصال ضرورية من خلال مختلف الخدمات التي يقدمها لضمان تغطية إعلامية جيدة، هذا الفضاء سمح أيضا باحتضان مجموعة من النشاطات الثقافية والفنية كوسيلة لقاء وتبادل الخبرات.', 'Contact@cipalgerie.com', '(+213) 2370-9034/36', 'المركز الدولي للصحافة', '023 70 90 34', NULL, 'soustutelle', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1344.4443072748!2d3.0937264715329253!3d36.73107494323319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fad527e33e70d%3A0x318654c772eafdeb!2sP3JW%2BG38%2C%20Kouba!5e0!3m2!1sfr!2sdz!4v1714031136712!5m2!1sfr!2sdz\" width=\"600\" height=\"450\" style=\"border:0;\" ', 'Created by Executive Decree No. 02-117 of 20 Muharram 1423, corresponding to April 3, 2002, the International Presse Center is a public industrial and commercial establishment with legal personality and financial autonomy.The establishment of the International Presse Center in 1995 made a tangible contribution to improving working conditions for press professionals and to the development of institutional and government communication during several major national and international events. As events unfolded, the expertise of the International Presse Center became a necessary communication tool through the various services it offers to ensure effective media coverage. Additionally, this space has enabled the Center to host various cultural and artistic activities, fostering meetings and exchanges of experiences.', 'Créé par le décret exécutif n° 02-117 du 20 Muharram 1423correspondant au 3 avril 2002, le centre international de presse est un établissement public à caractère industriel et commercial doté de la personnalité morale et de l\'autonomie financière. La création du centre international de presse en 1995 a contribué concrètement à l\'amélioration des conditions de travail des professionnels ainsi qu\'au développement de la communication institutionnelle et gouvernementale, et ce, à l\'occasion de plusieurs événements majeurs au niveau national et international. Au fil des événements successifs, l\'expertise du centre international de presse est devenue un moyen de communication nécessaire à travers les différents services qu\'il offre pour assurer une bonne couverture médiatique, et cet espace lui a également permis d\'accueillir diverses activités culturelles et artistiques comme moyen de rencontre et d\'échange d\'expériences. ', 'Centre International de Presse ', 'International Press Center', '02 Farid Zouiche Street, Kouba, Algiers, Algeria', '02 Farid Zouiche Street, Kouba, Algiers, Algeria', NULL, NULL),
 (NULL, '2024-04-24 14:46:36.000000', 1556, '2024-04-24 14:46:36.000000', 'غير متوفر', 'على إثر إعادة هيكلة مؤسسة الإذاعة والتلفزة الجزائرية (ا ت ج)، تم انشاء مؤسسة الإذاعة الوطنية المسموعة، بموجب المرسوم رقم 146-86 المؤرخ في 01 جويلية 1986، ليتم تحويلها سنة 1991 الى المؤسسة العمومية للإذاعة المسموعة ذات طابع اقتصادي وصيغة تجارية، بموجب المرسوم رقم 102-91 المؤرخ في 5شوال عام 1411 الموافق 20 أفريل1991.\nوتتمثل مهمة المؤسسة فيما يأتي: المادة 6 من المرسوم التنفيذي رقم 91-102 المؤرخ في 5شوال عام 1411 الموافق 20 أفريل1991.\n', 'غير متوفر', 'غير متوفر', 'المؤسسة العمومية للإذاعة المسموعة (EPRS)', '  غير متوفر', '  غير متوفر', 'soustutelle', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3196.419968665234!2d3.0541613763785826!3d36.760491369936105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fb35a8dc45493%3A0xfa248774b5cc62c!2z2YXYpNiz2LPYqSDYp9mE2LnZhdmI2YXZitipINin2YTYp9iw2KfYudipINmI2KrZhNmB2LLZitmI2YY!5e0!3m2!1sfr!2sdz!4v1714030311139!5m2!1sfr!2sdz\" width=\"600\" height=\"450\" style=\"border:0;\"', 'Following the restructuring of the Algerian Radio and Television Establishment (ART), the National Sound Broadcasting Establishment was created by Decree No. 146-86 on July 1, 1986. In 1991, it was transformed into the Public Sound Broadcasting Establishment of an economic and commercial nature by Decree No. 102-91 of 5 Chaoual 1411, corresponding to April 20, 1991. This establishment was given the following mission, as outlined in Article 6 of Executive Decree No. 91-102 of 5 Chaoual 1411 (April 20, 1991).', 'Suite à la restructuration de l\'établissement algérien de radio et de télévision (RTA), l’établissement national de radiodiffusion sonore a été créée par le décret n° 146-86 du 01 juillet 1986, pour être transformée en 1991 en établissement public de radiodiffusion sonore à caractère économique et commercial, par le décret n° 102-91 du 5 chaoual 1411, correspondant au 20 avril 1991. La mission de l\'établissement est la suivante : Article 6 du décret exécutif n° 91-102 du 5 chaoual 1411 (20 avril 1991).', 'Etablissement Public de Radiodiffusion Sonore (EPRS)', 'Public Sound Broadcasting Establishment (EPRS)', NULL, NULL, NULL, NULL),
-(17, '2024-04-24 15:09:57.000000', 1557, '2024-04-24 15:09:57.000000', 'طريق بينام بوزريعة 50 الجزائر', 'على إثر إعادة هيكلة مؤسسة الإذاعة والتلفزة الجزائرية (ا ت ج)، تم انشاء المؤسسة الوطنية للبث الاذاعي والتلفزي ذات طابع اقتصادي وصيغة اجتماعية وثقافية، بموجب المرسوم رقم 86-148 المؤرخ في 24 شوال عام 1406 الموافق أول يوليو سنة 1986، بعدها تم تغيير تسميتها وصيغتها القانونية بموجب المرسوم التنفيذي رقم 91-98 المؤرخ في 20 أفريل1991، إلى المؤسسة العمومية للبث الاذاعي والتلفزي، ذات طابع صناعي وتجاري، تتمتع بالشخصية المعنوية والاستقلال المالي.\nتتمثل مهام المؤسسة على الخصوص فيما يأتي: المادة 5 من المرسوم التنفيذي رقم 91-98 المؤرخ في 5شوال عام 1411 الموافق 20 أفريل1991)\n', 'dmk@tda.dz', NULL, 'مؤسسة البث الاذاعي والتلفزي الجزائري (TDA)', '+213 (0) 23 18 10 01', 'https://www.tda.dz/', 'soustutelle', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3195.0845078137927!2d3.0108056763796305!3d36.79252416813133!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fb17c1d1fa0d5%3A0x23c0b01cddcf746c!2zVMOpbMOpZGlmZnVzaW9uIGQnQWxnw6lyaWUgVERB!5e0!3m2!1sfr!2sdz!4v1714029921245!5m2!1sfr!2sdz\" width=\"600\" height=\"450\" style=\"border:0;\"', 'Under Decree No. 86-148 dated 24 Shawwal 1406, corresponding to July 1, 1986, following the restructuring of the Algerian Radio and Television Establishment (ART), the National Broadcasting Establishment was created as an economic company with a social and cultural nature, Subsequently, its name and legal status were changed under Executive Decree No. 91-98 dated April 20, 1991, to the Public Institution for Radio and Television Broadcasting, characterized by its industrial and commercial nature, enjoying legal personality and financial independence. \r\nThe tasks of the establishment, in particular, are as follows: Article 5 of Executive Decree No. 91-98 dated 5 Shawwal 1411, corresponding to April 20, 1991\r\n', 'Suite à la restructuration de l\'établissement algérien de radio et de télévision (RTA), l\'entreprise nationale de télédiffusion, à caractère économique, social et culturel, a été créée par le décret n° 86-148 du 24 chaoual 1406, correspondant au 1er juillet 1986, puis rebaptisée par le décret exécutif n° 91-98 du 20 avril 1991, Télédiffusion d’Algérie, à caractère industriel et commercial, dotée de la personnalité morale et de l\'autonomie financière. Les missions de l\'entreprise sont les suivantes : Article 5 du décret exécutif n° 91-98 du 5 chaoual 1411 (20 avril 1991)', 'Etablissement Public Télédiffusion d’Algérie TDA', 'Public Broadcasting Establishment of Algeria', NULL, NULL, NULL, NULL),
-(NULL, '2024-04-24 15:31:54.000000', 1558, '2024-04-24 15:31:54.000000', 'بئر مراد رايس 16.000\r\nالجزائر الجزائر.', 'تم إنشاء وكالة الأنباء الجزائرية في 1 ديسمبر 1961 بتونس، في خضم حرب التحرير الوطنية، لتكون صوت الثورة الجزائرية وحامل لوائها على الساحة الإعلامية الدولية، بعد الاستقلال تم نقل مقرها بشكل طبيعي إلى الجزائر العاصمة، وواصلت عملها كوكالة أنباء تقدم خدمات إعلامية وفق النصوص والمهام المكلفة بها.\nتمارس مؤسسة \"وكالة الأنباء الجزائرية\" التي تم تحويلها بموجب المرسوم التنفيذي رقم 91-105 المؤرخ في 20 أفريل 1991 الى مؤسسة عمومية ذات طابع اقتصادي وتجاري، وظيفة الخدمة العمومية من خلال المهام التالية: المادة 3 من المرسوم رقم 91-105 المؤرخ في 20 أفريل 1991\n', 'contact@aps.dz\r\n', '+213 (0) 23 56 96 47', 'وكالة الأنباء الجزائرية (APS)', '+213 (0) 23 56 96 90', 'https://www.aps.dz/', 'soustutelle', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3197.349198935703!2d3.0580478890422325!3d36.73818839969114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fad81ad08914d%3A0xc1135269d69ae530!2sAlg%C3%A9rie%20Presse%20Service!5e0!3m2!1sfr!2sdz!4v1714030527049!5m2!1sfr!2sdz\" width=\"600\" height=\"450\" style=\"border:0;\"', 'Algeria Press Service was established on December 1, 1961, in Tunisia, in the midst of the National Liberation War, to be the voice of the Algerian revolution and its banner on the international media stage. After independence, its headquarters was transferred naturally to Algiers, and it continued to operate as a news agency providing media services in accordance with the texts and tasks assigned to it. \'Algeria Press Service,\' which was transformed into a public establishment with an economic and commercial nature under Executive Decree No. 91-105 dated April 20, 1991, exercises the function of public service through the following missions: Article 3 of Decree No. 91-105 dated April 20, 1991', 'Algérie Presse Service a été créée le 1er décembre 1961 à Tunis, en pleine guerre de libération nationale, pour être la voix de la Révolution algérienne et son porte-drapeau sur la scène médiatique internationale. Après l\'indépendance, son siège a été naturellement transféré à Alger et a poursuivi son travail d\'agence de presse fournissant des services médiatiques conformément aux textes et aux missions qui lui ont été assignés. Transformée par le décret exécutif n° 91-105 du 20 avril 1991 en établissement public à caractère économique et commercial, «Algérie Presse Service » exerce une fonction de service public à travers les missions suivantes : Article 3 du décret n° 91-105 du 20 avril 1991', 'Algérie Presse Service', 'Algeria Press Service', NULL, NULL, NULL, NULL),
-(NULL, '2024-04-24 15:54:41.000000', 1559, '2024-04-24 15:54:41.000000', ' دار الصحافة الطاهر جعوط ، 1 ماي ، الجزائر العاصمة', 'بمقتضى مرسوم تنفيذي رقم 90-243 مؤرخ في 13 محرم عام 1411 الموافق 4 أوت 1990، يتضمن انشاء مؤسسة عمومية ذات طابع صناعي وتجاري تتمتع بالشخصية المعنوية والاستقلال المالي تسمى \"دار الصحافة\"، مقرها 01 نهج بشير عطار أول ماي –الجزائر العاصمة.', 'غير متوفر', 'غير متوفر', 'دار الصحافة', 'غير متوفر', 'غير متوفر', 'soustutelle', 'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d950.9170633022551!2d3.187553278997451!3d36.71076748846273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sdz!4v1714037132517!5m2!1sfr!2sdz\" width=\"600\" height=\"450\" style=\"border:0;\"', 'By virtue of Executive Decree No. 90-243 dated 13 Muharram 1411, corresponding to August 4, 1990, a public establishment of an industrial and commercial nature, enjoying legal personality and financial autonomy, was created, called \'Press House,\' with its headquarters located at 01 Avenue Bachir Attar, 1er Mai - Algiers.', 'Par  décret exécutif n° 90-243 du 13 Mouharram 1411 correspondant au 4 août 1990 portant création d\'un établissement public à caractère industriel et commercial doté de la personnalité morale et de l\'autonomie financière dénommé « Maison de la presse », dont le siège est fixé au 01 Avenue Bachir Attar 1er mai - Alger.', 'Maison de la presse', 'Press House', NULL, NULL, NULL, NULL),
-(NULL, '2024-04-24 16:44:11.000000', 1560, '2024-04-24 16:44:11.000000', 'المنطقة الصناعية العليا ، باب الزوار ، الجزائر العاصمة ، الجزائر', 'شركة الطباعة بالجزائر هي مؤسسة عمومية اقتصادية أُنشِئَت بموجب المرسوم رقم 90-242 المؤرخ في 11/12/1990 تحت إشراف وزارة الاتصال، نتيجة لإعادة هيكلة شركة الشعب. تُؤمن الشركة بطباعة وتوزيع الصحف الوطنية العامة والخاصة، وتُساهم في تطوير الصحافة الوطنية المكتوبة من خلال التحديث الدائم لوسائل إنتاجها، واستخدام التكنولوجيا الحديثة، وظائف الطباعة ذات الجودة المتنوعة.\nفي إطار تحسين قطاع الاتصال والإعلام على المستوى الوطني وتسهيل وتوسيع توزيع الصحف على المستوى الوطني؛ تجسَّد هذا الاهتمام في قرار إنشاء وحدات طباعة إقليمية في الجنوب الأكبر (سنة 2008 مطبعة ورقلة، سنة 2013 مطبعة بشار).\n', 'contact@sia.dz', '+21323 83 96 75', 'شركة الطباعة للجزائر (SIA)', '+21323 83 98 76', 'https://www.sia.dz/', 'soustutelle', 'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d950.9170633022551!2d3.187553278997451!3d36.71076748846273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sdz!4v1714037132517!5m2!1sfr!2sdz\" width=\"600\" height=\"450\" style=\"border:0;\"', 'Algiers Printing Company is a public economic establishment under the supervision of the Ministry of Communication, founded under Decree No. 90-242 dated December 11, 1990, as a result of the restructuring of the People\'s Company. It is responsible for printing and distributing national public and private newspapers and contributes to the development of national written journalism through the continuous modernization of its production methods and the use of modern technology to ensure diverse quality printing functions. To improve the communication and media sector at the national level and facilitate the distribution of newspapers nationwide, this commitment was reflected in the decision to establish regional printing units in the greater south: the Ouargla printing press in 2008 and the Béchar printing press in 2013.', 'Société d’impression d’Alger est un établissement public à caractère économique créé par le décret n° 90-242 du 11 décembre 1990 sous la tutelle du ministère de la Communication, à la suite de la restructuration de ECHAAB. La société assure l\'impression et la distribution des journaux nationaux publics et privés et contribue au développement de la presse écrite nationale par la modernisation constante de ses méthodes de production, l\'utilisation de technologies modernes et des travaux d\'impression diversifiés et de qualité. Dans le cadre de l\'amélioration du secteur de la communication et des médias au niveau national et de la facilitation et de l\'élargissement de la distribution des journaux au niveau national, cet intérêt s\'est traduit par la décision de créer des unités régionales d\'impression dans le Grand Sud (2008 imprimerie de Ouargla, 2013 imprimerie de Bechar).', 'Société d’Impression d’Alger SIA', 'Algiers Printing Company SIA', NULL, NULL, NULL, NULL),
-(NULL, '2024-04-25 11:38:55.000000', 1561, '2024-04-25 11:38:55.000000', '02شارع فريد زويوش، القبة- الجزائر العاصمة.', 'وهي مؤسسة اقتصادية عمومية ذات أسهم، أسست في سنة 1997 برأسمال قدره 300.000.000 دج، ', 'alpapspa@gmail.com', '023 70 93 48', 'الجزائرية للورق  (ALPAP)', '023 70 93 49\r\n\r\n023 70 93 50', 'غير متوفر', 'soustutelle', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1598.843120024312!2d3.0885984296224462!3d36.730096014493974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fad4fda97c663%3A0x827b7bb9920e684a!2sP3JQ%2B7RV%2C%20Kouba!5e0!3m2!1sfr!2sdz!4v1714038667666!5m2!1sfr!2sdz\" width=\"600\" height=\"450\" style=\"border:0;\"', 'It is a public economic establishment with shares, founded in 1997 with a capital of 300,000,000 DZD.', 'Il s\'agit d\'une société économique publique par actions, créée en 1997 avec un capital de 300.000.000 DA', 'Entreprises publiques d’impression et du Papier ALPAP', 'Public printing and paper companies ALPAP', NULL, NULL, NULL, NULL),
-(NULL, '2024-04-25 11:54:56.000000', 1562, '2024-04-25 11:54:56.000000', 'Zone Industrielle Boumerzoug Lot n ° 08 BP 384 RP ، قسنطينة ، الجزائر', 'انبثقت عن إعادة هيكلة مؤسسة \"النصر\" تقوم بطباعة الجرائد، الكتب، المجلات والملصقات', 'contact@siecne.com', '+21331 73 19 10', 'شركة الطباعة للشرق(SIE) ', '+21331 73 19 12', 'غير متوفر', 'soustutelle', 'https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3213.4449455985596!2d6.6!3d36.35!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzbCsDIxJzAwLjAiTiA2wrAzNicwMC4wIkU!5e0!3m2!1sfr!2sdz!4v1714044941149!5m2!1sfr!2sdz\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"', 'It emerged from the restructuring of \'Al-Nasr\', specialized in printing newspapers, books, magazines, and posters.', 'Résultant de la restructuration d\'Al Nasr, elle a pour mission d’imprimer des journaux, des livres, des magazines et des affiches.', 'Imprimerie de l\'Est (SIE)', 'Eastern Printing Company (SIE)', NULL, NULL, NULL, NULL),
-(NULL, '2024-04-25 12:47:54.000000', 1563, '2024-04-25 12:47:54.000000', '03 طريق النجم ، إسينيا ، وهران ، الجزائر', ' وهي مؤسسة ذات طابع اقتصادي(EPE) تقوم بطباعة الجرائد، الكتب والمجلات.', 'directiongenerale@sio-dz.com', '+21341 61 77 41', 'شركة الطباعة للغرب(SIO)', '+21341 61 77 51', 'غير متوفر', 'soustutelle', 'https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3240.189893442299!2d-0.6330555999999998!3d35.6969444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzXCsDQxJzQ5LjAiTiAwwrAzNyc1OS4wIlc!5e0!3m2!1sfr!2sdz!4v1714044842663!5m2!1sfr!2sdz\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"', 'An establishment of an economic nature (EPE) that prints newspapers, books, and magazines.', 'Il s\'agit d\'une entreprise économique (EPE) qui a pour mission d’imprimer des journaux, des livres et des magazines.', 'Imprimerie de l’Ouest (SIO)', 'Western Printing Company (SIO)', NULL, NULL, NULL, NULL),
-(NULL, '2024-04-25 13:07:03.000000', 1564, '2024-04-25 13:07:03.000000', '06 شارع باستور ، الجزائر العاصمة ، الجزائر\r\n\r\n', 'كانت ولغاية سنة 1997 ذات طابع صناعي وتجاري، تحولت في شهر مارس من سنة 1997 الى مؤسسة عمومية اقتصادية ذات أسهم، تقوم بطباعة الجرائد، الكتب والمجلات.', 'enapspa@gmail.com', '+21321 73 18 00\r\n\r\n', 'المؤسسة الجزائرية للصحافة(ENAP)', '+21321 73 18 01', 'غير متوفر', 'soustutelle', 'https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3195.9015489198964!2d3.0576983999999996!3d36.7729292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzbCsDQ2JzIyLjYiTiAzwrAwMycyNy43IkU!5e0!3m2!1sfr!2sdz!4v1714044656183!5m2!1sfr!2sdz\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"', 'Until 1997, it had an industrial and commercial nature. In March 1997, it was transformed into a public economic establishment with shares, whose mission is printing newspapers, books and magazines.', 'Jusqu\'en 1997, il s\'agissait d\'une entreprise industrielle et commerciale, transformé en mars 1997 en un établissement public à caractère économique par actions, ayant pour mission d’imprimer des journaux, des livres et des magazines.', '\r\nEntreprise de la Presse Algérienne (ENAP)', 'Algerian Press Company (ENAP)', NULL, NULL, NULL, NULL);
+(17, '2024-04-24 15:09:57.000000', 1557, '2024-10-06 20:18:49.198052', 'طريق بينام بوزريعة 50 الجزائر', 'على إثر إعادة هيكلة مؤسسة الإذاعة والتلفزة الجزائرية (ا ت ج)، تم انشاء المؤسسة الوطنية للبث الاذاعي والتلفزي ذات طابع اقتصادي وصيغة اجتماعية وثقافية، بموجب المرسوم رقم 86-148 المؤرخ في 24 شوال عام 1406 الموافق أول يوليو سنة 1986، بعدها تم تغيير تسميتها وصيغتها القانونية بموجب المرسوم التنفيذي رقم 91-98 المؤرخ في 20 أفريل1991، إلى المؤسسة العمومية للبث الاذاعي والتلفزي، ذات طابع صناعي وتجاري، تتمتع بالشخصية المعنوية والاستقلال المالي.تتمثل مهام المؤسسة على الخصوص فيما يأتي: المادة 5 من المرسوم التنفيذي رقم 91-98 المؤرخ في 5شوال عام 1411 الموافق 20 أفريل1991)', 'dmk@tda.dz', NULL, 'مؤسسة البث الاذاعي والتلفزي الجزائري (TDA)', '+213 (0) 23 18 10 01', 'https://www.tda.dz/', 'soustutelle', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3195.0845078137927!2d3.0108056763796305!3d36.79252416813133!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fb17c1d1fa0d5%3A0x23c0b01cddcf746c!2zVMOpbMOpZGlmZnVzaW9uIGQnQWxnw6lyaWUgVERB!5e0!3m2!1sfr!2sdz!4v1714029921245!5m2!1sfr!2sdz\" width=\"600\" height=\"450\" style=\"border:0;\"', 'Under Decree No. 86-148 dated 24 Shawwal 1406, corresponding to July 1, 1986, following the restructuring of the Algerian Radio and Television Establishment (ART), the National Broadcasting Establishment was created as an economic company with a social and cultural nature, Subsequently, its name and legal status were changed under Executive Decree No. 91-98 dated April 20, 1991, to the Public Institution for Radio and Television Broadcasting, characterized by its industrial and commercial nature, enjoying legal personality and financial independence. The tasks of the establishment, in particular, are as follows: Article 5 of Executive Decree No. 91-98 dated 5 Shawwal 1411, corresponding to April 20, 1991', 'Suite à la restructuration de l\'établissement algérien de radio et de télévision (RTA), l\'entreprise nationale de télédiffusion, à caractère économique, social et culturel, a été créée par le décret n° 86-148 du 24 chaoual 1406, correspondant au 1er juillet 1986, puis rebaptisée par le décret exécutif n° 91-98 du 20 avril 1991, Télédiffusion d’Algérie, à caractère industriel et commercial, dotée de la personnalité morale et de l\'autonomie financière. Les missions de l\'entreprise sont les suivantes : Article 5 du décret exécutif n° 91-98 du 5 chaoual 1411 (20 avril 1991)', 'Etablissement Public Télédiffusion d’Algérie TDA', 'Public Broadcasting Establishment of Algeria', 'Benam Bouzareah Road 50 Algeria', 'Route Binam Bouzareah 50, Algérie', NULL, NULL),
+(NULL, '2024-04-24 15:31:54.000000', 1558, '2024-10-06 20:19:28.482086', 'بئر مراد رايس 16.000الجزائر الجزائر.', 'تم إنشاء وكالة الأنباء الجزائرية في 1 ديسمبر 1961 بتونس، في خضم حرب التحرير الوطنية، لتكون صوت الثورة الجزائرية وحامل لوائها على الساحة الإعلامية الدولية، بعد الاستقلال تم نقل مقرها بشكل طبيعي إلى الجزائر العاصمة، وواصلت عملها كوكالة أنباء تقدم خدمات إعلامية وفق النصوص والمهام المكلفة بها.تمارس مؤسسة \"وكالة الأنباء الجزائرية\" التي تم تحويلها بموجب المرسوم التنفيذي رقم 91-105 المؤرخ في 20 أفريل 1991 الى مؤسسة عمومية ذات طابع اقتصادي وتجاري، وظيفة الخدمة العمومية من خلال المهام التالية: المادة 3 من المرسوم رقم 91-105 المؤرخ في 20 أفريل 1991', 'contact@aps.dz\r\n', '+213 (0) 23 56 96 47', 'وكالة الأنباء الجزائرية (APS)', '+213 (0) 23 56 96 90', 'https://www.aps.dz/', 'soustutelle', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3197.349198935703!2d3.0580478890422325!3d36.73818839969114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fad81ad08914d%3A0xc1135269d69ae530!2sAlg%C3%A9rie%20Presse%20Service!5e0!3m2!1sfr!2sdz!4v1714030527049!5m2!1sfr!2sdz\" width=\"600\" height=\"450\" style=\"border:0;\"', 'Algeria Press Service was established on December 1, 1961, in Tunisia, in the midst of the National Liberation War, to be the voice of the Algerian revolution and its banner on the international media stage. After independence, its headquarters was transferred naturally to Algiers, and it continued to operate as a news agency providing media services in accordance with the texts and tasks assigned to it. \'Algeria Press Service,\' which was transformed into a public establishment with an economic and commercial nature under Executive Decree No. 91-105 dated April 20, 1991, exercises the function of public service through the following missions: Article 3 of Decree No. 91-105 dated April 20, 1991', 'Algérie Presse Service a été créée le 1er décembre 1961 à Tunis, en pleine guerre de libération nationale, pour être la voix de la Révolution algérienne et son porte-drapeau sur la scène médiatique internationale. Après l\'indépendance, son siège a été naturellement transféré à Alger et a poursuivi son travail d\'agence de presse fournissant des services médiatiques conformément aux textes et aux missions qui lui ont été assignés. Transformée par le décret exécutif n° 91-105 du 20 avril 1991 en établissement public à caractère économique et commercial, «Algérie Presse Service » exerce une fonction de service public à travers les missions suivantes : Article 3 du décret n° 91-105 du 20 avril 1991', 'Algérie Presse Service', 'Algeria Press Service', 'Bir Mourad Rais 16,000 Algeria Algeria.', 'Bir Mourad Rais16 000 Alger Algérie.', NULL, NULL),
+(NULL, '2024-04-24 15:54:41.000000', 1559, '2024-10-06 20:20:05.108595', ' دار الصحافة الطاهر جعوط ، 1 ماي ، الجزائر العاصمة', 'بمقتضى مرسوم تنفيذي رقم 90-243 مؤرخ في 13 محرم عام 1411 الموافق 4 أوت 1990، يتضمن انشاء مؤسسة عمومية ذات طابع صناعي وتجاري تتمتع بالشخصية المعنوية والاستقلال المالي تسمى \"دار الصحافة\"، مقرها 01 نهج بشير عطار أول ماي –الجزائر العاصمة.', 'غير متوفر', 'غير متوفر', 'دار الصحافة', 'غير متوفر', 'غير متوفر', 'soustutelle', 'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d950.9170633022551!2d3.187553278997451!3d36.71076748846273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sdz!4v1714037132517!5m2!1sfr!2sdz\" width=\"600\" height=\"450\" style=\"border:0;\"', 'By virtue of Executive Decree No. 90-243 dated 13 Muharram 1411, corresponding to August 4, 1990, a public establishment of an industrial and commercial nature, enjoying legal personality and financial autonomy, was created, called \'Press House,\' with its headquarters located at 01 Avenue Bachir Attar, 1er Mai - Algiers.', 'Par  décret exécutif n° 90-243 du 13 Mouharram 1411 correspondant au 4 août 1990 portant création d\'un établissement public à caractère industriel et commercial doté de la personnalité morale et de l\'autonomie financière dénommé « Maison de la presse », dont le siège est fixé au 01 Avenue Bachir Attar 1er mai - Alger.', 'Maison de la presse', 'Press House', 'Tahar Djaout Press House, May 1, Algiers', 'Maison de Presse Tahar Jaout, 1er mai, Alger', NULL, NULL),
+(NULL, '2024-04-24 16:44:11.000000', 1560, '2024-10-06 20:20:35.119182', 'المنطقة الصناعية العليا ، باب الزوار ، الجزائر العاصمة ، الجزائر', 'شركة الطباعة بالجزائر هي مؤسسة عمومية اقتصادية أُنشِئَت بموجب المرسوم رقم 90-242 المؤرخ في 11/12/1990 تحت إشراف وزارة الاتصال، نتيجة لإعادة هيكلة شركة الشعب. تُؤمن الشركة بطباعة وتوزيع الصحف الوطنية العامة والخاصة، وتُساهم في تطوير الصحافة الوطنية المكتوبة من خلال التحديث الدائم لوسائل إنتاجها، واستخدام التكنولوجيا الحديثة، وظائف الطباعة ذات الجودة المتنوعة.في إطار تحسين قطاع الاتصال والإعلام على المستوى الوطني وتسهيل وتوسيع توزيع الصحف على المستوى الوطني؛ تجسَّد هذا الاهتمام في قرار إنشاء وحدات طباعة إقليمية في الجنوب الأكبر (سنة 2008 مطبعة ورقلة، سنة 2013 مطبعة بشار).', 'contact@sia.dz', '+21323 83 96 75', 'شركة الطباعة للجزائر (SIA)', '+21323 83 98 76', 'https://www.sia.dz/', 'soustutelle', 'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d950.9170633022551!2d3.187553278997451!3d36.71076748846273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sdz!4v1714037132517!5m2!1sfr!2sdz\" width=\"600\" height=\"450\" style=\"border:0;\"', 'Algiers Printing Company is a public economic establishment under the supervision of the Ministry of Communication, founded under Decree No. 90-242 dated December 11, 1990, as a result of the restructuring of the People\'s Company. It is responsible for printing and distributing national public and private newspapers and contributes to the development of national written journalism through the continuous modernization of its production methods and the use of modern technology to ensure diverse quality printing functions. To improve the communication and media sector at the national level and facilitate the distribution of newspapers nationwide, this commitment was reflected in the decision to establish regional printing units in the greater south: the Ouargla printing press in 2008 and the Béchar printing press in 2013.', 'Société d’impression d’Alger est un établissement public à caractère économique créé par le décret n° 90-242 du 11 décembre 1990 sous la tutelle du ministère de la Communication, à la suite de la restructuration de ECHAAB. La société assure l\'impression et la distribution des journaux nationaux publics et privés et contribue au développement de la presse écrite nationale par la modernisation constante de ses méthodes de production, l\'utilisation de technologies modernes et des travaux d\'impression diversifiés et de qualité. Dans le cadre de l\'amélioration du secteur de la communication et des médias au niveau national et de la facilitation et de l\'élargissement de la distribution des journaux au niveau national, cet intérêt s\'est traduit par la décision de créer des unités régionales d\'impression dans le Grand Sud (2008 imprimerie de Ouargla, 2013 imprimerie de Bechar).', 'Société d’Impression d’Alger SIA', 'Algiers Printing Company SIA', 'Upper Industrial Zone, Bab Ezzouar, Algiers, Algeria', 'Zone Haute Industrielle, Bab Ezzouar, Alger, Algérie', NULL, NULL),
+(NULL, '2024-04-25 11:38:55.000000', 1561, '2024-10-06 20:20:56.591861', '02شارع فريد زويوش، القبة- الجزائر العاصمة.', 'وهي مؤسسة اقتصادية عمومية ذات أسهم، أسست في سنة 1997 برأسمال قدره 300.000.000 دج، ', 'alpapspa@gmail.com', '023 70 93 48', 'الجزائرية للورق  (ALPAP)', '023 70 93 49\r\n\r\n023 70 93 50', 'غير متوفر', 'soustutelle', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1598.843120024312!2d3.0885984296224462!3d36.730096014493974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fad4fda97c663%3A0x827b7bb9920e684a!2sP3JQ%2B7RV%2C%20Kouba!5e0!3m2!1sfr!2sdz!4v1714038667666!5m2!1sfr!2sdz\" width=\"600\" height=\"450\" style=\"border:0;\"', 'It is a public economic establishment with shares, founded in 1997 with a capital of 300,000,000 DZD.', 'Il s\'agit d\'une société économique publique par actions, créée en 1997 avec un capital de 300.000.000 DA', 'Entreprises publiques d’impression et du Papier ALPAP', 'Public printing and paper companies ALPAP', '02 Farid Zouiche Street, Kouba - Algiers.', '02 Rue Farid Zoyoush, Kouba – Alger.', NULL, NULL),
+(NULL, '2024-04-25 11:54:56.000000', 1562, '2024-10-06 20:22:16.083814', 'المنطقة الصناعية بومرزوق قطعة رقم 08 ص.ب 384 RP، قسنطينة، الجزائر', 'انبثقت عن إعادة هيكلة مؤسسة \"النصر\" تقوم بطباعة الجرائد، الكتب، المجلات والملصقات', 'contact@siecne.com', '+21331 73 19 10', 'شركة الطباعة للشرق(SIE) ', '+21331 73 19 12', 'غير متوفر', 'soustutelle', 'https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3213.4449455985596!2d6.6!3d36.35!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzbCsDIxJzAwLjAiTiA2wrAzNicwMC4wIkU!5e0!3m2!1sfr!2sdz!4v1714044941149!5m2!1sfr!2sdz\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"', 'It emerged from the restructuring of \'Al-Nasr\', specialized in printing newspapers, books, magazines, and posters.', 'Résultant de la restructuration d\'Al Nasr, elle a pour mission d’imprimer des journaux, des livres, des magazines et des affiches.', 'Imprimerie de l\'Est (SIE)', 'Eastern Printing Company (SIE)', 'Industrial Zone Boumerzoug Lot n° 08 BP 384 RP, Constantine, Algeria', 'Zone Industrielle Boumerzoug Lot n° 08 BP 384 RP, Constantine, Algérie', NULL, NULL),
+(NULL, '2024-04-25 12:47:54.000000', 1563, '2024-10-06 20:22:39.403307', '03 طريق النجم ، إسينيا ، وهران ، الجزائر', ' وهي مؤسسة ذات طابع اقتصادي(EPE) تقوم بطباعة الجرائد، الكتب والمجلات.', 'directiongenerale@sio-dz.com', '+21341 61 77 41', 'شركة الطباعة للغرب(SIO)', '+21341 61 77 51', 'غير متوفر', 'soustutelle', 'https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3240.189893442299!2d-0.6330555999999998!3d35.6969444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzXCsDQxJzQ5LjAiTiAwwrAzNyc1OS4wIlc!5e0!3m2!1sfr!2sdz!4v1714044842663!5m2!1sfr!2sdz\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"', 'An establishment of an economic nature (EPE) that prints newspapers, books, and magazines.', 'Il s\'agit d\'une entreprise économique (EPE) qui a pour mission d’imprimer des journaux, des livres et des magazines.', 'Imprimerie de l’Ouest (SIO)', 'Western Printing Company (SIO)', '03 Star Road, Issinia, Oran, Algeria', '03 Route Najm, Essinia, Oran, Algérie', NULL, NULL),
+(NULL, '2024-04-25 13:07:03.000000', 1564, '2024-10-06 20:23:03.429363', '06 شارع باستور ، الجزائر العاصمة ، الجزائر', 'كانت ولغاية سنة 1997 ذات طابع صناعي وتجاري، تحولت في شهر مارس من سنة 1997 الى مؤسسة عمومية اقتصادية ذات أسهم، تقوم بطباعة الجرائد، الكتب والمجلات.', 'enapspa@gmail.com', '+21321 73 18 00\r\n\r\n', 'المؤسسة الجزائرية للصحافة(ENAP)', '+21321 73 18 01', 'غير متوفر', 'soustutelle', 'https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3195.9015489198964!2d3.0576983999999996!3d36.7729292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzbCsDQ2JzIyLjYiTiAzwrAwMycyNy43IkU!5e0!3m2!1sfr!2sdz!4v1714044656183!5m2!1sfr!2sdz\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"', 'Until 1997, it had an industrial and commercial nature. In March 1997, it was transformed into a public economic establishment with shares, whose mission is printing newspapers, books and magazines.', 'Jusqu\'en 1997, il s\'agissait d\'une entreprise industrielle et commerciale, transformé en mars 1997 en un établissement public à caractère économique par actions, ayant pour mission d’imprimer des journaux, des livres et des magazines.', 'Entreprise de la Presse Algérienne (ENAP)', 'Algerian Press Company (ENAP)', '06 Pasteur Street, Algiers, Algeria', '06 rue Pasteur, Alger, Algérie', NULL, NULL),
+(NULL, '2024-10-06 16:11:41.000000', 1565, '2024-10-06 16:42:42.000000', '02  شارع فريدة زويوش  القبة الجزائر ', 'المركز الوطني للوثائق والصحافة والصورة والإعلام هو مؤسسة عمومية تضطلع بمهمة جمع، معالجة، حفظ، وإيصال التراث المكتوب، المصور، والسمعي البصري التابع لقطاع الاتصال لأكثر من قرن من تاريخ الجزائر. كما يتولى المركز نشر وتوزيع المنتجات الوثائقية، النصوص، والصور، مع تسهيل الوصول إلى الذاكرة الوثائقية عبر المنصة الإلكترونية  وذلك بإحالة   المتصفح إلى المراجع وفهرسة الوثائق، إضافة إلى تحديد مواضيع الأرصدة الوثائقية، وذلك لتقديم نظام معلوماتي متنوع يشمل الاقتصاد، المجتمع، السياسة، والثقافة', '', '023.70.90.52', 'المركز الوطني للوثائق والصحافة والصورة والإعلام', '023.70.90.52', 'www.cndpi.dz', 'soustutelle', 'https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d4522.40105687396!2d3.09442646362691!3d36.72687308643245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1zMDIg2LTYp9ix2Lkg2YHYsdmK2K_YqSDYstmI2YrZiNi0ICDYp9mE2YLYqNipINin2YTYrNiy2KfYptixIA!5e0!3m2!1sar!2sdz!4v1728223761219!5m2!1sar!2sdz\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"', 'The National Center for Documentation, Press, Image and Information is a public institution that is responsible for collecting, processing, preserving and communicating the written, photographic and audiovisual heritage of the communication sector for more than a century of Algerian history. The center also publishes and distributes documentary products, texts and images, while facilitating access to documentary memory via the electronic platform by referring the browser to references and indexing documents, in addition to identifying the topics of documentary assets, in order to provide a diverse information system that includes the economy, society, politics and culture.', 'Le Centre National de la Documentation, de la Presse, de l\'Image et des Médias est un établissement public qui assure la mission de collecte, de traitement, de conservation et de communication du patrimoine écrit, photographique et audiovisuel du secteur de la communication pour plus d\'un siècle d\'histoire algérienne. Le centre publie et diffuse également des produits documentaires, des textes et des images, tout en facilitant l\'accès à la mémoire documentaire via la plateforme électronique en renvoyant le navigateur vers des références et des documents d\'indexation, en plus d\'identifier des thèmes dans les crédits documentaires, afin de fournir une information diversifiée. système qui comprend l’économie, la société, la politique et la culture.', 'Centre national du document, de la presse, de l\'image et des médias', 'National Center for Documents, Press, Image and Media', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -343,10 +365,10 @@ DROP TABLE IF EXISTS `event_publication`;
 CREATE TABLE IF NOT EXISTS `event_publication` (
   `id` binary(16) NOT NULL,
   `completion_date` datetime(6) DEFAULT NULL,
-  `event_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `listener_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `event_type` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `listener_id` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `publication_date` datetime(6) DEFAULT NULL,
-  `serialized_event` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `serialized_event` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -361,12 +383,12 @@ CREATE TABLE IF NOT EXISTS `lois` (
   `created_at` datetime(6) DEFAULT NULL,
   `id` bigint NOT NULL AUTO_INCREMENT,
   `updated_at` datetime(6) DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_en` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_fr` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `name_en` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name_fr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_general_ci,
+  `description_en` text COLLATE utf8mb4_general_ci,
+  `description_fr` text COLLATE utf8mb4_general_ci,
+  `name_en` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `name_fr` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -375,9 +397,9 @@ CREATE TABLE IF NOT EXISTS `lois` (
 --
 
 INSERT INTO `lois` (`created_at`, `id`, `updated_at`, `name`, `description`, `description_en`, `description_fr`, `name_en`, `name_fr`) VALUES
-('2024-04-24 13:01:11.000000', 2, '2024-04-24 13:01:11.000000', 'القوانين', NULL, NULL, '', 'Laws', 'Lois'),
-('2024-04-28 10:34:06.000000', 5, '2024-04-28 10:34:06.000000', 'المراسيم التنفيذية', ' ', NULL, '', 'Executive Decrees', 'Décrets exécutifs'),
-('2024-09-24 13:43:24.000000', 6, '2024-09-24 13:43:24.000000', 'القرارت', 'القرارت', NULL, '', 'Decisions', 'Décisions');
+('2024-04-24 13:01:11.000000', 2, '2024-04-24 13:01:11.000000', 'القوانين', NULL, NULL, NULL, NULL, NULL),
+('2024-04-28 10:34:06.000000', 5, '2024-04-28 10:34:06.000000', 'المراسيم التنفيذية', ' ', NULL, NULL, NULL, NULL),
+('2024-09-24 13:43:24.000000', 6, '2024-09-24 13:43:24.000000', 'القرارت', 'القرارت', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -388,17 +410,17 @@ INSERT INTO `lois` (`created_at`, `id`, `updated_at`, `name`, `description`, `de
 DROP TABLE IF EXISTS `minister`;
 CREATE TABLE IF NOT EXISTS `minister` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `birthday` date DEFAULT NULL,
-  `first_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `last_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `first_name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `last_name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `start_from` date DEFAULT NULL,
   `until` date DEFAULT NULL,
   `profile_picture_id` bigint DEFAULT NULL,
-  `first_name_fr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `formatted_start_from` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `formatted_until` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `last_name_fr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `first_name_fr` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `formatted_start_from` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `formatted_until` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `last_name_fr` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_eqosespnllwcj7bdqatuc4uyb` (`profile_picture_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -423,28 +445,28 @@ INSERT INTO `minister` (`id`, `address`, `birthday`, `first_name`, `last_name`, 
 (13, 'alg', NULL, 'بلقايد', ' أبو بكر ', '1991-01-01', '1992-01-01', 367, 'Belkaid', NULL, NULL, 'Aboubakr '),
 (14, 'alg', NULL, 'حمراوي', ' حبيب شوقي', '1992-01-01', '1993-01-01', 368, 'Hamraoui', NULL, NULL, 'Habib Chawki'),
 (15, 'alg', NULL, 'مرزوق', 'محمد', '1993-09-01', '1993-11-01', 369, 'Marzouk', NULL, NULL, 'Mohamed '),
-(16, 'alg', NULL, 'زرهوني', 'محمد بن عمر', '1994-01-01', '1995-01-01', 370, 'Zerhouni', NULL, NULL, 'Mohamed Ben Amar'),
-(17, 'alg ', NULL, 'بشيشي', 'لمين', '1995-01-01', '1996-01-01', 371, 'Bechichi', NULL, NULL, 'Lamine '),
-(18, 'alg', NULL, 'ميهوبي', 'ميهوب', '1996-01-01', '1997-01-01', 372, 'Mihoubi ', NULL, NULL, 'El Mihoub'),
-(19, 'alg', NULL, 'حمراوي', 'حبيب شوقي', '1997-01-01', '1998-01-01', 373, 'Hamraoui', NULL, NULL, 'Habib Chawki'),
-(20, 'alg', NULL, 'رحابي', ' عبد العزيز', '1998-01-01', '1999-01-01', 374, 'Rahabi', NULL, NULL, 'Abdelaziz '),
-(21, 'alg', NULL, 'تبون', ' عبد المجيد', '1999-01-01', '2000-01-01', 375, 'Tebboune', NULL, NULL, 'Abdelmadjid '),
-(22, 'alg ', NULL, 'عميمور', 'محي الدين', '2000-01-01', '2001-01-01', 376, 'Amimour', NULL, NULL, 'Mahieddine '),
-(23, 'alg', NULL, 'عبو', 'محمد', '2001-01-01', '2002-01-01', 377, 'Abbou', NULL, NULL, 'Mohamed '),
-(24, 'alg', NULL, 'تومي', 'خليدة', '2002-01-01', '2004-01-01', 378, 'Toumi', NULL, NULL, 'Khalida '),
-(25, 'alg ', NULL, 'هيشور', 'بوجمعة', '2004-01-01', '2006-01-01', 379, 'Haichour', NULL, NULL, 'Boudjemaa '),
-(26, 'alg', NULL, 'جيار', 'الهاشمي', '2006-01-01', '2007-01-01', 380, 'Djiar', NULL, NULL, 'Hachemi '),
-(27, 'alg', NULL, 'بوكرزازة', ' عبد الرشيد', '2007-01-01', '2008-01-01', 381, 'Boukerzaza', NULL, NULL, 'Abderrachid '),
-(28, 'alg', NULL, 'ميهوبي', ' عزالدين', '2008-01-01', '2010-01-01', 382, 'Mihoubi', NULL, NULL, 'Azzedine '),
-(29, 'alg', NULL, 'مهل', 'ناصر', '2010-01-01', '2012-01-01', 383, 'Mehal', NULL, NULL, 'Nacer '),
-(30, 'alg', NULL, 'بلعيد ', 'محند أوسعيد', '2012-09-01', '2013-09-01', 384, 'Belaïd ', NULL, NULL, 'Mohand-Oussaïd'),
-(31, 'alg', NULL, 'مساهل', ' عبدالقادر ', '2013-09-01', '2014-05-01', 385, 'Messahel', NULL, NULL, 'Abdelkader '),
-(32, 'alg', NULL, 'قر ين', 'حميد', '2014-05-01', '2017-05-01', 386, 'Grine', NULL, NULL, 'Hamid '),
-(33, 'alg', NULL, 'كعوان', 'جمال', '2017-05-25', '2019-03-31', 387, 'Kaouane', NULL, NULL, 'Djamel '),
-(34, 'alg', NULL, 'رابحي', 'حسن', '2019-08-01', '2020-01-02', 388, 'Rabhi ', NULL, NULL, 'Hassan '),
-(35, 'alg', NULL, 'بلحيمر', 'عمار', '2020-01-02', '2021-11-01', 389, 'Belhimer', NULL, NULL, 'Ammar '),
-(36, 'alg', NULL, 'بوسليماني', 'محمد', '2021-11-01', '2023-06-01', 390, 'Bouslimani', NULL, NULL, 'Mohamed '),
-(37, 'alg', NULL, 'الدكتور لعقاب ', 'محمد', '2023-09-01', NULL, 391, 'Docteur Laagab', NULL, NULL, 'Mohamed ');
+(16, 'alg', NULL, 'زرهوني', 'محمد بن عمر', '1994-01-01', '1995-01-01', 370, 'Mohamed', NULL, NULL, 'Ali'),
+(17, 'alg ', NULL, 'بشيشي', 'لمين', '1995-01-01', '1996-01-01', 371, 'Youssef', NULL, NULL, 'Ghanem'),
+(18, 'alg', NULL, 'ميهوبي', 'ميهوب', '1996-01-01', '1997-01-01', 372, 'Abdelkader', NULL, NULL, 'Messaoudi'),
+(19, 'alg', NULL, 'حمراوي', 'حبيب شوقي', '1997-01-01', '1998-01-01', 373, 'Houcine', NULL, NULL, 'Derrar'),
+(20, 'alg', NULL, 'رحابي', ' عبد العزيز', '1998-01-01', '1999-01-01', 374, 'Djamila', NULL, NULL, 'Zerouki'),
+(21, 'alg', NULL, 'تبون', ' عبد المجيد', '1999-01-01', '2000-01-01', 375, 'Ahmed', NULL, NULL, 'Sidi'),
+(22, 'alg ', NULL, 'عميمور', 'محي الدين', '2000-01-01', '2001-01-01', 376, 'Abderrahmane', NULL, NULL, 'Ould Kadour'),
+(23, 'alg', NULL, 'عبو', 'محمد', '2001-01-01', '2002-01-01', 377, 'Mohamed Tayeb', NULL, NULL, 'Bouazza'),
+(24, 'alg', NULL, 'تومي', 'خليدة', '2002-01-01', '2004-01-01', 378, 'Nadia', NULL, NULL, 'Bouazza'),
+(25, 'alg ', NULL, 'هيشور', 'بوجمعة', '2004-01-01', '2006-01-01', 379, 'Salim', NULL, NULL, 'Henine'),
+(26, 'alg', NULL, 'جيار', 'الهاشمي', '2006-01-01', '2007-01-01', 380, 'Fatima', NULL, NULL, 'Habiba'),
+(27, 'alg', NULL, 'بوكرزازة', ' عبد الرشيد', '2007-01-01', '2008-01-01', 381, 'Boukerzaza', NULL, NULL, 'Abderrachid'),
+(28, 'alg', NULL, 'ميهوبي', ' عزالدين', '2008-01-01', '2010-01-01', 382, 'Mihoubi', NULL, NULL, 'Azzedine'),
+(29, 'alg', NULL, 'مهل', 'ناصر', '2010-01-01', '2012-01-01', 383, 'Mehal', NULL, NULL, 'Nacer'),
+(30, 'alg', NULL, 'السعيد', 'محمد', '2012-09-01', '2013-09-01', 384, 'Belaïd', NULL, NULL, 'Mohand-Oussaïd'),
+(31, 'alg', NULL, 'مساهل', ' عبدالقادر ', '2013-09-01', '2014-05-01', 385, 'Messahel', NULL, NULL, 'Abdelkader'),
+(32, 'alg', NULL, 'قر ين', 'حميد', '2014-05-01', '2017-05-01', 386, 'Grine', NULL, NULL, 'Hamid'),
+(33, 'alg', NULL, 'كعوان', 'جمال', '2017-05-25', '2019-03-31', 387, 'Kaouane', NULL, NULL, 'Djamel'),
+(34, 'alg', NULL, 'رابحي', 'حسن', '2019-08-01', '2020-01-02', 388, 'Rabhi', NULL, NULL, 'Hassan'),
+(35, 'alg', NULL, 'بلحيمر', 'عمار', '2020-01-02', '2021-11-01', 389, 'Belhimer', NULL, NULL, 'Ammar'),
+(36, 'alg', NULL, 'بوسليماني', 'محمد', '2021-11-01', '2023-06-01', 390, 'Bouslimani', NULL, NULL, 'Mohamed'),
+(37, 'alg', NULL, 'لعقاب', 'محمد', '2023-09-01', NULL, 391, 'Docteur Laagab', NULL, NULL, 'Mohamed');
 
 -- --------------------------------------------------------
 
@@ -463,11 +485,11 @@ CREATE TABLE IF NOT EXISTS `multimedia` (
   `tv_id` bigint DEFAULT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
   `user_id` bigint DEFAULT NULL,
-  `doc_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `file_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `file_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `fromtable` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `doc_type` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `file_name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `file_path` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `fromtable` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `type` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `minister_id` bigint DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK430s9iwxejdhgykl5mksxiwnc` (`etablissement_id`),
@@ -477,7 +499,7 @@ CREATE TABLE IF NOT EXISTS `multimedia` (
   KEY `FK841iiluy2pexb2qg6exqhbws0` (`tv_id`),
   KEY `FKqetdote85qjqxe9namkmfygww` (`user_id`),
   KEY `FKs37vceteeeh5w6sf235bk8rtm` (`minister_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=392 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=395 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `multimedia`
@@ -731,7 +753,10 @@ INSERT INTO `multimedia` (`created_at`, `etablissement_id`, `id`, `presse_id`, `
 ('2024-10-05 18:44:46.461179', NULL, 388, NULL, NULL, NULL, NULL, '2024-10-05 18:44:46.461221', NULL, NULL, 'حسن رابحي-وزير الاتصال الناطق الرسمي للحكومة ووزير الثقافة بالنيابة أوت 2019 - جانفي 2020.png', 'src/main/resources/static/multimedia/حسن رابحي-وزير الاتصال الناطق الرسمي للحكومة ووزير الثقافة بالنيابة أوت 2019 - جانفي 2020.png', NULL, NULL, NULL),
 ('2024-10-05 18:45:46.640543', NULL, 389, NULL, NULL, NULL, NULL, '2024-10-05 18:45:46.640575', NULL, NULL, 'عمار بلحيمر-وزير الاتصال جانفي 2020 - نوفمبر 2021.png', 'src/main/resources/static/multimedia/عمار بلحيمر-وزير الاتصال جانفي 2020 - نوفمبر 2021.png', NULL, NULL, NULL),
 ('2024-10-05 18:46:45.320268', NULL, 390, NULL, NULL, NULL, NULL, '2024-10-05 18:46:45.320317', NULL, NULL, 'محمد بوسليماني-وزير الاتصال نوفمبر2021 إلى جوان 2023.png', 'src/main/resources/static/multimedia/محمد بوسليماني-وزير الاتصال نوفمبر2021 إلى جوان 2023.png', NULL, NULL, NULL),
-('2024-10-05 18:47:26.931022', NULL, 391, NULL, NULL, NULL, NULL, '2024-10-05 18:47:26.931061', NULL, NULL, 'محمد لعقاب- وزير الاتصال سبتمبر 2023 إلى يومنا هذا.png', 'src/main/resources/static/multimedia/محمد لعقاب- وزير الاتصال سبتمبر 2023 إلى يومنا هذا.png', NULL, NULL, NULL);
+('2024-10-05 18:47:26.931022', NULL, 391, NULL, NULL, NULL, NULL, '2024-10-05 18:47:26.931061', NULL, NULL, 'محمد لعقاب- وزير الاتصال سبتمبر 2023 إلى يومنا هذا.png', 'src/main/resources/static/multimedia/محمد لعقاب- وزير الاتصال سبتمبر 2023 إلى يومنا هذا.png', NULL, NULL, NULL),
+('2024-10-06 16:11:43.000000', 1565, 392, NULL, NULL, NULL, NULL, '2024-10-06 16:11:43.000000', NULL, 'etablissementDoc', '3b37512e-858c-45f9-a4b7-259e5acbcd19_CNDPI.png', 'images', NULL, 'image/png', NULL),
+('2024-10-07 11:18:09.000000', NULL, 393, NULL, NULL, NULL, 1737, '2024-10-07 11:18:09.000000', NULL, 'profileDoc', 'f20f11ba-0649-4184-9408-7e857214c096_AL24_News_Logo.svg.png', 'images', NULL, 'image/png', NULL),
+('2024-10-07 11:36:15.000000', NULL, 394, NULL, NULL, NULL, 1739, '2024-10-07 11:36:15.000000', NULL, 'profileDoc', 'c7d99c59-9be8-4e37-b62c-de36e093a9e1_logo-entv-tV9.png', 'images', NULL, 'image/png', NULL);
 
 -- --------------------------------------------------------
 
@@ -745,23 +770,23 @@ CREATE TABLE IF NOT EXISTS `presse` (
   `created_at` datetime(6) DEFAULT NULL,
   `id` bigint NOT NULL AUTO_INCREMENT,
   `updated_at` datetime(6) DEFAULT NULL,
-  `adresse` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `categorieelec` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `fax` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `localisation` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `site` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `typepbpr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `website` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `adresse_en` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `adresse_fr` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_en` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_fr` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `name_en` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name_fr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `adresse` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `categorieelec` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `fax` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `localisation` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `site` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `typepbpr` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `website` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_general_ci,
+  `adresse_en` text COLLATE utf8mb4_general_ci,
+  `adresse_fr` text COLLATE utf8mb4_general_ci,
+  `description_en` text COLLATE utf8mb4_general_ci,
+  `description_fr` text COLLATE utf8mb4_general_ci,
+  `name_en` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `name_fr` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKaoretyhavt4aqy7vilaxfydp8` (`complexe_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1119 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -896,12 +921,12 @@ CREATE TABLE IF NOT EXISTS `presse_categorie` (
   `created_at` datetime(6) DEFAULT NULL,
   `id` bigint NOT NULL AUTO_INCREMENT,
   `updated_at` datetime(6) DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `descriptio_en` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_fr` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `name_en` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name_fr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_general_ci,
+  `descriptio_en` text COLLATE utf8mb4_general_ci,
+  `description_fr` text COLLATE utf8mb4_general_ci,
+  `name_en` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `name_fr` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -1041,6 +1066,115 @@ INSERT INTO `presse_pressecatrgorie` (`presse_id`, `pressecatrgorie_id`) VALUES
 (1115, 1),
 (1116, 1),
 (1117, 1),
+(1118, 1),
+(1005, 2),
+(1006, 3),
+(1007, 3),
+(1008, 3),
+(1009, 2),
+(1010, 1),
+(1011, 1),
+(1012, 1),
+(1015, 1),
+(1016, 1),
+(1018, 1),
+(1019, 1),
+(1020, 1),
+(1021, 1),
+(1022, 1),
+(1023, 1),
+(1024, 1),
+(1025, 1),
+(1026, 1),
+(1027, 1),
+(1013, 1),
+(1028, 1),
+(1029, 1),
+(1030, 2),
+(1031, 2),
+(1032, 2),
+(1033, 2),
+(1034, 2),
+(1035, 2),
+(1036, 2),
+(1037, 2),
+(1038, 2),
+(1039, 2),
+(1040, 2),
+(1041, 2),
+(1042, 2),
+(1043, 2),
+(1044, 2),
+(1045, 2),
+(1046, 2),
+(1047, 2),
+(1048, 2),
+(1049, 2),
+(1050, 2),
+(1051, 2),
+(1052, 2),
+(1053, 2),
+(1054, 2),
+(1055, 2),
+(1056, 2),
+(1057, 2),
+(1058, 2),
+(1059, 2),
+(1060, 2),
+(1061, 2),
+(1062, 2),
+(1063, 2),
+(1064, 2),
+(1065, 2),
+(1066, 2),
+(1067, 2),
+(1068, 2),
+(1069, 2),
+(1070, 2),
+(1071, 2),
+(1072, 2),
+(1073, 2),
+(1074, 2),
+(1075, 2),
+(1076, 1),
+(1077, 1),
+(1078, 1),
+(1079, 1),
+(1080, 1),
+(1081, 1),
+(1082, 1),
+(1083, 1),
+(1084, 1),
+(1085, 1),
+(1087, 1),
+(1088, 1),
+(1090, 1),
+(1091, 1),
+(1092, 1),
+(1093, 1),
+(1094, 1),
+(1095, 1),
+(1096, 1),
+(1098, 1),
+(1099, 1),
+(1100, 1),
+(1101, 1),
+(1102, 1),
+(1103, 1),
+(1104, 1),
+(1105, 1),
+(1106, 1),
+(1107, 1),
+(1108, 1),
+(1109, 1),
+(1110, 1),
+(1111, 1),
+(1112, 1),
+(1113, 1),
+(1114, 1),
+(1115, 1),
+(1116, 1),
+(1117, 1),
 (1118, 1);
 
 -- --------------------------------------------------------
@@ -1055,23 +1189,23 @@ CREATE TABLE IF NOT EXISTS `radio` (
   `created_at` datetime(6) DEFAULT NULL,
   `id` bigint NOT NULL AUTO_INCREMENT,
   `updated_at` datetime(6) DEFAULT NULL,
-  `adresse` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `categorie` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `fax` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `localisation` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `streaminglink` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `website` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `adresse_en` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `adresse_fr` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_en` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_fr` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `name_en` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name_fr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `adresse` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `categorie` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `fax` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `localisation` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `streaminglink` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `type` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `website` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_general_ci,
+  `adresse_en` text COLLATE utf8mb4_general_ci,
+  `adresse_fr` text COLLATE utf8mb4_general_ci,
+  `description_en` text COLLATE utf8mb4_general_ci,
+  `description_fr` text COLLATE utf8mb4_general_ci,
+  `name_en` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `name_fr` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKisi1wxcawcfe4irb6mdvwp1mt` (`complexe_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2067 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -1151,13 +1285,13 @@ CREATE TABLE IF NOT EXISTS `textjuridique` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `lois_id` bigint DEFAULT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_en` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_fr` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `name_en` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name_fr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `path` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_general_ci,
+  `description_en` text COLLATE utf8mb4_general_ci,
+  `description_fr` text COLLATE utf8mb4_general_ci,
+  `name_en` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `name_fr` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK2l1t2o3rqxoh8k48ajpi6oa6b` (`lois_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -1167,25 +1301,25 @@ CREATE TABLE IF NOT EXISTS `textjuridique` (
 --
 
 INSERT INTO `textjuridique` (`created_at`, `id`, `lois_id`, `updated_at`, `name`, `path`, `description`, `description_en`, `description_fr`, `name_en`, `name_fr`) VALUES
-('2024-04-24 13:02:13.000000', 2, 2, '2024-04-24 13:02:13.000000', 'الصحافة المكتوبة والصحافة الإلكترونية', ' ', ' قانون رقم 23- 19مؤرخ في 18 جمادى الأولى عام 1445 الموافق  2ديسمبر سنة 2023-، يتعلق بالصحافة المكتوبة والصحافة الإلكترونية', NULL, NULL, NULL, NULL),
-('2024-04-24 13:51:53.000000', 3, 2, '2024-04-24 13:51:53.000000', 'القانون العضوي للاعلام', ' ', 'قانون عضوي رقم 23-14 مؤرخ في 10 صفر عام 1445 الموافق 27 غشت سنة 2023,يتعلق بالاعلام', NULL, NULL, NULL, NULL),
-('2024-04-24 13:55:55.000000', 4, 2, '2024-04-24 13:55:56.000000', 'قانون النشاط السمعي البصري', ' ', '	قانون رقم 23-20 مؤرخ في 18 جمادى الاولى عام 1445 الموافق 2 ديسمبر سنة 2023 , يتعلق بالنشاط السمعي البصري', NULL, NULL, NULL, NULL),
-('2024-04-28 10:40:32.000000', 5, 5, '2024-04-28 10:40:33.000000', 'مرسوم تنفيذي رقم91-102 المؤرخ في 5 شوال عام 1411 الموافق ل 20 أبريل بسنة 1991 يحول المؤسسة الوطنية للإذاعة المسموعة إلى المؤسسة عمومية للإذاعة العمومية', ' ', 'مرسوم تنفيذي رقم91-102 المؤرخ في 5 شوال عام 1411 الموافق ل 20 أبريل بسنة 1991 يحول المؤسسة الوطنية للإذاعة المسموعة إلى المؤسسة عمومية للإذاعة العمومية', NULL, NULL, NULL, NULL),
+('2024-04-24 13:02:13.000000', 2, 2, '2024-04-24 13:02:13.000000', 'الصحافة المكتوبة والصحافة الإلكترونية', ' ', ' قانون رقم 23- 19مؤرخ في 18 جمادى الأولى عام 1445 الموافق  2ديسمبر سنة 2023-، يتعلق بالصحافة المكتوبة والصحافة الإلكترونية', NULL, 'Loi n°23-19 du 18 Joumada al-Awwal 1445 correspondant au 2 décembre 2023, relative à la presse écrite et électronique.', NULL, 'Presse ecrite et Presse électronique'),
+('2024-04-24 13:51:53.000000', 3, 2, '2024-04-24 13:51:53.000000', 'القانون العضوي للاعلام', ' ', 'قانون عضوي رقم 23-14 مؤرخ في 10 صفر عام 1445 الموافق 27 غشت سنة 2023,يتعلق بالاعلام', NULL, 'Loi organique n°23-14 du 10 Safar 1445 correspondant au 27 août 2023, relative aux médias.', NULL, 'Loi sur les médias organiques'),
+('2024-04-24 13:55:55.000000', 4, 2, '2024-04-24 13:55:56.000000', 'قانون النشاط السمعي البصري', ' ', '	قانون رقم 23-20 مؤرخ في 18 جمادى الاولى عام 1445 الموافق 2 ديسمبر سنة 2023 , يتعلق بالنشاط السمعي البصري', NULL, 'Loi n°23-20 du 18 Joumada al-Awwal 1445 correspondant au 2 décembre 2023, relative à l\'activité audiovisuelle.', NULL, 'Droit de l\'activité audiovisuelle'),
+('2024-04-28 10:40:32.000000', 5, 5, '2024-04-28 10:40:33.000000', 'مرسوم تنفيذي رقم91-102 المؤرخ في 5 شوال عام 1411 الموافق ل 20 أبريل بسنة 1991 يحول المؤسسة الوطنية للإذاعة المسموعة إلى المؤسسة عمومية للإذاعة العمومية', ' ', 'مرسوم تنفيذي رقم91-102 المؤرخ في 5 شوال عام 1411 الموافق ل 20 أبريل بسنة 1991 يحول المؤسسة الوطنية للإذاعة المسموعة إلى المؤسسة عمومية للإذاعة العمومية', NULL, 'Décret exécutif n° 91-102 du 5 Shawwal 1411, correspondant au 20 avril 1991, transformant la Société nationale de radiodiffusion en société publique de radiodiffusion.', NULL, 'Décret exécutif n° 91-102 du 5 Shawwal 1411, correspondant au 20 avril 1991, transformant la Société nationale de radiodiffusion en société publique de radiodiffusion.'),
 ('2024-04-28 11:08:35.000000', 6, NULL, '2024-04-28 11:08:36.000000', 'مرسوم تنفيذي رقم91-104 المؤرخ في 5 شوال عام 1411 الموافق ل 20 أبريل بسنة 1991 يحول الوكالة الوطنية البرقية للصحافة ( وكالة الأنباء الجزائرية ) إلى مؤسسة ذات طابع صناعي و تجاري', ' ', ' ', NULL, NULL, NULL, NULL),
-('2024-04-28 11:12:36.000000', 7, 5, '2024-04-28 11:12:36.000000', 'مرسوم تنفيذي رقم91-104 المؤرخ في 5 شوال عام 1411 الموافق ل 20 أبريل بسنة 1991 يحول الوكالة الوطنية البرقية للصحافة ( وكالة الأنباء الجزائرية ) إلى مؤسسة ذات طابع صناعي و تجاري', ' ', ' ', NULL, NULL, NULL, NULL),
+('2024-04-28 11:12:36.000000', 7, 5, '2024-04-28 11:12:36.000000', 'مرسوم تنفيذي رقم91-104 المؤرخ في 5 شوال عام 1411 الموافق ل 20 أبريل بسنة 1991 يحول الوكالة الوطنية البرقية للصحافة ( وكالة الأنباء الجزائرية ) إلى مؤسسة ذات طابع صناعي و تجاري', ' ', ' ', NULL, 'Le décret exécutif n° 91-104 du 5 Chawal 1411 correspondant au 20 avril 1991 transforme la Presse Télégraphique Nationale (Agence Algérienne de Presse) en une institution à caractère industriel et commercial.', NULL, 'Le décret exécutif n° 91-104 du 5 Chawal 1411 correspondant au 20 avril 1991 transforme la Presse Télégraphique Nationale (Agence Algérienne de Presse) en une institution à caractère industriel et commercial.'),
 ('2024-09-24 13:41:40.000000', 8, 5, '2024-09-24 13:41:40.000000', 'مرسوم تنفيذي رقم 24-250 مؤرخ  في 23 يوليو 2024 يحدد أحكام دفتر الشروط العامة المفروضة على خدمات الاتصال السمعي البصري', '', 'مرسوم تنفيذي رقم 24-250 مؤرخ  في 23 يوليو 2024 يحدد أحكام دفتر الشروط العامة المفروضة على خدمات الاتصال السمعي البصري', NULL, NULL, NULL, NULL),
-('2024-09-24 13:43:51.000000', 9, 6, '2024-09-24 13:43:51.000000', 'قرار مؤرخ  في 30 يناير 2024 يعدل القرار المؤرخ في 22 جمادى الثانية عام 1443 الموافق 25 جانفي سنة 2022 والمتضمن تشكيلة لجنة الطعن لدى الإدارة المركزية لوزارة الاتصال', '', 'قرار مؤرخ  في 30 يناير 2024 يعدل القرار المؤرخ في 22 جمادى الثانية عام 1443 الموافق 25 جانفي سنة 2022 والمتضمن تشكيلة لجنة الطعن لدى الإدارة المركزية لوزارة الاتصال', NULL, NULL, NULL, NULL),
-('2024-09-24 13:44:13.000000', 10, 6, '2024-09-24 13:44:14.000000', 'قرار مؤرخ  في 30 يناير 2024  يعدل ويتمم القرار المؤرخ في 22 جمادى الثانية عام 1443 الموافق 25 جانفي سنة 2022 والمتضمن تشكيلة اللجان الإداية المتساوية الأعضاء لدى الإدارة المركزية لوزارة الاتصال', '', 'قرار مؤرخ  في 30 يناير 2024  يعدل ويتمم القرار المؤرخ في 22 جمادى الثانية عام 1443 الموافق 25 جانفي سنة 2022 والمتضمن تشكيلة اللجان الإداية المتساوية الأعضاء لدى الإدارة المركزية لوزارة الاتصال', NULL, NULL, NULL, NULL),
-('2024-09-24 13:44:34.000000', 11, 6, '2024-09-24 13:44:35.000000', 'قرار وزاري مشترك مؤرخ  في 23 يناير 2024 ي حدد قائمة صفقات المنتجات والخدمات الخاصة بقطاع الاتصال التي يتطلب استيرادها السرعة في اتخاذ القرار', '', 'قرار وزاري مشترك مؤرخ  في 23 يناير 2024 ي حدد قائمة صفقات المنتجات والخدمات الخاصة بقطاع الاتصال التي يتطلب استيرادها السرعة في اتخاذ القرار', NULL, NULL, NULL, NULL),
-('2024-09-24 13:45:04.000000', 12, 6, '2024-09-24 13:45:04.000000', 'قرار مؤرخ  في 16 يناير 2024 يحدد نموذج التصريح لإصدار نشرية دورية أو ممارسة نشاط الصحافة الإلكترونية والوثائق المطلوبة', '', 'قرار مؤرخ  في 16 يناير 2024 يحدد نموذج التصريح لإصدار نشرية دورية أو ممارسة نشاط الصحافة الإلكترونية والوثائق المطلوبة', NULL, NULL, NULL, NULL),
-('2024-09-24 13:45:54.000000', 13, 2, '2024-09-24 13:45:54.000000', 'قانون رقم 23-20 مؤرخ  في 02 ديسمبر 2023 يتعلق بالنشاط السمعي البصري', '', 'قانون رقم 23-20 مؤرخ  في 02 ديسمبر 2023 يتعلق بالنشاط السمعي البصري', NULL, NULL, NULL, NULL),
-('2024-09-24 13:46:16.000000', 14, 5, '2024-09-24 13:46:17.000000', '(النص التطبيقي للقانون  رقم 23-20 )  مرسوم تنفيذي رقم 24-250 مؤرخ  في 23 يوليو 2024 يحدد أحكام دفتر الشروط العامة المفروضة على خدمات الاتصال السمعي البصري', '', '(النص التطبيقي للقانون  رقم 23-20 )  مرسوم تنفيذي رقم 24-250 مؤرخ  في 23 يوليو 2024 يحدد أحكام دفتر الشروط العامة المفروضة على خدمات الاتصال السمعي البصري', NULL, NULL, NULL, NULL),
-('2024-09-24 13:46:36.000000', 15, 2, '2024-09-24 13:46:36.000000', 'قانون رقم 23-19 مؤرخ  في 02 ديسمبر 2023 يتعلق بالصحافة المكتوبة والصحافة الإلكترونية', '', 'قانون رقم 23-19 مؤرخ  في 02 ديسمبر 2023 يتعلق بالصحافة المكتوبة والصحافة الإلكترونية', NULL, NULL, NULL, NULL),
-('2024-09-24 13:46:49.000000', 16, 6, '2024-09-24 13:46:49.000000', '(النص التطبيقي للقانون  رقم 23-19  )  قرار مؤرخ  في 16 يناير 2024 يحدد نموذج التصريح لإصدار نشرية دورية أو ممارسة نشاط الصحافة الإلكترونية والوثائق المطلوبة ', '', '(النص التطبيقي للقانون  رقم 23-19  )  قرار مؤرخ  في 16 يناير 2024 يحدد نموذج التصريح لإصدار نشرية دورية أو ممارسة نشاط الصحافة الإلكترونية والوثائق المطلوبة ', NULL, NULL, NULL, NULL),
-('2024-09-24 13:47:04.000000', 17, 2, '2024-09-24 13:47:04.000000', 'قانون عضوي رقم 23-14 مؤرخ  في 27 غشت 2023 تعلق بالإعلام', '', 'قانون عضوي رقم 23-14 مؤرخ  في 27 غشت 2023 تعلق بالإعلام', NULL, NULL, NULL, NULL),
-('2024-09-24 13:47:20.000000', 18, 6, '2024-09-24 13:47:21.000000', 'قرار وزاري مشترك مؤرخ  في 20 أبريل 2023 يحدد قائمة إيرادات ونفقات حساب التخصيص الخاص رقم 051-302 الذي عنوانه \"صندوق تخصيص الرسوم المخصصة للمؤسسات السمعية البصرية', '', 'قرار وزاري مشترك مؤرخ  في 20 أبريل 2023 يحدد قائمة إيرادات ونفقات حساب التخصيص الخاص رقم 051-302 الذي عنوانه \"صندوق تخصيص الرسوم المخصصة للمؤسسات السمعية البصرية', NULL, NULL, NULL, NULL),
-('2024-09-24 13:47:35.000000', 19, 6, '2024-09-24 13:47:36.000000', 'قرار وزاري مشترك مؤرخ  في 19 يونيو 2023 يحدد كيفيات متابعة وتقييم حساب التخصيص الخاص رقم 051-302 الذي عنوانه \"صندوق تخصيص الرسوم المخصصة للمؤسسات السمعية البصرية', '', 'قرار وزاري مشترك مؤرخ  في 19 يونيو 2023 يحدد كيفيات متابعة وتقييم حساب التخصيص الخاص رقم 051-302 الذي عنوانه \"صندوق تخصيص الرسوم المخصصة للمؤسسات السمعية البصرية', NULL, NULL, NULL, NULL),
-('2024-09-24 13:47:48.000000', 20, 5, '2024-09-24 13:47:49.000000', 'مرسوم تنفيذي رقم 23-88 مؤرخ  في 04 مارس 2023 يحدد كيفيات تسيير حساب التخصيص الخاص رقم 051-302 الذي عنوانه \"صندوق تخصيص الرسوم المخصصة للمؤسسات السمعية البصرية', '', 'مرسوم تنفيذي رقم 23-88 مؤرخ  في 04 مارس 2023 يحدد كيفيات تسيير حساب التخصيص الخاص رقم 051-302 الذي عنوانه \"صندوق تخصيص الرسوم المخصصة للمؤسسات السمعية البصرية', NULL, NULL, NULL, NULL);
+('2024-09-24 13:43:51.000000', 9, 6, '2024-09-24 13:43:51.000000', 'قرار مؤرخ  في 30 يناير 2024 يعدل القرار المؤرخ في 22 جمادى الثانية عام 1443 الموافق 25 جانفي سنة 2022 والمتضمن تشكيلة لجنة الطعن لدى الإدارة المركزية لوزارة الاتصال', '', 'قرار مؤرخ  في 30 يناير 2024 يعدل القرار المؤرخ في 22 جمادى الثانية عام 1443 الموافق 25 جانفي سنة 2022 والمتضمن تشكيلة لجنة الطعن لدى الإدارة المركزية لوزارة الاتصال', NULL, 'Loi n°23-21 du 18 Joumada al-Awwal 1445 correspondant au 2 décembre 2023, relative à la publicité.', NULL, 'Loi sur la publicité'),
+('2024-09-24 13:44:13.000000', 10, 6, '2024-09-24 13:44:14.000000', 'قرار مؤرخ  في 30 يناير 2024  يعدل ويتمم القرار المؤرخ في 22 جمادى الثانية عام 1443 الموافق 25 جانفي سنة 2022 والمتضمن تشكيلة اللجان الإداية المتساوية الأعضاء لدى الإدارة المركزية لوزارة الاتصال', '', 'قرار مؤرخ  في 30 يناير 2024  يعدل ويتمم القرار المؤرخ في 22 جمادى الثانية عام 1443 الموافق 25 جانفي سنة 2022 والمتضمن تشكيلة اللجان الإداية المتساوية الأعضاء لدى الإدارة المركزية لوزارة الاتصال', NULL, 'Décret exécutif n° 23-200 du 10 Safar 1445 correspondant au 27 août 2023, fixant les conditions d\'exercice de l\'activité de presse.', NULL, 'Décret exécutif n° 23-200 du 10 Safar 1445 correspondant au 27 août 2023, fixant les conditions d\'exercice de l\'activité de presse.'),
+('2024-09-24 13:44:34.000000', 11, 6, '2024-09-24 13:44:35.000000', 'قرار وزاري مشترك مؤرخ  في 23 يناير 2024 ي حدد قائمة صفقات المنتجات والخدمات الخاصة بقطاع الاتصال التي يتطلب استيرادها السرعة في اتخاذ القرار', '', 'قرار وزاري مشترك مؤرخ  في 23 يناير 2024 ي حدد قائمة صفقات المنتجات والخدمات الخاصة بقطاع الاتصال التي يتطلب استيرادها السرعة في اتخاذ القرار', NULL, 'Loi n°23-22 du 18 Joumada al-Awwal 1445 correspondant au 2 décembre 2023, relative à la régulation des médias.', NULL, 'Loi relative à la régulation des médias'),
+('2024-09-24 13:45:04.000000', 12, 6, '2024-09-24 13:45:04.000000', 'قرار مؤرخ  في 16 يناير 2024 يحدد نموذج التصريح لإصدار نشرية دورية أو ممارسة نشاط الصحافة الإلكترونية والوثائق المطلوبة', '', 'قرار مؤرخ  في 16 يناير 2024 يحدد نموذج التصريح لإصدار نشرية دورية أو ممارسة نشاط الصحافة الإلكترونية والوثائق المطلوبة', NULL, 'Décret exécutif n° 23-201 du 10 Safar 1445 correspondant au 27 août 2023, fixant les modalités de mise en œuvre des obligations des entreprises de presse.', NULL, 'Décret exécutif n° 23-201 du 10 Safar 1445 correspondant au 27 août 2023, fixant les modalités de mise en œuvre des obligations des entreprises de presse.'),
+('2024-09-24 13:45:54.000000', 13, 2, '2024-09-24 13:45:54.000000', 'قانون رقم 23-20 مؤرخ  في 02 ديسمبر 2023 يتعلق بالنشاط السمعي البصري', '', 'قانون رقم 23-20 مؤرخ  في 02 ديسمبر 2023 يتعلق بالنشاط السمعي البصري', NULL, 'Loi organique n°23-23 du 18 Joumada al-Awwal 1445 correspondant au 2 décembre 2023, relative au droit à l\'information.', NULL, 'Loi organique sur le droit à l\'information'),
+('2024-09-24 13:46:16.000000', 14, 5, '2024-09-24 13:46:17.000000', '(النص التطبيقي للقانون  رقم 23-20 )  مرسوم تنفيذي رقم 24-250 مؤرخ  في 23 يوليو 2024 يحدد أحكام دفتر الشروط العامة المفروضة على خدمات الاتصال السمعي البصري', '', '(النص التطبيقي للقانون  رقم 23-20 )  مرسوم تنفيذي رقم 24-250 مؤرخ  في 23 يوليو 2024 يحدد أحكام دفتر الشروط العامة المفروضة على خدمات الاتصال السمعي البصري', NULL, 'Décret exécutif n° 23-202 du 10 Safar 1445 correspondant au 27 août 2023, fixant les obligations des entreprises audiovisuelles.', NULL, 'Décret exécutif n° 23-202 du 10 Safar 1445 correspondant au 27 août 2023, fixant les obligations des entreprises audiovisuelles.'),
+('2024-09-24 13:46:36.000000', 15, 2, '2024-09-24 13:46:36.000000', 'قانون رقم 23-19 مؤرخ  في 02 ديسمبر 2023 يتعلق بالصحافة المكتوبة والصحافة الإلكترونية', '', 'قانون رقم 23-19 مؤرخ  في 02 ديسمبر 2023 يتعلق بالصحافة المكتوبة والصحافة الإلكترونية', NULL, 'Loi n°23-24 du 18 Joumada al-Awwal 1445 correspondant au 2 décembre 2023, relative à la protection des données personnelles.', NULL, 'Loi sur la protection des données personnelles'),
+('2024-09-24 13:46:49.000000', 16, 6, '2024-09-24 13:46:49.000000', '(النص التطبيقي للقانون  رقم 23-19  )  قرار مؤرخ  في 16 يناير 2024 يحدد نموذج التصريح لإصدار نشرية دورية أو ممارسة نشاط الصحافة الإلكترونية والوثائق المطلوبة ', '', '(النص التطبيقي للقانون  رقم 23-19  )  قرار مؤرخ  في 16 يناير 2024 يحدد نموذج التصريح لإصدار نشرية دورية أو ممارسة نشاط الصحافة الإلكترونية والوثائق المطلوبة ', NULL, 'Décret exécutif n° 23-203 du 10 Safar 1445 correspondant au 27 août 2023, portant création de l\'Autorité de régulation des communications.', NULL, 'Décret exécutif n° 23-203 du 10 Safar 1445 correspondant au 27 août 2023, portant création de l\'Autorité de régulation des communications.'),
+('2024-09-24 13:47:04.000000', 17, 2, '2024-09-24 13:47:04.000000', 'قانون عضوي رقم 23-14 مؤرخ  في 27 غشت 2023 تعلق بالإعلام', '', 'قانون عضوي رقم 23-14 مؤرخ  في 27 غشت 2023 تعلق بالإعلام', NULL, 'Loi n°23-25 du 18 Joumada al-Awwal 1445 correspondant au 2 décembre 2023, relative à la liberté d\'expression.', NULL, 'Loi sur la liberté d\'expression'),
+('2024-09-24 13:47:20.000000', 18, 6, '2024-09-24 13:47:21.000000', 'قرار وزاري مشترك مؤرخ  في 20 أبريل 2023 يحدد قائمة إيرادات ونفقات حساب التخصيص الخاص رقم 051-302 الذي عنوانه \"صندوق تخصيص الرسوم المخصصة للمؤسسات السمعية البصرية', '', 'قرار وزاري مشترك مؤرخ  في 20 أبريل 2023 يحدد قائمة إيرادات ونفقات حساب التخصيص الخاص رقم 051-302 الذي عنوانه \"صندوق تخصيص الرسوم المخصصة للمؤسسات السمعية البصرية', NULL, 'Décret exécutif n° 23-204 du 10 Safar 1445 correspondant au 27 août 2023, fixant les conditions de création des services d\'information.', NULL, 'Décret exécutif n° 23-204 du 10 Safar 1445 correspondant au 27 août 2023, fixant les conditions de création des services d\'information.'),
+('2024-09-24 13:47:35.000000', 19, 6, '2024-09-24 13:47:36.000000', 'قرار وزاري مشترك مؤرخ  في 19 يونيو 2023 يحدد كيفيات متابعة وتقييم حساب التخصيص الخاص رقم 051-302 الذي عنوانه \"صندوق تخصيص الرسوم المخصصة للمؤسسات السمعية البصرية', '', 'قرار وزاري مشترك مؤرخ  في 19 يونيو 2023 يحدد كيفيات متابعة وتقييم حساب التخصيص الخاص رقم 051-302 الذي عنوانه \"صندوق تخصيص الرسوم المخصصة للمؤسسات السمعية البصرية', NULL, 'Loi n°23-26 du 18 Joumada al-Awwal 1445 correspondant au 2 décembre 2023, relative à la régulation des contenus numériques.', NULL, 'Loi relative à la régulation des contenus numériques'),
+('2024-09-24 13:47:48.000000', 20, 5, '2024-09-24 13:47:49.000000', 'مرسوم تنفيذي رقم 23-88 مؤرخ  في 04 مارس 2023 يحدد كيفيات تسيير حساب التخصيص الخاص رقم 051-302 الذي عنوانه \"صندوق تخصيص الرسوم المخصصة للمؤسسات السمعية البصرية', '', 'مرسوم تنفيذي رقم 23-88 مؤرخ  في 04 مارس 2023 يحدد كيفيات تسيير حساب التخصيص الخاص رقم 051-302 الذي عنوانه \"صندوق تخصيص الرسوم المخصصة للمؤسسات السمعية البصرية', NULL, 'Décret exécutif n° 23-205 du 10 Safar 1445 correspondant au 27 août 2023, portant création d\'une commission d\'éthique des médias.', NULL, 'Décret exécutif n° 23-205 du 10 Safar 1445 correspondant au 27 août 2023, portant création d\'une commission d\'éthique des médias.');
 
 -- --------------------------------------------------------
 
@@ -1200,26 +1334,26 @@ CREATE TABLE IF NOT EXISTS `tv` (
   `created_at` datetime(6) DEFAULT NULL,
   `id` bigint NOT NULL AUTO_INCREMENT,
   `updated_at` datetime(6) DEFAULT NULL,
-  `adresse` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `fax` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `localisation` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `streaminglink` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `website` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `adresse_en` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `adresse_fr` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_en` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_fr` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `name_en` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name_fr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `adresse` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `fax` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `localisation` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `streaminglink` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `type` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `website` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_general_ci,
+  `adresse_en` text COLLATE utf8mb4_general_ci,
+  `adresse_fr` text COLLATE utf8mb4_general_ci,
+  `description_en` text COLLATE utf8mb4_general_ci,
+  `description_fr` text COLLATE utf8mb4_general_ci,
+  `name_en` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `name_fr` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKpny5gwqm9eo9ey8oos8wi7pan` (`categorie_chaine_id`),
   KEY `FKdad0jmisj9hfap0ag4u5p5ks3` (`complexe_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1737 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1740 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `tv`
@@ -1227,21 +1361,24 @@ CREATE TABLE IF NOT EXISTS `tv` (
 
 INSERT INTO `tv` (`categorie_chaine_id`, `complexe_id`, `created_at`, `id`, `updated_at`, `adresse`, `email`, `fax`, `localisation`, `name`, `phone`, `streaminglink`, `type`, `website`, `description`, `adresse_en`, `adresse_fr`, `description_en`, `description_fr`, `name_en`, `name_fr`) VALUES
 (1, 6, '2024-04-24 10:45:36.000000', 1721, '2024-10-06 13:52:47.830337', ' ', 'webtv@entv.dz', '023 53 10 10', ' ', 'كنال ألجيري ', '023 53 10 10', 'http://www.elahmad.com/tv/algeria_live.php?id=algerie', 'public', 'https://www.entv.dz/', 'ثاني قناة تلفزيونية عمومية جزائرية للمؤسسة العمومية للتلفزيون تأسست سنة 1994، وهي موجهة للجالية الجزائرية بالخارج ', NULL, NULL, 'The second Algerian public television channel of the Établissement Public de Télévision (EPTV), it was created in 1994 and is targeted at the Algerian community abroad.', 'La deuxième chaîne de télévision publique algérienne de l’Établissement Public de Télévision, (EPTV), elle a été créée en 1994 et est destinée à la communauté algérienne à l\'étranger.', 'Canal Algérie', 'Canal Algérie'),
-(1, 8, '2024-04-24 11:04:11.000000', 1722, '2024-10-06 13:53:54.151456', 'بئر مراد رايس، الجزائر العاصمة', 'publicite@ennahartv.tv', '+21323 59 91 14', 'بئر مراد رايس، الجزائر العاصمة', 'النهار ', '+21323 59 91 14', 'http://www.elahmad.com/tv/algeria_live.php?id=ennahartv', 'prive', 'http://www.elahmad.com/tv/algeria_live.php?id=ennahartv', 'هي قناة جزائرية مستقلة، انطلق البث التجريبي يوم 6 مارس 2012 بأول نشرة إخبارية قدمت من طرف الثنائي الإعلامي رياض بن عمر ونور اليقين مغريش.[2] اتخذت القناة مقرها الرئيسي بالعاصمة الجزائرية الجزائر ليبدأ البث من هناك', NULL, NULL, 'An independent Algerian channel that launched its trial broadcast on March 6, 2012, with its first news bulletin presented by the media duo Ryad Ben Omar and Nour El Yakine Meghriche. The channel is headquartered in the Algerian capital Algiers, from where it began broadcasting.', 'Une chaîne algérienne indépendante, dont la diffusion expérimentale a débuté le 6 mars 2012 avec le premier journal télévisé présenté par le duo médiatique Ryad Benamor et Nour El Yakine Meghriche. La chaîne a établi son siège à Alger, d\'où elle a commencé sa diffusion.', 'Ennahar', 'Ennahar'),
+(1, 8, '2024-04-24 11:04:11.000000', 1722, '2024-10-06 20:30:08.133312', 'بئر مراد رايس، الجزائر العاصمة', 'publicite@ennahartv.tv', '+21323 59 91 14', 'بئر مراد رايس، الجزائر العاصمة', 'النهار ', '+21323 59 91 14', 'http://www.elahmad.com/tv/algeria_live.php?id=ennahartv', 'prive', 'http://www.elahmad.com/tv/algeria_live.php?id=ennahartv', 'هي قناة جزائرية مستقلة، انطلق البث التجريبي يوم 6 مارس 2012 بأول نشرة إخبارية قدمت من طرف الثنائي الإعلامي رياض بن عمر ونور اليقين مغريش.[2] اتخذت القناة مقرها الرئيسي بالعاصمة الجزائرية الجزائر ليبدأ البث من هناك', 'Bir Mourad Rais, Algiers', 'Bir Mourad Raïs, Alger', 'An independent Algerian channel that launched its trial broadcast on March 6, 2012, with its first news bulletin presented by the media duo Ryad Ben Omar and Nour El Yakine Meghriche. The channel is headquartered in the Algerian capital Algiers, from where it began broadcasting.', 'Une chaîne algérienne indépendante, dont la diffusion expérimentale a débuté le 6 mars 2012 avec le premier journal télévisé présenté par le duo médiatique Ryad Benamor et Nour El Yakine Meghriche. La chaîne a établi son siège à Alger, d\'où elle a commencé sa diffusion.', 'Ennahar', 'Ennahar'),
 (1, 6, '2024-04-24 11:09:45.000000', 1723, '2024-10-06 13:56:07.652796', '21 شارع الشهداء، الجزائر العاصمة، الجزائر', 'webtv@entv.dz', '023 53 10 10', '21 شارع الشهداء، الجزائر العاصمة، الجزائر', 'الجزائرية الثالثة', '023 53 10 10', 'http://www.elahmad.com/tv/algeria_live.php?id=algeria3', 'public', 'https://www.entv.dz/', 'ثالث قناة عمومية انبثقت عن المؤسسة الوطنية للتلفزيون، تتوجه هذه القناة إلى العالم العربي تركز في محتواها على الجزائر وذلك بتوليد رابطة دائمة بين مختلف الجاليات الجزائرية في العالم العربي مع موطنهم الأصلي..', NULL, NULL, 'The third public channel to emerge from the National Television Establishment, it  addresses the Arab world and focuses its content on Algeria, creating a permanent link between various Algerian communities in the Arab world and their homeland.', 'Troisième chaîne publique issue de l’Établissement Public de Télévision (EPTV), Elle s\'adresse au monde arabe et met l\'accent sur l\'Algérie dans son contenu, en créant un lien permanent entre les différentes communautés algériennes dans le monde arabe et leur pays d\'origine.', 'Thalitha A3', 'Thalitha A3'),
 (1, 6, '2024-04-24 11:16:06.000000', 1724, '2024-10-06 13:59:48.729218', '21 شارع الشهداء، الجزائر العاصمة، الجزائر', 'webtv@entv.dz', '023 53 10 10', '21 شارع الشهداء، الجزائر العاصمة، الجزائر', 'الأمازيغية', '023 53 10 10', 'http://www.elahmad.com/tv/algeria_live.php?id=algerie4', 'public', 'https://www.entv.dz/', 'قناة جزائرية حكومية، رابع قناة للمؤسسة العمومية للتلفزيون تأسست في سنة 2009، وهي عبارة عن قناة ناطقة بالأمازيغية بمختلف لهجاتها القبائلية، الشاوية، التارقية، الشنوية والمزابية.', NULL, NULL, 'A government Algerian channel, the fourth channel of the Public Television Establishment, founded in 2009, broadcasting in Amazigh in its various dialects: Kabyle, Chaoui, Touareg, Chaoui, and Mozabite.', 'Chaîne algérienne gouvernementale, quatrième chaîne de l’Établissement Public de Télévision (EPTV), créée en 2009 et diffusant en tamazight avec ses différents dialectes : kabyle, chaoui, touareg, chaoui et mozabite.', 'Amazigh TV4', 'Amazigh TV4'),
 (3, 6, '2024-04-24 11:18:07.000000', 1725, '2024-10-06 14:02:26.548621', '21 شارع الشهداء، الجزائر العاصمة، الجزائر', 'webtv@entv.dz', '023 53 10 10', '21 شارع الشهداء، الجزائر العاصمة، الجزائر', 'القرأن الكريم', '023 53 10 10', 'http://www.elahmad.com/tv/algeria_live.php?id=algerie5', 'public', 'https://www.entv.dz/', 'أطلقت كبث تجريبي من قبل التلفزيون الجزائري يوم الأربعاء 18 مارس 2009، مخصصة للقرآن الكريم وعلومه وتبث 24 ساعة يوميا.', NULL, NULL, 'It was launched as an experimental broadcast by Algerian television on Wednesday, March 18, 2009, dedicated to the Holy Quran and its sciences, broadcasting 24 hours a day.', '1725	أطلقت كبث تجريبي من قبل التلفزيون الجزائري يوم الأربعاء 18 مارس 2009، مخصصة للقرآن الكريم وعلومه وتبث 24 ساعة يوميا.	قناة القرأن الكريم	Lancée en tant que diffusion expérimentale par la télévision algérienne le mercredi 18 mars 2009, cette chaîne est consacrée au Saint Coran et à ses sciences, diffusant 24 heures sur 24.	It was launched as an experimental broadcast by Algerian television on Wednesday, March 18, 2009, dedicated to the Holy Quran and its sciences, broadcasting 24 hours a day.	public	3	6', 'Quran', 'Quran'),
-(1, 6, '2024-04-24 11:20:18.000000', 1726, '2024-10-06 14:04:38.376333', '21 شارع الشهداء، الجزائر العاصمة، الجزائر', 'webtv@entv.dz', '023 53 10 10', '21 شارع الشهداء، الجزائر العاصمة، الجزائر', 'الجزائرية السادسة', '023 53 10 10', 'http://www.elahmad.com/tv/algeria_live.php?id=algerie6', 'public', 'https://www.entv.dz/', 'وتعرف أيضا باسم تلفزيون السادسة، وهي سادس قناة عمومية انبثقت عن المؤسسة الوطنية للتلفزيون، تتوجه هذه القناة إلى الجمهور الجزائري تركز في محتواها على الجزائر.', NULL, NULL, '1726	وتعرف أيضا باسم تلفزيون السادسة، وهي سادس قناة عمومية انبثقت عن المؤسسة الوطنية للتلفزيون، تتوجه هذه القناة إلى الجمهور الجزائري تركز في محتواها على الجزائر.	القناة الجزائرية السادسة	Également connue sous le nom de TV6, c\'est la sixième chaîne publique issue de l\'établissement national de la télévision (EPTV). Cette chaîne s\'adresse au public algérien et met l\'accent sur l\'Algérie dans son contenu.	Also known as TV6, it is the sixth public channel to emerge from the National Television Establishment. This channel addresses the Algerian audience and focuses its content on Algeria.	public	1	6', 'Également connue sous le nom de TV6, c\'est la sixième chaîne publique issue de l\'établissement national de la télévision (EPTV). Cette chaîne s\'adresse au public algérien et met l\'accent sur l\'Algérie dans son contenu.', 'Algeria TV6', 'Algérie TV6'),
+(1, 6, '2024-04-24 11:20:18.000000', 1726, '2024-10-06 20:28:29.497294', '21 شارع الشهداء، الجزائر العاصمة، الجزائر', 'webtv@entv.dz', '023 53 10 10', '21 شارع الشهداء، الجزائر العاصمة، الجزائر', 'الجزائرية السادسة', '023 53 10 10', 'http://www.elahmad.com/tv/algeria_live.php?id=algerie6', 'public', 'https://www.entv.dz/', 'وتعرف أيضا باسم تلفزيون السادسة، وهي سادس قناة عمومية انبثقت عن المؤسسة الوطنية للتلفزيون، تتوجه هذه القناة إلى الجمهور الجزائري تركز في محتواها على الجزائر.', '21 Martyrs Street, Algiers, Algeria', '21 rue des Martyrs, Alger, Algérie', '1726	وتعرف أيضا باسم تلفزيون السادسة، وهي سادس قناة عمومية انبثقت عن المؤسسة الوطنية للتلفزيون، تتوجه هذه القناة إلى الجمهور الجزائري تركز في محتواها على الجزائر.	القناة الجزائرية السادسة	Également connue sous le nom de TV6, c\'est la sixième chaîne publique issue de l\'établissement national de la télévision (EPTV). Cette chaîne s\'adresse au public algérien et met l\'accent sur l\'Algérie dans son contenu.	Also known as TV6, it is the sixth public channel to emerge from the National Television Establishment. This channel addresses the Algerian audience and focuses its content on Algeria.	public	1	6', 'Également connue sous le nom de TV6, c\'est la sixième chaîne publique issue de l\'établissement national de la télévision (EPTV). Cette chaîne s\'adresse au public algérien et met l\'accent sur l\'Algérie dans son contenu.', 'Algeria TV6', 'Algérie TV6'),
 (1, 5, '2024-04-24 11:20:21.000000', 1727, '2024-10-06 14:05:31.443268', 'حي سعيدون محمد فيلا رقم 166 - القبة، الجزائر\n', 'info@echorouk.net\n', '023 71 39 82\n', 'حي سعيدون محمد فيلا رقم 166 - القبة، الجزائر\n', 'الشروق تي في', '023 71 39 90\n', 'https://echorouk.dzsecurity.net/embed/echorouk.php', 'prive', 'https://tv.echoroukonline.com/echorouk-tv/\n', 'قناة تلفزيونية جزائرية خاصة تابعة لمؤسسة الشروق، ضمن باقة الشروق.', NULL, NULL, '1727	قناة تلفزيونية جزائرية خاصة تابعة لمؤسسة الشروق، ضمن باقة الشروق. 	الشروق تي في 	Chaîne de télévision privée algérienne affiliée à Echorouk, faisant partie du bouquet Echorouk.	A private Algerian television channel affiliated to Echorouk, part of the Echorouk package.	prive	1	5', 'Chaîne de télévision privée algérienne affiliée à Echorouk, faisant partie du bouquet Echorouk.', 'El Chourouk ', 'El Chourouk '),
-(2, 5, '2024-04-24 11:52:29.000000', 1728, '2024-10-06 14:06:10.023433', 'حي سعيدون محمد فيلا رقم 166 - القبة، الجزائر', 'info@echorouk.net', '023 71 39 82', 'حي سعيدون محمد فيلا رقم 166 - القبة، الجزائر', 'الشروق نيوز', '023 71 39 90', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3197.967323721775!2d3.0743512890386477!3d36.7233460005375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fad411d576601%3A0x64ee732d057ac60e!2sEchourouk%20News%20TV!5e0!3m2!1sfr!2sdz!4v171397160', 'prive', 'https://tv.echoroukonline.com/echorouk-tv/', 'قناة تلفزيونية إخبارية جزائرية مقرها الجزائر العاصمة، تابعة لمؤسسة الشروق.انطلق البث الرسمي للقناة يوم 19 مارس 2014 في احتفالية خاصة بمناسبة السنة الثانية لإطلاق أول قناة تابعة لمؤسسة الشروق ، لتكون الشروق الإخبارية ثاني قنوات الباقة.', NULL, NULL, 'Algerian news television channel based in Algiers, affiliated to the Echorouk Foundation. The official broadcast of the channel began on 19 March 2014 during a special celebration to mark the second anniversary of the launch of the first channel owned by the Echorouk institution, making Echorouk News the second channel in the Echorouk package.  ', 'Chaîne de télévision d\'information algérienne basée à Alger, affiliée à la Fondation Echorouk. La diffusion officielle de la chaîne a débuté le 19 mars 2014 lors d\'une célébration spéciale à l\'occasion du deuxième anniversaire du lancement de la première chaîne appartenant à l\'institution Echorouk, faisant d\'Echorouk News la deuxième chaîne du bouquet d\'Echorouk.', 'El Chourouk News', 'El Chourouk  News'),
+(2, 5, '2024-04-24 11:52:29.000000', 1728, '2024-10-06 20:33:57.756523', 'حي سعيدون محمد فيلا رقم 166 - القبة، الجزائر', 'info@echorouk.net', '023 71 39 82', 'حي سعيدون محمد فيلا رقم 166 - القبة، الجزائر', 'الشروق نيوز', '023 71 39 90', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3197.967323721775!2d3.0743512890386477!3d36.7233460005375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fad411d576601%3A0x64ee732d057ac60e!2sEchourouk%20News%20TV!5e0!3m2!1sfr!2sdz!4v171397160', 'prive', 'https://tv.echoroukonline.com/echorouk-tv/', 'قناة تلفزيونية إخبارية جزائرية مقرها الجزائر العاصمة، تابعة لمؤسسة الشروق.انطلق البث الرسمي للقناة يوم 19 مارس 2014 في احتفالية خاصة بمناسبة السنة الثانية لإطلاق أول قناة تابعة لمؤسسة الشروق ، لتكون الشروق الإخبارية ثاني قنوات الباقة.', 'Saidoun Mohamed neighborhood, Villa No. 166 - Kouba, Algeria', 'Quartier Saidoun Mohamed, Villa N°166 - Kobba, Algérie', 'Algerian news television channel based in Algiers, affiliated to the Echorouk Foundation. The official broadcast of the channel began on 19 March 2014 during a special celebration to mark the second anniversary of the launch of the first channel owned by the Echorouk institution, making Echorouk News the second channel in the Echorouk package.  ', 'Chaîne de télévision d\'information algérienne basée à Alger, affiliée à la Fondation Echorouk. La diffusion officielle de la chaîne a débuté le 19 mars 2014 lors d\'une célébration spéciale à l\'occasion du deuxième anniversaire du lancement de la première chaîne appartenant à l\'institution Echorouk, faisant d\'Echorouk News la deuxième chaîne du bouquet d\'Echorouk.', 'El Chourouk News', 'El Chourouk  News'),
 (3, 9, '2024-04-24 11:57:05.000000', 1729, '2024-10-06 14:06:55.883523', ' ', 'alanistv.dz@gmail.com', '0 23 52 83 36', ' ', 'الأنيس', '0 23 52 83 36', ' http://www.elahmad.com/tv/algeria_live.php?id=alanis_tv', 'prive', NULL, 'قناة تلفزيونية جزائرية تربوية هادفة، تأسست بتزكية كوكبة من العلماء والمفكرين الجزائريين في شهر جوان سنة 2014 بمدينة وهران عاصمة الغرب الجزائري. مقرها الحالي بالجزائر العاصمة.', NULL, NULL, '1729	قناة تلفزيونية جزائرية تربوية هادفة، تأسست بتزكية كوكبة من العلماء والمفكرين الجزائريين في شهر جوان سنة 2014 بمدينة وهران عاصمة الغرب الجزائري. مقرها الحالي بالجزائر العاصمة.	الأنيس	Une chaîne de télévision algérienne éducative et constructive, fondée avec la recommandation d\'un groupe de savants et de penseurs algériens en juin 2014 dans la ville d\'Oran, capitale de l\'ouest algérien. Son siège actuel est à Alger.	An Algerian educational and constructive television channel, founded with the endorsement of a group of Algerian scholars and thinkers in June 2014 in the city of Oran, the capital of western Algeria. Its current headquarters are in Algiers. 	privé	3	9', 'Une chaîne de télévision algérienne éducative et constructive, fondée avec la recommandation d\'un groupe de savants et de penseurs algériens en juin 2014 dans la ville d\'Oran, capitale de l\'ouest algérien. Son siège actuel est à Alger.', 'Alanees', 'Alanees'),
 (1, 10, '2024-04-24 12:02:13.000000', 1730, '2024-10-06 14:07:54.562540', ' ', ' ', ' ', ' ', 'الهقار تي في', ' ', ' ', 'prive', 'https://hogartv.net/', 'هي قناة جزائرية مستقلة تم افتتاحها في شهر ماي[1] 2012، يوجد مقر بثها في لندن.', NULL, NULL, '1730	هي قناة جزائرية مستقلة تم افتتاحها في شهر ماي[1] 2012، يوجد مقر بثها في لندن.	الهقار تي في	Une chaîne algérienne indépendante, inaugurée en mai 2012, dont le siège de diffusion est situé à Londres.	An independent Algerian channel inaugurated in May 2012, with its broadcasting headquarters located in London.	privé	1	10', 'Une chaîne algérienne indépendante, inaugurée en mai 2012, dont le siège de diffusion est situé à Londres.', 'Hogar TV', 'Hogar TV'),
-(1, 11, '2024-04-24 12:05:53.000000', 1731, '2024-10-06 14:08:55.226702', 'شارع ديدوش مراد الجزائر العاصمة - الطابق الرابع 52', 'elbiladonline.net@gmail.com', '021 64 54 45', 'شارع ديدوش مراد الجزائر العاصمة - الطابق الرابع 52', 'البلاد                                                                   ', '021 64 42 70', 'http://www.elahmad.com/tv/algeria_live.php?id=elbilad', 'prive', 'https://www.elbilad.net/profile/%D9%82%D9%86%D8%A7%D8%A9-%D8%A7%D9%84%D8%A8%D9%84%D8%A7%D8%AF', 'قناة اخبارية جزائرية شرعت في البث رسميا يوم 19 مارس 2014، اشتهرت بالبرامج الحوارية والتحقيقات الحصرية وبرامج رياضية وثقافية واجتماعية وترفيهية عديدة، كما أنها تقدم نشرات اخبارية على رأس كل ساعة، مديرها العام هو السيد يوسف جمعة ومقرها 52 شارع ديدوش مراد بالعاصمة.', NULL, NULL, 'An Algerian news channel officially began broadcasting on March 19, 2014. known for its talk shows, exclusive investigations, and various sports, cultural, social, and entertainment programs. It also provides news bulletins at the top of every hour. Its general director is Mr. Youcef Djouma, and its headquarters is located at 52 Didouche Mourad Street, in Algiers the capital.', 'Une chaîne d\'information algérienne qui a commencé sa diffusion officielle le 19 mars 2014, connue pour ses talk-shows, ses enquêtes exclusives et de nombreux programmes sportifs, culturels, sociaux et de divertissement. Elle propose également des bulletins d\'information au début de chaque heure. Son directeur général est M. Youcef Djouma et son siège est situé au 52, rue Didouche Mourad, à la capitale, Alger.', 'El bilad ', 'El bilad '),
+(1, 11, '2024-04-24 12:05:53.000000', 1731, '2024-10-06 20:34:42.352585', 'شارع ديدوش مراد الجزائر العاصمة - الطابق الرابع 52', 'elbiladonline.net@gmail.com', '021 64 54 45', 'شارع ديدوش مراد الجزائر العاصمة - الطابق الرابع 52', 'البلاد                                                                   ', '021 64 42 70', 'http://www.elahmad.com/tv/algeria_live.php?id=elbilad', 'prive', 'https://www.elbilad.net/profile/%D9%82%D9%86%D8%A7%D8%A9-%D8%A7%D9%84%D8%A8%D9%84%D8%A7%D8%AF', 'قناة اخبارية جزائرية شرعت في البث رسميا يوم 19 مارس 2014، اشتهرت بالبرامج الحوارية والتحقيقات الحصرية وبرامج رياضية وثقافية واجتماعية وترفيهية عديدة، كما أنها تقدم نشرات اخبارية على رأس كل ساعة، مديرها العام هو السيد يوسف جمعة ومقرها 52 شارع ديدوش مراد بالعاصمة.', 'Didouche Mourad Street, Algiers - 4th floor 52', 'Rue Didouche Mourad, Alger, 4ème étage 52', 'An Algerian news channel officially began broadcasting on March 19, 2014. known for its talk shows, exclusive investigations, and various sports, cultural, social, and entertainment programs. It also provides news bulletins at the top of every hour. Its general director is Mr. Youcef Djouma, and its headquarters is located at 52 Didouche Mourad Street, in Algiers the capital.', 'Une chaîne d\'information algérienne qui a commencé sa diffusion officielle le 19 mars 2014, connue pour ses talk-shows, ses enquêtes exclusives et de nombreux programmes sportifs, culturels, sociaux et de divertissement. Elle propose également des bulletins d\'information au début de chaque heure. Son directeur général est M. Youcef Djouma et son siège est situé au 52, rue Didouche Mourad, à la capitale, Alger.', 'El bilad ', 'El bilad '),
 (2, 12, '2024-04-24 12:14:31.000000', 1732, '2024-10-06 14:09:50.708049', ' ', 'redaction@numidianews.com', '021 30 72 18', ' ', 'نوميديا نيوز', '021 30 72 18', ' http://www.azrotv.com/pyr/?id=http://ipc.proipciptv.com:8000/live/res-ms/HOLdsuB57gT/8752.ts', 'prive', 'http://www.numidianewstv.com/', 'قناة إخبارية جزائرية مستقلة، وقد اتخذت هذا الاسم تيمنا بمملكة نوميديا الأمازيغية التي قامت في عصور ما قبل الميلاد وهي الجزائر حاليا. انطلق بثها في 11 ديسمبر 2012، في الذكرى الأولى لانطلاق وكالة نوميديا نيوز وهو تاريخ يصادف يوم خروج الجزائريين طلباً للتحرر سنة 1961. وتهتم ببث آخر المستجدات السياسية والرياضية على الساحة الجزائرية، العربية والدولية. وهي قناة إخبارية كون معظم برامجها ذات صبغة إخبارية إلى جانب بعض البرامج الحوارية والتفاعلية والاجتماعية.', NULL, NULL, 'An independent Algerian news channel, named after the Amazigh kingdom of Numidia, which existed in prehistoric times and is today Algeria. It began broadcasting on December 11, 2012, on the first anniversary of the Numidia News Agency, a date that coincides with the Algerians\' quest for freedom in 1961. It is centered on broadcasting the latest political and sports news on the Algerian, Arab, and international scene. It is a news channel, as most of its programs are informative in nature, along with some talk shows, interactive, and social programs.', 'Une chaîne d\'information algérienne indépendante, nommée d\'après le royaume amazigh de Numidie, qui existait à l\'époque préhistorique et qui est aujourd’hui l\'Algérie. Elle a commencé sa diffusion le 11 décembre 2012, à l\'occasion du premier anniversaire de l\'Agence Numidia News, une date qui coïncide avec la sortie des Algériens en quête de liberté en 1961. Elle est centrée sur la diffusion des dernières actualités politiques et sportives sur la scène algérienne, arabe et internationale. C\'est une chaîne d\'information, car la plupart de ses programmes sont de nature informative, en plus de quelques émissions de débat, interactives et sociales.', 'Numidia news', 'Numidia news'),
 (2, 13, '2024-04-24 12:20:40.000000', 1733, '2024-10-06 14:11:55.331630', ' ', 'dizednews@gmail.com', '021 49 35 15', ' ', 'دزاير نيوز', '021 49 35 15', ' http://www.elahmad.com/tv/algeria_live.php?id=dzair_tv', 'prive', 'https://dzayernews.dz/', 'قناة تلفزيونية فضائية جزائرية تصنف ضمن القنوات الإخبارية. هذه القناة هي ملك للمجموعة الإعلامية «GROUP MEDIA TEMPS NOUVEAU » والتي تمتلك أيضا جريدتين يوميتين إحداهما بالعربية والأخرى بالفرنسية إلى جانب قناة تلفزيونية عامة هي دزاير تي في.', NULL, NULL, '1733	قناة تلفزيونية فضائية جزائرية تصنف ضمن القنوات الإخبارية. هذه القناة هي ملك للمجموعة الإعلامية «GROUP MEDIA TEMPS NOUVEAU » والتي تمتلك أيضا جريدتين يوميتين إحداهما بالعربية والأخرى بالفرنسية إلى جانب قناة تلفزيونية عامة هي دزاير تي في.	دزاير نيوز	Une chaîne de télévision satellite algérienne classée parmi les chaînes d\'information. Cette chaîne appartient au groupe médiatique « GROUP MEDIA TEMPS NOUVEAU », qui possède également deux journaux quotidiens, l\'un en arabe et l\'autre en français, ainsi qu\'une chaîne de télévision générale :Dzaïr TV.	A satellite television channel in Algeria classified as a news channel. This channel belongs to the media group \'GROUP MEDIA TEMPS NOUVEAU,\' which also owns two daily newspapers, one in Arabic and the other in French, as well as a general television channel: Dzair TV.	prive	2	13', '1733	قناة تلفزيونية فضائية جزائرية تصنف ضمن القنوات الإخبارية. هذه القناة هي ملك للمجموعة الإعلامية «GROUP MEDIA TEMPS NOUVEAU » والتي تمتلك أيضا جريدتين يوميتين إحداهما بالعربية والأخرى بالفرنسية إلى جانب قناة تلفزيونية عامة هي دزاير تي في.	دزاير نيوز	Une chaîne de télévision satellite algérienne classée parmi les chaînes d\'information. Cette chaîne appartient au groupe médiatique « GROUP MEDIA TEMPS NOUVEAU », qui possède également deux journaux quotidiens, l\'un en arabe et l\'autre en français, ainsi qu\'une chaîne de télévision générale :Dzaïr TV.	A satellite television channel in Algeria classified as a news channel. This channel belongs to the media group \'GROUP MEDIA TEMPS NOUVEAU,\' which also owns two daily newspapers, one in Arabic and the other in French, as well as a general television channel: Dzair TV.	prive	2	13', 'Dzair News', 'Dzair News'),
 (4, 14, '2024-04-24 12:25:21.000000', 1734, '2024-10-06 14:11:16.218238', ' ', 'contact@elheddaf.com', ' ', ' ', 'الهداف تي في', ' ', 'http://www.elahmad.com/tv/algeria_live.php?id=elheddaf', 'prive', 'https://elheddaftv.com/', 'قناة فضائية عربية جزائرية تبث من الجزائر العاصمة، وهي تابعة لجريدة الهداف. تأسست سنة 2014، تنقل آخر أخبار كرة القدم بشكل خاص، إضافة إلى قيامها بمقابلات صحفية مع عدد من اللاعبين ومدربي الفرق المحلية الجزائرية كما تقوم بنقل ربورتاجات تخص الفرق العالمية الكبرى ولاعبيها.', NULL, NULL, '1734	قناة فضائية عربية جزائرية تبث من الجزائر العاصمة، وهي تابعة لجريدة الهداف. تأسست سنة 2014، تنقل آخر أخبار كرة القدم بشكل خاص، إضافة إلى قيامها بمقابلات صحفية مع عدد من اللاعبين ومدربي الفرق المحلية الجزائرية كما تقوم بنقل ربورتاجات تخص الفرق العالمية الكبرى ولاعبيها.	الهداف تي في	Chaîne de télévision satellite arabe algérienne diffusant depuis Alger, elle est affiliée au journal El Heddaf. Fondée en 2014, elle diffuse les dernières nouvelles du football, en particulier, et réalise des interviews avec plusieurs joueurs et entraîneurs des équipes locales algériennes. Elle propose également des reportages sur les grandes équipes mondiales et leurs joueurs.	An Arabic satellite television channel broadcasting from Algiers, it is affiliated with the newspaper El Heddaf. Founded in 2014, it reports the latest football news, in particular, and conducts interviews with several players and coaches from local Algerian teams. It also offers reports on major global teams and their players.	prive	4	14', '1734	قناة فضائية عربية جزائرية تبث من الجزائر العاصمة، وهي تابعة لجريدة الهداف. تأسست سنة 2014، تنقل آخر أخبار كرة القدم بشكل خاص، إضافة إلى قيامها بمقابلات صحفية مع عدد من اللاعبين ومدربي الفرق المحلية الجزائرية كما تقوم بنقل ربورتاجات تخص الفرق العالمية الكبرى ولاعبيها.	الهداف تي في	Chaîne de télévision satellite arabe algérienne diffusant depuis Alger, elle est affiliée au journal El Heddaf. Fondée en 2014, elle diffuse les dernières nouvelles du football, en particulier, et réalise des interviews avec plusieurs joueurs et entraîneurs des équipes locales algériennes. Elle propose également des reportages sur les grandes équipes mondiales et leurs joueurs.	An Arabic satellite television channel broadcasting from Algiers, it is affiliated with the newspaper El Heddaf. Founded in 2014, it reports the latest football news, in particular, and conducts interviews with several players and coaches from local Algerian teams. It also offers reports on major global teams and their players.	prive	4	14', 'El haddaf TV', 'El haddaf TV'),
 (5, 15, '2024-04-24 12:27:37.000000', 1735, '2024-10-06 14:12:35.827249', ' ', 'samiratvwebcast@gmail.com', ' ', ' ', 'سميرة تي في', '0556 38 01 00', 'http://www.elahmad.com/tv/algeria_live.php?id=samira_tv', 'prive', 'https://samiratv.dz/home/', 'قناة تلفزيونية جزائرية على قمر نايل سات وهي موجهة للمرأة الجزائرية والعربية. وتهتم بالطبخ الجزائري، إضافة إلى انها تبث حصص خاصة بالخياطة والتفصيل والتدبير المنزلي وكل ما يخص شؤون البيت، كما أنها تحافظ على عادات وتقاليد المجتمع الجزائري. يقع مقر القناة بالجزائر العاصمة. وتعد أول قناة متخصصة في الطبخ في الجزائر، كما تعد مالكتها أول امرأة تطلق قناة في الجزائر بهذا الحجم.', NULL, NULL, 'An Algerian television channel on Nilesat, targeting Algerian and Arab women. It is centered on Algerian cuisine and also broadcasts programs on sewing, dressmaking, and all related to household affairs, as well as the preservation of Algerian customs and traditions. Its headquarters are located in Algiers. It is the first channel specialized in cooking in Algeria, and its owner is the first woman to launch a channel of such scale in the country.', 'Une chaîne de télévision algérienne sur Nilesat, qui s\'adresse aux femmes algériennes et arabes. Elle est axée sur la cuisine algérienne et diffuse également des émissions sur la couture, la confection de vêtements, tout ce qui a trait aux affaires de la maison, ainsi que sur la préservation des coutumes et traditions de la société algérienne. Son siège est situé à Alger. Elle est la première chaîne spécialisée dans la cuisine en Algérie, et sa propriétaire est la première femme à lancer une chaîne de cette envergure en Algérie.', 'Samira TV', 'Samira TV'),
-(1, 16, '2024-04-24 12:42:42.000000', 1736, '2024-10-06 14:13:12.184873', ' ', 'bahiatv.cont@gmail.com', '041 75 56 05', ' ', 'الباهية', '041 75 56 05', ' ', 'prive', ' ', 'قناة فضائية جزائرية، تهتم بالبرامج السياسية ، الترفيهية ، الإخبارية ، الرياضية والاجتماعية', NULL, NULL, 'An Algerian satellite channel that is centered on political, entertainment, news, sports, and social programs.', 'Chaîne satellitaire algérienne, axée sur des programmes politiques, de divertissement, d’actualité, de sport et de société.', 'Bahia', 'Bahia');
+(1, 16, '2024-04-24 12:42:42.000000', 1736, '2024-10-06 14:13:12.184873', ' ', 'bahiatv.cont@gmail.com', '041 75 56 05', ' ', 'الباهية', '041 75 56 05', ' ', 'prive', ' ', 'قناة فضائية جزائرية، تهتم بالبرامج السياسية ، الترفيهية ، الإخبارية ، الرياضية والاجتماعية', NULL, NULL, 'An Algerian satellite channel that is centered on political, entertainment, news, sports, and social programs.', 'Chaîne satellitaire algérienne, axée sur des programmes politiques, de divertissement, d’actualité, de sport et de société.', 'Bahia', 'Bahia'),
+(1, 6, '2024-10-07 11:18:09.000000', 1737, '2024-10-07 11:22:52.000000', 'منطقة النشاطات رقم 20 ص.ب 63, سعيد حمدين ، بئر مراد رايس، الجزائر العاصمة', 'regiepub@al24news.com', 'غير متوفر', ' غير متوفر', 'AL 24', '0661411947', 'https://www.elahmad.com/tv/algeria_live.php?id=al24news', 'public', 'https://al24news.com/', 'قناة الجزائر الدولية هي قناة التلفزيونية أخبارية جزائرية. عامة تم إطلاقها في 30 أكتوبر 2021. وهي مستقلة عن المؤسسة العمومية للتلفزيون الجزائري ولها مكاتب في الجزائر وباريس وواشنطن وبكين وموسكو. ويرأسها سليم أغار', 'Activity Zone No. 20 P.O. Box 63, Said Hamdine, Bir Mourad Rais, Algiers', 'Zone d\'activités n°20, B.P. 63, Saïd Hamdine, Bir Mourad Raïs, Alger', 'Canal Djazair International is an Algerian news television channel. It was launched on October 30, 2021. It is independent of the Algerian Public Television Corporation and has offices in Algiers, Paris, Washington, Beijing and Moscow. It is headed by Salim Aghar.', 'Algérie International est une chaîne de télévision d\'information algérienne. Général Elle a été lancée le 30 octobre 2021. Elle est indépendante de la Société de Télévision Publique Algérienne et possède des bureaux en Algérie, à Paris, Washington, Pékin et Moscou. Il est dirigé par Salim Agar', 'AL 24', 'AL 24'),
+(1, 6, '2024-10-07 11:31:04.000000', 1738, '2024-10-07 11:31:05.000000', '1 شارع الشهداء، الجزائر العاصمة، الجزائر', ' webtv@entv.dz', ' غير متوفر', ' غير متوفر', 'القناة الجزائرية السابعة', '023 53 10 11', 'https://www.elahmad.com/tv/algeria_live.php?id=algerie7', 'public', 'https://www.entv.dz/', 'المعرفية', NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, '2024-10-07 11:36:15.000000', 1739, '2024-10-07 11:36:15.000000', '21 شارع الشهداء، الجزائر العاصمة، الجزائر', 'webtv@entv.dz', '023 53 10 13', ' غير متوفر', 'القناة الجزائرية التاسعة', '023 53 10 13', ' ', 'public', ' https://www.entv.dz/', 'البرلمانية', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1254,16 +1391,16 @@ CREATE TABLE IF NOT EXISTS `user` (
   `created_at` datetime(6) DEFAULT NULL,
   `id` bigint NOT NULL AUTO_INCREMENT,
   `updated_at` datetime(6) DEFAULT NULL,
-  `addressoffice` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `firstname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `fonction` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `lastname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `mobile` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `phoneoffice` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `role` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `addressoffice` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `firstname` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `fonction` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `lastname` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `mobile` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `phoneoffice` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `role` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `username` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
