@@ -155,6 +155,9 @@ public class TVService {
             tv.setName(TV.getName());
             tv.setNameFr(TV.getNameFr());
             tv.setNameEn(TV.getNameEn());
+            tv.setAdresse(TV.getAdresse());
+            tv.setAdresseFr(TV.getAdresseFr());
+            tv.setAdresseEn(TV.getAdresseEn());
             tv.setDescription(TV.getDescription());
             tv.setDescriptionFr(TV.getDescriptionFr());
             tv.setDescriptionEn(TV.getDescriptionEn());

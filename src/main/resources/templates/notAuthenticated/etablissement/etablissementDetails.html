@@ -85,7 +85,7 @@
                                 </p>
                                 <p th:case="${'en'}"
                                 th:if="#{locale.language == 'en'}"
-                                   th:text="${etablissement.getDescriptionEn() }">
+                                   th:text="${etablissement.getDescriptionEn()}">
                                 </p>
                                 </div>
                     </div>
@@ -103,9 +103,8 @@
                                    th:text="${etablissement.getFax()}"></a></span></li>
 
                             <li><strong th:text="#{address}">العنوان </strong>: <a
-                                    th:text="${#locale.language == 'fr' ? (etablissement.getAdresseFr()) : 
-                                               #locale.language == 'en' ? (etablissement.getAdresseEn()) : 
-                                                 (etablissement.getAdresse())}"></a></li>
+                                    th:text="${#locale.language == 'ar' ? etablissement.getAdresse():
+                                               #locale.language == 'fr' ? etablissement.getAdresseFr():etablissement.getAdresseEn()}"></a></li>
 
                         </ul >
                     </div>

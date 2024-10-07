@@ -21,6 +21,8 @@ public class PresseCategorieService {
         return this.presseCategorieRepository.findPresseCategorieById(id);
     }
 
+ 
+
     public List<PresseCategorie> findAll() {
         return this.presseCategorieRepository.findAll();
     }

@@ -65,7 +65,7 @@ public class TextJuridiqueController {
         return ((BodyBuilder)ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType)).header("Content-Disposition", new String[]{"inline; filename=\"" + file.getFilename() + "\""})).body(new InputStreamResource(file.getInputStream()));
     }
 
-    @GetMapping({"/pdf/{id}"})
+/*    @GetMapping({"/pdf/{id}"})
     public ResponseEntity<Resource> getImage(@PathVariable("id") Long id) {
         String folder = "pdfs";
         TextJuridique textJuridique = this.textJuridiqueService.findTextJuridiqueById(id);
@@ -102,5 +102,70 @@ public class TextJuridiqueController {
                 throw new RuntimeException(var11);
             }
         }
+    } */
+
+    @GetMapping("/pdf/{id}/{lang}")
+    public ResponseEntity<Resource> getImage(@PathVariable("id") Long id, @PathVariable("lang") String lang) {
+        String folder = "pdfs";
+        TextJuridique textJuridique = this.textJuridiqueService.findTextJuridiqueById(id);
+        Optional<Multimedia> multimedia = this.multimediaService.findFirstByTextJuridique(textJuridique);
+        System.out.println("Chemin du fichier "); // Log du chemin
+    
+        if (multimedia.isPresent()) {
+            String filename = multimedia.get().getFileName(); // Supposons que ce soit la colonne unique
+    
+            // Vérifie la langue et change "en" en "fr"
+            if ("en".equals(lang)) {
+                lang = "fr"; // Change lang à "fr" si il est "en"
+            }
+    
+            // Construire le chemin du fichier
+            String filePath = folder.concat("/" + lang + "/" + filename);
+    
+            Resource file = this.filesStorageService.load(filePath);
+            String contentType;
+    
+            // Détection du type MIME
+            try {
+                contentType = Files.probeContentType(file.getFile().toPath());
+            } catch (IOException e) {
+                throw new RuntimeException("Erreur lors de la détection du type MIME : " + e.getMessage());
+            }
+    
+            try {
+                return ResponseEntity.ok()
+                        .contentType(MediaType.parseMediaType(contentType))
+                        .header("Content-Disposition", "inline; filename=\"" + file.getFilename() + "\"")
+                        .body(new InputStreamResource(file.getInputStream()));
+            } catch (IOException e) {
+                throw new RuntimeException("Erreur lors de la lecture du fichier : " + e.getMessage());
+            }
+        } else {
+            // Fichier par défaut si aucun fichier multimedia n'est trouvé
+            Resource file = this.filesStorageService.load("staticImage/profile-img.jpg");
+            String contentType;
+    
+            try {
+                contentType = Files.probeContentType(file.getFile().toPath());
+            } catch (IOException e) {
+                throw new RuntimeException("Erreur lors de la détection du type MIME : " + e.getMessage());
+            }
+    
+            try {
+                return ResponseEntity.ok()
+                        .contentType(MediaType.parseMediaType(contentType))
+                        .header("Content-Disposition", "inline; filename=\"" + file.getFilename() + "\"")
+                        .body(new InputStreamResource(file.getInputStream()));
+            } catch (IOException e) {
+                throw new RuntimeException("Erreur lors de la lecture du fichier : " + e.getMessage());
+            }
+        }
     }
+    
+    
+
+
+
+    
+    
 }

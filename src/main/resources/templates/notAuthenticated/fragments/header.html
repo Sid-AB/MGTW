@@ -51,8 +51,23 @@
                             <ul style="left: -100%">
 
 
+<<<<<<< HEAD
                                 <li th:each="complexe:${myObject}"  ><a  th:href="@{'/tv/prive/'+${complexe.getName()}}" th:text="${#locale.language == 'ar' ? complexe.getName():complexe.getNameFr()}">الشروق</a></li>
 
+=======
+                                <!-- <li th:each="complexe:${myObject}">
+                                                                    <a  th:href="@{'/tv/prive/'+${complexe.getName()}}" 
+                                                                    th:text="${complexe.getName()}">
+                                                                </a>
+                                                            </li> -->
+                                <li th:each="complexe : ${myObject}">
+                                    <a th:href="@{'/tv/prive/'+${complexe.getName()}}"
+                                       th:text="${ #locale.language == 'fr' ? complexe.getNameFr() : ( #locale.language == 'ar' ? complexe.getName() : complexe.getNameEn() ) }">
+                                       <!-- Texte alternatif par défaut -->
+                                       الشروق
+                                    </a>
+                                </li>
+>>>>>>> 4ffb8bedf70cb989da99ab006abd736966e96949
 
 
 

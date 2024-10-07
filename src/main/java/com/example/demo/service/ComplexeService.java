@@ -75,6 +75,9 @@ public class ComplexeService {
             cmplx.setName(complexe.getName());
             cmplx.setNameFr(complexe.getNameFr());
             cmplx.setNameEn(complexe.getNameEn());
+            cmplx.setAdresse(complexe.getAdresse());
+            cmplx.setAdresseFr(complexe.getAdresseFr());
+            cmplx.setAdresseEn(complexe.getAdresseEn());
             cmplx.setDescription(complexe.getDescription());
             cmplx.setDescriptionFr(complexe.getDescriptionFr());
             cmplx.setDescriptionEn(complexe.getDescriptionEn());
