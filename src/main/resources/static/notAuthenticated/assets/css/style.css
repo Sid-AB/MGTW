@@ -2991,7 +2991,12 @@ section {
 .inSide #circlGreen
 {
   transform-origin: 50% 50%;
-  animation: circlenino 20s linear infinite;
+  animation: bounce 20s linear infinite;
+}
+.inSide #mincontient
+{
+  transform-origin: 50% 50%;
+  animation: bounce 20s linear infinite;
 }
 .inSide
 {

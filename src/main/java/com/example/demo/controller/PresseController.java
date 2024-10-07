@@ -67,7 +67,7 @@ public class PresseController {
     @GetMapping({"/public", "/public/"})
     public String cPublic(Model model) {
         List<PresseCategorie> presseCategories = new ArrayList();
-        presseCategories.add(this.presseCategorieRepository.findPresseCategorieByName("ecrit"));
+        presseCategories.add(this.presseCategorieRepository.findPresseCategorieByName("مكتوبة"));
         List<Presse> pressesEcritPublic = this.presseService.findPresseByPresseCategoriesAndTypepbpr(presseCategories, "public");
         List<Presse> pressesEcritPrive = this.presseService.findPresseByPresseCategoriesAndTypepbpr(presseCategories, "prive");
         List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
@@ -110,7 +110,7 @@ public class PresseController {
         model.addAttribute("pressesElectroniquePrive", pressesElectroniquePrive);
         return "notAuthenticated/presse/presseGeneralelectronique";
     }
-
+    
     @GetMapping({"/{id}"})
     public String findTVById(Model model, @PathVariable Long id) {
         Presse presse = this.presseService.findPresseById(id);
@@ -120,9 +120,9 @@ public class PresseController {
         List<Presse> pressesEcritPrive = new ArrayList();
         List<Presse> pressesList = new ArrayList();
         List<PresseCategorie> presseCategories1 = new ArrayList();
-        presseCategories1.add(this.presseCategorieRepository.findPresseCategorieByName("electronique"));
+        presseCategories1.add(this.presseCategorieRepository.findPresseCategorieByName("رقمية"));
         List<PresseCategorie> presseCategories = new ArrayList();
-        presseCategories.add(this.presseCategorieRepository.findPresseCategorieByName("ecrit"));
+        presseCategories.add(this.presseCategorieRepository.findPresseCategorieByName("مكتوبة"));
         Iterator var12;
         PresseCategorie presseCategorie;
         if (presse.getTypepbpr().toString().equals("public")) {
