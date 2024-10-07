@@ -568,11 +568,8 @@ $.ajax({
                 $('#Prenom').text(prenomDirecteur);
                 $('#Email').text(response[index].emailDirecteur);
                 $('#Phone').text(response[index].phoneDirecteur);
-                $('#nomDirection').text(currentLang === "ar" 
-                    ? nomDirection 
-                    : currentLang === "fr" 
-                        ?  nomDirectionFr
-                        :  nomDirectionEn 
+                $('#nomDirection').text(currentLang === "ar" ?  response[index].nomDirection  : currentLang === "fr" ?
+                response[index].nomDirectionFr:  response[index].nomDirectionEn 
                 );
                 
             } else {
