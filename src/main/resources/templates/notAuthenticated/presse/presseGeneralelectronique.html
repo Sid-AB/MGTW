@@ -8,8 +8,9 @@
 <header th:include="notAuthenticated/fragments/header::header" style="background-color: #0E2F4A"
         th:with="myObject=${complexesForNavBar},myObjectlFNBar=${loisForNavBar}"></header>
 
-        <div style="
+        <div style="    margin-top: 20px;
         padding: 8px;
+        width: 45%;
     ">
             <form class="form-inline d-flex justify-content-center " action="#" th:action="@{/search}" method="get">
                 <input class="form-control mr-sm-2 w-100"  id="query" name="query" required type="search" th:placeholder="#{search}" aria-label="بحث ">
