@@ -77,15 +77,15 @@
                             <div th:switch="${#locale.language}">
                                 <p th:case="${'ar'}"
                                 th:if="#{locale.language == 'ar'}"
-                                   th:text="${etablissement.getDescription().toString().substring(0,(etablissement.getDescription().length() &lt; 100 ? etablissement.getDescription().length() : 100 ))+'...' }">
+                                   th:text="${etablissement.getDescription()}">
                                 </p>
                                 <p th:case="${'fr'}"
                                 th:if="#{locale.language == 'fr'}"
-                                   th:text="${etablissement.getDescriptionFr().toString().substring(0,(etablissement.getDescriptionFr().length() &lt; 100 ? etablissement.getDescriptionFr().length() : 100 ))+'...' }">
+                                   th:text="${etablissement.getDescriptionFr()}">
                                 </p>
                                 <p th:case="${'en'}"
                                 th:if="#{locale.language == 'en'}"
-                                   th:text="${etablissement.getDescriptionEn().toString().substring(0,(etablissement.getDescriptionEn().length() &lt; 100 ? etablissement.getDescriptionEn().length() : 100 ))+'...' }">
+                                   th:text="${etablissement.getDescriptionEn()}">
                                 </p>
                                 </div>
                     </div>
@@ -103,7 +103,8 @@
                                    th:text="${etablissement.getFax()}"></a></span></li>
 
                             <li><strong th:text="#{address}">العنوان </strong>: <a
-                                    th:text="${etablissement.getAdresse()}"></a></li>
+                                    th:text="${#locale.language == 'ar' ? etablissement.getAdresse():
+                                               #locale.language == 'fr' ? etablissement.getAdresseFr():etablissement.getAdresseEn()}"></a></li>
 
                         </ul >
                     </div>
