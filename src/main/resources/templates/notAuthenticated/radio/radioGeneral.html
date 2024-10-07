@@ -7,9 +7,15 @@
 
 <header th:include="notAuthenticated/fragments/header::header" style="background-color: #0E2F4A"
         th:with="myObject=${complexesForNavBar},myObjectlFNBar=${loisForNavBar}"></header>
-
-
-
+    <div style="
+    padding: 8px;
+">
+        <form class="form-inline d-flex justify-content-center " action="#" th:action="@{/search}" method="get">
+            <input class="form-control mr-sm-2 w-100"  id="query" name="query" required type="search" th:placeholder="#{search}" aria-label="بحث ">
+            <button class="btn btn-outline-success my-2 my-sm-0 mx-2 " type="submit"><i
+                    class="ri-search-2-line"></i></button>
+        </form>
+     </div>
 <main id="main">
 
 <div style="height: 70px"
