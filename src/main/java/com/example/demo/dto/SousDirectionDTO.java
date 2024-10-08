@@ -142,33 +142,20 @@ public class SousDirectionDTO {
         this.direction = direction;
     }
 
-  /*  public String toString() {
-        return "RadioDTO(name=" + this.getName() +
-                ", nameFr=" + this.getNameFr() + // Ajout de nameFr
-                ", nameEn=" + this.getNameEn() + // Ajout de nameEn
-                ", description=" + this.getDescription() +
-                ", descriptionFr=" + this.getDescriptionFr() + // Ajout de descriptionFr
-                ", descriptionEn=" + this.getDescriptionEn() + // Ajout de descriptionEn
-                ", type=" + this.getType() +
-                ", categorie=" + this.getCategorie() +
-                ", website=" + this.getWebsite() +
-                ", streaminglink=" + this.getStreaminglink() +
-                ", adresse=" + this.getAdresse() +
-                ", adresseFr=" + this.getAdresseFr() + // Ajout de adresseFr
-                ", adresseEn=" + this.getAdresseEn() + // Ajout de adresseEn
-                ", phone=" + this.getPhone() +
-                ", fax=" + this.getFax() +
-                ", email=" + this.getEmail() +
-                ", satellite=" + this.getSatellite() +
-                ", frequency=" + this.getFrequency() +
-                ", polarization=" + this.getPolarization() +
-                ", symbolrate=" + this.getSymbolrate() +
-                ", fec=" + this.getFec() +
-                ", transmission=" + this.getTransmission() +
-                ", modulation=" + this.getModulation() +
-                ", complexe=" + this.getComplexe() +
-                ", localisation=" + this.getLocalisation() +
-                ", profilFiles=" + String.valueOf(this.getProfilFiles()) + ")";
+
+  
+
+   /*  public String toString() {
+        return "SousDirection(nomsousDirection=" + this.getNomsousDirection() +
+                ", nomsousDirectionFr=" + this.getNomsousDirectionFr() + // Ajout de nameFr
+                ", nomsousDirectionEn=" + this.getNomsousDirectionEn() + // Ajout de nameEn
+                ", nomsousDirecteur=" + this.getNomsousDirecteur() +
+                ", prenomsousDirecteur=" + this.getPrenomsousDirecteur() + // Ajout de descriptionFr
+                ", emailsousDirecteur=" + this.getEmailsousDirecteur() + // Ajout de descriptionEn
+                ", phonesousDirecteur=" + this.getPhonesousDirecteur() +
+                ", nomsousDirecteurFr=" + this.getNomsousDirecteurFr() +
+                ", prenomsousDirecteurFr=" + this.getPrenomsousDirecteurFr() +
+                ")";
     }*/
 
 }
