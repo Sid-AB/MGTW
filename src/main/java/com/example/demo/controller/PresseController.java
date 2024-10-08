@@ -66,8 +66,8 @@ public class PresseController {
 
     @GetMapping({"/public", "/public/"})
     public String cPublic(Model model) {
-        List<PresseCategorie> presseCategories = new ArrayList();
-        presseCategories.add(this.presseCategorieRepository.findPresseCategorieByName("ecrit"));
+        List<PresseCategorie> presseCategories = new ArrayList<>();
+        presseCategories.add(this.presseCategorieRepository.findPresseCategorieByName("مكتوبة"));
         List<Presse> pressesEcritPublic = this.presseService.findPresseByPresseCategoriesAndTypepbpr(presseCategories, "public");
         List<Presse> pressesEcritPrive = this.presseService.findPresseByPresseCategoriesAndTypepbpr(presseCategories, "prive");
         List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
@@ -81,8 +81,8 @@ public class PresseController {
 
     /*@GetMapping({"/public/electronique", "/public/electronique/"})
     public String cPublicElectronique(Model model) {
-        new ArrayList();
-        List<PresseCategorie> presseCategories1 = new ArrayList();
+        new ArrayList<>();
+        List<PresseCategorie> presseCategories1 = new ArrayList<>();
         presseCategories1.add(this.presseCategorieRepository.findPresseCategorieByName("electronique"));
         List<Presse> pressesElectroniquePublic = this.presseService.findPresseByPresseCategoriesAndTypepbpr(presseCategories1, "public");
         List<Presse> pressesElectroniquePrive = this.presseService.findPresseByPresseCategoriesAndTypepbpr(presseCategories1, "prive");
@@ -97,8 +97,8 @@ public class PresseController {
 
     @GetMapping({"/public/electronique", "/public/electronique/"})
     public String cPublicElectronique(Model model) {
-        new ArrayList();
-        List<PresseCategorie> presseCategories1 = new ArrayList();
+        new ArrayList<>();
+        List<PresseCategorie> presseCategories1 = new ArrayList<>();
         presseCategories1.add(this.presseCategorieRepository.findPresseCategorieByName("رقمية"));
         List<Presse> pressesElectroniquePublic = this.presseService.findPresseByPresseCategoriesAndTypepbpr(presseCategories1, "public");
         List<Presse> pressesElectroniquePrive = this.presseService.findPresseByPresseCategoriesAndTypepbpr(presseCategories1, "prive");
@@ -114,15 +114,15 @@ public class PresseController {
     @GetMapping({"/{id}"})
     public String findTVById(Model model, @PathVariable Long id) {
         Presse presse = this.presseService.findPresseById(id);
-        List<Presse> pressesElectroniquePublic = new ArrayList();
-        List<Presse> pressesElectroniquePrive = new ArrayList();
-        List<Presse> pressesEcritPublic = new ArrayList();
-        List<Presse> pressesEcritPrive = new ArrayList();
-        List<Presse> pressesList = new ArrayList();
-        List<PresseCategorie> presseCategories1 = new ArrayList();
-        presseCategories1.add(this.presseCategorieRepository.findPresseCategorieByName("electronique"));
-        List<PresseCategorie> presseCategories = new ArrayList();
-        presseCategories.add(this.presseCategorieRepository.findPresseCategorieByName("ecrit"));
+        List<Presse> pressesElectroniquePublic = new ArrayList<>();
+        List<Presse> pressesElectroniquePrive = new ArrayList<>();
+        List<Presse> pressesEcritPublic = new ArrayList<>();
+        List<Presse> pressesEcritPrive = new ArrayList<>();
+        List<Presse> pressesList = new ArrayList<>();
+        List<PresseCategorie> presseCategories1 = new ArrayList<>();
+        presseCategories1.add(this.presseCategorieRepository.findPresseCategorieByName("رقمية"));
+        List<PresseCategorie> presseCategories = new ArrayList<>();
+        presseCategories.add(this.presseCategorieRepository.findPresseCategorieByName("مكتوبة"));
         Iterator var12;
         PresseCategorie presseCategorie;
         if (presse.getTypepbpr().toString().equals("public")) {
@@ -130,7 +130,7 @@ public class PresseController {
 
             while(var12.hasNext()) {
                 presseCategorie = (PresseCategorie)var12.next();
-                if (presseCategorie.getName().equals("electronique")) {
+                if (presseCategorie.getName().equals("رقمية")) {
                     pressesElectroniquePublic = this.presseService.findPresseByPresseCategoriesAndTypepbpr(presseCategories1, "public");
                 } else {
                     pressesElectroniquePrive = this.presseService.findPresseByPresseCategoriesAndTypepbpr(presseCategories1, "prive");
@@ -141,7 +141,7 @@ public class PresseController {
 
             while(var12.hasNext()) {
                 presseCategorie = (PresseCategorie)var12.next();
-                if (presseCategorie.getName().equals("ecrit")) {
+                if (presseCategorie.getName().equals("مكتوبة")) {
                     pressesEcritPublic = this.presseService.findPresseByPresseCategoriesAndTypepbpr(presseCategories, "public");
                 } else {
                     pressesEcritPrive = this.presseService.findPresseByPresseCategoriesAndTypepbpr(presseCategories, "prive");

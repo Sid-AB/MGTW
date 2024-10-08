@@ -109,7 +109,7 @@ public class TextJuridiqueController {
         String folder = "pdfs";
         TextJuridique textJuridique = this.textJuridiqueService.findTextJuridiqueById(id);
         Optional<Multimedia> multimedia = this.multimediaService.findFirstByTextJuridique(textJuridique);
-        System.out.println("Chemin du fichier "); // Log du chemin
+       
     
         if (multimedia.isPresent()) {
             String filename = multimedia.get().getFileName(); // Supposons que ce soit la colonne unique
@@ -121,6 +121,7 @@ public class TextJuridiqueController {
     
             // Construire le chemin du fichier
             String filePath = folder.concat("/" + lang + "/" + filename);
+            System.out.println("hb55 "+ filePath); // Log du chemin
     
             Resource file = this.filesStorageService.load(filePath);
             String contentType;

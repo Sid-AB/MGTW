@@ -129,8 +129,8 @@
                                 <span style="display: flex; align-items: center;">
                                     <strong th:text="#{fax}">الفاكس</strong>:
                                     <span style="direction: ltr; margin-left: 5px;">
-                                        <span th:if="${presse.getFax() != null}" th:text="${presse.getFax()}"></span>
-                                        <span th:if="${presse.getFax() == null}">
+                                        <span th:if="${presse.getFax() != null && presse.getFax() != 'غير متوفر'}" th:text="${presse.getFax()}"></span>
+                                        <span th:if="${presse.getFax() == null ||presse.getFax() == 'غير متوفر' }">
                                             <span th:text="#{faxNotAvailable}">رقم الفاكس غير متوفر</span>
 
                                         </span>
@@ -142,15 +142,15 @@
                                 <strong th:text="#{address}">العنوان</strong>:
                                 <span th:text="${#locale.language == 'fr' ? presse.getAdresseFr() : 
                                                 #locale.language == 'en' ? presse.getAdresseEn() : 
-                                                presse.getAdresseAr()}"></span>
+                                                presse.getAdresse()}"></span>
                             </li>
                             <li>
                                 <strong th:text="#{typpress}">نوع الصحيفة</strong>:
                                 <ul>
                                     <li th:each="category : ${presse.getPresseCategories()}">
                                         <div th:switch="${category.getName()}">
-                                            <span th:case="'ecrit'" th:text="#{pressEcrit}"></span>
-                                            <span th:case="'electronique'" th:text="#{pressElect}"></span>
+                                            <span th:case="'مكتوبة'" th:text="#{pressEcrit}"></span>
+                                            <span th:case="'رقمية'" th:text="#{pressElect}"></span>
                                         </div>
                                     </li>
                                 </ul>
