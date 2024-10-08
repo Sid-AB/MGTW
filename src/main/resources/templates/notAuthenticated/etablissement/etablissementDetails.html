@@ -74,7 +74,7 @@
 
                                 </span>
                             </h2></div>
-                            <div th:switch="${#locale.language}">
+                            <div style="font-size: 20px;" th:switch="${#locale.language}">
                                 <p th:case="${'ar'}"
                                 th:if="#{locale.language == 'ar'}"
                                    th:text="${etablissement.getDescription()}">
@@ -93,11 +93,12 @@
                        <h3 th:text="#{carast}">الخصائص  </h3>  
                         <ul >
                             <li>
-                                <span style="direction: ltr; margin-left: 5px;"
+                           <strong th:text="#{telep}+':'"> </strong> <span style=" display: inline-flex;margin-left: 5px; direction: ltr"
                                     th:if="${etablissement.getPhone() != null && etablissement.getPhone() != 'غير متوفر'}"
                                     th:text="${etablissement.getPhone()}">
                                 </span>
-                                <span
+                                <span style="
+                                direction: ltr;"
                                     th:if="${etablissement.getPhone() == ' ' || etablissement.getPhone() == null ||etablissement.getPhone() == 'غير متوفر' }">
                                     <span th:text="#{phoneNotAvailable}">رقم الفاكس غير متوفر</span>
                                 </span>
