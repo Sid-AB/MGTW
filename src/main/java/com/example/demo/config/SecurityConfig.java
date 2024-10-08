@@ -15,7 +15,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig {
     public SecurityConfig() {
     }
-/* 
+ 
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((authRequest) -> {
@@ -53,5 +53,5 @@ public class SecurityConfig {
         http.headers(AbstractHttpConfigurer::disable);
         return (SecurityFilterChain) http.build();
     }
-        */
+        
 }

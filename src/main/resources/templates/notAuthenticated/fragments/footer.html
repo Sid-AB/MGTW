@@ -42,23 +42,31 @@
                         <!-- Gestion de la direction pour le chevron -->
                         <li>
                             <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
-                            <a href="#" th:text="#{principal}">الرئسية</a>
+                            <a href="/#" th:text="#{principal}">الرئسية</a>
                         </li>
                         <li>
                             <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
-                            <a href="#" th:text="#{etablissement}">المؤسسات الإعلامية</a>
+                            <a href="/#Soustutelle" th:text="#{etablissement}">المؤسسات الإعلامية</a>
                         </li>
                         <li>
                             <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
-                            <a href="#" th:text="#{organigrame}">تنظيم القطاع</a>
+                            <a href="/#Reglementationsectorielle" th:text="#{organigrame}">تنظيم القطاع</a>
                         </li>
                         <li>
                             <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
-                            <a href="#" th:text="#{channel} + ' ' + #{public}">القنوات التلفزيونية العمومية</a>
+                            <a href="/tv/public" th:text="#{channel} + ' ' + #{public}">القنوات التلفزيونية العمومية</a>
                         </li>
                         <li>
                             <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
-                            <a href="#" th:text="#{channel} + ' ' + #{prive}">القنوات التلفزيونية الخاصة</a>
+                            <a href="/radio/public" th:text="#{radio}">القنوات التلفزيونية الخاصة</a>
+                        </li>
+                        <li>
+                            <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
+                            <a href="/presse/public" th:text="#{pressEcrit}">القنوات التلفزيونية الخاصة</a>
+                        </li>
+                        <li>
+                            <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
+                            <a href="/presse/public/electronique" th:text="#{pressElect}">القنوات التلفزيونية الخاصة</a>
                         </li>
                         <li>
                             <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
@@ -75,23 +83,19 @@
                         <!-- Gestion de la direction pour le chevron -->
                         <li>
                             <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
-                            <a href="#" th:text="#{radio} + ' ' + #{local}">الاذاعات المحلية</a>
+                            <a href="http://www.el-mouradia.dz" th:text="#{Presendc}">الاذاعات المحلية</a>
                         </li>
                         <li>
                             <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
-                            <a href="#" th:text="#{radio} + ' ' + #{prive}">الاذاعات الخاصة</a>
+                            <a href="http://www.majliselouma.dz" th:text="#{majles}">الاذاعات الخاصة</a>
                         </li>
                         <li>
                             <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
-                            <a href="#" th:text="#{pressEcrit} + ' ' + #{public}">الصحافة المكتوبة العمومية</a>
+                            <a href="https://www.joradp.dz/" th:text="#{sgg} ">الصحافة المكتوبة العمومية</a>
                         </li>
                         <li>
                             <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
-                            <a href="#" th:text="#{pressEcrit} + ' ' + #{prive}">الصحافة المكتوبة الخاصة</a>
-                        </li>
-                        <li>
-                            <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
-                            <a href="#" th:text="#{pressElect}">الصحافة الالكترونية</a>
+                            <a href="https://www.ministerecommunication.gov.dz/fr" th:text="#{mnc}">الصحافة المكتوبة الخاصة</a>
                         </li>
                     </ul>
                 </div>
