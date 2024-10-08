@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="authenticated/fragments/header::header(${'title'},${'description'},${'keywords'})">
+</head>
+
+
+<body>
+
+<!-- ======= Header ======= -->
+<header th:replace="authenticated/fragments/navbar::header"></header>
+<!-- End Header -->
+
+<!-- ======= Sidebar ======= -->
+<aside th:replace="authenticated/fragments/navside::sidebar"></aside>
+<!-- End Sidebar-->
+
+
+<main id="main" class="main">
+    <div class="card">
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between">
+                <div class="p-2"><h5 class="card-title">Sous direction Add</h5></div>
+            </div>
+            <form id="profileForm" th:action="@{/sousDirection/save}" method="post" enctype="multipart/form-data">
+           
+                <div class="row mb-3 ">
+                    <label for="NomsousDirection" class="col-md-4 col-lg-3 col-form-label">Nom sous Direction</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="NomsousDirection" type="text" class="form-control"
+                               id="NomsousDirection" placeholder="Nom sous Direction" required >
+                    </div>
+                </div>
+
+                <div class="row mb-3 ">
+                    <label for="NomsousDirectionfr" class="col-md-4 col-lg-3 col-form-label">Nom sous Direction fr</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="NomsousDirectionFr" type="text" class="form-control"
+                               id="NomsousDirectionFr" placeholder="Nom sous Direction fr" required >
+                    </div>
+                </div>
+
+                <div class="row mb-3 ">
+                    <label for="NomsousDirectionEn" class="col-md-4 col-lg-3 col-form-label">Nom sous Direction En</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="NomsousDirectionEn" type="text" class="form-control"
+                               id="NomsousDirectionEn" placeholder="Nom sous Direction en" required >
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="NomsousDirecteur" class="col-md-4 col-lg-3 col-form-label">Nom sous Directeur</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="NomsousDirecteur" type="text" class="form-control" id="NomsousDirecteur" placeholder="Nom sous Directeur" required >
+
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="NomsousDirecteurFr" class="col-md-4 col-lg-3 col-form-label">Nom sous Directeur FR</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="NomsousDirecteurFr" type="text" class="form-control" id="NomsousDirecteurFr" placeholder="Nom sous Directeur fr" required >
+
+                    </div>
+                </div>
+
+                <div class="row mb-3 ">
+                    <label for="PrenomsousDirecteur" class="col-md-4 col-lg-3 col-form-label">Prenom sous Directeur</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="PrenomsousDirecteur" type="text" class="form-control"
+                               id="PrenomsousDirecteur" placeholder="Prenom sous Directeur" required >
+                    </div>
+                </div>
+                <div class="row mb-3 ">
+                    <label for="PrenomsousDirecteurFr" class="col-md-4 col-lg-3 col-form-label">Prenom sous Directeur FR</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="PrenomsousDirecteurFr" type="text" class="form-control"
+                               id="PrenomsousDirecteurFr" placeholder="Prenom sous Directeur fr " required >
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="EmailsousDirecteur" class="col-md-4 col-lg-3 col-form-label">Email sous Directeur</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="EmailsousDirecteur" type="text" class="form-control" id="EmailsousDirecteur" placeholder=" Email sous Directeur" required >
+
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="PhonesousDirecteur" class="col-md-4 col-lg-3 col-form-label"> Phone sous Directeur</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="PhonesousDirecteur" type="number" class="form-control" id="PhonesousDirecteur" placeholder=" Phone sous Directeur" required >
+
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="direction" class="col-md-4 col-lg-3 col-form-label">Direction</label>
+                    <div class="col-md-8 col-lg-9">
+                        <select id="direction" name="direction" class="form-control"
+                                onchange="">
+                            <option value="" disabled>Séléctionner la  direction</option>
+                            <option th:each="dir : ${direction}" th:value="${dir.Id}" th:text="${dir.NomDirection}"></option>
+          
+                        </select>
+                    </div>
+                </div>
+
+                <!--onclick="submitForm('direction','departement','service')"-->
+                <div class="text-center">
+                    <button type="submit"
+                            class="btn btn-primary">Save
+                    </button>
+                </div>
+            </form><!-- End Profile Edit Form -->
+
+        </div>
+    </div>
+</main><!-- End #main -->
+
+
+<!-- ======= Footer ======= -->
+<footer th:replace="authenticated/fragments/footer::footer" class="footer">
+</footer><!-- End Footer -->
+
+<!-- Template Main JS File -->
+<div th:replace="authenticated/fragments/js::js"></div>
+
+
+</body>
+</html>

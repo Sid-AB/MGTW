@@ -13,9 +13,9 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-   public SecurityConfig() {
+    public SecurityConfig() {
     }
-
+/* 
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((authRequest) -> {
@@ -30,7 +30,7 @@ public class SecurityConfig {
                     "/categorieChaine/add", "/categorieChaine/save", "/caracterstique/tv/{id}/add",
                     "/caracterstique/radio/{id}/add", "/caracterstique/saveradio", "/caracterstique/save",
                     "/agrument/agruments", "/agrument/add", "/agrument/save", "/ministers/add", "/ministers/Mins",
-                    "/ministers/save", "/Direction/add", "/Direction/all", "/Direction/direction", "/Direction/save" }))
+                    "/ministers/save", "/Direction/add", "/Direction/all", "/Direction/direction", "/Direction/save" ,"/sousDirection/add", "/sousDirection/all", "/sousDirection/sousdirection", "/sousDirection/save" }))
                     .authenticated();
             ((AuthorizedUrl) authRequest.requestMatchers(new String[] { "/notAuthenticated/**", "/multimedia/**", "/",
                     "/index", "/tv", "/tv/public", "/tv/prive", "/tv/prive/{name}", "/tv/{id}", "/tv/lugo/{id}",
@@ -40,8 +40,6 @@ public class SecurityConfig {
                     "/presse/public/electronique", "/lois/{id}", "/textJuridique/pdf/{id}/{lang}",
                     "/etablissement/{id}", "/etablissement/lugo/{id}", "/search", "/ministers/list",
                     "/ministers/pic/{id}","/search/**" })).permitAll();
-            ((AuthorizedUrl)authRequest.requestMatchers(new String[]{"/authenticated/**", "/user/**", "/tv/tvs", "/tv/add", "/tv/save", "/tv/TVEdit/{id}","/tv/update/{id}","/textJuridique/textJuridiques", "/textJuridique/add", "/textJuridique/save", "/radio/radios", "/radio/add", "/radio/save", "/radio/RadioEdit/{id}","/radio/update/{id}","/presse/presses", "/presse/add", "/presse/save","/presse/pressesEdit/{id}" ,"/pressecategorie/pressecategories", "/pressecategorie/add", "/pressecategorie/save", "/lois/lois", "/lois/add", "/lois/save", "/etablissement/etablissements", "/etablissement/add", "/etablissement/save", "/etablissement/EditEtablissement/{id}","/etablissement/update/{id}","/home", "/complexe/complexes", "/complexe/add", "/complexe/save","/complexe/ComplexEdit/{id}","/complexe/update/{id}", "/categorieChaine/add", "/categorieChaine/save", "/caracterstique/tv/{id}/add", "/caracterstique/radio/{id}/add", "/caracterstique/saveradio", "/caracterstique/save", "/agrument/agruments", "/agrument/add", "/agrument/save","/ministers/add","/ministers/Mins","/ministers/save","/Direction/add","/Direction/all","/Direction/direction","/Direction/save"})).authenticated();
-            ((AuthorizedUrl)authRequest.requestMatchers(new String[]{"/notAuthenticated/**", "/multimedia/**", "/", "/index", "/tv", "/tv/public", "/tv/prive", "/tv/prive/{name}", "/tv/{id}", "/tv/lugo/{id}", "/radio/public", "/radio/public/#national", "/radio/public/#local", "/radio/public/", "/radio/{id}", "/radio/lugo/{id}", "/presse/public", "/presse/lugo/{id}", "/presse/public/", "/presse/public/#publicEcrit", "/presse/public/#publicElectronique", "/presse/{id}", "/presse/public/electronique", "/lois/{id}", "/textJuridique/pdf/{id}", "/etablissement/{id}", "/etablissement/lugo/{id}", "/search","/ministers/list","/ministers/pic/{id}","/search/**"})).permitAll();
         });
         http.formLogin((formLogin) -> {
             ((FormLoginConfigurer) formLogin.loginPage("/login").defaultSuccessUrl("/home", true)).permitAll();
@@ -55,4 +53,5 @@ public class SecurityConfig {
         http.headers(AbstractHttpConfigurer::disable);
         return (SecurityFilterChain) http.build();
     }
+        */
 }

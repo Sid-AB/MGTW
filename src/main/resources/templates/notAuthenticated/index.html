@@ -27,11 +27,11 @@
                    </h2>
                 <div class="d-flex justify-content-center justify-content-lg-start">
 
-                    <form class="form-inline d-flex justify-content-center " action="#" th:action="@{/search/}" method="get">
+                    <div class="form-inline d-flex justify-content-center ">
                         <input class="form-control mr-sm-2 w-100"  id="query" name="query" required type="search" th:placeholder="#{search}" aria-label="بحث ">
-                        <button class="btn btn-outline-success my-2 my-sm-0 mx-2 " type="submit"><i
+                        <button class="btn btn-outline-success my-2 my-sm-0 mx-2 " type="submit" id="querysearch"><i
                                 class="ri-search-2-line"></i></button>
-                    </form>
+                        </div>
 
                 </div>
             </div>
@@ -232,11 +232,11 @@
                  <div id="InfoModal" class="modal">
                     <div class="modal-content">
                         <div class="card">
-                            <p style="font-size: 18px;">[[#{name}]] :<strong id="Nom"></strong></p>
-                            <p style="font-size: 18px;">[[#{prenom}]] :<strong id="Prenom"></strong></p>
-                            <p style="font-size: 18px;">[[#{email}]] :<strong id="Email"></strong></p>
-                            <p style="font-size: 18px;">[[#{phone}]] :<strong id="Phone"></strong></p>
-                            <p class="card-footer" style="font-size: 18px;"><strong id="nomDirection"></strong></p>
+                            <p>[[#{name}]] :<strong id="Nom"></strong></p>
+                            <p >[[#{prenom}]] :<strong id="Prenom"></strong></p>
+                            <p >[[#{email}]] :<strong id="Email"></strong></p>
+                            <p >[[#{phone}]] :<strong id="Phone"></strong></p>
+                            <p class="card-footer"><strong id="nomDirection"></strong></p>
                           </div>
                     </div>
                 </div>
@@ -614,7 +614,12 @@ $.ajax({
     }
 });
 
-
+$(document).ready(function(){
+    $('#querysearch').on('click',function(){
+        var query=$("#query").val()
+        window.location.href='/search/'+query;
+    })
+})
 </script>
 
 </body>

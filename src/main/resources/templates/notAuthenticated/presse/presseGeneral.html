@@ -14,11 +14,11 @@
     padding: 8px;
     width: 45%;
 ">
-        <form class="form-inline d-flex justify-content-center " action="#" th:action="@{/search}" method="get">
+         <div class="form-inline d-flex justify-content-center ">
             <input class="form-control mr-sm-2 w-100"  id="query" name="query" required type="search" th:placeholder="#{search}" aria-label="بحث ">
-            <button class="btn btn-outline-success my-2 my-sm-0 mx-2 " type="submit"><i
+            <button class="btn btn-outline-success my-2 my-sm-0 mx-2 " type="submit" id="querysearch"><i
                     class="ri-search-2-line"></i></button>
-        </form>
+        </div>
      </div>
 
 
@@ -53,7 +53,9 @@
                         <div class="post-content-entry">
                             <h3 style="font-size: 20px">
                                 <a th:href="@{'/presse/' + ${presseEcritPublic.getId().toString()}}" 
-                                   th:text="${presseEcritPublic.getName()}">
+                                   th:text="${#locale.language == 'fr' ? presseEcritPublic.getNameFr() : 
+                                   #locale.language == 'en' ? presseEcritPublic.getNameEn() : 
+                                   presseEcritPublic.getName()}">
                                 </a>
                                 <!--  #locale.language == 'fr' ? presseEcritPublic.getNameFr() : 
                                              #locale.language == 'en' ? presseEcritPublic.getNameEn() : -->
@@ -149,13 +151,16 @@
                         <div class="post-content-entry">
                             <h3 style="font-size: 20px">
                                 <a th:href="@{'/presse/' + ${presseEcritPrive.getId().toString()}}"
-                                   th:text="${presseEcritPrive.getName()}">
+                                   th:text="${#locale.language == 'ar' ? presseEcritPrive.getName() :
+                                              #locale.language == 'fr' ? presseEcritPrive.getNameFr() : presseEcritPrive.getNameEn()}">
                                 </a>
                             </h3>
                             <div class="meta">
                                 <p style="overflow: hidden; height: 85px;">
                                     <a th:href="@{'/presse/' + ${presseEcritPrive.getId().toString()}}"
-                                       th:text="${presseEcritPrive.getDescription().toString().substring(0,(presseEcritPrive.getDescription().length() &lt; 100 ? presseEcritPrive.getDescription().length() : 100 ))+'...'}">
+                                       th:text="${#locale.language == 'fr' ? presseEcritPrive.getDescriptionFr() : 
+                                       #locale.language == 'en' ? presseEcritPrive.getDescriptionEn() : 
+                                       presseEcritPrive.getDescription()}">
                                     </a>
                                 </p>
                             </div>
