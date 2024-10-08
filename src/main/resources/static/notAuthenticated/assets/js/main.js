@@ -27,6 +27,7 @@ function changeDirection(language) {
         //  document.getElementById('main').style.fontFamily="Helvetica, Arial, sans-serif";
           $("#main").find("*").css("font-family", "Helvetica, Arial, sans-serif");
           $("#hero").find("*").css("font-family", "Helvetica, Arial, sans-serif");
+          $("#footer").find("*").css("font-family", "Helvetica, Arial, sans-serif");  
           //document.getElementById('breadcrumbs').style.fontFamily="Helvetica, Arial, sans-serif";
           //document.getElementById('skills').style.fontFamily="Helvetica, Arial, sans-serif";
       console.log('testing '+language)  // Set direction to 'ltr' for other languages
