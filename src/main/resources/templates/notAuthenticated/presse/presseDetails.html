@@ -114,16 +114,34 @@
                             <li>
                                 <span style="display: flex; align-items: center;">
                                     <strong th:text="#{telep}">رقم الهاتف</strong>:
-                                    <span style="direction: ltr; margin-left: 5px;" th:text="${presse.getPhone()}"></span>
+
+                                    <span style="direction: ltr; margin-left: 5px;" 
+                                        th:if="${presse.getPhone() != null && presse.getPhone() != 'غير متوفر'}" 
+                                        th:text="${presse.getPhone()}">
+                                    </span>
+                                    <span th:if="${presse.getPhone() == null ||presse.getPhone() == 'غير متوفر' }">
+                                    <span th:text="#{phoneNotAvailable}">رقم الفاكس غير متوفر</span>
+                                </span>
                                 </span>
                             </li>
                             <li>
                                 <strong th:text="#{email}">البريد الإلكتروني</strong>:
-                                <a th:href="'mailto:' + ${presse.getEmail()}" th:text="${presse.getEmail()}"></a>
+                                <a th:href="'mailto:' + ${presse.getEmail()}" 
+                                th:if="${presse.getEmail() != null && presse.getEmail() != 'غير متوفر'}" 
+                                th:text="${presse.getEmail()}">
+                            </a>
+                                <span th:if="${presse.getEmail() == null || presse.getEmail() == 'غير متوفر' }">
+                                    <span th:text="#{emailNotAvailable}">رقم الفاكس غير متوفر</span>
+                                </span>
                             </li>
                             <li>
                                 <strong th:text="#{citeweb}">الموقع الإلكتروني</strong>:
-                                <a th:href="${presse.getWebsite()}" th:text="${presse.getWebsite()}" target="_blank"></a>
+                                <a th:href="${presse.getWebsite()}" 
+                                th:if="${presse.getWebsite() != null && presse.getWebsite() != 'غير متوفر'}" 
+                                th:text="${presse.getWebsite()}" target="_blank"></a>
+                                <span th:if="${presse.getWebsite() == null ||presse.getWebsite() == 'غير متوفر' }">
+                                    <span th:text="#{siteNotAvailable}">رقم الفاكس غير متوفر</span>
+                                </span>
                             </li>
                             <li>
                                 <span style="display: flex; align-items: center;">
@@ -140,21 +158,27 @@
                             
                             <li>
                                 <strong th:text="#{address}">العنوان</strong>:
-                                <span th:text="${#locale.language == 'fr' ? presse.getAdresseFr() : 
+
+                                <span th:if="${presse.getAdresse() != null && presse.getAdresse() != 'غير متوفر'}" th:text="${#locale.language == 'fr' ? presse.getAdresseFr() : 
                                                 #locale.language == 'en' ? presse.getAdresseEn() : 
                                                 presse.getAdresse()}"></span>
+                                                <span th:if="${presse.getAdresse() == null ||presse.getAdresse() == 'غير متوفر' }">
+                                                    <span th:text="#{adressNotAvailable}">رقم الفاكس غير متوفر</span>
                             </li>
                             <li>
                                 <strong th:text="#{typpress}">نوع الصحيفة</strong>:
                                 <ul>
                                     <li th:each="category : ${presse.getPresseCategories()}">
                                         <div th:switch="${category.getName()}">
-                                            <span th:case="'مكتوبة'" th:text="#{pressEcrit}"></span>
-                                            <span th:case="'رقمية'" th:text="#{pressElect}"></span>
+                                            <span th:case="مكتوبة" th:text="#{pressEcrit}"></span>
+                                            <span th:case="رقمية'" th:text="#{pressElect}"></span>
+                                            <span th:case="رقمية/مكتوبة" th:text="#{pressEcritElect}"></span>
+                                            <span th:case="غير متوفر'" th:text="#{pressNonDispo}"></span>
                                         </div>
                                     </li>
                                 </ul>
                             </li>
+                            
                             <li>
                                 
                                 <strong th:text="#{catpress}">طبيعة الصحيفة</strong>:
