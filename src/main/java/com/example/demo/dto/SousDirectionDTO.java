@@ -1,5 +1,8 @@
 package com.example.demo.dto;
 
+import com.example.demo.entities.Radio;
+import com.example.demo.entities.SousDirection;
+
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
@@ -16,6 +19,21 @@ public class SousDirectionDTO {
     private String emailsousDirecteur;
     private Integer phonesousDirecteur;
     private Long direction; 
+ 
+    public SousDirection toSousDirection() {
+        SousDirection sousDirection = new SousDirection();
+        sousDirection.setNomsousDirection(this.getNomsousDirection());
+        sousDirection.setNomsousDirectionFr(this.getNomsousDirectionFr());
+        sousDirection.setNomsousDirectionEn(this.getNomsousDirectionEn());
+        sousDirection.setNomsousDirecteur(this.getNomsousDirecteur());
+        sousDirection.setPrenomsousDirecteur(this.getPrenomsousDirecteur()); 
+        sousDirection.setNomsousDirecteurFr(this.getNomsousDirecteurFr()); 
+        sousDirection.setPrenomsousDirecteurFr(this.getPrenomsousDirecteurFr());
+        sousDirection.setEmailsousDirecteur(this.getEmailsousDirecteur());
+        sousDirection.setPhonesousDirecteur(this.getPhonesousDirecteur()); 
+       
+        return sousDirection;
+    }
 
     // constructeurs
     public SousDirectionDTO() {
@@ -23,7 +41,7 @@ public class SousDirectionDTO {
 
     public SousDirectionDTO( String nomsousDirection, String nomsousDirectionFr, String nomsousDirectionEn, String nomsousDirecteur,
             String nomsousDirecteurFr, String prenomsousDirecteur,
-            String prenomsousDirecteurFr, String emailsousDirecteur,Integer phonesousDirecteur,Long direction) {
+            String prenomsousDirecteurFr, String emailsousDirecteur,Integer phonesousDirecteur,final Long direction) {
         
         this.nomsousDirection = nomsousDirection;
         this.nomsousDirectionFr = nomsousDirectionFr;
@@ -120,7 +138,37 @@ public class SousDirectionDTO {
         return direction;
     }
 
-    public void setDirection(Long direction) {
+    public void setDirection(final Long direction) {
         this.direction = direction;
     }
+
+  /*  public String toString() {
+        return "RadioDTO(name=" + this.getName() +
+                ", nameFr=" + this.getNameFr() + // Ajout de nameFr
+                ", nameEn=" + this.getNameEn() + // Ajout de nameEn
+                ", description=" + this.getDescription() +
+                ", descriptionFr=" + this.getDescriptionFr() + // Ajout de descriptionFr
+                ", descriptionEn=" + this.getDescriptionEn() + // Ajout de descriptionEn
+                ", type=" + this.getType() +
+                ", categorie=" + this.getCategorie() +
+                ", website=" + this.getWebsite() +
+                ", streaminglink=" + this.getStreaminglink() +
+                ", adresse=" + this.getAdresse() +
+                ", adresseFr=" + this.getAdresseFr() + // Ajout de adresseFr
+                ", adresseEn=" + this.getAdresseEn() + // Ajout de adresseEn
+                ", phone=" + this.getPhone() +
+                ", fax=" + this.getFax() +
+                ", email=" + this.getEmail() +
+                ", satellite=" + this.getSatellite() +
+                ", frequency=" + this.getFrequency() +
+                ", polarization=" + this.getPolarization() +
+                ", symbolrate=" + this.getSymbolrate() +
+                ", fec=" + this.getFec() +
+                ", transmission=" + this.getTransmission() +
+                ", modulation=" + this.getModulation() +
+                ", complexe=" + this.getComplexe() +
+                ", localisation=" + this.getLocalisation() +
+                ", profilFiles=" + String.valueOf(this.getProfilFiles()) + ")";
+    }*/
+
 }

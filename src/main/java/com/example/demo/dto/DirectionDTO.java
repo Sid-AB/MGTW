@@ -18,7 +18,7 @@ public class DirectionDTO {
     private String nomDirectionEn;
     private String prenomDirecteurFr;
     private String prenomDirecteurEn;
-
+   
     private List<SousDirectionDTO> sousDirection;
 
     // Constructeurs

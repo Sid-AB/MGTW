@@ -3,14 +3,16 @@ package com.example.demo.repository;
 import java.util.Optional;
 
 import com.example.demo.entities.Direction;
+import com.example.demo.entities.Radio;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.demo.entities.SousDirection;
 
 public interface SousDirectionRepository extends JpaRepository<SousDirection, Long> {
-    SousDirection findDirectionById(Long id);
-   
+    SousDirection findSousDirectionById(Long id);
+    Optional<SousDirection> findById(Long id);
+
     // Recherche par nom et prénom
     //Optional<SousDirection> findByNomAndPrenom(String nomsousDirecteur, String prenomsousDirecteur); // Recherche par nom et prénom dans BDD
 
