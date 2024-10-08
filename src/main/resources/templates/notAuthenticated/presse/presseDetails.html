@@ -1,224 +1,222 @@
 <!DOCTYPE html>
 <html dir="rtl" th:lang="${#locale.language}">
+
 <head th:replace="notAuthenticated/fragments/head::head(${'title'},${'description'},${'keywords'})">
 </head>
+
 <body>
 
 
-<!-- Add image before the header -->
-<header th:include="notAuthenticated/fragments/header::header" style="background-color: #0E2F4A"
+    <!-- Add image before the header -->
+    <header th:include="notAuthenticated/fragments/header::header" style="background-color: #0E2F4A"
         th:with="myObject=${complexesForNavBar},myObjectlFNBar=${loisForNavBar}"></header>
 
 
-</div>
+    </div>
 
-<main id="main">
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
-        <div class="container">
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
 
-            <ol hidden="hidden">
-                <li><a href="index.html">Home</a></li>
-                <li>Portfolio Details</li>
-            </ol>
-            <div class="d-flex justify-content-start">
-                <a th:href="${presse.getWebsite()}">
-                    <img th:src="@{${'/presse/lugo/' + presse.getId()}}" width="50px" height="30px" class="img-fluid mx-3" alt="">
-                </a>
-                <h2 th:text="${#locale.language == 'fr' ? presse.getNameFr() : 
+                <ol hidden="hidden">
+                    <li><a href="index.html">Home</a></li>
+                    <li>Portfolio Details</li>
+                </ol>
+                <div class="d-flex justify-content-start">
+                    <a th:href="${presse.getWebsite()}">
+                        <img th:src="@{${'/presse/lugo/' + presse.getId()}}" width="50px" height="30px"
+                            class="img-fluid mx-3" alt="">
+                    </a>
+                    <h2 th:text="${#locale.language == 'fr' ? presse.getNameFr() : 
                               #locale.language == 'en' ? presse.getNameEn() : 
                               presse.getName()}"></h2>
+                </div>
+
+
+
             </div>
-            
+        </section><!-- End Breadcrumbs -->
 
+        <section id="skills" class="skills">
+            <div class="container" data-aos="fade-up">
 
-        </div>
-    </section><!-- End Breadcrumbs -->
-
-    <section id="skills" class="skills">
-        <div class="container" data-aos="fade-up">
-
-            <div class="row">
-                <div class="col-lg-6">
-                    <div>
-                        <div class="portfolio-description">
-                            <h2 th:text="${#locale.language == 'fr' ? presse.getNameFr() : 
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div>
+                            <div class="portfolio-description">
+                                <h2 th:text="${#locale.language == 'fr' ? presse.getNameFr() : 
                                           #locale.language == 'en' ? presse.getNameEn() : 
                                           presse.getName()}"></h2>
-                        </div>
-                        <p th:text="${#locale.language == 'fr' ? presse.getDescriptionFr() : 
+                            </div>
+                            <p th:text="${#locale.language == 'fr' ? presse.getDescriptionFr() : 
                                       #locale.language == 'en' ? presse.getDescriptionEn() : 
                                       presse.getDescription()}"></p>
-                    </div>
-                    <!-- <div class="portfolio-info">
-                        <h3 th:text="#{carast}">الخصائص </h3>
-                        <ul th:if="${presse}">
-                            <li>
-                                <strong th:text="#{catpress}">طبيعة الصحيفة
-                                </strong>:
-                                <ul>
-
-
-                                    <li>
-                                        <div th:switch="${presse.getTypepbpr()}">
-                                            <span th:case="'public'" th:text="#{public}"></span>
-                                            <span th:case="'prive'" th:text="#{prive}"></span>
-
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><span style="display: flex"><strong th:text="#{telep}"> رقم الهاتف
-                            </strong>: <span style="direction: ltr" th:text="${presse.getPhone()}"></span>
-                            </span></li>
-                            <li><strong th:text="#{email}">البريد الإليكتروني </strong>: <a
-                                    th:text="${presse.getEmail()}"></a></li>
-
-
-                            <li><span style="display: flex"><strong th:text="#{fax}">الفاكس </strong>: <a
-                                   style="direction: ltr;" th:text="${presse.getFax()}"></a></span></li>
-
-
-                            <li><strong th:text="#{email}">الموقع الالكتروني </strong>:
-                                <ul>
-                                    <li>
-                                        <div>
-                                            <a th:href="${presse.getWebsite()}"
-                                               th:text="${presse.getWebsite()}" target="_blank"></a></div>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><strong th:text="#{typpress}">نوع الصحيفة </strong>:
-
-                                <ul>
-                                    <li th:each="presse : ${presse.getPresseCategories()}">
-
-                                        <div th:switch="${presse.getName()}">
-                                            <span th:case="'ecrit'" th:text="#{pressEcrit}"></span>
-                                            <span th:case="'electronique'" th:text="#{pressElect}"></span>
-
-                                        </div>
-
-                                    </li>
-                                </ul>
-
-                            </li>
-                            <li><strong th:text="#{address}">العنوان </strong>: <a
-                                    th:text="${presse.getAdresse()}"></a></li>
-                        </ul>
-                    </div> -->
+                        </div>
 
                     <div class="portfolio-info">
                         <h3 th:text="#{carast}">الخصائص</h3>
                         <ul th:if="${presse}">
                             <li>
-                                <span style="display: flex; align-items: center;">
-                                    <strong th:text="#{telep}">رقم الهاتف</strong>:
-                                    <span style="direction: ltr; margin-left: 5px;" th:text="${presse.getPhone()}"></span>
-                                </span>
+                                <strong th:text="#{telep}">رقم الهاتف</strong>:
+                                <ul>
+                                    <li>
+                                        <div style="display: flex; align-items: center;">
+                            
+                                            <span style="direction: ltr; margin-left: 5px;"
+                                                th:if="${presse.getPhone() != null && presse.getPhone() != 'غير متوفر'}"
+                                                th:text="${presse.getPhone()}">
+                                            </span>
+                                            <span th:if="${presse.getPhone() == ' ' || presse.getPhone() == null ||presse.getPhone() == 'غير متوفر' }">
+                                                <span th:text="#{phoneNotAvailable}">رقم الفاكس غير متوفر</span>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
                             </li>
+                        
                             <li>
                                 <strong th:text="#{email}">البريد الإلكتروني</strong>:
-                                <a th:href="'mailto:' + ${presse.getEmail()}" th:text="${presse.getEmail()}"></a>
+                                <ul>
+                                    <li>
+                                        <div>
+                                            <a th:href="'mailto:' + ${presse.getEmail()}"
+                                                th:if="${presse.getEmail() != null && presse.getEmail() != 'غير متوفر'}"
+                                                th:text="${presse.getEmail()}">
+                                            </a>
+                                            <span th:if="${presse.getEmail() == ' ' ||  presse.getEmail() == null || presse.getEmail() == 'غير متوفر' }">
+                                                <span th:text="#{emailNotAvailable}">رقم الفاكس غير متوفر</span>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
                             </li>
+                        
                             <li>
                                 <strong th:text="#{citeweb}">الموقع الإلكتروني</strong>:
-                                <a th:href="${presse.getWebsite()}" th:text="${presse.getWebsite()}" target="_blank"></a>
+                                <ul>
+                                    <li>
+                                        <div>
+                                            <a th:href="${presse.getWebsite()}"
+                                                th:if="${presse.getWebsite() != null && presse.getWebsite() != 'غير متوفر'}"
+                                                th:text="${presse.getWebsite()}" target="_blank"></a>
+                                            <span th:if="${ presse.getWebsite() == ' ' ||  presse.getWebsite() == null ||presse.getWebsite() == 'غير متوفر' }">
+                                                <span th:text="#{siteNotAvailable}">رقم الفاكس غير متوفر</span>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
                             </li>
-                            <li>
-                                <span style="display: flex; align-items: center;">
-                                    <strong th:text="#{fax}">الفاكس</strong>:
-                                    <span style="direction: ltr; margin-left: 5px;">
-                                        <span th:if="${presse.getFax() != null && presse.getFax() != 'غير متوفر'}" th:text="${presse.getFax()}"></span>
-                                        <span th:if="${presse.getFax() == null ||presse.getFax() == 'غير متوفر' }">
-                                            <span th:text="#{faxNotAvailable}">رقم الفاكس غير متوفر</span>
-
+                        
+                        <li>
+                            <strong th:text="#{fax}">الفاكس</strong>:
+                            <ul>
+                                <li>
+                                    <div style="display: flex; align-items: center;">
+                                        <span style="direction: ltr; margin-left: 5px;">
+                                            <span th:if="${presse.getFax() != null && presse.getFax() != 'غير متوفر'}"
+                                                th:text="${presse.getFax()}"></span>
+                                            <span th:if="${ presse.getFax() == ' ' || presse.getFax() == null ||presse.getFax() == 'غير متوفر' }">
+                                                <span th:text="#{faxNotAvailable}">رقم الفاكس غير متوفر</span>
+                                            </span>
                                         </span>
-                                    </span>
-                                </span>
-                            </li>
-                            
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        
                             <li>
                                 <strong th:text="#{address}">العنوان</strong>:
-                                <span th:text="${#locale.language == 'fr' ? presse.getAdresseFr() : 
-                                                #locale.language == 'en' ? presse.getAdresseEn() : 
-                                                presse.getAdresse()}"></span>
+                                <ul>
+                                    <li>
+                                        <div th:if="${presse.getAdresse() != null && presse.getAdresse() != 'غير متوفر'}"
+                                            th:text="${#locale.language == 'fr' ? presse.getAdresseFr() : #locale.language == 'en' ? presse.getAdresseEn() :presse.getAdresse()}">
+                                        </div>
+                                        <div th:if="${ presse.getAdresse() == ' ' || presse.getAdresse() == null ||presse.getAdresse() == 'غير متوفر' }">
+                                            <span th:text="#{adressNotAvailable}">رقم الفاكس غير متوفر</span>
+                                        </div>
+                                    </li>
+                                </ul>
                             </li>
+                        
                             <li>
                                 <strong th:text="#{typpress}">نوع الصحيفة</strong>:
                                 <ul>
                                     <li th:each="category : ${presse.getPresseCategories()}">
                                         <div th:switch="${category.getName()}">
-                                            <span th:case="'مكتوبة'" th:text="#{pressEcrit}"></span>
-                                            <span th:case="'رقمية'" th:text="#{pressElect}"></span>
+                                            <span th:case="مكتوبة" th:text="#{pressEcrit}"></span>
+                                            <span th:case="رقمية" th:text="#{pressElect}"></span>
+                                            <span th:case="رقمية/مكتوبة" th:text="#{pressEcritElect}"></span>
+                                            <span th:case="غير متوفر'" th:text="#{pressNonDispo}"></span>
                                         </div>
                                     </li>
                                 </ul>
                             </li>
+                        
                             <li>
-                                
                                 <strong th:text="#{catpress}">طبيعة الصحيفة</strong>:
-                                <div th:switch="${presse.getTypepbpr()}">
-                                    <span th:case="'public'" th:text="#{public}"></span>
-                                    <span th:case="'prive'" th:text="#{prive}"></span>
-                                </div>
+                                <ul>
+                                    <li>
+                                        <div th:switch="${presse.getTypepbpr()}">
+                                            <span th:case="'public'" th:text="#{public}"></span>
+                                            <span th:case="'prive'" th:text="#{prive}"></span>
+                                        </div>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
+                    </div> 
+
+
+
+
                     </div>
-                    
-                    
-                    
+                    <div class="col-lg-6 d-flex align-items-center img-wrap" data-aos="fade-right" data-aos-delay="100">
 
-                </div>
-                <div class="col-lg-6 d-flex align-items-center img-wrap" data-aos="fade-right" data-aos-delay="100">
-
-                    <a th:href="${presse.getWebsite()}" target="_blank">
-                    <img  th:src="@{${'/presse/lugo/'+presse.getId()}}"
-                         style="border:0; width: 500px; height: 290px;" class="img-fluid  mx-3"
-                         alt="">
-                    </a>
+                        <a th:href="${presse.getWebsite()}" target="_blank">
+                            <img th:src="@{${'/presse/lugo/'+presse.getId()}}"
+                                style="border:0; width: 500px; height: 290px;" class="img-fluid  mx-3" alt="">
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
 
-    </section><!-- End Skills Section -->
-
-
-</main><!-- End #main -->
-<h5 class="fw-bold text-center section-success text-uppercase mt-5" th:text="#{lookher}">انظر ايضا</h5>
-
-<div class="container-fluid py-0 wow fadeInUp " data-wow-delay="0.1s" dir="ltr">
-    <div class="container py-5 mb-2">
-
-        <div class="bg-white">
-            <div class="owl-carousel owl-theme">
+        </section><!-- End Skills Section -->
 
 
-                <div th:if="${pressesList}" th:each="presseList:${pressesList}"
-                     class="item" style="background-color: rgba(254,254,255,0)">
-                    <a th:href="@{'/presse/'+${presseList.getId().toString()}}">
-                        <img
-                                width="50px" height="200px"
-                                th:src="@{${'/presse/lugo/'+presseList.getId()}}"
-                                alt="">
-                    </a>
+    </main><!-- End #main -->
+    <h5 class="fw-bold text-center section-success text-uppercase mt-5" th:text="#{lookher}">انظر ايضا</h5>
+
+    <div class="container-fluid py-0 wow fadeInUp " data-wow-delay="0.1s" dir="ltr">
+        <div class="container py-5 mb-2">
+
+            <div class="bg-white">
+                <div class="owl-carousel owl-theme">
+
+
+                    <div th:if="${pressesList}" th:each="presseList:${pressesList}" class="item"
+                        style="background-color: rgba(254,254,255,0)">
+                        <a th:href="@{'/presse/'+${presseList.getId().toString()}}">
+                            <img width="50px" height="200px" th:src="@{${'/presse/lugo/'+presseList.getId()}}" alt="">
+                        </a>
+                    </div>
+
                 </div>
-
             </div>
         </div>
     </div>
-</div>
 
 
-<footer th:replace="notAuthenticated/fragments/footer::footer" class="footer">
-</footer>
+    <footer th:replace="notAuthenticated/fragments/footer::footer" class="footer">
+    </footer>
 
-<div id="preloader" class="waitting">
-    <svg th:include="notAuthenticated/fragments/logosvg::logosvg" width="120" height="120" viewBox="0 0 2342 2004" version="1.1" class="inSide">
-    </svg>  
-</div>
+    <div id="preloader" class="waitting">
+        <svg th:include="notAuthenticated/fragments/logosvg::logosvg" width="120" height="120" viewBox="0 0 2342 2004"
+            version="1.1" class="inSide">
+        </svg>
+    </div>
 
-<div th:replace="notAuthenticated/fragments/js::js"></div>
+    <div th:replace="notAuthenticated/fragments/js::js"></div>
 
 </body>
 

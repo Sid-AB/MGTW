@@ -92,9 +92,17 @@
                     <div class="portfolio-info">
                        <h3 th:text="#{carast}">الخصائص  </h3>  
                         <ul >
-                            <li><span style="display: flex"><strong th:text="#{telep}"> رقم الهاتف
-                            </strong> <span th:text="${etablissement.getPhone()}"></span>
-                            </span></li>
+                            <li>
+                                <span style="direction: ltr; margin-left: 5px;"
+                                    th:if="${etablissement.getPhone() != null && etablissement.getPhone() != 'غير متوفر'}"
+                                    th:text="${etablissement.getPhone()}">
+                                </span>
+                                <span
+                                    th:if="${etablissement.getPhone() == ' ' || etablissement.getPhone() == null ||etablissement.getPhone() == 'غير متوفر' }">
+                                    <span th:text="#{phoneNotAvailable}">رقم الفاكس غير متوفر</span>
+                                </span>
+                            </li>
+
                             <li><strong th:text="#{email}">البريد الإلكتروني </strong>: <a
                                     th:text="${etablissement.getEmail()}"></a></li>
                             <li><strong th:text="#{citeweb}">الموقع الالكتروني </strong>: <a
