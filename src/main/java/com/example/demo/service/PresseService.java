@@ -111,6 +111,9 @@ public class PresseService {
             press.setName(Presse.getName());
             press.setNameFr(Presse.getNameFr());
             press.setNameEn(Presse.getNameEn());
+            press.setAdresse(Presse.getAdresse());
+            press.setAdresseFr(Presse.getAdresseFr());
+            press.setAdresseEn(Presse.getAdresseEn());
             press.setDescription(Presse.getDescription());
             press.setDescriptionFr(Presse.getDescriptionFr());
             press.setDescriptionEn(Presse.getDescriptionEn());

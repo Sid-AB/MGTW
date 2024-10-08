@@ -1,5 +1,5 @@
 package com.example.demo.dto;
-
+import java.util.List;
 
 
 
@@ -18,6 +18,8 @@ public class DirectionDTO {
     private String nomDirectionEn;
     private String prenomDirecteurFr;
     private String prenomDirecteurEn;
+
+    private List<SousDirectionDTO> sousDirection;
 
     // Constructeurs
     public DirectionDTO() {}
@@ -130,5 +132,13 @@ public class DirectionDTO {
     public void setPrenomDirecteurEn(String prenomDirecteurEn) {
         this.prenomDirecteurEn = prenomDirecteurEn;
     }
-}
+ 
+        public List<SousDirectionDTO> getSousDirection() {
+            return sousDirection;
+        }
+    
+        public void setSousDirection(List<SousDirectionDTO> sousDirection) {
+            this.sousDirection = sousDirection;
+        }   }
+
 

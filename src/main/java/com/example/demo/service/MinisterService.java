@@ -34,7 +34,8 @@ public class MinisterService {
 
     public Minister addMinisterWithProfilePicture(MinisterDTO ministerDTO) throws IOException {
         MultipartFile profilePicture = ministerDTO.getprofilePicture();
-
+        System.out.println("French first name: " + ministerDTO.getFirstNameFr());
+        System.out.println("French last name: " + ministerDTO.getLastNameFr());
         // Save the profile picture to the server
         byte[] bytes = profilePicture.getBytes();
         Path path = Paths.get(uploadPath + profilePicture.getOriginalFilename());
@@ -51,7 +52,7 @@ public class MinisterService {
         minister.setFirstName(ministerDTO.getFirstName());
         minister.setLastName(ministerDTO.getLastName());
         minister.setFirstNameFr(ministerDTO.getFirstNameFr()); // Set first name in French
-minister.setLastNameFr(ministerDTO.getLastNameFr());   // Set last name in French
+        minister.setLastNameFr(ministerDTO.getLastNameFr());   // Set last name in French
         minister.setBirthday(ministerDTO.getBirthday());
         minister.setAddress(ministerDTO.getAddress());
         minister.setStartFrom(ministerDTO.getStartFrom());

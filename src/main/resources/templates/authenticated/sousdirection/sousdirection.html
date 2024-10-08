@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="authenticated/fragments/header::header(${'title'},${'description'},${'keywords'})">
+</head>
+
+
+<body>
+
+<!-- ======= Header ======= -->
+<header th:replace="authenticated/fragments/navbar::header"></header>
+<!-- End Header -->
+
+<!-- ======= Sidebar ======= -->
+<aside th:replace="authenticated/fragments/navside::sidebar"></aside>
+<!-- End Sidebar-->
+
+
+<main id="main" class="main">
+    <div class="card">
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between">
+                <div class="p-2"><h5 class="card-title">Sous Direction list</h5></div>
+                <div class="p-2">
+                    <a type="button" class="btn btn-outline-dark p-2 mt-3" th:href="@{'/sousDirection/add'}">Add sous Direction</a>
+                </div>
+            </div>
+
+            <!-- Table with stripped rows -->
+            <table class="table datatable">
+                <thead>
+                <tr>
+                    <th>
+                        <b>I</b>d
+                    </th>
+                    <th>
+                        NomsousDirection
+                    </th>
+                    <th>
+                        NomsousDirectionfr
+                    </th>
+                    <th>
+                        NomsousDirectionEn
+                    </th>
+                    <th>
+                        NomsousDirecteur
+                    </th>
+                    <th>
+                        NomsousDirecteurFr
+                    </th>
+
+                    <th>
+                        PrenomsousDirecteur
+                    </th>
+                    <th>
+                        PrenomsousDirecteurFr
+                    </th>
+                    <th>
+                        EmailsousDirecteur
+                    </th>
+
+                    <th>
+                        PhonesousDirecteur
+                    </th>
+
+                    <th>
+                       Direction
+                    </th>
+                 
+                </tr>
+                </thead>
+        
+          <tbody>
+                <tr th:each="user : ${sousdirection}">
+                    <td><span th:text="${user.getId()}"></span></td>
+                    <td><span th:text="${user.getNomsousDirection()}"></span></td>
+                    <td><span th:text="${user.getNomsousDirectionFr()}"></span></td>
+                    <td><span th:text="${user.getNomsousDirectionEn()}"></span></td>
+                    <td><span th:text="${user.getNomsousDirecteur()}"></span></td>
+                    <td><span th:text="${user.getNomsousDirecteurFr()}"></span></td>
+                    <td><span th:text="${user.getPrenomsousDirecteur()}"></span></td>
+                    <td><span th:text="${user.getPrenomsousDirecteurFr()}"></span></td>
+                    <td><span th:text="${user.getEmailsousDirecteur()}"></span></td>
+                    <td><span th:text="${user.getPhonesousDirecteur()}"></span></td>
+                    <td><span th:text="${user.direction.nomDirection}"></span></td>
+                </tr>
+                </tbody>
+            </table>
+            <!-- End Table with stripped rows -->
+        </div>
+    </div>
+</main><!-- End #main -->
+
+
+<!-- ======= Footer ======= -->
+<footer th:replace="authenticated/fragments/footer::footer" class="footer">
+</footer><!-- End Footer -->
+
+<!-- Template Main JS File -->
+<div th:replace="authenticated/fragments/js::js"></div>
+
+
+</body>
+</html>
