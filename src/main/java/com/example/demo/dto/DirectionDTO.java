@@ -18,7 +18,7 @@ public class DirectionDTO {
     private String nomDirectionEn;
     private String prenomDirecteurFr;
     private String prenomDirecteurEn;
-
+   
     private List<SousDirectionDTO> sousDirection;
 
     // Constructeurs
@@ -139,6 +139,20 @@ public class DirectionDTO {
     
         public void setSousDirection(List<SousDirectionDTO> sousDirection) {
             this.sousDirection = sousDirection;
-        }   }
+        }   
+    /*    public String toString() {
+            return "Direction(nomDirection=" + this.getNomDirection() +
+                    ", nomDirectionFr=" + this.getNomDirectionFr() + // Ajout de nameFr
+                    ", nomDirectionEn=" + this.getNomDirectionEn() + // Ajout de nameEn
+                    ", nomDirecteur=" + this.getNomDirecteur() +
+                    ", prenomDirecteur=" + this.getPrenomDirecteur() + // Ajout de descriptionFr
+                    ", emailDirecteur=" + this.getEmailDirecteur() + // Ajout de descriptionEn
+                    ", phoneDirecteur=" + this.getPhoneDirecteur() +
+                    ", nomDirecteurFr=" + this.getNomDirecteurFr() +
+                    ", prenomDirecteurFr=" + this.getPrenomDirecteurFr() +
+                    ")";
+        }
+    */
+    }
 
 

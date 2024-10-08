@@ -27,7 +27,7 @@ public class SousDirectionController {
 @Autowired
     private DirectionService directionService;
     @Autowired
-    private SousDirectionRepository sousdirectionRepository;
+    private SousDirectionRepository SousdirectionRepository;
    
     public SousDirectionController(){
 
@@ -52,6 +52,7 @@ public class SousDirectionController {
     public String dirAddd(Model model) {
         try {
             List<Direction> directions = directionService.findAll();
+            System.out.println("Directions récupérées: " + directions); 
             model.addAttribute("sousdirectionDTO", new SousDirectionDTO());
             model.addAttribute("direction", directions); // Ajoute la liste des directions au modèle
             return "authenticated/sousdirection/sousdirectionAdd";
@@ -71,7 +72,7 @@ public class SousDirectionController {
     public String saveDir(@ModelAttribute("SousDirectionDTO") SousDirectionDTO sousdirectionDTO) {
         try {
             // Appeler la méthode addDirecteur pour sauvegarder l'entité Direction
-            SousDirectionDTO savedsousDirectionDTO = sousdirectionService.addsousDirecteur(sousdirectionDTO);
+         //   SousDirectionDTO savedsousDirectionDTO = sousdirectionService.addsousDirecteur(sousdirectionDTO);
             
             // Rediriger vers la liste des directeurs après la sauvegarde réussie
             return "redirect:/sousDirection/sousdirection"; 

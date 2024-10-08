@@ -12,7 +12,7 @@ public class SousDirection {
     private Long id;
     //plusiuers sous direction appartient à une seule direction 
     @ManyToOne
-    @JoinColumn(name = "direction")
+    @JoinColumn(name = "direction", referencedColumnName = "id")
     private Direction direction;
 
 
@@ -47,10 +47,11 @@ public class SousDirection {
     public SousDirection() {
     }
 
-    public SousDirection(String nomsousDirection, String nomsousDirectionFr, String nomsousDirectionEn, String nomsousDirecteur,
+    public SousDirection(Direction direction,String nomsousDirection, String nomsousDirectionFr, String nomsousDirectionEn, String nomsousDirecteur,
             String nomsousDirecteurFr, String prenomsousDirecteur,
             String prenomsousDirecteurFr, String emailsousDirecteur,Integer phonesousDirecteur) {
-   
+        
+        this.direction = direction;
         this.nomsousDirection = nomsousDirection;
         this.nomsousDirectionFr = nomsousDirectionFr;
         this.nomsousDirectionEn = nomsousDirectionEn;
@@ -60,6 +61,7 @@ public class SousDirection {
         this.prenomsousDirecteurFr = prenomsousDirecteurFr;
         this.emailsousDirecteur = emailsousDirecteur;
         this.phonesousDirecteur = phonesousDirecteur;
+
        
     }
 

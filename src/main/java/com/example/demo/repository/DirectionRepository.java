@@ -10,6 +10,7 @@ import com.example.demo.entities.Direction;
 public interface DirectionRepository extends JpaRepository<Direction, Long> {
 
     Direction findDirectionById(Long id);
+    //Direction findById(Long id);
    
     // Recherche par nom et prénom
     // Optional<Direction> findByNomAndPrenom(String nomDirecteur, String prenomDirecteur); // Recherche par nom et prénom dans BDD

@@ -7,7 +7,8 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.demo.dto.SousDirectionDTO;
-import com.example.demo.entities.SousDirection;
+import com.example.demo.entities.*;
+import com.example.demo.repository.DirectionRepository;
 import com.example.demo.repository.SousDirectionRepository;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -18,16 +19,27 @@ public class SousDirectionService {
 
      @Autowired
     private SousDirectionRepository SousdirectionRepository;
-
+    @Autowired
+    private DirectionService directionService;
+    @Autowired
+    private DirectionRepository directionRepository;
 
     public SousDirectionService() {
     }
 
 
   public List<SousDirection> findAll() {
+    System.out.println("Méthode findAll() appelée !");
+   
         return this.SousdirectionRepository.findAll();  //elle va recuperer toutes lignes de la ttable (tous les directeurs) 
     }
+    public SousDirection findsousDirectionById(Long id) {
+        return this.SousdirectionRepository.findSousDirectionById(id);
+    }
 
+    public Optional<SousDirection> findById(Long id) {
+        return this.SousdirectionRepository.findById(id);
+    }
     /*Optional<SousDirection> findByNomAndPrenom(String nomsousDirecteur, String prenomsousDirecteur){
         return this.SousdirectionRepository.findByNomAndPrenom( nomsousDirecteur,  prenomsousDirecteur);
     }*/
@@ -45,7 +57,7 @@ public class SousDirectionService {
     }
 
      //insrer or create la table sousdirection 
-     public SousDirectionDTO addsousDirecteur(SousDirectionDTO sousDirectionDTO) {
+     public SousDirectionDTO addsousDirecteur(SousDirectionDTO sousDirectionDTO,Long id) {
         SousDirection sousdirection = new SousDirection();
         
         // Assignation des attributs à partir de sousDirectionDTO
@@ -59,10 +71,21 @@ public class SousDirectionService {
         sousdirection.setNomsousDirectionEn(sousDirectionDTO.getNomsousDirectionEn());
         sousdirection.setPrenomsousDirecteurFr(sousDirectionDTO.getPrenomsousDirecteurFr());
    
-    
+     // récupérer la direction par son ID
+     if (sousDirectionDTO.getDirection() != null) {
+         Direction direction = this.directionRepository.findDirectionById(sousDirectionDTO.getDirection());
+         if (direction != null) {
+             sousdirection.setDirection(direction);
+         } else {
+             throw new IllegalArgumentException("Direction non trouvée avec l'ID fourni");
+         }
+     } else {
+         throw new IllegalArgumentException("ID de direction manquant");
+     }
+
     //soit ça ou avec mapDTO return new DirectionDTO(direction.getNomDirection(), direction.getNomDirecteur(), direction.getPrenomDirecteur(),direction.getEmailDirecteur(),direction.getPhoneDirecteur());
 
-   // Sauvegarder l'entité Direction dans la base de données
+   // sauvegarder l'entité Direction dans la base de données
    SousDirection savedsousDirection = SousdirectionRepository.save(sousdirection);
     
    // Convertir l'objet Direction sauvegardé en DirectionDTO avant de le retourner
