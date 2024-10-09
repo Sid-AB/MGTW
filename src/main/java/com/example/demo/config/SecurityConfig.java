@@ -30,7 +30,7 @@ public class SecurityConfig {
                     "/categorieChaine/add", "/categorieChaine/save", "/caracterstique/tv/{id}/add",
                     "/caracterstique/radio/{id}/add", "/caracterstique/saveradio", "/caracterstique/save",
                     "/agrument/agruments", "/agrument/add", "/agrument/save", "/ministers/add", "/ministers/Mins",
-                    "/ministers/save", "/Direction/add", "/Direction/direction", "/Direction/save" ,"/sousDirection/add", "/sousDirection/all", "/sousDirection/sousdirection", "/sousDirection/save" }))
+                    "/ministers/save", "/Direction/add", "/Direction/direction", "/Direction/save" ,"/sousDirection/add", "/sousDirection/sousdirection", "/sousDirection/save" }))
                     .authenticated();
             ((AuthorizedUrl) authRequest.requestMatchers(new String[] { "/notAuthenticated/**", "/multimedia/**", "/",
                     "/index", "/tv", "/tv/public", "/tv/prive", "/tv/prive/{name}", "/tv/{id}", "/tv/lugo/{id}",
@@ -39,7 +39,7 @@ public class SecurityConfig {
                     "/presse/public/#publicEcrit", "/presse/public/#publicElectronique", "/presse/{id}",
                     "/presse/public/electronique", "/lois/{id}", "/textJuridique/pdf/{id}/{lang}",
                     "/etablissement/{id}", "/etablissement/lugo/{id}", "/search", "/ministers/list",
-                    "/ministers/pic/{id}","/search/**","/Direction/all" })).permitAll();
+                    "/ministers/pic/{id}","/search/**","/Direction/all" ,"/sousDirection/all"})).permitAll();
         });
         http.formLogin((formLogin) -> {
             ((FormLoginConfigurer) formLogin.loginPage("/login").defaultSuccessUrl("/home", true)).permitAll();
