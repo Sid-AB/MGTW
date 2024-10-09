@@ -24,7 +24,7 @@
           
             <div class="d-flex justify-content-start">
                 <a th:href="${etablissement.getSite()}" target="_blank">
-                  <img th:src="@{${'/etablissement/lugo/'+etablissement.getId()}}" width="50px" height="30px" class="img-fluid mx-3"
+                  <img th:src="@{${'/etablissement/lugo/'+etablissement.getId()}}" width="80px" height="80px" class="img-fluid mx-3"
                                                              alt="">
                 </a>
                 <h2 th:switch="${#locale.language}">
@@ -74,16 +74,22 @@
 
                                 </span>
                             </h2></div>
-                            <div style="font-size: 20px;" th:switch="${#locale.language}">
-                                <p th:case="${'ar'}"
+                            <div  style="font-size: 20px;" th:switch="${#locale.language}">
+                                <p style="
+                                text-align: justify;
+                            " th:case="${'ar'}"
                                 th:if="#{locale.language == 'ar'}"
                                    th:text="${etablissement.getDescription()}">
                                 </p>
-                                <p th:case="${'fr'}"
+                                <p  style="
+                                text-align: justify;
+                            " th:case="${'fr'}"
                                 th:if="#{locale.language == 'fr'}"
                                    th:text="${etablissement.getDescriptionFr()}">
                                 </p>
-                                <p th:case="${'en'}"
+                                <p style="
+                                text-align: justify;
+                            " th:case="${'en'}"
                                 th:if="#{locale.language == 'en'}"
                                    th:text="${etablissement.getDescriptionEn()}">
                                 </p>
