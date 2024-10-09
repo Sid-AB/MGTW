@@ -25,7 +25,7 @@
                 </ol>
                 <div class="d-flex justify-content-start">
                     <a th:href="${presse.getWebsite()}">
-                        <img th:src="@{${'/presse/lugo/' + presse.getId()}}" width="50px" height="30px"
+                        <img th:src="@{${'/presse/lugo/' + presse.getId()}}" width="120px" height="120px"
                             class="img-fluid mx-3" alt="">
                     </a>
                     <h2 th:text="${#locale.language == 'fr' ? presse.getNameFr() : 
@@ -49,7 +49,9 @@
                                           #locale.language == 'en' ? presse.getNameEn() : 
                                           presse.getName()}"></h2>
                             </div>
-                            <p th:text="${#locale.language == 'fr' ? presse.getDescriptionFr() : 
+                            <p style="
+                            text-align: justify;
+                        " th:text="${#locale.language == 'fr' ? presse.getDescriptionFr() : 
                                       #locale.language == 'en' ? presse.getDescriptionEn() : 
                                       presse.getDescription()}"></p>
                         </div>
