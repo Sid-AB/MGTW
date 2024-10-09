@@ -61,8 +61,8 @@
                             </div>
                         </div>
                     </div>
-                </div> -->
-                <!-- <div th:if="pressesElectroniquePrive" th:each="presseElectroniquePrive:${pressesElectroniquePrive}"
+                </div>
+                <div th:if="pressesElectroniquePrive" th:each="presseElectroniquePrive:${pressesElectroniquePrive}"
                      class="col-6 col-sm-3 col-md-3 mb-5">
                     <div class="post-entry">
                         <a th:href="@{'/presse/'+${presseElectroniquePrive.getId().toString()}}" class="post-thumbnail"><img
@@ -83,6 +83,7 @@
                         </div>
                     </div>
                 </div> -->
+
                 <div th:if="${pressesElectroniquePrive.isEmpty()}">
                     <h3>
                         <i style="color:red;" class="bi bi-x-lg"></i>
@@ -91,7 +92,7 @@
                     </h3>
                 </div>
                 
-                <div th:if="${! pressesElectroniquePrive.isEmpty()}" th:each="presseElectroniquePrive : ${pressesElectroniquePrive}" class="col-6 col-sm-3 col-md-3 mb-5">
+                <div th:if="${!pressesElectroniquePrive.isEmpty()}" th:each="presseElectroniquePrive : ${pressesElectroniquePrive}" class="col-6 col-sm-3 col-md-3 mb-5">
                     <div class="post-entry">
                         <a th:href="@{'/presse/'+${presseElectroniquePrive.getId().toString()}}" class="post-thumbnail">
                             <img th:src="@{'/presse/lugo/'+${presseElectroniquePrive.getId()}}" style="height: 100px; width: 100px" alt="Image" class="img-fluid">
@@ -170,8 +171,8 @@
                         
                         
                     </div>
-                </div> -->
-            <!-- <div th:if="pressesElectroniquePublic" th:each="presseElectroniquePublic:${pressesElectroniquePublic}"
+                </div> 
+            <div th:if="pressesElectroniquePublic" th:each="presseElectroniquePublic:${pressesElectroniquePublic}"
                      class="col-6 col-sm-3 col-md-3 mb-5">
                     <div class="post-entry">
                         <a th:href="@{'/presse/'+${presseElectroniquePublic.getId().toString()}}"
@@ -204,7 +205,7 @@
             </div>
 
             <!-- Affichage des presses électroniques publiques si la liste n'est pas vide -->
-            <div th:if="${not pressesElectroniquePublic.isEmpty()}"
+            <div th:if="${!pressesElectroniquePublic.isEmpty()}"
                 th:each="presseElectroniquePublic : ${pressesElectroniquePublic}" class="col-6 col-sm-3 col-md-3 mb-5">
                 <div class="post-entry">
                     <a th:href="@{'/presse/'+${presseElectroniquePublic.getId().toString()}}" class="post-thumbnail">
