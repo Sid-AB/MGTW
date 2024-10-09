@@ -96,7 +96,7 @@ function changeDirection(language) {
   /**
    * Scrolls to an element with header offset
    */
-  const scrollto = (el) => {
+  /*const scrollto = (el) => {
     let header = select('#header')
     let offset = header.offsetHeight
 
@@ -105,7 +105,7 @@ function changeDirection(language) {
       top: elementPos - offset,
       behavior: 'smooth'
     })
-  }
+  }*/
 
   /**
    * Toggle .header-scrolled class to #header when page is scrolled
