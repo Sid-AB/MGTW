@@ -95,6 +95,7 @@
                                 </p>
                                 </div>
                     </div>
+                    <br><br>
                     <div class="portfolio-info">
                        <h3 th:text="#{carast}">الخصائص  </h3> 
                         <ul >
@@ -115,16 +116,72 @@
                                 </ul>
                             </li>
 
-                            <li><strong th:text="#{email}">البريد الإلكتروني </strong>: <a
-                                    th:text="${etablissement.getEmail()}"></a></li>
-                            <li><strong th:text="#{citeweb}">الموقع الالكتروني </strong>: <a
-                                    th:href="${etablissement.getSite()}" th:text="${etablissement.getSite()}" target="_blank"></a></li>
-                            <li><span style="display: flex"><strong th:text="#{fax}">الفاكس </strong>: <a
-                                   th:text="${etablissement.getFax()}"></a></span></li>
+                            <li>
+                                <strong th:text="#{email}">البريد الإلكتروني </strong>: 
+                                <ul>
+                                    <li>
+                                        <div>
+                                            <a th:href="'mailto:' + ${etablissement.getEmail()}"
+                                                th:if="${etablissement.getEmail() != null && etablissement.getEmail() != 'غير متوفر'}"
+                                                th:text="${etablissement.getEmail()}">
+                                            </a>
+                                            <span th:if="${etablissement.getEmail() == ' ' ||  etablissement.getEmail() == null || etablissement.getEmail() == 'غير متوفر' }">
+                                                <span th:text="#{emailNotAvailable}">رقم الفاكس غير متوفر</span>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            
+                            <li>
+                                <strong th:text="#{citeweb}">الموقع الالكتروني </strong>: 
+                                <ul>
+                                    <li>
+                                        <div>
+                                            <a th:href="${etablissement.getSite()}"
+                                                th:if="${etablissement.getSite() != null && etablissement.getSite() != 'غير متوفر'}"
+                                                th:text="${etablissement.getSite()}" target="_blank"></a>
+                                            <span th:if="${ etablissement.getSite() == ' ' ||  etablissement.getSite() == null ||etablissement.getSite() == 'غير متوفر' }">
+                                                <span th:text="#{siteNotAvailable}">رقم الفاكس غير متوفر</span>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
 
-                            <li><strong th:text="#{address}">العنوان </strong>: <a
-                                    th:text="${#locale.language == 'ar' ? etablissement.getAdresse():
-                                               #locale.language == 'fr' ? etablissement.getAdresseFr():etablissement.getAdresseEn()}"></a></li>
+                            <li>
+                                <strong th:text="#{fax}">الفاكس </strong>:
+                                <!-- <span style="display: flex"> 
+                                    <a th:text="${etablissement.getFax()}"></a>
+                                </span> -->
+                                <ul>
+                                    <li>
+                                        <div style="display: flex; align-items: center;">
+                                            <span style="direction: ltr; margin-left: 5px;">
+                                                <span th:if="${etablissement.getFax() != null && etablissement.getFax() != 'غير متوفر'}"
+                                                    th:text="${etablissement.getFax()}"></span>
+                                                <span th:if="${ etablissement.getFax() == ' ' || etablissement.getFax() == null ||etablissement.getFax() == 'غير متوفر' }">
+                                                    <span th:text="#{faxNotAvailable}">رقم الفاكس غير متوفر</span>
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <strong th:text="#{address}">العنوان </strong>: 
+                                               <ul>
+                                                <li>
+                                                    <div th:if="${etablissement.getAdresse() != null && etablissement.getAdresse() != 'غير متوفر'}"
+                                                        th:text="${#locale.language == 'fr' ? etablissement.getAdresseFr() : #locale.language == 'en' ? etablissement.getAdresseEn() :etablissement.getAdresse()}">
+                                                    </div>
+                                                    <div th:if="${ etablissement.getAdresse() == ' ' || etablissement.getAdresse() == null ||etablissement.getAdresse() == 'غير متوفر' }">
+                                                        <span th:text="#{adressNotAvailable}">رقم الفاكس غير متوفر</span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                            </li>
 
                         </ul >
                     </div>
