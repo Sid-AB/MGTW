@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="rtl" th:lang="${#locale.language}">
+<html xmlns:th="http://www.thymeleaf.org" dir="rtl" th:lang="${#locale.language}">
 <head th:replace="notAuthenticated/fragments/head::head(${'title'},${'description'},${'keywords'})">
 </head>
 <body>
@@ -74,7 +74,7 @@
 
                                 </span>
                             </h2></div>
-                            <div th:switch="${#locale.language}">
+                            <div style="font-size: 20px;" th:switch="${#locale.language}">
                                 <p th:case="${'ar'}"
                                 th:if="#{locale.language == 'ar'}"
                                    th:text="${etablissement.getDescription()}">
@@ -92,9 +92,18 @@
                     <div class="portfolio-info">
                        <h3 th:text="#{carast}">الخصائص  </h3>  
                         <ul >
-                            <li><span style="display: flex"><strong th:text="#{telep}"> رقم الهاتف
-                            </strong> <span th:text="${etablissement.getPhone()}"></span>
-                            </span></li>
+                            <li>
+                           <strong th:text="#{telep}+':'"> </strong> <span style=" display: inline-flex;margin-left: 5px; direction: ltr"
+                                    th:if="${etablissement.getPhone() != null && etablissement.getPhone() != 'غير متوفر'}"
+                                    th:text="${etablissement.getPhone()}">
+                                </span>
+                                <span style="
+                                direction: ltr;"
+                                    th:if="${etablissement.getPhone() == ' ' || etablissement.getPhone() == null ||etablissement.getPhone() == 'غير متوفر' }">
+                                    <span th:text="#{phoneNotAvailable}">رقم الفاكس غير متوفر</span>
+                                </span>
+                            </li>
+
                             <li><strong th:text="#{email}">البريد الإلكتروني </strong>: <a
                                     th:text="${etablissement.getEmail()}"></a></li>
                             <li><strong th:text="#{citeweb}">الموقع الالكتروني </strong>: <a

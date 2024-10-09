@@ -1056,11 +1056,25 @@ section {
   background-color: #0E2F4A;
 }
 
+.portfolio-info ul li
+{
+  font-size: 20px;
+}
+.portfolio-info ul li span
+{
+  font-size: 22px;
+}
+.portfolio-info ul li span a
+{
+  font-size: 24px;
+}
 .portfolio-details .portfolio-info {
   padding: 30px;
   box-shadow: 0px 0 30px rgba(55, 81, 126, 0.08);
 }
-
+.portfolio-description p{
+  font-size: 20px;
+}
 .portfolio-details .portfolio-info h3 {
   font-size: 22px;
   font-weight: 700;
@@ -1072,15 +1086,17 @@ section {
 .portfolio-details .portfolio-info ul {
   list-style: none;
   padding: 0;
-  font-size: 15px;
+  font-size: 18px;
 }
 
 .portfolio-details .portfolio-info ul li+li {
   margin-top: 10px;
   display: flex;
+  font-size: 18px;
 }
 .portfolio-details .portfolio-info ul li+li span {
  direction: ltr;
+ font-size: 18px;
 }
 .portfolio-details .portfolio-description {
   padding-top: 30px;
@@ -2979,7 +2995,7 @@ section {
   transform-origin: 50% 50%;
   animation: circleichi 10s linear infinite;
 }
-#circlGreen
+/*#circlGreen
 {
   transform-origin: 50% 50%;
   animation: bounce 5s linear infinite;
@@ -2987,13 +3003,13 @@ section {
 #mincontient
 {
   animation: bounce 5s linear infinite;
-}
+}*/
 .inSide #circlRed
 {
   transform-origin: 50% 50%;
   animation: circlenino 2s linear infinite;
 }
-.inSide #circlGreen
+/*.inSide #circlGreen
 {
   transform-origin: 50% 50%;
   animation: circleichi 20s linear infinite;
@@ -3002,7 +3018,7 @@ section {
 {
   transform-origin: 50% 50%;
   animation: bounce 1s forwards ease-in;
-}
+}*/
 .inSide
 {
   background-color: #000000b0;
@@ -3077,4 +3093,31 @@ section {
   color: #446;
 }
 
+.flag-alg
+{
+  width: 20%;
+}
+.flag-alg img
+{
+    width: 360px;
+}
+.all-handler
+{
+  width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: row-reverse;
+}
+
+.image-pres 
+{
+  border-radius: 25px;
+  width: 235px;
+  height: 250px;
+  background-image: url(/notAuthenticated/assets/img/m8TYK55M_400x400.jpg);
+  background-size: cover; /* Adjust the size to cover the div */
+  background-position: center; /* Center the image in the div */
+  background-repeat: no-repeat;
+}
 /***------------------------------------------------*/

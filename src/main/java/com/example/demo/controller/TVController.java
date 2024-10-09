@@ -142,7 +142,7 @@ public class TVController {
             Resource file = this.filesStorageService.load(folder.concat("/" + filename));
             return ((BodyBuilder)ResponseEntity.ok().header("Content-Disposition", new String[]{"attachment; filename=\"" + file.getFilename() + "\""})).body(file);
         } else {
-            Resource file = this.filesStorageService.load("staticImage".concat("/profile-img.jpg"));
+            Resource file = this.filesStorageService.load("staticImage".concat("/nothing.png"));
             return ((BodyBuilder)ResponseEntity.ok().header("Content-Disposition", new String[]{"attachment; filename=\"" + file.getFilename() + "\""})).body(file);
         }
     }

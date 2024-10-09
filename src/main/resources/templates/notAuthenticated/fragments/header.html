@@ -3,13 +3,33 @@
     <h1 hidden="" class="logo me-auto" style=""><a href="index.html"></a></h1>
     <div class=" " style="background-color: #0E2F4A">
         <div class="justify-content-center pt-3" data-aos="zoom-in" data-aos-delay="200" style="display: flex;flex-direction: column;align-items: center">
-            <svg th:include="notAuthenticated/fragments/logosvg::logosvg" width="240" height="240" viewBox="0 0 2342 2004" version="1.1" class="img-fluid animated logo">
+            <div style="width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: row-reverse;">
+             <div class="image-pres">
+               <div style="width: 250px;
+               height: 250px;
+               color: black;
+               background-color: #00000029;
+               border-radius: 20px;">
+
+               </div>
+            </div>
+             <div>
+                <svg th:include="notAuthenticated/fragments/logosvg::logosvg" width="240" height="240" viewBox="0 0 2342 2004" version="1.1" class="img-fluid animated logo">
                 </svg>
+             </div>
+             <div class="flag-alg">
+                <img th:src="@{/notAuthenticated/assets/img/الجزائر-flag-of-algeria.gif}"/>
+             </div>
+            </div>
                 <div>
-                    <p style="font-size: 40px;color: aliceblue;">Algerian Media Gateway</p>
+                    <p style="font-size: 30px;color: aliceblue;">Algerian Media Gateway</p>
                 </div> 
                 <div>
-                    <p style="font-size: 40px;color: aliceblue; font-family: Droid Arabic Kufi;">بوابة الإعلام الجزائري</p>
+                    <p style="font-size: 30px;color: aliceblue; font-family: Droid Arabic Kufi;">بوابة الإعلام الجزائري</p>
                 </div>        
         </div>
         <nav>
@@ -36,11 +56,12 @@
 
                 <li><a hidden="hidden" class="nav-link scrollto active" href="index.html">الرئسية</a></li>
 
-                <li class="dropdown "><a th:href="@{'/'}"><span th:text="#{principal}"> الرئسية </span> <i
+                <li class="dropdown "><a th:href="@{'/'}"><span th:text="#{Mins}"> الوزارة </span>  <i
                         class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a th:href="@{'/#Soustutelle'}" th:text="#{etablissement}">  المؤسسات الإعلامية</a></li>
                         <li><a th:href="@{'/#Reglementationsectorielle'}" th:text="#{organigrame}" > تنظيم القطاع </a></li>
+                        <li><a th:href="@{'/ministers/list'}" th:text="#{listMins}">قائمة الوزارء </a></li>
 
                     </ul>
                 </li>
@@ -48,7 +69,7 @@
                 <li class="dropdown " ><a  th:href="@{'#'}"><span style="color: white" th:text="#{channel}" >القنوات التلفزيونية</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a th:href="@{'/tv/public'}" th:text="#{public}">العمومية</a></li>
-                        <li class="dropdown "><a href="#"><span th:text="#{prive}">الخاصة</span> <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'"></i></a>
+                        <li class="dropdown "><a href="#"><span th:text="#{prive}">الخاصة</span> <i th:class="${#locale.language == 'ar' ? 'bx bx-chevron-left' : 'bx bx-chevron-right'}"></i></a>
                             <ul style="left: -100%">
 
 
@@ -104,7 +125,7 @@
 
 
 
-                <li class="dropdown"> <a  th:href="@{'#'}"> <span  style="color: white" th:text="#{textju}"> النصوص القانونية </span> <i class="bi bi-chevron-down"></i></a>
+                <li class="dropdown"> <a  href="#"> <span  style="color: white" th:text="#{textju}"> النصوص القانونية </span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li th:each="lois:${myObjectlFNBar}"  >
                             <a  th:href="@{'/lois/'+${lois.getId()}}" th:if="${lois.getId() == 5}" th:text="#{textApp}"></a>
@@ -113,11 +134,6 @@
                         </li>
 
 
-                    </ul>
-                </li>
-                <li class="dropdown"><a href="#"><span th:text="#{Mins}"> الوزارة </span> <i class="bi bi-chevron-down"></i></a>
-                    <ul>
-                        <li><a th:href="@{'/ministers/list'}" th:text="#{listMins}">قائمة الوزارء </a></li>
                     </ul>
                 </li>
                 <!--li class="dropdown" th:classappend="${#locale.language == 'ar'} ? 'lng-holder-ar' : 'lng-holder'"><a href="#" style="padding-right:5px ;"><span th:text="#{langage}"> الوزارة </span> <i class="bi bi-chevron-down"></i></a>

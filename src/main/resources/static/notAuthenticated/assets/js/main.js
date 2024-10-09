@@ -19,6 +19,7 @@ function changeDirection(language) {
   if (language === 'ar') {
       console.log('testing '+language)
       document.documentElement.setAttribute("dir", "rtl");  // Set direction to 'rtl' for Arabic
+      $(".portfolio-info ul li span a").css('direction','ltr')
     
   } else {
       document.documentElement.setAttribute("dir", "ltr");
@@ -27,6 +28,8 @@ function changeDirection(language) {
         //  document.getElementById('main').style.fontFamily="Helvetica, Arial, sans-serif";
           $("#main").find("*").css("font-family", "Helvetica, Arial, sans-serif");
           $("#hero").find("*").css("font-family", "Helvetica, Arial, sans-serif");
+          $("#footer").find("*").css("font-family", "Helvetica, Arial, sans-serif"); 
+          $(".portfolio-info ul li span a").css('direction','rtl') 
           //document.getElementById('breadcrumbs').style.fontFamily="Helvetica, Arial, sans-serif";
           //document.getElementById('skills').style.fontFamily="Helvetica, Arial, sans-serif";
       console.log('testing '+language)  // Set direction to 'ltr' for other languages

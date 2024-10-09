@@ -57,7 +57,7 @@ public class SousDirectionService {
     }
 
      //insrer or create la table sousdirection 
-     public SousDirectionDTO addsousDirecteur(SousDirectionDTO sousDirectionDTO,Long id) {
+     public SousDirectionDTO addsousDirecteur(SousDirectionDTO sousDirectionDTO) {
         SousDirection sousdirection = new SousDirection();
         
         // Assignation des attributs à partir de sousDirectionDTO

@@ -56,29 +56,51 @@
                         <h3 th:text="#{carast}">الخصائص</h3>
                         <ul>
                             <li>
-                                <span style="display: flex; align-items: center;">
-                                    <strong th:text="#{telep}">رقم الهاتف</strong>:
-                                    <span style="direction: ltr; margin-left: 5px;" th:text="${radio.getPhone()}"></span>
-                                </span>
+                                <strong th:text="#{telep}">رقم الهاتف</strong>:
+                                <ul>
+                                    <li>
+                                        <div style="display: flex; align-items: center;">
+                                            <span style="direction: ltr; margin-left: 5px;" th:text="${radio.getPhone()}"></span>
+                                        </div>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
                                 <strong th:text="#{email}">البريد الإلكتروني</strong>:
-                                <a th:href="'mailto:' + ${radio.getEmail()}" th:text="${radio.getEmail()}"></a>
+                                <ul>
+                                    <li>
+                                        <div>
+                                            <a th:href="'mailto:' + ${radio.getEmail()}" th:text="${radio.getEmail()}"></a>
+                                        </div>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
                                 <strong th:text="#{citeweb}">الموقع الإلكتروني</strong>:
-                                <a th:href="${radio.getWebsite()}" th:text="${radio.getWebsite()}" target="_blank"></a>
+                                <ul>
+                                    <li>
+                                        <div>
+                                            <a th:href="${radio.getWebsite()}" th:text="${radio.getWebsite()}" target="_blank"></a>
+                                        </div>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
-                                <span style="display: flex; align-items: center;">
-                                    <strong th:text="#{fax}">الفاكس</strong>:
-                                    <span style="direction: ltr; margin-left: 5px;" th:text="${radio.getFax()}"></span>
-                                </span>
+                                <strong th:text="#{fax}">الفاكس</strong>:
+                                <ul>
+                                    <li>
+                                        <div style="display: flex; align-items: center;">
+                                            <span style="direction: ltr; margin-left: 5px;" th:text="${radio.getFax()}"></span>
+                                        </div>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </div>
                     
 
+<br>
+<br>
 
 
                     <!-- <div class="portfolio-info">
