@@ -64,7 +64,6 @@
                                 <ul>
                                     <li>
                                         <div style="display: flex; align-items: center;">
-                            
                                             <span style="direction: ltr; margin-left: 5px;"
                                                 th:if="${presse.getPhone() != null && presse.getPhone() != 'غير متوفر'}"
                                                 th:text="${presse.getPhone()}">
@@ -131,10 +130,10 @@
                                 <strong th:text="#{address}">العنوان</strong>:
                                 <ul>
                                     <li>
-                                        <div th:if="${presse.getAdresse() != null && presse.getAdresse() != 'غير متوفر'}"
+                                        <div th:if="${presse.getAdresse() != null && presse.getAdresse() != 'غير متوفر'&& presse.getAdresse() != ' '}"
                                             th:text="${#locale.language == 'fr' ? presse.getAdresseFr() : #locale.language == 'en' ? presse.getAdresseEn() :presse.getAdresse()}">
                                         </div>
-                                        <div th:if="${ presse.getAdresse() == ' ' || presse.getAdresse() == null ||presse.getAdresse() == 'غير متوفر' }">
+                                        <div th:if="${ presse.getAdresse() == '   ' || presse.getAdresse() == null ||presse.getAdresse() == 'غير متوفر' }">
                                             <span th:text="#{adressNotAvailable}">رقم الفاكس غير متوفر</span>
                                         </div>
                                     </li>
