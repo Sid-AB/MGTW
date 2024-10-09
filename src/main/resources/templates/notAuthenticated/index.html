@@ -39,7 +39,10 @@
                 <a href="/videos/mediaCity.mp4" target="_blank"> < Chemin vers la vidéo >
                     <img th:src="@{notAuthenticated/assets/img/media city.png}" class="img-fluid animated" alt="Vidéo à regarder">
             </div-->
-            <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200" onclick="openVideo()">
+            <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200" onclick="openVideo()" style="display: flex;
+            flex-direction: column;
+            align-items: center;">
+                <p style="color: aliceblue; font-size: 26px;" th:text="#{mediacity}"> مشروع المدينة الإعلامية الجزائرية</p>
                 <img th:src="@{notAuthenticated/assets/img/media city.png}" class="img-fluid animated" alt="Vidéo à regarder" id="videoTrigger" style="cursor: pointer;">
             </div>
            
