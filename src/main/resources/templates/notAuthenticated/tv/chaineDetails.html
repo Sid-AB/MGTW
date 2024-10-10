@@ -149,11 +149,21 @@
                             <!-- Satellite -->
                             <li>
                                 <span style="display: flex; align-items: center;">
-                                    <strong th:text="#{satellite}+':'">القمر الصناعي</strong> <!-- Espace pour séparer -->
-                                    <span th:text="${caracteristique.getSatellite()}"></span>
+                                    <strong th:text="#{satellite} + ':'">القمر الصناعي</strong>
+                                    
+                                    <!-- Debug: afficher la valeur exacte du satellite -->
+                                    <span>Satellite actuel : </span>
+                                    <span th:text="${caracteristique.getSatellite()}">Valeur non trouvée</span>
+                                    
+                                    <!-- Debug: afficher la langue actuelle -->
+                                    <span>Langue actuelle : </span>
+                                    <span th:text="${#locale.language}">Langue non trouvée</span>
                                 </span>
                             </li>
-                        
+                            
+                            
+                            
+                            
                             <!-- Fréquence avec direction LTR pour les chiffres -->
                             <li>
                                 <span style="display: flex; align-items: center;">
