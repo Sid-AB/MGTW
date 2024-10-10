@@ -41,7 +41,7 @@
                         </a>
                         <div class="post-content-entry">
   
-                            <h3 style="font-size: 20px"></h3>
+                            <h3 style="font-size: 20px">
                                 <a th:href="@{'/presse/' + ${presseEcritPublic.getId().toString()}}" 
                                    th:text="${#locale.language == 'fr' ? presseEcritPublic.getNameFr() : 
                                              #locale.language == 'en' ? presseEcritPublic.getNameEn() : 
