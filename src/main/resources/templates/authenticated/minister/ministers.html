@@ -21,7 +21,7 @@
         <div class="card-body">
 
             <div class="d-flex justify-content-between">
-                <div class="p-2"><h5 class="card-title">Users list</h5></div>
+                <div class="p-2"><h5 class="card-title">Minister list</h5></div>
                 <div class="p-2">
                     <a type="button" class="btn btn-outline-dark p-2 mt-3" th:href="@{'/ministers/add'}">Add Minister</a>
                 </div>
@@ -51,6 +51,18 @@
                     <td><span th:text="${user.getLastName()}"></span></td>
                     <td><span th:text="${user.getStartFrom()}"></span></td>
                     <td><span th:text="${user.getUntil()}"></span></td>
+                    <td>
+                        <div class="pt-2">
+                            <a th:href="@{'/ministers/MinistersEdit/'+${user.getId()}}" class="btn btn-success btn-sm"
+                               title="Detail">
+                                <i class="bx bxs-user-detail"></i>
+                            </a>
+                            <a th:href="@{'/ministers/MinistersEdit/'+${user.getId()}}" class="btn btn-info btn-sm"
+                               title="Update"><i class="ri-edit-2-line text-white"></i></a>
+
+                            <a href="#" class="btn btn-danger btn-sm" title="Remove"><i class="bi bi-trash"></i></a>
+                        </div>
+                    </td>
                 </tr>
                 </tbody>
             </table>
