@@ -1633,6 +1633,8 @@ section {
   font-size: 28px;
   font-weight: 600;
   color: #37517e;
+  margin-top: auto;
+    margin-bottom: auto;
 }
 
 .breadcrumbs ol {
