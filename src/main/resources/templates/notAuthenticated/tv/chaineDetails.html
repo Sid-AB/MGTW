@@ -150,15 +150,10 @@
                             <li>
                                 <span style="display: flex; align-items: center;">
                                     <strong th:text="#{satellite} + ':'">القمر الصناعي</strong>
-                                    
-                                    <!-- Debug: afficher la valeur exacte du satellite -->
-                                    <span>Satellite actuel : </span>
-                                    <span th:text="${caracteristique.getSatellite()}">Valeur non trouvée</span>
-                                    
-                                    <!-- Debug: afficher la langue actuelle -->
-                                    <span>Langue actuelle : </span>
-                                    <span th:text="${#locale.language}">Langue non trouvée</span>
-                                </span>
+                                    <span th:text="${#locale.language == 'ar' && #strings.equals(caracteristique.getSatellite(), 'Nilesat') ? 'نايل سات' 
+                                    : (#locale.language == 'ar' && #strings.equals(caracteristique.getSatellite(), 'Eutelsat') ? 'اوتيلسات' 
+                                    : caracteristique.getSatellite())}"></span>
+                  </span>
                             </li>
                             
                             
