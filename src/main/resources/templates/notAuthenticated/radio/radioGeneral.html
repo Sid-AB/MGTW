@@ -46,7 +46,9 @@
 
                         <!-- Start Column 2 -->
                         <div th:if="${radiosNational}" th:each="radioNational : ${radiosNational}" class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-                            <a class="product-item" th:href="@{'/radio/' + ${radioNational.getId().toString()}}">
+                            <a class="product-item" th:href="@{'/radio/' + ${radioNational.getId().toString()}}" style="
+                            margin-bottom: 25px;
+                        ">
                                 <img th:src="@{${'/radio/lugo/' + radioNational.getId()}}" style="height: 150px; width: 150px"
                                      class="img-fluid product-thumbnail">
                                 
@@ -122,7 +124,9 @@
 
                         <!-- Start Column 2 -->
 <div th:if="${radiosLocal}" th:each="radioLocal : ${radiosLocal}" class="col-6 col-md-2 col-lg-2 mb-5 mb-md-0">
-    <a class="product-item" th:href="@{'/radio/' + ${radioLocal.getId().toString()}}">
+    <a class="product-item" th:href="@{'/radio/' + ${radioLocal.getId().toString()}}" style="
+    margin-bottom: 25px;
+">
         <img th:src="@{${'/radio/lugo/' + radioLocal.getId()}}" style="height: 150px; width: 150px"
              class="img-fluid product-thumbnail">
         
@@ -131,7 +135,7 @@
                       (#locale.language == 'en' ? radioLocal.getNameEn() : radioLocal.getName())}">
         </h3>
         
-        <h5 class="product-price" style="font-size: 15px; overflow: hidden; height: 85px;" 
+        <h5 class="product-price" style="font-size: 15px; overflow: hidden; height: 95px;" 
             th:text="${#locale.language == 'fr' ? 
                       (radioLocal.getDescriptionFr() != null && radioLocal.getDescriptionFr().length() < 100 ? 
                       radioLocal.getDescriptionFr() : 
