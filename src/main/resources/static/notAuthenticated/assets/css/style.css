@@ -970,28 +970,7 @@ section {
 .portfolio .portfolio-item .portfolio-img {
   overflow: hidden;
 }
-/* fluidité des images  */
-.img-fluid {
-  height: 200px;
-  width: 200px;
-}
-.portfolio-info {
-  width: 230px;
-}
-/* Si la langue est française */
-html[lang="fr"] .portfolio {
-  margin-left: -200px;
-}
 
-/* Si la langue est autre que française (ici exemple pour anglais) */
-html[lang="en"] .portfolio {
-  margin-left: -200px;
-}
-
-/* Vous pouvez ajouter des styles pour d'autres langues, par exemple arabe */
-html[lang="ar"] .portfolio {
-  margin-right: -200px;
-}
 
 .portfolio .portfolio-item .portfolio-img img {
   transition: all 0.6s;

@@ -8,7 +8,30 @@
 </head>
 <body>
 
+<style>
+    /* fluidité des images  */
+.img-fluid {
+  height: 200px;
+  width: 200px;
+}
+.portfolio-info {
+  width: 230px;
+}
+/* Si la langue est française */
+html[lang="fr"] .portfolio {
+  margin-left: -200px;
+}
 
+/* Si la langue est autre que française (ici exemple pour anglais) */
+html[lang="en"] .portfolio {
+  margin-left: -200px;
+}
+
+/* Vous pouvez ajouter des styles pour d'autres langues, par exemple arabe */
+html[lang="ar"] .portfolio {
+  margin-right: -200px;
+}
+</style>
 <!-- Add image before the header -->
 <header th:include="notAuthenticated/fragments/header::header" style="background-color: #0E2F4A"
         th:with="myObject=${complexesForNavBar},myObjectlFNBar=${loisForNavBar}"></header>
