@@ -53,9 +53,10 @@ public class Minister {
     // Constructors
     public Minister() {}
 
-    public Minister(String firstName, String lastName, LocalDate birthday, String address, LocalDate startFrom, LocalDate until, 
+    public Minister(Long id, String firstName, String lastName, LocalDate birthday, String address, LocalDate startFrom, LocalDate until, 
                     List<Multimedia> multimediaList, Multimedia profilePicture, 
                     String firstNameFr,  String lastNameFr) {
+        this.id=id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthday = birthday;

@@ -16,7 +16,7 @@ public class SecurityConfig {
     public SecurityConfig() {
     }
  
-    @Bean
+  /*   @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((authRequest) -> {
             ((AuthorizedUrl) authRequest.requestMatchers(new String[] { "/authenticated/**", "/user/**", "/tv/tvs",
@@ -29,7 +29,7 @@ public class SecurityConfig {
                     "/etablissement/update/{id}", "/home", "/complexe/complexes", "/complexe/add", "/complexe/save",
                     "/categorieChaine/add", "/categorieChaine/save", "/caracterstique/tv/{id}/add",
                     "/caracterstique/radio/{id}/add", "/caracterstique/saveradio", "/caracterstique/save",
-                    "/agrument/agruments", "/agrument/add", "/agrument/save", "/ministers/add", "/ministers/Mins",
+                    "/agrument/agruments", "/agrument/add", "/agrument/save", "/ministers/add", "/ministers/Mins","/ministers/MinistersEdit/{id}","/ministers/update/{id}",
                     "/ministers/save", "/Direction/add", "/Direction/direction", "/Direction/save" ,"/sousDirection/add", "/sousDirection/sousdirection", "/sousDirection/save" }))
                     .authenticated();
             ((AuthorizedUrl) authRequest.requestMatchers(new String[] { "/notAuthenticated/**", "/multimedia/**", "/",
@@ -52,6 +52,6 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable);
         http.headers(AbstractHttpConfigurer::disable);
         return (SecurityFilterChain) http.build();
-    }
+    }*/
         
 }
