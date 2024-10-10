@@ -8,7 +8,30 @@
 </head>
 <body>
 
+<style>
+    /* fluidité des images  */
+.img-fluid {
+  height: 200px;
+  width: 200px;
+}
+.portfolio-info {
+  width: 230px;
+}
+/* Si la langue est française */
+html[lang="fr"] .portfolio {
+  margin-left: -200px;
+}
 
+/* Si la langue est autre que française (ici exemple pour anglais) */
+html[lang="en"] .portfolio {
+  margin-left: -200px;
+}
+
+/* Vous pouvez ajouter des styles pour d'autres langues, par exemple arabe */
+html[lang="ar"] .portfolio {
+  margin-right: -200px;
+}
+</style>
 <!-- Add image before the header -->
 <header th:include="notAuthenticated/fragments/header::header" style="background-color: #0E2F4A"
         th:with="myObject=${complexesForNavBar},myObjectlFNBar=${loisForNavBar}"></header>
@@ -76,7 +99,7 @@
                                             alt="">
                                     </div>
                                     <div class="portfolio-info d-flex"
-                                        th:style="${#locale.language == 'fr' || #locale.language == 'en' ? 'direction: ltr; justify-content: flex-end;' : 'direction: rtl; justify-content: flex-start;'}">
+                                        th:style="${#locale.language == 'fr' || #locale.language == 'en' ? 'direction: ltr; justify-content: flex-start;' : 'direction: rtl; justify-content: flex-start;'}">
     
                                         <h4 th:style="${#locale.language == 'fr' || #locale.language == 'en' ? 'text-align: left; margin-right: 20px;' : 'text-align: right; margin-left: 20px;'}"
                                             th:text="${#locale.language == 'fr' ? tv.getNameFr() : (#locale.language == 'en' ? tv.getNameEn() : tv.getName())}">
@@ -112,7 +135,9 @@
                 </div>
 
                 <div th:if="${!complexes.isEmpty()}" class="col-lg-4">
-                    <div class="portfolio-description">
+                    <div class="portfolio-description" style="
+                    width: 500px;
+                ">
                         <!-- Affichage du nom selon la langue -->
                         <h2 th:text="${#locale.language == 'fr' ? complexes.get(0).getNameFr() : (#locale.language == 'en' ? complexes.get(0).getNameEn() : complexes.get(0).getName())}">
                         </h2>
@@ -121,7 +146,9 @@
                         <p th:text="${#locale.language == 'fr' ? complexes.get(0).getDescriptionFr() : (#locale.language == 'en' ? complexes.get(0).getDescriptionEn() : complexes.get(0).getDescription())}">
                         </p>
                     </div>
-                    <div class="portfolio-info">
+                    <div class="portfolio-info" style="
+                    width: 500px;
+                ">
                         <h3 th:text="#{carast}">الخصائص </h3>
                         <ul>
                             <li>
@@ -173,7 +200,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <strong th:text="#{citeweb} ">الموقع الإلكتروني :</strong>
+                                <strong th:text="#{citeweb} + ' : '">الموقع الإلكتروني :</strong>&nbsp;
                                 <!-- <a style="direction: ltr;" th:href="${complexes.get(0).getSite()}" th:text="${complexes.get(0).getSite()}"></a> -->
                                 <ul>
                                     <li>

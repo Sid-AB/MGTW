@@ -937,6 +937,7 @@ section {
 /*--------------------------------------------------------------
 # Portfolio
 --------------------------------------------------------------*/
+
 .portfolio #portfolio-flters {
   list-style: none;
   margin-bottom: 20px;
@@ -969,6 +970,7 @@ section {
 .portfolio .portfolio-item .portfolio-img {
   overflow: hidden;
 }
+
 
 .portfolio .portfolio-item .portfolio-img img {
   transition: all 0.6s;
@@ -2072,7 +2074,7 @@ section {
 @media screen and (min-width: 1400px) {
   /* Styles for screens larger than 1400px */
   .RDC {
-    width: 141vh;
+    width: 122vh;
   }
   .level-one
   {

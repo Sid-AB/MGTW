@@ -125,6 +125,7 @@ public class TextJuridiqueController {
     
             Resource file = this.filesStorageService.load(filePath);
             String contentType;
+            System.out.println("filedd "+ file); // Log du chemin
     
             // Détection du type MIME
             try {
