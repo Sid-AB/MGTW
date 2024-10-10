@@ -937,6 +937,9 @@ section {
 /*--------------------------------------------------------------
 # Portfolio
 --------------------------------------------------------------*/
+.portfolio{
+  margin-right: -200px;
+}
 .portfolio #portfolio-flters {
   list-style: none;
   margin-bottom: 20px;
@@ -969,7 +972,11 @@ section {
 .portfolio .portfolio-item .portfolio-img {
   overflow: hidden;
 }
-
+/* fluidité des images  */
+.img-fluid {
+  height: 200px;
+  width: 200px;
+}
 .portfolio .portfolio-item .portfolio-img img {
   transition: all 0.6s;
 }
