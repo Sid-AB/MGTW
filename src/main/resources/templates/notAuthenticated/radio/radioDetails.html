@@ -53,46 +53,97 @@
                         text-align: justify;
                     " th:text="${#locale.language == 'fr' ? radio.getDescriptionFr() : (#locale.language == 'en' ? radio.getDescriptionEn() : radio.getDescription())}"></p>
                     </div>
-
+<br><br>
                     <div class="portfolio-info">
                         <h3 th:text="#{carast}">الخصائص</h3>
                         <ul>
                             <li>
                                 <strong th:text="#{telep}">رقم الهاتف</strong>:
-                                <ul>
+                                <!-- <ul>
                                     <li>
                                         <div style="display: flex; align-items: center;">
                                             <span style="direction: ltr; margin-left: 5px;" th:text="${radio.getPhone()}"></span>
+                                        </div>
+                                    </li>
+                                </ul> -->
+                                <ul>
+                                    <li>
+                                        <div style="display: flex; align-items: center;">
+                                            <span style="direction: ltr; margin-left: 5px;"
+                                                th:if="${radio.getPhone() != null && radio.getPhone() != 'غير متوفر'}"
+                                                th:text="${radio.getPhone()}">
+                                            </span>
+                                            <span th:if="${radio.getPhone() == ' ' || radio.getPhone() == null ||radio.getPhone() == 'غير متوفر' }">
+                                                <span th:text="#{phoneNotAvailable}">رقم الفاكس غير متوفر</span>
+                                            </span>
                                         </div>
                                     </li>
                                 </ul>
                             </li>
                             <li>
                                 <strong th:text="#{email}">البريد الإلكتروني</strong>:
-                                <ul>
+                                <!-- <ul>
                                     <li>
                                         <div>
                                             <a th:href="'mailto:' + ${radio.getEmail()}" th:text="${radio.getEmail()}"></a>
+                                        </div>
+                                    </li>
+                                </ul> -->
+                                <ul>
+                                    <li>
+                                        <div>
+                                            <a th:href="'mailto:' + ${radio.getEmail()}"
+                                                th:if="${radio.getEmail() != null && radio.getEmail() != 'غير متوفر'}"
+                                                th:text="${radio.getEmail()}">
+                                            </a>
+                                            <span th:if="${radio.getEmail() == ' ' ||  radio.getEmail() == null || radio.getEmail() == 'غير متوفر' }">
+                                                <span th:text="#{emailNotAvailable}">رقم الفاكس غير متوفر</span>
+                                            </span>
                                         </div>
                                     </li>
                                 </ul>
                             </li>
                             <li>
                                 <strong th:text="#{citeweb}">الموقع الإلكتروني</strong>:
-                                <ul>
+                                <!-- <ul>
                                     <li>
                                         <div>
                                             <a th:href="${radio.getWebsite()}" th:text="${radio.getWebsite()}" target="_blank"></a>
+                                        </div>
+                                    </li>
+                                </ul> -->
+                                <ul>
+                                    <li>
+                                        <div>
+                                            <a th:href="${radio.getWebsite()}"
+                                                th:if="${radio.getWebsite() != null && radio.getWebsite() != 'غير متوفر'}"
+                                                th:text="${radio.getWebsite()}" target="_blank"></a>
+                                            <span th:if="${ radio.getWebsite() == ' ' ||  radio.getWebsite() == null ||radio.getWebsite() == 'غير متوفر' }">
+                                                <span th:text="#{siteNotAvailable}">رقم الفاكس غير متوفر</span>
+                                            </span>
                                         </div>
                                     </li>
                                 </ul>
                             </li>
                             <li>
                                 <strong th:text="#{fax}">الفاكس</strong>:
-                                <ul>
+                                <!-- <ul>
                                     <li>
                                         <div style="display: flex; align-items: center;">
                                             <span style="direction: ltr; margin-left: 5px;" th:text="${radio.getFax()}"></span>
+                                        </div>
+                                    </li>
+                                </ul> -->
+                                <ul>
+                                    <li>
+                                        <div style="display: flex; align-items: center;">
+                                            <span style="direction: ltr; margin-left: 5px;">
+                                                <span th:if="${radio.getFax() != null && radio.getFax() != 'غير متوفر'}"
+                                                    th:text="${radio.getFax()}"></span>
+                                                <span th:if="${ radio.getFax() == ' ' || radio.getFax() == null ||radio.getFax() == 'غير متوفر' }">
+                                                    <span th:text="#{faxNotAvailable}">رقم الفاكس غير متوفر</span>
+                                                </span>
+                                            </span>
                                         </div>
                                     </li>
                                 </ul>
@@ -135,6 +186,9 @@
                             <li>
                                 <strong th:text="#{satellite}">القمر الصناعي</strong>: 
                                 <span th:text="${caracteristique.getSatellite()}"></span>
+                                <span th:if="${ radio.getFax() == ' ' || radio.getFax() == null ||radio.getFax() == 'غير متوفر' }">
+                                    <span th:text="#{faxNotAvailable}">رقم الفاكس غير متوفر</span>
+                                </span>
                             </li>
                             <!-- <li>
                                 <strong th:text="#{website}">الموقع الإلكتروني</strong>: 
@@ -143,18 +197,30 @@
                             <li>
                                 <strong th:text="#{frequence}">التردد</strong>: 
                                 <span th:text="${caracteristique.getFrequency()}"></span>
+                                <span th:if="${ caracteristique.getFrequency() == ' ' || caracteristique.getFrequency() == null ||caracteristique.getFrequency() == 'غير متوفر' }">
+                                    <span th:text="#{frequenceNotAvailable}">رقم الفاكس غير متوفر</span>
+                                </span>
                             </li>
                             <li>
                                 <strong th:text="#{modulation}">معامل الترميز</strong>: 
                                 <span th:text="${caracteristique.getModulation()}"></span>
+                                <span th:if="${ caracteristique.getModulation() == ' ' || caracteristique.getModulation() == null ||caracteristique.getModulation() == 'غير متوفر' }">
+                                    <span th:text="#{modulationNotAvailable}">رقم الفاكس غير متوفر</span>
+                                </span>
                             </li>
                             <li>
                                 <strong th:text="#{polarization}">الاستقطاب</strong>: 
                                 <span th:text="${caracteristique.getPolarization()}"></span>
+                                <span th:if="${ caracteristique.getPolarization() == ' ' || caracteristique.getPolarization() == null ||caracteristique.getPolarization() == 'غير متوفر' }">
+                                    <span th:text="#{polarizationNotAvailable}">رقم الفاكس غير متوفر</span>
+                                </span>
                             </li>
                             <li>
                                 <strong th:text="#{fec}">معامل التصحيح</strong>: 
                                 <span th:text="${caracteristique.getFec()}"></span>
+                                <span th:if="${ caracteristique.getFec() == ' ' || caracteristique.getFec() == null ||caracteristique.getFec() == 'غير متوفر' }">
+                                    <span th:text="#{fecNotAvailable}">رقم الفاكس غير متوفر</span>
+                                </span>
                             </li>
                             <hr/>
                             
