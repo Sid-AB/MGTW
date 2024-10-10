@@ -149,11 +149,16 @@
                             <!-- Satellite -->
                             <li>
                                 <span style="display: flex; align-items: center;">
-                                    <strong th:text="#{satellite}+':'">القمر الصناعي</strong> <!-- Espace pour séparer -->
-                                    <span th:text="${caracteristique.getSatellite()}"></span>
-                                </span>
+                                    <strong th:text="#{satellite} + ':'">القمر الصناعي</strong>
+                                    <span th:text="${#locale.language == 'ar' && #strings.equals(caracteristique.getSatellite(), 'Nilesat') ? 'نايل سات' 
+                                    : (#locale.language == 'ar' && #strings.equals(caracteristique.getSatellite(), 'Eutelsat') ? 'اوتيلسات' 
+                                    : caracteristique.getSatellite())}"></span>
+                  </span>
                             </li>
-                        
+                            
+                            
+                            
+                            
                             <!-- Fréquence avec direction LTR pour les chiffres -->
                             <li>
                                 <span style="display: flex; align-items: center;">
