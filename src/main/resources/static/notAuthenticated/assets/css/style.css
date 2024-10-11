@@ -3120,4 +3120,13 @@ section {
   background-position: center; /* Center the image in the div */
   background-repeat: no-repeat;
 }
+#breadcrumbs div a img
+{
+  width: 80px;
+  height: 80px;
+}
+#breadcrumbs .container div
+{
+  align-items: center;
+}
 /***------------------------------------------------*/
