@@ -10,10 +10,9 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface MinisterRepository extends JpaRepository<Minister, Long> {
     Minister findMinisterById(Long id);
-   // Minister findMinisterById(Long id);
+    Optional<Minister> findById(Long id);
     Optional<Minister> findByFirstNameAndLastName(String firstName, String lastName);
     Optional<Minister> findByFirstNameFrAndLastNameFr(String firstNameFr, String lastNameFr);
-    Optional<Minister> findByFirstNameEnAndLastNameEn(String firstNameEn, String lastNameEn);
 
     @Query(value = "SELECT m.file_name FROM Minister min JOIN Multimedia m ON min.profile_picture_id = m.id WHERE min.id = :ministerId", nativeQuery = true)
     String findImagePathByMinisterId(@Param("ministerId") Long ministerId);

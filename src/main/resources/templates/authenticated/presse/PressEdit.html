@@ -70,7 +70,7 @@
                                 <div class="col-md-8 col-lg-9">
                                     <input name="nameEn" type="text" class="form-control" id="nameEn"
                                            placeholder="Name"
-                                           th:value="${etablissement.getNameEn()}">
+                                           th:value="${press.getNameEn()}">
 
                                 </div>
                             </div>
@@ -103,6 +103,26 @@
                                     <input name="address" type="text" class="form-control" id="address"
                                            placeholder="Address (Office)"
                                            th:value="${press.getAdresse()}">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="Address" class="col-md-4 col-lg-12 col-form-label">Address Fr
+                                    (Office)</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="adresseFr" type="text" class="form-control" id="adresseFr"
+                                           placeholder="Address (Office)"
+                                           th:value="${press.getAdresseFr()}">
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <label for="Address" class="col-md-4 col-lg-12 col-form-label">Address En
+                                    (Office)</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="adresseEn" type="text" class="form-control" id="adresseEn"
+                                           placeholder="Address (Office)"
+                                           th:value="${press.getAdresseEn()}">
                                 </div>
                             </div>
 

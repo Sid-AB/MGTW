@@ -70,7 +70,7 @@
                                 <div class="col-md-8 col-lg-9">
                                     <input name="nameEn" type="text" class="form-control" id="nameEn"
                                            placeholder="Name"
-                                           th:value="${etablissement.getNameEn()}">
+                                           th:value="${radio.getNameEn()}">
 
                                 </div>
                             </div>
@@ -100,11 +100,33 @@
                                 <label for="Address" class="col-md-4 col-lg-12 col-form-label">Address
                                     (Office)</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="address" type="text" class="form-control" id="address"
+                                    <input name="adresse" type="text" class="form-control" id="adresse"
                                            placeholder="Address (Office)"
                                            th:value="${radio.getAdresse()}">
                                 </div>
                             </div>
+
+                            <div class="row mb-3">
+                                <label for="Address" class="col-md-4 col-lg-12 col-form-label">Address Francais
+                                    (Office)</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="adresseFr" type="text" class="form-control" id="adresseFr"
+                                           placeholder="Address (Office)"
+                                           th:value="${radio.getAdresseFr()}">
+                                </div>
+                            </div>
+
+
+                            <div class="row mb-3">
+                                <label for="Address" class="col-md-4 col-lg-12 col-form-label">Address English
+                                    (Office)</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="adresseEn" type="text" class="form-control" id="adresseEn"
+                                           placeholder="Address (Office)"
+                                           th:value="${radio.getAdresseEn()}">
+                                </div>
+                            </div>
+
 
                             <div class="row mb-3">
                                 <label for="phone" class="col-md-4 col-lg-12 col-form-label">Phone

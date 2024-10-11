@@ -87,6 +87,8 @@ public class RadioController {
         List<Radio> radiosNational = this.radioService.findRadioByCategorie("national");
         List<Radio> radiosLocal = this.radioService.findRadioByCategorie("local");
         List<Lois> loisForNavBar = this.loisService.findAll();
+        List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
+        model.addAttribute("complexesForNavBar", complexesForNavBar);
         model.addAttribute("loisForNavBar", loisForNavBar);
         model.addAttribute("radiosNational", radiosNational);
         model.addAttribute("radiosLocal", radiosLocal);
@@ -110,7 +112,7 @@ public class RadioController {
             Resource file = this.filesStorageService.load(folder.concat("/" + filename));
             return ((BodyBuilder)ResponseEntity.ok().header("Content-Disposition", new String[]{"attachment; filename=\"" + file.getFilename() + "\""})).body(file);
         } else {
-            Resource file = this.filesStorageService.load("staticImage".concat("/profile-img.jpg"));
+            Resource file = this.filesStorageService.load("staticImage".concat("/nothing.png"));
             return ((BodyBuilder)ResponseEntity.ok().header("Content-Disposition", new String[]{"attachment; filename=\"" + file.getFilename() + "\""})).body(file);
         }
     }

@@ -41,7 +41,10 @@ public class LoisService {
             Lois loi = existingLois.get();
             loi.setName(lois.getName());
             loi.setNameFr(lois.getNameFr());
+            loi.setNameEn(lois.getNameEn());
             loi.setDescription(lois.getDescription());
+            loi.setDescriptionFr(lois.getDescriptionFr());
+            loi.setDescriptionEn(lois.getDescriptionEn());
             this.loisRepository.save(loi);
       /*  if (multimedias.isPresent()) {
             List<Multimedia> savedMultimedias = new ArrayList();

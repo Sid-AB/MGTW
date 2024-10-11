@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html xmlns:th="http://www.thymeleaf.org" dir="rtl" th:lang="${#locale.language}">
 <head th:replace="notAuthenticated/fragments/head::head(${'title'},${'description'},${'keywords'})">
 </head>
 <body>
@@ -9,8 +9,17 @@
         th:with="myObject=${complexesForNavBar},myObjectlFNBar=${loisForNavBar}"></header>
 
 
-<main>
+<main id="main">
     <div class="container">
+        <div style="    margin-top: 20px;
+        padding: 8px;
+        width: 45%;">
+             <div class="form-inline d-flex justify-content-center ">
+                <input class="form-control mr-sm-2 w-100"  id="query" name="query" required type="search" th:placeholder="#{search}" aria-label="بحث ">
+                <button class="btn btn-outline-success my-2 my-sm-0 mx-2 " type="submit" id="querysearch"><i
+                        class="ri-search-2-line"></i></button>
+            </div>
+         </div>
         <section class="section register  d-flex flex-column align-items-center justify-content-center m-0">
             <div class="container">
 
@@ -21,7 +30,8 @@
                     <li th:each="etablissement : ${etablissements}">
                         <!-- Display search results -->
                         <a th:href="@{${'/etablissement/'+etablissement.getId()}}">
-                            <span th:text="${etablissement.getName()}"></span></a>
+                            <span th:text="${#locale.language == 'ar' ? etablissement.getName() :
+                                             #locale.language == 'fr' ?  etablissement.getNameFr() : etablissement.getNameEn()}"></span></a>
                             
                     </li>
                 </ul>
@@ -31,7 +41,8 @@
                         <!-- Display search results -->
                         <a th:href="@{${'/tv/'+tv.getId()}}">
 
-                            <span th:text="${tv.getName()}"></span>
+                            <span th:text="${#locale.language == 'ar' ? tv.getName() :
+                                                  #locale.language == 'fr' ?  tv.getNameFr() : tv.getNameEn()}"></span>
                         </a>
                     </li>
                 </ul>
@@ -41,7 +52,8 @@
                     <li th:each="radio : ${radios}">
                         <!-- Display search results -->
                         <a th:href="@{${'/radio/'+radio.getId()}}">
-                        <span th:text="${radio.getName()}"></span>
+                        <span th:text="${#locale.language == 'ar' ? radio.getName() :
+                                         #locale.language == 'fr' ?  radio.getNameFr() : radio.getNameEn()}"></span>
                         </a>
                     </li>
                 </ul>
@@ -51,7 +63,8 @@
                     <li th:each="presse : ${presses}">
                         <!-- Display search results -->
                         <a th:href="@{${'/presse/'+presse.getId()}}">
-                        <span th:text="${presse.getName()}"></span>
+                        <span th:text="${#locale.language == 'ar' ? presse.getName() :
+                                         #locale.language == 'fr' ?  presse.getNameFr() : presse.getNameEn()}"></span>
                         </a>
                     </li>
                 </ul>
@@ -65,7 +78,7 @@
             </div>
                     <!-- Affichage du message "Aucun résultat" -->
         <h3 th:if="${tvs.isEmpty() and etablissements.isEmpty() and radios.isEmpty() and presses.isEmpty() and textJuridiques.isEmpty()}">
-            <i style="color:red;" class="bi bi-x-lg"></i>
+            <a href="/"> <i style="color:red;" class="bi bi-x-lg"></i></a>
             <span th:text="#{no_results}">لا توجد نتائج</span>
         </h3>
         </section>

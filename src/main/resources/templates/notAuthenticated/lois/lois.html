@@ -16,15 +16,32 @@
 
 <main id="main">
 
+    <div style="width: 70%; padding: 10px; margin-top: 5px;">
+        <div class="form-inline d-flex justify-content-center ">
+            <input class="form-control mr-sm-2 w-100"  id="query" name="query" required type="search" th:placeholder="#{search}" aria-label="بحث ">
+            <button class="btn btn-outline-success my-2 my-sm-0 mx-2 " type="submit" id="querysearch"><i
+                    class="ri-search-2-line"></i></button>
+        </div>
+    </div>
     <section id="faq" class="faq ">
         <div class="container" data-aos="fade-up">
 
-            <div class="section-title">
+            <!-- <div class="section-title">
                 <h2 th:text="${lois.getName()}"></h2>
                 <p th:text="${lois.getDescription()}"></p>
+            </div> -->
+            <div class="section-title">
+                <h2 th:if="${#locale.language == 'fr'}" th:text="${lois.getNameFr()}"></h2>
+                <h2 th:if="${#locale.language == 'en'}" th:text="${lois.getNameEn()}"></h2>
+                <h2 th:if="${#locale.language == 'ar'}" th:text="${lois.getName()}"></h2>
+            
+                <p th:if="${#locale.language == 'fr'}" th:text="${lois.getDescriptionFr()}"></p>
+                <p th:if="${#locale.language == 'en'}" th:text="${lois.getDescriptionEn()}"></p>
+                <p th:if="${#locale.language == 'ar'}" th:text="${lois.getDescription()}"></p>
             </div>
+            
             <br>
-            <div class="faq-list">
+            <!-- <div class="faq-list">
                 <ul>
                     <li th:if="${lois.getTextJuridiqueList()}" th:each="textJuridique:${lois.getTextJuridiqueList()}"
                         data-aos="fade-up"
@@ -53,8 +70,56 @@
 
 
                 </ul>
-            </div>
+            </div> -->
 
+            <div class="faq-list">
+                <ul>
+                    <li th:if="${lois.getTextJuridiqueList()}" th:each="textJuridique : ${lois.getTextJuridiqueList()}"
+                        data-aos="fade-up" th:attr="data-aos-delay=${100 * lois.getId()}">
+                        <i class=""></i>
+            
+                        <!-- Titre en fonction de la langue sélectionnée -->
+                        <a data-bs-toggle="collapse" class="collapse show"
+                           th:attr="data-bs-target='#faq-list-' + ${textJuridique.getId()}">
+                            
+                            <span th:if="${#locale.language == 'fr'}" th:text="${textJuridique.getNameFr()}"></span>
+                            <span th:if="${#locale.language == 'en'}" th:text="${textJuridique.getNameEn()}"></span>
+                            <span th:if="${#locale.language == 'ar'}" th:text="${textJuridique.getName()}"></span>
+            
+                            <i class="bx bx-chevron-down icon-show"></i>
+                            <i class="bx bx-chevron-up icon-close"></i>
+                        </a>
+            
+                        <!-- Contenu en fonction de la langue sélectionnée -->
+                        <div th:id="${'faq-list-' + textJuridique.getId()}" class="collapse " data-bs-parent=".faq-list">
+                            <p th:if="${#locale.language == 'fr'}" th:text="${textJuridique.getDescriptionFr()}"></p>
+                            <p th:if="${#locale.language == 'en'}" th:text="${textJuridique.getDescriptionEn()}"></p>
+                            <p th:if="${#locale.language == 'ar'}" th:text="${textJuridique.getDescription()}"></p>
+            
+                            <!-- Lien vers le fichier PDF selon la langue -->
+                            <a th:if="${!textJuridique.getMultimediaList().isEmpty()}"
+                                th:href="@{/textJuridique/pdf/{id}/{lang}(id=${textJuridique.id}, lang=${#locale.language == 'fr' ? 'fr' : (#locale.language == 'en' ? 'fr' : 'ar')})}"
+                                target="_blank">
+                                <span th:if="${#locale.language == 'fr'}">Voir le texte</span>
+                                <span th:if="${#locale.language == 'en'}">View the text</span>
+                                <span th:if="${#locale.language == 'ar'}">اطلع على النص</span>
+                            </a>
+
+
+
+                            <!-- Lien vers le fichier PDF -->
+                <!-- <a th:if="${!textJuridique.getMultimediaList().isEmpty()}"
+                th:href="${'/textJuridique/pdf/' + textJuridique.getId()}" target="_blank"> 
+                <span th:if="${#locale.language == 'fr'}">Voir le texte</span>
+                <span th:if="${#locale.language == 'en'}">View the text</span>
+                <span th:if="${#locale.language == 'ar'}">اطلع على النص</span>
+             </a> -->
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            
         </div>
     </section><!-- End Frequently Asked Questions Section -->
     <section id="clients" class="clients ">

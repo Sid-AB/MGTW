@@ -62,6 +62,18 @@
                     <td><span th:text="${user.getPrenomDirecteur()}"></span></td>
                     <td><span th:text="${user.getEmailDirecteur()}"></span></td>
                     <td><span th:text="${user.getPhoneDirecteur()}"></span></td>
+                    <td>
+                        <div class="pt-2">
+                            <a th:href="@{'/Direction/directionsEdit/'+${user.getId()}}" class="btn btn-success btn-sm"
+                               title="Detail">
+                                <i class="bx bxs-user-detail"></i>
+                            </a>
+                            <a th:href="@{'/Direction/directionsEdit/'+${user.getId()}}" class="btn btn-info btn-sm"
+                               title="Update"><i class="ri-edit-2-line text-white"></i></a>
+
+                            <a href="#" class="btn btn-danger btn-sm" title="Remove"><i class="bi bi-trash"></i></a>
+                        </div>
+                    </td>
                 </tr>
                 </tbody>
             </table>

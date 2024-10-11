@@ -12,6 +12,5 @@ public interface PresseCategorieRepository extends JpaRepository<PresseCategorie
     Optional<PresseCategorie> findPresseCategorieById(Long id);
 
     PresseCategorie findPresseCategorieByName(String string);
-    PresseCategorie findPresseCategorieByNameFr(String string);
-    PresseCategorie findPresseCategorieByNameEn(String string);
+   
 }

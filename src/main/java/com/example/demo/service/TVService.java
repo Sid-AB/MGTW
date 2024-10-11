@@ -1,6 +1,5 @@
 package com.example.demo.service;
 
-
 import com.example.demo.dto.TVDTO;
 import com.example.demo.entities.Agrument;
 import com.example.demo.entities.Caracteristique;
@@ -78,7 +77,7 @@ public class TVService {
         this.tvRepository.save(tv);
         Caracteristique caracteristique = tvdto.toECaractiristique();
         Multimedia multimedia = null;
-        List<Multimedia> multimedias = new ArrayList();
+        List<Multimedia> multimedias = new ArrayList<>();
         if (!((MultipartFile)tvdto.getProfilFiles().get(0)).isEmpty()) {
             multimedias.addAll(this.filesStorageService.saveFiles(tvdto.getProfilFiles(), "profileDoc"));
         }
@@ -101,7 +100,7 @@ public class TVService {
     public TV saveUserAndMultimedias(List<Multimedia> multimedias, TV tv) {
         this.tvRepository.save(tv);
         if (multimedias != null && !multimedias.isEmpty()) {
-            List<Multimedia> savedMultimedias = new ArrayList();
+            List<Multimedia> savedMultimedias = new ArrayList<>();
             multimedias.forEach((multimedia) -> {
                 multimedia.setTv(tv);
             });
@@ -118,10 +117,10 @@ public class TVService {
     }
 
     public List<TV> findTVSPublic() {
-        List<Agrument> agruments = new ArrayList();
+        List<Agrument> agruments = new ArrayList<>();
         agruments.add(this.agrumentRepository.findAgrumentByName("tv"));
         List<Complexe> complexes = this.complexeRepository.findComplexeByAgrumentListAndType(agruments, "public");
-        List<TV> tvs = new ArrayList();
+        List<TV> tvs = new ArrayList<>();
         Iterator var4 = complexes.iterator();
 
         while(var4.hasNext()) {
@@ -133,10 +132,10 @@ public class TVService {
     }
     
     public List<TV> findTVSPrive(String name) {
-        List<Agrument> agruments = new ArrayList();
+        List<Agrument> agruments = new ArrayList<>();
         agruments.add(this.agrumentRepository.findAgrumentByName("tv"));
         List<Complexe> complexes = this.complexeRepository.findComplexeByAgrumentListAndTypeAndName(agruments, "prive", name);
-        List<TV> tvs = new ArrayList();
+        List<TV> tvs = new ArrayList<>();
         Iterator var5 = complexes.iterator();
 
         while(var5.hasNext()) {
@@ -156,12 +155,15 @@ public class TVService {
             tv.setName(TV.getName());
             tv.setNameFr(TV.getNameFr());
             tv.setNameEn(TV.getNameEn());
+            tv.setAdresse(TV.getAdresse());
+            tv.setAdresseFr(TV.getAdresseFr());
+            tv.setAdresseEn(TV.getAdresseEn());
             tv.setDescription(TV.getDescription());
             tv.setDescriptionFr(TV.getDescriptionFr());
             tv.setDescriptionEn(TV.getDescriptionEn());
             this.tvRepository.save(tv);
       /*  if (multimedias.isPresent()) {
-            List<Multimedia> savedMultimedias = new ArrayList();
+            List<Multimedia> savedMultimedias = new ArrayList<>();
             multimedias.ifPresent((multimedia) -> {
                 multimedia.settv(existingTV);
             });

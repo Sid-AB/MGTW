@@ -6,15 +6,36 @@
 * License: https://bootstrapmade.com/license/
 */
 
+/**
+ * 
+ */
+
+
+
+/** 
+ * 
+*/
 function changeDirection(language) {
   if (language === 'ar') {
       console.log('testing '+language)
       document.documentElement.setAttribute("dir", "rtl");  // Set direction to 'rtl' for Arabic
+      $(".portfolio-info ul li span a").css('direction','ltr')
+    
   } else {
       document.documentElement.setAttribute("dir", "ltr");
+          document.documentElement.style.fontFamily = "Helvetica, Arial, sans-serif";
+          document.body.style.fontFamily = "Helvetica, Arial, sans-serif";
+        //  document.getElementById('main').style.fontFamily="Helvetica, Arial, sans-serif";
+          $("#main").find("*").css("font-family", "Helvetica, Arial, sans-serif");
+          $("#hero").find("*").css("font-family", "Helvetica, Arial, sans-serif");
+          $("#footer").find("*").css("font-family", "Helvetica, Arial, sans-serif"); 
+          $(".portfolio-info ul li span a").css('direction','rtl') 
+          //document.getElementById('breadcrumbs').style.fontFamily="Helvetica, Arial, sans-serif";
+          //document.getElementById('skills').style.fontFamily="Helvetica, Arial, sans-serif";
       console.log('testing '+language)  // Set direction to 'ltr' for other languages
   }
 }
+
 
 (function() {
   "use strict";
@@ -75,7 +96,7 @@ function changeDirection(language) {
   /**
    * Scrolls to an element with header offset
    */
-  const scrollto = (el) => {
+  /*const scrollto = (el) => {
     let header = select('#header')
     let offset = header.offsetHeight
 
@@ -84,7 +105,7 @@ function changeDirection(language) {
       top: elementPos - offset,
       behavior: 'smooth'
     })
-  }
+  }*/
 
   /**
    * Toggle .header-scrolled class to #header when page is scrolled
@@ -101,6 +122,7 @@ function changeDirection(language) {
     window.addEventListener('load', headerScrolled)
     onscroll(document, headerScrolled)
   }
+
 
   /**
    * Back to top button
@@ -273,3 +295,22 @@ function changeDirection(language) {
   var currentLang = document.documentElement.getAttribute("lang");  // Get the lang attribute
   changeDirection(currentLang);
 });
+/*
+window.addEventListener('load', function() {
+  const flashContainer = document.getElementById('flash-container');
+  const mainContent = document.getElementById('main-content');
+  const flashVideo = document.getElementById('flash-video');
+
+ /* flashVideo.addEventListener('ended', () => {
+    flashContainer.classList.add('fade-out');
+    mainContent.classList.add('show-content');
+}); */
+  // Set a timeout to hide the flash video after a few seconds
+  /*setTimeout(() => {
+      // Add fade-out effect to the video container
+      flashContainer.classList.add('fade-out');
+      // Show the main content after the video fades out
+      mainContent.classList.add('show-content');
+  }, 5000); // Video will play for 5 seconds before fading out
+  
+});*/

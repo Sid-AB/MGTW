@@ -2,6 +2,8 @@ package com.example.demo.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 
 @Table(name = "direction")
@@ -13,6 +15,12 @@ public class Direction {
 
     private Long id;
 
+
+     // une direction a plusieurs sous directions
+     @OneToMany(mappedBy = "direction", cascade = CascadeType.ALL, orphanRemoval = true)
+     private List<SousDirection> sousDirection;
+
+     
     @Column(name = "nom_direction")
     private String nomDirection;
 
@@ -165,5 +173,13 @@ public class Direction {
 
     public void setPrenomDirecteurEn(String prenomDirecteurEn) {
         this.prenomDirecteurEn = prenomDirecteurEn;
+    }
+
+    public List<SousDirection> getSousDirection() {
+        return sousDirection;
+    }
+
+    public void setSousDirection(List<SousDirection> sousDirection) {
+        this.sousDirection = sousDirection;
     }
 }

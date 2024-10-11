@@ -100,6 +100,9 @@ public class RadioService {
             radio.setName(Radio.getName());
             radio.setNameFr(Radio.getNameFr());
             radio.setNameEn(Radio.getNameEn());
+            radio.setAdresse(Radio.getAdresse());
+            radio.setAdresseFr(Radio.getAdresseFr());
+            radio.setAdresseEn(Radio.getAdresseEn());
             radio.setDescription(Radio.getDescription());
             radio.setDescriptionFr(Radio.getDescriptionFr());
             radio.setDescriptionEn(Radio.getDescriptionEn());

@@ -4,9 +4,8 @@
 </head>
 <body>
 
-
-<header th:include="notAuthenticated/fragments/header::header" style="background-color: #0E2F4A"
-        th:with="myObject=${complexesForNavBar},myObjectlFNBar=${loisForNavBar}"></header>
+    <header th:include="notAuthenticated/fragments/header::header" style="background-color: #0E2F4A"
+    th:with="myObject=${complexesForNavBar},myObjectlFNBar=${loisForNavBar}"></header>
 
 
 </div>
@@ -20,9 +19,13 @@
                 <li><a href="index.html">Home</a></li>
                 <li>Portfolio Details</li>
             </ol>
-            <div class="d-flex justify-content-start">
-                <a th:href="${tv.getWebsite()}" target="_blank"><img th:src="@{${'/tv/lugo/'+tv.getId()}}" width="50px" height="30px" class="img-fluid mx-3" alt=""></a>
-                <h2 th:text="${tv.getName()}"></h2></div>
+                <div class="d-flex align-items-center justify-content-start">
+                    <a th:href="${tv.getWebsite()}" target="_blank">
+                        <img th:src="@{${'/tv/lugo/'+tv.getId()}}" width="80px" height="80px" class="img-fluid mx-3" alt="">
+                    </a>
+                    <h2 th:text="${#locale.language == 'fr' ? tv.getNameFr() : (#locale.language == 'en' ? tv.getNameEn() : tv.getName())}" class="mb-0"></h2>
+                </div>
+                
 
 
         </div>
@@ -35,50 +38,175 @@
                 <div class="col-lg-6">
                     <div>
                         <div class="portfolio-description">
-                            <h2 th:text="${tv.getName()}"></h2></div>
-                        <p th:text="${tv.getDescription()}"></p>
+                            <h2 th:text="${#locale.language == 'fr' ? tv.getNameFr() : (#locale.language == 'en' ? tv.getNameEn() : tv.getName())}"></h2>
+                        </div>
+                        <p style="
+                        text-align: justify;
+                    " th:text="${#locale.language == 'fr' ? tv.getDescriptionFr() : (#locale.language == 'en' ? tv.getDescriptionEn() : tv.getDescription())}"></p>
                     </div>
+                    
                     <div class="portfolio-info">
                         <h3 th:text="#{carast}">الخصائص  </h3>
-                        <ul >
-                            <li><span style="display: flex"><strong th:text="#{telep}">  رقم الهاتف
-                            </strong> <span th:text="${tv.getPhone()}"></span>
-                            </span></li>
-                            <li><strong th:text="#{email}" > البريد الإليكتروني </strong>: <a
-                                    th:text="${tv.getEmail()}"></a></li>
-                            <li><strong th:text="#{citeweb}"> الموقع الالكتروني </strong>: <a
-                                    th:href="${tv.getWebsite()}" th:text="${tv.getWebsite() }" target="_blank"></a></li>
-                            <li><span style="display: flex"><strong th:text="#{fax}">الفاكس </strong>: <a
-                                   style="direction: ltr;" th:text="${tv.getFax()}"></a></span></li>
-                            <li><strong th:text="#{address}">العنوان </strong>: <a
-                                    th:text="${tv.getAdresse()}"></a></li>
-                        </ul >
+                       
+                        <ul>
+                            <!-- Téléphone avec flexbox pour aligner l'étiquette et la valeur -->
+                            <li>
+                                <strong th:text="#{telep}+':'">رقم الهاتف</strong> <!-- Espace pour séparer -->
+                                <ul>
+                                    <li>
+                                        <div style="display: flex; align-items: center;">
+                                            <span style="direction: ltr; margin-left: 5px;"
+                                                th:if="${tv.getPhone() != null && tv.getPhone() != 'غير متوفر'}"
+                                                th:text="${tv.getPhone()}">
+                                            </span>
+                                            <span th:if="${tv.getPhone() == ' ' || tv.getPhone() == null ||tv.getPhone() == 'غير متوفر' }">
+                                                <span th:text="#{phoneNotAvailable}">رقم الفاكس غير متوفر</span>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        
+                            <!-- Email -->
+                            <li>
+                                <strong th:text="#{email}+':'">البريد الإلكتروني</strong> <!-- Espace pour séparer -->
+                                <ul>
+                                    <li>
+                                        <div>
+                                            <a th:href="'mailto:' + ${tv.getEmail()}"
+                                                th:if="${tv.getEmail() != null && tv.getEmail() != 'غير متوفر'}"
+                                                th:text="${tv.getEmail()}">
+                                            </a>
+                                            <span th:if="${tv.getEmail() == ' ' ||  tv.getEmail() == null || tv.getEmail() == 'غير متوفر' }">
+                                                <span th:text="#{emailNotAvailable}">رقم الفاكس غير متوفر</span>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            
+                        
+                            <!-- Site Web -->
+                            <li>
+                                <strong th:text="#{citeweb}+':'">الموقع الإلكتروني</strong> <!-- Espace pour séparer -->
+                                <ul>
+                                    <li>
+                                        <div>
+                                            <a th:href="${tv.getWebsite()}"
+                                                th:if="${tv.getWebsite() != null && tv.getWebsite() != 'غير متوفر'}"
+                                                th:text="${tv.getWebsite()}" target="_blank"></a>
+                                            <span th:if="${ tv.getWebsite() == ' ' ||  tv.getWebsite() == null ||tv.getWebsite() == 'غير متوفر' }">
+                                                <span th:text="#{siteNotAvailable}">رقم الفاكس غير متوفر</span>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        
+                            <!-- Fax avec direction LTR pour aligner les chiffres correctement -->
+                            <li>
+                                <strong th:text="#{fax}+':'">الفاكس</strong> <!-- Espace pour séparer -->
+                                <ul>
+                                    <li>
+                                        <div style="display: flex; align-items: center;">
+                                            <span style="direction: ltr; margin-left: 5px;">
+                                                <span th:if="${tv.getFax() != null && tv.getFax() != 'غير متوفر'}"
+                                                    th:text="${tv.getFax()}"></span>
+                                                <span th:if="${ tv.getFax() == ' ' || tv.getFax() == null ||tv.getFax() == 'غير متوفر' }">
+                                                    <span th:text="#{faxNotAvailable}">رقم الفاكس غير متوفر</span>
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        
+                            <!-- Adresse avec condition sur la langue -->
+                            <li>
+                                <strong th:text="#{address}+':'">العنوان</strong> <!-- Espace pour séparer -->
+                                <ul>
+                                    <li>
+                                        <div th:if="${tv.getAdresse() != null && tv.getAdresse() != 'غير متوفر'}"
+                                            th:text="${#locale.language == 'fr' ? tv.getAdresseFr() : #locale.language == 'en' ? tv.getAdresseEn() :tv.getAdresse()}">
+                                        </div>
+                                        <div th:if="${ tv.getAdresse() == ' ' || tv.getAdresse() == null ||tv.getAdresse() == 'غير متوفر' }">
+                                            <span th:text="#{adressNotAvailable}">رقم الفاكس غير متوفر</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        
                     </div>
 
-
+<br><br>
 
 
                     <div class="portfolio-info">
-                        <h3 th:text="#{carattech}">الخصائص التقنية </h3>
-                        <ul th:if="${caracteristique}" th:each="caracteristique:${tv.getCaracteristiqueList()}">
-                            <li><strong th:text="#{stalit}"> القمر الصناعي
-                            </strong> <span th:text="${caracteristique.getSatellite()}"></span>
+                        <h3 th:text="#{carattech}+':'">الخصائص التقنية </h3>
+                        <ul th:if="${caracteristique}" th:each="caracteristique : ${tv.getCaracteristiqueList()}">
+    
+                            <!-- Satellite -->
+                            <li>
+                                <span style="display: flex; align-items: center;">
+                                    <strong th:text="#{satellite} + ':'">القمر الصناعي</strong>&nbsp;
+                                    <span th:text="${#locale.language == 'ar' && #strings.equals(caracteristique.getSatellite(), 'Nilesat') ? 'نايل سات' 
+                                    : (#locale.language == 'ar' && #strings.equals(caracteristique.getSatellite(), 'Eutelsat') ? 'اوتيلسات' 
+                                    : caracteristique.getSatellite())}"></span>
+                  </span>
                             </li>
-
-
-                            <li><strong th:text="#{frequence}">التردد </strong>: <a
-                                    th:text="${caracteristique.getFrequency()}"></a></li>
-                            <li><strong th:text="#{modlu}">معامل الترميز </strong>: <a
-                                    th:text="${caracteristique.getSymbolrate()}"></a></li>
-                            <li><strong th:text="#{polizar}">الاستقاب </strong>: <a
-                                    th:text="${caracteristique.getPolarization()}"></a></li>
-                            <li><strong th:text="#{fec}">معامل التصحيح </strong>: <a
-                                    th:text="${caracteristique.getFec()}"></a></li>
-                            <!--li><strong th:text="#{citeweb}">الموقع الالكتروني </strong>: <a th:href="${tv.getWebsite()}"
-                                                                        th:text="${tv.getWebsite()}" target="_blank"></a></li-->
-
+                            
+                            
+                            
+                            
+                            <!-- Fréquence avec direction LTR pour les chiffres -->
+                            <li>
+                                <span style="display: flex; align-items: center;">
+                                    <strong th:text="#{frequence}+':'">التردد</strong> &nbsp;<!-- Espace pour séparer -->
+                                    <span style="direction: ltr;" th:text="${caracteristique.getFrequency()}"></span>
+                                    <span th:if="${ caracteristique.getFrequency() == ' ' || caracteristique.getFrequency() == null ||caracteristique.getFrequency() == 'غير متوفر' }">
+                                        <span th:text="#{frequenceNotAvailable}">رقم الفاكس غير متوفر</span>
+                                    </span>
+                                </span>
+                            </li>
+                        
+                            <!-- Symbolrate avec direction LTR pour les chiffres -->
+                            <li>
+                                <span style="display: flex; align-items: center;">
+                                    <strong th:text="#{modulation}+':'">معامل الترميز</strong>&nbsp; <!-- Espace pour séparer -->
+                                    <span style="direction: ltr;" th:text="${caracteristique.getSymbolrate()}"></span>
+                                    <span th:if="${ caracteristique.getModulation() == ' ' || caracteristique.getModulation() == null ||caracteristique.getModulation() == 'غير متوفر' }">
+                                        <span th:text="#{modulationNotAvailable}">رقم الفاكس غير متوفر</span>
+                                    </span>
+                                </span>
+                            </li>
+                        
+                            <!-- Polarization -->
+                            <li>
+                                <span style="display: flex; align-items: center;">
+                                    <strong  th:text="#{polarization}+':'">الاستقاب</strong> &nbsp;<!-- Espace pour séparer -->
+                                    <span th:text="${caracteristique.getPolarization()}"></span>
+                                    <span th:if="${ caracteristique.getPolarization() == ' ' || caracteristique.getPolarization() == null ||caracteristique.getPolarization() == 'غير متوفر' }">
+                                        <span th:text="#{polarizationNotAvailable}">رقم الفاكس غير متوفر</span>
+                                    </span>
+                                </span>
+                            </li>
+                        
+                            <!-- FEC avec direction LTR pour les chiffres -->
+                            <li>
+                                <span style="display: flex; align-items: center;">
+                                    <strong th:text="#{fec }+':'">معامل التصحيح</strong> &nbsp;<!-- Espace pour séparer -->
+                                    <span style="direction: ltr;" th:text="${caracteristique.getFec()}"></span>
+                                    <span th:if="${ caracteristique.getFec() == ' ' || caracteristique.getFec() == null ||caracteristique.getFec() == 'غير متوفر' }">
+                                        <span th:text="#{fecNotAvailable}">رقم الفاكس غير متوفر</span>
+                                    </span>
+                                </span>
+                            </li>
+                        
+                            <!-- Ligne horizontale pour la séparation des caractéristiques -->
                             <hr />
-                        </ul >
+                        </ul>
+                        
                     </div>
 
                 </div>

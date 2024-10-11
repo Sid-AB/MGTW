@@ -27,14 +27,11 @@ public class Minister {
     @Column(name = "first_name_fr")
     private String firstNameFr;
 
-    @Column(name = "first_name_en")
-    private String firstNameEn;
-
+  
     @Column(name = "last_name_fr")
     private String lastNameFr;
 
-    @Column(name = "last_name_en")
-    private String lastNameEn;
+   
     private LocalDate birthday;
     private String address;
 
@@ -56,9 +53,10 @@ public class Minister {
     // Constructors
     public Minister() {}
 
-    public Minister(String firstName, String lastName, LocalDate birthday, String address, LocalDate startFrom, LocalDate until, 
+    public Minister(Long id, String firstName, String lastName, LocalDate birthday, String address, LocalDate startFrom, LocalDate until, 
                     List<Multimedia> multimediaList, Multimedia profilePicture, 
-                    String firstNameFr, String firstNameEn, String lastNameFr, String lastNameEn) {
+                    String firstNameFr,  String lastNameFr) {
+        this.id=id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthday = birthday;
@@ -68,9 +66,9 @@ public class Minister {
         this.multimediaList = multimediaList;
         this.profilePicture = profilePicture;
         this.firstNameFr = firstNameFr;
-        this.firstNameEn = firstNameEn;
+       
         this.lastNameFr = lastNameFr;
-        this.lastNameEn = lastNameEn;
+        
     }
 
     // Getters and Setters
@@ -106,13 +104,7 @@ public class Minister {
         this.firstNameFr = firstNameFr;
     }
 
-    public String getFirstNameEn() {
-        return firstNameEn;
-    }
-
-    public void setFirstNameEn(String firstNameEn) {
-        this.firstNameEn = firstNameEn;
-    }
+  
 
     public String getLastNameFr() {
         return lastNameFr;
@@ -122,13 +114,7 @@ public class Minister {
         this.lastNameFr = lastNameFr;
     }
 
-    public String getLastNameEn() {
-        return lastNameEn;
-    }
-
-    public void setLastNameEn(String lastNameEn) {
-        this.lastNameEn = lastNameEn;
-    }
+  
     
     public LocalDate getBirthday() {
         return birthday;
@@ -177,17 +163,44 @@ public class Minister {
      public void setprofilePicture(Multimedia profilePicture) {
         this.profilePicture = profilePicture;
     }
-    public String getFormattedStartFrom() {
-        return formattedStartFrom;
+
+    public String formatDate(LocalDate date) {
+        if (date == null) {
+            return "";
+        }
+
+        // Si le jour est 01 et le mois est 01, afficher seulement l'année
+        if (date.getDayOfMonth() == 1 && date.getMonthValue() == 1) {
+            return date.format(DateTimeFormatter.ofPattern("yyyy"));
+        }
+        // Si le jour est 01, afficher le mois et l'année
+        else if (date.getDayOfMonth() == 1) {
+            return date.format(DateTimeFormatter.ofPattern("MMMM yyyy", LocaleContextHolder.getLocale()));
+        }
+        // Sinon, afficher le jour, le mois et l'année
+        else {
+            return date.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        }
     }
 
+   /*/ public String getFormattedStartFrom() {
+        return formatDate(startFrom);
+    }
+ public String getFormattedUntil() {
+        return formatDate(until);
+
+    }*/
     public void setFormattedStartFrom(String formattedStartFrom) {
         this.formattedStartFrom = formattedStartFrom;
     }
-
-    public String getFormattedUntil() {
-        return formattedUntil;
+    public String getFormattedStartFrom() {
+        return formattedStartFrom;
     }
+ public String getFormattedUntil() {
+        return formattedUntil;
+
+    }
+   
 
     public void setFormattedUntil(String formattedUntil) {
         this.formattedUntil = formattedUntil;

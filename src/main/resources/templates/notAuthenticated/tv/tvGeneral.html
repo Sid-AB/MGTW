@@ -8,12 +8,30 @@
 </head>
 <body>
 
+    <style>
+        /* fluidité des images  */
+    .img-fluid {
+      height: 200px;
+      width: 80%;
+    }
+    .portfolio-info {
+      width: 100%;
+    }
 
+    </style>
 <!-- Add image before the header -->
 <header th:include="notAuthenticated/fragments/header::header" style="background-color: #0E2F4A"
         th:with="myObject=${complexesForNavBar},myObjectlFNBar=${loisForNavBar}"></header>
 
-
+        <div style="    margin-top: 20px;
+        padding: 8px;
+        width: 45%;">
+             <div class="form-inline d-flex justify-content-center ">
+                <input class="form-control mr-sm-2 w-100"  id="query" name="query" required type="search" th:placeholder="#{search}" aria-label="بحث ">
+                <button class="btn btn-outline-success my-2 my-sm-0 mx-2 " type="submit" id="querysearch"><i
+                        class="ri-search-2-line"></i></button>
+            </div>
+         </div>
 </div>
 
 <main id="main" style="background-color: white">
@@ -41,61 +59,72 @@
     <section id="portfolio-details" class="portfolio-details">
         <div class="container">
             <div class="row gy-4">
-
+    
                 <div class="col-lg-8">
                     <section id="portfolio" class="portfolio ">
                         <div class="container" data-aos="fade-up">
-
+    
                             <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up"
                                 data-aos-delay="100">
                                 <li data-filter="*" class="filter-active" th:text="#{channel}">جميع القنوات</li>
-
+    
                                 <li th:if="tvListDistinctByCategorieChaines"
                                     th:each="tvListDistinctByCategorieChaine : ${tvListDistinctByCategorieChaines}"
                                     th:attr="data-filter='.' + ${tvListDistinctByCategorieChaine.getName()}"
                                     th:text="${#locale.language == 'fr' ? tvListDistinctByCategorieChaine.getNameFr() : (#locale.language == 'en' ? tvListDistinctByCategorieChaine.getNameEn() : tvListDistinctByCategorieChaine.getName())}">
                                 </li>
-                                </ul>
-
-                            <div  th:if="${!tvs.isEmpty()}" class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
-
+                            </ul>
+    
+                            <div th:if="${!tvs.isEmpty()}" class="row portfolio-container" data-aos="fade-up"
+                                data-aos-delay="200">
+    
+    
                                 <div th:if="${tvs}" th:each="tv:${tvs}"
-                                     th:attr="class=${'col-lg-4 col-md-6 portfolio-item ' +tv.getCategorieChaine().getName()}">
-
-                                    <div class="portfolio-img"><img
-                                            th:src="@{${'/tv/lugo/'+tv.getId()}}"
-                                            class="img-fluid" alt="">
+                                    th:attr="class=${'col-lg-4 col-md-6 portfolio-item ' +tv.getCategorieChaine().getName()}">
+    
+                                    <div class="portfolio-img"><img th:src="@{${'/tv/lugo/'+tv.getId()}}" class="img-fluid"
+                                            alt="">
                                     </div>
-
-                                    <div class="  portfolio-info d-flex justify-content-end">
-
-
-                                        <p>
-                                            <h4  th:style="${#locale.language == 'fr' || #locale.language == 'en' ? 'direction: ltr;' : 'direction: rtl;'}" th:text="${#locale.language == 'fr' ? tv.getNameFr() : (#locale.language == 'en' ? tv.getNameEn() : tv.getName())}" 
-                                            >
-                                            </h4>
-                                        </p>
-                                        
-                                        <a hidden="hidden" th:href="@{ ${'/tv/lugo/'+tv.getId()}}" data-gallery="portfolioGallery"
-                                           class="portfolio-lightbox preview-link" title="الارضية "><i
-                                                class="bx bx-plus"></i></a>
+                                    <div class="portfolio-info d-flex"
+                                        th:style="${#locale.language == 'fr' || #locale.language == 'en' ? 'direction: ltr; justify-content: flex-start;' : 'direction: rtl; justify-content: flex-start;'}">
+    
+                                        <h4 th:style="${#locale.language == 'fr' || #locale.language == 'en' ? 'text-align: left; margin-right: 20px;' : 'text-align: right; margin-left: 20px;'}"
+                                            th:text="${#locale.language == 'fr' ? tv.getNameFr() : (#locale.language == 'en' ? tv.getNameEn() : tv.getName())}">
+                                        </h4>
+    
+                                        <a hidden="hidden" th:href="@{ ${'/tv/lugo/'+tv.getId()}}"
+                                            data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"
+                                            title="الارضية">
+                                            <i class="bx bx-plus"></i>
+                                        </a>
+    
+    
                                         <a th:href="@{'/tv/'+${tv.getId().toString()}}" class="details-link"
-                                           th:title="#{plusdet} "><i
-                                                class="bx bx-link"></i></a>
-
+                                            th:title="#{plusdet}"
+                                            th:style="${#locale.language == 'fr' || #locale.language == 'en' ? 'margin-right: 0;' : 'margin-left: 30px;'}">
+                                            <i class="bx bx-link"></i>
+                                        </a>
                                     </div>
+    
+    
+    
+    
+    
+    
+    
                                 </div>
-
-
+    
+    
                             </div>
-
+    
                         </div>
                     </section><!-- End Portfolio Section -->
                 </div>
 
                 <div th:if="${!complexes.isEmpty()}" class="col-lg-4">
-                    <div class="portfolio-description">
+                    <div class="portfolio-description" style="
+                    width: 500px;
+                ">
                         <!-- Affichage du nom selon la langue -->
                         <h2 th:text="${#locale.language == 'fr' ? complexes.get(0).getNameFr() : (#locale.language == 'en' ? complexes.get(0).getNameEn() : complexes.get(0).getName())}">
                         </h2>
@@ -104,29 +133,78 @@
                         <p th:text="${#locale.language == 'fr' ? complexes.get(0).getDescriptionFr() : (#locale.language == 'en' ? complexes.get(0).getDescriptionEn() : complexes.get(0).getDescription())}">
                         </p>
                     </div>
-                    <div class="portfolio-info">
+                    <div class="portfolio-info" style="
+                    width: 500px;
+                ">
                         <h3 th:text="#{carast}">الخصائص </h3>
                         <ul>
                             <li>
-                                <strong th:text="#{address} + ' : '"></strong>&nbsp;
-                                <span th:text="${#locale.language == 'fr' ? complexes.get(0).getAdresseFr() : (#locale.language == 'en' ? complexes.get(0).getAdresseEn() : complexes.get(0).getAdresse())}"></span>
+                                <strong th:text="#{address} + ' : '"></strong>
+                                <!-- <span th:text="${#locale.language == 'fr' ? complexes.get(0).getAdresseFr() : (#locale.language == 'en' ? complexes.get(0).getAdresseEn() : complexes.get(0).getAdresse())}"></span> -->
+                                <ul>
+                                    <li>
+                                        <div th:if="${complexes.get(0).getAdresse() != null && complexes.get(0).getAdresse() != 'غير متوفر'}"
+                                            th:text="${#locale.language == 'fr' ? complexes.get(0).getAdresseFr() : #locale.language == 'en' ? complexes.get(0).getAdresseEn() :complexes.get(0).getAdresse()}">
+                                        </div>
+                                        <div th:if="${ complexes.get(0).getAdresse() == ' ' || complexes.get(0).getAdresse() == null ||complexes.get(0).getAdresse() == 'غير متوفر' }">
+                                            <span th:text="#{adressNotAvailable}">رقم الفاكس غير متوفر</span>
+                                        </div>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
-                                <strong th:text="#{telep} + ' : '">الهاتف :</strong>&nbsp;
-                                <strong style="direction: ltr;" th:text="${complexes.get(0).getPhone()}"></strong>
+                                <strong th:text="#{telep} + ' : '">الهاتف :</strong> &nbsp;
+                                <!-- <strong style="direction: ltr;" th:text="${complexes.get(0).getPhone()}"></strong> -->
+                                <ul>
+                                    <li>
+                                        <div style="display: flex; align-items: center;">
+                                            <span style="direction: ltr; margin-left: 5px;"
+                                                th:if="${complexes.get(0).getPhone() != null && complexes.get(0).getPhone() != 'غير متوفر'}"
+                                                th:text="${complexes.get(0).getPhone()}">
+                                            </span>
+                                            <span th:if="${complexes.get(0).getPhone() == ' ' || complexes.get(0).getPhone() == null ||complexes.get(0).getPhone() == 'غير متوفر' }">
+                                                <span th:text="#{phoneNotAvailable}">رقم الفاكس غير متوفر</span>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
-                                <strong th:text="#{email} + ' : '">البريد الإلكتروني :</strong>&nbsp;
-                                <strong style="direction: ltr;" th:text="${complexes.get(0).getEmail()}"></strong>
+                                <strong th:text="#{email} + ': '">البريد الإلكتروني :</strong>&nbsp;
+                                <!-- <strong style="direction: ltr;" th:text="${complexes.get(0).getEmail()}"></strong> -->
+                                <ul>
+                                    <li>
+                                        <div>
+                                            <a th:href="'mailto:' + ${complexes.get(0).getEmail()}"
+                                                th:if="${complexes.get(0).getEmail() != null && complexes.get(0).getEmail() != 'غير متوفر'}"
+                                                th:text="${complexes.get(0).getEmail()}">
+                                            </a>
+                                            <span th:if="${complexes.get(0).getEmail() == ' ' ||  complexes.get(0).getEmail() == null || complexes.get(0).getEmail() == 'غير متوفر' }">
+                                                <span th:text="#{emailNotAvailable}">رقم الفاكس غير متوفر</span>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
-                                <strong th:text="#{citeweb} + ' : '">الموقع الإلكتروني :</strong>&nbsp;
-                                <a style="direction: ltr;" th:href="${complexes.get(0).getSite()}" th:text="${complexes.get(0).getSite()}"></a>
+                                <strong th:text="#{citeweb} + ': '">الموقع الإلكتروني :</strong>&nbsp;
+                                <!-- <a style="direction: ltr;" th:href="${complexes.get(0).getSite()}" th:text="${complexes.get(0).getSite()}"></a> -->
+                                <ul>
+                                    <li>
+                                        <div>
+                                            <a th:href="${complexes.get(0).getSite()}"
+                                                th:if="${complexes.get(0).getSite() != null && complexes.get(0).getSite() != 'غير متوفر'}"
+                                                th:text="${complexes.get(0).getSite()}" target="_blank"></a>
+                                            <span th:if="${ complexes.get(0).getSite() == ' ' ||  complexes.get(0).getSite() == null ||complexes.get(0).getSite() == 'غير متوفر' }">
+                                                <span th:text="#{siteNotAvailable}">رقم الفاكس غير متوفر</span>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                         
                         
-
                     </div>
 
                 </div>

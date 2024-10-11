@@ -156,6 +156,8 @@ public class Etablissement {
         return this.adresse;
     }
 
+    
+
     // Getter et Setter pour adresseFr
     public String getAdresseFr() {
         return adresseFr;

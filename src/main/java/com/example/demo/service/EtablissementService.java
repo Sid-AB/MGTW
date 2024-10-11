@@ -99,6 +99,9 @@ public class EtablissementService {
             Etabbliss.setName(etablissement.getName());
             Etabbliss.setNameFr(etablissement.getNameFr());
             Etabbliss.setNameEn(etablissement.getNameEn());
+            Etabbliss.setAdresse(etablissement.getAdresse());
+            Etabbliss.setAdresseFr(etablissement.getAdresseFr());
+            Etabbliss.setAdresseEn(etablissement.getAdresseEn());
             Etabbliss.setDescription(etablissement.getDescription());
             Etabbliss.setDescriptionFr(etablissement.getDescriptionFr());
             Etabbliss.setDescriptionEn(etablissement.getDescriptionEn());

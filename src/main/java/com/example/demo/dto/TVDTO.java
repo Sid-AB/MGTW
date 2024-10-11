@@ -14,6 +14,8 @@ public class TVDTO {
     private String description;
     private String descriptionFr;     // Ajout de descriptionFr
     private String descriptionEn;     // Ajout de descriptionEn
+    private String adresseFr; // Ajout de adresseFr
+    private String adresseEn;
     private String type;
     private String website;
     private String streaminglink;
@@ -40,7 +42,9 @@ public class TVDTO {
         tv.setNameEn(this.getNameEn());                   // Ajout de nameEn
         tv.setDescription(this.getDescription());
         tv.setDescriptionFr(this.getDescriptionFr());     // Ajout de descriptionFr
-        tv.setDescriptionEn(this.getDescriptionEn());     // Ajout de descriptionEn
+        tv.setDescriptionEn(this.getDescriptionEn());    
+        tv.setAdresseFr(this.getAdresseFr()); // Assigner adresseFr
+        tv.setAdresseEn(this.getAdresseEn());
         tv.setType(this.getType());
         tv.setWebsite(this.getWebsite());
         tv.setStreaminglink(this.getStreaminglink());
@@ -74,7 +78,8 @@ public class TVDTO {
             final String satellite, final String frequency, final String polarization,
             final String symbolrate, final String fec, final String transmission,
             final String modulation, final Long categorieChaines, final Long complexe,
-            final String adresse, final String phone, final String fax,
+            final String adresse,final String adresseFr,
+            final String adresseEn, final String phone, final String fax,
             final String email, final String localisation,
             final List<MultipartFile> profilFiles) {
         this.name = name;
@@ -96,6 +101,8 @@ public class TVDTO {
         this.categorieChaines = categorieChaines;
         this.complexe = complexe;
         this.adresse = adresse;
+        this.adresseFr = adresseFr; // Initialiser adresseFr
+        this.adresseEn = adresseEn;
         this.phone = phone;
         this.fax = fax;
         this.email = email;
@@ -197,6 +204,22 @@ public class TVDTO {
 
     public String getAdresse() {
         return this.adresse;
+    }
+
+    public String getAdresseFr() {
+        return adresseFr;
+    }
+
+    public void setAdresseFr(String adresseFr) {
+        this.adresseFr = adresseFr;
+    }
+
+    public String getAdresseEn() {
+        return adresseEn;
+    }
+
+    public void setAdresseEn(String adresseEn) {
+        this.adresseEn = adresseEn;
     }
 
     public String getPhone() {
@@ -545,6 +568,26 @@ public class TVDTO {
                     return false;
                 }
 
+                Object this$adresseFr = this.getAdresseFr();
+                Object other$adresseFr = other.getAdresseFr();
+                if (this$adresseFr == null) {
+                    if (other$adresseFr != null) {
+                        return false;
+                    }
+                } else if (!this$adresseFr.equals(other$adresseFr)) {
+                    return false;
+                }
+
+                Object this$adresseEn = this.getAdresseEn();
+                Object other$adresseEn = other.getAdresseEn();
+                if (this$adresseEn == null) {
+                    if (other$adresseEn != null) {
+                        return false;
+                    }
+                } else if (!this$adresseEn.equals(other$adresseEn)) {
+                    return false;
+                }
+
                 Object this$phone = this.getPhone();
                 Object other$phone = other.getPhone();
                 if (this$phone == null) {
@@ -659,6 +702,14 @@ public class TVDTO {
         Object $adresse = this.getAdresse();
         result = result * 59 + ($adresse == null ? 43 : $adresse.hashCode());
         
+         // Ajout de adresseFr
+         Object $adresseFr = this.getAdresseFr();
+         result = result * 59 + ($adresseFr == null ? 43 : $adresseFr.hashCode());
+ 
+         // Ajout de adresseEn
+         Object $adresseEn = this.getAdresseEn();
+         result = result * 59 + ($adresseEn == null ? 43 : $adresseEn.hashCode());
+
         Object $phone = this.getPhone();
         result = result * 59 + ($phone == null ? 43 : $phone.hashCode());
         
@@ -712,6 +763,8 @@ public class TVDTO {
                ", categorieChaines=" + this.getCategorieChaines() + 
                ", complexe=" + this.getComplexe() + 
                ", adresse=" + this.getAdresse() + 
+               ", adresseFr=" + this.getAdresseFr() + // Ajout de adresseFr
+                ", adresseEn=" + this.getAdresseEn() +
                ", phone=" + this.getPhone() + 
                ", fax=" + this.getFax() + 
                ", email=" + this.getEmail() + 
