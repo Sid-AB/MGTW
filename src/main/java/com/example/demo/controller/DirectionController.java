@@ -85,7 +85,13 @@ public class DirectionController {
         model.addAttribute("direction", direction);
         return "authenticated/Direction/directeurs";
     }
-
+    @GetMapping({"/directionsEdit/{id}"})
+    public String findDirectById(Model model,@PathVariable Long id)
+    {
+        Direction direc=this.directionRepository.findDirectionById(id);
+        model.addAttribute("Directions", direc);
+        return "authenticated/Direction/directionEdit";
+    }
    /* // update un directeur
     @PutMapping("/update/{id}")
     public ResponseEntity<DirectionDTO> updateDirecteur(@PathVariable Long id, @RequestBody DirectionDTO directionDTO) {

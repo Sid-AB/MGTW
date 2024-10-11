@@ -3,6 +3,7 @@ package com.example.demo.service;
 
 import com.example.demo.dto.MinisterDTO;
 import com.example.demo.entities.Multimedia;
+import com.example.demo.entities.Radio;
 import com.example.demo.entities.Minister;
 import com.example.demo.repository.MultimediaRepository;
 import com.example.demo.repository.MinisterRepository;
@@ -85,7 +86,40 @@ public class MinisterService {
         return this.ministerRepository.findMinisterById(id);
     }
 
+    public Optional<Minister> findById(Long id) {
+        return this.ministerRepository.findById(id);
+    }
+
     public String getMinisterImagePath(Long ministerId) {
         return ministerRepository.findImagePathByMinisterId(ministerId);
     }
+
+    public Boolean updateDataMins(Minister minister, Long userId,Optional<Minister> existingMin/*, Optional<Multimedia> multimedias */) {
+        if (existingMin.isPresent()) {
+            Minister mins = existingMin.get();
+            mins.setFirstName(minister.getFirstName());
+            mins.setFirstNameFr(minister.getFirstNameFr());
+            mins.setLastName(minister.getLastName());
+            mins.setLastNameFr(minister.getLastNameFr());
+            mins.setUntil(minister.getUntil());
+            mins.setStartFrom(minister.getStartFrom());
+            this.ministerRepository.save(mins);
+      /*  if (multimedias.isPresent()) {
+            List<Multimedia> savedMultimedias = new ArrayList();
+            multimedias.ifPresent((multimedia) -> {
+                multimedia.setRadio(existingRadio);
+            });
+            multimedias.ifPresent(savedMultimedias::addAll);
+            savedMultimedias.ifPresent(existingRadio::setMultimediaList);
+            this.multimediaRepository.saveAll(savedMultimedias);
+        } */
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+      //  return existingRadio;
+    }
+
 }

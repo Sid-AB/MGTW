@@ -93,6 +93,16 @@ public class SousDirectionController {
         return "authenticated/sousdirection/sousdirection";
     }
 
+    @GetMapping({"/sousDirectionEdit/{id}"})
+    public String findSousDirect(Model model,@PathVariable Long id)
+    {
+        SousDirection sousdict=this.SousdirectionRepository.findSousDirectionById(id);
+        List<Direction> dict=this.directionService.findAll();
+        model.addAttribute("direction", dict);
+        model.addAttribute("sousdict", sousdict);
+        return "authenticated/sousdirection/sousdirectionEdit";
+    }
+
    /* // update un sousdirecteur
     @PutMapping("/update/{id}")
     public ResponseEntity<sousDirectionDTO> updatesousDirecteur(@PathVariable Long id, @RequestBody sousDirectionDTO sousdirectionDTO) {

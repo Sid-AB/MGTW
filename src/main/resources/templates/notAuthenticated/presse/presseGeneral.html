@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" dir="rtl" th:lang="${#locale.language}">
+<html dir="rtl" th:lang="${#locale.language}">
 <head th:replace="notAuthenticated/fragments/head::head(${'title'},${'description'},${'keywords'})">
 </head>
 <body>
 
 
 <!-- Add image before the header -->
-<header th:include="notAuthenticated/fragments/header::header" style="background-color: #0E2F4A"
+<!-- <header th:include="notAuthenticated/fragments/header::header" style="background-color: #0E2F4A"
+        th:with="myObject=${complexesForNavB},myObjectlFNB=${loisForNavB}"></header> -->
+        <header th:include="notAuthenticated/fragments/header::header" style="background-color: #0E2F4A"
         th:with="myObject=${complexesForNavBar},myObjectlFNBar=${loisForNavBar}"></header>
-
-
 
 <main id="main">
 
@@ -41,7 +41,7 @@
                         </a>
                         <div class="post-content-entry">
   
-                            <h3 style="font-size: 20px"></h3>
+                            <h3 style="font-size: 20px">
                                 <a th:href="@{'/presse/' + ${presseEcritPublic.getId().toString()}}" 
                                    th:text="${#locale.language == 'fr' ? presseEcritPublic.getNameFr() : 
                                              #locale.language == 'en' ? presseEcritPublic.getNameEn() : 

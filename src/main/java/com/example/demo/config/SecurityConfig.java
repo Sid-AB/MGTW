@@ -16,7 +16,7 @@ public class SecurityConfig {
     public SecurityConfig() {
     }
  
-    @Bean
+  /*   @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((authRequest) -> {
             ((AuthorizedUrl) authRequest.requestMatchers(new String[] { "/authenticated/**", "/user/**", "/tv/tvs",
@@ -29,8 +29,8 @@ public class SecurityConfig {
                     "/etablissement/update/{id}", "/home", "/complexe/complexes", "/complexe/add", "/complexe/save",
                     "/categorieChaine/add", "/categorieChaine/save", "/caracterstique/tv/{id}/add",
                     "/caracterstique/radio/{id}/add", "/caracterstique/saveradio", "/caracterstique/save",
-                    "/agrument/agruments", "/agrument/add", "/agrument/save", "/ministers/add", "/ministers/Mins",
-                    "/ministers/save", "/Direction/add", "/Direction/all", "/Direction/direction", "/Direction/save" ,"/sousDirection/add", "/sousDirection/all", "/sousDirection/sousdirection", "/sousDirection/save" }))
+                    "/agrument/agruments", "/agrument/add", "/agrument/save", "/ministers/add", "/ministers/Mins","/ministers/MinistersEdit/{id}","/ministers/update/{id}",
+                    "/ministers/save", "/Direction/add", "/Direction/direction", "/Direction/save" ,"/sousDirection/add", "/sousDirection/sousdirection", "/sousDirection/save" }))
                     .authenticated();
             ((AuthorizedUrl) authRequest.requestMatchers(new String[] { "/notAuthenticated/**", "/multimedia/**", "/",
                     "/index", "/tv", "/tv/public", "/tv/prive", "/tv/prive/{name}", "/tv/{id}", "/tv/lugo/{id}",
@@ -39,7 +39,7 @@ public class SecurityConfig {
                     "/presse/public/#publicEcrit", "/presse/public/#publicElectronique", "/presse/{id}",
                     "/presse/public/electronique", "/lois/{id}", "/textJuridique/pdf/{id}/{lang}",
                     "/etablissement/{id}", "/etablissement/lugo/{id}", "/search", "/ministers/list",
-                    "/ministers/pic/{id}","/search/**" })).permitAll();
+                    "/ministers/pic/{id}","/search/**","/Direction/all" ,"/sousDirection/all"})).permitAll();
         });
         http.formLogin((formLogin) -> {
             ((FormLoginConfigurer) formLogin.loginPage("/login").defaultSuccessUrl("/home", true)).permitAll();
@@ -52,6 +52,6 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable);
         http.headers(AbstractHttpConfigurer::disable);
         return (SecurityFilterChain) http.build();
-    }
+    }*/
         
 }

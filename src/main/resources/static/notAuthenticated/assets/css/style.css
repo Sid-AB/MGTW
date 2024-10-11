@@ -396,6 +396,7 @@ h6 {
 }
 
 #hero h2 {
+  text-align: justify;
   color: rgba(255, 255, 255, 0.6);
   margin-bottom: 50px;
   font-size: 24px;
@@ -936,6 +937,7 @@ section {
 /*--------------------------------------------------------------
 # Portfolio
 --------------------------------------------------------------*/
+
 .portfolio #portfolio-flters {
   list-style: none;
   margin-bottom: 20px;
@@ -968,6 +970,7 @@ section {
 .portfolio .portfolio-item .portfolio-img {
   overflow: hidden;
 }
+
 
 .portfolio .portfolio-item .portfolio-img img {
   transition: all 0.6s;
@@ -1073,6 +1076,7 @@ section {
   box-shadow: 0px 0 30px rgba(55, 81, 126, 0.08);
 }
 .portfolio-description p{
+
   font-size: 20px;
 }
 .portfolio-details .portfolio-info h3 {
@@ -1629,6 +1633,8 @@ section {
   font-size: 28px;
   font-weight: 600;
   color: #37517e;
+  margin-top: auto;
+    margin-bottom: auto;
 }
 
 .breadcrumbs ol {
@@ -2070,7 +2076,7 @@ section {
 @media screen and (min-width: 1400px) {
   /* Styles for screens larger than 1400px */
   .RDC {
-    width: 141vh;
+    width: 122vh;
   }
   .level-one
   {
@@ -2941,7 +2947,7 @@ section {
   width:112px;
   background: green;
   color: white;
-  font-size: 13px;
+  font-size: 22px;
   font-family: Helvetica;
   font-weight:bold;
   text-align: center;
@@ -3112,14 +3118,16 @@ section {
 
 .image-pres 
 {
+  margin: 3px;
   border-radius: 25px;
   width: 235px;
-  height: 250px;
-  background-image: url(/notAuthenticated/assets/img/m8TYK55M_400x400.jpg);
+  height: 310px;
+  background-image: url(/notAuthenticated/assets/img/presendt.jpeg);
   background-size: cover; /* Adjust the size to cover the div */
   background-position: center; /* Center the image in the div */
   background-repeat: no-repeat;
 }
+<<<<<<< HEAD
 #breadcrumbs div a img
 {
   width: 80px;
@@ -3128,5 +3136,15 @@ section {
 #breadcrumbs .container div
 {
   align-items: center;
+=======
+.cnter
+{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  align-self: center;
+  align-self: center;
+>>>>>>> d1ee81323b5886fcd08cc2dca8b50d81fd4ba765
 }
 /***------------------------------------------------*/
