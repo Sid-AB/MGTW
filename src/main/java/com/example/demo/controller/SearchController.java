@@ -85,51 +85,61 @@ public class SearchController {
     // Rechercher des textes juridiques en fonction de la description en français ou en anglais
     List<TextJuridique> textJuridiquesFr = this.textJuridiqueService.findByDescriptionFrContainingIgnoreCase(query);
     List<TextJuridique> textJuridiquesEn = this.textJuridiqueService.findByDescriptionEnContainingIgnoreCase(query);
+    List<TextJuridique> textJuridiquesAr = this.textJuridiqueService.findByDescriptionContainingIgnoreCase(query);
 
     // Combiner les résultats
     List<TextJuridique> textJuridiques = new ArrayList<>();
     textJuridiques.addAll(textJuridiquesFr);
     textJuridiques.addAll(textJuridiquesEn);
+    textJuridiques.addAll(textJuridiquesAr);
     model.addAttribute("textJuridiques", textJuridiques);
 
     // Rechercher les presses
     List<Presse> pressesFr = this.presseService.findByDescriptionFrContainingIgnoreCase(query);
     List<Presse> pressesEn = this.presseService.findByDescriptionEnContainingIgnoreCase(query);
+    List<Presse> pressesAr = this.presseService.findByDescriptionContainingIgnoreCase(query);
 
     // Combiner les résultats des presses
     List<Presse> presses = new ArrayList<>();
     presses.addAll(pressesFr);
     presses.addAll(pressesEn);
+    presses.addAll(pressesAr);
     model.addAttribute("presses", presses);
 
     // Rechercher les radios
     List<Radio> radiosFr = this.radioService.findByDescriptionFrContainingIgnoreCase(query);
     List<Radio> radiosEn = this.radioService.findByDescriptionEnContainingIgnoreCase(query);
+    List<Radio> radiosAr = this.radioService.findByDescriptionContainingIgnoreCase(query);
 
     // Combiner les résultats des radios
     List<Radio> radios = new ArrayList<>();
     radios.addAll(radiosFr);
     radios.addAll(radiosEn);
+    radios.addAll(radiosAr);
     model.addAttribute("radios", radios);
 
     // Rechercher les établissements
     List<Etablissement> etablissementsFr = this.etablissementService.findByDescriptionFrContainingIgnoreCase(query);
     List<Etablissement> etablissementsEn = this.etablissementService.findByDescriptionEnContainingIgnoreCase(query);
+    List<Etablissement> etablissementsAr = this.etablissementService.findByDescriptionContainingIgnoreCase(query);
 
     // Combiner les résultats des établissements
     List<Etablissement> etablissements = new ArrayList<>();
     etablissements.addAll(etablissementsFr);
     etablissements.addAll(etablissementsEn);
+    etablissements.addAll(etablissementsAr);
     model.addAttribute("etablissements", etablissements);
 
     // Rechercher les chaînes de télévision
     List<TV> tvsFr = this.tvService.findByDescriptionFrContainingIgnoreCase(query);
     List<TV> tvsEn = this.tvService.findByDescriptionEnContainingIgnoreCase(query);
+    List<TV> tvsAr = this.tvService.findByDescriptionContainingIgnoreCase(query);
 
     // Combiner les résultats des chaînes de télévision
     List<TV> tvs = new ArrayList<>();
     tvs.addAll(tvsFr);
     tvs.addAll(tvsEn);
+    tvs.addAll(tvsAr);
     model.addAttribute("tvs", tvs);
 
     // Retourner la vue
