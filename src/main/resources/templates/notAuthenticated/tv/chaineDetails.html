@@ -23,7 +23,8 @@
                     <a th:href="${tv.getWebsite()}" target="_blank">
                         <img th:src="@{${'/tv/lugo/'+tv.getId()}}" width="80px" height="80px" class="img-fluid mx-3" alt="">
                     </a>
-                    <h2 th:text="${#locale.language == 'fr' ? tv.getNameFr() : (#locale.language == 'en' ? tv.getNameEn() : tv.getName())}" class="mb-0"></h2>
+                    <!-- <h2 th:text="${#locale.language == 'fr' ? tv.getNameFr() : (#locale.language == 'en' ? tv.getNameEn() : tv.getName())}" class="mb-0"></h2> -->
+                    <h2 th:text="${#locale.language == 'fr' ? tv.getNameFr() : (#locale.language == 'en' ? tv.getNameEn() : tv.getName())}"></h2>
                 </div>
                 
 

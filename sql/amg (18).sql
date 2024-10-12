@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 10 oct. 2024 à 15:30
+-- Généré le : jeu. 10 oct. 2024 à 16:23
 -- Version du serveur : 8.2.0
 -- Version de PHP : 8.2.13
 
@@ -1002,10 +1002,13 @@ CREATE TABLE IF NOT EXISTS `presse_pressecatrgorie` (
 
 INSERT INTO `presse_pressecatrgorie` (`presse_id`, `pressecatrgorie_id`) VALUES
 (1005, 2),
+(1006, 3),
+(1007, 3),
+(1008, 3),
 (1009, 2),
 (1010, 1),
-(1011, 3),
-(1012, 3),
+(1011, 1),
+(1012, 1),
 (1015, 1),
 (1016, 1),
 (1018, 1),
@@ -1018,7 +1021,7 @@ INSERT INTO `presse_pressecatrgorie` (`presse_id`, `pressecatrgorie_id`) VALUES
 (1025, 1),
 (1026, 1),
 (1027, 1),
-(1013, 3),
+(1013, 1),
 (1028, 1),
 (1029, 1),
 (1030, 2),
@@ -1226,7 +1229,27 @@ CREATE TABLE IF NOT EXISTS `sous_direction` (
   `direction` bigint DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK7j8cy0dl2p6o2fxt9tbcth8tl` (`direction`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `sous_direction`
+--
+
+INSERT INTO `sous_direction` (`id`, `email_sousdirecteur`, `nom_sousdirecteur`, `nom_sousdirecteur_fr`, `nom_sousdirection`, `nom_sousdirection_en`, `nom_sousdirection_fr`, `phone_sousdirecteur`, `prenom_sousdirecteur`, `prenom_sousdirecteur_fr`, `direction`) VALUES
+(1, 'sd.presseecrite@ministerecommunication.gov.dz', 'شوت ', 'Chout', 'المديرية الفرعية  للصحافة المكتوبة ', ' Sub-directorate of Written Press', ' Sous-direction de la presse écrite', 23549847, 'محمد ', 'Mohamed', 10),
+(2, 'sd.av@ministerecommunication.gov.dz', 'أوصليحة ', 'Oussliha', 'المديرية الفرعية  للسمعي البصري ', 'Sub-directorate of Audiovisual', 'Sous-direction de l\'audiovisuel', NULL, ' مدينة ', 'Madina', 10),
+(3, 'sd.ap@ministerecommunication.gov.dz', 'بودراع ', 'Boudraa', 'المديرية الفرعية لنشاطات الاشهار و الاستشارة في الاتصال ', 'Sub-directorate of Advertising Activities and Communication Consulting', 'Sous-direction des activités publicitaires et de la consultation en communication', 23549946, ' أمينة ', 'Amina', 10),
+(4, 'sd.cac@ministerecommunication.gov.dz', 'قادة ', 'Gada', 'المديرية الفرعية لتنسيق اعمال الصيانة ', ' Sub-directorate of Maintenance Coordination', 'Sous-direction de la coordination des travaux de maintenance', NULL, ' سليمان ', 'Slimane ', 8),
+(5, 'sd.veille@ministerecommunication.gov.dz', 'مونين ', 'Mounine', 'المديرية الفرعية للرصد والتقييم والتحليل ', 'Sub-directorate of Monitoring, Evaluation, and Analysis', 'Sous-direction de la veille, de l\'évaluation et de l\'analyse', 23549875, ' العربي', 'Larbi', 8),
+(6, 'sd.ce@ministerecommunication.gov.dz', 'نويوة ', 'Nouioua', 'المديرية الفرعية للاتصال الخارجي', 'Sub-directorate of External Communication', 'Sous-direction de la communication externe', 23549913, ' أمينة ', 'Amina', 8),
+(7, 'sd.c@ministerecommunication.gov.dz', 'كجور ', 'Kadjour', 'المديرية الفرعية للتعاون', 'Sub-directorate of Cooperation', 'Sous-direction de la coopération', 23549879, ' زينب', 'Zineb', 6),
+(8, 'sd.f@ministerecommunication.gov.dz', 'العيساوي ', 'Laissaoui', 'المديرية الفرعية للتكوين', 'Sub-directorate of Training', 'Sous-direction de la formation', 23549841, ' صونيا', 'Sonia', 6),
+(9, 'sd.reglem@ministerecommunication.gov.dz', 'بوغزولة', 'Boukezoula', 'المديرية الفرعية للتنظيم', 'Sub-directorate of Organization', 'Sous-direction de l\'organisation', NULL, ' كريمة ', 'Karima', 9),
+(10, 'sd.ej@ministerecommunication.gov.dz', 'شعباني ', 'Chaabani', 'المديرية الفرعية للدراسات القانونية و النازعات ', 'Sub-directorate of Legal Studies and Disputes', 'Sous-direction des études juridiques et des litiges', 0, 'رابح', 'Rabah', 9),
+(11, 'sd.doc.arch@ministerecommunication.gov.dz', 'غازلي ', 'Ghazli', 'المديرية الفرعية للتوثيق و الارشيف', 'Sub-directorate of Documentation and Archives', 'Sous-direction de la documentation et des archives', 0, 'خدوجة ', 'Khadoudja', 9),
+(12, 'sd.dev.techn@ministerecommunication.gov.dz', 'لخضاري ', 'Lakhdari', 'المديرية الفرعية للتطوير التكنولوجي', 'Sub-directorate of Technological Development', 'Sous-direction du développement technologique', 23549978, 'سفيان ', 'Sofiane', 5),
+(13, 'sd.budget@ministerecommunication.gov.dz', 'خرادوش ', 'Kheradouche', 'المديرية الفرعية للميزانية و المحاسية و الصفقات العمومية', 'Sub-directorate of Budget, Accounting, and Public Contracts', ' Sous-direction du budget, de la comptabilité et des marchés publics', 23549839, 'مباليا ', 'Mapalia', 7),
+(14, 'sd.moy.gene@ministerecommunication.gov.dz', 'كانة زوجة خلوي', 'Kana eps Kheloui', ' للوسائل العامة المديرية الفرعية', 'Sub-directorate of General Resources', 'Sous-direction des moyens généraux', 23549905, 'مليكة ', 'Malika', 7);
 
 -- --------------------------------------------------------
 

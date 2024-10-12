@@ -1983,7 +1983,11 @@ section {
     align-items: center;
     text-align: center;
     justify-content: center;
+<<<<<<< HEAD
+   background-color: rgba(67, 250, 60, 0.486);
+=======
     background-color: rgba(67, 250, 60, 0.486);
+>>>>>>> 56e71c37def3e80657eed6c3b4a640b18442a8c0
     height: 25%;
     width: 100%;
   }
@@ -1991,7 +1995,39 @@ section {
   {
     display: flex;
     justify-content: space-between;
+<<<<<<< HEAD
+ background-color: rgba(240, 238, 118, 0.534);
+    height: 17%;
+    width: 100%;
+
+  }
+  .level-four
+  {
+    display: flex;
+    justify-content: space-between;
+ background-color: rgba(240, 238, 118, 0.534);
+    height: 17%;
+    width: 100%;
+
+  }
+
+  .level-five
+  {
+    display: flex;
+    justify-content: space-between;
+ background-color: rgba(240, 238, 118, 0.534);
+    height: 17%;
+    width: 100%;
+
+  }
+  .level-six
+  {
+    display: flex;
+    justify-content: space-between;
+ background-color: rgba(240, 238, 118, 0.534);
+=======
     background-color: rgba(240, 238, 118, 0.534);
+>>>>>>> 56e71c37def3e80657eed6c3b4a640b18442a8c0
     height: 17%;
     width: 100%;
 
@@ -2001,7 +2037,11 @@ section {
     
     width: 100px;
     height: 100%;
+<<<<<<< HEAD
+   background: rgba(0, 0, 0, 0.288); 
+=======
    background: rgba(0, 0, 0, 0.288);
+>>>>>>> 56e71c37def3e80657eed6c3b4a640b18442a8c0
 
   }
   .ouazir
@@ -2009,20 +2049,32 @@ section {
     
     width: 100px;
     height: 100%;
+<<<<<<< HEAD
+  background: rgba(0, 0, 0, 0.288); 
+=======
    background: rgba(0, 0, 0, 0.288);
+>>>>>>> 56e71c37def3e80657eed6c3b4a640b18442a8c0
 
   }
   .inspictiong
   {
     width: 100px;
     height: 100%;
+<<<<<<< HEAD
+   background: rgba(0, 0, 0, 0.288); 
+=======
    background: rgba(0, 0, 0, 0.288);
+>>>>>>> 56e71c37def3e80657eed6c3b4a640b18442a8c0
   }
   .secgen
   {
     width: 100px;
     height: 100%;
+<<<<<<< HEAD
+ background: rgba(0, 0, 0, 0.288);  
+=======
    background: rgba(0, 0, 0, 0.288); 
+>>>>>>> 56e71c37def3e80657eed6c3b4a640b18442a8c0
   }
 .level-one div:hover
 {
@@ -2036,42 +2088,176 @@ section {
 {
   cursor: pointer;
 }
+.level-four div:hover
+{
+  cursor: pointer;
+}
+.level-five div:hover
+{
+  cursor: pointer;
+}
+.level-six div:hover
+{
+  cursor: pointer;
+}
 .dam
 {
   width: 100px;
   height: 100%;
+<<<<<<< HEAD
+ background: rgba(0, 0, 0, 0.288); 
+=======
  background: rgba(0, 0, 0, 0.288);
+>>>>>>> 56e71c37def3e80657eed6c3b4a640b18442a8c0
 }
 .dloi
 {
   width: 100px;
   height: 100%;
+<<<<<<< HEAD
+  background: rgba(0, 0, 0, 0.288); 
+=======
  background: rgba(0, 0, 0, 0.288);
+>>>>>>> 56e71c37def3e80657eed6c3b4a640b18442a8c0
 }
 .daf
 {
   width: 100px;
   height: 100%;
+<<<<<<< HEAD
+  background: rgba(0, 0, 0, 0.288); 
+=======
  background: rgba(0, 0, 0, 0.288);
+>>>>>>> 56e71c37def3e80657eed6c3b4a640b18442a8c0
 }
 .dev
 {
   width: 100px;
   height: 100%;
+<<<<<<< HEAD
+ background: rgba(0, 0, 0, 0.288); 
+=======
  background: rgba(0, 0, 0, 0.288);
+>>>>>>> 56e71c37def3e80657eed6c3b4a640b18442a8c0
 }
 .emedia
 {
   width: 100px;
   height: 100%;
+<<<<<<< HEAD
+  background: rgba(0, 0, 0, 0.288); 
+=======
  background: rgba(0, 0, 0, 0.288);
+>>>>>>> 56e71c37def3e80657eed6c3b4a640b18442a8c0
 }
 .media
 {
   width: 100px;
   height: 100%;
+<<<<<<< HEAD
+ background: rgba(0, 0, 0, 0.288); 
+=======
  background: rgba(0, 0, 0, 0.288);
+>>>>>>> 56e71c37def3e80657eed6c3b4a640b18442a8c0
 }
+
+.budj
+{
+  width: 100px;
+  height: 100%;
+  background: rgba(163, 27, 27, 0.288); 
+}
+.org
+{
+  width: 100px;
+  height: 100%;
+  background: rgba(163, 27, 27, 0.288); 
+}
+.coop
+{
+  width: 100px;
+  height: 100%;
+  background: rgba(163, 27, 27, 0.288); 
+}
+.inv
+{
+  width: 100px;
+  height: 100%;
+  background: rgba(163, 27, 27, 0.288); 
+}
+.tech
+{
+  width: 100px;
+  height: 100%;
+  background: rgba(163, 27, 27, 0.288); 
+}
+.pressecrite
+{
+  width: 100px;
+  height: 100%;
+  background: rgba(163, 27, 27, 0.288); 
+}
+.moygn
+{
+  width: 100px;
+  height: 100%;
+  background: rgba(163, 27, 27, 0.288); 
+}
+.loiss
+{
+  width: 100px;
+  height: 100%;
+  background: rgba(163, 27, 27, 0.288); 
+}
+.form
+{
+  width: 100px;
+  height: 100%;
+  background: rgba(163, 27, 27, 0.288); 
+}
+.dev
+{
+  width: 100px;
+  height: 100%;
+  background: rgba(163, 27, 27, 0.288); 
+}
+.rassd
+{
+  width: 100px;
+  height: 100%;
+  background: rgba(163, 27, 27, 0.288); 
+}
+.audiovisuel
+{
+  width: 100px;
+  height: 100%;
+  background: rgba(163, 27, 27, 0.288); 
+}
+.prsnl
+{
+  width: 100px;
+  height: 100%;
+  background: rgba(163, 27, 27, 0.288); 
+}
+.archiv
+{
+  width: 100px;
+  height: 100%;
+  background: rgba(163, 27, 27, 0.288); 
+}
+.extr
+{
+  width: 100px;
+  height: 100%;
+  background: rgba(163, 27, 27, 0.288); 
+}
+.pub
+{
+  width: 100px;
+  height: 100%;
+  background: rgba(163, 27, 27, 0.288); 
+}
+
 
 @media screen and (min-width: 1400px) {
   /* Styles for screens larger than 1400px */
@@ -2872,6 +3058,7 @@ section {
     height: 9%;
   }
 }
+
 /***** end of 840 x 940 height *****/
 
 /*****/

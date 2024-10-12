@@ -48,6 +48,7 @@ public class PresseService {
         return this.presseRepository.findAll();
     }
 
+
     public List<Presse> findPresseByPresseCategories(List<PresseCategorie> categories) {
         return this.presseRepository.findPresseByPresseCategories(categories);
     }
