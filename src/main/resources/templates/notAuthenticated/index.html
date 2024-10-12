@@ -22,7 +22,7 @@
             <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
                  data-aos="fade-up" data-aos-delay="200">
                 <h1 th:text="#{porteilgetway}">بوابة الاعلام الجزائري </h1>
-                <h2 th:text="#{textt}" > بوابة الإعلام  الجزائري  منصتكم المتكاملة التي تربطكم بعالم الإعلام بكافة أشكاله هنا تجدون محتوى شامل يغطي الصحافة الإلكترونية، الصحافة المكتوبة، والإعلام السمعي البصري، بالإضافة إلى معلومات عن أبرز المؤسسات الإعلامية
+                <h2 th:text="#{textt}"> بوابة الإعلام  الجزائري  منصتكم المتكاملة التي تربطكم بعالم الإعلام بكافة أشكاله هنا تجدون محتوى شامل يغطي الصحافة الإلكترونية، الصحافة المكتوبة، والإعلام السمعي البصري، بالإضافة إلى معلومات عن أبرز المؤسسات الإعلامية
                     هدفنا هو أن نكون مصدركم الأول للاطلاع على كل جديد في عالم الإعلام الحديث والمتجدد
                    </h2>
                 <div class="d-flex justify-content-center justify-content-lg-start">
@@ -31,7 +31,7 @@
                         <input class="form-control mr-sm-2 w-100"  id="query" name="query" required type="search" th:placeholder="#{search}" aria-label="بحث ">
                         <button class="btn btn-outline-success my-2 my-sm-0 mx-2 " type="submit" id="querysearch"><i
                                 class="ri-search-2-line"></i></button>
-                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -39,10 +39,7 @@
                 <a href="/videos/mediaCity.mp4" target="_blank"> < Chemin vers la vidéo >
                     <img th:src="@{notAuthenticated/assets/img/media city.png}" class="img-fluid animated" alt="Vidéo à regarder">
             </div-->
-            <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200" onclick="openVideo()" style="display: flex;
-            flex-direction: column;
-            align-items: center;">
-                <p style="color: aliceblue; font-size: 26px;" th:text="#{mediacity}"> مشروع المدينة الإعلامية الجزائرية</p>
+            <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200" onclick="openVideo()">
                 <img th:src="@{notAuthenticated/assets/img/media city.png}" class="img-fluid animated" alt="Vidéo à regarder" id="videoTrigger" style="cursor: pointer;">
             </div>
            
@@ -687,6 +684,7 @@ $.ajax({
     }
 });
 
+<<<<<<< HEAD
 $(document).ready(function(){
     $('#querysearch').on('click',function(){
         var query=$("#query").val()
@@ -695,6 +693,8 @@ $(document).ready(function(){
 })
 
 
+=======
+>>>>>>> 56e71c37def3e80657eed6c3b4a640b18442a8c0
 </script>
 
 </body>

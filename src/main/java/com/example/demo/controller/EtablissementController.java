@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -68,7 +69,7 @@ public class EtablissementController {
     public ResponseEntity<Resource> getImage(@PathVariable("id") Long id) {
         String folder = "images";
         Etablissement etablissement = this.etablissementService.findEtablissementById(id);
-        Optional<Multimedia> multimedia = this.multimediaService.findFirstByEtablissement(etablissement);
+        Optional<Multimedia> multimedia = this.multimediaService.findFirstByEtablissementOrderByIdDesc(etablissement);
         if (multimedia.isPresent()) {
             String filename = ((Multimedia)multimedia.get()).getFileName();
             Resource file = this.filesStorageService.load(folder.concat("/" + filename));
@@ -118,12 +119,13 @@ public class EtablissementController {
         return "authenticated/etablissement/etablissementsEdit.html";
     }
     @PostMapping({"/update/{id}"})
-    public RedirectView updatedEtablissement(@PathVariable Long id,@ModelAttribute  Etablissement updateEtablissement)
+    public RedirectView updatedEtablissement(@PathVariable Long id,@ModelAttribute  Etablissement updateEtablissement,@RequestParam("profilFiles") List<MultipartFile> multimediaFiles)
     {
         Etablissement etablissement = this.etablissementService.findEtablissementById(id);
-       // Optional<Multimedia> multimedia=this.multimediaService.findFirstByEtablissement(etablissement);
+        Optional<Multimedia> multimedia=this.multimediaService.findFirstByEtablissementOrderByIdDesc(etablissement);
+
        Optional<Etablissement> existingEtablissement = this.etablissementService.findById(id);
-       Boolean  check= this.etablissementService.updateDataEtablissement(updateEtablissement,id,existingEtablissement/*,multimedia */);
+       Boolean  check= this.etablissementService.updateDataEtablissement(updateEtablissement,id,existingEtablissement,multimediaFiles );
        return new RedirectView("/etablissement/etablissements");
       //  return "redirect:authenticated/etablissement/etablissements";
     }

@@ -38,7 +38,7 @@
             </div>
         </section><!-- End Breadcrumbs -->
 
-        <section id="skills" class="skills">
+         <section id="skills" class="skills">
             <div class="container" data-aos="fade-up">
 
                 <div class="row">
@@ -76,7 +76,7 @@
                                 </ul>
                             </li>
                         
-                            <li>
+                           <li>
                                 <strong th:text="#{email}">البريد الإلكتروني</strong>:
                                 <ul>
                                     <li>
@@ -109,7 +109,7 @@
                                 </ul>
                             </li>
                         
-                        <li>
+                            <li>
                             <strong th:text="#{fax}">الفاكس</strong>:
                             <ul>
                                 <li>
@@ -124,7 +124,7 @@
                                     </div>
                                 </li>
                             </ul>
-                        </li>
+                            </li>
                         
                             <li>
                                 <strong th:text="#{address}">العنوان</strong>:
@@ -145,14 +145,25 @@
                                 <ul>
                                     <li th:each="category : ${presse.getPresseCategories()}">
                                         <div th:switch="${category.getName()}">
-                                            <span th:case="مكتوبة" th:text="#{pressEcrit}"></span>
-                                            <span th:case="رقمية" th:text="#{pressElect}"></span>
-                                            <span th:case="رقمية/مكتوبة" th:text="#{pressEcritElect}"></span>
-                                            <span th:case="غير متوفر'" th:text="#{pressNonDispo}"></span>
+                                            <span th:case="'مكتوبة'" th:text="#{pressEcrit}"></span>
+                                            <span th:case="'رقمية'" th:text="#{pressElect}"></span>
+                                            <span th:case="'رقمية/مكتوبة'" th:text="#{pressElect}"></span>
+                                            <span th:case="'غير متوفر'" th:text="#{pressNonDispo}"></span>
                                         </div>
                                     </li>
+                                        <!-- Ajout de la condition à l'intérieur du bloc th:each -->
+                                    <div th:each="category : ${presse.getPresseCategories()}">
+                                        <li th:if="${category.getName()} == 'رقمية/مكتوبة'">
+                                            <span th:text="#{pressEcrit}"></span>
+                                        </li>
+                                    </div>
+                                    
                                 </ul>
+                                
+                                
+                                
                             </li>
+                            
                         
                             <li>
                                 <strong th:text="#{catpress}">طبيعة الصحيفة</strong>:
@@ -182,7 +193,7 @@
                 </div>
             </div>
 
-        </section><!-- End Skills Section -->
+        </section>
 
 
     </main><!-- End #main -->

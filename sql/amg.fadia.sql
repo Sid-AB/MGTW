@@ -1002,13 +1002,10 @@ CREATE TABLE IF NOT EXISTS `presse_pressecatrgorie` (
 
 INSERT INTO `presse_pressecatrgorie` (`presse_id`, `pressecatrgorie_id`) VALUES
 (1005, 2),
-(1006, 3),
-(1007, 3),
-(1008, 3),
 (1009, 2),
 (1010, 1),
-(1011, 1),
-(1012, 1),
+(1011, 3),
+(1012, 3),
 (1015, 1),
 (1016, 1),
 (1018, 1),
@@ -1021,7 +1018,7 @@ INSERT INTO `presse_pressecatrgorie` (`presse_id`, `pressecatrgorie_id`) VALUES
 (1025, 1),
 (1026, 1),
 (1027, 1),
-(1013, 1),
+(1013, 3),
 (1028, 1),
 (1029, 1),
 (1030, 2),
@@ -1229,7 +1226,7 @@ CREATE TABLE IF NOT EXISTS `sous_direction` (
   `direction` bigint DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK7j8cy0dl2p6o2fxt9tbcth8tl` (`direction`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 

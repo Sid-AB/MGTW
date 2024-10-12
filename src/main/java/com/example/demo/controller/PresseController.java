@@ -19,6 +19,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping({"/presse"})
@@ -64,7 +65,7 @@ public class PresseController {
         return "authenticated/presse/presses";
     }
 
-    @GetMapping({"/public", "/public/"})
+    /*@GetMapping({"/public", "/public/"})
     public String cPublic(Model model) {
         List<PresseCategorie> presseCategories = new ArrayList<>();
         presseCategories.add(this.presseCategorieRepository.findPresseCategorieByName("مكتوبة"));
@@ -77,8 +78,44 @@ public class PresseController {
         model.addAttribute("pressesEcritPublic", pressesEcritPublic);
         model.addAttribute("pressesEcritPrive", pressesEcritPrive);
         return "notAuthenticated/presse/presseGeneral";
+    } */
+    @GetMapping({"/public", "/public/"})
+    public String cPublic(Model model) {
+        // Créer une liste pour stocker les catégories de presse
+        List<PresseCategorie> presseCategories = new ArrayList<>();
+        
+        // Ajouter les catégories de presse par leur nom
+        presseCategories.add(this.presseCategorieRepository.findPresseCategorieByName("مكتوبة"));
+        // Vous pouvez ajouter d'autres catégories ici si nécessaire
+        presseCategories.add(this.presseCategorieRepository.findPresseCategorieByName("رقمية/مكتوبة")); // Exemples
+      
+        // Récupérer les presses publiques et privées pour chaque catégorie
+        List<Presse> pressesEcritPublic = new ArrayList<>();
+        List<Presse> pressesEcritPrive = new ArrayList<>();
+    
+        for (PresseCategorie categorie : presseCategories) {
+            pressesEcritPublic.addAll(this.presseService.findPresseByPresseCategoriesAndTypepbpr(Collections.singletonList(categorie), "public"));
+            pressesEcritPrive.addAll(this.presseService.findPresseByPresseCategoriesAndTypepbpr(Collections.singletonList(categorie), "prive"));
+        }
+
+ 
+        // Récupérer les complexes pour la barre de navigation
+        List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
+        model.addAttribute("complexesForNavBar", complexesForNavBar);
+    
+        // Récupérer les lois pour la barre de navigation
+        List<Lois> loisForNavBar = this.loisService.findAll();
+        model.addAttribute("loisForNavBar", loisForNavBar);
+    
+        // Ajouter les presses au modèle
+        model.addAttribute("pressesEcritPublic", pressesEcritPublic);
+        model.addAttribute("pressesEcritPrive", pressesEcritPrive);
+    
+        // Retourner la vue
+        return "notAuthenticated/presse/presseGeneral";
     }
 
+    
     /*@GetMapping({"/public/electronique", "/public/electronique/"})
     public String cPublicElectronique(Model model) {
         new ArrayList<>();
@@ -95,13 +132,16 @@ public class PresseController {
         return "notAuthenticated/presse/presseGeneralelectronique";
     } */
 
-    @GetMapping({"/public/electronique", "/public/electronique/"})
+    /*@GetMapping({"/public/electronique", "/public/electronique/"})
     public String cPublicElectronique(Model model) {
         new ArrayList<>();
         List<PresseCategorie> presseCategories1 = new ArrayList<>();
         presseCategories1.add(this.presseCategorieRepository.findPresseCategorieByName("رقمية"));
+
+
         List<Presse> pressesElectroniquePublic = this.presseService.findPresseByPresseCategoriesAndTypepbpr(presseCategories1, "public");
         List<Presse> pressesElectroniquePrive = this.presseService.findPresseByPresseCategoriesAndTypepbpr(presseCategories1, "prive");
+
         List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
         model.addAttribute("complexesForNavBar", complexesForNavBar);
         List<Lois> loisForNavBar = this.loisService.findAll();
@@ -109,9 +149,65 @@ public class PresseController {
         model.addAttribute("pressesElectroniquePublic", pressesElectroniquePublic);
         model.addAttribute("pressesElectroniquePrive", pressesElectroniquePrive);
         return "notAuthenticated/presse/presseGeneralelectronique";
-    }
+    } */
 
-    @GetMapping({"/{id}"})
+    @GetMapping({"/public/electronique", "/public/electronique/"})
+    public String cPublicElectronique(Model model) {
+        // Créer une liste pour stocker les catégories de presse
+        List<PresseCategorie> presseCategories = new ArrayList<>();
+        
+        // Récupérer les catégories par leur nom
+        PresseCategorie categorieElectronique = this.presseCategorieRepository.findPresseCategorieByName("رقمية");
+        PresseCategorie categorieMixte = this.presseCategorieRepository.findPresseCategorieByName("رقمية/مكتوبة");
+        
+        // Vérifiez que les catégories sont correctement récupérées
+        if (categorieElectronique != null) {
+            presseCategories.add(categorieElectronique);
+        } else {
+            System.out.println("Catégorie 'رقمية' non trouvée.");
+        }
+        
+        if (categorieMixte != null) {
+            presseCategories.add(categorieMixte);
+        } else {
+            System.out.println("Catégorie 'رقمية/مكتوبة' non trouvée.");
+        }
+        
+        System.out.println("presseCategories: " + presseCategories.size());
+        
+        // Récupérer les presses publiques et privées pour chaque catégorie
+        List<Presse> pressesElectroniquePublic = new ArrayList<>();
+        List<Presse> pressesElectroniquePrive = new ArrayList<>();
+        
+        for (PresseCategorie categorie : presseCategories) {
+            // Vérification de la catégorie avant de faire la requête
+            if (categorie != null) {
+                pressesElectroniquePublic.addAll(this.presseService.findPresseByPresseCategoriesAndTypepbpr(Collections.singletonList(categorie), "public"));
+                pressesElectroniquePrive.addAll(this.presseService.findPresseByPresseCategoriesAndTypepbpr(Collections.singletonList(categorie), "prive"));
+            }
+        }
+        
+        System.out.println("Public Presses: " + pressesElectroniquePublic.size());
+        System.out.println("Private Presses: " + pressesElectroniquePrive.size());
+    
+        // Récupérer les complexes pour la barre de navigation
+        List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
+        model.addAttribute("complexesForNavBar", complexesForNavBar);
+        
+        // Récupérer les lois pour la barre de navigation
+        List<Lois> loisForNavBar = this.loisService.findAll();
+        model.addAttribute("loisForNavBar", loisForNavBar);
+    
+        // Ajouter les presses au modèle
+        model.addAttribute("pressesElectroniquePublic", pressesElectroniquePublic);
+        model.addAttribute("pressesElectroniquePrive", pressesElectroniquePrive);
+        
+        // Retourner la vue
+        return "notAuthenticated/presse/presseGeneralelectronique";
+    }
+    
+/*    
+   @GetMapping({"/{id}"})
     public String findTVById(Model model, @PathVariable Long id) {
         Presse presse = this.presseService.findPresseById(id);
         List<Presse> pressesElectroniquePublic = new ArrayList<>();
@@ -123,6 +219,8 @@ public class PresseController {
         presseCategories1.add(this.presseCategorieRepository.findPresseCategorieByName("رقمية"));
         List<PresseCategorie> presseCategories = new ArrayList<>();
         presseCategories.add(this.presseCategorieRepository.findPresseCategorieByName("مكتوبة"));
+        List<PresseCategorie> presseCategories2 = new ArrayList<>();
+        presseCategories2.add(this.presseCategorieRepository.findPresseCategorieByName("رقمية/مكتوبة"));
         Iterator var12;
         PresseCategorie presseCategorie;
         if (presse.getTypepbpr().toString().equals("public")) {
@@ -130,21 +228,26 @@ public class PresseController {
 
             while(var12.hasNext()) {
                 presseCategorie = (PresseCategorie)var12.next();
-                if (presseCategorie.getName().equals("رقمية")) {
+                if (presseCategorie.getName().equals("رقمية") || presseCategorie.getName().equals("رقمية/مكتوبة")) {
                     pressesElectroniquePublic = this.presseService.findPresseByPresseCategoriesAndTypepbpr(presseCategories1, "public");
+                    pressesElectroniquePublic = this.presseService.findPresseByPresseCategoriesAndTypepbpr(presseCategories2, "public");
                 } else {
                     pressesElectroniquePrive = this.presseService.findPresseByPresseCategoriesAndTypepbpr(presseCategories1, "prive");
+                    pressesElectroniquePrive = this.presseService.findPresseByPresseCategoriesAndTypepbpr(presseCategories2, "prive");
                 }
             }
         } else {
             var12 = presse.getPresseCategories().iterator();
+         
 
             while(var12.hasNext()) {
                 presseCategorie = (PresseCategorie)var12.next();
-                if (presseCategorie.getName().equals("مكتوبة")) {
+                if (presseCategorie.getName().equals("رقمية/مكتوبة")|| presseCategorie.getName().equals("مكتوبة")) {
                     pressesEcritPublic = this.presseService.findPresseByPresseCategoriesAndTypepbpr(presseCategories, "public");
+                    pressesEcritPublic = this.presseService.findPresseByPresseCategoriesAndTypepbpr(presseCategories2, "public");
                 } else {
                     pressesEcritPrive = this.presseService.findPresseByPresseCategoriesAndTypepbpr(presseCategories, "prive");
+                    pressesEcritPrive = this.presseService.findPresseByPresseCategoriesAndTypepbpr(presseCategories2, "prive");
                 }
             }
         }
@@ -153,6 +256,7 @@ public class PresseController {
         pressesList.addAll((Collection)pressesElectroniquePrive);
         pressesList.addAll((Collection)pressesEcritPublic);
         pressesList.addAll((Collection)pressesEcritPrive);
+
         List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
         model.addAttribute("complexesForNavBar", complexesForNavBar);
         List<Lois> loisForNavBar = this.loisService.findAll();
@@ -160,7 +264,63 @@ public class PresseController {
         model.addAttribute("presse", presse);
         model.addAttribute("pressesList", pressesList);
         return "notAuthenticated/presse/presseDetails";
+    } 
+
+ */
+@GetMapping({"/{id}"})
+public String findTVById(Model model, @PathVariable Long id) {
+    Presse presse = this.presseService.findPresseById(id);
+    
+    // Listes de presse par type et catégorie
+    List<Presse> pressesElectroniquePublic = new ArrayList<>();
+    List<Presse> pressesElectroniquePrive = new ArrayList<>();
+    List<Presse> pressesEcritPublic = new ArrayList<>();
+    List<Presse> pressesEcritPrive = new ArrayList<>();
+    List<Presse> pressesList = new ArrayList<>();
+
+    // Catégories de presse
+    PresseCategorie categorieElectronique = this.presseCategorieRepository.findPresseCategorieByName("رقمية");
+    PresseCategorie categorieEcrit = this.presseCategorieRepository.findPresseCategorieByName("مكتوبة");
+    PresseCategorie categorieMixte = this.presseCategorieRepository.findPresseCategorieByName("رقمية/مكتوبة");
+
+    // Traitement des catégories pour la presse actuelle
+    for (PresseCategorie categorie : presse.getPresseCategories()) {
+        if (categorie.getName().equals("رقمية") || categorie.getName().equals("رقمية/مكتوبة")) {
+            // Presse numérique (public et privé)
+            pressesElectroniquePublic.addAll(this.presseService.findPresseByPresseCategoriesAndTypepbpr(List.of(categorieElectronique), "public"));
+            pressesElectroniquePrive.addAll(this.presseService.findPresseByPresseCategoriesAndTypepbpr(List.of(categorieElectronique), "prive"));
+            pressesElectroniquePublic.addAll(this.presseService.findPresseByPresseCategoriesAndTypepbpr(List.of(categorieMixte), "public"));
+            pressesElectroniquePrive.addAll(this.presseService.findPresseByPresseCategoriesAndTypepbpr(List.of(categorieMixte), "prive"));
+        } 
+        if (categorie.getName().equals("مكتوبة") || categorie.getName().equals("رقمية/مكتوبة")) {
+            // Presse écrite (public et privé)
+            pressesEcritPublic.addAll(this.presseService.findPresseByPresseCategoriesAndTypepbpr(List.of(categorieEcrit), "public"));
+            pressesEcritPrive.addAll(this.presseService.findPresseByPresseCategoriesAndTypepbpr(List.of(categorieEcrit), "prive"));
+            pressesEcritPublic.addAll(this.presseService.findPresseByPresseCategoriesAndTypepbpr(List.of(categorieMixte), "public"));
+            pressesEcritPrive.addAll(this.presseService.findPresseByPresseCategoriesAndTypepbpr(List.of(categorieMixte), "prive"));
+        }
     }
+
+    // Ajout des listes de presse dans une liste globale
+    pressesList.addAll(pressesElectroniquePublic);
+    pressesList.addAll(pressesElectroniquePrive);
+    pressesList.addAll(pressesEcritPublic);
+    pressesList.addAll(pressesEcritPrive);
+
+    // Ajout des autres données au modèle (navigation bar)
+    List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
+    model.addAttribute("complexesForNavBar", complexesForNavBar);
+    List<Lois> loisForNavBar = this.loisService.findAll();
+    model.addAttribute("loisForNavBar", loisForNavBar);
+
+    // Ajout des informations de la presse au modèle
+    model.addAttribute("presse", presse);
+    model.addAttribute("pressesList", pressesList);
+
+    // Retourner la vue
+    return "notAuthenticated/presse/presseDetails";
+}
+
 
     @GetMapping({"/multimedia/{folder}/{filename}"})
     public ResponseEntity<Resource> getFile(@PathVariable String filename, @PathVariable String folder) throws IOException {

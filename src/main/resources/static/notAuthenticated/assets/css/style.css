@@ -1983,7 +1983,11 @@ section {
     align-items: center;
     text-align: center;
     justify-content: center;
+<<<<<<< HEAD
    background-color: rgba(67, 250, 60, 0.486);
+=======
+    background-color: rgba(67, 250, 60, 0.486);
+>>>>>>> 56e71c37def3e80657eed6c3b4a640b18442a8c0
     height: 25%;
     width: 100%;
   }
@@ -1991,6 +1995,7 @@ section {
   {
     display: flex;
     justify-content: space-between;
+<<<<<<< HEAD
  background-color: rgba(240, 238, 118, 0.534);
     height: 17%;
     width: 100%;
@@ -2020,6 +2025,9 @@ section {
     display: flex;
     justify-content: space-between;
  background-color: rgba(240, 238, 118, 0.534);
+=======
+    background-color: rgba(240, 238, 118, 0.534);
+>>>>>>> 56e71c37def3e80657eed6c3b4a640b18442a8c0
     height: 17%;
     width: 100%;
 
@@ -2029,7 +2037,11 @@ section {
     
     width: 100px;
     height: 100%;
+<<<<<<< HEAD
    background: rgba(0, 0, 0, 0.288); 
+=======
+   background: rgba(0, 0, 0, 0.288);
+>>>>>>> 56e71c37def3e80657eed6c3b4a640b18442a8c0
 
   }
   .ouazir
@@ -2037,20 +2049,32 @@ section {
     
     width: 100px;
     height: 100%;
+<<<<<<< HEAD
   background: rgba(0, 0, 0, 0.288); 
+=======
+   background: rgba(0, 0, 0, 0.288);
+>>>>>>> 56e71c37def3e80657eed6c3b4a640b18442a8c0
 
   }
   .inspictiong
   {
     width: 100px;
     height: 100%;
+<<<<<<< HEAD
    background: rgba(0, 0, 0, 0.288); 
+=======
+   background: rgba(0, 0, 0, 0.288);
+>>>>>>> 56e71c37def3e80657eed6c3b4a640b18442a8c0
   }
   .secgen
   {
     width: 100px;
     height: 100%;
+<<<<<<< HEAD
  background: rgba(0, 0, 0, 0.288);  
+=======
+   background: rgba(0, 0, 0, 0.288); 
+>>>>>>> 56e71c37def3e80657eed6c3b4a640b18442a8c0
   }
 .level-one div:hover
 {
@@ -2080,37 +2104,61 @@ section {
 {
   width: 100px;
   height: 100%;
+<<<<<<< HEAD
  background: rgba(0, 0, 0, 0.288); 
+=======
+ background: rgba(0, 0, 0, 0.288);
+>>>>>>> 56e71c37def3e80657eed6c3b4a640b18442a8c0
 }
 .dloi
 {
   width: 100px;
   height: 100%;
+<<<<<<< HEAD
   background: rgba(0, 0, 0, 0.288); 
+=======
+ background: rgba(0, 0, 0, 0.288);
+>>>>>>> 56e71c37def3e80657eed6c3b4a640b18442a8c0
 }
 .daf
 {
   width: 100px;
   height: 100%;
+<<<<<<< HEAD
   background: rgba(0, 0, 0, 0.288); 
+=======
+ background: rgba(0, 0, 0, 0.288);
+>>>>>>> 56e71c37def3e80657eed6c3b4a640b18442a8c0
 }
 .dev
 {
   width: 100px;
   height: 100%;
+<<<<<<< HEAD
  background: rgba(0, 0, 0, 0.288); 
+=======
+ background: rgba(0, 0, 0, 0.288);
+>>>>>>> 56e71c37def3e80657eed6c3b4a640b18442a8c0
 }
 .emedia
 {
   width: 100px;
   height: 100%;
+<<<<<<< HEAD
   background: rgba(0, 0, 0, 0.288); 
+=======
+ background: rgba(0, 0, 0, 0.288);
+>>>>>>> 56e71c37def3e80657eed6c3b4a640b18442a8c0
 }
 .media
 {
   width: 100px;
   height: 100%;
+<<<<<<< HEAD
  background: rgba(0, 0, 0, 0.288); 
+=======
+ background: rgba(0, 0, 0, 0.288);
+>>>>>>> 56e71c37def3e80657eed6c3b4a640b18442a8c0
 }
 
 .budj
@@ -3261,7 +3309,7 @@ section {
   border-radius: 25px;
   width: 235px;
   height: 310px;
-  background-image: url(/notAuthenticated/assets/img/presendt.jpeg);
+  background-image: url(/notAuthenticated/assets/img/Tebboune.png);
   background-size: cover; /* Adjust the size to cover the div */
   background-position: center; /* Center the image in the div */
   background-repeat: no-repeat;
@@ -3274,5 +3322,13 @@ section {
   align-items: center;
   align-self: center;
   align-self: center;
+}
+
+.header-main
+{
+  background-image: url(/notAuthenticated/assets/img/flagtwo.png);
+  background-size: cover; /* Adjust the size to cover the div */
+  background-position: center; /* Center the image in the div */
+  background-repeat: no-repeat;
 }
 /***------------------------------------------------*/
