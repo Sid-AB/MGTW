@@ -40,9 +40,9 @@
                     <div class="tab-pane fade show active profile-overview" th:fragment="profile-signIn(message)"
                          id="profile-signIn">
 
-                        <h5 class="card-title"> Modification Of Minister</h5>
+                        <h5 class="card-title"> Modification Of Directions</h5>
                         <!-- Profile Edit Form "-->
-                        <form id="profileForm" action="#" method="post">
+                        <form id="profileForm" th:action="@{'/Direction/update/'+${Directions.getId()}}" method="post">
 
                             <div class="row mb-3">
                                 <label for="name" class="col-md-4 col-lg-12 col-form-label">Direction Arabe</label>
