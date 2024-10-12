@@ -149,7 +149,7 @@ public class TVService {
         return tvs;
     }
 
-    public Boolean updateDataTV(TV TV, Long userId,Optional<TV> existingTV/*, Optional<Multimedia> multimedias */) {
+    public Boolean updateDataTV(TV TV, Long userId,Optional<TV> existingTV,List<MultipartFile> multimediaFiles) {
         if (existingTV.isPresent()) {
             TV tv = existingTV.get();
             tv.setName(TV.getName());
@@ -161,6 +161,32 @@ public class TVService {
             tv.setDescription(TV.getDescription());
             tv.setDescriptionFr(TV.getDescriptionFr());
             tv.setDescriptionEn(TV.getDescriptionEn());
+
+            if (multimediaFiles != null && !multimediaFiles.isEmpty()) {
+                List<Multimedia> multimediaList = new ArrayList<>();
+                for (MultipartFile file : multimediaFiles) {
+                    if (!file.isEmpty()) {
+                        // Create a Multimedia entity
+                        Multimedia multimedia = this.multimediaRepository.findFirstByTvOrderByIdAsc(TV);
+                        multimedia.setFileName(file.getOriginalFilename());
+    
+                        // Save file to filesystem and get the file path
+                        multimedia = this.filesStorageService.save(file,"TVDoc");
+                       // multimedia.setFilePath(filePath);
+    
+                        // Set the etablissement reference in multimedia
+                        multimedia.setTv(tv);
+    
+                        // Add multimedia to the list
+                        multimediaList.add(multimedia);
+                    }
+                }
+    
+                // Save the multimedia files
+                multimediaRepository.saveAll(multimediaList);
+            }
+
+
             this.tvRepository.save(tv);
       /*  if (multimedias.isPresent()) {
             List<Multimedia> savedMultimedias = new ArrayList<>();

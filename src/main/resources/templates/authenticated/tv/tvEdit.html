@@ -42,7 +42,7 @@
 
                         <h5 class="card-title"> Modification Of television</h5>
                         <!-- Profile Edit Form "-->
-                        <form id="profileForm" th:action="@{'/tv/update/'+${tv.getId()}}" method="post">
+                        <form id="profileForm" th:action="@{'/tv/update/'+${tv.getId()}}" method="post" enctype="multipart/form-data">
 
                             <div class="row mb-3">
                                 <label for="name" class="col-md-4 col-lg-12 col-form-label">Name Arabe</label>
@@ -132,7 +132,7 @@
                                 <label for="phone" class="col-md-4 col-lg-12 col-form-label">Phone
                                     (office)</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="phone" type="number" class="form-control" id="phone"
+                                    <input name="phone" type="tel" class="form-control" id="phone"
                                            placeholder="phone"
                                            th:value="${tv.getPhone()}"
                                     >
@@ -142,7 +142,7 @@
                             <div class="row mb-3">
                                 <label for="Phone" class="col-md-4 col-lg-12 col-form-label">Fax</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="fax" type="number" class="form-control" id="fax"
+                                    <input name="fax" type="tel" class="form-control" id="fax"
                                            placeholder="fax"
                                            th:value="${tv.getFax()}"
                                     >
@@ -188,14 +188,53 @@
                                 </div>
                             </div>
 
-                            <!--div class="row mb-3">
+                            <div class="row mb-3">
+                                <label for="Email" class="col-md-4 col-lg-12 col-form-label">Streaming Link</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="streaminglink" type="text" class="form-control" id="streaminglink" placeholder="Email"
+                                           th:value="${tv.getStreaminglink()}"
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="Email" class="col-md-4 col-lg-12 col-form-label">Location </label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="localisation" type="text" class="form-control" id="localisation" placeholder="Email"
+                                           th:value="${tv.getLocalisation()}"
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="Email" class="col-md-4 col-lg-12 col-form-label">Web Site</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="website" type="text" class="form-control" id="website" placeholder="Email"
+                                           th:value="${tv.getWebsite()}"
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="complexe" class="col-md-4 col-lg-3 col-form-label">Categorie Channel</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <select id="categorieChaines" name="categorieChaines" class="form-control"
+                                            onchange="">
+                                        <option value="${tv.getCategorieChaine().getId()}" th:text="${tv.getCategorieChaine().getName()}" disabled></option>
+                                        <option th:each="categorieChaine : ${categorieChaines}" th:value="${categorieChaine.id}"
+                                                th:text="${categorieChaine.name}"></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
                                 <label for="profileImage" class="col-md-4 col-lg-12 col-form-label">Profile Files</label>
                                 <div class="col-md-8 col-lg-9">
                                     <input type="file" class="form-control-file" id="profilFiles"
                                            name="profilFiles" multiple>
 
                                 </div>
-                            </div-->
+                            </div>
 
                             <!--onclick="submitForm('direction','departement','service')"-->
                             <div class="text-center">

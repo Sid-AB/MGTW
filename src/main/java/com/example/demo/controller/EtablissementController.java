@@ -122,7 +122,7 @@ public class EtablissementController {
     public RedirectView updatedEtablissement(@PathVariable Long id,@ModelAttribute  Etablissement updateEtablissement,@RequestParam("profilFiles") List<MultipartFile> multimediaFiles)
     {
         Etablissement etablissement = this.etablissementService.findEtablissementById(id);
-        Optional<Multimedia> multimedia=this.multimediaService.findFirstByEtablissementOrderByIdDesc(etablissement);
+       // Optional<Multimedia> multimedia=this.multimediaService.findFirstByEtablissementOrderByIdDesc(etablissement);
 
        Optional<Etablissement> existingEtablissement = this.etablissementService.findById(id);
        Boolean  check= this.etablissementService.updateDataEtablissement(updateEtablissement,id,existingEtablissement,multimediaFiles );

@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -106,7 +107,7 @@ public class RadioController {
     public ResponseEntity<Resource> getImage(@PathVariable("id") Long id) {
         String folder = "images";
         Radio radio = this.radioService.findRadioById(id);
-        Optional<Multimedia> multimedia = this.multimediaService.findFirstByRadio(radio);
+        Optional<Multimedia> multimedia = this.multimediaService.findFirstByRadioOrderByIdDesc(radio);
         if (multimedia.isPresent()) {
             String filename = ((Multimedia)multimedia.get()).getFileName();
             Resource file = this.filesStorageService.load(folder.concat("/" + filename));
@@ -127,12 +128,12 @@ public class RadioController {
 
 
     @PostMapping({"/update/{id}"})
-    public RedirectView updatedRadio(@PathVariable Long id,@ModelAttribute  Radio updateRadio)
+    public RedirectView updatedRadio(@PathVariable Long id,@ModelAttribute  Radio updateRadio,@RequestParam("profilFiles") List<MultipartFile> multimediaFiles)
     {
         Radio presse = this.radioService.findRadioById(id);
        // Optional<Multimedia> multimedia=this.multimediaService.findFirstByEtablissement(etablissement);
        Optional<Radio> existingRadio = this.radioService.findById(id);
-       Boolean  check= this.radioService.updateDataRadio(updateRadio,id,existingRadio/*,multimedia */);
+       Boolean  check= this.radioService.updateDataRadio(updateRadio,id,existingRadio,multimediaFiles);
        //return "authenticated/etablissement/etablissementsEdit.html";
        return new RedirectView("/radio/radios");
     }
