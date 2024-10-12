@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.example.demo.dto.DirectionDTO;
 
@@ -92,15 +93,15 @@ public class DirectionController {
         model.addAttribute("Directions", direc);
         return "authenticated/Direction/directionEdit";
     }
-   /* // update un directeur
-    @PutMapping("/update/{id}")
-    public ResponseEntity<DirectionDTO> updateDirecteur(@PathVariable Long id, @RequestBody DirectionDTO directionDTO) {
+    // update un directeur
+    @PostMapping("/update/{id}")
+    public RedirectView updateDirecteur(@PathVariable Long id, @ModelAttribute  DirectionDTO directionDTO) {
         DirectionDTO updatedDirection = directionService.updateDirecteur(id, directionDTO);
-        return ResponseEntity.ok(updatedDirection);
+        return new RedirectView("/Direction/direction");
     }
 
 
-    // supprimer un directeur
+   /* // supprimer un directeur
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteDirecteur(@PathVariable Long id) {
         directionService.deleteDirecteur(id);

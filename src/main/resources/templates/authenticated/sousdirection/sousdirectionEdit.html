@@ -42,7 +42,7 @@
 
                         <h5 class="card-title"> Modification Of Sub Direction</h5>
                         <!-- Profile Edit Form "-->
-                        <form id="profileForm" action="#" method="post">
+                        <form id="profileForm" th:action="@{'/sousDirection/update/'+${sousdict.getId()}}" method="post">
 
                             <div class="row mb-3">
                                 <label for="name" class="col-md-4 col-lg-12 col-form-label">Sub Direction Arabe</label>
@@ -57,7 +57,7 @@
                             <div class="row mb-3">
                                 <label for="name" class="col-md-4 col-lg-12 col-form-label">Sub Direction Franch</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="nomDirectionFr" type="text" class="form-control" id="nomDirectionFr"
+                                    <input name="nomsousDirectionFr" type="text" class="form-control" id="nomsousDirectionFr"
                                            placeholder="Name"
                                            th:value="${sousdict.getNomsousDirectionFr()}">
 
@@ -67,7 +67,7 @@
                             <div class="row mb-3">
                                 <label for="name" class="col-md-4 col-lg-12 col-form-label">Sub Direction English</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="nomDirectionEn" type="text" class="form-control" id="nomDirectionEn"
+                                    <input name="nomsousDirectionEn" type="text" class="form-control" id="nomsousDirectionEn"
                                            placeholder="Name"
                                            th:value="${sousdict.getNomsousDirectionEn()}">
 

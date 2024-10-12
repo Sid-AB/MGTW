@@ -17,6 +17,12 @@ public class MultimediaService {
     public MultimediaService() {
     }
 
+    Multimedia findFirstByEtablissementOrderByIdAsc(Etablissement etablissement)
+    {
+        return this.multimediaRepository.findFirstByEtablissementOrderByIdAsc(etablissement);
+    }
+
+
     public List<Multimedia> findAllById(Long id) {
         return this.multimediaRepository.findAllById(id);
     }
@@ -49,8 +55,8 @@ public class MultimediaService {
         return this.multimediaRepository.findFirstByPresse(presse);
     }
 
-    public Optional<Multimedia> findFirstByEtablissement(Etablissement etablissement) {
-        return this.multimediaRepository.findFirstByEtablissement(etablissement);
+    public Optional<Multimedia> findFirstByEtablissementOrderByIdDesc(Etablissement etablissement) {
+        return this.multimediaRepository.findFirstByEtablissementOrderByIdDesc(etablissement);
     }
 
     public Optional<Multimedia> findFirstByTextJuridique(TextJuridique textJuridique) {

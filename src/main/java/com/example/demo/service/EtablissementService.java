@@ -23,12 +23,17 @@ public class EtablissementService {
     @Autowired
     private MultimediaRepository multimediaRepository;
 
+    @Autowired
+    private MultimediaService multimediaService;
+
     public EtablissementService() {
     }
 
     public Optional<Etablissement> findById(Long id) {
         return this.etablissementRepository.findById(id);
     }
+
+    
 
     public Etablissement findEtablissementById(Long id) {
         return this.etablissementRepository.findEtablissementById(id);
@@ -93,9 +98,9 @@ public class EtablissementService {
         return etablissement;
     }
 
-    public Boolean updateDataEtablissement(Etablissement etablissement, Long userId,Optional<Etablissement> existingMinister/*, Optional<Multimedia> multimedias */) {
-        if (existingMinister.isPresent()) {
-            Etablissement Etabbliss = existingMinister.get();
+    public Boolean updateDataEtablissement(Etablissement etablissement, Long userId,Optional<Etablissement> existingEtablissement, List<MultipartFile> multimediaFiles ) {
+        if (existingEtablissement.isPresent()) {
+            Etablissement Etabbliss = existingEtablissement.get();
             Etabbliss.setName(etablissement.getName());
             Etabbliss.setNameFr(etablissement.getNameFr());
             Etabbliss.setNameEn(etablissement.getNameEn());
@@ -105,16 +110,34 @@ public class EtablissementService {
             Etabbliss.setDescription(etablissement.getDescription());
             Etabbliss.setDescriptionFr(etablissement.getDescriptionFr());
             Etabbliss.setDescriptionEn(etablissement.getDescriptionEn());
-            this.etablissementRepository.save(Etabbliss);
-      /*  if (multimedias.isPresent()) {
-            List<Multimedia> savedMultimedias = new ArrayList();
-            multimedias.ifPresent((multimedia) -> {
-                multimedia.setEtablissement(existingEtablissement);
-            });
-            multimedias.ifPresent(savedMultimedias::addAll);
-            savedMultimedias.ifPresent(existingEtablissement::setMultimediaList);
-            this.multimediaRepository.saveAll(savedMultimedias);
-        } */
+            Etabbliss.setLocalisation(etablissement.getLocalisation());
+            Etabbliss.setSite(etablissement.getSite());
+            
+           
+            if (multimediaFiles != null && !multimediaFiles.isEmpty()) {
+                List<Multimedia> multimediaList = new ArrayList<>();
+                for (MultipartFile file : multimediaFiles) {
+                    if (!file.isEmpty()) {
+                        // Create a Multimedia entity
+                        Multimedia multimedia = this.multimediaService.findFirstByEtablissementOrderByIdAsc(etablissement);
+                        multimedia.setFileName(file.getOriginalFilename());
+    
+                        // Save file to filesystem and get the file path
+                        multimedia = this.filesStorageService.save(file,"etablissementDoc");
+                       // multimedia.setFilePath(filePath);
+    
+                        // Set the etablissement reference in multimedia
+                        multimedia.setEtablissement(Etabbliss);
+    
+                        // Add multimedia to the list
+                        multimediaList.add(multimedia);
+                    }
+                }
+    
+                // Save the multimedia files
+                multimediaRepository.saveAll(multimediaList);
+            }
+        this.etablissementRepository.save(Etabbliss);
         return true;
     }
     else
