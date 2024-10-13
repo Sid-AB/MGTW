@@ -121,6 +121,10 @@ public class PresseService {
             press.setDescription(Presse.getDescription());
             press.setDescriptionFr(Presse.getDescriptionFr());
             press.setDescriptionEn(Presse.getDescriptionEn());
+            press.setEmail(Presse.getEmail());
+            press.setSite(Presse.getSite());
+            press.setWebsite(press.getWebsite());
+            press.setPresseCategories(Presse.getPresseCategories());
 
 
             if (multimediaFiles != null && !multimediaFiles.isEmpty()) {

@@ -189,8 +189,18 @@
                             <div class="row mb-3">
                                 <label for="Email" class="col-md-4 col-lg-12 col-form-label">Web site</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="site" type="text" class="form-control" id="site" placeholder="Email"
+                                    <input name="website" type="text" class="form-control" id="website" placeholder="Email"
                                            th:value="${press.getWebsite()}"
+                                    >
+                                </div>
+                            </div>
+
+
+                            <div class="row mb-3">
+                                <label for="Email" class="col-md-4 col-lg-12 col-form-label">Web site Elect</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="site" type="text" class="form-control" id="site" placeholder="Email"
+                                           th:value="${press.getSite()}"
                                     >
                                 </div>
                             </div>
@@ -206,16 +216,24 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
+                            <!--div class="row mb-3">
                                 <label for="Email" class="col-md-4 col-lg-12 col-form-label">Categorie of News Paper</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="categorieelec" type="text" class="form-control" id="categorieelec" placeholder="Email"
-                                           th:value="${press.getCategorieelec()}"
+                                    <input name="categorieelec" type="text" class="form-control" id="categorieelec" placeholder=""
+                                           th:value="${press.getPresseCategories().getName()}"
                                     >
                                 </div>
+                            </div-->
+
+                            <div class="row mb-3">
+                                <label for="type" class="col-md-4 col-lg-3 col-form-label">Type </label>
+                                <div class="col-md-8 col-lg-9">
+                                   
+                                      
+                                        <input class="form-control" name="presseCategories" id="presseCategories" th:each="catPress :${press.getPresseCategories}" th:value="${catPress.getName()}">
+                                   
+                                </div>
                             </div>
-
-
 
                             <div class="row mb-3">
                                 <label for="profileImage" class="col-md-4 col-lg-12 col-form-label">Profile Files</label>
