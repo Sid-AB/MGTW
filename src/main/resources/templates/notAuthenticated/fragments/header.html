@@ -67,7 +67,12 @@
 
                     </ul>
                 </li>
+<<<<<<< HEAD
                
+=======
+                <li><a th:href="@{'/etablissement/1558'}" th:text="#{wakala}"> وكالة الأنباء الجزائرية  </a></li>
+
+>>>>>>> 4f582355773898ff7c900ebdd5acb3f8f1cf0c6f
                 <li class="dropdown " ><a  th:href="@{'#'}"><span style="color: white" th:text="#{channel}" >القنوات التلفزيونية</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a th:href="@{'/tv/public'}" th:text="#{public}">العمومية</a></li>
@@ -121,6 +126,23 @@
 
                     </ul>
                 </li>
+                <li class="dropdown "><a th:href="@{'/'}"><span th:text="#{imprim}"> المطابع  </span>  <i th:class="${#locale.language == 'ar' ? 'bx bx-chevron-left' : 'bx bx-chevron-right'}"></i></a>
+                    <ul style="left: -100%"></a>
+                   
+
+
+                            <!-- <li th:each="complexe:${myObject}">
+                                                                <a  th:href="@{'/tv/prive/'+${complexe.getName()}}" 
+                                                                th:text="${complexe.getName()}">
+                                                            </a>
+                                                        </li> -->
+                           
+
+
+                        </ul>
+                    </li>
+                
+            </li>
 
 
                 <li><a th:href="@{'/etablissement/aps'}" th:text="#{APS}"> وكالة الأنباء الجزائرية </a></li>
