@@ -6,8 +6,8 @@
 
 
 <!-- Add image before the header -->
-<header th:include="notAuthenticated/fragments/header::header" style="background-color: #0E2F4A"
-        th:with="myObject=${complexesForNavBar},myObjectlFNBar=${loisForNavBar}"></header>
+<header th:include="notAuthenticated/fragments/header::header" style="top: 0px;position: fixed;background-color: #0E2F4A;border-radius: 0px 0px 10px 10px;width: 100%;"
+        th:with="myObject=${complexesForNavBar},myObjectlFNBar=${loisForNavBar},hiden=${'hide-header'},show=${'showing-icng'}"></header>
 
 
 </div>
