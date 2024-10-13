@@ -67,6 +67,7 @@
 
                     </ul>
                 </li>
+                <li><a th:href="@{'/etablissement/1558'}" th:text="#{wakala}"> وكالة الأنباء الجزائرية  </a></li>
 
                 <li class="dropdown " ><a  th:href="@{'#'}"><span style="color: white" th:text="#{channel}" >القنوات التلفزيونية</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
@@ -121,6 +122,23 @@
 
                     </ul>
                 </li>
+                <li class="dropdown "><a th:href="@{'/'}"><span th:text="#{imprim}"> المطابع  </span>  <i th:class="${#locale.language == 'ar' ? 'bx bx-chevron-left' : 'bx bx-chevron-right'}"></i></a>
+                    <ul style="left: -100%"></a>
+                   
+
+
+                            <!-- <li th:each="complexe:${myObject}">
+                                                                <a  th:href="@{'/tv/prive/'+${complexe.getName()}}" 
+                                                                th:text="${complexe.getName()}">
+                                                            </a>
+                                                        </li> -->
+                           
+
+
+                        </ul>
+                    </li>
+                
+            </li>
 
 
 
