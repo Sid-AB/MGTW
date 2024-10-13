@@ -161,6 +161,10 @@ public class TVService {
             tv.setDescription(TV.getDescription());
             tv.setDescriptionFr(TV.getDescriptionFr());
             tv.setDescriptionEn(TV.getDescriptionEn());
+            tv.setStreaminglink(TV.getStreaminglink());
+            tv.setFax(TV.getFax());
+            tv.setPhone(TV.getPhone());
+            tv.setLocalisation(TV.getLocalisation());
 
             if (multimediaFiles != null && !multimediaFiles.isEmpty()) {
                 List<Multimedia> multimediaList = new ArrayList<>();
