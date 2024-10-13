@@ -28,6 +28,8 @@ public class PresseService {
     @Autowired
     private MultimediaRepository multimediaRepository;
     @Autowired
+    private MultimediaService multimediaService;
+    @Autowired
     private PresseCategorieService presseCategorieService;
 
     public PresseService() {
@@ -40,10 +42,12 @@ public class PresseService {
     public Optional<Presse> findById(Long id) {
         return this.presseRepository.findById(id);
     }
+    
 
     public List<Presse> findAll() {
         return this.presseRepository.findAll();
     }
+
 
     public List<Presse> findPresseByPresseCategories(List<PresseCategorie> categories) {
         return this.presseRepository.findPresseByPresseCategories(categories);
@@ -105,7 +109,7 @@ public class PresseService {
     }
 
 
-    public Boolean updateDataPresse(Presse Presse, Long userId,Optional<Presse> existingPress/*, Optional<Multimedia> multimedias */) {
+    public Boolean updateDataPresse(Presse Presse, Long userId,Optional<Presse> existingPress,List<MultipartFile> multimediaFiles) {
         if (existingPress.isPresent()) {
             Presse press = existingPress.get();
             press.setName(Presse.getName());
@@ -117,16 +121,33 @@ public class PresseService {
             press.setDescription(Presse.getDescription());
             press.setDescriptionFr(Presse.getDescriptionFr());
             press.setDescriptionEn(Presse.getDescriptionEn());
+
+
+            if (multimediaFiles != null && !multimediaFiles.isEmpty()) {
+                List<Multimedia> multimediaList = new ArrayList<>();
+                for (MultipartFile file : multimediaFiles) {
+                    if (!file.isEmpty()) {
+                        // Create a Multimedia entity
+                        Multimedia multimedia = this.multimediaRepository.findFirstByPressOrderByIdAsc(Presse);
+                        multimedia.setFileName(file.getOriginalFilename());
+    
+                        // Save file to filesystem and get the file path
+                        multimedia = this.filesStorageService.save(file,"etablissementDoc");
+                       // multimedia.setFilePath(filePath);
+    
+                        // Set the etablissement reference in multimedia
+                        multimedia.setPresse(press);
+    
+                        // Add multimedia to the list
+                        multimediaList.add(multimedia);
+                    }
+                }
+    
+                // Save the multimedia files
+                multimediaRepository.saveAll(multimediaList);
+            }
             this.presseRepository.save(press);
-      /*  if (multimedias.isPresent()) {
-            List<Multimedia> savedMultimedias = new ArrayList();
-            multimedias.ifPresent((multimedia) -> {
-                multimedia.setPresse(existingPresse);
-            });
-            multimedias.ifPresent(savedMultimedias::addAll);
-            savedMultimedias.ifPresent(existingPresse::setMultimediaList);
-            this.multimediaRepository.saveAll(savedMultimedias);
-        } */
+     
         return true;
     }
     else

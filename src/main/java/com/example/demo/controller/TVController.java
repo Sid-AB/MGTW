@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -136,7 +137,7 @@ public class TVController {
         String folder = "images";
         System.out.println("userz " + id + " " + folder + " ");
         TV tv = this.tvService.findTVById(id);
-        Optional<Multimedia> multimedia = this.multimediaService.findFirstByTvOrderByCreatedAtDesc(tv);
+        Optional<Multimedia> multimedia = this.multimediaService.findFirstByTvOrderByIdDesc(tv);
         if (multimedia.isPresent()) {
             String filename = ((Multimedia)multimedia.get()).getFileName();
             Resource file = this.filesStorageService.load(folder.concat("/" + filename));
@@ -151,18 +152,20 @@ public class TVController {
     public String FindTVById(Model model, @PathVariable Long id)
     {
         TV TV=this.tvService.findTVById(id);
+        List<CategorieChaine> categorieChaines = this.categorieChaineService.findAll();
         model.addAttribute("tv",TV);
+        model.addAttribute("categorieChaines", categorieChaines);
         return "authenticated/tv/TVEdit";
     }
 
 
     @PostMapping({"/update/{id}"})
-    public RedirectView  updatedTV(@PathVariable Long id,@ModelAttribute  TV updateTV)
+    public RedirectView  updatedTV(@PathVariable Long id,@ModelAttribute  TV updateTV,@RequestParam("profilFiles") List<MultipartFile> multimediaFiles)
     {
         TV tv = this.tvService.findTVById(id);
        // Optional<Multimedia> multimedia=this.multimediaService.findFirstByEtablissement(etablissement);
        Optional<TV> existingTV = this.tvService.findById(id);
-       Boolean  check= this.tvService.updateDataTV(updateTV,id,existingTV/*,multimedia */);
+       Boolean  check= this.tvService.updateDataTV(updateTV,id,existingTV,multimediaFiles);
        //return "authenticated/etablissement/etablissementsEdit.html";
        return new RedirectView("/tv/tvs");
     }

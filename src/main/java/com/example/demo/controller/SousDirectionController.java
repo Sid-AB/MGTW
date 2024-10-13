@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.example.demo.repository.SousDirectionRepository;
 
@@ -93,15 +94,25 @@ public class SousDirectionController {
         return "authenticated/sousdirection/sousdirection";
     }
 
-   /* // update un sousdirecteur
-    @PutMapping("/update/{id}")
-    public ResponseEntity<sousDirectionDTO> updatesousDirecteur(@PathVariable Long id, @RequestBody sousDirectionDTO sousdirectionDTO) {
-        sousDirectionDTO updatedsousDirection = sousdirectionService.updatesousDirecteur(id, sousdirectionDTO);
-        return ResponseEntity.ok(updatedsousDirection);
+    @GetMapping({"/sousDirectionEdit/{id}"})
+    public String findSousDirect(Model model,@PathVariable Long id)
+    {
+        SousDirection sousdict=this.SousdirectionRepository.findSousDirectionById(id);
+        List<Direction> dict=this.directionService.findAll();
+        model.addAttribute("direction", dict);
+        model.addAttribute("sousdict", sousdict);
+        return "authenticated/sousdirection/sousdirectionEdit";
+    }
+
+   // update un sousdirecteur
+    @PostMapping("/update/{id}")
+    public RedirectView updatesousDirecteur(@PathVariable Long id, @ModelAttribute SousDirectionDTO sousdirectionDTO) {
+        SousDirectionDTO updatedsousDirection = sousdirectionService.updatesousDirecteur(id, sousdirectionDTO);
+        return new RedirectView("/sousDirection/sousdirection");
     }
 
 
-    // supprimer un sous directeur
+  /*   // supprimer un sous directeur
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deletesousDirecteur(@PathVariable Long id) {
         sousdirectionService.deletesousDirecteur(id);

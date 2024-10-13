@@ -17,6 +17,12 @@ public class MultimediaService {
     public MultimediaService() {
     }
 
+    Multimedia findFirstByEtablissementOrderByIdAsc(Etablissement etablissement)
+    {
+        return this.multimediaRepository.findFirstByEtablissementOrderByIdAsc(etablissement);
+    }
+
+
     public List<Multimedia> findAllById(Long id) {
         return this.multimediaRepository.findAllById(id);
     }
@@ -33,24 +39,28 @@ public class MultimediaService {
         return this.multimediaRepository.findFirstByUserAndDocTypeOrderByCreatedAtDesc(user, docType);
     }
 
+    public Optional<Multimedia> findFirstByTvOrderByIdDesc(TV tv) {
+        return this.multimediaRepository.findFirstByTvOrderByIdDesc(tv);
+    }
+
     public Optional<Multimedia> findFirstByTvOrderByCreatedAtDesc(TV tv) {
         return this.multimediaRepository.findFirstByTv(tv);
     }
 
-    public Optional<Multimedia> findFirstByRadio(Radio radio) {
-        return this.multimediaRepository.findFirstByRadio(radio);
+    public Optional<Multimedia> findFirstByRadioOrderByIdDesc(Radio radio) {
+        return this.multimediaRepository.findFirstByRadioOrderByIdDesc(radio);
     }
 
     public Optional<Multimedia> findFirstByMinister(Minister radio) {
         return this.multimediaRepository.findFirstByMinister(radio);
     }
 
-    public Optional<Multimedia> findFirstByPresse(Presse presse) {
-        return this.multimediaRepository.findFirstByPresse(presse);
+    public Optional<Multimedia> findFirstByPresseOrderByIdDesc(Presse presse) {
+        return this.multimediaRepository.findFirstByPresseOrderByIdDesc(presse);
     }
 
-    public Optional<Multimedia> findFirstByEtablissement(Etablissement etablissement) {
-        return this.multimediaRepository.findFirstByEtablissement(etablissement);
+    public Optional<Multimedia> findFirstByEtablissementOrderByIdDesc(Etablissement etablissement) {
+        return this.multimediaRepository.findFirstByEtablissementOrderByIdDesc(etablissement);
     }
 
     public Optional<Multimedia> findFirstByTextJuridique(TextJuridique textJuridique) {

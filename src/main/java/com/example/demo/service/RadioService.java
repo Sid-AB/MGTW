@@ -94,7 +94,7 @@ public class RadioService {
         return radio;
     }
 
-    public Boolean updateDataRadio(Radio Radio, Long userId,Optional<Radio> existingRadio/*, Optional<Multimedia> multimedias */) {
+    public Boolean updateDataRadio(Radio Radio, Long userId,Optional<Radio> existingRadio,List<MultipartFile> multimediaFiles) {
         if (existingRadio.isPresent()) {
             Radio radio = existingRadio.get();
             radio.setName(Radio.getName());
@@ -106,6 +106,32 @@ public class RadioService {
             radio.setDescription(Radio.getDescription());
             radio.setDescriptionFr(Radio.getDescriptionFr());
             radio.setDescriptionEn(Radio.getDescriptionEn());
+
+            if (multimediaFiles != null && !multimediaFiles.isEmpty()) {
+                List<Multimedia> multimediaList = new ArrayList<>();
+                for (MultipartFile file : multimediaFiles) {
+                    if (!file.isEmpty()) {
+                        // Create a Multimedia entity
+                        Multimedia multimedia = this.multimediaRepository.findFirstByRadioOrderByIdAsc(Radio);
+                        multimedia.setFileName(file.getOriginalFilename());
+    
+                        // Save file to filesystem and get the file path
+                        multimedia = this.filesStorageService.save(file,"RadioDoc");
+                       // multimedia.setFilePath(filePath);
+    
+                        // Set the etablissement reference in multimedia
+                        multimedia.setRadio(radio);
+    
+                        // Add multimedia to the list
+                        multimediaList.add(multimedia);
+                    }
+                }
+    
+                // Save the multimedia files
+                multimediaRepository.saveAll(multimediaList);
+            }
+
+
             this.radioRepository.save(radio);
       /*  if (multimedias.isPresent()) {
             List<Multimedia> savedMultimedias = new ArrayList();

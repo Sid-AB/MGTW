@@ -121,10 +121,10 @@
                                 <p style="overflow: hidden; height: 85px;">
                                     <a th:href="@{'/presse/' + ${presseEcritPrive.getId().toString()}}"
                                        th:text="${#locale.language == 'ar' ? 
-                                                   (presseEcritPrive.getDescription().length() < 100 ? presseEcritPrive.getDescription() : presseEcritPrive.getDescription().substring(0, 100) + '...') : 
-                                                   (#locale.language == 'en' ? 
-                                                       (presseEcritPrive.getDescriptionEn().length() < 100 ? presseEcritPrive.getDescriptionEn() : presseEcritPrive.getDescriptionEn().substring(0, 100) + '...') : 
-                                                       (presseEcritPrive.getDescriptionFr().length() < 100 ? presseEcritPrive.getDescriptionFr() : presseEcritPrive.getDescriptionFr().substring(0, 100) + '...'))}">
+                                                   presseEcritPrive.getDescription() : 
+                                                   #locale.language == 'en' ? 
+                                                     presseEcritPrive.getDescriptionEn() : 
+                                                       presseEcritPrive.getDescriptionFr()}">
                                     </a>
                                 </p>
                             </div>

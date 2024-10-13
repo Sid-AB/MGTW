@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface MinisterRepository extends JpaRepository<Minister, Long> {
     Minister findMinisterById(Long id);
-   // Minister findMinisterById(Long id);
+    Optional<Minister> findById(Long id);
     Optional<Minister> findByFirstNameAndLastName(String firstName, String lastName);
     Optional<Minister> findByFirstNameFrAndLastNameFr(String firstNameFr, String lastNameFr);
 

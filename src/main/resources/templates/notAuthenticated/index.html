@@ -22,7 +22,7 @@
             <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
                  data-aos="fade-up" data-aos-delay="200">
                 <h1 th:text="#{porteilgetway}">بوابة الاعلام الجزائري </h1>
-                <h2 th:text="#{textt}" > بوابة الإعلام  الجزائري  منصتكم المتكاملة التي تربطكم بعالم الإعلام بكافة أشكاله هنا تجدون محتوى شامل يغطي الصحافة الإلكترونية، الصحافة المكتوبة، والإعلام السمعي البصري، بالإضافة إلى معلومات عن أبرز المؤسسات الإعلامية
+                <h2 th:text="#{textt}"> بوابة الإعلام  الجزائري  منصتكم المتكاملة التي تربطكم بعالم الإعلام بكافة أشكاله هنا تجدون محتوى شامل يغطي الصحافة الإلكترونية، الصحافة المكتوبة، والإعلام السمعي البصري، بالإضافة إلى معلومات عن أبرز المؤسسات الإعلامية
                     هدفنا هو أن نكون مصدركم الأول للاطلاع على كل جديد في عالم الإعلام الحديث والمتجدد
                    </h2>
                 <div class="d-flex justify-content-center justify-content-lg-start">
@@ -31,7 +31,7 @@
                         <input class="form-control mr-sm-2 w-100"  id="query" name="query" required type="search" th:placeholder="#{search}" aria-label="بحث ">
                         <button class="btn btn-outline-success my-2 my-sm-0 mx-2 " type="submit" id="querysearch"><i
                                 class="ri-search-2-line"></i></button>
-                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -39,10 +39,7 @@
                 <a href="/videos/mediaCity.mp4" target="_blank"> < Chemin vers la vidéo >
                     <img th:src="@{notAuthenticated/assets/img/media city.png}" class="img-fluid animated" alt="Vidéo à regarder">
             </div-->
-            <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200" onclick="openVideo()" style="display: flex;
-            flex-direction: column;
-            align-items: center;">
-                <p style="color: aliceblue; font-size: 26px;" th:text="#{mediacity}"> مشروع المدينة الإعلامية الجزائرية</p>
+            <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200" onclick="openVideo()">
                 <img th:src="@{notAuthenticated/assets/img/media city.png}" class="img-fluid animated" alt="Vidéo à regarder" id="videoTrigger" style="cursor: pointer;">
             </div>
            
@@ -188,7 +185,7 @@
                 <div class="">
 
 
-                 <div class="RDC">
+                    <div class="RDC">
                     <div class="level-one">
                         <div class="Diouan">
                            <a href="#"></a> 
@@ -226,12 +223,70 @@
                         </div>
                         <div class="media">
                             <a href="#"></a>
-                        </div>
-                        
+                        </div>    
+                </div>
+                <div class="level-four">
 
+                    <div class="budj"  data-id="1">
+                        <a href="#"></a>
                     </div>
+                    <div class="org" data-id="2">
+                        <a href="#"></a>
+                    </div>
+                    <div class="coop"  data-id="3">
+                        <a href="#"></a>
+                    </div>
+                    <div class="inv"  data-id="4">
+                        <a href="#"></a>
+                    </div>
+                    <div class="tech"  data-id="5">
+                        <a href="#"></a>
+                    </div>
+                    <div class="pressecrite"  data-id="6">
+                        <a href="#"></a>
+                    </div>
+                </div>
+                    
+                <div class="level-five">
+
+                    <div class="moygn"  data-id="7">
+                        <a href="#"></a>
+                    </div>
+                    <div class="loiss"  data-id="8">
+                        <a href="#"></a>
+                    </div>
+                    <div class="form"  data-id="9">
+                        <a href="#"></a>
+                    </div>
+                    <div class="dev"  data-id="10">
+                        <a href="#"></a>
+                    </div>
+                    <div class="rassd"  data-id="11">
+                        <a href="#"></a>
+                    </div>
+                    <div class="audiovisuel"  data-id="12">
+                        <a href="#"></a>
+                    </div>
+            </div>
+            <div class="level-six">
+
+                <div class="prsnl"  data-id="13">
+                    <a href="#"></a>
+                </div>
+                <div class="archiv"  data-id="14">
+                    <a href="#"></a>
+                </div>
+                <div class="extr"  data-id="15">
+                    <a href="#"></a>
+                </div>
+                <div class="pub"  data-id="16">
+                    <a href="#"></a>
+                </div>
+        </div>
+            </div>
                  </div>
 
+       
                  <div id="InfoModal" class="modal">
                     <div class="modal-content">
                         <div class="card">
@@ -244,11 +299,23 @@
                     </div>
                 </div>
 
-                    <div class="img-wrap">
-                        <a href="">
-                        <img th:src="@{${'/notAuthenticated/assets/img/histograme.png'}}" alt="Image" class="img-fluid">
-                        </a>
+                <!--div id="InfoModall" class="modall">
+                    <div class="modal-content">
+                        <div class="card">
+                            <p>[[#{name}]] :<strong id="Nomm"></strong></p>
+                            <p >[[#{prenom}]] :<strong id="Prenomm"></strong></p>
+                            <p >[[#{email}]] :<strong id="Emaill"></strong></p>
+                            <p >[[#{phone}]] :<strong id="Phonee"></strong></p>
+                            <p class="card-footer"><strong id="nomsousDirection"></strong></p>
+                          </div>
                     </div>
+                </div-->
+
+                <div class="img-wrap">
+                    <a href="">
+                    <img th:src="@{${'/notAuthenticated/assets/img/histograme.png'}}" alt="Image" class="img-fluid">
+                    </a>
+                </div>
                 </div>
 
 
@@ -617,13 +684,9 @@ $.ajax({
     }
 });
 
-$(document).ready(function(){
-    $('#querysearch').on('click',function(){
-        var query=$("#query").val()
-        window.location.href='/search/'+query;
-    })
-})
 </script>
+
+
 
 </body>
 
