@@ -2,8 +2,10 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.LoisDTO;
 import com.example.demo.entities.Complexe;
+import com.example.demo.entities.Etablissement;
 import com.example.demo.entities.Lois;
 import com.example.demo.service.ComplexeService;
+import com.example.demo.service.EtablissementService;
 import com.example.demo.service.LoisService;
 import com.example.demo.service.TextJuridiqueService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +22,12 @@ public class LoisController {
     private LoisService loisService;
     @Autowired
     private ComplexeService complexeService;
+    
     @Autowired
     private TextJuridiqueService textJuridiqueService;
+
+    @Autowired
+    private EtablissementService etablissementService;
 
     public LoisController() {
     }
@@ -52,6 +58,9 @@ public class LoisController {
         model.addAttribute("complexesForNavBar", complexesForNavBar);
         List<Lois> loisForNavBar = this.loisService.findAll();
         model.addAttribute("loisForNavBar", loisForNavBar);
-        return "notAuthenticated/lois/lois";
+
+        List  <Etablissement> etablissementImprssion= etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
+        model.addAttribute("etablissementImprssion", etablissementImprssion);
+         return "notAuthenticated/lois/lois";
     }
 }

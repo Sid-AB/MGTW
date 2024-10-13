@@ -182,48 +182,38 @@ public class EtablissementController {
     
     @GetMapping("/societe-impression")
     public String AfficheSociete(Model model) {
-       List  <Etablissement> etablissement= etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
-       for (Etablissement etablissements : etablissement) {
-        System.out.println("Etablissement name: " + etablissements.getName()); // Replace getName() with the actual method to get the name
-    }
-       model.addAttribute("etablissement", etablissement);   
-      System.out.println("Etablissements size: " + (etablissement != null ? etablissement.size() : "null"));
-    
+        List  <Etablissement> etablissement= etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
+        for (Etablissement etablissements : etablissement) {
+         System.out.println("Etablissement name: " + etablissements.getName()); 
+     }
+        model.addAttribute("etablissement", etablissement);   
+       System.out.println("Etablissements size: " + (etablissement != null ? etablissement.size() : "null"));
      
-
-        //System.out.println("Etablissements impresssion: " + etablissement.size()); 
-        List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
-        model.addAttribute("complexesForNavBar", complexesForNavBar);
-        List<Lois> loisForNavBar = this.loisService.findAll();
-        model.addAttribute("loisForNavBar", loisForNavBar);
-        return "notAuthenticated/etablissement/etablissementDetails"; 
-    }
-    @GetMapping("/societe-impression/{id}")
-    public String AfficheSocieteById(@PathVariable("id") Long id, Model model) {
+         //System.out.println("Etablissements impresssion: " + etablissement.size()); 
+         List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
+         model.addAttribute("complexesForNavBar", complexesForNavBar);
+         List<Lois> loisForNavBar = this.loisService.findAll();
+         model.addAttribute("loisForNavBar", loisForNavBar);
+         return "notAuthenticated/etablissement/etablissementDetails"; 
+     }
+     @GetMapping("/societe-impression/{id}")
+     public String AfficheSocieteById(@PathVariable("id") Long id, Model model) {
+         
+         Etablissement etablissement = etablissementService.findEtablissementById(id);
+     
+        //condition if societe d'impression
+         if (etablissement != null && "société d'impression".equals(etablissement.getTypeEtablissmnt())) {
+            // System.out.println("Selected Etablissement name: " + etablissement.getName());
+             model.addAttribute("etablissement", etablissement);
+         } 
+         List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
+         model.addAttribute("complexesForNavBar", complexesForNavBar);
+     
+         List<Lois> loisForNavBar = this.loisService.findAll();
+         model.addAttribute("loisForNavBar", loisForNavBar);
+     
         
-        Etablissement etablissement = etablissementService.findEtablissementById(id);
-    
-       //condition if societe d'impression
-        if (etablissement != null && "société d'impression".equals(etablissement.getTypeEtablissmnt())) {
-           // System.out.println("Selected Etablissement name: " + etablissement.getName());
-            model.addAttribute("etablissement", etablissement);
-        } else {
-            String errorMessage = "Etablissement with id " + id + " n'a pas trouvé ou n'est pas de type 'société d'impression'.";
-            model.addAttribute("errorMessage", errorMessage);
-    
-            // You can redirect to an error page or return to the list page if the condition is not met
-            return "redirect:/etablissement/societe-impression";
-        }
-    
-        // Add other necessary attributes like complexes and lois
-        List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
-        model.addAttribute("complexesForNavBar", complexesForNavBar);
-    
-        List<Lois> loisForNavBar = this.loisService.findAll();
-        model.addAttribute("loisForNavBar", loisForNavBar);
-    
-        // Return the view for the specific etablissement
-        return "notAuthenticated/etablissement/etablissementDetails";
-    }
-    
+         return "notAuthenticated/etablissement/etablissementDetails";
+     }
+     
 }
