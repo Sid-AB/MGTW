@@ -58,6 +58,9 @@ public class EtablissementService {
         return this.etablissementRepository.findEtablissementsByType(type);
     }
 
+    public List<Etablissement> findEtablissementsByTypeEtablissmnt(String typeEtablissmnt) {
+        return this.etablissementRepository.findEtablissementsByTypeEtablissmnt(typeEtablissmnt);
+    }
     public List<Etablissement> findAll() {
         return this.etablissementRepository.findAll();
     }
@@ -112,7 +115,7 @@ public class EtablissementService {
             Etabbliss.setDescriptionEn(etablissement.getDescriptionEn());
             Etabbliss.setLocalisation(etablissement.getLocalisation());
             Etabbliss.setSite(etablissement.getSite());
-            
+            Etabbliss.setTypeEtablissmnt(etablissement.getTypeEtablissmnt());
            
             if (multimediaFiles != null && !multimediaFiles.isEmpty()) {
                 List<Multimedia> multimediaList = new ArrayList<>();

@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -104,14 +105,25 @@ public class EtablissementController {
     public String findEtablisById(Model model, @PathVariable Long id) {
         Etablissement etablissement = this.etablissementService.findEtablissementById(id);
         List etablissements;
+        List etablissementsByTypeEtablissmnt;
+
         if (etablissement.getType().toString().equals("soustutelle")) {
             etablissements = this.etablissementService.findEtablissementsByType("soustutelle");
         } else {
             etablissements = this.etablissementService.findEtablissementsByType("reglementationsectorielle");
         }
-
+             //pour le typeEtablisssmnt aps et priinters
+        if (etablissement.getTypeEtablissmnt().toString().equals("aps")) {
+            etablissementsByTypeEtablissmnt = this.etablissementService.findEtablissementsByTypeEtablissmnt("aps");
+        } else if (etablissement.getTypeEtablissmnt().toString().equals("société d'impression")) {
+            etablissementsByTypeEtablissmnt = this.etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
+        } else {
+             etablissementsByTypeEtablissmnt = new ArrayList(); //liste vide si aucune 
+        }
         model.addAttribute("etablissement", etablissement);
         model.addAttribute("etablissements", etablissements);
+        model.addAttribute("etablissementsByTypeEtablissmnt", etablissementsByTypeEtablissmnt);
+        
         List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
         model.addAttribute("complexesForNavBar", complexesForNavBar);
         List<Lois> loisForNavBar = this.loisService.findAll();
