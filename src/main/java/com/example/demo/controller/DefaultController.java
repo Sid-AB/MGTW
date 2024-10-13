@@ -54,7 +54,11 @@ public class DefaultController {
         model.addAttribute("etablissementsSoustutelle", etablissementsSoustutelle);
         List<Etablissement> etablissementsReglementationsectorielle = this.etablissementService.findEtablissementsByType("reglementationsectorielle");
         model.addAttribute("etablissementsReglementationsectorielle", etablissementsReglementationsectorielle);
-      //  model.addAttribute("etablissement", greetingMessage);
+        
+        List<Etablissement> etablissementsAps = this.etablissementService.findEtablissementsSoustutelleSansApsEtSociete();
+        model.addAttribute("etablissementsAps", etablissementsAps);
+        System.out.println("Etablissements APS: " + etablissementsAps.size());
+        //  model.addAttribute("etablissement", greetingMessage);
         return "notAuthenticated/index";
     }
 

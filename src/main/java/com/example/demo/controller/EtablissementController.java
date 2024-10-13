@@ -55,8 +55,9 @@ public class EtablissementController {
 
     @GetMapping({"/etablissements"})
     public String users(Model model) {
-        List<Etablissement> etablissements = this.etablissementService.findAll();
+        List<Etablissement> etablissements = this.etablissementService.findEtablissementsSoustutelleSansApsEtSociete();
         model.addAttribute("etablissements", etablissements);
+        System.out.println("Etablissements added: " + etablissements.size()); 
         return "authenticated/etablissement/etablissements";
     }
 
@@ -86,14 +87,24 @@ public class EtablissementController {
     public String findTVById(Model model, @PathVariable Long id) {
         Etablissement etablissement = this.etablissementService.findEtablissementById(id);
         List etablissements;
+        Etablissement etablissementsByTypeEtablissmnt;
         if (etablissement.getType().toString().equals("soustutelle")) {
             etablissements = this.etablissementService.findEtablissementsByType("soustutelle");
         } else {
             etablissements = this.etablissementService.findEtablissementsByType("reglementationsectorielle");
         }
 
+           //pour le typeEtablisssmnt aps et priinters
+           if (etablissement.getTypeEtablissmnt().toString().equals("aps")) {
+            etablissementsByTypeEtablissmnt = this.etablissementService.findEtablissementsByTypeEtablissmnt("aps");
+        } else if (etablissement.getTypeEtablissmnt().toString().equals("société d'impression")) {
+            etablissementsByTypeEtablissmnt = this.etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
+        } else {
+             etablissementsByTypeEtablissmnt = null; //liste vide si aucune 
+        }
         model.addAttribute("etablissement", etablissement);
         model.addAttribute("etablissements", etablissements);
+        model.addAttribute("etablissementsByTypeEtablissmnt", etablissementsByTypeEtablissmnt);
         List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
         model.addAttribute("complexesForNavBar", complexesForNavBar);
         List<Lois> loisForNavBar = this.loisService.findAll();
@@ -105,7 +116,7 @@ public class EtablissementController {
     public String findEtablisById(Model model, @PathVariable Long id) {
         Etablissement etablissement = this.etablissementService.findEtablissementById(id);
         List etablissements;
-        List etablissementsByTypeEtablissmnt;
+        Etablissement etablissementsByTypeEtablissmnt;
 
         if (etablissement.getType().toString().equals("soustutelle")) {
             etablissements = this.etablissementService.findEtablissementsByType("soustutelle");
@@ -118,7 +129,7 @@ public class EtablissementController {
         } else if (etablissement.getTypeEtablissmnt().toString().equals("société d'impression")) {
             etablissementsByTypeEtablissmnt = this.etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
         } else {
-             etablissementsByTypeEtablissmnt = new ArrayList(); //liste vide si aucune 
+             etablissementsByTypeEtablissmnt = null; //liste vide si aucune 
         }
         model.addAttribute("etablissement", etablissement);
         model.addAttribute("etablissements", etablissements);
@@ -141,4 +152,31 @@ public class EtablissementController {
        return new RedirectView("/etablissement/etablissements");
       //  return "redirect:authenticated/etablissement/etablissements";
     }
+
+    //pour afficher type etablissmnt aps
+    @GetMapping("/aps")
+    public String AfficheAPS(Model model) {
+       Etablissement etablissement = etablissementService.findEtablissementsByTypeEtablissmnt("APS");
+        model.addAttribute("etablissement", etablissement);
+        //System.out.println("Etablissements aps: " + etablissement.size()); 
+        List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
+        model.addAttribute("complexesForNavBar", complexesForNavBar);
+        List<Lois> loisForNavBar = this.loisService.findAll();
+        model.addAttribute("loisForNavBar", loisForNavBar);
+        return "notAuthenticated/etablissement/etablissementDetails"; 
+    }
+
+    
+    @GetMapping("/societe-impression")
+    public String AfficheSociete(Model model) {
+       Etablissement etablissement = etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
+        model.addAttribute("etablissement", etablissement);
+        //System.out.println("Etablissements impresssion: " + etablissement.size()); 
+        List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
+        model.addAttribute("complexesForNavBar", complexesForNavBar);
+        List<Lois> loisForNavBar = this.loisService.findAll();
+        model.addAttribute("loisForNavBar", loisForNavBar);
+        return "notAuthenticated/etablissement/etablissementDetails"; 
+    }
+
 }

@@ -19,7 +19,7 @@ public interface EtablissementRepository extends JpaRepository<Etablissement, Lo
 
 
     List<Etablissement> findEtablissementsByType(String type);
-    List<Etablissement> findEtablissementsByTypeEtablissmnt(String typeEtablissmnt);
+    Etablissement findEtablissementsByTypeEtablissmnt(String typeEtablissmnt);
     List<Etablissement> findByDescriptionContainingIgnoreCase(String keyword);
     List<Etablissement> findByDescriptionFrContainingIgnoreCase(String keyword);
     List<Etablissement> findByDescriptionEnContainingIgnoreCase(String keyword);
