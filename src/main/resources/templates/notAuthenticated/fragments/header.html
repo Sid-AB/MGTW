@@ -141,7 +141,7 @@
                         <li th:each="etablissement : ${myObjectImprssion}">
                             <a th:href="@{'/etablissement/societe-impression/' + ${etablissement.id}}"
             
-                            th:text="${ #locale.language == 'fr' ? etablissement.getNameFr() : ( #locale.language == 'ar' ? etablissement.getName() : etablissement.getNameEn() ) }">
+                            th:text="${ #locale.language == 'fr' ? etablissement.getNameFr() : ( #locale.language == 'ar' ? etablissement.getName() : etablissement.getNameEn() ) }"></a>
                     </ul>
                     <!--ul>
                         <li><a th:href="@{'/etablissement/1560'}">SIA </a></li>
