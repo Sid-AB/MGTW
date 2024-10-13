@@ -59,7 +59,7 @@ public class EtablissementService {
         return this.etablissementRepository.findEtablissementsByType(type);
     }
 
-    public Etablissement findEtablissementsByTypeEtablissmnt(String typeEtablissmnt) {
+    public List<Etablissement> findEtablissementsByTypeEtablissmnt(String typeEtablissmnt) {
         return this.etablissementRepository.findEtablissementsByTypeEtablissmnt(typeEtablissmnt);
     }
     public List<Etablissement> findAll() {
@@ -68,7 +68,7 @@ public class EtablissementService {
     //////etablissmnt sans aps et impression
      public List<Etablissement> findEtablissementsSoustutelleSansApsEtSociete() {
         List<Etablissement> etablissements = findEtablissementsByType("soustutelle");
-        System.out.println("Number of etablissements found: " + etablissements.size()); // Debug statement
+         System.out.println("Number of etablissements found: " + etablissements.size()); 
         return etablissements.stream()
             .filter(etablissement -> 
                 !"aps".equals(etablissement.getTypeEtablissmnt()) &&
