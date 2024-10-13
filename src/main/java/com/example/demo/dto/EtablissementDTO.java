@@ -21,6 +21,7 @@ public class EtablissementDTO {
     private String fax;
     private String email;
     private String site;
+    private String typeEtablissmnt;
     private String localisation;
     private String localisationFr; // Ajout de localisationFr
     private String localisationEn; // Ajout de localisationEn
@@ -41,6 +42,7 @@ public class EtablissementDTO {
         etablissement.setFax(this.getFax());
         etablissement.setEmail(this.getEmail());
         etablissement.setSite(this.getSite());
+        etablissement.setTypeEtablissmnt(this.getTypeEtablissmnt());
         etablissement.setLocalisation(this.getLocalisation());
         etablissement.setLocalisationFr(this.getLocalisationFr()); // Assigner localisationFr
         etablissement.setLocalisationEn(this.getLocalisationEn()); // Assigner localisationEn
@@ -54,7 +56,7 @@ public class EtablissementDTO {
     public EtablissementDTO(final String name, final String nameFr, final String nameEn, final String descriptionFr,
             final String descriptionEn, final String description, final String type,
             final List<MultipartFile> etablissementFiles, final String adresse, final String adresseFr,
-            final String adresseEn, final String phone, final String fax, final String email, final String site,
+            final String adresseEn, final String phone, final String fax, final String email, final String site,final String typeEtablissmnt,
             final String localisation, final String localisationFr, final String localisationEn) {
         this.name = name;
         this.nameFr = nameFr; // Initialiser nameFr
@@ -71,6 +73,7 @@ public class EtablissementDTO {
         this.fax = fax;
         this.email = email;
         this.site = site;
+        this.typeEtablissmnt = typeEtablissmnt;
         this.localisation = localisation;
         this.localisationFr = localisationFr; // Initialiser localisationFr
         this.localisationEn = localisationEn; // Initialiser localisationEn
@@ -163,7 +166,12 @@ public class EtablissementDTO {
     public String getSite() {
         return this.site;
     }
+    
+    public String getTypeEtablissmnt() {
+        return this.typeEtablissmnt;
+    }
 
+  
     public String getLocalisation() {
         return this.localisation;
     }
@@ -219,6 +227,11 @@ public class EtablissementDTO {
 
     public void setSite(final String site) {
         this.site = site;
+    }
+
+    public void  setTypeEtablissmnt (final String typeEtablissmnt)
+    {
+     this.typeEtablissmnt=typeEtablissmnt;
     }
 
     public void setLocalisation(final String localisation) {
@@ -543,6 +556,7 @@ public class EtablissementDTO {
                 ", fax=" + this.getFax() +
                 ", email=" + this.getEmail() +
                 ", site=" + this.getSite() +
+                ", typeEtablissmnt=" + this.getTypeEtablissmnt() +
                 ", localisation=" + this.getLocalisation() +
                 ", localisationFr=" + this.getLocalisationFr() + // Ajout de localisationFr
                 ", localisationEn=" + this.getLocalisationEn() + // Ajout de localisationEn
