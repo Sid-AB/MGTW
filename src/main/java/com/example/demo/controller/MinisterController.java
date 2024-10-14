@@ -4,10 +4,17 @@ package com.example.demo.controller;
 import com.example.demo.dto.MinisterDTO;
 import com.example.demo.entities.Multimedia;
 import com.example.demo.entities.Radio;
+import com.example.demo.entities.Complexe;
+import com.example.demo.entities.Etablissement;
+import com.example.demo.entities.Lois;
 import com.example.demo.entities.Minister;
 import com.example.demo.service.MinisterService;
 import com.example.demo.service.MultimediaService;
+import com.example.demo.service.TextJuridiqueService;
+import com.example.demo.service.ComplexeService;
+import com.example.demo.service.EtablissementService;
 import com.example.demo.service.FilesStorageService;
+import com.example.demo.service.LoisService;
 import com.example.demo.repository.MultimediaRepository;
 import com.example.demo.repository.MinisterRepository;
 import java.time.format.DateTimeFormatter;
@@ -56,6 +63,15 @@ public class MinisterController {
     private MinisterRepository ministerRepository;
     @Autowired
     private MultimediaRepository multimediaRepository;
+
+      @Autowired
+    private LoisService loisService;
+    @Autowired
+    private ComplexeService complexeService;
+
+    @Autowired
+    private EtablissementService etablissementService;
+    
     public MinisterController()
     {
        
@@ -82,6 +98,13 @@ public class MinisterController {
     public String mins(Model model) {
         List<Minister> Mins = this.ministerService.findAll();
         model.addAttribute("Mins", Mins);
+         List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
+        model.addAttribute("complexesForNavBar", complexesForNavBar);
+        List<Lois> loisForNavBar = this.loisService.findAll();
+        model.addAttribute("loisForNavBar", loisForNavBar);
+
+        List  <Etablissement> etablissementImprssion= etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
+        model.addAttribute("etablissementImprssion", etablissementImprssion);
         return "authenticated/minister/ministers";
     }
     @PostMapping({"/save"})
@@ -98,7 +121,13 @@ public class MinisterController {
     public String minpublic(Model model) {
         List<Minister> Mins = this.ministerService.findAll();
         //System.out.println("Nombre de ministres trouvés: " + Mins.size());
-  
+        List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
+        model.addAttribute("complexesForNavBar", complexesForNavBar);
+        List<Lois> loisForNavBar = this.loisService.findAll();
+        model.addAttribute("loisForNavBar", loisForNavBar);
+
+        List  <Etablissement> etablissementImprssion= etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
+        model.addAttribute("etablissementImprssion", etablissementImprssion);
         model.addAttribute("Mins", Mins);
         return "notAuthenticated/minister/minlist";
     }
@@ -201,6 +230,13 @@ public class MinisterController {
     {
         Minister mins=this.ministerService.findMinisterById(id);
         model.addAttribute("Mins",mins);
+        List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
+        model.addAttribute("complexesForNavBar", complexesForNavBar);
+        List<Lois> loisForNavBar = this.loisService.findAll();
+        model.addAttribute("loisForNavBar", loisForNavBar);
+
+        List  <Etablissement> etablissementImprssion= etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
+        model.addAttribute("etablissementImprssion", etablissementImprssion);
         return "authenticated/minister/ministersEdit";
     }
 

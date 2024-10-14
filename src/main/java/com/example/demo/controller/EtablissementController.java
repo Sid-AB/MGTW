@@ -50,6 +50,8 @@ public class EtablissementController {
     @PostMapping({"/save"})
     public String saveProfile(@ModelAttribute("userDTO") EtablissementDTO etablissementDTO) {
         this.etablissementService.saveEtablissement(etablissementDTO);
+
+
         return "redirect:/etablissement/etablissements";
     }
 
@@ -58,6 +60,8 @@ public class EtablissementController {
         List<Etablissement> etablissements = this.etablissementService.findEtablissementsSoustutelleSansApsEtSociete();
         model.addAttribute("etablissements", etablissements);
         System.out.println("Etablissements added: " + etablissements.size()); 
+
+    
         return "authenticated/etablissement/etablissements";
     }
 
@@ -204,6 +208,8 @@ public class EtablissementController {
          model.addAttribute("complexesForNavBar", complexesForNavBar);
          List<Lois> loisForNavBar = this.loisService.findAll();
          model.addAttribute("loisForNavBar", loisForNavBar);
+         List  <Etablissement> etablissementImprssion= etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
+         model.addAttribute("etablissementImprssion", etablissementImprssion);
          return "notAuthenticated/etablissement/etablissementDetails"; 
      }
      @GetMapping("/societe-impression/{id}")
@@ -222,7 +228,8 @@ public class EtablissementController {
          List<Lois> loisForNavBar = this.loisService.findAll();
          model.addAttribute("loisForNavBar", loisForNavBar);
      
-        
+         List  <Etablissement> etablissementImprssion= etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
+         model.addAttribute("etablissementImprssion", etablissementImprssion);
          return "notAuthenticated/etablissement/etablissementDetails";
      }
      
