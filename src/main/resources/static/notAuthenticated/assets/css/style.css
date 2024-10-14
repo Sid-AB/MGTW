@@ -3251,7 +3251,7 @@ section {
 
 .header-main
 {
-  background-image: url(/notAuthenticated/assets/img/signeone.png);
+  background-image: url(/notAuthenticated/assets/img/flagone.png);
   background-size: contain; /* Adjust the size to cover the div */
   background-position: left; /* Center the image in the div */
   background-repeat: no-repeat;

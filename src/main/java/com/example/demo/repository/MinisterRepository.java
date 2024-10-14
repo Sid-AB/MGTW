@@ -14,7 +14,7 @@ public interface MinisterRepository extends JpaRepository<Minister, Long> {
     Optional<Minister> findByFirstNameAndLastName(String firstName, String lastName);
     Optional<Minister> findByFirstNameFrAndLastNameFr(String firstNameFr, String lastNameFr);
 
-    @Query(value = "SELECT m.file_name FROM Minister min JOIN Multimedia m ON min.profile_picture_id = m.id WHERE min.id = :ministerId", nativeQuery = true)
+    @Query(value = "SELECT m.file_name FROM minister min JOIN multimedia m ON min.profile_picture_id = m.id WHERE min.id = :ministerId", nativeQuery = true)
     String findImagePathByMinisterId(@Param("ministerId") Long ministerId);
 
 }

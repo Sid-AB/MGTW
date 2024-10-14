@@ -1,5 +1,5 @@
 
-<header th:fragment="header" id="header" class="header-main" style="background-color: #0E2F4A">
+<header th:fragment="header" id="header" class="" style="background-color: #0E2F4A">
     <h1 hidden="" class="logo me-auto" style=""><a href="index.html"></a></h1>
     <div th:class="${'header-main '+hiden}"  data-aos="zoom-in" data-aos-delay="200" style="background-color: #0E2F4A">
         <div class="justify-content-center pt-3" data-aos="zoom-in" data-aos-delay="200" style="text-align: center;display: flex;flex-direction: column;align-items: center">
@@ -105,17 +105,18 @@
 
                     </ul>
                 </li>
-
-                <li class="dropdown"><a th:href="@{'/presse/public'}"><span th:text="#{pressEcrit}"> الصحافة المكتوبة </span> <i class="bi bi-chevron-down"></i></a>
+                <li class="dropdown"><a href="#"><span th:text="#{press}"></span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
+                <li class="dropdown"><a th:href="@{'/presse/public'}"><span th:text="#{pressEcrit}"> الصحافة المكتوبة </span> <i th:class="${#locale.language == 'ar' ? 'bx bx-chevron-left' : 'bx bx-chevron-right'}"></i></a>
+                    <ul style="left: -100%;">
                         <li><a th:href="@{'/presse/public/#publicEcrit'}" th:text="#{public}">العمومية </a></li>
                         <li><a th:href="@{'/presse/public/#publicElectronique'}" th:text="#{prive}"> الخاصة </a></li>
 
                     </ul>
                 </li>
-
                 <li><a th:href="@{'/presse/public/electronique'}" th:text="#{pressElect}"> الصحافة الالكترونية </a></li>
-
+                 </ul>
+            </li>
                 <li hidden="hidden" class="dropdown"><a th:href="@{'/presse/public/electronique'}"><span> الصحافة الالكترونية </span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a th:href="@{'/presse/public/electronique/#publicEcrit'}">العمومية </a></li>
