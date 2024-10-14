@@ -677,12 +677,26 @@
                         "Diouan":6,
                         */
 
-                    }
+                    },
+                    "en": {
+                        "dev": 0,
+                        "daf": 1,
+                        "dam": 2,
+                        "emedia": 3,
+                        "dloi": 4,
+                        "media": 5,
+                        "inspictiong": 6,
+                        "secgen": 7,
+                        "Diouan": 8,
+
+
+                    },
                 };
                 //ajax 2eme de sous directions
 
                 // fonction pour afficher les informations du directeur
                 function afficherInfo(directorKey) {
+                    console.log("--"+currentLang);
                     var index = indices[currentLang][directorKey];
                     var nomDirection;
 
