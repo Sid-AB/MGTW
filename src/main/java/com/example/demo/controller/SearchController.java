@@ -82,6 +82,9 @@ public class SearchController {
     List<Lois> loisForNavBar = this.loisService.findAll();
     model.addAttribute("loisForNavBar", loisForNavBar);
 
+    List  <Etablissement> etablissementImprssion= etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
+    model.addAttribute("etablissementImprssion", etablissementImprssion);
+    
     // Rechercher des textes juridiques en fonction de la description en français ou en anglais
     List<TextJuridique> textJuridiquesFr = this.textJuridiqueService.findByDescriptionFrContainingIgnoreCase(query);
     List<TextJuridique> textJuridiquesEn = this.textJuridiqueService.findByDescriptionEnContainingIgnoreCase(query);

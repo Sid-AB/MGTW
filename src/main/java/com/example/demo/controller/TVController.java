@@ -40,6 +40,11 @@ public class TVController {
     @Autowired
     private MultimediaService multimediaService;
 
+    
+    @Autowired
+    private EtablissementService etablissementService;
+
+
     public TVController() {
     }
 
@@ -69,6 +74,10 @@ public class TVController {
         System.out.println("tvsz " + tvs.size());
         List<Lois> loisForNavBar = this.loisService.findAll();
         model.addAttribute("loisForNavBar", loisForNavBar);
+
+        List  <Etablissement> etablissementImprssion= etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
+        model.addAttribute("etablissementImprssion", etablissementImprssion);
+        
         return "notAuthenticated/tv/chaineDetails";
     }
 
@@ -105,6 +114,10 @@ public class TVController {
         model.addAttribute("complexes", complexes);
         List<Lois> loisForNavBar = this.loisService.findAll();
         model.addAttribute("loisForNavBar", loisForNavBar);
+
+        List  <Etablissement> etablissementImprssion= etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
+        model.addAttribute("etablissementImprssion", etablissementImprssion);
+        
         return "notAuthenticated/tv/tvGeneral";
     }
 
@@ -122,6 +135,10 @@ public class TVController {
         model.addAttribute("complexes", complexes);
         List<Lois> loisForNavBar = this.loisService.findAll();
         model.addAttribute("loisForNavBar", loisForNavBar);
+
+        List  <Etablissement> etablissementImprssion= etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
+        model.addAttribute("etablissementImprssion", etablissementImprssion);
+        
         return "notAuthenticated/tv/tvGeneral";
     }
 

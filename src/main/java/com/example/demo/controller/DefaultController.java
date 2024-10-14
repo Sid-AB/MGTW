@@ -59,6 +59,10 @@ public class DefaultController {
         model.addAttribute("etablissementsAps", etablissementsAps);
         System.out.println("Etablissements APS: " + etablissementsAps.size());
         //  model.addAttribute("etablissement", greetingMessage);
+        
+        List  <Etablissement> etablissementImprssion= etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
+        model.addAttribute("etablissementImprssion", etablissementImprssion);
+        
         return "notAuthenticated/index";
     }
 

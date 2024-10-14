@@ -39,6 +39,10 @@ public class RadioController {
     @Autowired
     private MultimediaService multimediaService;
 
+
+    @Autowired
+    private EtablissementService etablissementService;
+
     public RadioController() {
     }
 
@@ -80,6 +84,9 @@ public class RadioController {
         model.addAttribute("complexesForNavBar", complexesForNavBar);
         List<Lois> loisForNavBar = this.loisService.findAll();
         model.addAttribute("loisForNavBar", loisForNavBar);
+
+        List  <Etablissement> etablissementImprssion= etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
+        model.addAttribute("etablissementImprssion", etablissementImprssion);
         return "notAuthenticated/radio/radioDetails";
     }
 
@@ -93,6 +100,9 @@ public class RadioController {
         model.addAttribute("loisForNavBar", loisForNavBar);
         model.addAttribute("radiosNational", radiosNational);
         model.addAttribute("radiosLocal", radiosLocal);
+
+        List  <Etablissement> etablissementImprssion= etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
+        model.addAttribute("etablissementImprssion", etablissementImprssion);
         return "notAuthenticated/radio/radioGeneral";
     }
 

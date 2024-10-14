@@ -40,6 +40,9 @@ public class PresseController {
     @Autowired
     private MultimediaService multimediaService;
 
+    @Autowired
+    private EtablissementService etablissementService;
+
     public PresseController() {
     }
 
@@ -112,6 +115,8 @@ public class PresseController {
         model.addAttribute("pressesEcritPublic", pressesEcritPublic);
         model.addAttribute("pressesEcritPrive", pressesEcritPrive);
     
+        List  <Etablissement> etablissementImprssion= etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
+        model.addAttribute("etablissementImprssion", etablissementImprssion);
         // Retourner la vue
         return "notAuthenticated/presse/presseGeneral";
     }
@@ -203,6 +208,8 @@ public class PresseController {
         model.addAttribute("pressesElectroniquePublic", pressesElectroniquePublic);
         model.addAttribute("pressesElectroniquePrive", pressesElectroniquePrive);
         
+        List  <Etablissement> etablissementImprssion= etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
+        model.addAttribute("etablissementImprssion", etablissementImprssion);
         // Retourner la vue
         return "notAuthenticated/presse/presseGeneralelectronique";
     }
@@ -318,6 +325,8 @@ public String findTVById(Model model, @PathVariable Long id) {
     model.addAttribute("presse", presse);
     model.addAttribute("pressesList", pressesList);
 
+    List  <Etablissement> etablissementImprssion= etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
+    model.addAttribute("etablissementImprssion", etablissementImprssion);
     // Retourner la vue
     return "notAuthenticated/presse/presseDetails";
 }
