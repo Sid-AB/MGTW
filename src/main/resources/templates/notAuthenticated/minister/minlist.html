@@ -65,23 +65,10 @@
                 </div>
             </section>
         </main>
-<style>
-    .waitting {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.inSide {
-    max-width: 80%; /* Ajuste la largeur maximale à 80% de la fenêtre */
-    height: auto; /* Maintient le ratio du SVG */
-}
-</style>
         <footer th:replace="notAuthenticated/fragments/footer::footer" class="footer"></footer>
         
-        <div  id="preloader"class="waitting">
+        <div id="preloader"  class="waitting">
             <svg th:include="notAuthenticated/fragments/logosvg::logosvg" width="120" height="120" viewBox="0 0 2342 2004" version="1.1" class="inSide"></svg>  
         </div>
         
