@@ -210,17 +210,29 @@
         <div class="bg-white">
             <div class="owl-carousel owl-theme">
 
+                <div th:if="${etablissements != null}" th:each="etablissement : ${etablissements}" 
+                class="item" style="background-color: rgba(254,254,255,0)">
+               <a th:href="@{'/etablissement/'+${etablissement.getId().toString()}}">
+                   <img
+                       width="50px" height="200px"
+                       th:src="@{'/etablissement/lugo/' + ${etablissement.getId()}}"
+                       alt="">
+               </a>
+           </div>
 
-                <div th:if="${etablissements}" th:each="etablissement:${etablissements}"
-                     class="item" style="background-color: rgba(254,254,255,0)">
-                    <a th:href="@{'/etablissement/'+${etablissement.getId().toString()}}">
-                        <img
-                                width="50px" height="200px"
-                                th:src="@{${'/etablissement/lugo/'+etablissement.getId()}}"
+           <div th:if="${etablissements == null and etablissementImprssion != null}" th:each="etablissement:${etablissementImprssion}"
+           class="item" style="background-color: rgba(254,254,255,0)">
+          <a th:href="@{'/etablissement/'+${etablissement.getId().toString()}}">
+              <img
+                      width="50px" height="200px"
+                      th:src="@{${'/etablissement/lugo/'+etablissement.getId()}}"
 
-                                alt="">
-                    </a>
-                </div>
+                      alt="">
+          </a>
+      </div>
+
+      <div th:if="${etablissements == null and etablissementImprssion == null}">
+      
 
             </div>
         </div>

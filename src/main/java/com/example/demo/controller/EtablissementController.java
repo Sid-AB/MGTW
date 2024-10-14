@@ -71,11 +71,13 @@ public class EtablissementController {
         String contentType = Files.probeContentType(file.getFile().toPath());
         return ((BodyBuilder)ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType)).header("Content-Disposition", new String[]{"inline; filename=\"" + file.getFilename() + "\""})).body(new InputStreamResource(file.getInputStream()));
     }
+
     @GetMapping({"/lugo/{id}"})
     public ResponseEntity<Resource> getImage(@PathVariable("id") Long id) {
         String folder = "images";
         Etablissement etablissement = this.etablissementService.findEtablissementById(id);
         Optional<Multimedia> multimedia = this.multimediaService.findFirstByEtablissementOrderByIdDesc(etablissement);
+        
         if (multimedia.isPresent()) {
             String filename = ((Multimedia)multimedia.get()).getFileName();
             Resource file = this.filesStorageService.load(folder.concat("/" + filename));
@@ -93,7 +95,7 @@ public class EtablissementController {
         List etablissements;
         List etablissementsByTypeEtablissmnt;
         if (etablissement.getType().toString().equals("soustutelle")) {
-            etablissements = this.etablissementService.findEtablissementsByType("soustutelle");
+            etablissements = this.etablissementService.findEtablissementsSoustutelleSansApsEtSociete();
         } else {
             etablissements = this.etablissementService.findEtablissementsByType("reglementationsectorielle");
         }
@@ -109,10 +111,10 @@ public class EtablissementController {
         model.addAttribute("etablissement", etablissement);
         model.addAttribute("etablissements", etablissements);
         model.addAttribute("etablissementsByTypeEtablissmnt", etablissementsByTypeEtablissmnt);
-       
+        System.out.println("Etablisseme: " + etablissements.size()); 
         List  <Etablissement> etablissementImprssion= etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
         model.addAttribute("etablissementImprssion", etablissementImprssion);
-       
+    
         List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
         model.addAttribute("complexesForNavBar", complexesForNavBar);
         List<Lois> loisForNavBar = this.loisService.findAll();
@@ -179,7 +181,7 @@ public class EtablissementController {
         }
     
         model.addAttribute("etablissement", etablissement);
-         //System.out.println("Etablissements aps: " + etablissement.size()); 
+        // System.out.println("Etablissements aps: " + etablissement.size()); 
          List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
          model.addAttribute("complexesForNavBar", complexesForNavBar);
          List<Lois> loisForNavBar = this.loisService.findAll();
