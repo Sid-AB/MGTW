@@ -3,9 +3,10 @@
 <head th:replace="notAuthenticated/fragments/head::head(${'title'},${'description'},${'keywords'})">
 </head>
 <body>
+   
     <header th:include="notAuthenticated/fragments/header::header" style="background-color: #0E2F4A"
-    th:with="myObject=${complexesForNavBar},myObjectlFNBar=${loisForNavBar},myObjectImprssion=${etablissementImprssion}"></header>
-    
+        th:with="myObject=${complexesForNavBar},myObjectlFNBar=${loisForNavBar},myObjectImprssion=${etablissementImprssion},show=${'hide-header'}">
+    </header>
     <main id="main">
         <div style="height: 70px"></div>
 
