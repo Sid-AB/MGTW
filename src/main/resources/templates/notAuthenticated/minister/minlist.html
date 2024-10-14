@@ -23,7 +23,9 @@
                     <div class="container">
                         <div class="row">
                             <div th:each="minister : ${Mins}" class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-                                <a class="product-item" href="">
+                                <a class="product-item" href="" style="
+                                margin-bottom: 25px;
+                            ">
                                     <img th:src="@{${'/ministers/pic/' + minister.id}}" style="height: 150px;width: 150px" class="img-fluid product-thumbnail">
                                     
                                     <h3 class="product-title" style="font-size: 20px"
