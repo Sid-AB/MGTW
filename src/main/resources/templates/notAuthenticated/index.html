@@ -654,6 +654,19 @@
 
 
                     },
+                    "en": {
+                        "dev": 0,
+                        "daf": 1,
+                        "dam": 2,
+                        "emedia": 3,
+                        "dloi": 4,
+                        "media": 5,
+                        "inspictiong": 6,
+                        "secgen": 7,
+                        "Diouan": 8,
+
+
+                    },
                     "ar": {
                         "dev": 0,
                         "daf": 1,
@@ -719,13 +732,13 @@
                         );
                     }
 
-                    $('.RDC').css('display', 'none');
+                    $('.image-container').css('display', 'none');
 
                     // Fermer le modal en cliquant à l'extérieur
                     $(window).on('click', function (event) {
                         if ($(event.target).is($('#InfoModal'))) {
                             $('#InfoModal').css('display', 'none');
-                            $('.RDC').css('display', 'flex');
+                            $('.image-container').css('display', 'flex');
                         }
                     });
                 }
