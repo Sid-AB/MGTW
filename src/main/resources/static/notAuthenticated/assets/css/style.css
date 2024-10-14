@@ -1975,209 +1975,213 @@ section {
 
 /* Div cliquable */
 .clickable-div {
-  position: absolute;
-  /* border: 2px solid rgba(0, 0, 0, 0.5); */
+   position: absolute;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10%;
   cursor: pointer;
-  transition: border-color 0.3s;
+
 }
 
 .clickable-div:hover {
-  border-color: red;
+ 
+  transform: scale(1.2); 
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); 
 }
+
 
 /* Div pour chaque élément cliquable (ajustement selon la position de chaque section) */
 .ouazir {
   top: 0%;
-  left: 43%;
-  width: 17%;
-  height: 17%;
+  left: 44%;
+  width: 15.3%;
+  height: 18%;
 }
 
 .Diouan {
-  top: 0%;
-  left: 10%;
-  width: 13%;
+  top: 1%;
+  left: 10.5%;
+  width: 12%;
   height: 16%;
 }
 
 .inspictiong {
   top: 1%;
   left: 81%;
-  width: 11%;
-  height: 15%;
+  width: 12%;
+  height: 16%;
 }
 
 
 
 .secgen {
-  top: 23%;
-  left: 44%;
-  width: 14%;
+  top: 23.3%;
+  left: 45.5%;
+  width: 12%;
   height: 16%;
 }
 
 /* ************************ */
 
 .media {
-  top: 49%;
-  left: 89%;
+  top: 48.3%;
+  left: 90%;
   width: 10%;
-  height: 11%;
+  height: 13%;
 }
 
 .emedia {
-  top: 49%;
-  left: 73%;
+  top: 48.3%;
+  left: 72.6%;
   width: 10%;
-  height: 11%;
+  height: 13%;
 }
 
 
 .dev {
-  top: 49%;
-  left: 55%;
+  top: 48.3%;
+  left: 54.7%;
   width: 10%;
-  height: 11%;
+  height: 13%;
 }
 
 .daf {
-  top: 49%;
-  left: 36%;
+  top: 48.3%;
+  left: 36.3%;
   width: 10%;
-  height: 11%;
+  height: 13%;
 }
 
 .dloi {
-  top: 49%;
+  top: 48.3%;
   left: 18%;
   width: 10%;
-  height: 11%;
+  height: 13%;
 }
 
 .dam {
-  top: 49%;
-  left: 0%;
+  top: 48.3%;
+  left: -0.1%;
   width: 10%;
-  height: 11%;
+  height: 13%;
 }
 
 /* ************************ */
 .pressecrite {
-  top: 63%;
+  top: 62.5%;
   left: 90%;
   width: 10%;
-  height: 11%;
+  height: 12%;
 }
 
 .tech {
-  top: 63%;
-  left: 73%;
+  top: 62.5%;
+  left: 72.6%;
   width: 10%;
-  height: 11%;
+  height: 12%;
 }
 
 .inv {
-  top: 63%;
-  left: 55%;
+  top: 62.5%;
+  left: 54.7%;
   width: 10%;
-  height: 11%;
+  height: 12%;
 }
 
 .coop {
-  top: 63%;
-  left: 36%;
+  top: 62.5%;
+  left: 36.3%;
   width: 10%;
-  height: 11%;
+  height: 12%;
 }
 
 .org {
-  top: 63%;
+  top: 62.5%;
   left: 18%;
   width: 10%;
-  height: 11%;
+  height: 12%;
 }
 
 .budj {
-  top: 63%;
-  left: 0%;
+  top: 62.5%;
+  left: -0.1%;
   width: 10%;
-  height: 11%;
+  height: 12%;
 }
 
 /* ************************ */
 
 .audiovisuel {
-  top: 76%;
+  top: 75.6%;
   left: 90%;
   width: 10%;
-  height: 11%;
+  height: 12%;
 }
 
 .rassd {
-  top: 76%;
-  left: 73%;
+  top: 75.6%;
+  left: 72.6%;
   width: 10%;
-  height: 11%;
+  height: 12%;
 }
 
 .dev2 {
-  top: 76%;
-  left: 55%;
+  top: 75.6%;
+  left: 54.7%;
   width: 10%;
-  height: 11%;
+  height: 12%;
 }
 
 .form {
-  top: 76%;
-  left: 36%;
+  top: 75.6%;
+  left: 36.3%;
   width: 10%;
-  height: 11%;
+  height: 12%;
 }
 
 .loiss {
-  top: 76%;
+  top: 75.6%;
   left: 18%;
   width: 10%;
-  height: 11%;
+  height: 12%;
 }
 
 .moygn {
-  top: 76%;
-  left: 0%;
+  top: 75.6%;
+  left: -0.1%;
   width: 10%;
-  height: 11%;
+  height: 12%;
 }
 
 /* ************************ */
 
 .pub {
-  top: 89%;
+  top: 88.5%;
   left: 90%;
   width: 10%;
-  height: 11%;
+  height: 12%;
 }
 
 .extr {
-  top: 89%;
-  left: 73%;
+  top: 88.5%;
+  left: 72.6%;
   width: 10%;
-  height: 11%;
+  height: 12%;
 }
 
 /* ************************ */
 
 .archiv {
-  top: 89%;
+  top: 88.5%;
   left: 18%;
   width: 10%;
-  height: 11%;
+  height: 12%;
 }
 
 .prsnl {
-  top: 89%;
-  left: 0%;
+  top: 88.5%;
+  left: -0.1%;
   width: 10%;
-  height: 11%;
+  height: 12%;
 }
 
 
