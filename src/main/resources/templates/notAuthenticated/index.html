@@ -5,455 +5,188 @@
     <script th:src="@{/notAuthenticated/assets/js/vedio.js}"></script>
 </head>
 
-<style>
-     /* Container pour l'image et les divs */
-     .image-container {
-            position: relative;
-            width: 100%;
-            /* L'image prendra toute la largeur disponible */
-            max-width: 1200px;
-            /* Optionnel, pour limiter la taille */
-            margin: 0 auto;
-            /* Centrer la div */
-        }
-
-        /* L'image elle-même */
-        .image-container img {
-            width: 100%;
-            height: auto;
-            /* Rendre l'image responsive */
-        }
-
-        /* Div cliquable */
-        .clickable-div {
-            position: absolute;
-            border: 2px solid rgba(0, 0, 0, 0.5);
-            cursor: pointer;
-            transition: border-color 0.3s;
-        }
-
-        .clickable-div:hover {
-            border-color: red;
-        }
-
-        /* Div pour chaque élément cliquable (ajustement selon la position de chaque section) */
-        .ouazir {
-            top: 0%;
-            left: 43%;
-            width: 17%;
-            height: 17%;
-        }
-
-        .Diouan {
-            top: 0%;
-            left: 10%;
-            width: 13%;
-            height: 16%;
-        }
-
-        .inspictiong {
-            top: 1%;
-            left: 81%;
-            width: 11%;
-            height: 15%;
-        }
-
-
-
-        .secgen {
-            top: 23%;
-            left: 44%;
-            width: 14%;
-            height: 16%;
-        }
-
-        /* ************************ */
-
-        .media {
-            top: 49%;
-            left: 89%;
-            width: 10%;
-            height: 11%;
-        }
-
-        .emedia {
-            top: 49%;
-            left: 73%;
-            width: 10%;
-            height: 11%;
-        }
-
-
-        .dev {
-            top: 49%;
-            left: 55%;
-            width: 10%;
-            height: 11%;
-        }
-
-        .daf {
-            top: 49%;
-            left: 36%;
-            width: 10%;
-            height: 11%;
-        }
-
-        .dloi {
-            top: 49%;
-            left: 18%;
-            width: 10%;
-            height: 11%;
-        }
-
-        .dam {
-            top: 49%;
-            left: 0%;
-            width: 10%;
-            height: 11%;
-        }
-
-        /* ************************ */
-        .pressecrite {
-            top: 63%;
-            left: 90%;
-            width: 10%;
-            height: 11%;
-        }
-
-        .tech {
-            top: 63%;
-            left: 73%;
-            width: 10%;
-            height: 11%;
-        }
-
-        .inv {
-            top: 63%;
-            left: 55%;
-            width: 10%;
-            height: 11%;
-        }
-
-        .coop {
-            top: 63%;
-            left: 36%;
-            width: 10%;
-            height: 11%;
-        }
-
-        .org {
-            top: 63%;
-            left: 18%;
-            width: 10%;
-            height: 11%;
-        }
-
-        .budj {
-            top: 63%;
-            left: 0%;
-            width: 10%;
-            height: 11%;
-        }
-
-        /* ************************ */
-
-        .audiovisuel {
-            top: 76%;
-            left: 90%;
-            width: 10%;
-            height: 11%;
-        }
-
-        .rassd {
-            top: 76%;
-            left: 73%;
-            width: 10%;
-            height: 11%;
-        }
-
-        .dev2 {
-            top: 76%;
-            left: 55%;
-            width: 10%;
-            height: 11%;
-        }
-
-        .form {
-            top: 76%;
-            left: 36%;
-            width: 10%;
-            height: 11%;
-        }
-
-        .loiss {
-            top: 76%;
-            left: 18%;
-            width: 10%;
-            height: 11%;
-        }
-
-        .moygn {
-            top: 76%;
-            left: 0%;
-            width: 10%;
-            height: 11%;
-        }
-
-        /* ************************ */
-
-        .pub {
-            top: 89%;
-            left: 90%;
-            width: 10%;
-            height: 11%;
-        }
-
-        .extr {
-            top: 89%;
-            left: 73%;
-            width: 10%;
-            height: 11%;
-        }
-
-        /* ************************ */
-
-        .archiv {
-            top: 89%;
-            left: 18%;
-            width: 10%;
-            height: 11%;
-        }
-
-        .prsnl {
-            top: 89%;
-            left: 0%;
-            width: 10%;
-            height: 11%;
-        }
-
-
-        /* Media queries pour ajuster les divs sur des écrans plus petits */
-        @media screen and (max-width: 768px) {
-            .clickable-div {
-                border: 1px solid rgba(0, 0, 0, 0.5);
-                /* Ajuste la bordure pour les petits écrans */
-            }
-
-            /* Ajuste les positions et tailles des divs sur un écran plus petit */
-            .ouazir {
-                top: 0%;
-                left: 43%;
-                width: 17%;
-                height: 17%;
-            }
-
-            .Diouan {
-                top: 0%;
-                left: 10%;
-                width: 13%;
-                height: 16%;
-            }
-
-            .inspictiong {
-                top: 1%;
-                left: 81%;
-                width: 11%;
-                height: 15%;
-            }
-
-            .secgen {
-                top: 23%;
-                left: 44%;
-                width: 14%;
-                height: 16%;
-            }
-
-
-
-        }
-</style>
-
 <body>
 
-<!--   demarrage ou b1 star flash -->
+    <!--   demarrage ou b1 star flash -->
 
 
-<!-- Add image before the header -->
+    <!-- Add image before the header -->
 
-<header th:include="notAuthenticated/fragments/header::header" style="background-color: #0E2F4A"
-        th:with="myObject=${complexesForNavBar},myObjectlFNBar=${loisForNavBar},myObjectImprssion=${etablissementImprssion},show=${'hide-header'}"></header>
+    <header th:include="notAuthenticated/fragments/header::header" style="background-color: #0E2F4A"
+        th:with="myObject=${complexesForNavBar},myObjectlFNBar=${loisForNavBar},myObjectImprssion=${etablissementImprssion},show=${'hide-header'}">
+    </header>
 
 
-<!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex align-items-center" style="background-color: #0E2F4A ;">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
-                 data-aos="fade-up" data-aos-delay="200">
-                <h1 th:text="#{porteilgetway}">بوابة الاعلام الجزائري </h1>
-                <h2 th:text="#{textt}"> بوابة الإعلام  الجزائري  منصتكم المتكاملة التي تربطكم بعالم الإعلام بكافة أشكاله هنا تجدون محتوى شامل يغطي الصحافة الإلكترونية، الصحافة المكتوبة، والإعلام السمعي البصري، بالإضافة إلى معلومات عن أبرز المؤسسات الإعلامية
-                    هدفنا هو أن نكون مصدركم الأول للاطلاع على كل جديد في عالم الإعلام الحديث والمتجدد
-                   </h2>
-                <div class="d-flex justify-content-center justify-content-lg-start">
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex align-items-center" style="background-color: #0E2F4A ;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <h1 th:text="#{porteilgetway}">بوابة الاعلام الجزائري </h1>
+                    <h2 th:text="#{textt}"> بوابة الإعلام الجزائري منصتكم المتكاملة التي تربطكم بعالم الإعلام بكافة
+                        أشكاله هنا تجدون محتوى شامل يغطي الصحافة الإلكترونية، الصحافة المكتوبة، والإعلام السمعي البصري،
+                        بالإضافة إلى معلومات عن أبرز المؤسسات الإعلامية
+                        هدفنا هو أن نكون مصدركم الأول للاطلاع على كل جديد في عالم الإعلام الحديث والمتجدد
+                    </h2>
+                    <div class="d-flex justify-content-center justify-content-lg-start">
 
-                    <div class="form-inline d-flex justify-content-center ">
-                        <input class="form-control mr-sm-2 w-100"  id="query" name="query" required type="search" th:placeholder="#{search}" aria-label="بحث ">
-                        <button class="btn btn-outline-success my-2 my-sm-0 mx-2 " type="submit" id="querysearch"><i
-                                class="ri-search-2-line"></i></button>
+                        <div class="form-inline d-flex justify-content-center ">
+                            <input class="form-control mr-sm-2 w-100" id="query" name="query" required type="search"
+                                th:placeholder="#{search}" aria-label="بحث ">
+                            <button class="btn btn-outline-success my-2 my-sm-0 mx-2 " type="submit" id="querysearch"><i
+                                    class="ri-search-2-line"></i></button>
+                        </div>
+
                     </div>
-
                 </div>
-            </div>
-            <!--div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+                <!--div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
                 <a href="/videos/mediaCity.mp4" target="_blank"> < Chemin vers la vidéo >
                     <img th:src="@{notAuthenticated/assets/img/media city.png}" class="img-fluid animated" alt="Vidéo à regarder">
             </div-->
-            <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200" onclick="openVideo()">
-                <img th:src="@{notAuthenticated/assets/img/media city.png}" class="img-fluid animated" alt="Vidéo à regarder" id="videoTrigger" style="cursor: pointer;">
-            </div>
-           
-
-            <div id="videoModal" class="modal">
-                <div class="modal-content">
-                    <span class="close" onclick="closeVideo()"><i class='bx bx-window-close'></i></span>
-                    <video id="videoPlayer" width="100%" controls>
-                        <source src="notAuthenticated/assets/videos/mediaCity.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200"
+                    onclick="openVideo()">
+                    <img th:src="@{notAuthenticated/assets/img/media city.png}" class="img-fluid animated"
+                        alt="Vidéo à regarder" id="videoTrigger" style="cursor: pointer;">
                 </div>
-            </div>
 
 
-        <!--div class="video-container" id="videoContainer" style="display: none;">
+                <div id="videoModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeVideo()"><i class='bx bx-window-close'></i></span>
+                        <video id="videoPlayer" width="100%" controls>
+                            <source src="notAuthenticated/assets/videos/mediaCity.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+
+
+                <!--div class="video-container" id="videoContainer" style="display: none;">
             <video width="600" controls>
                 <source th:src="@{videos/mediaCity.mp4}" type="video/mp4">
                
             </video>
         </div-->
-            
-            
-        </div>
-    </div>
-
-</section><!-- End Hero -->
-
-<main id="main">
-
-    <!-- ======= Clients Section ======= -->
-    <section id="clients" class="clients section-bg">
-        <div class="container">
-
-            <div class="row" data-aos="zoom-in">
-
-                <div class="col-lg-8 col-md-8 col-8 flex-column align-items-star ">
-                    <h1 style="text-align: start" th:text="#{porteilgetway}">بوابة الاعلام الجزائري </h1>
-                    <h2 style="text-align: start; font-size: 25px" th:text="#{text}"> بوابة الاعلام الجزائري بوابة الاعلام الجزائري بوابة
-                        الاعلام </h2>
-
-                </div>
-
-                <div class="col-lg-4 col-md-4 col-4 d-flex align-items-center justify-content-center">
-                    <button class="btn btn-outline-success my-2 my-sm-0 mx-2 " style="font-size: 30px" type="submit"><i
-                            class=""></i> <span th:text="#{read}">إقرا</span>
-                    </button>
-                </div>
 
 
             </div>
-
         </div>
-    </section><!-- End Cliens Section -->
 
+    </section><!-- End Hero -->
 
-    <!-- ======= Services Section ======= -->
-    <section id="Soustutelle" class="services ">
-        <div class="container" data-aos="fade-up">
+    <main id="main">
 
-            <div class="section-title">
-                <h2 th:text="#{etablissement}">المؤسسات الإعلامية</h2>
+        <!-- ======= Clients Section ======= -->
+        <section id="clients" class="clients section-bg">
+            <div class="container">
 
-            </div>
-            <br>
-            <div class="row">
-                <div th:if="${etablissementsAps}" th:each="etablissementsAps : ${etablissementsAps}" 
-               class="col-6 col-sm-3 col-md-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-         
-                    <div class="icon-box">
-                        <div class="icon"><img
-                                th:src="@{${'/etablissement/lugo/'+etablissementsAps.getId()}}"
-                                width="50px" height="50px">
-                        </div>
-                        <h4 th:switch="${#locale.language}">
-                            <a  th:case="${'ar'}"
-                                th:if="#{locale.language == 'ar'}"
-                                th:href="${'/etablissement/'+etablissementsAps.getId()}"
-                                th:text="${etablissementsAps.getName()}">
-                            </a>
-                            <a  th:case="${'fr'}"
-                                th:if="#{locale.language == 'fr'}"
-                                th:href="${'/etablissement/'+etablissementsAps.getId()}"
-                                th:text="${etablissementsAps.getNameFr()}">
-                            </a>
-                            <a  th:case="${'en'}"
-                                th:if="#{locale.language == 'en'}"
-                                th:href="${'/etablissement/'+etablissementsAps.getId()}"
-                                th:text="${etablissementsAps.getNameEn()}">
-                            </a>
-                    </h4>
-                       <div th:switch="${#locale.language}">
-                        <p th:case="${'ar'}"
-                        th:if="#{locale.language == 'ar'}"
-                           th:href="${'/etablissement/'+etablissementsAps.getId()}"
-                           th:text="${etablissementsAps.getDescription().toString().substring(0,(etablissementsAps.getDescription().length() &lt; 100 ? etablissementsAps.getDescription().length() : 100 ))+'...' }">
-                        </p>
-                        <p th:case="${'fr'}"
-                        th:if="#{locale.language == 'fr'}"
-                           th:href="${'/etablissement/'+etablissementsAps.getId()}"
-                           th:text="${etablissementsAps.getDescriptionFr().toString().substring(0,(etablissementsAps.getDescriptionFr().length() &lt; 100 ? etablissementsAps.getDescriptionFr().length() : 100 ))+'...' }">
-                        </p>
-                        <p th:case="${'en'}"
-                        th:if="#{locale.language == 'en'}"
-                           th:href="${'/etablissement/'+etablissementsAps.getId()}"
-                           th:text="${etablissementsAps.getDescriptionEn().toString().substring(0,(etablissementsAps.getDescriptionEn().length() &lt; 100 ? etablissementsAps.getDescriptionEn().length() : 100 ))+'...' }">
-                        </p>
-                        </div>
+                <div class="row" data-aos="zoom-in">
+
+                    <div class="col-lg-8 col-md-8 col-8 flex-column align-items-star ">
+                        <h1 style="text-align: start" th:text="#{porteilgetway}">بوابة الاعلام الجزائري </h1>
+                        <h2 style="text-align: start; font-size: 25px" th:text="#{text}"> بوابة الاعلام الجزائري بوابة
+                            الاعلام الجزائري بوابة
+                            الاعلام </h2>
+
                     </div>
+
+                    <div class="col-lg-4 col-md-4 col-4 d-flex align-items-center justify-content-center">
+                        <button class="btn btn-outline-success my-2 my-sm-0 mx-2 " style="font-size: 30px"
+                            type="submit"><i class=""></i> <span th:text="#{read}">إقرا</span>
+                        </button>
+                    </div>
+
+
                 </div>
-            </div>      
-        </div>
-    </section><!-- End Services Section -->
-
-    <!-- ======= Services Section ======= -->
-    <section id="Reglementationsectorielle" class="services ">
-        <div class="container" data-aos="fade-up">
-
-            <div class="section-title">
-                <h2 th:text="#{organigrame}">تنظيم القطاع </h2>
 
             </div>
-            <br>
+        </section><!-- End Cliens Section -->
 
-            <div class=" d-flex justify-content-center" >
 
-                <div class="row" hidden="hidden">
-                    <div th:if="etablissementsReglementationsectorielle" th:each="ers:${etablissementsReglementationsectorielle}" class="col-6 col-sm-3 col-md-3  d-flex align-items-stretch " data-aos="zoom-in" data-aos-delay="100">
+        <!-- ======= Services Section ======= -->
+        <section id="Soustutelle" class="services ">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2 th:text="#{etablissement}">المؤسسات الإعلامية</h2>
+
+                </div>
+                <br>
+                <div class="row">
+                    <div th:if="${etablissementsAps}" th:each="etablissementsAps : ${etablissementsAps}"
+                        class="col-6 col-sm-3 col-md-4 d-flex align-items-stretch" data-aos="zoom-in"
+                        data-aos-delay="100">
+
                         <div class="icon-box">
-                            <div class="icon"><img
-                                    th:src="@{${'/etablissement/lugo/'+ers.getId()}}"
+                            <div class="icon"><img th:src="@{${'/etablissement/lugo/'+etablissementsAps.getId()}}"
                                     width="50px" height="50px">
                             </div>
-                            <h4><a
-                                    th:href="${'/etablissement/'+ers.getId()}"
-                                    th:text="${ers.getName()}"
-                            > </a></h4>
-                            <p  th:href="${'/etablissement/'+ers.getId()}"
-                                 th:text="${ers.getDescription().toString().substring(0,(ers.getDescription().length() &lt; 100 ? ers.getDescription().length() : 100 ))+'...'}"></p>
+                            <h4 th:switch="${#locale.language}">
+                                <a th:case="${'ar'}" th:if="#{locale.language == 'ar'}"
+                                    th:href="${'/etablissement/'+etablissementsAps.getId()}"
+                                    th:text="${etablissementsAps.getName()}">
+                                </a>
+                                <a th:case="${'fr'}" th:if="#{locale.language == 'fr'}"
+                                    th:href="${'/etablissement/'+etablissementsAps.getId()}"
+                                    th:text="${etablissementsAps.getNameFr()}">
+                                </a>
+                                <a th:case="${'en'}" th:if="#{locale.language == 'en'}"
+                                    th:href="${'/etablissement/'+etablissementsAps.getId()}"
+                                    th:text="${etablissementsAps.getNameEn()}">
+                                </a>
+                            </h4>
+                            <div th:switch="${#locale.language}">
+                                <p th:case="${'ar'}" th:if="#{locale.language == 'ar'}"
+                                    th:href="${'/etablissement/'+etablissementsAps.getId()}"
+                                    th:text="${etablissementsAps.getDescription().toString().substring(0,(etablissementsAps.getDescription().length() &lt; 100 ? etablissementsAps.getDescription().length() : 100 ))+'...' }">
+                                </p>
+                                <p th:case="${'fr'}" th:if="#{locale.language == 'fr'}"
+                                    th:href="${'/etablissement/'+etablissementsAps.getId()}"
+                                    th:text="${etablissementsAps.getDescriptionFr().toString().substring(0,(etablissementsAps.getDescriptionFr().length() &lt; 100 ? etablissementsAps.getDescriptionFr().length() : 100 ))+'...' }">
+                                </p>
+                                <p th:case="${'en'}" th:if="#{locale.language == 'en'}"
+                                    th:href="${'/etablissement/'+etablissementsAps.getId()}"
+                                    th:text="${etablissementsAps.getDescriptionEn().toString().substring(0,(etablissementsAps.getDescriptionEn().length() &lt; 100 ? etablissementsAps.getDescriptionEn().length() : 100 ))+'...' }">
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section><!-- End Services Section -->
+
+        <!-- ======= Services Section ======= -->
+        <section id="Reglementationsectorielle" class="services ">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2 th:text="#{organigrame}">تنظيم القطاع </h2>
+
+                </div>
+                <br>
+
+                <div class=" d-flex justify-content-center">
+
+                    <div class="row" hidden="hidden">
+                        <div th:if="etablissementsReglementationsectorielle"
+                            th:each="ers:${etablissementsReglementationsectorielle}"
+                            class="col-6 col-sm-3 col-md-3  d-flex align-items-stretch " data-aos="zoom-in"
+                            data-aos-delay="100">
+                            <div class="icon-box">
+                                <div class="icon"><img th:src="@{${'/etablissement/lugo/'+ers.getId()}}" width="50px"
+                                        height="50px">
+                                </div>
+                                <h4><a th:href="${'/etablissement/'+ers.getId()}" th:text="${ers.getName()}"> </a></h4>
+                                <p th:href="${'/etablissement/'+ers.getId()}"
+                                    th:text="${ers.getDescription().toString().substring(0,(ers.getDescription().length() &lt; 100 ? ers.getDescription().length() : 100 ))+'...'}">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
 
 
-                <!-- <div class="">
+                    <!-- <div class="">
                 
                 
                     <div class="RDC">
@@ -557,20 +290,20 @@
                     </div>
                 </div> -->
 
-       
-                 <div id="InfoModal" class="modal">
-                    <div class="modal-content">
-                        <div class="card">
-                            <p>[[#{name}]] :<strong id="Nom"></strong></p>
-                            <p >[[#{prenom}]] :<strong id="Prenom"></strong></p>
-                            <p >[[#{email}]] :<strong id="Email"></strong></p>
-                            <p >[[#{phone}]] :<strong id="Phone"></strong></p>
-                            <p class="card-footer"><strong id="nomDirection"></strong></p>
-                          </div>
-                    </div>
-                </div>
 
-                <!--div id="InfoModall" class="modall">
+                    <div id="InfoModal" class="modal">
+                        <div class="modal-content">
+                            <div class="card">
+                                <p>[[#{name}]] :<strong id="Nom"></strong></p>
+                                <p>[[#{prenom}]] :<strong id="Prenom"></strong></p>
+                                <p>[[#{email}]] :<strong id="Email"></strong></p>
+                                <p>[[#{phone}]] :<strong id="Phone"></strong></p>
+                                <p class="card-footer"><strong id="nomDirection"></strong></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--div id="InfoModall" class="modall">
                     <div class="modal-content">
                         <div class="card">
                             <p>[[#{name}]] :<strong id="Nomm"></strong></p>
@@ -582,448 +315,435 @@
                     </div>
                 </div-->
 
-                <!-- <div class="img-wrap">
+                    <!-- <div class="img-wrap">
                     <a href="">
                     <img th:src="@{${'/notAuthenticated/assets/img/histograme.png'}}" alt="Image" class="img-fluid">
                     </a>
                 </div> -->
 
-                <div class="image-container">
-                    <!-- <img src="histograme.png" alt="Organigramme"> -->
-                    <img th:src="@{${'/notAuthenticated/assets/img/histograme.png'}}" alt="Image" class="img-fluid">
-            
-                   <!-- Div cliquable pour chaque section -->
-        <div class="clickable-div ouazir" >
-        </div>
-        <div class="clickable-div Diouan" ></div>
-        <div class="clickable-div inspictiong" ></div>
-        
-        <div class="clickable-div secgen"></div>
+                    <div class="image-container">
+                        <img th:src="@{${'/notAuthenticated/assets/img/histograme.png'}}" alt="Image" class="img-fluid">
 
-        <div class="clickable-div media"></div>
-        <div class="clickable-div emedia"></div>
-        <div class="clickable-div dev"></div>
-        <div class="clickable-div daf"></div>
-        <div class="clickable-div dloi"></div>
-        <div class="clickable-div dam"></div>
+                        <!-- Div cliquable pour chaque section -->
+                        <div class="clickable-div ouazir"></div>
+                        <div class="clickable-div Diouan"></div>
+                        <div class="clickable-div inspictiong"></div>
 
-        <div class="clickable-div pressecrite"></div>
-        <div class="clickable-div tech"></div>
-        <div class="clickable-div inv"></div>
-        <div class="clickable-div coop">
-        </div>
-        <div class="clickable-div org">
-        </div>
-        <div class="clickable-div budj">
-        </div>
+                        <div class="clickable-div secgen"></div>
 
-        <div class="clickable-div audiovisuel">
-        </div>
-        <div class="clickable-div rassd">
-        </div>
-        <div class="clickable-div dev2">
-        </div>
-        <div class="clickable-div form">
-        </div>
-        <div class="clickable-div loiss">
-        </div>
-        <div class="clickable-div moygn">
-        </div>
+                        <div class="clickable-div media"></div>
+                        <div class="clickable-div emedia"></div>
+                        <div class="clickable-div dev"></div>
+                        <div class="clickable-div daf"></div>
+                        <div class="clickable-div dloi"></div>
+                        <div class="clickable-div dam"></div>
 
-        <div class="clickable-div pub">
-        </div>
-        <div class="clickable-div extr">
-        </div>
+                        <div class="clickable-div pressecrite"></div>
+                        <div class="clickable-div tech"></div>
+                        <div class="clickable-div inv"></div>
+                        <div class="clickable-div coop"></div>
+                        <div class="clickable-div org"></div>
+                        <div class="clickable-div budj"></div>
 
-        <div class="clickable-div archiv">
-        </div>
-        <div class="clickable-div prsnl">
-            
-                    <!-- Ajoute d'autres divs ici si nécessaire -->
-                </div>
+                        <div class="clickable-div audiovisuel"></div>
+                        <div class="clickable-div rassd"></div>
+                        <div class="clickable-div dev2"></div>
+                        <div class="clickable-div form"></div>
+                        <div class="clickable-div loiss"></div>
+                        <div class="clickable-div moygn"></div>
+
+                        <div class="clickable-div pub"></div>
+                        <div class="clickable-div extr"></div>
+
+                        <div class="clickable-div archiv"></div>
+                        <div class="clickable-div prsnl"></div>
+
+                            <!-- Ajoute d'autres divs ici si nécessaire -->
+                        </div>
+
+                    </div>
+
 
                 </div>
-
 
             </div>
-
-        </div>
-    </section><!-- End Services Section -->
+        </section><!-- End Services Section -->
 
 
-</main><!-- End #main -->
-<footer th:replace="notAuthenticated/fragments/footer::footer" class="footer">
-</footer>
+    </main><!-- End #main -->
+    <footer th:replace="notAuthenticated/fragments/footer::footer" class="footer">
+    </footer>
 
-<div id="preloader" class="waitting">
-    <svg th:include="notAuthenticated/fragments/logosvg::logosvg" width="120" height="120" viewBox="0 0 2342 2004" version="1.1" class="inSide">
-    </svg>  
-</div>
+    <div id="preloader" class="waitting">
+        <svg th:include="notAuthenticated/fragments/logosvg::logosvg" width="120" height="120" viewBox="0 0 2342 2004"
+            version="1.1" class="inSide">
+        </svg>
+    </div>
 
-<div th:replace="notAuthenticated/fragments/js::js"></div>
-<script>
-    // JavaScript to open the video in a new window when the image is clicked
- /*   document.getElementById('videoTrigger').addEventListener('click', function () {
-        // Specify the URL of the video file
-        var videoUrl = 'notAuthenticated/assets/videos/mediaCity.mp4'; // Change this if necessary
-        // Open a new window with the video
-        window.open(videoUrl, '_blank');
-    });*/
+    <div th:replace="notAuthenticated/fragments/js::js"></div>
+    <script>
+        // JavaScript to open the video in a new window when the image is clicked
+        /*   document.getElementById('videoTrigger').addEventListener('click', function () {
+               // Specify the URL of the video file
+               var videoUrl = 'notAuthenticated/assets/videos/mediaCity.mp4'; // Change this if necessary
+               // Open a new window with the video
+               window.open(videoUrl, '_blank');
+           });*/
 
-   function openVideo() {
-    var modal = document.getElementById("videoModal");
-    var video = document.getElementById("videoPlayer");
-    
-    // Show the modal
-    modal.style.display = "block";
-    
-    // Play the video
-    video.play();
-  }
-  
-  // Function to close the video modal
-  function closeVideo() {
-    var modal = document.getElementById("videoModal");
-    var video = document.getElementById("videoPlayer");
-    
-    // Hide the modal
-    modal.style.display = "none";
-    
-    // Pause and reset the video
-    video.pause();
-    video.currentTime = 0;
-  }
-  /*function directions(response, index) {
-    $('#InfoModal').css('display', 'block');
-    $('#Nom').text(response[index].nomDirecteur);
-    $('#Prenom').text(response[index].prenomDirecteur);
-    $('#Email').text(response[index].emailDirecteur);
-    $('#Phone').text(response[index].phoneDirecteur);
-    $('#nomDirection').text(response[index].nomDirection);
-    // Cacher la section RDC
-    $('.RDC').css('display', 'none');
-    
-    // Fermer le modal si on clique en dehors
-    $(window).on('click', function(event) {
-        if ($(event.target).is($('#InfoModal'))) {
-            $('#InfoModal').css('display', 'none');
-            $('.RDC').css('display', 'flex');
+        function openVideo() {
+            var modal = document.getElementById("videoModal");
+            var video = document.getElementById("videoPlayer");
+
+            // Show the modal
+            modal.style.display = "block";
+
+            // Play the video
+            video.play();
         }
-    });
-}
 
-// récupérer les données des directeurs
-$.ajax({
-    url: '/Direction/all',
-    type: 'GET',
-    success: function(response) {
-        // Gérer l'événement de clic pour la direction dev (index 0)
-        $('.dev').on('click', function() {
-            displayModal(response, 0);
-        });
+        // Function to close the video modal
+        function closeVideo() {
+            var modal = document.getElementById("videoModal");
+            var video = document.getElementById("videoPlayer");
 
-        // Gérer l'événement de clic pour la direction dam (index 1)
-        $('.dam').on('click', function() {
-            displayModal(response, 1);
-        });
-    },
-    error: function() {
-        alert("Erreur lors de la récupération des informations des directeurs.");
-    }
-});*/
- // Récupération de la locale depuis l'élément HTML
- /*var currentLang = document.documentElement.getAttribute("lang");  
-    $.ajax({
-        url: '/Direction/all',
-        type: 'GET',
-        success: function(response) {
-            //console.log("Langue actuelle:", currentLang); // Vérifiez la langue actuelle
+            // Hide the modal
+            modal.style.display = "none";
 
-            $('.dev').on('click', function() {
-            
-                var nomDirecteur = currentLang=== "ar"? response[0].nomDirecteur : response[0].nomDirecteurFr;
-                var prenomDirecteur = currentLang === "ar" ? response[0].prenomDirecteur : response[0].prenomDirecteurFr;
-                console.log(nomDirecteur);
-                $('#InfoModal').css('display', 'block');
-                $('#Nom').text(nomDirecteur);
-                $('#Prenom').text(prenomDirecteur);
-                $('#Email').text(response[0].emailDirecteur);
-                $('#Phone').text(response[0].phoneDirecteur);
-                $('#nomDirection').text(currentLang=== "ar" 
-                    ? 'مدير : ' + response[0].nomDirection 
-                    : currentLang === "fr" 
-                        ? 'Directeur de : ' + response[0].nomDirectionFr 
-                        : 'Director of : ' + response[0].nomDirectionEn
-                );
-            $('.RDC').css('display', 'none');
-
-            // Fermer le modal en cliquant à l'extérieur
-            $(window).on('click', function(event) {
-                if ($(event.target).is($('#InfoModal'))) {
-                    $('#InfoModal').css('display', 'none');
-                    $('.RDC').css('display', 'flex');
-                }
-            });
-  
-    
-        })
-
-        $('.dam').on('click',function(){
-            var nomDirecteur = currentLang=== "ar"? response[2].nomDirecteur : response[2].nomDirecteurFr;
-            var prenomDirecteur = currentLang === "ar" ? response[2].prenomDirecteur : response[2].prenomDirecteurFr;
-            $('#InfoModal').css('display','block')
-            $('#Nom').text(nomDirecteur);
-            $('#Prenom').text(prenomDirecteur);
-            $('#Email').text(response[2].emailDirecteur);
-            $('#Phone').text(response[2].phoneDirecteur);
-            $('#Phone').text(response[2].phoneDirecteur);
-            $('#nomDirection').text(currentLang=== "ar" 
-                    ? 'مدير : ' + response[2].nomDirection 
-                    : currentLang === "fr" 
-                        ? 'Directeur de : ' + response[2].nomDirectionFr 
-                        : 'Director of : ' + response[2].nomDirectionEn
-                );;
-            $('.RDC').css('display','none')
-            $(window).on('click', function(event) {
-        if ($(event.target).is($('#InfoModal'))) {
-            $('#InfoModal').css('display','none')
-            $('.RDC').css('display','flex')
+            // Pause and reset the video
+            video.pause();
+            video.currentTime = 0;
         }
-    });
-        })
-
-        $('.dloi').on('click',function(){
-            var nomDirecteur = currentLang=== "ar"? response[4].nomDirecteur : response[4].nomDirecteurFr;
-            var prenomDirecteur = currentLang === "ar" ? response[4].prenomDirecteur : response[4].prenomDirecteurFr;
-            $('#InfoModal').css('display','block')
-            $('#Nom').text(nomDirecteur);
-            $('#Prenom').text(prenomDirecteur);
-            $('#Email').text(response[4].emailDirecteur);
-            $('#Phone').text(response[4].phoneDirecteur);
-            $('#Phone').text(response[4].phoneDirecteur);
-            $('#nomDirection').text(currentLang=== "ar" 
-                    ? 'مدير : ' + response[4].nomDirection 
-                    : currentLang === "fr" 
-                        ? 'Directeur de : ' + response[4].nomDirectionFr 
-                        : 'Director of : ' + response[4].nomDirectionEn
-                );
-            $('.RDC').css('display','none')
-            $(window).on('click', function(event) {
-        if ($(event.target).is($('#InfoModal'))) {
-            $('#InfoModal').css('display','none')
-            $('.RDC').css('display','flex')
-        }
-    });
-        })
-
-        $('.daf').on('click',function(){
-            var nomDirecteur = currentLang=== "ar"? response[1].nomDirecteur : response[1].nomDirecteurFr;
-            var prenomDirecteur = currentLang === "ar" ? response[1].prenomDirecteur : response[1].prenomDirecteurFr;
-            $('#InfoModal').css('display','block')
-            $('#Nom').text(nomDirecteur);
-            $('#Prenom').text(prenomDirecteur);
-            $('#Email').text(response[1].emailDirecteur);
-            $('#Phone').text(response[1].phoneDirecteur);
-            $('#Phone').text(response[1].phoneDirecteur);
-            $('#nomDirection').text(currentLang=== "ar" 
-                    ? 'مدير : ' + response[1].nomDirection 
-                    : currentLang === "fr" 
-                        ? 'Directeur de : ' + response[1].nomDirectionFr 
-                        : 'Director of : ' + response[1].nomDirectionEn
-                );
-            $('.RDC').css('display','none')
-            $(window).on('click', function(event) {
-        if ($(event.target).is($('#InfoModal'))) {
-            $('#InfoModal').css('display','none')
-            $('.RDC').css('display','flex')
-        }
-    });
-        })
-        
-        $('.emedia').on('click',function(){
-            var nomDirecteur = currentLang=== "ar"? response[3].nomDirecteur : response[3].nomDirecteurFr;
-            var prenomDirecteur = currentLang === "ar" ? response[3].prenomDirecteur : response[3].prenomDirecteurFr;
-            $('#InfoModal').css('display','block')
-            $('#Nom').text(nomDirecteur);
-            $('#Prenom').text(prenomDirecteur);
-            $('#Email').text(response[3].emailDirecteur);
-            $('#Phone').text(response[3].phoneDirecteur);
-            $('#Phone').text(response[3].phoneDirecteur);
-            $('#nomDirection').text(currentLang=== "ar" 
-                    ? 'مدير : ' + response[3].nomDirection 
-                    : currentLang === "fr" 
-                        ? 'Directeur de : ' + response[3].nomDirectionFr 
-                        : 'Director of : ' + response[3].nomDirectionEn
-                );
-            $('.RDC').css('display','none')
-            $(window).on('click', function(event) {
-        if ($(event.target).is($('#InfoModal'))) {
-            $('#InfoModal').css('display','none')
-            $('.RDC').css('display','flex')
-        }
-    });
-        })
-        
-        $('.media').on('click',function(){
-            var nomDirecteur = currentLang=== "ar"? response[5].nomDirecteur : response[5].nomDirecteurFr;
-            var prenomDirecteur = currentLang === "ar" ? response[5].prenomDirecteur : response[5].prenomDirecteurFr;
-            $('#InfoModal').css('display','block')
-            $('#Nom').text(nomDirecteur);
-            $('#Prenom').text(prenomDirecteur);
-            $('#Email').text(response[5].emailDirecteur);
-            $('#Phone').text(response[5].phoneDirecteur);
-            $('#Phone').text(response[5].phoneDirecteur);
-            $('#nomDirection').text(currentLang=== "ar" 
-                    ? 'مدير : ' + response[5].nomDirection 
-                    : currentLang === "fr" 
-                        ? 'Directeur de : ' + response[5].nomDirectionFr 
-                        : 'Director of : ' + response[5].nomDirectionEn
-                );
-            $('.RDC').css('display','none')
-            $(window).on('click', function(event) {
-        if ($(event.target).is($('#InfoModal'))) {
-            $('#InfoModal').css('display','none')
-            $('.RDC').css('display','flex')
-        }
-    });
-        })
-
-        $('.inspictiong').on('click',function(){
-            var nomDirecteur = currentLang=== "ar"? response[6].nomDirecteur : response[6].nomDirecteurFr;
-            var prenomDirecteur = currentLang === "ar" ? response[6].prenomDirecteur : response[6].prenomDirecteurFr;
-            $('#InfoModal').css('display','block')
-            $('#Nom').text(nomDirecteur);
-            $('#Prenom').text(prenomDirecteur);
-            $('#Email').text(response[6].emailDirecteur);
-            $('#Phone').text(response[6].phoneDirecteur);
-            $('#Phone').text(response[6].phoneDirecteur);
-            $('#nomDirection').text(currentLang=== "ar" 
-                    ? 'مدير : ' + response[6].nomDirection 
-                    : currentLang === "fr" 
-                        ? 'Directeur de : ' + response[6].nomDirectionFr 
-                        : 'Director of : ' + response[6].nomDirectionEn
-                );
-            $('.RDC').css('display','none')
-            $(window).on('click', function(event) {
-        if ($(event.target).is($('#InfoModal'))) {
-            $('#InfoModal').css('display','none')
-            $('.RDC').css('display','flex')
-        }
-    });
-        })
-    }
-  })
-*/
-var currentLang = document.documentElement.getAttribute("lang");  
-$.ajax({
-    url: '/Direction/all',
-    type: 'GET',
-    success: function(response) {
- 
-        const indices = {
-            "fr": {
-                "dev": 0,
-                "daf": 1,
-                "dam": 2,
-                "emedia": 3,
-                "dloi": 4,
-                "media": 5,
-                "inspictiong": 6,
-                "secgen":7,
-                "Diouan":8,
-               
-              
-            },
-            "ar": {
-               "dev": 0,
-                "daf": 1,
-                "dam": 2,
-                "emedia": 3,
-                "dloi": 4,
-                "media": 5,
-                "inspictiong": 6,
-                "secgen":7,
-                "Diouan":8,
-
-                /*
-                "dev": 1,
-                "daf": 0,
-                "dam": 5,
-                "emedia": 4,
-                "dloi": 3,
-                "media": 2,
-                "inspictiong": 8,
-                "secgen":7,
-                "Diouan":6,
-                */
-            
-            }
-        };
-//ajax 2eme de sous directions
-
-        // fonction pour afficher les informations du directeur
-         function afficherInfo(directorKey) {
-            var index = indices[currentLang][directorKey]; 
-            var nomDirection;
-            
-            // cas spécifiques 
-            if (directorKey === "inspictiong" || directorKey === "Diouan" || directorKey === "secgen") {
-                nomDirection = currentLang === "ar" ? response[index].nomDirection : response[index].nomDirectionFr;
-                var nomDirecteur = currentLang === "ar" ? response[index].nomDirecteur : response[index].nomDirecteurFr;
-                var prenomDirecteur = currentLang === "ar" ? response[index].prenomDirecteur : response[index].prenomDirecteurFr;
-                // afficher uniquement nom de la direction sans director
-                $('#InfoModal').css('display', 'block');
-                $('#Nom').text(nomDirecteur);
-                $('#Prenom').text(prenomDirecteur);
-                $('#Email').text(response[index].emailDirecteur);
-                $('#Phone').text(response[index].phoneDirecteur);
-                $('#nomDirection').text(currentLang === "ar" ?  response[index].nomDirection  : currentLang === "fr" ?
-                response[index].nomDirectionFr:  response[index].nomDirectionEn 
-                );
-                
-            } else {
-                // affichage des informations pour les autres 
-                var nomDirecteur = currentLang === "ar" ? response[index].nomDirecteur : response[index].nomDirecteurFr;
-                var prenomDirecteur = currentLang === "ar" ? response[index].prenomDirecteur : response[index].prenomDirecteurFr;
-
-                $('#InfoModal').css('display', 'block');
-                $('#Nom').text(nomDirecteur);
-                $('#Prenom').text(prenomDirecteur);
-                $('#Email').text(response[index].emailDirecteur);
-                $('#Phone').text(response[index].phoneDirecteur);
-                $('#nomDirection').text(currentLang === "ar" 
-                    ? 'مدير : ' + response[index].nomDirection 
-                    : currentLang === "fr" 
-                        ? 'Directeur de : ' + response[index].nomDirectionFr 
-                        : 'Director of : ' + response[index].nomDirectionEn
-                );
-            }
-
-            $('.RDC').css('display', 'none');
-
-            // Fermer le modal en cliquant à l'extérieur
-            $(window).on('click', function(event) {
-                if ($(event.target).is($('#InfoModal'))) {
-                    $('#InfoModal').css('display', 'none');
-                    $('.RDC').css('display', 'flex');
-                }
-            });
-        }
-        //pour afficher les directions
-        $('.dev').on('click', function() { afficherInfo("dev"); });
-        $('.daf').on('click', function() { afficherInfo("daf"); });
-        $('.dam').on('click', function() { afficherInfo("dam"); });
-        $('.emedia').on('click', function() { afficherInfo("emedia"); });
-        $('.media').on('click', function() { afficherInfo("media"); });
-        $('.dloi').on('click', function() { afficherInfo("dloi"); });
-        $('.inspictiong').on('click', function() { afficherInfo("inspictiong"); });
-        $('.Diouan').on('click', function() { afficherInfo("Diouan"); });
-        $('.secgen').on('click', function() { afficherInfo("secgen"); });
+        /*function directions(response, index) {
+          $('#InfoModal').css('display', 'block');
+          $('#Nom').text(response[index].nomDirecteur);
+          $('#Prenom').text(response[index].prenomDirecteur);
+          $('#Email').text(response[index].emailDirecteur);
+          $('#Phone').text(response[index].phoneDirecteur);
+          $('#nomDirection').text(response[index].nomDirection);
+          // Cacher la section RDC
+          $('.RDC').css('display', 'none');
+          
+          // Fermer le modal si on clique en dehors
+          $(window).on('click', function(event) {
+              if ($(event.target).is($('#InfoModal'))) {
+                  $('#InfoModal').css('display', 'none');
+                  $('.RDC').css('display', 'flex');
+              }
+          });
+      }
+      
+      // récupérer les données des directeurs
+      $.ajax({
+          url: '/Direction/all',
+          type: 'GET',
+          success: function(response) {
+              // Gérer l'événement de clic pour la direction dev (index 0)
+              $('.dev').on('click', function() {
+                  displayModal(response, 0);
+              });
+      
+              // Gérer l'événement de clic pour la direction dam (index 1)
+              $('.dam').on('click', function() {
+                  displayModal(response, 1);
+              });
+          },
+          error: function() {
+              alert("Erreur lors de la récupération des informations des directeurs.");
+          }
+      });*/
+        // Récupération de la locale depuis l'élément HTML
+        /*var currentLang = document.documentElement.getAttribute("lang");  
+           $.ajax({
+               url: '/Direction/all',
+               type: 'GET',
+               success: function(response) {
+                   //console.log("Langue actuelle:", currentLang); // Vérifiez la langue actuelle
        
-    }
-});
+                   $('.dev').on('click', function() {
+                   
+                       var nomDirecteur = currentLang=== "ar"? response[0].nomDirecteur : response[0].nomDirecteurFr;
+                       var prenomDirecteur = currentLang === "ar" ? response[0].prenomDirecteur : response[0].prenomDirecteurFr;
+                       console.log(nomDirecteur);
+                       $('#InfoModal').css('display', 'block');
+                       $('#Nom').text(nomDirecteur);
+                       $('#Prenom').text(prenomDirecteur);
+                       $('#Email').text(response[0].emailDirecteur);
+                       $('#Phone').text(response[0].phoneDirecteur);
+                       $('#nomDirection').text(currentLang=== "ar" 
+                           ? 'مدير : ' + response[0].nomDirection 
+                           : currentLang === "fr" 
+                               ? 'Directeur de : ' + response[0].nomDirectionFr 
+                               : 'Director of : ' + response[0].nomDirectionEn
+                       );
+                   $('.RDC').css('display', 'none');
+       
+                   // Fermer le modal en cliquant à l'extérieur
+                   $(window).on('click', function(event) {
+                       if ($(event.target).is($('#InfoModal'))) {
+                           $('#InfoModal').css('display', 'none');
+                           $('.RDC').css('display', 'flex');
+                       }
+                   });
+         
+           
+               })
+       
+               $('.dam').on('click',function(){
+                   var nomDirecteur = currentLang=== "ar"? response[2].nomDirecteur : response[2].nomDirecteurFr;
+                   var prenomDirecteur = currentLang === "ar" ? response[2].prenomDirecteur : response[2].prenomDirecteurFr;
+                   $('#InfoModal').css('display','block')
+                   $('#Nom').text(nomDirecteur);
+                   $('#Prenom').text(prenomDirecteur);
+                   $('#Email').text(response[2].emailDirecteur);
+                   $('#Phone').text(response[2].phoneDirecteur);
+                   $('#Phone').text(response[2].phoneDirecteur);
+                   $('#nomDirection').text(currentLang=== "ar" 
+                           ? 'مدير : ' + response[2].nomDirection 
+                           : currentLang === "fr" 
+                               ? 'Directeur de : ' + response[2].nomDirectionFr 
+                               : 'Director of : ' + response[2].nomDirectionEn
+                       );;
+                   $('.RDC').css('display','none')
+                   $(window).on('click', function(event) {
+               if ($(event.target).is($('#InfoModal'))) {
+                   $('#InfoModal').css('display','none')
+                   $('.RDC').css('display','flex')
+               }
+           });
+               })
+       
+               $('.dloi').on('click',function(){
+                   var nomDirecteur = currentLang=== "ar"? response[4].nomDirecteur : response[4].nomDirecteurFr;
+                   var prenomDirecteur = currentLang === "ar" ? response[4].prenomDirecteur : response[4].prenomDirecteurFr;
+                   $('#InfoModal').css('display','block')
+                   $('#Nom').text(nomDirecteur);
+                   $('#Prenom').text(prenomDirecteur);
+                   $('#Email').text(response[4].emailDirecteur);
+                   $('#Phone').text(response[4].phoneDirecteur);
+                   $('#Phone').text(response[4].phoneDirecteur);
+                   $('#nomDirection').text(currentLang=== "ar" 
+                           ? 'مدير : ' + response[4].nomDirection 
+                           : currentLang === "fr" 
+                               ? 'Directeur de : ' + response[4].nomDirectionFr 
+                               : 'Director of : ' + response[4].nomDirectionEn
+                       );
+                   $('.RDC').css('display','none')
+                   $(window).on('click', function(event) {
+               if ($(event.target).is($('#InfoModal'))) {
+                   $('#InfoModal').css('display','none')
+                   $('.RDC').css('display','flex')
+               }
+           });
+               })
+       
+               $('.daf').on('click',function(){
+                   var nomDirecteur = currentLang=== "ar"? response[1].nomDirecteur : response[1].nomDirecteurFr;
+                   var prenomDirecteur = currentLang === "ar" ? response[1].prenomDirecteur : response[1].prenomDirecteurFr;
+                   $('#InfoModal').css('display','block')
+                   $('#Nom').text(nomDirecteur);
+                   $('#Prenom').text(prenomDirecteur);
+                   $('#Email').text(response[1].emailDirecteur);
+                   $('#Phone').text(response[1].phoneDirecteur);
+                   $('#Phone').text(response[1].phoneDirecteur);
+                   $('#nomDirection').text(currentLang=== "ar" 
+                           ? 'مدير : ' + response[1].nomDirection 
+                           : currentLang === "fr" 
+                               ? 'Directeur de : ' + response[1].nomDirectionFr 
+                               : 'Director of : ' + response[1].nomDirectionEn
+                       );
+                   $('.RDC').css('display','none')
+                   $(window).on('click', function(event) {
+               if ($(event.target).is($('#InfoModal'))) {
+                   $('#InfoModal').css('display','none')
+                   $('.RDC').css('display','flex')
+               }
+           });
+               })
+               
+               $('.emedia').on('click',function(){
+                   var nomDirecteur = currentLang=== "ar"? response[3].nomDirecteur : response[3].nomDirecteurFr;
+                   var prenomDirecteur = currentLang === "ar" ? response[3].prenomDirecteur : response[3].prenomDirecteurFr;
+                   $('#InfoModal').css('display','block')
+                   $('#Nom').text(nomDirecteur);
+                   $('#Prenom').text(prenomDirecteur);
+                   $('#Email').text(response[3].emailDirecteur);
+                   $('#Phone').text(response[3].phoneDirecteur);
+                   $('#Phone').text(response[3].phoneDirecteur);
+                   $('#nomDirection').text(currentLang=== "ar" 
+                           ? 'مدير : ' + response[3].nomDirection 
+                           : currentLang === "fr" 
+                               ? 'Directeur de : ' + response[3].nomDirectionFr 
+                               : 'Director of : ' + response[3].nomDirectionEn
+                       );
+                   $('.RDC').css('display','none')
+                   $(window).on('click', function(event) {
+               if ($(event.target).is($('#InfoModal'))) {
+                   $('#InfoModal').css('display','none')
+                   $('.RDC').css('display','flex')
+               }
+           });
+               })
+               
+               $('.media').on('click',function(){
+                   var nomDirecteur = currentLang=== "ar"? response[5].nomDirecteur : response[5].nomDirecteurFr;
+                   var prenomDirecteur = currentLang === "ar" ? response[5].prenomDirecteur : response[5].prenomDirecteurFr;
+                   $('#InfoModal').css('display','block')
+                   $('#Nom').text(nomDirecteur);
+                   $('#Prenom').text(prenomDirecteur);
+                   $('#Email').text(response[5].emailDirecteur);
+                   $('#Phone').text(response[5].phoneDirecteur);
+                   $('#Phone').text(response[5].phoneDirecteur);
+                   $('#nomDirection').text(currentLang=== "ar" 
+                           ? 'مدير : ' + response[5].nomDirection 
+                           : currentLang === "fr" 
+                               ? 'Directeur de : ' + response[5].nomDirectionFr 
+                               : 'Director of : ' + response[5].nomDirectionEn
+                       );
+                   $('.RDC').css('display','none')
+                   $(window).on('click', function(event) {
+               if ($(event.target).is($('#InfoModal'))) {
+                   $('#InfoModal').css('display','none')
+                   $('.RDC').css('display','flex')
+               }
+           });
+               })
+       
+               $('.inspictiong').on('click',function(){
+                   var nomDirecteur = currentLang=== "ar"? response[6].nomDirecteur : response[6].nomDirecteurFr;
+                   var prenomDirecteur = currentLang === "ar" ? response[6].prenomDirecteur : response[6].prenomDirecteurFr;
+                   $('#InfoModal').css('display','block')
+                   $('#Nom').text(nomDirecteur);
+                   $('#Prenom').text(prenomDirecteur);
+                   $('#Email').text(response[6].emailDirecteur);
+                   $('#Phone').text(response[6].phoneDirecteur);
+                   $('#Phone').text(response[6].phoneDirecteur);
+                   $('#nomDirection').text(currentLang=== "ar" 
+                           ? 'مدير : ' + response[6].nomDirection 
+                           : currentLang === "fr" 
+                               ? 'Directeur de : ' + response[6].nomDirectionFr 
+                               : 'Director of : ' + response[6].nomDirectionEn
+                       );
+                   $('.RDC').css('display','none')
+                   $(window).on('click', function(event) {
+               if ($(event.target).is($('#InfoModal'))) {
+                   $('#InfoModal').css('display','none')
+                   $('.RDC').css('display','flex')
+               }
+           });
+               })
+           }
+         })
+       */
+        var currentLang = document.documentElement.getAttribute("lang");
+        $.ajax({
+            url: '/Direction/all',
+            type: 'GET',
+            success: function (response) {
 
-</script>
+                const indices = {
+                    "fr": {
+                        "dev": 0,
+                        "daf": 1,
+                        "dam": 2,
+                        "emedia": 3,
+                        "dloi": 4,
+                        "media": 5,
+                        "inspictiong": 6,
+                        "secgen": 7,
+                        "Diouan": 8,
+
+
+                    },
+                    "ar": {
+                        "dev": 0,
+                        "daf": 1,
+                        "dam": 2,
+                        "emedia": 3,
+                        "dloi": 4,
+                        "media": 5,
+                        "inspictiong": 6,
+                        "secgen": 7,
+                        "Diouan": 8,
+
+                        /*
+                        "dev": 1,
+                        "daf": 0,
+                        "dam": 5,
+                        "emedia": 4,
+                        "dloi": 3,
+                        "media": 2,
+                        "inspictiong": 8,
+                        "secgen":7,
+                        "Diouan":6,
+                        */
+
+                    }
+                };
+                //ajax 2eme de sous directions
+
+                // fonction pour afficher les informations du directeur
+                function afficherInfo(directorKey) {
+                    var index = indices[currentLang][directorKey];
+                    var nomDirection;
+
+                    // cas spécifiques 
+                    if (directorKey === "inspictiong" || directorKey === "Diouan" || directorKey === "secgen") {
+                        nomDirection = currentLang === "ar" ? response[index].nomDirection : response[index].nomDirectionFr;
+                        var nomDirecteur = currentLang === "ar" ? response[index].nomDirecteur : response[index].nomDirecteurFr;
+                        var prenomDirecteur = currentLang === "ar" ? response[index].prenomDirecteur : response[index].prenomDirecteurFr;
+                        // afficher uniquement nom de la direction sans director
+                        $('#InfoModal').css('display', 'block');
+                        $('#Nom').text(nomDirecteur);
+                        $('#Prenom').text(prenomDirecteur);
+                        $('#Email').text(response[index].emailDirecteur);
+                        $('#Phone').text(response[index].phoneDirecteur);
+                        $('#nomDirection').text(currentLang === "ar" ? response[index].nomDirection : currentLang === "fr" ?
+                            response[index].nomDirectionFr : response[index].nomDirectionEn
+                        );
+
+                    } else {
+                        // affichage des informations pour les autres 
+                        var nomDirecteur = currentLang === "ar" ? response[index].nomDirecteur : response[index].nomDirecteurFr;
+                        var prenomDirecteur = currentLang === "ar" ? response[index].prenomDirecteur : response[index].prenomDirecteurFr;
+
+                        $('#InfoModal').css('display', 'block');
+                        $('#Nom').text(nomDirecteur);
+                        $('#Prenom').text(prenomDirecteur);
+                        $('#Email').text(response[index].emailDirecteur);
+                        $('#Phone').text(response[index].phoneDirecteur);
+                        $('#nomDirection').text(currentLang === "ar"
+                            ? 'مدير : ' + response[index].nomDirection
+                            : currentLang === "fr"
+                                ? 'Directeur de : ' + response[index].nomDirectionFr
+                                : 'Director of : ' + response[index].nomDirectionEn
+                        );
+                    }
+
+                    $('.RDC').css('display', 'none');
+
+                    // Fermer le modal en cliquant à l'extérieur
+                    $(window).on('click', function (event) {
+                        if ($(event.target).is($('#InfoModal'))) {
+                            $('#InfoModal').css('display', 'none');
+                            $('.RDC').css('display', 'flex');
+                        }
+                    });
+                }
+                //pour afficher les directions
+                $('.dev').on('click', function () { afficherInfo("dev"); });
+                $('.daf').on('click', function () { afficherInfo("daf"); });
+                $('.dam').on('click', function () { afficherInfo("dam"); });
+                $('.emedia').on('click', function () { afficherInfo("emedia"); });
+                $('.media').on('click', function () { afficherInfo("media"); });
+                $('.dloi').on('click', function () { afficherInfo("dloi"); });
+                $('.inspictiong').on('click', function () { afficherInfo("inspictiong"); });
+                $('.Diouan').on('click', function () { afficherInfo("Diouan"); });
+                $('.secgen').on('click', function () { afficherInfo("secgen"); });
+
+            }
+        });
+
+    </script>
 
 
 

@@ -1955,1045 +1955,271 @@ section {
   opacity: .7; }
 
   /***--------------- image clickabe ----------------------*****/
+ /* Container pour l'image et les divs */
+ .image-container {
+  position: relative;
+  width: 100%;
+  /* L'image prendra toute la largeur disponible */
+  max-width: 1200px;
+  /* Optionnel, pour limiter la taille */
+  margin: 0 auto;
+  /* Centrer la div */
+}
 
-  
-  .RDC
-  {
-    display: flex;
-    position: absolute;
-    z-index: 10000;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: center;
-    height: 100%;
-    width: 155vh;
-  }
-  .level-one
-  {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: space-around;
-    background-color: rgba(104, 113, 247, 0.548);
-    height: 17%;
-    width: 100%;
-    border: 1px dotted;
-  }
-  .level-two
-  {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    background-color: rgba(67, 250, 60, 0.486);
-    height: 25%;
-    width: 100%;
-  }
-  .level-th
-  {
-    display: flex;
-    justify-content: space-between;
-    background-color: rgba(240, 238, 118, 0.534);
-    height: 17%;
-    width: 100%;
+/* L'image elle-même */
+.image-container img {
+  width: 100%;
+  height: auto;
+  /* Rendre l'image responsive */
+}
 
-  }
-  .Diouan
-  {
-    
-    width: 100px;
-    height: 100%;
-   background: rgba(0, 0, 0, 0.288);
-
-  }
-  .ouazir
-  {
-    
-    width: 100px;
-    height: 100%;
-   background: rgba(0, 0, 0, 0.288);
-
-  }
-  .inspictiong
-  {
-    width: 100px;
-    height: 100%;
-   background: rgba(0, 0, 0, 0.288);
-  }
-  .secgen
-  {
-    width: 100px;
-    height: 100%;
-   background: rgba(0, 0, 0, 0.288); 
-  }
-.level-one div:hover
-{
+/* Div cliquable */
+.clickable-div {
+  position: absolute;
+  border: 2px solid rgba(0, 0, 0, 0.5);
   cursor: pointer;
-}
-.level-two div:hover
-{
-  cursor: pointer;
-}
-.level-th div:hover
-{
-  cursor: pointer;
-}
-.level-four div:hover
-{
-  cursor: pointer;
-}
-.level-five div:hover
-{
-  cursor: pointer;
-}
-.level-six div:hover
-{
-  cursor: pointer;
-}
-.dam
-{
-  width: 100px;
-  height: 100%;
- background: rgba(0, 0, 0, 0.288);
-}
-.dloi
-{
-  width: 100px;
-  height: 100%;
- background: rgba(0, 0, 0, 0.288);
-}
-.daf
-{
-  width: 100px;
-  height: 100%;
- background: rgba(0, 0, 0, 0.288);
-}
-.dev
-{
-  width: 100px;
-  height: 100%;
- background: rgba(0, 0, 0, 0.288);
-}
-.emedia
-{
-  width: 100px;
-  height: 100%;
- background: rgba(0, 0, 0, 0.288);
-}
-.media
-{
-  width: 100px;
-  height: 100%;
- background: rgba(0, 0, 0, 0.288);
+  transition: border-color 0.3s;
 }
 
-.budj
-{
-  width: 100px;
-  height: 100%;
-  background: rgba(163, 27, 27, 0.288); 
+.clickable-div:hover {
+  border-color: red;
 }
-.org
-{
-  width: 100px;
-  height: 100%;
-  background: rgba(163, 27, 27, 0.288); 
+
+/* Div pour chaque élément cliquable (ajustement selon la position de chaque section) */
+.ouazir {
+  top: 0%;
+  left: 43%;
+  width: 17%;
+  height: 17%;
 }
-.coop
-{
-  width: 100px;
-  height: 100%;
-  background: rgba(163, 27, 27, 0.288); 
+
+.Diouan {
+  top: 0%;
+  left: 10%;
+  width: 13%;
+  height: 16%;
 }
-.inv
-{
-  width: 100px;
-  height: 100%;
-  background: rgba(163, 27, 27, 0.288); 
-}
-.tech
-{
-  width: 100px;
-  height: 100%;
-  background: rgba(163, 27, 27, 0.288); 
-}
-.pressecrite
-{
-  width: 100px;
-  height: 100%;
-  background: rgba(163, 27, 27, 0.288); 
-}
-.moygn
-{
-  width: 100px;
-  height: 100%;
-  background: rgba(163, 27, 27, 0.288); 
-}
-.loiss
-{
-  width: 100px;
-  height: 100%;
-  background: rgba(163, 27, 27, 0.288); 
-}
-.form
-{
-  width: 100px;
-  height: 100%;
-  background: rgba(163, 27, 27, 0.288); 
-}
-.dev
-{
-  width: 100px;
-  height: 100%;
-  background: rgba(163, 27, 27, 0.288); 
-}
-.rassd
-{
-  width: 100px;
-  height: 100%;
-  background: rgba(163, 27, 27, 0.288); 
-}
-.audiovisuel
-{
-  width: 100px;
-  height: 100%;
-  background: rgba(163, 27, 27, 0.288); 
-}
-.prsnl
-{
-  width: 100px;
-  height: 100%;
-  background: rgba(163, 27, 27, 0.288); 
-}
-.archiv
-{
-  width: 100px;
-  height: 100%;
-  background: rgba(163, 27, 27, 0.288); 
-}
-.extr
-{
-  width: 100px;
-  height: 100%;
-  background: rgba(163, 27, 27, 0.288); 
-}
-.pub
-{
-  width: 100px;
-  height: 100%;
-  background: rgba(163, 27, 27, 0.288); 
+
+.inspictiong {
+  top: 1%;
+  left: 81%;
+  width: 11%;
+  height: 15%;
 }
 
 
-@media screen and (min-width: 1400px) {
-  /* Styles for screens larger than 1400px */
-  .RDC {
-    /* width: 122vh; */
-    width: 66vw;
-  }
-  .level-one
-  {
-   height: 18%; 
-  }
-  .level-two{
-    height: 27%;
-  }
-  .level-th
-  {
-    height: 17%;
-  }
-}
-@media screen and (min-width: 1200px) and (max-width: 1399px) {
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    /* width: 121vh; */
-    width: 70vw;
-  }
-  .level-one
-  {
-    height: 19%; 
-  }
-  .level-two{
-    height: 22%;
-  }
-  .level-th
-  {
-    height: 14%;
-  }
-}
-@media screen and (min-width: 991px) and (max-width: 1199px) {
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    /* width: 102vh; */
-    width: 60vw;
-  }
-  .level-one
-  {
-    height: 13%;
-  }
-  .level-two{
-    height: 18%;
-  }
-  .level-th
-  {
-    height: 14%;
-  }
-}
-@media screen and (min-width: 768px) and (max-width: 990px) {
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    /* width: 76vh; */
-    width: 50vw;
-  }
-  .level-one
-  {
-    height: 10%;
-  }
-  .level-two{
-    height: 13%;
-  }
-  .level-th
-  {
-    height: 11%;
-  }
-}
-@media screen and (max-width: 767px) {
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    /* width: 56vh; */
-    width: 40vw;
-  }
-  .level-one
-  {
-    height: 8%;
-  }
-  .level-two{
-    height: 9%;
-  }
-  .level-th
-  {
-    height: 7%;
-  }
+
+.secgen {
+  top: 23%;
+  left: 44%;
+  width: 14%;
+  height: 16%;
 }
 
-/** for 540->600 height*/
+/* ************************ */
 
-@media (min-width: 1400px) and (min-height: 540px) and (max-height:600px) {
-  /* Styles for screens larger than 1400px */
-  .RDC {
-    width: 240vh;
-  }
-  .level-one
-  {
-   height: 29%; 
-  }
-  .level-two{
-    height: 47%;
-  }
-  .level-th
-  {
-    height: 26%;
-  }
-}
-@media (min-width: 1200px) and (max-width: 1399px) and (min-height: 540px) and (max-height:600px) {
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 207vh;
-  }
-  .level-one
-  {
-    height: 27%; 
-  }
-  .level-two{
-    height: 34%;
-  }
-  .level-th
-  {
-    height: 26%;
-  }
-}
-@media (min-width: 991px) and (max-width: 1199px) and (min-height: 540px) and (max-height:600px) {
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 137vh;
-  }
-  .level-one
-  {
-    height: 22%;
-  }
-  .level-two{
-    height: 30%;
-  }
-  .level-th
-  {
-    height: 22%;
-  }
-}
-@media (min-width: 768px) and (max-width: 990px) and (min-height: 540px) and (max-height:600px){
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 127vh;
-  }
-  .level-one
-  {
-    height: 16%;
-  }
-  .level-two{
-    height: 23%;
-  }
-  .level-th
-  {
-    height: 16%;
-  }
-}
-@media (max-width: 767px) and (min-height: 540px) and (max-height:600px) {
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 56vh;
-  }
-  .level-one
-  {
-    height: 8%;
-  }
-  .level-two{
-    height: 9%;
-  }
-  .level-th
-  {
-    height: 7%;
-  }
-}
-/***** end of 540 x 600 height *****/
-
-
-/** for 601->630 height*/
-
-@media (min-width: 1400px) and (min-height: 601px) and (max-height:630px) {
-  /* Styles for screens larger than 1400px (min-height: 601px) and (max-height:630px)  */
-  .RDC {
-    /* width: 215vh; */
-    width: 79vw;
-    
-  }
-  .level-one
-  {
-   height: 15%; 
-  }
-  .level-two{
-    height: 38%;
-  }
-  .level-th
-  {
-    height: 26%;
-  }
-}
-@media (min-width: 1200px) and (max-width: 1399px) and (min-height: 601px) and (max-height:635px) {
-  /* Styles for screens between 1200px and 1399px */
-  .RDC {
-    width: 185vh;
-  }
-  .level-one
-  {
-    height: 23%; 
-  }
-  .level-two{
-    height: 27%;
-  }
-  .level-th
-  {
-    height: 26%;
-  }
-}
-@media (min-width: 991px) and (max-width: 1199px) and (min-height: 601px) and (max-height:630px) {
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 155vh;
-  }
-  .level-one
-  {
-    height: 22%;
-  }
-  .level-two{
-    height: 24%;
-  }
-  .level-th
-  {
-    height: 22%;
-  }
-}
-@media (min-width: 768px) and (max-width: 990px) and (min-height: 601px) and (max-height:635px){
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 115vh;
-  }
-  .level-one
-  {
-    height: 15%;
-  }
-  .level-two{
-    height: 18%;
-  }
-  .level-th
-  {
-    height: 16%;
-  }
-}
-@media (max-width: 767px) and (min-height: 540px) and (max-height:600px) {
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 71vh;
-  }
-  .level-one
-  {
-    height: 8%;
-  }
-  .level-two{
-    height: 9%;
-  }
-  .level-th
-  {
-    height: 7%;
-  }
-}
-/***** end of 601 x 635 height *****/
-
-
-/** for 601->630 height*/
-
-@media (min-width: 1400px) and (min-height: 601px) and (max-height:630px) {
-  /* Styles for screens larger than 1400px */
-  .RDC {
-    width: 204vh;
-  }
-  .level-one
-  {
-   height: 26%; 
-  }
-  .level-two{
-    height: 38%;
-  }
-  .level-th
-  {
-    height: 26%;
-  }
-}
-@media (min-width: 1200px) and (max-width: 1399px) and (min-height: 601px) and (max-height:635px) {
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 176vh;
-  }
-  .level-one
-  {
-    height: 22%; 
-  }
-  .level-two{
-    height: 30%;
-  }
-  .level-th
-  {
-    height: 22%;
-  }
-}
-@media (min-width: 991px) and (max-width: 1199px) and (min-height: 636px) and (max-height:696px) {
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 148vh;
-  }
-  .level-one
-  {
-    height: 20%;
-  }
-  .level-two{
-    height: 22%;
-  }
-  .level-th
-  {
-    height: 20%;
-  }
-}
-@media (min-width: 768px) and (max-width: 990px) and (min-height: 636px) and (max-height:696px){
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 110vh;
-  }
-  .level-one
-  {
-    height: 15%;
-  }
-  .level-two{
-    height: 18%;
-  }
-  .level-th
-  {
-    height: 16%;
-  }
-}
-@media (max-width: 767px) and (min-height: 636px) and (max-height:696px) {
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 81vh;
-  }
-  .level-one
-  {
-    height: 13%;
-  }
-  .level-two{
-    height: 11%;
-  }
-  .level-th
-  {
-    height: 12%;
-  }
-}
-/***** end of 636 x 696 height *****/
-
-/** for 697->730 height*/
-
-@media (min-width: 1400px) and (min-height: 697px) and (max-height:730px) {
-  /* Styles for screens larger than 1400px */
-  .RDC {
-    width: 186vh;
-  }
-  .level-one
-  {
-   height: 22%; 
-  }
-  .level-two{
-    height: 30%;
-  }
-  .level-th
-  {
-    height: 22%;
-  }
-}
-@media (min-width: 1200px) and (max-width: 1399px) and (min-height: 697px) and (max-height:730px) {
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 166vh;
-  }
-  .level-one
-  {
-    height: 23%; 
-  }
-  .level-two{
-    height: 32%;
-  }
-  .level-th
-  {
-    height: 26%;
-  }
-}
-@media (min-width: 991px) and (max-width: 1199px) and (min-height: 697px) and (max-height:730px) {
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 134vh;
-  }
-  .level-one
-  {
-    height: 17%;
-  }
-  .level-two{
-    height: 23%;
-  }
-  .level-th
-  {
-    height: 17%;
-  }
-}
-@media (min-width: 768px) and (max-width: 990px) and (min-height: 697px) and (max-height:730px){
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 100vh;
-  }
-  .level-one
-  {
-    height: 15%;
-  }
-  .level-two{
-    height: 15%;
-  }
-  .level-th
-  {
-    height: 13%;
-  }
-}
-@media (max-width: 767px) and (min-height: 697px) and (max-height:730px) {
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 74vh;
-  }
-  .level-one
-  {
-    height: 11%;
-  }
-  .level-two{
-    height: 9%;
-  }
-  .level-th
-  {
-    height: 7%;
-  }
-}
-/***** end of 697 x 730 height *****/
-
-/** for 731->771 height*/
-
-@media (min-width: 1400px) and (min-height: 731px) and (max-height:771px) {
-  /* Styles for screens larger than 1400px */
-  .RDC {
-    width: 177vh;
-  }
-  .level-one
-  {
-   height: 22%; 
-  }
-  .level-two{
-    height: 25%;
-  }
-  .level-th
-  {
-    height: 31%;
-  }
-}
-@media (min-width: 1200px) and (max-width: 1399px) and (min-height: 731px) and (max-height:771px) {
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 153vh;
-  }
-  .level-one
-  {
-    height: 22%; 
-  }
-  .level-two{
-    height: 25%;
-  }
-  .level-th
-  {
-    height: 31%;
-  }
-}
-@media (min-width: 991px) and (max-width: 1199px) and (min-height: 731px) and (max-height:771px) {
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 128vh;
-  }
-  .level-one
-  {
-    height: 17%;
-  }
-  .level-two{
-    height: 21%;
-  }
-  .level-th
-  {
-    height: 17%;
-  }
-}
-@media (min-width: 768px) and (max-width: 990px) and (min-height: 731px) and (max-height:771px){
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 95vh;
-  }
-  .level-one
-  {
-    height: 12%;
-  }
-  .level-two{
-    height: 16%;
-  }
-  .level-th
-  {
-    height: 13%;
-  }
-}
-@media (max-width: 767px) and (min-height: 731px) and (max-height:771px) {
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 95vh;
-  }
-  .level-one
-  {
-    height: 12%;
-  }
-  .level-two{
-    height: 16%;
-  }
-  .level-th
-  {
-    height: 13%;
-  }
-}
-/***** end of 731 x 771 height *****/
-
-/** for 772->800 height*/
-
-@media (min-width: 1400px) and (min-height: 772px) and (max-height:800px) {
-  /* Styles for screens larger than 1400px */
-  .RDC {
-    width: 168vh;
-  }
-  .level-one
-  {
-   height: 22%; 
-  }
-  .level-two{
-    height: 25%;
-  }
-  .level-th
-  {
-    height: 31%;
-  }
-}
-@media (min-width: 1200px) and (max-width: 1399px) and (min-height: 772px) and (max-height:800px) {
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 144vh;
-  }
-  .level-one
-  {
-    height: 18%; 
-  }
-  .level-two{
-    height: 25%;
-  }
-  .level-th
-  {
-    height: 19%;
-  }
-}
-@media (min-width: 991px) and (max-width: 1199px) and (min-height: 772px) and (max-height:800px) {
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 90vh;
-  }
-  .level-one
-  {
-    height: 11%;
-  }
-  .level-two{
-    height: 16%;
-  }
-  .level-th
-  {
-    height: 12%;
-  }
-}
-@media (min-width: 768px) and (max-width: 990px) and (min-height: 772px) and (max-height:800px){
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 89vh;
-  }
-  .level-one
-  {
-    height: 12%;
-  }
-  .level-two{
-    height: 15%;
-  }
-  .level-th
-  {
-    height: 13%;
-  }
-}
-@media (max-width: 767px) and (min-height: 772px) and (max-height:800px) {
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 67vh;
-  }
-  .level-one
-  {
-    height: 9%;
-  }
-  .level-two{
-    height: 11%;
-  }
-  .level-th
-  {
-    height: 9%;
-  }
-}
-/***** end of 772 x 800 height *****/
-
-/** for 801->839 height*/
-
-@media (min-width: 1400px) and (min-height: 801px) and (max-height:839px) {
-  /* Styles for screens larger than 1400px */
-  .RDC {
-    width: 154vh;
-  }
-  .level-one
-  {
-   height: 20%; 
-  }
-  .level-two{
-    height: 23%;
-  }
-  .level-th
-  {
-    height: 15%;
-  }
-}
-@media (min-width: 1200px) and (max-width: 1399px) and (min-height: 801px) and (max-height:839px) {
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 135vh;
-  }
-  .level-one
-  {
-    height: 17%; 
-  }
-  .level-two{
-    height: 23%;
-  }
-  .level-th
-  {
-    height: 17%;
-  }
-}
-@media (min-width: 991px) and (max-width: 1199px) and (min-height: 801px) and (max-height:839px) {
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 82vh;
-  }
-  .level-one
-  {
-    height: 10%;
-  }
-  .level-two{
-    height: 15%;
-  }
-  .level-th
-  {
-    height: 12%;
-  }
-}
-@media (min-width: 768px) and (max-width: 990px) and (min-height: 801px) and (max-height:839px){
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 75vh;
-  }
-  .level-one
-  {
-    height: 12%;
-  }
-  .level-two{
-    height: 14%;
-  }
-  .level-th
-  {
-    height: 12%;
-  }
-}
-@media (max-width: 767px) and (min-height: 801px) and (max-height:839px) {
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 56vh;
-  }
-  .level-one
-  {
-    height: 9%;
-  }
-  .level-two{
-    height: 10%;
-  }
-  .level-th
-  {
-    height: 8%;
-  }
-}
-/***** end of 772 x 800 height *****/
-
-
-/** for 840 x 940  height*/
-
-@media (min-width: 1400px) and (min-height: 840px) and (max-height:940px) {
-  /* Styles for screens larger than 1400px */
-  .RDC {
-    /* width: 151vh; */
-    width: 91vw;
-  }
-  .level-one
-  {
-   height: 20%; 
-  }
-  .level-two{
-    height: 23%;
-  }
-  .level-th
-  {
-    height: 15%;
-  }
-}
-@media (min-width: 1200px) and (max-width: 1399px) and (min-height: 840px) and (max-height:940px) {
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 130vh;
-  }
-  .level-one
-  {
-    height: 17%; 
-  }
-  .level-two{
-    height: 23%;
-  }
-  .level-th
-  {
-    height: 17%;
-  }
-}
-@media (min-width: 991px) and (max-width: 1199px) and (min-height: 840px) and (max-height:940px) {
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 109vh;
-  }
-  .level-one
-  {
-    height: 16%;
-  }
-  .level-two{
-    height: 24%;
-  }
-  .level-th
-  {
-    height: 16%;
-  }
-}
-@media (min-width: 768px) and (max-width: 990px) and (min-height: 840px) and (max-height:940px){
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 81vh;
-  }
-  .level-one
-  {
-    height: 12%;
-  }
-  .level-two{
-    height: 14%;
-  }
-  .level-th
-  {
-    height: 12%;
-  }
-}
-@media (max-width: 767px) and (min-height: 840px) and (max-height:940px) {
-  /* Styles for screens between 1200px and 1400px */
-  .RDC {
-    width: 60vh;
-  }
-  .level-one
-  {
-    height: 7%;
-  }
-  .level-two{
-    height: 10%;
-  }
-  .level-th
-  {
-    height: 9%;
-  }
+.media {
+  top: 49%;
+  left: 89%;
+  width: 10%;
+  height: 11%;
 }
 
+.emedia {
+  top: 49%;
+  left: 73%;
+  width: 10%;
+  height: 11%;
+}
+
+
+.dev {
+  top: 49%;
+  left: 55%;
+  width: 10%;
+  height: 11%;
+}
+
+.daf {
+  top: 49%;
+  left: 36%;
+  width: 10%;
+  height: 11%;
+}
+
+.dloi {
+  top: 49%;
+  left: 18%;
+  width: 10%;
+  height: 11%;
+}
+
+.dam {
+  top: 49%;
+  left: 0%;
+  width: 10%;
+  height: 11%;
+}
+
+/* ************************ */
+.pressecrite {
+  top: 63%;
+  left: 90%;
+  width: 10%;
+  height: 11%;
+}
+
+.tech {
+  top: 63%;
+  left: 73%;
+  width: 10%;
+  height: 11%;
+}
+
+.inv {
+  top: 63%;
+  left: 55%;
+  width: 10%;
+  height: 11%;
+}
+
+.coop {
+  top: 63%;
+  left: 36%;
+  width: 10%;
+  height: 11%;
+}
+
+.org {
+  top: 63%;
+  left: 18%;
+  width: 10%;
+  height: 11%;
+}
+
+.budj {
+  top: 63%;
+  left: 0%;
+  width: 10%;
+  height: 11%;
+}
+
+/* ************************ */
+
+.audiovisuel {
+  top: 76%;
+  left: 90%;
+  width: 10%;
+  height: 11%;
+}
+
+.rassd {
+  top: 76%;
+  left: 73%;
+  width: 10%;
+  height: 11%;
+}
+
+.dev2 {
+  top: 76%;
+  left: 55%;
+  width: 10%;
+  height: 11%;
+}
+
+.form {
+  top: 76%;
+  left: 36%;
+  width: 10%;
+  height: 11%;
+}
+
+.loiss {
+  top: 76%;
+  left: 18%;
+  width: 10%;
+  height: 11%;
+}
+
+.moygn {
+  top: 76%;
+  left: 0%;
+  width: 10%;
+  height: 11%;
+}
+
+/* ************************ */
+
+.pub {
+  top: 89%;
+  left: 90%;
+  width: 10%;
+  height: 11%;
+}
+
+.extr {
+  top: 89%;
+  left: 73%;
+  width: 10%;
+  height: 11%;
+}
+
+/* ************************ */
+
+.archiv {
+  top: 89%;
+  left: 18%;
+  width: 10%;
+  height: 11%;
+}
+
+.prsnl {
+  top: 89%;
+  left: 0%;
+  width: 10%;
+  height: 11%;
+}
+
+
+/* Media queries pour ajuster les divs sur des écrans plus petits */
+@media screen and (max-width: 768px) {
+  .clickable-div {
+      border: 1px solid rgba(0, 0, 0, 0.5);
+      /* Ajuste la bordure pour les petits écrans */
+  }
+
+  /* Ajuste les positions et tailles des divs sur un écran plus petit */
+  .ouazir {
+      top: 0%;
+      left: 43%;
+      width: 17%;
+      height: 17%;
+  }
+
+  .Diouan {
+      top: 0%;
+      left: 10%;
+      width: 13%;
+      height: 16%;
+  }
+
+  .inspictiong {
+      top: 1%;
+      left: 81%;
+      width: 11%;
+      height: 15%;
+  }
+
+  .secgen {
+      top: 23%;
+      left: 44%;
+      width: 14%;
+      height: 16%;
+  }
+
+
+
+}
 /***** end of 840 x 940 height *****/
 
 /*****/
