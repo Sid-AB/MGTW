@@ -4,6 +4,275 @@
 <head th:replace="notAuthenticated/fragments/head::head(${'title'},${'description'},${'keywords'})">
     <script th:src="@{/notAuthenticated/assets/js/vedio.js}"></script>
 </head>
+
+<style>
+     /* Container pour l'image et les divs */
+     .image-container {
+            position: relative;
+            width: 100%;
+            /* L'image prendra toute la largeur disponible */
+            max-width: 1200px;
+            /* Optionnel, pour limiter la taille */
+            margin: 0 auto;
+            /* Centrer la div */
+        }
+
+        /* L'image elle-même */
+        .image-container img {
+            width: 100%;
+            height: auto;
+            /* Rendre l'image responsive */
+        }
+
+        /* Div cliquable */
+        .clickable-div {
+            position: absolute;
+            border: 2px solid rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        .clickable-div:hover {
+            border-color: red;
+        }
+
+        /* Div pour chaque élément cliquable (ajustement selon la position de chaque section) */
+        .ouazir {
+            top: 0%;
+            left: 43%;
+            width: 17%;
+            height: 17%;
+        }
+
+        .Diouan {
+            top: 0%;
+            left: 10%;
+            width: 13%;
+            height: 16%;
+        }
+
+        .inspictiong {
+            top: 1%;
+            left: 81%;
+            width: 11%;
+            height: 15%;
+        }
+
+
+
+        .secgen {
+            top: 23%;
+            left: 44%;
+            width: 14%;
+            height: 16%;
+        }
+
+        /* ************************ */
+
+        .media {
+            top: 49%;
+            left: 89%;
+            width: 10%;
+            height: 11%;
+        }
+
+        .emedia {
+            top: 49%;
+            left: 73%;
+            width: 10%;
+            height: 11%;
+        }
+
+
+        .dev {
+            top: 49%;
+            left: 55%;
+            width: 10%;
+            height: 11%;
+        }
+
+        .daf {
+            top: 49%;
+            left: 36%;
+            width: 10%;
+            height: 11%;
+        }
+
+        .dloi {
+            top: 49%;
+            left: 18%;
+            width: 10%;
+            height: 11%;
+        }
+
+        .dam {
+            top: 49%;
+            left: 0%;
+            width: 10%;
+            height: 11%;
+        }
+
+        /* ************************ */
+        .pressecrite {
+            top: 63%;
+            left: 90%;
+            width: 10%;
+            height: 11%;
+        }
+
+        .tech {
+            top: 63%;
+            left: 73%;
+            width: 10%;
+            height: 11%;
+        }
+
+        .inv {
+            top: 63%;
+            left: 55%;
+            width: 10%;
+            height: 11%;
+        }
+
+        .coop {
+            top: 63%;
+            left: 36%;
+            width: 10%;
+            height: 11%;
+        }
+
+        .org {
+            top: 63%;
+            left: 18%;
+            width: 10%;
+            height: 11%;
+        }
+
+        .budj {
+            top: 63%;
+            left: 0%;
+            width: 10%;
+            height: 11%;
+        }
+
+        /* ************************ */
+
+        .audiovisuel {
+            top: 76%;
+            left: 90%;
+            width: 10%;
+            height: 11%;
+        }
+
+        .rassd {
+            top: 76%;
+            left: 73%;
+            width: 10%;
+            height: 11%;
+        }
+
+        .dev {
+            top: 76%;
+            left: 55%;
+            width: 10%;
+            height: 11%;
+        }
+
+        .form {
+            top: 76%;
+            left: 36%;
+            width: 10%;
+            height: 11%;
+        }
+
+        .loiss {
+            top: 76%;
+            left: 18%;
+            width: 10%;
+            height: 11%;
+        }
+
+        .moygn {
+            top: 76%;
+            left: 0%;
+            width: 10%;
+            height: 11%;
+        }
+
+        /* ************************ */
+
+        .pub {
+            top: 89%;
+            left: 90%;
+            width: 10%;
+            height: 11%;
+        }
+
+        .extr {
+            top: 89%;
+            left: 73%;
+            width: 10%;
+            height: 11%;
+        }
+
+        /* ************************ */
+
+        .archiv {
+            top: 89%;
+            left: 18%;
+            width: 10%;
+            height: 11%;
+        }
+
+        .prsnl {
+            top: 89%;
+            left: 0%;
+            width: 10%;
+            height: 11%;
+        }
+
+
+        /* Media queries pour ajuster les divs sur des écrans plus petits */
+        @media screen and (max-width: 768px) {
+            .clickable-div {
+                border: 1px solid rgba(0, 0, 0, 0.5);
+                /* Ajuste la bordure pour les petits écrans */
+            }
+
+            /* Ajuste les positions et tailles des divs sur un écran plus petit */
+            .ouazir {
+                top: 0%;
+                left: 43%;
+                width: 17%;
+                height: 17%;
+            }
+
+            .Diouan {
+                top: 0%;
+                left: 10%;
+                width: 13%;
+                height: 16%;
+            }
+
+            .inspictiong {
+                top: 1%;
+                left: 81%;
+                width: 11%;
+                height: 15%;
+            }
+
+            .secgen {
+                top: 23%;
+                left: 44%;
+                width: 14%;
+                height: 16%;
+            }
+
+
+
+        }
+</style>
+
 <body>
 
 <!--   demarrage ou b1 star flash -->
@@ -182,109 +451,109 @@
                 </div>
 
 
-                <div class="">
-
-
+                <!-- <div class="">
+                
+                
                     <div class="RDC">
-                    <div class="level-one">
-                        <div class="Diouan">
-                           <a href="#"></a> 
+                        <div class="level-one">
+                            <div class="Diouan">
+                                <a href="#"></a>
+                            </div>
+                            <div class="ouazir">
+                                <a href="#"></a>
+                            </div>
+                            <div class="inspictiong">
+                                <a href="#"></a>
+                            </div>
                         </div>
-                        <div class="ouazir">
-                            <a href="#"></a> 
+                
+                        <div class="level-two">
+                            <div class="secgen">
+                                <a href=""></a>
+                            </div>
                         </div>
-                        <div class="inspictiong">
-                            <a href="#"></a> 
+                
+                        <div class="level-th">
+                
+                            <div class="dam">
+                                <a href="#"></a>
+                            </div>
+                            <div class="dloi">
+                                <a href="#"></a>
+                            </div>
+                            <div class="daf">
+                                <a href="#"></a>
+                            </div>
+                            <div class="dev">
+                                <a href="#"></a>
+                            </div>
+                            <div class="emedia">
+                                <a href="#"></a>
+                            </div>
+                            <div class="media">
+                                <a href="#"></a>
+                            </div>
+                        </div>
+                        <div class="level-four">
+                
+                            <div class="budj" data-id="1">
+                                <a href="#"></a>
+                            </div>
+                            <div class="org" data-id="2">
+                                <a href="#"></a>
+                            </div>
+                            <div class="coop" data-id="3">
+                                <a href="#"></a>
+                            </div>
+                            <div class="inv" data-id="4">
+                                <a href="#"></a>
+                            </div>
+                            <div class="tech" data-id="5">
+                                <a href="#"></a>
+                            </div>
+                            <div class="pressecrite" data-id="6">
+                                <a href="#"></a>
+                            </div>
+                        </div>
+                
+                        <div class="level-five">
+                
+                            <div class="moygn" data-id="7">
+                                <a href="#"></a>
+                            </div>
+                            <div class="loiss" data-id="8">
+                                <a href="#"></a>
+                            </div>
+                            <div class="form" data-id="9">
+                                <a href="#"></a>
+                            </div>
+                            <div class="dev" data-id="10">
+                                <a href="#"></a>
+                            </div>
+                            <div class="rassd" data-id="11">
+                                <a href="#"></a>
+                            </div>
+                            <div class="audiovisuel" data-id="12">
+                                <a href="#"></a>
+                            </div>
+                        </div>
+                        <div class="level-six">
+                
+                            <div class="prsnl" data-id="13">
+                                <a href="#"></a>
+                            </div>
+                            <div class="archiv" data-id="14">
+                                <a href="#"></a>
+                            </div>
+                            <div class="extr" data-id="15">
+                                <a href="#"></a>
+                            </div>
+                            <div class="pub" data-id="16">
+                                <a href="#"></a>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="level-two">
-                        <div class="secgen">
-                            <a href=""></a>
-                        </div>
-                    </div>
-
-                    <div class="level-th">
-
-                        <div class="dam">
-                            <a href="#"></a>
-                        </div>
-                        <div class="dloi">
-                            <a href="#"></a>
-                        </div>
-                        <div class="daf">
-                            <a href="#"></a>
-                        </div>
-                        <div class="dev">
-                            <a href="#"></a>
-                        </div>
-                        <div class="emedia">
-                            <a href="#"></a>
-                        </div>
-                        <div class="media">
-                            <a href="#"></a>
-                        </div>    
-                </div>
-                <div class="level-four">
-
-                    <div class="budj"  data-id="1">
-                        <a href="#"></a>
-                    </div>
-                    <div class="org" data-id="2">
-                        <a href="#"></a>
-                    </div>
-                    <div class="coop"  data-id="3">
-                        <a href="#"></a>
-                    </div>
-                    <div class="inv"  data-id="4">
-                        <a href="#"></a>
-                    </div>
-                    <div class="tech"  data-id="5">
-                        <a href="#"></a>
-                    </div>
-                    <div class="pressecrite"  data-id="6">
-                        <a href="#"></a>
-                    </div>
-                </div>
-                    
-                <div class="level-five">
-
-                    <div class="moygn"  data-id="7">
-                        <a href="#"></a>
-                    </div>
-                    <div class="loiss"  data-id="8">
-                        <a href="#"></a>
-                    </div>
-                    <div class="form"  data-id="9">
-                        <a href="#"></a>
-                    </div>
-                    <div class="dev"  data-id="10">
-                        <a href="#"></a>
-                    </div>
-                    <div class="rassd"  data-id="11">
-                        <a href="#"></a>
-                    </div>
-                    <div class="audiovisuel"  data-id="12">
-                        <a href="#"></a>
-                    </div>
-            </div>
-            <div class="level-six">
-
-                <div class="prsnl"  data-id="13">
-                    <a href="#"></a>
-                </div>
-                <div class="archiv"  data-id="14">
-                    <a href="#"></a>
-                </div>
-                <div class="extr"  data-id="15">
-                    <a href="#"></a>
-                </div>
-                <div class="pub"  data-id="16">
-                    <a href="#"></a>
-                </div>
-        </div>
-            </div>
-                 </div>
+                </div> -->
 
        
                  <div id="InfoModal" class="modal">
@@ -311,11 +580,66 @@
                     </div>
                 </div-->
 
-                <div class="img-wrap">
+                <!-- <div class="img-wrap">
                     <a href="">
                     <img th:src="@{${'/notAuthenticated/assets/img/histograme.png'}}" alt="Image" class="img-fluid">
                     </a>
+                </div> -->
+
+                <div class="image-container">
+                    <!-- <img src="histograme.png" alt="Organigramme"> -->
+                    <img th:src="@{${'/notAuthenticated/assets/img/histograme.png'}}" alt="Image" class="img-fluid">
+            
+                   <!-- Div cliquable pour chaque section -->
+        <div class="clickable-div ouazir" >
+        </div>
+        <div class="clickable-div Diouan" ></div>
+        <div class="clickable-div inspictiong" ></div>
+        
+        <div class="clickable-div secgen"></div>
+
+        <div class="clickable-div media"></div>
+        <div class="clickable-div emedia"></div>
+        <div class="clickable-div dev"></div>
+        <div class="clickable-div daf"></div>
+        <div class="clickable-div dloi"></div>
+        <div class="clickable-div dam"></div>
+
+        <div class="clickable-div pressecrite"></div>
+        <div class="clickable-div tech"></div>
+        <div class="clickable-div inv"></div>
+        <div class="clickable-div coop">
+        </div>
+        <div class="clickable-div org">
+        </div>
+        <div class="clickable-div budj">
+        </div>
+
+        <div class="clickable-div audiovisuel">
+        </div>
+        <div class="clickable-div rassd">
+        </div>
+        <div class="clickable-div dev">
+        </div>
+        <div class="clickable-div form">
+        </div>
+        <div class="clickable-div loiss">
+        </div>
+        <div class="clickable-div moygn">
+        </div>
+
+        <div class="clickable-div pub">
+        </div>
+        <div class="clickable-div extr">
+        </div>
+
+        <div class="clickable-div archiv">
+        </div>
+        <div class="clickable-div prsnl">
+            
+                    <!-- Ajoute d'autres divs ici si nécessaire -->
                 </div>
+
                 </div>
 
 
@@ -609,6 +933,17 @@ $.ajax({
               
             },
             "ar": {
+               "dev": 0,
+                "daf": 1,
+                "dam": 2,
+                "emedia": 3,
+                "dloi": 4,
+                "media": 5,
+                "inspictiong": 6,
+                "secgen":7,
+                "Diouan":8,
+
+                /*
                 "dev": 1,
                 "daf": 0,
                 "dam": 5,
@@ -618,6 +953,7 @@ $.ajax({
                 "inspictiong": 8,
                 "secgen":7,
                 "Diouan":6,
+                */
             
             }
         };

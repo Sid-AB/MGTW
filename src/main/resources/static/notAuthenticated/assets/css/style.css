@@ -1954,6 +1954,8 @@ section {
   opacity: .7; }
 
   /***--------------- image clickabe ----------------------*****/
+
+  
   .RDC
   {
     display: flex;
@@ -2186,7 +2188,8 @@ section {
 @media screen and (min-width: 1400px) {
   /* Styles for screens larger than 1400px */
   .RDC {
-    width: 122vh;
+    /* width: 122vh; */
+    width: 66vw;
   }
   .level-one
   {
@@ -2203,7 +2206,8 @@ section {
 @media screen and (min-width: 1200px) and (max-width: 1399px) {
   /* Styles for screens between 1200px and 1400px */
   .RDC {
-    width: 121vh;
+    /* width: 121vh; */
+    width: 70vw;
   }
   .level-one
   {
@@ -2220,7 +2224,8 @@ section {
 @media screen and (min-width: 991px) and (max-width: 1199px) {
   /* Styles for screens between 1200px and 1400px */
   .RDC {
-    width: 102vh;
+    /* width: 102vh; */
+    width: 60vw;
   }
   .level-one
   {
@@ -2237,7 +2242,8 @@ section {
 @media screen and (min-width: 768px) and (max-width: 990px) {
   /* Styles for screens between 1200px and 1400px */
   .RDC {
-    width: 76vh;
+    /* width: 76vh; */
+    width: 50vw;
   }
   .level-one
   {
@@ -2254,7 +2260,8 @@ section {
 @media screen and (max-width: 767px) {
   /* Styles for screens between 1200px and 1400px */
   .RDC {
-    width: 56vh;
+    /* width: 56vh; */
+    width: 40vw;
   }
   .level-one
   {
@@ -2362,9 +2369,11 @@ section {
 /** for 601->630 height*/
 
 @media (min-width: 1400px) and (min-height: 601px) and (max-height:630px) {
-  /* Styles for screens larger than 1400px */
+  /* Styles for screens larger than 1400px (min-height: 601px) and (max-height:630px)  */
   .RDC {
-    width: 215vh;
+    /* width: 215vh; */
+    width: 79vw;
+    
   }
   .level-one
   {
@@ -2379,7 +2388,7 @@ section {
   }
 }
 @media (min-width: 1200px) and (max-width: 1399px) and (min-height: 601px) and (max-height:635px) {
-  /* Styles for screens between 1200px and 1400px */
+  /* Styles for screens between 1200px and 1399px */
   .RDC {
     width: 185vh;
   }
@@ -2895,12 +2904,13 @@ section {
 /***** end of 772 x 800 height *****/
 
 
-/** for 801->839 height*/
+/** for 840 x 940  height*/
 
 @media (min-width: 1400px) and (min-height: 840px) and (max-height:940px) {
   /* Styles for screens larger than 1400px */
   .RDC {
-    width: 151vh;
+    /* width: 151vh; */
+    width: 91vw;
   }
   .level-one
   {
