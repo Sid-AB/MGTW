@@ -46,7 +46,16 @@
                         </li>
                         <li>
                             <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
-                            <a href="/#Soustutelle" th:text="#{etablissement}">المؤسسات الإعلامية</a>
+                            <a th:href="@{'/#Soustutelle'}"  th:text="#{etablissement}">المؤسسات الإعلامية</a>
+                        </li>
+                        <li>
+                            <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
+                            <a th:href="@{'/#Reglementationsectorielle'}"  th:text="#{organigrame}">تنظيم القطاع</a>
+                        </li>
+                        <li>
+                            <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
+                            <a th:href="@{'/tv/public'}" th:text="#{channel} + ' ' + #{public}">القنوات التلفزيونية العمومية</a>
+                            
                         </li>
                         <li>
                             <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
@@ -70,7 +79,7 @@
                         </li>
                         <li>
                             <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
-                            <a href="#" th:text="#{textju}">النصوص القانونية</a>
+                            <a href="/lois/2" th:text="#{textju}">النصوص القانونية</a>
                         </li>
                     </ul>
                 </div>

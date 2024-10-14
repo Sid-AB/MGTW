@@ -39,7 +39,7 @@ public class SecurityConfig {
                     "/presse/public/#publicEcrit", "/presse/public/#publicElectronique", "/presse/{id}",
                     "/presse/public/electronique", "/lois/{id}", "/textJuridique/pdf/{id}/{lang}",
                     "/etablissement/{id}", "/etablissement/lugo/{id}", "/search", "/ministers/list",
-                    "/ministers/pic/{id}","/search/**","/Direction/all" ,"/sousDirection/all"})).permitAll();
+                    "/ministers/pic/{id}","/search/**","/Direction/all" ,"/sousDirection/all","/etablissement/societe-impression","/etablissement/societe-impression/{id}"})).permitAll();
         });
         http.formLogin((formLogin) -> {
             ((FormLoginConfigurer) formLogin.loginPage("/login").defaultSuccessUrl("/home", true)).permitAll();

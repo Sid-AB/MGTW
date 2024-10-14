@@ -281,7 +281,7 @@
 <!-- Add image before the header -->
 
 <header th:include="notAuthenticated/fragments/header::header" style="background-color: #0E2F4A"
-        th:with="myObject=${complexesForNavBar},myObjectlFNBar=${loisForNavBar}"></header>
+        th:with="myObject=${complexesForNavBar},myObjectlFNBar=${loisForNavBar},myObjectImprssion=${etablissementImprssion},show=${'hide-header'}"></header>
 
 
 <!-- ======= Hero Section ======= -->
@@ -375,44 +375,46 @@
             </div>
             <br>
             <div class="row">
-                <div th:if="etablissementsSoustutelle" th:each="etablissementSoustutelle:${etablissementsSoustutelle}" class="col-6 col-sm-3 col-md-4  d-flex align-items-stretch " data-aos="zoom-in" data-aos-delay="100">
+                <div th:if="${etablissementsAps}" th:each="etablissementsAps : ${etablissementsAps}" 
+               class="col-6 col-sm-3 col-md-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+         
                     <div class="icon-box">
                         <div class="icon"><img
-                                th:src="@{${'/etablissement/lugo/'+etablissementSoustutelle.getId()}}"
+                                th:src="@{${'/etablissement/lugo/'+etablissementsAps.getId()}}"
                                 width="50px" height="50px">
                         </div>
                         <h4 th:switch="${#locale.language}">
                             <a  th:case="${'ar'}"
                                 th:if="#{locale.language == 'ar'}"
-                                th:href="${'/etablissement/'+etablissementSoustutelle.getId()}"
-                                th:text="${etablissementSoustutelle.getName()}">
+                                th:href="${'/etablissement/'+etablissementsAps.getId()}"
+                                th:text="${etablissementsAps.getName()}">
                             </a>
                             <a  th:case="${'fr'}"
                                 th:if="#{locale.language == 'fr'}"
-                                th:href="${'/etablissement/'+etablissementSoustutelle.getId()}"
-                                th:text="${etablissementSoustutelle.getNameFr()}">
+                                th:href="${'/etablissement/'+etablissementsAps.getId()}"
+                                th:text="${etablissementsAps.getNameFr()}">
                             </a>
                             <a  th:case="${'en'}"
                                 th:if="#{locale.language == 'en'}"
-                                th:href="${'/etablissement/'+etablissementSoustutelle.getId()}"
-                                th:text="${etablissementSoustutelle.getNameEn()}">
+                                th:href="${'/etablissement/'+etablissementsAps.getId()}"
+                                th:text="${etablissementsAps.getNameEn()}">
                             </a>
                     </h4>
                        <div th:switch="${#locale.language}">
                         <p th:case="${'ar'}"
                         th:if="#{locale.language == 'ar'}"
-                           th:href="${'/etablissement/'+etablissementSoustutelle.getId()}"
-                           th:text="${etablissementSoustutelle.getDescription().toString().substring(0,(etablissementSoustutelle.getDescription().length() &lt; 100 ? etablissementSoustutelle.getDescription().length() : 100 ))+'...' }">
+                           th:href="${'/etablissement/'+etablissementsAps.getId()}"
+                           th:text="${etablissementsAps.getDescription().toString().substring(0,(etablissementsAps.getDescription().length() &lt; 100 ? etablissementsAps.getDescription().length() : 100 ))+'...' }">
                         </p>
                         <p th:case="${'fr'}"
                         th:if="#{locale.language == 'fr'}"
-                           th:href="${'/etablissement/'+etablissementSoustutelle.getId()}"
-                           th:text="${etablissementSoustutelle.getDescriptionFr().toString().substring(0,(etablissementSoustutelle.getDescriptionFr().length() &lt; 100 ? etablissementSoustutelle.getDescriptionFr().length() : 100 ))+'...' }">
+                           th:href="${'/etablissement/'+etablissementsAps.getId()}"
+                           th:text="${etablissementsAps.getDescriptionFr().toString().substring(0,(etablissementsAps.getDescriptionFr().length() &lt; 100 ? etablissementsAps.getDescriptionFr().length() : 100 ))+'...' }">
                         </p>
                         <p th:case="${'en'}"
                         th:if="#{locale.language == 'en'}"
-                           th:href="${'/etablissement/'+etablissementSoustutelle.getId()}"
-                           th:text="${etablissementSoustutelle.getDescriptionEn().toString().substring(0,(etablissementSoustutelle.getDescriptionEn().length() &lt; 100 ? etablissementSoustutelle.getDescriptionEn().length() : 100 ))+'...' }">
+                           th:href="${'/etablissement/'+etablissementsAps.getId()}"
+                           th:text="${etablissementsAps.getDescriptionEn().toString().substring(0,(etablissementsAps.getDescriptionEn().length() &lt; 100 ? etablissementsAps.getDescriptionEn().length() : 100 ))+'...' }">
                         </p>
                         </div>
                     </div>
@@ -957,6 +959,7 @@ $.ajax({
             
             }
         };
+//ajax 2eme de sous directions
 
         // fonction pour afficher les informations du directeur
          function afficherInfo(directorKey) {

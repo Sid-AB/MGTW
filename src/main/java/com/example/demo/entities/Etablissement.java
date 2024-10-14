@@ -58,6 +58,8 @@ public class Etablissement {
     private String email; // Adresse e-mail de l'établissement
     private String site; // Site web de l'établissement
 
+    private String typeEtablissmnt; 
+
     // Localisation en arabe (ou langue par défaut)
     @Column(name = "localisation", // Nom de la colonne pour la localisation
             columnDefinition = "TEXT" // Type de la colonne
@@ -155,8 +157,17 @@ public class Etablissement {
     public String getAdresse() {
         return this.adresse;
     }
+ 
+    /////type etablissmnt pour est ce que etablissmnt ou aps ou printers
+    public String getTypeEtablissmnt()
+    {
+        return this.typeEtablissmnt;
+    }
 
-    
+    public void setTypeEtablissmnt(String typeEtablissmnt)
+    {
+        this.typeEtablissmnt=typeEtablissmnt;
+    }
 
     // Getter et Setter pour adresseFr
     public String getAdresseFr() {
@@ -700,6 +711,7 @@ public class Etablissement {
                 + ", fax=" + this.getFax()
                 + ", email=" + this.getEmail()
                 + ", site=" + this.getSite()
+                + ", typeEtablissmnt=" + this.getTypeEtablissmnt()
                 + ", localisation=" + this.getLocalisation()
                 + ", localisationFr=" + this.getLocalisationFr() // Ajout de localisationFr
                 + ", localisationEn=" + this.getLocalisationEn() // Ajout de localisationEn
@@ -726,6 +738,7 @@ public class Etablissement {
             final String fax,
             final String email,
             final String site,
+            final String typeEtablissmnt,
             final String localisation,
             final String localisationFr, // Ajout de localisationFr
             final String localisationEn, // Ajout de localisationEn
@@ -748,6 +761,7 @@ public class Etablissement {
         this.fax = fax;
         this.email = email;
         this.site = site;
+        this.typeEtablissmnt=typeEtablissmnt;
         this.localisation = localisation;
         this.localisationFr = localisationFr; // Initialisation de localisationFr
         this.localisationEn = localisationEn; // Initialisation de localisationEn
@@ -777,6 +791,7 @@ public class Etablissement {
         private String fax;
         private String email;
         private String site;
+        private String typeEtablissmnt;
         private String localisation;
         private String localisationFr; // Ajout de localisationFr
         private String localisationEn; // Ajout de localisationEn
@@ -863,7 +878,11 @@ public class Etablissement {
             this.site = site;
             return this;
         }
-
+        
+        public Etablissement.EtablissementBuilder typeEtablissmnt(final String typeEtablissmnt) {
+            this.typeEtablissmnt = typeEtablissmnt;
+            return this;
+        }
         public Etablissement.EtablissementBuilder localisation(final String localisation) {
             this.localisation = localisation;
             return this;
@@ -916,6 +935,7 @@ public class Etablissement {
                     this.fax,
                     this.email,
                     this.site,
+                    this.typeEtablissmnt,
                     this.localisation,
                     this.localisationFr, // Ajout de localisationFr ici
                     this.localisationEn, // Ajout de localisationEn ici
@@ -942,6 +962,7 @@ public class Etablissement {
                     ", fax=" + this.fax +
                     ", email=" + this.email +
                     ", site=" + this.site +
+                    ", typeEtablissmnt=" + this.typeEtablissmnt +
                     ", localisation=" + this.localisation +
                     ", localisationFr=" + this.localisationFr + // Ajout de localisationFr ici
                     ", localisationEn=" + this.localisationEn + // Ajout de localisationEn ici

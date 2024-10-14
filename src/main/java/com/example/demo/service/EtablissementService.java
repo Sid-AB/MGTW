@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class EtablissementService {
@@ -58,10 +59,22 @@ public class EtablissementService {
         return this.etablissementRepository.findEtablissementsByType(type);
     }
 
+    public List<Etablissement> findEtablissementsByTypeEtablissmnt(String typeEtablissmnt) {
+        return this.etablissementRepository.findEtablissementsByTypeEtablissmnt(typeEtablissmnt);
+    }
     public List<Etablissement> findAll() {
         return this.etablissementRepository.findAll();
     }
-
+    //////etablissmnt sans aps et impression
+     public List<Etablissement> findEtablissementsSoustutelleSansApsEtSociete() {
+        List<Etablissement> etablissements = findEtablissementsByType("soustutelle");
+         System.out.println("Number of etablissements found: " + etablissements.size()); 
+        return etablissements.stream()
+            .filter(etablissement -> 
+                !"aps".equals(etablissement.getTypeEtablissmnt()) &&
+                !"société d'impression".equals(etablissement.getTypeEtablissmnt()))
+            .collect(Collectors.toList());
+    }
     public Etablissement saveEtablissement(EtablissementDTO etablissementDTO) {
         Etablissement etablissement = etablissementDTO.toEtablissement();
         this.etablissementRepository.save(etablissement);
@@ -112,7 +125,7 @@ public class EtablissementService {
             Etabbliss.setDescriptionEn(etablissement.getDescriptionEn());
             Etabbliss.setLocalisation(etablissement.getLocalisation());
             Etabbliss.setSite(etablissement.getSite());
-            
+            Etabbliss.setTypeEtablissmnt(etablissement.getTypeEtablissmnt());
            
             if (multimediaFiles != null && !multimediaFiles.isEmpty()) {
                 List<Multimedia> multimediaList = new ArrayList<>();

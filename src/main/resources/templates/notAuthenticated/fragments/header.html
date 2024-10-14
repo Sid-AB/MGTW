@@ -1,7 +1,7 @@
 
 <header th:fragment="header" id="header" class="header-main" style="background-color: #0E2F4A">
     <h1 hidden="" class="logo me-auto" style=""><a href="index.html"></a></h1>
-    <div class="header-main"  data-aos="zoom-in" data-aos-delay="200" style="background-color: #0E2F4A">
+    <div th:class="${'header-main '+hiden}"  data-aos="zoom-in" data-aos-delay="200" style="background-color: #0E2F4A">
         <div class="justify-content-center pt-3" data-aos="zoom-in" data-aos-delay="200" style="text-align: center;display: flex;flex-direction: column;align-items: center">
             <div style="width: 100%;
             display: flex;
@@ -34,15 +34,15 @@
             </div>
                
         </div>
-        <nav>
-            <li class="hov"><span th:text="#{lange}">Hover Me</span>
+        <!--nav>
+            <li th:class="${'hov '+show}"><span th:text="#{lange}">Hover Me</span>
               <ul class="main">
                 <li><a href="?lang=en">English</a></li>
                 <li> <a href="?lang=fr">Français</a></li>
                 <li> <a href="?lang=ar">العربية</a></li>
               </ul>
             </li>
-          </nav>
+          </nav-->
     </div>
         <!--div class="">
             <form>
@@ -67,7 +67,9 @@
 
                     </ul>
                 </li>
+                <li><a th:href="@{'/etablissement/aps'}" th:text="#{APS}"> وكالة الأنباء الجزائرية </a></li>
 
+              
                 <li class="dropdown " ><a  th:href="@{'#'}"><span style="color: white" th:text="#{channel}" >القنوات التلفزيونية</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a th:href="@{'/tv/public'}" th:text="#{public}">العمومية</a></li>
@@ -121,12 +123,36 @@
 
                     </ul>
                 </li>
+               
+                
+            </li>
 
 
-
-
-
-
+           
+                <!--li><a th:href="@{'/etablissement/societe-impression'}" th:text="#{societeImpression}"> شركات الطباعة </a></li-->
+                
+                <li class="dropdown">
+                    <a th:href="@{'/etablissement/societe-impression'}">
+                        <span th:text="#{societeImpression}">شركات الطباعة</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </a>
+                    <ul>
+                        <!--li th:if="${#lists.isEmpty(etablissement)}">Aucun etablissmnt</li-->
+                        <li th:each="etablissement : ${myObjectImprssion}">
+                            <a th:href="@{'/etablissement/societe-impression/' + ${etablissement.id}}"
+            
+                            th:text="${ #locale.language == 'fr' ? etablissement.getNameFr() : ( #locale.language == 'ar' ? etablissement.getName() : etablissement.getNameEn() ) }"></a>
+                    </ul>
+                    <!--ul>
+                        <li><a th:href="@{'/etablissement/1560'}">SIA </a></li>
+                        <li><a th:href="@{'/etablissement/1561'}">ALPAP </a></li>
+                        <li><a th:href="@{'/etablissement/1562'}">SIE </a></li>
+                        <li><a th:href="@{'/etablissement/1563'}">SIO </a></li>
+    
+                    </ul-->
+                </li>
+                
+               
                 <li class="dropdown"> <a  href="#"> <span  style="color: white" th:text="#{textju}"> النصوص القانونية </span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li th:each="lois:${myObjectlFNBar}"  >
@@ -138,17 +164,26 @@
 
                     </ul>
                 </li>
-                <!--li class="dropdown" th:classappend="${#locale.language == 'ar'} ? 'lng-holder-ar' : 'lng-holder'"><a href="#" style="padding-right:5px ;"><span th:text="#{langage}"> الوزارة </span> <i class="bi bi-chevron-down"></i></a>
+                <li class="dropdown" th:classappend="${#locale.language == 'ar'} ? 'lng-holder-ar' : 'lng-holder'"><a href="#" style="padding-right:5px ;"><span th:text="#{lange}"> الوزارة </span> <i class="bi bi-chevron-down"></i></a>
                     <ul style="width: 80px;">
                         <li><a href="?lang=ar">العربية</a></li>
                         <li><a href="?lang=en">English</a> </li>
                         <li><a href="?lang=fr">Français</a></li>
                     </ul>
-                </li-->
+                </li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
 
         </nav><!-- .navbar -->
+
+        <!--div th:class="${show}">
+           <a href="/"> 
+            <svg th:include="notAuthenticated/fragments/logosvg::logosvg" width="240" height="240" viewBox="0 0 2342 2004"
+                version="1.1" class="img-fluid animated logo">
+            </svg>
+         </a>
+        
+        <div-->
     </div>
 </header><!-- End Header -->
 

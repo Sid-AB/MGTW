@@ -144,6 +144,7 @@ h6 {
   display: flex;
   list-style: none;
   align-items: center;
+  flex-wrap:  wrap;
 }
 
 .navbar li {
@@ -197,7 +198,7 @@ h6 {
 .navbar .dropdown ul {
   display: block;
   position: absolute;
-  left: 14px;
+  /*left: 14px;*/
   top: calc(100% + 30px);
   margin: 0;
   padding: 10px 0;
@@ -3260,9 +3261,20 @@ section {
 
 .header-main
 {
-  background-image: url(/notAuthenticated/assets/img/flagtwo.png);
+  background-image: url(/notAuthenticated/assets/img/signeone.png);
   background-size: contain; /* Adjust the size to cover the div */
-  background-position: center; /* Center the image in the div */
+  background-position: left; /* Center the image in the div */
   background-repeat: no-repeat;
+}
+.hide-header
+{
+  display: none;
+}
+.showing-icng
+{
+    margin-top: 40px;
+    left: 0;
+    position: absolute;
+    display: block;
 }
 /***------------------------------------------------*/
