@@ -144,7 +144,8 @@ function changeDirection(language) {
   /**
    * Mobile nav toggle
    */
-  on('click', '.mobile-nav-toggle', function(e) {
+  $('.mobile-nav-toggle').on('click', function(e) {
+    console.log('inserd')
     select('#navbar').classList.toggle('navbar-mobile')
     this.classList.toggle('bi-list')
     this.classList.toggle('bi-x')
