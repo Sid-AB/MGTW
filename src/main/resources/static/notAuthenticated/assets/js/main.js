@@ -97,7 +97,7 @@ function changeDirection(language) {
   /**
    * Scrolls to an element with header offset
    */
-  /*const scrollto = (el) => {
+  const scrollto = (el) => {
     let header = select('#header')
     let offset = header.offsetHeight
 
@@ -106,7 +106,7 @@ function changeDirection(language) {
       top: elementPos - offset,
       behavior: 'smooth'
     })
-  }*/
+  }
 
   /**
    * Toggle .header-scrolled class to #header when page is scrolled
@@ -159,6 +159,9 @@ function changeDirection(language) {
       this.nextElementSibling.classList.toggle('dropdown-active')
     }
   }, true)
+
+
+
 
   /**
    * Scrool with ofset on links with a class name .scrollto
@@ -315,3 +318,36 @@ window.addEventListener('load', function() {
   }, 5000); // Video will play for 5 seconds before fading out
   
 });*/
+
+
+$(document).ready(function(){
+  var click=0;
+  $('.mobile-nav-toggle').on('click',function(){
+    click++;
+    $('#navbar').addClass('navbar-mobile')
+    $(this).addClass('bi-list')
+    $(this).addClass('bi-x')
+    if($(this).has('bi-x') && click > 1)
+    {
+      $('#navbar').removeClass('navbar-mobile')
+      $(this).removeClass('bi-x')
+      click=0;
+    }
+  })
+  $('.navbar .dropdown > a').on('click',function(){
+    click++;
+    if($('#navbar').hasClass('navbar-mobile'))
+    {
+      $(this).next().addClass('dropdown-active')
+      $(this).next().attr('id','showed')
+     
+    }
+    if(click > 1)
+    {
+      console.log('testing'+click)
+      $(this).next().removeClass('dropdown-active')
+      click=0;
+    }
+  })
+ 
+}) 
