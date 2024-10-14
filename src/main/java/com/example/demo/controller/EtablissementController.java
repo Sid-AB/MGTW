@@ -105,6 +105,10 @@ public class EtablissementController {
         model.addAttribute("etablissement", etablissement);
         model.addAttribute("etablissements", etablissements);
         model.addAttribute("etablissementsByTypeEtablissmnt", etablissementsByTypeEtablissmnt);
+       
+        List  <Etablissement> etablissementImprssion= etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
+        model.addAttribute("etablissementImprssion", etablissementImprssion);
+       
         List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
         model.addAttribute("complexesForNavBar", complexesForNavBar);
         List<Lois> loisForNavBar = this.loisService.findAll();
@@ -133,8 +137,11 @@ public class EtablissementController {
         }
         model.addAttribute("etablissement", etablissement);
         model.addAttribute("etablissements", etablissements);
-        model.addAttribute("etablissementsByTypeEtablissmnt", etablissementsByTypeEtablissmnt);
         
+        model.addAttribute("etablissementsByTypeEtablissmnt", etablissementsByTypeEtablissmnt);
+        List  <Etablissement> etablissementImprssion= etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
+        model.addAttribute("etablissementImprssion", etablissementImprssion);
+
         List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
         model.addAttribute("complexesForNavBar", complexesForNavBar);
         List<Lois> loisForNavBar = this.loisService.findAll();
@@ -173,6 +180,9 @@ public class EtablissementController {
          model.addAttribute("complexesForNavBar", complexesForNavBar);
          List<Lois> loisForNavBar = this.loisService.findAll();
          model.addAttribute("loisForNavBar", loisForNavBar);
+
+         List  <Etablissement> etablissementImprssion= etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
+         model.addAttribute("etablissementImprssion", etablissementImprssion);
          return "notAuthenticated/etablissement/etablissementDetails"; 
      }
  
