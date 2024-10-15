@@ -65,7 +65,7 @@ public class RadioController {
     public String radio(Model model) {
         List<Radio> radios = this.radioService.findAll();
         model.addAttribute("radios", radios);
-        return "/authenticated/radio/radios";
+        return "authenticated/radio/radios";
     }
 
     @GetMapping({"/{id}"})

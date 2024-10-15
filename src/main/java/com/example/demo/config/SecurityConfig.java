@@ -19,10 +19,10 @@ public class SecurityConfig {
    @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((authRequest) -> {
-          /*  ((AuthorizedUrl) authRequest.requestMatchers(new String[] { "/authenticated/**", "/user/**", "/tv/tvs",
+            ((AuthorizedUrl) authRequest.requestMatchers(new String[] { "/authenticated/**", "/user/**", "/tv/tvs",
                     "/tv/add", "/tv/save", "/tv/TVEdit/{id}", "/tv/update/{id}", "/textJuridique/textJuridiques",
                     "/textJuridique/add", "/textJuridique/save", "/radio/radios", "/radio/add", "/radio/save",
-                    "/radio/RadioEdit/{id}", "/radio/update/{id}", "/presse/presses", "/presse/add", "/presse/save",
+                    "/radio/RadioEdit/{id}", "/radio/update/{id}", "/presse/presses", "/presse/add", "/presse/save","/presse/update/{id}",
                     "/presse/pressesEdit/{id}", "/pressecategorie/pressecategories", "/pressecategorie/add",
                     "/pressecategorie/save", "/lois/lois", "/lois/add", "/lois/save", "/etablissement/etablissements",
                     "/etablissement/add", "/etablissement/save", "/etablissement/EditEtablissement/{id}",
@@ -30,8 +30,8 @@ public class SecurityConfig {
                     "/categorieChaine/add", "/categorieChaine/save", "/caracterstique/tv/{id}/add",
                     "/caracterstique/radio/{id}/add", "/caracterstique/saveradio", "/caracterstique/save",
                     "/agrument/agruments", "/agrument/add", "/agrument/save", "/ministers/add", "/ministers/Mins","/ministers/MinistersEdit/{id}","/ministers/update/{id}",
-                    "/ministers/save", "/Direction/add", "/Direction/direction", "/Direction/save" ,"/sousDirection/add", "/sousDirection/sousdirection", "/sousDirection/save" }))
-                    .authenticated(); */
+                    "/ministers/save", "/Direction/add", "/Direction/direction", "/Direction/save" ,"/sousDirection/add", "/sousDirection/sousdirection", "/sousDirection/save" ,"/sousDirection/sousDirectionEdit/{id}"}))
+                    .authenticated(); 
            ((AuthorizedUrl) authRequest.requestMatchers(new String[] { "/notAuthenticated/**", "/multimedia/**", "/",
                     "/index", "/tv", "/tv/public", "/tv/prive", "/tv/prive/{name}", "/tv/{id}", "/tv/lugo/{id}",
                     "/radio/public", "/radio/public/#national", "/radio/public/#local", "/radio/public/", "/radio/{id}",
@@ -41,9 +41,9 @@ public class SecurityConfig {
                     "/etablissement/{id}", "/etablissement/lugo/{id}", "/search", "/ministers/list",
                     "/ministers/pic/{id}","/search/**","/Direction/all" ,"/sousDirection/all","/etablissement/societe-impression","/etablissement/societe-impression/{id}","/etablissement/aps/"})).permitAll();
         });
-      /* http.formLogin((formLogin) -> {
+         http.formLogin((formLogin) -> {
             ((FormLoginConfigurer) formLogin.loginPage("/login").defaultSuccessUrl("/home", true)).permitAll();
-        });*/
+        });
         http.logout((logout) -> {
             logout.invalidateHttpSession(true).deleteCookies(new String[] { "JSESSIONID" }).clearAuthentication(true)
                     .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login?logout");

@@ -359,7 +359,7 @@ public String findTVById(Model model, @PathVariable Long id) {
     {
         Presse press=this.presseService.findPresseById(id);
         model.addAttribute("press",press);
-        return "authenticated/presse/pressEdit";
+        return "authenticated/presse/PressEdit";
     }
 
 

@@ -172,7 +172,7 @@ public class TVController {
         List<CategorieChaine> categorieChaines = this.categorieChaineService.findAll();
         model.addAttribute("tv",TV);
         model.addAttribute("categorieChaines", categorieChaines);
-        return "authenticated/tv/TVEdit";
+        return "authenticated/tv/tvEdit";
     }
 
 
