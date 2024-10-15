@@ -32,7 +32,7 @@ public class SecurityConfig {
                     "/agrument/agruments", "/agrument/add", "/agrument/save", "/ministers/add", "/ministers/Mins","/ministers/MinistersEdit/{id}","/ministers/update/{id}",
                     "/ministers/save", "/Direction/add", "/Direction/direction", "/Direction/save" ,"/sousDirection/add", "/sousDirection/sousdirection", "/sousDirection/save" }))
                     .authenticated(); */
-            ((AuthorizedUrl) authRequest.requestMatchers(new String[] { "/notAuthenticated/**", "/multimedia/**", "/",
+           /* */ ((AuthorizedUrl) authRequest.requestMatchers(new String[] { "/notAuthenticated/**", "/multimedia/**", "/",
                     "/index", "/tv", "/tv/public", "/tv/prive", "/tv/prive/{name}", "/tv/{id}", "/tv/lugo/{id}",
                     "/radio/public", "/radio/public/#national", "/radio/public/#local", "/radio/public/", "/radio/{id}",
                     "/radio/lugo/{id}", "/presse/public", "/presse/lugo/{id}", "/presse/public/",
