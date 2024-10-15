@@ -48,23 +48,30 @@
                             <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
                             <a th:href="@{'/#Soustutelle'}"  th:text="#{etablissement}">المؤسسات الإعلامية</a>
                         </li>
+
+                        <li>
+                            <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
+                            <a href="etablissement/aps" th:text="#{APS}"></a>
+                        </li>
                         <li>
                             <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
                             <a th:href="@{'/#Reglementationsectorielle'}"  th:text="#{organigrame}">تنظيم القطاع</a>
                         </li>
+                       
                         <li>
                             <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
                             <a th:href="@{'/tv/public'}" th:text="#{channel} + ' ' + #{public}">القنوات التلفزيونية العمومية</a>
                             
                         </li>
-                        <li>
+                        <!--li>
                             <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
                             <a href="/#Reglementationsectorielle" th:text="#{organigrame}">تنظيم القطاع</a>
                         </li>
                         <li>
                             <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
                             <a href="/tv/public" th:text="#{channel} + ' ' + #{public}">القنوات التلفزيونية العمومية</a>
-                        </li>
+                        </li-->
+                        
                         <li>
                             <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
                             <a href="/radio/public" th:text="#{radio}">القنوات التلفزيونية الخاصة</a>
@@ -77,6 +84,12 @@
                             <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
                             <a href="/presse/public/electronique" th:text="#{pressElect}">القنوات التلفزيونية الخاصة</a>
                         </li>
+
+                        <!--li>
+                            <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
+                            <a href="/presse/public/electronique" th:text="#{pressElect}">القنوات التلفزيونية الخاصة</a>
+                        </li-->
+
                         <li>
                             <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
                             <a href="/lois/2" th:text="#{textju}">النصوص القانونية</a>

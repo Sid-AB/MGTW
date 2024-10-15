@@ -111,13 +111,13 @@ public class SearchController {
 
     // Rechercher les radios
     List<Radio> radiosFr = this.radioService.findByDescriptionFrContainingIgnoreCase(query);
-    List<Radio> radiosEn = this.radioService.findByDescriptionEnContainingIgnoreCase(query);
+    //List<Radio> radiosEn = this.radioService.findByDescriptionEnContainingIgnoreCase(query);
     List<Radio> radiosAr = this.radioService.findByDescriptionContainingIgnoreCase(query);
 
     // Combiner les résultats des radios
     List<Radio> radios = new ArrayList<>();
     radios.addAll(radiosFr);
-    radios.addAll(radiosEn);
+   // radios.addAll(radiosEn);
     radios.addAll(radiosAr);
     model.addAttribute("radios", radios);
 
@@ -135,13 +135,13 @@ public class SearchController {
 
     // Rechercher les chaînes de télévision
     List<TV> tvsFr = this.tvService.findByDescriptionFrContainingIgnoreCase(query);
-    List<TV> tvsEn = this.tvService.findByDescriptionEnContainingIgnoreCase(query);
+   // List<TV> tvsEn = this.tvService.findByDescriptionEnContainingIgnoreCase(query);
     List<TV> tvsAr = this.tvService.findByDescriptionContainingIgnoreCase(query);
 
     // Combiner les résultats des chaînes de télévision
     List<TV> tvs = new ArrayList<>();
     tvs.addAll(tvsFr);
-    tvs.addAll(tvsEn);
+   // tvs.addAll(tvsEn);
     tvs.addAll(tvsAr);
     model.addAttribute("tvs", tvs);
 
