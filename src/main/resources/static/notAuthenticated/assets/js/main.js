@@ -47,9 +47,9 @@ function changeDirection(language) {
   const select = (el, all = false) => {
     el = el.trim()
     if (all) {
-      return [...document.querySelectorAll(el)]
+      return $(el).toArray(); // Returns all selected elements as an array
     } else {
-      return document.querySelector(el)
+      return $(el)[0]; // Returns the first element
     }
   }
 
@@ -60,9 +60,11 @@ function changeDirection(language) {
     let selectEl = select(el, all)
     if (selectEl) {
       if (all) {
-        selectEl.forEach(e => e.addEventListener(type, listener))
+        $(selectEl).each(function() {
+          $(this).on(type, listener)
+        })
       } else {
-        selectEl.addEventListener(type, listener)
+        $(selectEl).on(type, listener)
       }
     }
   }
@@ -71,7 +73,7 @@ function changeDirection(language) {
    * Easy on scroll event listener 
    */
   const onscroll = (el, listener) => {
-    el.addEventListener('scroll', listener)
+    $(el).on('scroll', listener)
   }
 
   /**
@@ -79,19 +81,20 @@ function changeDirection(language) {
    */
   let navbarlinks = select('#navbar .scrollto', true)
   const navbarlinksActive = () => {
-    let position = window.scrollY + 200
-    navbarlinks.forEach(navbarlink => {
+    let position = $(window).scrollTop() + 200
+    $(navbarlinks).each(function() {
+      let navbarlink = this
       if (!navbarlink.hash) return
       let section = select(navbarlink.hash)
       if (!section) return
-      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        navbarlink.classList.add('active')
+      if (position >= $(section).offset().top && position <= ($(section).offset().top + $(section).outerHeight())) {
+        $(navbarlink).addClass('active')
       } else {
-        navbarlink.classList.remove('active')
+        $(navbarlink).removeClass('active')
       }
     })
   }
-  window.addEventListener('load', navbarlinksActive)
+  $(window).on('load', navbarlinksActive)
   onscroll(document, navbarlinksActive)
 
   /**
@@ -114,16 +117,15 @@ function changeDirection(language) {
   let selectHeader = select('#header')
   if (selectHeader) {
     const headerScrolled = () => {
-      if (window.scrollY > 100) {
-        selectHeader.classList.add('header-scrolled')
+      if ($(window).scrollTop() > 100) {
+        $(selectHeader).addClass('header-scrolled')
       } else {
-        selectHeader.classList.remove('header-scrolled')
+        $(selectHeader).removeClass('header-scrolled')
       }
     }
-    window.addEventListener('load', headerScrolled)
+    $(window).on('load', headerScrolled)
     onscroll(document, headerScrolled)
   }
-
 
   /**
    * Back to top button
@@ -131,64 +133,66 @@ function changeDirection(language) {
   let backtotop = select('.back-to-top')
   if (backtotop) {
     const toggleBacktotop = () => {
-      if (window.scrollY > 100) {
-        backtotop.classList.add('active')
+      if ($(window).scrollTop() > 100) {
+        $(backtotop).addClass('active')
       } else {
-        backtotop.classList.remove('active')
+        $(backtotop).removeClass('active')
       }
     }
-    window.addEventListener('load', toggleBacktotop)
+    $(window).on('load', toggleBacktotop)
     onscroll(document, toggleBacktotop)
   }
 
   /**
    * Mobile nav toggle
    */
-  on('click', '.mobile-nav-toggle', function(e) {
-    select('#navbar').classList.toggle('navbar-mobile')
-    this.classList.toggle('bi-list')
-    this.classList.toggle('bi-x')
+ /* on('click', '.mobile-nav-toggle', function(e) {
+    console.log('inserted')
+    $('#navbar').addClass('navbar-mobile')
+    $(this).addClass('bi-list bi-x')
   })
 
   /**
    * Mobile nav dropdowns activate
    */
-  on('click', '.navbar .dropdown > a', function(e) {
-    if (select('#navbar').classList.contains('navbar-mobile')) {
+ /* on('click', '.navbar .dropdown > a', function(e) {
+    if ($('#navbar').hasClass('navbar-mobile')) {
       e.preventDefault()
-      this.nextElementSibling.classList.toggle('dropdown-active')
+      $(this).next().addClass('dropdown-active')
     }
-  }, true)
+  }, true)*/
 
 
 
 
   /**
-   * Scrool with ofset on links with a class name .scrollto
+   * Scroll with offset on links with a class name .scrollto
    */
   on('click', '.scrollto', function(e) {
-    if (select(this.hash)) {
+    if ($(this.hash).length) {
       e.preventDefault()
 
-      let navbar = select('#navbar')
-      if (navbar.classList.contains('navbar-mobile')) {
-        navbar.classList.remove('navbar-mobile')
-        let navbarToggle = select('.mobile-nav-toggle')
-        navbarToggle.classList.toggle('bi-list')
-        navbarToggle.classList.toggle('bi-x')
+      let navbar = $('#navbar')
+      if (navbar.hasClass('navbar-mobile')) {
+        navbar.removeClass('navbar-mobile')
+        let navbarToggle = $('.mobile-nav-toggle')
+        navbarToggle.toggleClass('bi-list bi-x')
       }
-      scrollto(this.hash)
+
+      $('html, body').animate({
+        scrollTop: $(this.hash).offset().top
+      }, 1000, 'easeInOutExpo');
     }
   }, true)
 
   /**
-   * Scroll with ofset on page load with hash links in the url
+   * Scroll with offset on page load with hash links in the url
    */
-  window.addEventListener('load', () => {
-    if (window.location.hash) {
-      if (select(window.location.hash)) {
-        scrollto(window.location.hash)
-      }
+  $(window).on('load', () => {
+    if (window.location.hash && $(window.location.hash).length) {
+      $('html, body').animate({
+        scrollTop: $(window.location.hash).offset().top
+      }, 1000, 'easeInOutExpo');
     }
   });
 
@@ -197,13 +201,13 @@ function changeDirection(language) {
    */
   let preloader = select('#preloader');
   if (preloader) {
-    window.addEventListener('load', () => {
-      preloader.remove()
+    $(window).on('load', () => {
+      $(preloader).remove()
     });
   }
 
   /**
-   * Initiate  glightbox 
+   * Initiate glightbox 
    */
   const glightbox = GLightbox({
     selector: '.glightbox'
@@ -212,24 +216,24 @@ function changeDirection(language) {
   /**
    * Skills animation
    */
-  let skilsContent = select('.skills-content');
-  if (skilsContent) {
+  let skillsContent = select('.skills-content');
+  if (skillsContent) {
     new Waypoint({
-      element: skilsContent,
+      element: skillsContent,
       offset: '80%',
       handler: function(direction) {
         let progress = select('.progress .progress-bar', true);
-        progress.forEach((el) => {
-          el.style.width = el.getAttribute('aria-valuenow') + '%'
+        $(progress).each(function() {
+          $(this).css('width', $(this).attr('aria-valuenow') + '%');
         });
       }
     })
   }
 
   /**
-   * Porfolio isotope and filter
+   * Portfolio isotope and filter
    */
-  window.addEventListener('load', () => {
+  $(window).on('load', () => {
     let portfolioContainer = select('.portfolio-container');
     if (portfolioContainer) {
       let portfolioIsotope = new Isotope(portfolioContainer, {
@@ -240,20 +244,17 @@ function changeDirection(language) {
 
       on('click', '#portfolio-flters li', function(e) {
         e.preventDefault();
-        portfolioFilters.forEach(function(el) {
-          el.classList.remove('filter-active');
-        });
-        this.classList.add('filter-active');
+        $(portfolioFilters).removeClass('filter-active');
+        $(this).addClass('filter-active');
 
         portfolioIsotope.arrange({
-          filter: this.getAttribute('data-filter')
+          filter: $(this).attr('data-filter')
         });
         portfolioIsotope.on('arrangeComplete', function() {
           AOS.refresh()
         });
       }, true);
     }
-
   });
 
   /**
@@ -283,7 +284,7 @@ function changeDirection(language) {
   /**
    * Animation on scroll
    */
-  window.addEventListener('load', () => {
+  $(window).on('load', () => {
     AOS.init({
       duration: 1000,
       easing: "ease-in-out",
@@ -292,7 +293,8 @@ function changeDirection(language) {
     });
   });
 
-})()
+})();
+
 
  // On page load, set direction based on current locale
  document.addEventListener("DOMContentLoaded", function() {

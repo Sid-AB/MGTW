@@ -70,7 +70,7 @@
                 <li><a th:href="@{'/etablissement/aps'}" th:text="#{APS}"> وكالة الأنباء الجزائرية </a></li>
 
               
-                <li class="dropdown " ><a  th:href="@{'#'}"><span style="color: white" th:text="#{channel}" >القنوات التلفزيونية</span> <i class="bi bi-chevron-down"></i></a>
+                <li class="dropdown " ><a  th:href="@{'#'}"><span th:text="#{channel}" >القنوات التلفزيونية</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a th:href="@{'/tv/public'}" th:text="#{public}">العمومية</a></li>
                         <li class="dropdown "><a href="#"><span th:text="#{prive}">الخاصة</span> <i th:class="${#locale.language == 'ar' ? 'bx bx-chevron-left' : 'bx bx-chevron-right'}"></i></a>
@@ -154,7 +154,7 @@
                 </li>
                 
                
-                <li class="dropdown"> <a  href="#"> <span  style="color: white" th:text="#{textju}"> النصوص القانونية </span> <i class="bi bi-chevron-down"></i></a>
+                <li class="dropdown"> <a  href="#"> <span th:text="#{textju}"> النصوص القانونية </span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li th:each="lois:${myObjectlFNBar}"  >
                             <a  th:href="@{'/lois/'+${lois.getId()}}" th:if="${lois.getId() == 5}" th:text="#{textApp}"></a>

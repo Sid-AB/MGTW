@@ -60,8 +60,6 @@ public class MinisterController {
     @Autowired
     private MultimediaService multimediaService;
     @Autowired
-    private MinisterRepository ministerRepository;
-    @Autowired
     private MultimediaRepository multimediaRepository;
 
       @Autowired
