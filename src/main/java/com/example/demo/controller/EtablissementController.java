@@ -57,8 +57,7 @@ public class EtablissementController {
 
     @GetMapping({"/etablissements"})
     public String users(Model model) {
-        List<Etablissement> etablissements = this.etablissementService.
-        ();
+        List<Etablissement> etablissements = this.etablissementService.findEtablissementsSoustutelleSansApsEtSociete();
         model.addAttribute("etablissements", etablissements);
         System.out.println("Etablissements added: " + etablissements.size()); 
 
