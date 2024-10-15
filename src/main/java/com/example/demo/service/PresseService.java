@@ -124,7 +124,7 @@ public class PresseService {
             press.setEmail(Presse.getEmail());
             press.setSite(Presse.getSite());
             press.setWebsite(press.getWebsite());
-          //  press.setPresseCategories(Presse.getPresseCategories());
+            press.setPresseCategories(Presse.getPresseCategories());
             press.setPhone(Presse.getPhone());
             press.setFax(Presse.getFax());
 

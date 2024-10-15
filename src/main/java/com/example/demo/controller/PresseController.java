@@ -359,6 +359,11 @@ public String findTVById(Model model, @PathVariable Long id) {
     {
         Presse press=this.presseService.findPresseById(id);
         model.addAttribute("press",press);
+        List<Complexe> complexes = this.complexeService.findAll();
+        List<PresseCategorie> presseCategories = this.presseCategorieService.findAll();
+        model.addAttribute("complexes", complexes);
+        model.addAttribute("presseDTO", new PresseDTO());
+        model.addAttribute("presseCategories", presseCategories);
         return "authenticated/presse/PressEdit";
     }
 
