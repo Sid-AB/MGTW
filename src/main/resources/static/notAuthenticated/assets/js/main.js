@@ -98,6 +98,20 @@ function changeDirection(language) {
   onscroll(document, navbarlinksActive)
 
   /**
+   * Scrolls to an element with header offset
+   */
+  const scrollto = (el) => {
+    let header = select('#header')
+    let offset = header.offsetHeight
+
+    let elementPos = select(el).offsetTop
+    window.scrollTo({
+      top: elementPos - offset,
+      behavior: 'smooth'
+    })
+  }
+
+  /**
    * Toggle .header-scrolled class to #header when page is scrolled
    */
   let selectHeader = select('#header')
@@ -132,7 +146,7 @@ function changeDirection(language) {
   /**
    * Mobile nav toggle
    */
-  on('click', '.mobile-nav-toggle', function(e) {
+ /* on('click', '.mobile-nav-toggle', function(e) {
     console.log('inserted')
     $('#navbar').addClass('navbar-mobile')
     $(this).addClass('bi-list bi-x')
@@ -141,12 +155,15 @@ function changeDirection(language) {
   /**
    * Mobile nav dropdowns activate
    */
-  on('click', '.navbar .dropdown > a', function(e) {
+ /* on('click', '.navbar .dropdown > a', function(e) {
     if ($('#navbar').hasClass('navbar-mobile')) {
       e.preventDefault()
       $(this).next().addClass('dropdown-active')
     }
-  }, true)
+  }, true)*/
+
+
+
 
   /**
    * Scroll with offset on links with a class name .scrollto
@@ -303,3 +320,36 @@ window.addEventListener('load', function() {
   }, 5000); // Video will play for 5 seconds before fading out
   
 });*/
+
+
+$(document).ready(function(){
+  var click=0;
+  $('.mobile-nav-toggle').on('click',function(){
+    click++;
+    $('#navbar').addClass('navbar-mobile')
+    $(this).addClass('bi-list')
+    $(this).addClass('bi-x')
+    if($(this).has('bi-x') && click > 1)
+    {
+      $('#navbar').removeClass('navbar-mobile')
+      $(this).removeClass('bi-x')
+      click=0;
+    }
+  })
+  $('.navbar .dropdown > a').on('click',function(){
+    click++;
+    if($('#navbar').hasClass('navbar-mobile'))
+    {
+      $(this).next().addClass('dropdown-active')
+      $(this).next().attr('id','showed')
+     
+    }
+    if(click > 1)
+    {
+      console.log('testing'+click)
+      $(this).next().removeClass('dropdown-active')
+      click=0;
+    }
+  })
+ 
+}) 
