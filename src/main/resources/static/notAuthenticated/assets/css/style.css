@@ -284,7 +284,10 @@ h6 {
   .mobile-nav-toggle {
     display: block;
   }
-
+  .image-pres
+  {
+    display: none;
+  }
   .navbar ul {
     display: none;
   }
