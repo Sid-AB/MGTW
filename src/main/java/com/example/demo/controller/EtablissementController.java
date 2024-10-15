@@ -175,13 +175,14 @@ public class EtablissementController {
         if (etablissements.size() == 1) {
             // if only one APs
             etablissement = etablissements.get(0);
+        
         } else {
             //if y  a plusieurs use llist
             etablissement= etablissements;
         }
     
         model.addAttribute("etablissement", etablissement);
-        // System.out.println("Etablissements aps: " + etablissement.size()); 
+    //  System.out.println("Etablissements aps: " +etablissement); 
          List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
          model.addAttribute("complexesForNavBar", complexesForNavBar);
          List<Lois> loisForNavBar = this.loisService.findAll();
