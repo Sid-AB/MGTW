@@ -202,6 +202,7 @@
 
 
 </main><!-- End #main -->
+<div th:if="${aps != 'exist'}">
 <!-- tvv -->
 <div th:if="${etablissements != null}">
     <h5 class="fw-bold text-center section-success text-uppercase mt-5" th:text="#{lookher}">انظر ايضا</h5>
@@ -248,11 +249,12 @@
 </div>
 
 <!--si aucune  -->
-<div th:if="${etablissements == null and etablissementImprssion == null and etablissement != null}">
+
+
+</div>
+<div th:unless="${etablissement != 'exist'}">
     <!-- Rien à afficher -->
 </div>
-
-
 <footer th:replace="notAuthenticated/fragments/footer::footer" class="footer">
 </footer>
 

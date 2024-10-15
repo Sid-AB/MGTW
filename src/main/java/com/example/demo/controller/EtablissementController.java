@@ -57,7 +57,8 @@ public class EtablissementController {
 
     @GetMapping({"/etablissements"})
     public String users(Model model) {
-        List<Etablissement> etablissements = this.etablissementService.findEtablissementsSoustutelleSansApsEtSociete();
+        List<Etablissement> etablissements = this.etablissementService.
+        ();
         model.addAttribute("etablissements", etablissements);
         System.out.println("Etablissements added: " + etablissements.size());
 
@@ -170,34 +171,31 @@ public class EtablissementController {
     @GetMapping("/aps")
     public String AfficheAPS(Model model) {
         List <Etablissement> etablissements = etablissementService.findEtablissementsByTypeEtablissmnt("aps");
-        Object etablissement; // il peut etre un seul ou liste
-
+        Object etablissement; // il peut etre un seul ou liste 
+    
         if (etablissements.size() == 1) {
             // if only one APs
             etablissement = etablissements.get(0);
-        
         } else {
             //if y  a plusieurs use llist
             etablissement= etablissements;
         }
 
         model.addAttribute("etablissement", etablissement);
-    //  System.out.println("Etablissements aps: " +etablissement); 
+        // System.out.println("Etablissements aps: " + etablissement.size()); 
          List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
          model.addAttribute("complexesForNavBar", complexesForNavBar);
          List<Lois> loisForNavBar = this.loisService.findAll();
          model.addAttribute("loisForNavBar", loisForNavBar);
 
          List  <Etablissement> etablissementImprssion= etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
-         model.addAttribute("etablissementImprssion", etablissementImprssion); 
-                  System.out.println("etablissementImprssion: " + etablissementImprssion.size());
-
-         return "notAuthenticated/etablissement/etablissementDetails";
+         model.addAttribute("etablissementImprssion", etablissementImprssion);
+         model.addAttribute("aps","exist");
+         return "notAuthenticated/etablissement/etablissementDetails"; 
      }
-
-
-
-
+ 
+     
+    
 
     @GetMapping("/societe-impression")
     public String AfficheSociete(Model model) {
