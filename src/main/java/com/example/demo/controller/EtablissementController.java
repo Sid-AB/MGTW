@@ -181,7 +181,7 @@ public class EtablissementController {
             etablissement= etablissements;
         }
 
-        model.addAttribute("etablissemen", etablissement);
+        model.addAttribute("etablissement", etablissement);
     //  System.out.println("Etablissements aps: " +etablissement); 
          List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
          model.addAttribute("complexesForNavBar", complexesForNavBar);
