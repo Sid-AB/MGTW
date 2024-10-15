@@ -51,7 +51,7 @@
 
                         <li>
                             <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>
-                            <a href="etablissement/aps" th:text="#{APS}"></a>
+                            <a th:href="@{'/etablissement/aps'}" th:text="#{APS}"></a>
                         </li>
                         <li>
                             <i th:class="${#locale.language == 'ar'} ? 'bx bx-chevron-left' : 'bx bx-chevron-right'" style="color: #0E2F4A"></i>

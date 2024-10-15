@@ -91,7 +91,7 @@ public class TVController {
     public String users(Model model) {
         List<TV> tvs = this.tvService.findAll();
         model.addAttribute("tvs", tvs);
-        return "/authenticated/tv/tvs";
+        return "authenticated/tv/tvs";
     }
 
     @GetMapping({"/public"})
