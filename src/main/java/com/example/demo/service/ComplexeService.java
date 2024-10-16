@@ -69,7 +69,7 @@ public class ComplexeService {
         return this.complexeRepository.findComplexeByAgrumentListAndTypeAndName(agruments, string, name);
     }
 
-    public Boolean updateDataComplexe(Complexe complexe, Long userId,Optional<Complexe> existingComplex/*, Optional<Multimedia> multimedias */) {
+    public Boolean updateDataComplexe(Complexe complexe, Long userId,Optional<Complexe> existingComplex/*, Optional<Multimedia> multimedias */ ,List<Long> arg) {
         if (existingComplex.isPresent()) {
             Complexe cmplx = existingComplex.get();
             cmplx.setName(complexe.getName());
@@ -81,6 +81,18 @@ public class ComplexeService {
             cmplx.setDescription(complexe.getDescription());
             cmplx.setDescriptionFr(complexe.getDescriptionFr());
             cmplx.setDescriptionEn(complexe.getDescriptionEn());
+            List<Long> agrumentsId = arg;
+            if (!agrumentsId.isEmpty()) {
+                Iterator var4 = agrumentsId.iterator();
+    
+                while(var4.hasNext()) {
+                    Long agrumentId = (Long)var4.next();
+                    Optional<Agrument> agrument = this.agrumentService.findAgrumentById(agrumentId);
+                    cmplx.getAgrumentList().add((Agrument)agrument.get());
+                  //  this.complexeRepository.save(complexe);
+                }
+            }
+            
             this.complexeRepository.save(cmplx);
       /*  if (multimedias.isPresent()) {
             List<Multimedia> savedMultimedias = new ArrayList<>();

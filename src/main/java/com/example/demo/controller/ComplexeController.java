@@ -45,8 +45,9 @@ public class ComplexeController {
     @GetMapping({"/add"})
     public String complexeAdd(Model model) {
         List<Agrument> agruments = this.agrumentService.findAll();
-        model.addAttribute("complexeDTO", new ComplexeDTO());
+        
         model.addAttribute("agruments", agruments);
+        model.addAttribute("complexeDTO", new ComplexeDTO());
         return "authenticated/complexe/complexeAdd";
     }
 
@@ -72,7 +73,9 @@ public class ComplexeController {
 
      @GetMapping({"/ComplexEdit/{id}"})
     public String FindComplexById(Model model, @PathVariable Long id)
-    {
+    { List<Agrument> agruments = this.agrumentService.findAll();
+        model.addAttribute("complexeDTO", new ComplexeDTO());
+        model.addAttribute("agruments", agruments);
         Complexe complex=this.complexeService.findComplexeById(id);
         model.addAttribute("complexe",complex);
         return "authenticated/complexe/complexesEdit";
@@ -80,13 +83,14 @@ public class ComplexeController {
 
 
     @PostMapping({"/update/{id}"})
-    public RedirectView  updatedTV(@PathVariable Long id,@ModelAttribute  Complexe updateComplexe)
+    public RedirectView  updatedTV(@PathVariable Long id,@ModelAttribute  Complexe updateComplexe,@RequestParam("selectedAgrument") List<Long> arg)
+    //return "authenticated/etablissement/etablissementsEdit.html"; )
     {
+
         Complexe complexe = this.complexeService.findComplexeById(id);
        // Optional<Multimedia> multimedia=this.multimediaService.findFirstByEtablissement(etablissement);
        Optional<Complexe> existingTV = this.complexeService.findById(id);
-       Boolean  check= this.complexeService.updateDataComplexe(updateComplexe,id,existingTV/*,multimedia */);
-       //return "authenticated/etablissement/etablissementsEdit.html";
+       Boolean  check= this.complexeService.updateDataComplexe(updateComplexe,id,existingTV/*,multimedia */,arg);
        return new RedirectView("/complexe/complexes");
     }
 }

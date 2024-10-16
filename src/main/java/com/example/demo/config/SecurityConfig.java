@@ -26,7 +26,7 @@ public class SecurityConfig {
                     "/presse/pressesEdit/{id}", "/pressecategorie/pressecategories", "/pressecategorie/add",
                     "/pressecategorie/save", "/lois/lois", "/lois/add", "/lois/save", "/etablissement/etablissements",
                     "/etablissement/add", "/etablissement/save", "/etablissement/EditEtablissement/{id}",
-                    "/etablissement/update/{id}", "/home", "/complexe/complexes", "/complexe/add", "/complexe/save",
+                    "/etablissement/update/{id}", "/home", "/complexe/complexes", "/complexe/add", "/complexe/save","/complexe/ComplexEdit/{id}","/complexe/update/{id}",
                     "/categorieChaine/add", "/categorieChaine/save", "/caracterstique/tv/{id}/add",
                     "/caracterstique/radio/{id}/add", "/caracterstique/saveradio", "/caracterstique/save",
                     "/agrument/agruments", "/agrument/add", "/agrument/save", "/ministers/add", "/ministers/Mins","/ministers/MinistersEdit/{id}","/ministers/update/{id}",
