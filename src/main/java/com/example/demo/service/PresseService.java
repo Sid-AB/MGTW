@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-
+import lombok.extern.slf4j.Slf4j;
 import com.example.demo.dto.PresseDTO;
 import com.example.demo.entities.Multimedia;
 import com.example.demo.entities.Presse;
@@ -109,8 +109,9 @@ public class PresseService {
     }
 
 
-    public Boolean updateDataPresse(Presse Presse, Long userId,Optional<Presse> existingPress,List<MultipartFile> multimediaFiles) {
+    public Boolean updateDataPresse(Presse Presse, Long userId,Optional<Presse> existingPress,List<MultipartFile> multimediaFiles,List<Long> cat) {
         if (existingPress.isPresent()) {
+          
             Presse press = existingPress.get();
             press.setName(Presse.getName());
             press.setNameFr(Presse.getNameFr());
@@ -124,10 +125,9 @@ public class PresseService {
             press.setEmail(Presse.getEmail());
             press.setSite(Presse.getSite());
             press.setWebsite(press.getWebsite());
-            press.setPresseCategories(Presse.getPresseCategories());
+         //   press.setPresseCategories(Presse.getPresseCategories());
             press.setPhone(Presse.getPhone());
             press.setFax(Presse.getFax());
-
 
             if (multimediaFiles != null && !multimediaFiles.isEmpty()) {
                 List<Multimedia> multimediaList = new ArrayList<>();
@@ -138,7 +138,7 @@ public class PresseService {
                         multimedia.setFileName(file.getOriginalFilename());
     
                         // Save file to filesystem and get the file path
-                        multimedia = this.filesStorageService.save(file,"etablissementDoc");
+                        multimedia = this.filesStorageService.save(file,"PressDoc");
                        // multimedia.setFilePath(filePath);
     
                         // Set the etablissement reference in multimedia
@@ -152,6 +152,20 @@ public class PresseService {
                 // Save the multimedia files
                 multimediaRepository.saveAll(multimediaList);
             }
+          
+            List<Long> categoriepressesID = cat;
+            Iterator precat;
+            if (!categoriepressesID.isEmpty()) {
+                precat = categoriepressesID.iterator();
+    
+                while(precat.hasNext()) {
+                    Long categoriepresseID = (Long)precat.next();
+                    Optional<PresseCategorie> presseCategorie = this.presseCategorieService.findPresseCategorieById(categoriepresseID);
+                    press.getPresseCategories().add((PresseCategorie)presseCategorie.get());
+                   // this.presseRepository.save(press);
+                }
+            }
+
             this.presseRepository.save(press);
      
         return true;
