@@ -66,15 +66,14 @@ public class CaracterstiqueController {
         model.addAttribute("username", username);
         return "redirect:/radio/radios";
     }
-    @DeleteMapping({"/RadioDelete/{id}"})
-    public String deleteCartRadio(@PathVariable Long id)
+    @GetMapping({"/RadioDelete/{id}"})
+    public String deleteCartRadio(@PathVariable("id") Long id)
     {
-        Radio radio=radioService.findRadioById(id);
-        caracterstiqueService.deleteCaracterstiqueById(radio.getId());
+        caracterstiqueService.deleteCaracterstiqueById(id);
         return "redirect:/radio/radios";
     }
-    @DeleteMapping({"/TvDelete/{id}"})
-    public String deleteCartTV(@PathVariable Long id)
+    @GetMapping({"/TvDelete/{id}"})
+    public String deleteCartTV(@PathVariable("id") Long id)
     {   System.out.println("CaracterstiqueController.deleteCartTV()"+id.getClass().getName());
 
        
