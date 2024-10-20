@@ -53,7 +53,7 @@ public class SousDirectionController {
     public String dirAddd(Model model) {
         try {
             List<Direction> directions = directionService.findAll();
-           System.out.println("Directions récupérées: " + directions); 
+       //    System.out.println("Directions récupérées: " + directions); 
             model.addAttribute("sousdirectionDTO", new SousDirectionDTO());
             model.addAttribute("direction", directions); // Ajoute la liste des directions au modèle
             return "authenticated/sousdirection/sousdirectionAdd";

@@ -28,7 +28,7 @@ public class SecurityConfig {
                     "/etablissement/add", "/etablissement/save", "/etablissement/EditEtablissement/{id}",
                     "/etablissement/update/{id}", "/home", "/complexe/complexes", "/complexe/add", "/complexe/save","/complexe/ComplexEdit/{id}","/complexe/update/{id}",
                     "/categorieChaine/add", "/categorieChaine/save", "/caracterstique/tv/{id}/add",
-                    "/caracterstique/radio/{id}/add", "/caracterstique/saveradio", "/caracterstique/save",
+                    "/caracterstique/radio/{id}/add", "/caracterstique/saveradio", "/caracterstique/save","/caracterstique/TvDelete/{id}","/caracterstique/RadioDelete/{id}",
                     "/agrument/agruments", "/agrument/add", "/agrument/save", "/ministers/add", "/ministers/Mins","/ministers/MinistersEdit/{id}","/ministers/update/{id}",
                     "/ministers/save", "/Direction/add", "/Direction/direction", "/Direction/save" ,"/sousDirection/add", "/sousDirection/sousdirection", "/sousDirection/save" ,"/sousDirection/sousDirectionEdit/{id}"}))
                     .authenticated(); 

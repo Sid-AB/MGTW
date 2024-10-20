@@ -100,7 +100,7 @@
 
                                     <td>
                                         <div class="pt-2">
-                                            <a href="#" class="btn btn-danger btn-sm" title="Remove"><i
+                                            <a href="#" class="btn btn-danger btn-sm" title="Remove" th:onclick="'deleteRadio('+${tvc.getId()}+')'"><i
                                                     class="bi bi-trash"></i></a>
                                         </div>
                                     </td>
@@ -157,4 +157,30 @@
 
 
 </body>
+<script>
+    
+    function deleteRadio(ministerId) {
+            const url = `/caracterstique/TvDelete/${ministerId}`;
+            const token = $("input[name='_csrf']").val(); 
+            
+            if (confirm("Are you sure you want to delete this Carat?")) {
+                $.ajax({
+                    url: url,
+                    type: 'DELETE',
+                    headers:{
+                        'X-CSRF-TOKEN': token
+                    },
+                    success: function(result) {
+                        alert("Minister deleted successfully");
+                        // Optionally, you can reload or redirect the page
+                        location.reload();
+                    },
+                  /*  error: function(xhr, status, error) {
+                        console.error("Error deleting minister:", error);
+                        alert("Failed to delete minister");
+                    }*/
+                });
+            }
+        }
+</script>
 </html>

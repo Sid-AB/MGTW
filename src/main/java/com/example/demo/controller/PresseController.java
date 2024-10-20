@@ -179,7 +179,7 @@ public class PresseController {
             System.out.println("Catégorie 'رقمية/مكتوبة' non trouvée.");
         }
         
-        System.out.println("presseCategories: " + presseCategories.size());
+       // System.out.println("presseCategories: " + presseCategories.size());
         
         // Récupérer les presses publiques et privées pour chaque catégorie
         List<Presse> pressesElectroniquePublic = new ArrayList<>();
@@ -193,8 +193,8 @@ public class PresseController {
             }
         }
         
-        System.out.println("Public Presses: " + pressesElectroniquePublic.size());
-        System.out.println("Private Presses: " + pressesElectroniquePrive.size());
+        //System.out.println("Public Presses: " + pressesElectroniquePublic.size());
+      //  System.out.println("Private Presses: " + pressesElectroniquePrive.size());
     
         // Récupérer les complexes pour la barre de navigation
         List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
