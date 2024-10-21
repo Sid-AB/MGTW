@@ -121,11 +121,11 @@ public class TextJuridiqueController {
     
             // Construire le chemin du fichier
             String filePath = folder.concat("/" + lang + "/" + filename);
-            System.out.println("hb55 "+ filePath); // Log du chemin
+         //   System.out.println("hb55 "+ filePath); // Log du chemin
     
             Resource file = this.filesStorageService.load(filePath);
             String contentType;
-            System.out.println("filedd "+ file); // Log du chemin
+         //   System.out.println("filedd "+ file); // Log du chemin
     
             // Détection du type MIME
             try {

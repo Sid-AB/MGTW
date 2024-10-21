@@ -57,7 +57,7 @@ public class DefaultController {
         
         List<Etablissement> etablissementsAps = this.etablissementService.findEtablissementsSoustutelleSansApsEtSociete();
         model.addAttribute("etablissementsAps", etablissementsAps);
-        System.out.println("Etablissements APS: " + etablissementsAps.size());
+       // System.out.println("Etablissements APS: " + etablissementsAps.size());
         //  model.addAttribute("etablissement", greetingMessage);
         
         List  <Etablissement> etablissementImprssion= etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");

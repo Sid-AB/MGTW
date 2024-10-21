@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.CaracterstiqueDTO;
+import com.example.demo.entities.Caracteristique;
 import com.example.demo.entities.Radio;
 import com.example.demo.entities.TV;
 import com.example.demo.service.CaracterstiqueService;
@@ -11,6 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -64,4 +66,19 @@ public class CaracterstiqueController {
         model.addAttribute("username", username);
         return "redirect:/radio/radios";
     }
+    @GetMapping({"/RadioDelete/{id}"})
+    public String deleteCartRadio(@PathVariable("id") Long id)
+    {
+        caracterstiqueService.deleteCaracterstiqueById(id);
+        return "redirect:/radio/radios";
+    }
+    @GetMapping({"/TvDelete/{id}"})
+    public String deleteCartTV(@PathVariable("id") Long id)
+    {   System.out.println("CaracterstiqueController.deleteCartTV()"+id.getClass().getName());
+
+       
+        caracterstiqueService.deleteCaracterstiqueById(id);
+        return "redirect:/tv/tvs";
+    }
+    
 }

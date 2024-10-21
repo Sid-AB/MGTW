@@ -3,6 +3,7 @@ package com.example.demo.service;
 
 import com.example.demo.dto.CaracterstiqueDTO;
 import com.example.demo.entities.Caracteristique;
+import com.example.demo.entities.TV;
 import com.example.demo.repository.CaractirestiqueRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +37,14 @@ public class CaracterstiqueService {
         caracteristique.setRadio(this.radioService.findRadioById(Long.valueOf(caracterstiqueDTO.getIdmedia())));
         this.caractirestiqueRepository.save(caracteristique);
         return caracteristique;
+    }
+    public Caracteristique fincdCaracteristiqueByTv(TV tv)
+    {
+        Caracteristique car=caractirestiqueRepository.findTVById(tv);
+        return car;
+    }
+    public void deleteCaracterstiqueById(Long Id)
+    {
+        caractirestiqueRepository.deleteById(Id);
     }
 }

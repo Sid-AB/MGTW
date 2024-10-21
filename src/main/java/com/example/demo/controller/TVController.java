@@ -71,7 +71,7 @@ public class TVController {
         model.addAttribute("complexesForNavBar", complexesForNavBar);
         model.addAttribute("tv", tv);
         model.addAttribute("tvs", tvs);
-        System.out.println("tvsz " + tvs.size());
+     //   System.out.println("tvsz " + tvs.size());
         List<Lois> loisForNavBar = this.loisService.findAll();
         model.addAttribute("loisForNavBar", loisForNavBar);
 
@@ -152,7 +152,7 @@ public class TVController {
     @GetMapping({"/lugo/{id}"})
     public ResponseEntity<Resource> getImage(@PathVariable("id") Long id) {
         String folder = "images";
-        System.out.println("userz " + id + " " + folder + " ");
+      //  System.out.println("userz " + id + " " + folder + " ");
         TV tv = this.tvService.findTVById(id);
         Optional<Multimedia> multimedia = this.multimediaService.findFirstByTvOrderByIdDesc(tv);
         if (multimedia.isPresent()) {

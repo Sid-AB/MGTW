@@ -59,7 +59,7 @@ public class EtablissementController {
     public String users(Model model) {
         List<Etablissement> etablissements = this.etablissementService.findEtablissementsSoustutelleSansApsEtSociete();
         model.addAttribute("etablissements", etablissements);
-        System.out.println("Etablissements added: " + etablissements.size());
+      //  System.out.println("Etablissements added: " + etablissements.size());
 
 
         return "authenticated/etablissement/etablissements";
@@ -111,7 +111,7 @@ public class EtablissementController {
         model.addAttribute("etablissement", etablissement);
         model.addAttribute("etablissements", etablissements);
         model.addAttribute("etablissementsByTypeEtablissmnt", etablissementsByTypeEtablissmnt);
-        System.out.println("Etablisseme: " + etablissements.size());
+      //  System.out.println("Etablisseme: " + etablissements.size());
         List  <Etablissement> etablissementImprssion= etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
         model.addAttribute("etablissementImprssion", etablissementImprssion);
 
@@ -200,10 +200,10 @@ public class EtablissementController {
     public String AfficheSociete(Model model) {
         List  <Etablissement> etablissement= etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
         for (Etablissement etablissements : etablissement) {
-         System.out.println("Etablissement name: " + etablissements.getName());
+       //  System.out.println("Etablissement name: " + etablissements.getName());
      }
         model.addAttribute("etablissement", etablissement);
-       System.out.println("Etablissements size: " + (etablissement != null ? etablissement.size() : "null"));
+      // System.out.println("Etablissements size: " + (etablissement != null ? etablissement.size() : "null"));
 
          //System.out.println("Etablissements impresssion: " + etablissement.size());
          List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
