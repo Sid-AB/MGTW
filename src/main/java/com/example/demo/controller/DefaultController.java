@@ -66,7 +66,7 @@ public class DefaultController {
         return "notAuthenticated/index";
     }
 
-    @GetMapping({"/login"})
+     @GetMapping({"/login"})
     public String login() {
         return "notAuthenticated/login";
     }
