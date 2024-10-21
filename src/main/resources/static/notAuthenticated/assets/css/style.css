@@ -1,4 +1,5 @@
 body {
+  overflow-x: hidden;
  font-family: "Droid Arabic Kufi";
   color: #444444;
 }
