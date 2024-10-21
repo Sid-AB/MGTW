@@ -109,7 +109,7 @@ public class PresseService {
     }
 
 
-    public Boolean updateDataPresse(Presse Presse, Long userId,Optional<Presse> existingPress,List<MultipartFile> multimediaFiles,List<Long> cat) {
+    public Boolean updateDataPresse(Presse Presse, Long userId,Optional<Presse> existingPress,List<MultipartFile> multimediaFiles,Optional<Long> cat) {
         if (existingPress.isPresent()) {
           
             Presse press = existingPress.get();
@@ -152,18 +152,18 @@ public class PresseService {
                 // Save the multimedia files
                 multimediaRepository.saveAll(multimediaList);
             }
-          
-            List<Long> categoriepressesID = cat;
-            Iterator precat;
-            if (!categoriepressesID.isEmpty()) {
-                precat = categoriepressesID.iterator();
-    
-                while(precat.hasNext()) {
-                    Long categoriepresseID = (Long)precat.next();
-                    Optional<PresseCategorie> presseCategorie = this.presseCategorieService.findPresseCategorieById(categoriepresseID);
-                    press.getPresseCategories().add((PresseCategorie)presseCategorie.get());
-                   // this.presseRepository.save(press);
-                }
+            if(!cat.isEmpty())
+            {
+                Optional<Long> categoriepressesID = cat;
+
+                categoriepressesID
+                    .flatMap(this.presseCategorieService::findPresseCategorieById)
+                    .ifPresent(press.getPresseCategories()::add); 
+            }
+            else
+            {
+                this.presseRepository.save(press);
+     
             }
 
             this.presseRepository.save(press);

@@ -5,6 +5,9 @@ import com.example.demo.dto.PresseDTO;
 import com.example.demo.entities.*;
 import com.example.demo.repository.PresseCategorieRepository;
 import com.example.demo.service.*;
+
+import net.sf.jsqlparser.statement.ExplainStatement.Option;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
@@ -361,19 +364,23 @@ public String findTVById(Model model, @PathVariable Long id) {
         model.addAttribute("press",press);
         List<Complexe> complexes = this.complexeService.findAll();
         List<PresseCategorie> presseCategories = this.presseCategorieService.findAll();
+        Optional<PresseCategorie> selectCate=this.presseCategorieService.findPresseCategorieById(id);
+        System.out.println(id+" is to"+selectCate);
         model.addAttribute("complexes", complexes);
         model.addAttribute("presseDTO", new PresseDTO());
         model.addAttribute("presseCategories", presseCategories);
+        model.addAttribute("Selected", selectCate);
         return "authenticated/presse/PressEdit";
     }
 
 
     @PostMapping({"/update/{id}"})
-    public RedirectView updatedPress(@PathVariable Long id,@ModelAttribute  Presse updatePress,@RequestParam("profilFiles") List<MultipartFile> multimediaFiles,@RequestParam("selectedCategorie") List<Long> cat)
+    public RedirectView updatedPress(@PathVariable Long id,@ModelAttribute  Presse updatePress,@RequestParam("profilFiles") List<MultipartFile> multimediaFiles,@RequestParam("selectedCategorie") Optional<Long> cat)
     {
         Presse presse = this.presseService.findPresseById(id);
       // Optional<Multimedia> multimedia=this.multimediaService.findFirstByEtablissement(etablissement);
        Optional<Presse> existingPress = this.presseService.findById(id);
+       System.out.println(cat+" testing");
        Boolean  check= this.presseService.updateDataPresse(updatePress,id,existingPress,multimediaFiles,cat);
        //return "authenticated/etablissement/etablissementsEdit.html";
        return new RedirectView("/presse/presses");
