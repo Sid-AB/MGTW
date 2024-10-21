@@ -183,13 +183,20 @@
                     <div class="portfolio-info">
                         <h3 th:text="#{carattech}">الخصائص التقنية</h3>
                         <ul th:if="${radio.getCaracteristiqueList()}" th:each="caracteristique : ${radio.getCaracteristiqueList()}">
-                            <li>
-                                <strong th:text="#{satellite}">القمر الصناعي</strong>: &nbsp;
-                                <span th:text="${caracteristique.getSatellite()}"></span>
-                                <span th:if="${ radio.getFax() == ' ' || radio.getFax() == null ||radio.getFax() == 'غير متوفر' }">
+                         
+                                <li>
+                                    <span style="display: flex; align-items: center;">
+                                        <strong th:text="#{satellite} + ':'">القمر الصناعي</strong>&nbsp;
+                                        <span th:text="${#locale.language == 'ar' && #strings.equals(caracteristique.getSatellite(), 'Nilesat') ? 'نايل سات' 
+                                        : (#locale.language == 'ar' && #strings.equals(caracteristique.getSatellite(), 'Eutelsat') ? 'اوتيلسات' 
+                                        : caracteristique.getSatellite())}"></span>
+                      </span>
+                                </li>
+                           
+                                <!--span th:if="${ radio.getFax() == ' ' || radio.getFax() == null ||radio.getFax() == 'غير متوفر' }">
                                     <span th:text="#{faxNotAvailable}">رقم الفاكس غير متوفر</span>
-                                </span>
-                            </li>
+                                </span-->
+                          
                             <!-- <li>
                                 <strong th:text="#{website}">الموقع الإلكتروني</strong>: 
                                 <a th:href="${radio.getWebsite()}" th:text="${radio.getWebsite()}" target="_blank"></a>
@@ -210,7 +217,12 @@
                             </li>
                             <li>
                                 <strong th:text="#{polarization}">الاستقطاب</strong>: &nbsp;
-                                <span th:text="${caracteristique.getPolarization()}"></span>
+                                <span th:text="${#locale.language == 'fr' && #strings.equals(caracteristique.getPolarization(), 'Horizontal') ? 'Horizontale' 
+                                : (#locale.language == 'fr' && #strings.equals(caracteristique.getPolarization(), 'Vertical') ? 'Verticale' 
+                                : (#locale.language == 'ar' && #strings.equals(caracteristique.getPolarization(), 'Horizontal') ? ' أفقي' 
+                                : (#locale.language == 'ar' && #strings.equals(caracteristique.getPolarization(), 'Vertical') ? 'عمودي' 
+                                : caracteristique.getPolarization())))}">
+                            </span>
                                 <span th:if="${ caracteristique.getPolarization() == ' ' || caracteristique.getPolarization() == null ||caracteristique.getPolarization() == 'غير متوفر' }">
                                     <span th:text="#{polarizationNotAvailable}">رقم الفاكس غير متوفر</span>
                                 </span>

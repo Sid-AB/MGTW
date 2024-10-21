@@ -1082,6 +1082,7 @@ section {
 .portfolio-description p{
 
   font-size: 20px;
+  text-align: justify;
 }
 .portfolio-details .portfolio-info h3 {
   font-size: 22px;
