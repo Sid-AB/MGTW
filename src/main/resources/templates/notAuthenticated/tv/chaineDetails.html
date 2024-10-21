@@ -186,9 +186,13 @@
                             <li>
                                 <span style="display: flex; align-items: center;">
                                     <strong  th:text="#{polarization}+':'">الاستقاب</strong> &nbsp;<!-- Espace pour séparer -->
-                                    <span th:text="${#locale.language == 'ar' && #strings.equals(caracteristique.getPolarization(), 'Horizontal') ? ' أفقي' 
+                                    <span th:text="${#locale.language == 'fr' && #strings.equals(caracteristique.getPolarization(), 'Horizontal') ? 'Horizontale' 
+                                    : (#locale.language == 'fr' && #strings.equals(caracteristique.getPolarization(), 'Vertical') ? 'Verticale' 
+                                    : (#locale.language == 'ar' && #strings.equals(caracteristique.getPolarization(), 'Horizontal') ? ' أفقي' 
                                     : (#locale.language == 'ar' && #strings.equals(caracteristique.getPolarization(), 'Vertical') ? 'عمودي' 
-                                    : caracteristique.getPolarization())}"></span>
+                                    : caracteristique.getPolarization())))}">
+                                </span>
+
                                     <span th:if="${ caracteristique.getPolarization() == ' ' || caracteristique.getPolarization() == null ||caracteristique.getPolarization() == 'غير متوفر' }">
                                         <span th:text="#{polarizationNotAvailable}">رقم الفاكس غير متوفر</span>
                                     </span>
