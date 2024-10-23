@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 -- Structure de la table `agrument`
 --
 
-DROP TABLE IF EXISTS `agrument`;
+/*DROP TABLE IF EXISTS `agrument`;*/
 CREATE TABLE IF NOT EXISTS `agrument` (
   `created_at` datetime(6) DEFAULT NULL,
   `id` bigint NOT NULL AUTO_INCREMENT,
@@ -243,7 +243,7 @@ INSERT INTO `complexe` (`created_at`, `id`, `updated_at`, `adresse`, `email`, `n
 -- Structure de la table `complexe_agrument`
 --
 
-DROP TABLE IF EXISTS `complexe_agrument`;
+/*DROP TABLE IF EXISTS `complexe_agrument`;*/
 CREATE TABLE IF NOT EXISTS `complexe_agrument` (
   `agrument_id` bigint NOT NULL,
   `complexe_id` bigint NOT NULL,
