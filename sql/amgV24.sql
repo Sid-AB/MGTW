@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le : mar. 22 oct. 2024 à 14:54
--- Version du serveur : 8.2.0
--- Version de PHP : 8.2.13
+-- Hôte : 127.0.0.1
+-- Généré le : mer. 23 oct. 2024 à 09:53
+-- Version du serveur : 10.4.32-MariaDB
+-- Version de PHP : 8.1.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `amg`
+-- Base de données : `amgv1`
 --
 
 -- --------------------------------------------------------
@@ -27,15 +27,13 @@ SET time_zone = "+00:00";
 -- Structure de la table `agrument`
 --
 
-DROP TABLE IF EXISTS `agrument`;
-CREATE TABLE IF NOT EXISTS `agrument` (
+CREATE TABLE `agrument` (
   `created_at` datetime(6) DEFAULT NULL,
-  `id` bigint NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) NOT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `name` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `agrument`
@@ -53,24 +51,20 @@ INSERT INTO `agrument` (`created_at`, `id`, `updated_at`, `name`, `description`)
 -- Structure de la table `caracteristique`
 --
 
-DROP TABLE IF EXISTS `caracteristique`;
-CREATE TABLE IF NOT EXISTS `caracteristique` (
+CREATE TABLE `caracteristique` (
   `created_at` datetime(6) DEFAULT NULL,
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `radio_id` bigint DEFAULT NULL,
-  `tv_id` bigint DEFAULT NULL,
+  `id` bigint(20) NOT NULL,
+  `radio_id` bigint(20) DEFAULT NULL,
+  `tv_id` bigint(20) DEFAULT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
-  `fec` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `frequency` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `modulation` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `polarization` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `satellite` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `symbolrate` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `transmission` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK6lrlshlcqe75wn0cqobxwos3k` (`radio_id`),
-  KEY `FK5d7jdnxcusvdaulf94k706dvv` (`tv_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=938 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `fec` varchar(255) DEFAULT NULL,
+  `frequency` varchar(255) DEFAULT NULL,
+  `modulation` varchar(255) DEFAULT NULL,
+  `polarization` varchar(255) DEFAULT NULL,
+  `satellite` varchar(255) DEFAULT NULL,
+  `symbolrate` varchar(255) DEFAULT NULL,
+  `transmission` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `caracteristique`
@@ -154,16 +148,14 @@ INSERT INTO `caracteristique` (`created_at`, `id`, `radio_id`, `tv_id`, `updated
 -- Structure de la table `categorie_chaine`
 --
 
-DROP TABLE IF EXISTS `categorie_chaine`;
-CREATE TABLE IF NOT EXISTS `categorie_chaine` (
+CREATE TABLE `categorie_chaine` (
   `created_at` datetime(6) DEFAULT NULL,
-  `id` bigint NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) NOT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name_en` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name_fr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `name` varchar(255) DEFAULT NULL,
+  `name_en` varchar(255) DEFAULT NULL,
+  `name_fr` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `categorie_chaine`
@@ -184,26 +176,24 @@ INSERT INTO `categorie_chaine` (`created_at`, `id`, `updated_at`, `name`, `name_
 -- Structure de la table `complexe`
 --
 
-DROP TABLE IF EXISTS `complexe`;
-CREATE TABLE IF NOT EXISTS `complexe` (
+CREATE TABLE `complexe` (
   `created_at` datetime(6) DEFAULT NULL,
-  `id` bigint NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) NOT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
-  `adresse` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `site` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `adresse_en` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `adresse_fr` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_en` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_fr` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `name_en` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name_fr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `adresse` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `site` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `adresse_en` text DEFAULT NULL,
+  `adresse_fr` text DEFAULT NULL,
+  `description_en` text DEFAULT NULL,
+  `description_fr` text DEFAULT NULL,
+  `name_en` varchar(255) DEFAULT NULL,
+  `name_fr` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `complexe`
@@ -243,12 +233,9 @@ INSERT INTO `complexe` (`created_at`, `id`, `updated_at`, `adresse`, `email`, `n
 -- Structure de la table `complexe_agrument`
 --
 
-DROP TABLE IF EXISTS `complexe_agrument`;
-CREATE TABLE IF NOT EXISTS `complexe_agrument` (
-  `agrument_id` bigint NOT NULL,
-  `complexe_id` bigint NOT NULL,
-  KEY `FKaaq6ue4im06m21545xapadpdi` (`agrument_id`),
-  KEY `FKcx832gfsnj6t4617ayn6a6gk2` (`complexe_id`)
+CREATE TABLE `complexe_agrument` (
+  `agrument_id` bigint(20) NOT NULL,
+  `complexe_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -303,22 +290,20 @@ INSERT INTO `complexe_agrument` (`agrument_id`, `complexe_id`) VALUES
 -- Structure de la table `direction`
 --
 
-DROP TABLE IF EXISTS `direction`;
-CREATE TABLE IF NOT EXISTS `direction` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `email_directeur` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `nom_directeur` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `nom_direction` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `phone_directeur` int DEFAULT NULL,
-  `prenom_directeur` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `nom_directeur_en` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `nom_directeur_fr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `nom_direction_en` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `nom_direction_fr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `prenom_directeur_en` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `prenom_directeur_fr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `direction` (
+  `id` bigint(20) NOT NULL,
+  `email_directeur` varchar(255) DEFAULT NULL,
+  `nom_directeur` varchar(255) DEFAULT NULL,
+  `nom_direction` varchar(255) DEFAULT NULL,
+  `phone_directeur` int(11) DEFAULT NULL,
+  `prenom_directeur` varchar(255) DEFAULT NULL,
+  `nom_directeur_en` varchar(255) DEFAULT NULL,
+  `nom_directeur_fr` varchar(255) DEFAULT NULL,
+  `nom_direction_en` varchar(255) DEFAULT NULL,
+  `nom_direction_fr` varchar(255) DEFAULT NULL,
+  `prenom_directeur_en` varchar(255) DEFAULT NULL,
+  `prenom_directeur_fr` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `direction`
@@ -341,33 +326,30 @@ INSERT INTO `direction` (`id`, `email_directeur`, `nom_directeur`, `nom_directio
 -- Structure de la table `etablissement`
 --
 
-DROP TABLE IF EXISTS `etablissement`;
-CREATE TABLE IF NOT EXISTS `etablissement` (
-  `complexe_id` bigint DEFAULT NULL,
+CREATE TABLE `etablissement` (
+  `complexe_id` bigint(20) DEFAULT NULL,
   `created_at` datetime(6) DEFAULT NULL,
-  `id` bigint NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) NOT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
-  `adresse` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `fax` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `site` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `localisation` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_en` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_fr` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `name_fr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name_en` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `adresse_en` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `adresse_fr` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `localisation_en` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `localisation_fr` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `type_etablissmnt` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UK_80odl28njpub882o8qo5u35yg` (`complexe_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1566 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `adresse` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `fax` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `site` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `localisation` text DEFAULT NULL,
+  `description_en` text DEFAULT NULL,
+  `description_fr` text DEFAULT NULL,
+  `name_fr` varchar(255) DEFAULT NULL,
+  `name_en` varchar(255) DEFAULT NULL,
+  `adresse_en` text DEFAULT NULL,
+  `adresse_fr` text DEFAULT NULL,
+  `localisation_en` text DEFAULT NULL,
+  `localisation_fr` text DEFAULT NULL,
+  `type_etablissmnt` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `etablissement`
@@ -393,15 +375,13 @@ INSERT INTO `etablissement` (`complexe_id`, `created_at`, `id`, `updated_at`, `a
 -- Structure de la table `event_publication`
 --
 
-DROP TABLE IF EXISTS `event_publication`;
-CREATE TABLE IF NOT EXISTS `event_publication` (
+CREATE TABLE `event_publication` (
   `id` binary(16) NOT NULL,
   `completion_date` datetime(6) DEFAULT NULL,
-  `event_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `listener_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `event_type` varchar(255) DEFAULT NULL,
+  `listener_id` varchar(255) DEFAULT NULL,
   `publication_date` datetime(6) DEFAULT NULL,
-  `serialized_event` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `serialized_event` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -410,19 +390,17 @@ CREATE TABLE IF NOT EXISTS `event_publication` (
 -- Structure de la table `lois`
 --
 
-DROP TABLE IF EXISTS `lois`;
-CREATE TABLE IF NOT EXISTS `lois` (
+CREATE TABLE `lois` (
   `created_at` datetime(6) DEFAULT NULL,
-  `id` bigint NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) NOT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_en` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_fr` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `name_en` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name_fr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `name` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `description_en` text DEFAULT NULL,
+  `description_fr` text DEFAULT NULL,
+  `name_en` varchar(255) DEFAULT NULL,
+  `name_fr` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `lois`
@@ -439,23 +417,20 @@ INSERT INTO `lois` (`created_at`, `id`, `updated_at`, `name`, `description`, `de
 -- Structure de la table `minister`
 --
 
-DROP TABLE IF EXISTS `minister`;
-CREATE TABLE IF NOT EXISTS `minister` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+CREATE TABLE `minister` (
+  `id` bigint(20) NOT NULL,
+  `address` varchar(255) DEFAULT NULL,
   `birthday` date DEFAULT NULL,
-  `first_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `last_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
   `start_from` date DEFAULT NULL,
   `until` date DEFAULT NULL,
-  `profile_picture_id` bigint DEFAULT NULL,
-  `first_name_fr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `formatted_start_from` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `formatted_until` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `last_name_fr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UK_eqosespnllwcj7bdqatuc4uyb` (`profile_picture_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `profile_picture_id` bigint(20) DEFAULT NULL,
+  `first_name_fr` varchar(255) DEFAULT NULL,
+  `formatted_start_from` varchar(255) DEFAULT NULL,
+  `formatted_until` varchar(255) DEFAULT NULL,
+  `last_name_fr` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `minister`
@@ -506,32 +481,23 @@ INSERT INTO `minister` (`id`, `address`, `birthday`, `first_name`, `last_name`, 
 -- Structure de la table `multimedia`
 --
 
-DROP TABLE IF EXISTS `multimedia`;
-CREATE TABLE IF NOT EXISTS `multimedia` (
+CREATE TABLE `multimedia` (
   `created_at` datetime(6) DEFAULT NULL,
-  `etablissement_id` bigint DEFAULT NULL,
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `presse_id` bigint DEFAULT NULL,
-  `radio_id` bigint DEFAULT NULL,
-  `text_juridique_id` bigint DEFAULT NULL,
-  `tv_id` bigint DEFAULT NULL,
+  `etablissement_id` bigint(20) DEFAULT NULL,
+  `id` bigint(20) NOT NULL,
+  `presse_id` bigint(20) DEFAULT NULL,
+  `radio_id` bigint(20) DEFAULT NULL,
+  `text_juridique_id` bigint(20) DEFAULT NULL,
+  `tv_id` bigint(20) DEFAULT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
-  `user_id` bigint DEFAULT NULL,
-  `doc_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `file_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `file_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `fromtable` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `minister_id` bigint DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK430s9iwxejdhgykl5mksxiwnc` (`etablissement_id`),
-  KEY `FKthv4bidn8m41cugevxi64rhhb` (`presse_id`),
-  KEY `FK6ke2068jfg5ygjmey2u59r39o` (`radio_id`),
-  KEY `FKg0hfeer38vyuwtit258wamuce` (`text_juridique_id`),
-  KEY `FK841iiluy2pexb2qg6exqhbws0` (`tv_id`),
-  KEY `FKqetdote85qjqxe9namkmfygww` (`user_id`),
-  KEY `FKs37vceteeeh5w6sf235bk8rtm` (`minister_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=412 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `user_id` bigint(20) DEFAULT NULL,
+  `doc_type` varchar(255) DEFAULT NULL,
+  `file_name` varchar(255) DEFAULT NULL,
+  `file_path` varchar(255) DEFAULT NULL,
+  `fromtable` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `minister_id` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `multimedia`
@@ -806,32 +772,29 @@ INSERT INTO `multimedia` (`created_at`, `etablissement_id`, `id`, `presse_id`, `
 -- Structure de la table `presse`
 --
 
-DROP TABLE IF EXISTS `presse`;
-CREATE TABLE IF NOT EXISTS `presse` (
-  `complexe_id` bigint DEFAULT NULL,
+CREATE TABLE `presse` (
+  `complexe_id` bigint(20) DEFAULT NULL,
   `created_at` datetime(6) DEFAULT NULL,
-  `id` bigint NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) NOT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
-  `adresse` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `categorieelec` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `fax` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `localisation` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `site` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `typepbpr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `website` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `adresse_en` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `adresse_fr` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_en` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_fr` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `name_en` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name_fr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FKaoretyhavt4aqy7vilaxfydp8` (`complexe_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1119 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `adresse` varchar(255) DEFAULT NULL,
+  `categorieelec` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `fax` varchar(255) DEFAULT NULL,
+  `localisation` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `site` varchar(255) DEFAULT NULL,
+  `typepbpr` varchar(255) DEFAULT NULL,
+  `website` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `adresse_en` text DEFAULT NULL,
+  `adresse_fr` text DEFAULT NULL,
+  `description_en` text DEFAULT NULL,
+  `description_fr` text DEFAULT NULL,
+  `name_en` varchar(255) DEFAULT NULL,
+  `name_fr` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `presse`
@@ -958,19 +921,17 @@ INSERT INTO `presse` (`complexe_id`, `created_at`, `id`, `updated_at`, `adresse`
 -- Structure de la table `presse_categorie`
 --
 
-DROP TABLE IF EXISTS `presse_categorie`;
-CREATE TABLE IF NOT EXISTS `presse_categorie` (
+CREATE TABLE `presse_categorie` (
   `created_at` datetime(6) DEFAULT NULL,
-  `id` bigint NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) NOT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `descriptio_en` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_fr` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `name_en` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name_fr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `name` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `descriptio_en` text DEFAULT NULL,
+  `description_fr` text DEFAULT NULL,
+  `name_en` varchar(255) DEFAULT NULL,
+  `name_fr` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `presse_categorie`
@@ -988,11 +949,9 @@ INSERT INTO `presse_categorie` (`created_at`, `id`, `updated_at`, `name`, `descr
 -- Structure de la table `presse_pressecatrgorie`
 --
 
-DROP TABLE IF EXISTS `presse_pressecatrgorie`;
-CREATE TABLE IF NOT EXISTS `presse_pressecatrgorie` (
-  `presse_id` bigint NOT NULL,
-  `pressecatrgorie_id` bigint NOT NULL,
-  KEY `FKjq9h8cefjywb5f7ux0ywu8279` (`pressecatrgorie_id`)
+CREATE TABLE `presse_pressecatrgorie` (
+  `presse_id` bigint(20) NOT NULL,
+  `pressecatrgorie_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -1113,32 +1072,29 @@ INSERT INTO `presse_pressecatrgorie` (`presse_id`, `pressecatrgorie_id`) VALUES
 -- Structure de la table `radio`
 --
 
-DROP TABLE IF EXISTS `radio`;
-CREATE TABLE IF NOT EXISTS `radio` (
-  `complexe_id` bigint DEFAULT NULL,
+CREATE TABLE `radio` (
+  `complexe_id` bigint(20) DEFAULT NULL,
   `created_at` datetime(6) DEFAULT NULL,
-  `id` bigint NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) NOT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
-  `adresse` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `categorie` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `fax` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `localisation` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `streaminglink` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `website` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `adresse_en` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `adresse_fr` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_en` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_fr` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `name_en` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name_fr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FKisi1wxcawcfe4irb6mdvwp1mt` (`complexe_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2067 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `adresse` varchar(255) DEFAULT NULL,
+  `categorie` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `fax` varchar(255) DEFAULT NULL,
+  `localisation` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `streaminglink` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `website` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `adresse_en` text DEFAULT NULL,
+  `adresse_fr` text DEFAULT NULL,
+  `description_en` text DEFAULT NULL,
+  `description_fr` text DEFAULT NULL,
+  `name_en` varchar(255) DEFAULT NULL,
+  `name_fr` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `radio`
@@ -1146,62 +1102,62 @@ CREATE TABLE IF NOT EXISTS `radio` (
 
 INSERT INTO `radio` (`complexe_id`, `created_at`, `id`, `updated_at`, `adresse`, `categorie`, `email`, `fax`, `localisation`, `name`, `phone`, `streaminglink`, `type`, `website`, `description`, `adresse_en`, `adresse_fr`, `description_en`, `description_fr`, `name_en`, `name_fr`) VALUES
 (4, '2024-04-23 15:59:59.000000', 1996, '2024-10-07 23:01:03.187673', '21 شارع الشهداء الجزائر العاصمة', 'national', 'chaine1@radioalgerie.dz', '+213 21 69 12 19', '21 شارع الشهداء الجزائر العاصمة', 'الإذاعة الجزائرية القناة الأولى ', '+213 21 69 12 19', 'https://webradio.tda.dz/Chaine1_64K.mp3', 'public', 'https://my.radioalgerie.dz/fr/chaine1', 'قناة الجزائر الأولى هي محطة إذاعية جزائرية عامة للتعبير العربي وهي جزء من الإذاعة الجزائرية. ويقدم كل يوم ثلاثين لقاء من الخدمات الإعلامية والإنتاجية والرياضية.', '21 Martyrs Street, Algiers', '21 rue des Martyrs, Alger', 'Algeria channel 1 is a general Algerian radio station of Arabic expression and is part of Algerian Radio. It offers thirty daily segments of news, production, and sports services.', 'Canal Algérie 1 est une station de radio publique algérienne d\'expression arabe, considérée comme une partie intégrante de la radio algérienne. Cette chaine assure quotidiennement une trentaine de rendez-vous des services médiatiques, productifs et sportifs', '', 'Chaine 1'),
-(4, '2024-04-24 10:28:58.000000', 1998, '2024-10-07 23:01:43.864013', '21 شارع الشهداء الجزائر العاصمة', 'national', 'chaine2@radioalgerie.dz', '+213 23 5', '21 شارع الشهداء الجزائر العاصمة', ' الإذاعة الجزائرية القناة الثانية', '+213 23 5', 'https://my.radioalgerie.dz/player/chaine2.html', 'public', 'https://my.radioalgerie.dz/ar/chaine2', '.هي محطة إذاعية جزائرية تبث باللغة الأمازيغية', '21 Martyrs Street, Algiers', '21 rue des Martyrs, Alger', 'An Algerian radio station broadcasting in the Amazigh language.', 'Une station de radio algérienne d’expression berbère (Amazigh)', '', 'chaine2'),
+(4, '2024-04-24 10:28:58.000000', 1998, '2024-10-07 23:01:43.864013', '21 شارع الشهداء الجزائر العاصمة', 'national', 'chaine2@radioalgerie.dz', '+213 23 50 03 01', '21 شارع الشهداء الجزائر العاصمة', ' الإذاعة الجزائرية القناة الثانية', '+213 23 50 03 01', 'https://my.radioalgerie.dz/player/chaine2.html', 'public', 'https://my.radioalgerie.dz/ar/chaine2', '.هي محطة إذاعية جزائرية تبث باللغة الأمازيغية', '21 Martyrs Street, Algiers', '21 rue des Martyrs, Alger', 'An Algerian radio station broadcasting in the Amazigh language.', 'Une station de radio algérienne d’expression berbère (Amazigh)', '', 'chaine2'),
 (4, '2024-04-24 10:39:47.000000', 1999, '2024-10-07 23:02:51.080455', '21 شارع الشهداء الجزائر العاصمة', 'national', 'chaine3@radioalgerie.dz', '+213 21 48 15 15', '21 شارع الشهداء الجزائر العاصمة', 'الإذاعة الجزائرية القناة الثالثة', '+213 21 48 15 15', 'https://my.radioalgerie.dz/player/chaine3.html', 'public', 'https://my.radioalgerie.dz/ar/chaine3', 'هي محطة إذاعية جزائرية تبث برامجها باللغة الفرنسية.', '21 Martyrs Street, Algiers', '21 rue des Martyrs, Alger', 'An Algerian radio station that broadcasts its programs in French.', 'Une station de radio algérienne d’expression française.', 'Channel 3', 'chaine3'),
-(4, '2024-04-24 10:45:28.000000', 2000, '2024-10-07 23:03:51.063275', '21 شارع الشهداء الجزائر العاصمة', 'national', 'radioalgerie@gmail.com', '+213 23 5', '21 شارع الشهداء الجزائر العاصمة', 'إذاعة الجزائر الدولية', '+213 23 5', 'https://my.radioalgerie.dz/player/rai.html', 'public', 'https://my.radioalgerie.dz/ar/rai', 'إذاعة الجزائر الدولية هي إذاعة جزائرية بدأت بث برامجها في 19 مارس 2007، وتبث برامجها يومياً من منتصف النهار وحتى منتصف الليل بتوقيت الجزائر، مستخدمة الموجة القصيرة محليا، في حين تتوجه إلى البلدان العربية عبر القمرين الصناعيين عربسات ونايل سات، وللدول الأفريقية عبر قمر إن إن إس 7، ولأوروبا عبر قمر هوتبيرد، وأميركا الشمالية عبر غالاكسي. وتعتمد الإذاعة العربية كلغة رئيسية للتواصل، إضافة إلى بثها باللغات الفرنسية والإنجليزية والإسبانية، تبث إذاعة الجزائر الدولية برامج إخبارية متنوعة، سياسية واقتصادية ورياضية إلى جانب تحاليل وطنية ودولية..', '21 Martyrs Street, Algiers', '21 rue des Martyrs, Alger', 'Radio Algeria International is an Algerian radio station that began broadcasting its programs on March 19, 2007, broadcasting daily from noon to midnight, Algerian time, using shortwave locally. The station reaches Arab countries via the Arabsat and Nilesat satellites, African countries via the NSS 7 satellite, Europe via Hotbird, and North America via Galaxy. Arabic is the main language of communication, along with broadcasts in French, English, and Spanish. Radio Algeria International offers a variety of news, political, economic, and sports programs, as well as national and international analysis.', 'Radio Algérie Internationale est une radio algérienne qui a commencé à diffuser ses programmes le 19 mars 2007, elle propose une programmation quotidienne diffusant ses contenus de midi à minuit, heure d\'Algérie. Elle émet sur ondes courtes localement, tout en atteignant les pays arabes via les satellites Arabsat et Nilesat, et les pays africains via le satellite NN S7, l\'Europe par le satellite Hotbird et l\'Amérique du Nord via Galaxy. Radio Algérie utilise la langue arabe comme langue principale de communication, par ailleurs au français, à anglais et à l’espagnol. Radio Algérie Internationale propose une variété de programmes couvrant l\'information, la politique, l’économie et le sport, tout en offrant des analyses nationales et internationales. ', 'Radio Algeria International', 'Radio Algérie Internationale '),
-(4, '2024-04-24 10:50:55.000000', 2001, '2024-10-07 23:04:52.464637', '2 شارع فريد زويوش، القبة، الجزائر العاصمة، الجزائر', 'national', 'radiocoran2022@gmail.com', '+213 23 7', '2 شارع فريد زويوش، القبة، الجزائر العاصمة، الجزائر', 'إذاعة القرآن الكريم', '+213 23 7', 'https://my.radioalgerie.dz/player/coran.html', 'public', 'https://my.radioalgerie.dz/coran', 'إذاعة القرآن الكريم هي إذاعة جزائرية تقوم بتقديم برامج دينية مختلفة كالدروس و المواعظ تلاوات للقرآن الكريم', '2 Farid Zouiche Street, Kouba, Algiers, Algeria', '2 rue Farid Zoyoush, Kobba, Alger, Algérie', 'Radio Quran is an Algerian radio station that offers various religious programs such as lessons, sermons, and Quran recitations', 'Radio Coran est une radio algérienne dédiée à la diffusion de divers programmes religieux, proposant des cours, des sermons et des récitations du Saint Coran.', 'Coran Channel', 'Radio Coran '),
-(4, '2024-04-24 11:08:28.000000', 2002, '2024-10-07 23:05:55.351503', '21 شارع الشهداء الجزائر العاصمة', 'national', 'radioalgerie@gmail.com', '+213 23 5', '21 شارع الشهداء الجزائر العاصمة', 'الإذاعة الثقافية', '+213 23 5', 'https://my.radioalgerie.dz/player/culture.html', 'public', 'https://my.radioalgerie.dz/ar/culture', 'الإذاعة الثقافية هي إذاعة جزائرية وكما يدل اسمها تقوم بتقديم برامج وحصص تثقيفية متنوعة.', '2 Farid Zouiche Street, Kouba, Algiers, Algeria', '2 rue Farid Zoyoush, Kobba, Alger, Algérie', 'Radio Culture is an Algerian radio station that, as its name suggests, offers a variety of educational and cultural programs.', 'Radio Culture est une radio algérienne, qui, comme son nom l\'indique, se consacre à la diffusion de programmes et de cours éducatifs variés.', 'Radio Culture', 'Radio Culture'),
+(4, '2024-04-24 10:45:28.000000', 2000, '2024-10-07 23:03:51.063275', '21 شارع الشهداء الجزائر العاصمة', 'national', 'radioalgerie@gmail.com', '+213 23 50 03 01', '21 شارع الشهداء الجزائر العاصمة', 'إذاعة الجزائر الدولية', '+213 23 50 03 01', 'https://my.radioalgerie.dz/player/rai.html', 'public', 'https://my.radioalgerie.dz/ar/rai', 'إذاعة الجزائر الدولية هي إذاعة جزائرية بدأت بث برامجها في 19 مارس 2007، وتبث برامجها يومياً من منتصف النهار وحتى منتصف الليل بتوقيت الجزائر، مستخدمة الموجة القصيرة محليا، في حين تتوجه إلى البلدان العربية عبر القمرين الصناعيين عربسات ونايل سات، وللدول الأفريقية عبر قمر إن إن إس 7، ولأوروبا عبر قمر هوتبيرد، وأميركا الشمالية عبر غالاكسي. وتعتمد الإذاعة العربية كلغة رئيسية للتواصل، إضافة إلى بثها باللغات الفرنسية والإنجليزية والإسبانية، تبث إذاعة الجزائر الدولية برامج إخبارية متنوعة، سياسية واقتصادية ورياضية إلى جانب تحاليل وطنية ودولية..', '21 Martyrs Street, Algiers', '21 rue des Martyrs, Alger', 'Radio Algeria International is an Algerian radio station that began broadcasting its programs on March 19, 2007, broadcasting daily from noon to midnight, Algerian time, using shortwave locally. The station reaches Arab countries via the Arabsat and Nilesat satellites, African countries via the NSS 7 satellite, Europe via Hotbird, and North America via Galaxy. Arabic is the main language of communication, along with broadcasts in French, English, and Spanish. Radio Algeria International offers a variety of news, political, economic, and sports programs, as well as national and international analysis.', 'Radio Algérie Internationale est une radio algérienne qui a commencé à diffuser ses programmes le 19 mars 2007, elle propose une programmation quotidienne diffusant ses contenus de midi à minuit, heure d\'Algérie. Elle émet sur ondes courtes localement, tout en atteignant les pays arabes via les satellites Arabsat et Nilesat, et les pays africains via le satellite NN S7, l\'Europe par le satellite Hotbird et l\'Amérique du Nord via Galaxy. Radio Algérie utilise la langue arabe comme langue principale de communication, par ailleurs au français, à anglais et à l’espagnol. Radio Algérie Internationale propose une variété de programmes couvrant l\'information, la politique, l’économie et le sport, tout en offrant des analyses nationales et internationales. ', 'Radio Algeria International', 'Radio Algérie Internationale '),
+(4, '2024-04-24 10:50:55.000000', 2001, '2024-10-07 23:04:52.464637', '2 شارع فريد زويوش، القبة، الجزائر العاصمة، الجزائر', 'national', 'radiocoran2022@gmail.com', '+213 23 70 90 12', '2 شارع فريد زويوش، القبة، الجزائر العاصمة، الجزائر', 'إذاعة القرآن الكريم', '+213 23 70 90 12', 'https://my.radioalgerie.dz/player/coran.html', 'public', 'https://my.radioalgerie.dz/coran', 'إذاعة القرآن الكريم هي إذاعة جزائرية تقوم بتقديم برامج دينية مختلفة كالدروس و المواعظ تلاوات للقرآن الكريم', '2 Farid Zouiche Street, Kouba, Algiers, Algeria', '2 rue Farid Zoyoush, Kobba, Alger, Algérie', 'Radio Quran is an Algerian radio station that offers various religious programs such as lessons, sermons, and Quran recitations', 'Radio Coran est une radio algérienne dédiée à la diffusion de divers programmes religieux, proposant des cours, des sermons et des récitations du Saint Coran.', 'Coran Channel', 'Radio Coran '),
+(4, '2024-04-24 11:08:28.000000', 2002, '2024-10-07 23:05:55.351503', '21 شارع الشهداء الجزائر العاصمة', 'national', 'radioalgerie@gmail.com', '+213 23 50 03 01', '21 شارع الشهداء الجزائر العاصمة', 'الإذاعة الثقافية', '+213 23 50 03 01', 'https://my.radioalgerie.dz/player/culture.html', 'public', 'https://my.radioalgerie.dz/ar/culture', 'الإذاعة الثقافية هي إذاعة جزائرية وكما يدل اسمها تقوم بتقديم برامج وحصص تثقيفية متنوعة.', '2 Farid Zouiche Street, Kouba, Algiers, Algeria', '2 rue Farid Zoyoush, Kobba, Alger, Algérie', 'Radio Culture is an Algerian radio station that, as its name suggests, offers a variety of educational and cultural programs.', 'Radio Culture est une radio algérienne, qui, comme son nom l\'indique, se consacre à la diffusion de programmes et de cours éducatifs variés.', 'Radio Culture', 'Radio Culture'),
 (4, '2024-04-24 11:13:01.000000', 2003, '2024-10-07 23:07:13.064049', '12 شارع شكسبير المرادية 16209', 'local', 'jilfm@algerian-radio.dz', '+213 23 47 37 37', '12 شارع شكسبير المرادية 16209', 'جيل أف أم', '+213 23 47 37 37', 'https://my.radioalgerie.dz/player/jilfm.html ', 'public', ' https://my.radioalgerie.dz/ar/jilfm', 'جيل أف أم هي إذاعة محلية بالجزائر تبث برامجها باللغة العربية وباللغة الفرنسية ', '12 Shakespeare Street, El Mouradia 16209', '12 rue Shakespeare, Muradiya 16209', 'Jil FM is a local Algerian radio station that broadcasts its programs in Arabic and French.', 'Jil FM est une station de radio locale algérienne qui propose une programmation variée en arabe et en français.', 'Jil FM', 'Jil FM'),
-(4, '2024-04-24 11:15:44.000000', 2004, '2024-10-07 23:08:30.800202', '02 شارع فريد زوياش القبة، القبة، الجزائر العاصمة، الجزائر', 'national', 'radioalgerie@gmail.com', '+213 23 7', '02 شارع فريد زوياش القبة، القبة، الجزائر العاصمة، الجزائر', 'إذاعة البهجة', '+213 23 7', 'https://my.radioalgerie.dz/player/bahdja.html', 'public', 'https://my.radioalgerie.dz/ar/bahdja', 'إذاعة البهجة هي إذاعة الجزائريين المفضلة. تبث الإذاعة برامجها من العاصمة الجزائرية و هي برامج متنوعة ذات نوعية جيدة و راقية تلقى الإعجاب و الإستماع لدى العديد من المستمعين الجزائريين', '02 Farid Ziyech Street, Kouba, Kouba, Algiers, Algeria', '02 rue Farid Ziyash Al-Kouba, Al-Kouba, Alger, Algérie', 'Radio El Bahdja is the favorite radio station of Algerians. It broadcasts its programs from the Algerian capital and offers a variety of high-quality and sophisticated programs that are well-liked and listened to by many Algerian listeners.', 'Radio Al Bahja est la radio préférée des Algériens. Emettant depuis la capitale algérienne, elle offre une programmation diversifiée, reconnue pour sa qualité exceptionnelle, en plus de séduire un grand nombre d’auditeurs algériens.', 'Radio Al Bahja ', 'Radio Al Bahja '),
-(4, '2024-04-24 11:18:34.000000', 2005, '2024-10-07 23:09:11.062835', '21 شارع الشهداء الجزائر العاصمة', 'national', 'radioalgerie@gmail.com', '+213 23 5', '21 شارع الشهداء الجزائر العاصمة', 'زمان FM', '+213 23 5', 'https://my.radioalgerie.dz/player/zamanfm.html', 'public', 'https://my.radioalgerie.dz/ar/zamanfm', 'زمان راديو إف إم\" تعنى بتثمين وتعريف المستمعين بالحصص و البرامج الإذاعية ', '21 Martyrs Street, Algiers', '21 rue des Martyrs, Alger', 'Zaman FM Radio aims to promote and introduce listeners to the radio shows and programs.', 'Radio Zaman FM s’engage à valoriser et à faire découvrir à ses auditeurs des cours et des programmes radiophoniques.', 'Radio Zaman FM', 'Radio Zaman FM'),
-(4, '2024-04-24 11:33:53.000000', 2006, '2024-10-07 23:10:04.853931', 'شارع الشهيد سعيدي 309 تيليلان 01000 أدرار، الجزائر.', 'local', 'radioadrar2017@gmail.com', '+213 49 36 89 ', 'شارع الشهيد سعيدي 309 تيليلان 01000 أدرار، الجزائر.', ' 01-أدرار', '+213 49 36 89 ', 'https://static.infomaniak.ch/infomaniak/radio/html/ufc_player.html', 'public', 'https://radioalgerie.dz/player/fr/content/ufc', 'إذاعة أدرار هي إذاعة محلية تبث من منطقة أدرار بالجزائر منذ سنة 1995. تقترح العديد من البرامج الإخبارية و الثقافية و الترفيهية. تحضى باستحسان العديد من المستمعين و خاصة من تلك الجهة', '309 Shahid Saidi Street, Tililane, 01000 Adrar, Algeria.', 'Rue Chahid Saidi, 309 Tililan, 01000 Adrar, Algérie.', 'Adrar Radio is a local radio station broadcasting from the Adrar region of Algeria since 1995. It offers various news, cultural, and entertainment programs. It is well-received by many listeners, especially from that region.', 'Radio Adrar est une radio locale émettant depuis 1995 dans la région d’Adrar en Algérie. Elle propose une programmation variée alliant information, culture et divertissement. Elle jouit notamment d’une bonne réputation auprès des auditeurs locaux. ', '01-ADRAR', '01-ADRAR'),
+(4, '2024-04-24 11:15:44.000000', 2004, '2024-10-07 23:08:30.800202', '02 شارع فريد زوياش القبة، القبة، الجزائر العاصمة، الجزائر', 'national', 'radioalgerie@gmail.com', '+213 23 70 90 90', '02 شارع فريد زوياش القبة، القبة، الجزائر العاصمة، الجزائر', 'إذاعة البهجة', '+213 23 70 90 90', 'https://my.radioalgerie.dz/player/bahdja.html', 'public', 'https://my.radioalgerie.dz/ar/bahdja', 'إذاعة البهجة هي إذاعة الجزائريين المفضلة. تبث الإذاعة برامجها من العاصمة الجزائرية و هي برامج متنوعة ذات نوعية جيدة و راقية تلقى الإعجاب و الإستماع لدى العديد من المستمعين الجزائريين', '02 Farid Ziyech Street, Kouba, Kouba, Algiers, Algeria', '02 rue Farid Ziyash Al-Kouba, Al-Kouba, Alger, Algérie', 'Radio El Bahdja is the favorite radio station of Algerians. It broadcasts its programs from the Algerian capital and offers a variety of high-quality and sophisticated programs that are well-liked and listened to by many Algerian listeners.', 'Radio Al Bahja est la radio préférée des Algériens. Emettant depuis la capitale algérienne, elle offre une programmation diversifiée, reconnue pour sa qualité exceptionnelle, en plus de séduire un grand nombre d’auditeurs algériens.', 'Radio Al Bahja ', 'Radio Al Bahja '),
+(4, '2024-04-24 11:18:34.000000', 2005, '2024-10-07 23:09:11.062835', '21 شارع الشهداء الجزائر العاصمة', 'national', 'radioalgerie@gmail.com', '+213 23 50 03 01', '21 شارع الشهداء الجزائر العاصمة', 'زمان FM', '+213 23 50 03 01', 'https://my.radioalgerie.dz/player/zamanfm.html', 'public', 'https://my.radioalgerie.dz/ar/zamanfm', 'زمان راديو إف إم\" تعنى بتثمين وتعريف المستمعين بالحصص و البرامج الإذاعية ', '21 Martyrs Street, Algiers', '21 rue des Martyrs, Alger', 'Zaman FM Radio aims to promote and introduce listeners to the radio shows and programs.', 'Radio Zaman FM s’engage à valoriser et à faire découvrir à ses auditeurs des cours et des programmes radiophoniques.', 'Radio Zaman FM', 'Radio Zaman FM'),
+(4, '2024-04-24 11:33:53.000000', 2006, '2024-10-07 23:10:04.853931', 'شارع الشهيد سعيدي 309 تيليلان 01000 أدرار، الجزائر.', 'local', 'radioadrar2017@gmail.com', '+213 49 36 89 03', 'شارع الشهيد سعيدي 309 تيليلان 01000 أدرار، الجزائر.', ' 01-أدرار', '+213 49 36 89 03', 'https://static.infomaniak.ch/infomaniak/radio/html/ufc_player.html', 'public', 'https://radioalgerie.dz/player/fr/content/ufc', 'إذاعة أدرار هي إذاعة محلية تبث من منطقة أدرار بالجزائر منذ سنة 1995. تقترح العديد من البرامج الإخبارية و الثقافية و الترفيهية. تحضى باستحسان العديد من المستمعين و خاصة من تلك الجهة', '309 Shahid Saidi Street, Tililane, 01000 Adrar, Algeria.', 'Rue Chahid Saidi, 309 Tililan, 01000 Adrar, Algérie.', 'Adrar Radio is a local radio station broadcasting from the Adrar region of Algeria since 1995. It offers various news, cultural, and entertainment programs. It is well-received by many listeners, especially from that region.', 'Radio Adrar est une radio locale émettant depuis 1995 dans la région d’Adrar en Algérie. Elle propose une programmation variée alliant information, culture et divertissement. Elle jouit notamment d’une bonne réputation auprès des auditeurs locaux. ', '01-ADRAR', '01-ADRAR'),
 (4, '2024-04-24 11:39:35.000000', 2007, '2024-10-07 23:10:44.791220', 'الشلف، الجزائر', 'local', 'radiochlef2018@gmail.com', '+213 27 77 48 63', 'الشلف، الجزائر', '02-الشلف', '+213 27 77 78 32', 'https://my.radioalgerie.dz/player/chlef.html', 'public', 'https://radioalgerie.dz/player/ar/live/02-Chlef', 'إذاعة الشلف هي إذاعة جزائرية محلية من الشلف تقترح العديد من البرامج الإخبارية و الثقافية و الموسيقية التي تشد اهتمام العديد من المستمعين و المستمعات و خاصة من تلك الجهة .', 'Chlef, Algeria', 'Chlef, Algérie', 'Chlef Radio is a local Algerian radio station that broadcasts from Chlef, offering a variety of news, cultural, and musical programs that capture the interest of many listeners, especially in the region.', 'Radio Chlef est une radio algérienne locale basée à Chlef, qui offre une riche palette de programmes d\'information, culturels et musicaux, suscitant un vif intérêt parmi les auditeurs notamment de cette région, hommes et femmes confondues. ', '02-Chlef', '02-Chlef'),
 (4, '2024-04-24 11:51:37.000000', 2008, '2024-10-07 23:11:28.064025', 'الأغواط، الجزائر', 'local', 'elguoual@yahoo.fr', '+213 29 14 53 86', 'الأغواط، الجزائر', '03-الأغواط', '+213 29 14 51 56', 'https://my.radioalgerie.dz/player/laghouat.html', 'public', 'https://radioalgerie.dz/player/ar/live/03-Laghouat', 'إذاعة الأغواط هي إذاعة جزائرية محلية تخصص محتوى برامجها لاكتشاف و نشر التراث و الثقافة الجزائرية و العادات و التقاليد الخاصة بالجزائر و تلك الجهة خصوصا .', 'Laghouat, Algeria', 'Laghouat, Algérie', 'Laghouat Radio is a local Algerian radio station that dedicates its program content to discovering and promoting Algerian heritage, culture, and the specific customs and traditions of Algeria, particularly in that region.', 'Radio Laghouat est une radio locale algérienne dédiée à la valorisation du patrimoine et de la culture algérienne, ses programmes mettent en lumière les coutumes et les traditions tant au niveau national qu’au niveau régional.', '03-Aghouate', '03-Aghouate'),
 (4, '2024-04-24 11:56:12.000000', 2009, '2024-10-07 23:12:18.047390', 'شارع هواري بومدين ام بواغي', 'local', 'radiooumelbouaghi@gmail.com', '+213 32 54 12 22', 'شارع هواري بومدين ام بواغي', '04-أم البواقي', '+213 32 54 12 15', 'https://my.radioalgerie.dz/player/oumelbouaghi.html', 'public', 'radioalgerie.dz/player/fr/live/04-Oum-Bouaghi', 'إذاعة أم البواقي هي إذاعة محلية جزائرية تقدم لمستمعيها العديد من البرامج الإخبارية و الثقافية و ذلك منذ سنة 2008. تلاقي هذه الإذاعة استحسان العديد من المستمعين لما تحتويه برامجها من دقة و مصداقية.', 'Houari Boumediene Street, Oum Bouaghi', 'Rue Houari Boumediene, Oum Bouaghi', 'Oum El Bouaghi Radio is a local Algerian radio station that has been offering its listeners a variety of news and cultural programs since 2008. This station is well-received by many listeners due to the accuracy and credibility of its programs.', 'Radio Oum El Bouaghi est une radio locale algérienne qui propose à ses auditeurs de nombreux programmes d\'information et de culture, active depuis 2008. Elle se distingue par la précision et la crédibilité de ses programmes ce qui lui a valu l’accueil d’un grand nombre d’auditeurs.', '04-Oum al-Bawaqi', '04-Oum al-Bawaqi'),
-(4, '2024-04-24 12:01:46.000000', 2010, '2024-10-07 23:13:06.031358', 'باتنة', 'local', 'radiobatna05@gmail.com', '+213 33 8', 'باتنة', '05-باتنة', '+213 33 8', 'https://my.radioalgerie.dz/player/batna.html', 'public', 'https://radioalgerie.dz/player/ar/live/05-Batna', 'إذاعة باتنة هي إذاعة جزائرية محلية تبث من منطقة الأوراس الجزائرية و هي إذاعة مهمة لدى المستمعين في تلك المنطقة إذ أنها تقدم برامج متنوعة إخبارية و ثقافية و ترفيهية و تلعب دورا هاما في ربط المنطقة بالعالم الخارجي', 'Batna,Algeria', 'Batna,Algerie', 'Batna Radio is a local Algerian radio station broadcasting from the Aures region of Algeria. It holds significant importance among listeners in that area, as it offers a variety of news, cultural, and entertainment programs, playing a crucial role in connecting the region to the outside world.', 'Radio Batna est une radio algérienne locale émettant depuis la région algérienne des Aurès. Elle propose divers programmes d’information, de culture et de divertissement, jouant le rôle de parcelle entre la région et le monde extérieur, ce qui la rend importante aux yeux de son auditoire.', '05-Batna', '05-Batna'),
-(1, '2024-04-24 12:04:30.000000', 2011, '2024-10-07 23:13:50.223758', 'نهج يوسف بوشباح، (06) بجاية / بجاية، 06000', 'local', 'soummam6@gmail.com', '+213 34 21 29 9', 'نهج يوسف بوشباح، (06) بجاية / بجاية، 06000', '06-بجاية', '+213 34 21 99 98 ', 'https://my.radioalgerie.dz/player/bejaia.html', 'public', 'https://radioalgerie.dz/player/ar/live/06-Bejaia', 'أذاعة بجاية هي إذاعة محلية جزائرية تبث منذ 1996. تبث برامجها باللغة الأمازيغية. تقترح العديد من البرامج الثقافية و الإخخبارية لتنقل الأحداش و المستجدات لمستمعي المنطقة كما تخصص فقرات موسيقية تبث خلالها العديد من المقاطع الموسيقية المحلية و العالمية .', 'Youssef Bouchebah Street, (06) Bejaia / Bejaia, 06000', 'Avenue Youssef Bouchbah, (06) Béjaia/Bejaia, 06000', 'Bejaïa Radio is a local Algerian radio station that has been broadcasting since 1996. It broadcasts its programs in the Amazigh language and offers a variety of cultural and news programs to provide listeners with events and updates in the region. It also features musical segments during which many local and international music tracks are played.', 'Radio Bejaia est une radio locale algérienne qui émet depuis 1996, d’expression berbère (Amazigh). Elle offre de nombreux programmes culturels et d\'information visant à tenir ses auditeurs régionaux informés des événements et de l’actualité. Elle consacre également des émissions musicales à la diffusion de clips musicaux locaux et internationaux', '06-Bejia', '06-Bejia'),
-(1, '2024-04-24 12:06:41.000000', 2012, '2024-10-07 23:15:03.022290', 'بسكرة، الجزائر', 'local', 'toptenonairbiskra@gmail.com', '+213 33 73 18 5', 'بسكرة، الجزائر', '07-بسكرة', '+213 33 73 11 ', 'https://my.radioalgerie.dz/player/biskra.html', 'public', 'https://radioalgerie.dz/player/ar/live/07-Biskra', 'إذاعة بسكرة هي إذاعة محلية شبابية جزائرية تبث موجاتها منذ 2012. تقترح عليكم برامج ترفيهية و موسيقية يهدفون من خلالها الوصول إلى الكثير من المستمعين و المستمعات من تلك الجهة .', 'Biskra, Algeria', 'Biskra, Algérie', 'Radio Biskra is a local youth Algerian radio station that has been broadcasting since 2012. It offers entertainment and music programs aimed at reaching a wide audience of listeners from the region.', 'Radio Biskra est une radio locale de jeunesse algérienne qui émet depuis 2012. Elle vous propose des programmes de divertissement et de musique dans l’objectif d’atteindre un grand nombre d’auditeurs régionaux, hommes et femmes, confondues.', '07-Beskra', '07-Beskra'),
-(4, '2024-04-24 12:11:18.000000', 2013, '2024-10-07 23:15:41.255281', 'بشار', 'local', 'radioalgerie@gmail.com', '+213 49 21 73 13', 'بشار', '08- بشار', '+213 49 21 68 ', 'https://my.radioalgerie.dz/player/bechar.html', 'public', 'https://radioalgerie.dz/player/ar/live/08-Bechar', 'إذاعة بشار الجهوية هي إذاعة جزائرية تقترح العديد من البرامج الجدية و الهادفة. تختلف مواضيعها من الأخبار و السياسة إلى الموسيقى و الترفيه. كما تحضى باهتمام العديد من المستمعين و المستمعات منذ سنة 1991 .', 'Bachar,Algeria', 'Bachar,Algérie', 'Bechar Radio is an Algerian regional radio station that offers a variety of meaningful and constructive programs. Its topics range from news and politics to music and entertainment. It has attracted the interest of many listeners since 1991.', 'Radio Bechar est une radio algérienne régionale qui, depuis 1991, propose une programmation pertinente et concrète, abordant des thèmes allant de l\'actualité, de la politique à la musique et au divertissement. Elle attire notamment l’attention de nombreux auditeurs et auditrices.', '08- Bachar', '08- Bachar'),
-(6, '2024-04-24 12:16:09.000000', 2014, '2024-10-07 23:16:13.431570', 'البليدة، الجزائر', 'local', 'blidafminfo@gmail.com', '+213 25 41.23.', 'البليدة، الجزائر', '09- البليدة', '+213 25 41.23.', 'https://my.radioalgerie.dz/player/blida.html', 'public', 'https://radioalgerie.dz/player/ar/live/09-Blida', 'إذاعة البليدة الجزائرية هي إذاعة محلية من الجزائر تبث موجاتها من بليدة الجزائرية. تقترح هذه الإذاعة برامج متنوعة تتناول أخبار الجهة و تنقل المستجدات الإجتماعية و السياسية حينيا كما تقد العديد من الفقرات الترفيهية و الموسيقية التي تنال اعجاب المستمعين', 'Blida, Algeria', 'Blida, Algérie', 'Blida Algerian Radio is a local radio station in Algeria that broadcasts from Blida. This station offers a variety of programs covering regional news and social and political updates, as well as many entertaining and musical programs that appeal to listeners.', 'Radio Blida est une radio locale algérienne qui émet depuis Blida. Cette radio propose divers programmes concernant l\'actualité régionale, sociale et politique. Elle présente également de nombreuses émissions de divertissement et musicaux qui captivent son auditoire.  ', '09 -Blida', '09 -Blida'),
+(4, '2024-04-24 12:01:46.000000', 2010, '2024-10-07 23:13:06.031358', 'باتنة', 'local', 'radiobatna05@gmail.com', '+213 33 80 70 08', 'باتنة', '05-باتنة', '+213 33 80 52 46', 'https://my.radioalgerie.dz/player/batna.html', 'public', 'https://radioalgerie.dz/player/ar/live/05-Batna', 'إذاعة باتنة هي إذاعة جزائرية محلية تبث من منطقة الأوراس الجزائرية و هي إذاعة مهمة لدى المستمعين في تلك المنطقة إذ أنها تقدم برامج متنوعة إخبارية و ثقافية و ترفيهية و تلعب دورا هاما في ربط المنطقة بالعالم الخارجي', 'Batna,Algeria', 'Batna,Algerie', 'Batna Radio is a local Algerian radio station broadcasting from the Aures region of Algeria. It holds significant importance among listeners in that area, as it offers a variety of news, cultural, and entertainment programs, playing a crucial role in connecting the region to the outside world.', 'Radio Batna est une radio algérienne locale émettant depuis la région algérienne des Aurès. Elle propose divers programmes d’information, de culture et de divertissement, jouant le rôle de parcelle entre la région et le monde extérieur, ce qui la rend importante aux yeux de son auditoire.', '05-Batna', '05-Batna'),
+(1, '2024-04-24 12:04:30.000000', 2011, '2024-10-07 23:13:50.223758', 'نهج يوسف بوشباح، (06) بجاية / بجاية، 06000', 'local', 'soummam6@gmail.com', '+213 34 21 29 90', 'نهج يوسف بوشباح، (06) بجاية / بجاية، 06000', '06-بجاية', '+213 34 21 99 98 ', 'https://my.radioalgerie.dz/player/bejaia.html', 'public', 'https://radioalgerie.dz/player/ar/live/06-Bejaia', 'أذاعة بجاية هي إذاعة محلية جزائرية تبث منذ 1996. تبث برامجها باللغة الأمازيغية. تقترح العديد من البرامج الثقافية و الإخخبارية لتنقل الأحداش و المستجدات لمستمعي المنطقة كما تخصص فقرات موسيقية تبث خلالها العديد من المقاطع الموسيقية المحلية و العالمية .', 'Youssef Bouchebah Street, (06) Bejaia / Bejaia, 06000', 'Avenue Youssef Bouchbah, (06) Béjaia/Bejaia, 06000', 'Bejaïa Radio is a local Algerian radio station that has been broadcasting since 1996. It broadcasts its programs in the Amazigh language and offers a variety of cultural and news programs to provide listeners with events and updates in the region. It also features musical segments during which many local and international music tracks are played.', 'Radio Bejaia est une radio locale algérienne qui émet depuis 1996, d’expression berbère (Amazigh). Elle offre de nombreux programmes culturels et d\'information visant à tenir ses auditeurs régionaux informés des événements et de l’actualité. Elle consacre également des émissions musicales à la diffusion de clips musicaux locaux et internationaux', '06-Bejia', '06-Bejia'),
+(1, '2024-04-24 12:06:41.000000', 2012, '2024-10-07 23:15:03.022290', 'بسكرة، الجزائر', 'local', 'toptenonairbiskra@gmail.com', '+213 33 73 18 50', 'بسكرة، الجزائر', '07-بسكرة', '+213 33 73 11 07', 'https://my.radioalgerie.dz/player/biskra.html', 'public', 'https://radioalgerie.dz/player/ar/live/07-Biskra', 'إذاعة بسكرة هي إذاعة محلية شبابية جزائرية تبث موجاتها منذ 2012. تقترح عليكم برامج ترفيهية و موسيقية يهدفون من خلالها الوصول إلى الكثير من المستمعين و المستمعات من تلك الجهة .', 'Biskra, Algeria', 'Biskra, Algérie', 'Radio Biskra is a local youth Algerian radio station that has been broadcasting since 2012. It offers entertainment and music programs aimed at reaching a wide audience of listeners from the region.', 'Radio Biskra est une radio locale de jeunesse algérienne qui émet depuis 2012. Elle vous propose des programmes de divertissement et de musique dans l’objectif d’atteindre un grand nombre d’auditeurs régionaux, hommes et femmes, confondues.', '07-Beskra', '07-Beskra'),
+(4, '2024-04-24 12:11:18.000000', 2013, '2024-10-07 23:15:41.255281', 'بشار', 'local', 'radioalgerie@gmail.com', '+213 49 21 73 13', 'بشار', '08- بشار', '+213 49 21 68 02  ', 'https://my.radioalgerie.dz/player/bechar.html', 'public', 'https://radioalgerie.dz/player/ar/live/08-Bechar', 'إذاعة بشار الجهوية هي إذاعة جزائرية تقترح العديد من البرامج الجدية و الهادفة. تختلف مواضيعها من الأخبار و السياسة إلى الموسيقى و الترفيه. كما تحضى باهتمام العديد من المستمعين و المستمعات منذ سنة 1991 .', 'Bachar,Algeria', 'Bachar,Algérie', 'Bechar Radio is an Algerian regional radio station that offers a variety of meaningful and constructive programs. Its topics range from news and politics to music and entertainment. It has attracted the interest of many listeners since 1991.', 'Radio Bechar est une radio algérienne régionale qui, depuis 1991, propose une programmation pertinente et concrète, abordant des thèmes allant de l\'actualité, de la politique à la musique et au divertissement. Elle attire notamment l’attention de nombreux auditeurs et auditrices.', '08- Bachar', '08- Bachar'),
+(6, '2024-04-24 12:16:09.000000', 2014, '2024-10-07 23:16:13.431570', 'البليدة، الجزائر', 'local', 'blidafminfo@gmail.com', '+213 25 41.23.04', 'البليدة، الجزائر', '09- البليدة', '+213 25 41.23.04', 'https://my.radioalgerie.dz/player/blida.html', 'public', 'https://radioalgerie.dz/player/ar/live/09-Blida', 'إذاعة البليدة الجزائرية هي إذاعة محلية من الجزائر تبث موجاتها من بليدة الجزائرية. تقترح هذه الإذاعة برامج متنوعة تتناول أخبار الجهة و تنقل المستجدات الإجتماعية و السياسية حينيا كما تقد العديد من الفقرات الترفيهية و الموسيقية التي تنال اعجاب المستمعين', 'Blida, Algeria', 'Blida, Algérie', 'Blida Algerian Radio is a local radio station in Algeria that broadcasts from Blida. This station offers a variety of programs covering regional news and social and political updates, as well as many entertaining and musical programs that appeal to listeners.', 'Radio Blida est une radio locale algérienne qui émet depuis Blida. Cette radio propose divers programmes concernant l\'actualité régionale, sociale et politique. Elle présente également de nombreuses émissions de divertissement et musicaux qui captivent son auditoire.  ', '09 -Blida', '09 -Blida'),
 (6, '2024-04-24 12:19:29.000000', 2015, '2024-10-07 23:17:37.064361', 'عمروش مولود البويرة، البويرة، الجزائر', 'local', '	radioalgerie@gmail.com', '+213 26 94 17 98', 'عمروش مولود البويرة، البويرة، الجزائر', '10- البويرة', '+213 26 94 18 55 ', 'https://my.radioalgerie.dz/player/bouira.html', 'public', 'https://radioalgerie.dz/player/ar/live/10-Bouira', 'إذاعة البويرة هي الإذاعة المحلية لولاية البويرة الجزائرية. تقع ولاية البويرة شمال الجزائر و تبعد مائة كلم عن العاصمة الجزائرية. تتخصّص الإذاعة بنقل الأخبار المحليّة و الجهويّة, و تبث أيضا برامج ثقافيّة و ترفيهيّة تلاقي رضاء المستمعين, إذ تشهد الإذاعة أكثر من أربعة آلاف مستمع يوميّا| ', 'Amrouche was born in Bouira, Bouira, Algeria.', 'Amrouche Mouloud Bouira, Bouira, Algérie', 'Bouira Radio is the local radio station for Bouira state in Algeria. Located in northern Algeria, it is about one hundred kilometers from the capital, Algiers. The station specializes in broadcasting local and regional news and also broadcasts cultural and entertainment programs that satisfy its listeners, attracting more than four thousand daily listeners.', 'Radio Bouira est une radio locale sise à Bouira. La wilaya de Bouira se situe au nord de l\'Algérie, à 100 km de la capitale algérienne. La radio est spécialisée dans la transmission d\'informations locales et régionales et diffuse également des programmes culturels et de divertissement qui répondent aux attentes de ses auditeurs. Elle accueille quotidiennement plus de quatre mille auditeurs.', '10 - Bouira', '10 - Bouira'),
-(6, '2024-04-24 12:23:26.000000', 2016, '2024-10-07 23:18:02.095335', 'تمنراست، الجزائر', 'local', 'radioahaggar@gmail.com', '+213 29 32 ', 'تمنراست، الجزائر', '11- تمنراست', '+213 29 32 ', 'https://my.radioalgerie.dz/player/tamanrasset.html', 'public', 'https://radioalgerie.dz/player/ar/live/11-Tamenrasset', 'إذاعة تمنراست هي إذاعة محلية تابعة لمجموعة الإذاعات الرسمية الجزائرية. هي إذاعة محلية تقترح على مستمعيها العديد من البرامج الإخبارية تتناول السياسة و الرياضة و الترفيه و أيضا الموسيقى. تنال هذه اعجاب العديد من المستمعين من تلك الجهة', 'Tamanrasset, Algeria', 'Tamanrasset, Algérie', 'Radio Tamanrasset is a local radio station affiliated with the Algerian State Radio Group. This radio station offers its listeners several news programs that cover politics, sports, entertainment, and music. These programs receive positive feedback from many listeners in the region.', 'Radio Tamanrasset est une radio locale relevant du groupe radios algériennes, offrant à ses auditeurs de nombreux programmes d\'information couvrant la politique, le sport, le divertissement, et notamment la musique. Cette diversité de contenus est particulièrement appréciée par de nombreux auditeurs de la région.', '11- Tamanrasset', '11- Tamanrasset'),
+(6, '2024-04-24 12:23:26.000000', 2016, '2024-10-07 23:18:02.095335', 'تمنراست، الجزائر', 'local', 'radioahaggar@gmail.com', '+213 29 32 03 03', 'تمنراست، الجزائر', '11- تمنراست', '+213 29 32 01 37  ', 'https://my.radioalgerie.dz/player/tamanrasset.html', 'public', 'https://radioalgerie.dz/player/ar/live/11-Tamenrasset', 'إذاعة تمنراست هي إذاعة محلية تابعة لمجموعة الإذاعات الرسمية الجزائرية. هي إذاعة محلية تقترح على مستمعيها العديد من البرامج الإخبارية تتناول السياسة و الرياضة و الترفيه و أيضا الموسيقى. تنال هذه اعجاب العديد من المستمعين من تلك الجهة', 'Tamanrasset, Algeria', 'Tamanrasset, Algérie', 'Radio Tamanrasset is a local radio station affiliated with the Algerian State Radio Group. This radio station offers its listeners several news programs that cover politics, sports, entertainment, and music. These programs receive positive feedback from many listeners in the region.', 'Radio Tamanrasset est une radio locale relevant du groupe radios algériennes, offrant à ses auditeurs de nombreux programmes d\'information couvrant la politique, le sport, le divertissement, et notamment la musique. Cette diversité de contenus est particulièrement appréciée par de nombreux auditeurs de la région.', '11- Tamanrasset', '11- Tamanrasset'),
 (6, '2024-04-24 12:31:30.000000', 2017, '2024-10-07 23:18:30.751067', 'مدينة 200 وحدة سكنية تبسة الجزائر', 'local', 'tebessa.radiofm@gmail.com', '+213 37 48 43 43', 'مدينة 200 وحدة سكنية تبسة الجزائر', '12- تبسة', '+213 37 48 15 21  ', 'https://my.radioalgerie.dz/player/tebessa.html', 'public', 'https://radioalgerie.dz/player/ar/live/12-Tebessa', 'إذاعة تبسة هي إذاعة محلية جزائرية تبث موجاتها على مدار الساعة. تقترح عليكم العديد من البرامج الإخبارية و الثقافية. تنال هذه الإذاعة استحسان الكثير من المستمعين و خاصة من تلك الجهة حيث يجدون في هذه البرامج ما يشد اهتمامهم', 'City of 200 housing units Tebessa Algeria', 'Ville de 200 logements, Tébessa, Algérie', 'Radio Tebessa is a local Algerian radio station that broadcasts around the clock. It offers many news and cultural programs, and well-received by many listeners, especially those from the region, who find these programs interesting.', 'Radio Tebessa est une radio locale algérienne qui émet 24 heures sur 24. Nous vous proposons de nombreux programmes d\'information et culturels. Très appréciée par de nombreux auditeurs, notamment ceux de la région, elle parvient à éveiller leur intérêt avec des contenus pertinents. ', '12-Tebessa ', '12-Tébessa '),
-(6, '2024-04-24 12:34:12.000000', 2018, '2024-10-07 23:19:03.439087', 'تلمسان، الجزائر', 'local', 'radio.tlemcen@yahoo.com', '+213 43 41 74 ', 'تلمسان، الجزائر', '13- تلمسان', '+213 43 41 74 ', 'https://my.radioalgerie.dz/player/tlemcen.html', 'public', 'https://radioalgerie.dz/player/ar/live/13-Tlemcen', 'إذاعة تلمسان هي إذاعة جهوية جزائرية من تلمسان. تقترح هذه الإذاعة العديد من البرامج المتنوعة المحتوى تتناول من خلالها الأخبار المحلية و الوطنية و تعالج مشاكل الجهة كما تقدم أيضا لمستمعيها برامج ثقافية و ترفيهية.', 'Tlemcen, Algeria', 'Tlemcen, Algérie', 'Tlemcen Radio is a regional Algerian radio station broadcasting from Tlemcen. This station offers a variety of programs that cover local and national news, addressing issues and problems specific to the region. It also provides cultural and entertainment programs for its listeners.', 'Radio Tlemcen est une radio régionale algérienne située à Tlemcen. Cette radio propose de nombreux programmes aux contenus diversifiés traitant l’actualité locale et nationale tout en se penchant sur les problématiques de la région. Radio Tlemcen offre également à ses auditeurs des programmes culturels et de divertissement.', '13- Tlemcen', '13- Tlemcen'),
+(6, '2024-04-24 12:34:12.000000', 2018, '2024-10-07 23:19:03.439087', 'تلمسان، الجزائر', 'local', 'radio.tlemcen@yahoo.com', '+213 43 41 74 00', 'تلمسان، الجزائر', '13- تلمسان', '+213 43 41 74 02  ', 'https://my.radioalgerie.dz/player/tlemcen.html', 'public', 'https://radioalgerie.dz/player/ar/live/13-Tlemcen', 'إذاعة تلمسان هي إذاعة جهوية جزائرية من تلمسان. تقترح هذه الإذاعة العديد من البرامج المتنوعة المحتوى تتناول من خلالها الأخبار المحلية و الوطنية و تعالج مشاكل الجهة كما تقدم أيضا لمستمعيها برامج ثقافية و ترفيهية.', 'Tlemcen, Algeria', 'Tlemcen, Algérie', 'Tlemcen Radio is a regional Algerian radio station broadcasting from Tlemcen. This station offers a variety of programs that cover local and national news, addressing issues and problems specific to the region. It also provides cultural and entertainment programs for its listeners.', 'Radio Tlemcen est une radio régionale algérienne située à Tlemcen. Cette radio propose de nombreux programmes aux contenus diversifiés traitant l’actualité locale et nationale tout en se penchant sur les problématiques de la région. Radio Tlemcen offre également à ses auditeurs des programmes culturels et de divertissement.', '13- Tlemcen', '13- Tlemcen'),
 (6, '2024-04-24 12:37:30.000000', 2019, '2024-10-07 23:19:45.927834', 'ساحة محمد بوضياف , Tiaret, Algeria', 'local', 'socialmedia@radiotiaret.net', '+213 46 41 62 27', 'ساحة محمد بوضياف , Tiaret, Algeria', '14-تيارت', '+213 46 41 62 34', 'https://my.radioalgerie.dz/player/tiaret.html', 'public', 'https://radioalgerie.dz/player/ar/live/14-Tiaret', 'إذاعة تيارت هي إذاعة محلية جزائرية تبث برامج متنوعة باللغة العربية. تقترح برامج متنوعة تتناول الأخبار الإجتماعية و السياسية و الرياضية للتباحثها مع المستمعين لتفتح لهم الباب لابداء آراءهم ', 'Mohamed Boudiaf Square, Tiaret, Algeria', 'Place Mohammed Boudiaf, Tiaret, Algérie', 'Tiaret Radio is a local Algerian radio station broadcasting a variety of programs in Arabic. It offers a diverse range of programs that cover social, political, and sports news, providing listeners the opportunity to discuss and share their opinions.', 'Radio Tiaret est une radio locale algérienne qui diffuse divers programmes en langue arabe. Elle offre des émissions sur l\'actualité sociale, politique et sportive favorisant l’interaction avec les auditeurs en leur permettant d’exprimer leurs opinions. ', '14- Tiaret', '14- Tiaret'),
-(6, '2024-04-24 12:47:22.000000', 2020, '2024-10-06 15:06:21.270667', 'شارع الشيخي عمار، تيزي وزو، الجزائر', 'local', 'radiotiziouzou15@gmail.com', '+213 26 22 9', 'شارع الشيخي عمار، تيزي وزو، الجزائر', '15-تيزي وزو', '+213 26 22 9', 'https://my.radioalgerie.dz/player/tiziouzou.html', 'public', 'https://radioalgerie.dz/player/ar/live/15-Tizi-Ouzou', 'إذاعة تزي وزو هي إذاعة محلية جزائرية مشهورة خاصة في تلك الجهة. تقترح برامج إخبارية و ثقافية جدية تلقى اهتماما كبيرا خاصة من الشباب الذي يجد من خلالها مصدرا موثوقا للمعلومات و الأخبار .', NULL, NULL, '', 'Radio Tizi Ouzou est une radio locale algérienne, reconnue pour sa réputation dans la région. Elle propose des programmes d\'information et culturels de qualité suscitant un vif intérêt, notamment parmi les jeunes, qui y découvrent une source fiable d\'informations et d\'actualités.', '15- Tizi Ouzou', '15- Tizi Ouzou'),
+(6, '2024-04-24 12:47:22.000000', 2020, '2024-10-06 15:06:21.270667', 'شارع الشيخي عمار، تيزي وزو، الجزائر', 'local', 'radiotiziouzou15@gmail.com', '+213 26 22 90 39', 'شارع الشيخي عمار، تيزي وزو، الجزائر', '15-تيزي وزو', '+213 26 22 90 39', 'https://my.radioalgerie.dz/player/tiziouzou.html', 'public', 'https://radioalgerie.dz/player/ar/live/15-Tizi-Ouzou', 'إذاعة تزي وزو هي إذاعة محلية جزائرية مشهورة خاصة في تلك الجهة. تقترح برامج إخبارية و ثقافية جدية تلقى اهتماما كبيرا خاصة من الشباب الذي يجد من خلالها مصدرا موثوقا للمعلومات و الأخبار .', NULL, NULL, '', 'Radio Tizi Ouzou est une radio locale algérienne, reconnue pour sa réputation dans la région. Elle propose des programmes d\'information et culturels de qualité suscitant un vif intérêt, notamment parmi les jeunes, qui y découvrent une source fiable d\'informations et d\'actualités.', '15- Tizi Ouzou', '15- Tizi Ouzou'),
 (6, '2024-04-24 12:58:33.000000', 2021, '2024-10-07 23:20:26.887835', 'حي الفلاح ص.ب 117, الجلفة, الجزائر', 'local', 'contact@radioalgerie.dz', '+213 27 87 61 72', 'حي الفلاح ص.ب 117, الجلفة, الجزائر', '17- الجلفة', '+213 27 87 41 41 ', 'https://my.radioalgerie.dz/player/djelfa.html', 'public', 'https://radioalgerie.dz/player/ar/live/17-Djelfa', 'إذاعة الجلفة هي إذاعة جزائرية محلية من الجلفة. تبث هذه الإذاعة برامج مختلفة باللغة العربية تتناول من خلالها العديد من المواضيع التي تهم المستمعين و خاصة من تلك الجهة كما تقترح فقرات موسيقية و ترفيهية .', 'Al Falah neighborhood, P.O. Box 117, Djelfa, Algeria', 'District d\'Al-Falah, B.P. 117, Djelfa, Algérie', 'Djelfa Radio is a local Algerian radio station from Djelfa. It broadcasts various programs in Arabic, covering a wide range of topics that are of interest to listeners, especially from the region. The station also offers musical and entertainment segments.', 'Radio Djelfa est une radio locale algérienne située à Djelfa. Elle diffuse une variété de programmes en langue arabe abordant de nombreux sujets qui suscitent particulièrement l\'intérêt des auditeurs, de cette région. Elle propose également des émissions musicales et de divertissement.', '17- Djelfa', '17- Djelfa'),
 (4, '2024-04-24 13:03:42.000000', 2022, '2024-10-07 23:20:56.694793', 'جيجل، الجزائر', 'local', 'contact@radioalgerie.dz', '+213 34 49 55 66', 'جيجل، الجزائر', '18- جيجل ', '+213 34 49 84 37 ', 'https://my.radioalgerie.dz/player/jijel.html', 'public', 'https://radioalgerie.dz/player/ar/live/18-Jijel', 'إذاعة الجيجل هي إذاعة جزائرية جهوية تقترح برامج متنوعة و ثرية المحتوى موجهة لجميع الشرائح العمرية للمستمعين و خاصة من تلك الجهة فهي تبث برامج إخبارية ترفيهية و موسيقية لتناسب جميع الأذواق و الخيارات ', 'Jijel, Algeria', 'Jijel, Algérie', 'Jijel Radio is a regional Algerian radio station offering a variety of rich programs aimed at listeners of all age groups, particularly from the region. It broadcasts news, entertainment, and music programs to cater to all tastes and preferences.', 'Radio Jijel est une radio régionale algérienne qui propose des programmes diversifiés et des contenus riches s’adressant à tous les groupes d\'âge, en particulier ceux de la région. Elle diffuse des programmes d\'information, de divertissement et de musique répondant ainsi à une multitude de goûts et de préférences.', '18 - Jijel', '18 - Jijel'),
-(NULL, '2024-04-24 14:25:44.000000', 2029, '2024-10-07 23:21:29.350376', 'سطيف الجزائر .', 'local', 'infos.radiosetif@gmail.com', '+213 36 51 4', 'سطيف الجزائر .', '19- سطيف', '+213 36 51 44 55 ', 'https://my.radioalgerie.dz/player/setif.html	', 'public', 'https://radioalgerie.dz/player/ar/live/19-Setif', 'إذاعة سطيف هي إذاعة جهوية جزائرية تبث برامج من سطيف منذ 1992. تحتوي برامجها على العديد من المواضيع الحساسة و التي تهم العديد من المستمعين و خاصة من تلك الجهة كما تبث أيضا برامج ترفيهية و موسيقية تلاقي استحسان المستمعين', 'Sétif, Algeria.', 'Sétif, Algérie.', 'Setif Radio is a regional Algerian radio station broadcasting programs from Setif since 1992. Its programs cover many sensitive topics that concern a large number of listeners, especially from the region. It also airs entertainment and music programs that are well-received by the audience.', 'Radio Sétif est une radio régionale algérienne qui émet depuis Sétif depuis 1992. Elle propose des programmes abordant de nombreux sujets sensibles qui captivent un large auditoire, notamment dans la région. Elle diffuse également des programmes de divertissement et musicaux appréciés par ses auditeurs.', '19 -Setif', '19 -Sétif'),
-(NULL, '2024-04-24 14:34:16.000000', 2030, '2024-10-07 23:22:08.760658', '04 شارع الاستقلال - المركز الثقافي سابقا , سعيدة، الجزائر', 'local', 'radiosaida@gmail.com.', '+213 48 41 18 24 ', '04 شارع الاستقلال - المركز الثقافي سابقا , سعيدة، الجزائر', '20- سعيدة', '+213 48 41 18 2', 'https://my.radioalgerie.dz/player/saida.html', 'public', 'https://radioalgerie.dz/player/ar/live/20-Saida', 'إذاعة سعيدة الجزائرية هي إذاعة محلية تبث برامجها باللغة العربية و ذلك من الساعة السابعة صباحا إلى الساعة الثامنة ليلا. تقترح هذه الإذاعة العديد من البرامج الثقافية و الإخبارية كما تقدم فقرات موسيقية و ترفيهية .', '04 Independence Street - Former Cultural Center, Saida, Algeria', '04 rue Istiklal – anciennement Centre Culturel, Saïda, Algérie', 'Saida Radio is a local Algerian radio station that broadcasts its programs in Arabic from 7 AM to 8 PM. This station offers a variety of cultural and news programs, as well as musical and entertainment segments.', 'Radio Saida Algérie est une radio locale qui diffuse ses programmes en arabe, et ce, de sept heures du matin à huit heures du soir. Cette radio propose de nombreux programmes culturels et d\'information et propose également des émissions musicales et de divertissement.', '20 -Saida, Algeria', '20 - Saida, Algeria'),
+(NULL, '2024-04-24 14:25:44.000000', 2029, '2024-10-07 23:21:29.350376', 'سطيف الجزائر .', 'local', 'infos.radiosetif@gmail.com', '+213 36 51 40 93', 'سطيف الجزائر .', '19- سطيف', '+213 36 51 44 55 ', 'https://my.radioalgerie.dz/player/setif.html	', 'public', 'https://radioalgerie.dz/player/ar/live/19-Setif', 'إذاعة سطيف هي إذاعة جهوية جزائرية تبث برامج من سطيف منذ 1992. تحتوي برامجها على العديد من المواضيع الحساسة و التي تهم العديد من المستمعين و خاصة من تلك الجهة كما تبث أيضا برامج ترفيهية و موسيقية تلاقي استحسان المستمعين', 'Sétif, Algeria.', 'Sétif, Algérie.', 'Setif Radio is a regional Algerian radio station broadcasting programs from Setif since 1992. Its programs cover many sensitive topics that concern a large number of listeners, especially from the region. It also airs entertainment and music programs that are well-received by the audience.', 'Radio Sétif est une radio régionale algérienne qui émet depuis Sétif depuis 1992. Elle propose des programmes abordant de nombreux sujets sensibles qui captivent un large auditoire, notamment dans la région. Elle diffuse également des programmes de divertissement et musicaux appréciés par ses auditeurs.', '19 -Setif', '19 -Sétif'),
+(NULL, '2024-04-24 14:34:16.000000', 2030, '2024-10-07 23:22:08.760658', '04 شارع الاستقلال - المركز الثقافي سابقا , سعيدة، الجزائر', 'local', 'radiosaida@gmail.com.', '+213 48 41 18 24 ', '04 شارع الاستقلال - المركز الثقافي سابقا , سعيدة، الجزائر', '20- سعيدة', '+213 48 41 18 20', 'https://my.radioalgerie.dz/player/saida.html', 'public', 'https://radioalgerie.dz/player/ar/live/20-Saida', 'إذاعة سعيدة الجزائرية هي إذاعة محلية تبث برامجها باللغة العربية و ذلك من الساعة السابعة صباحا إلى الساعة الثامنة ليلا. تقترح هذه الإذاعة العديد من البرامج الثقافية و الإخبارية كما تقدم فقرات موسيقية و ترفيهية .', '04 Independence Street - Former Cultural Center, Saida, Algeria', '04 rue Istiklal – anciennement Centre Culturel, Saïda, Algérie', 'Saida Radio is a local Algerian radio station that broadcasts its programs in Arabic from 7 AM to 8 PM. This station offers a variety of cultural and news programs, as well as musical and entertainment segments.', 'Radio Saida Algérie est une radio locale qui diffuse ses programmes en arabe, et ce, de sept heures du matin à huit heures du soir. Cette radio propose de nombreux programmes culturels et d\'information et propose également des émissions musicales et de divertissement.', '20 -Saida, Algeria', '20 - Saida, Algeria'),
 (NULL, '2024-04-24 14:47:29.000000', 2031, '2024-10-07 23:23:30.989653', 'حي باب الاوراس سكيكدة 21000، سكيكدة، الجزائر', 'local', 'Skikdafmskikda@gmail.com', '+213 38 75 77 55', 'حي باب الاوراس سكيكدة 21000، سكيكدة، الجزائر', '21- سكيكدة', '+213 38 75 77 54 ', 'https://my.radioalgerie.dz/player/skikda.html', 'public', 'https://radioalgerie.dz/player/ar/live/21-Skikda', 'إذاعة سكيكدة هي إذاعة محلية جزائرية من سكيكدة. هي إذاعة إخبارية تأخذ على عاتقها نقل الأخبار للمستمعين حينيا و تفسح لهم المجال في التعبير عن آراءهم و مشاغلهم. كما تقترح فقرات ترفيهية و موسيقية .', 'Bab El Ouras neighborhood, Skikda 21000, Skikda, Algeria', 'District de Bab El Aouras, Skikda 21000, Skikda, Algérie', 'Skikda Radio is a local Algerian radio station broadcasting from Skikda. It is a news-focused station dedicated to delivering updates to its listeners while also providing opportunities for them to express their opinions and concerns. Additionally, the station features entertainment and musical segments.', 'Radio Skikda est une radio locale algérienne située à Skikda. Dédiée à l\'information, elle s\'engage à transmettre quotidiennement l\'actualité aux auditeurs tout leur offrant un espace pour exprimer leurs opinions et leurs préoccupations. Radio Skikda suggère également des émissions de divertissement et de musique.', '21 -Skikda', '21 -Skikda'),
-(NULL, '2024-04-24 14:51:49.000000', 2032, '2024-10-07 23:23:58.397078', 'شارع بنديدة محمد، سيدي بلعباس 22002', 'local', 'radiosbainfo@gmail.com', '+213 48 55 85 ', 'شارع بنديدة محمد، سيدي بلعباس 22002', ' 22 - سيدي بلعباس', '+213 48 55 23 23 ', 'https://my.radioalgerie.dz/player/sidibelabbes.html', 'public', 'https://radioalgerie.dz/player/ar/live/22-Sidi-Bel-Abbes', 'إذاعة بلعباس الجزائرية هي إذاعة محلية تبث برامج إخبارية ثقافية و رياضية. تحاول من خلال هذه البرامج الإستماع إلى مشاغل شعب الجهة و تتطرحها للتحاليل العلمية و الاجتماعية. كما تقدم أيضا فقرات ترفيهية و موسيقية تناسب جميع الأذواق', 'Bendida Mohamed Street, Sidi Bel Abbes 22002', 'Rue Bendida Mohamed, Sidi Bel Abbès 22002', 'Bel Abbes Radio is a local Algerian radio station that broadcasts news, cultural, and sports programs. Through these broadcasts, it seeks to address the concerns of the local community and presents them for scientific and social analysis. Additionally, it offers entertainment and musical segments that cater to all tastes', 'Radio Bel-Abbès est une station locale algérienne qui diffuse des programmes d\'information, culturels et sportifs. Elle s’engage, à travers ses émissions, à prendre en compte les préoccupations de la population locale et de les analyser sous des perspectives scientifiques et sociales. En outre, Radio Bel-Abbès propose également des émissions de divertissement et de musique, adaptés à tous les goûts, enrichissant ainsi l\'expérience de ses auditeurs.', '22 - Sidi Bel Abbes', '22 - Sidi Bel Abbes'),
-(4, '2024-04-24 14:54:52.000000', 2033, '2024-10-07 23:24:27.695199', 'شارع باجي مختار عنابة', 'local', 'annabafm@gmail.com', '+213 38 4', 'شارع باجي مختار عنابة', '23 - عنابة', '+213 38 4', 'https://my.radioalgerie.dz/player/annaba.html', 'public', 'https://radioalgerie.dz/player/ar/live/23-Annaba', 'تأسست إذاعة عنابة المحلية سنة 1997 و هي إذاعة جزائرية تبث برامجها من السابعة صباحا إلى الثامنة مساءا. تقدم برامج متنوعة تتناول العديد من المواضيع التي تشد اهتمام الكثير من المستمعين و المستمعات .', 'Badji Mokhtar Street, Annaba', 'Rue Badji Mokhtar, Annaba', 'Annaba Radio was established in 1997 and is a local Algerian radio station that broadcasts its programs from 7 AM to 8 PM. It offers a variety of programs covering many topics that capture the interest of many listeners.', 'Radio Annaba a été créée en 1997 et est une radio algérienne locale qui émet de sept heures du matin à huit heures du soir. Elle propose divers programmes abordant de nombreux thématiques qui suscitent l’intérêt de nombreux auditeurs et auditrices. Radio Guelma est une radio algérienne qui émet depuis la région de Guelma. Elle propose une variété d’émissions destinées à ses auditeurs fidèles, notamment ceux de la région, dans l’objectif de mettre en lumière leurs problèmes et de proposer des solutions pratiques.', '23 - Annaba', '23 - Annaba'),
-(NULL, '2024-04-24 14:58:26.000000', 2034, '2024-10-07 23:25:02.702617', 'التكنولوجيا بومعزة قالمة 24000', 'local', 'kalamafm@gmail.com', '+213 37 14 31 75', 'التكنولوجيا بومعزة قالمة 24000', '24- قالمة', '+213 37 14 31 3', 'https://my.radioalgerie.dz/player/guelma.html', 'public', 'https://radioalgerie.dz/player/ar/live/24-Guelma', 'إذاعة قالمة المحلية هي إذاعة جزائرية تبث موجاتها من جهة قالمة. تقترح العديد من البرامج المتنوعة و التي تتوجه بها نحو مستمعيها و مستمعاتها الأوفياء و خاصة من تلك الجهة حتى تحاول طرح مشاكلهم إيجاد حلول عملية لها.', 'Technology Boumaza Guelma 24000', 'Technologie Boumaza Guelma 24000', 'Guelma local Radio is an Algerian radio station that broadcasts from the Guelma region. It offers a range of diverse programs directed towards its loyal listeners, particularly those from the area, with the aim of addressing their problems and finding practical solutions', 'Radio Guelma est une radio algérienne qui émet depuis la région de Guelma. Elle propose une variété d’émissions destinées à ses auditeurs fidèles, notamment ceux de la région, dans l’objectif de mettre en lumière leurs problèmes et de proposer des solutions pratiques.', '24 - Guelma ', '24 - Guelma '),
-(NULL, '2024-04-24 14:58:32.000000', 2035, '2024-10-07 23:43:46.541767', 'التكنولوجيا بومعزة قالمة 24000', 'local', 'kalamafm@gmail.com', '+213 37 14 31 75', 'التكنولوجيا بومعزة قالمة 24000', '24- قالمة', '+213 37 14 31 3', 'https://my.radioalgerie.dz/player/guelma.html', 'public', 'https://radioalgerie.dz/player/ar/live/24-Guelma', 'إذاعة قالمة المحلية هي إذاعة جزائرية تبث موجاتها من جهة قالمة. تقترح العديد من البرامج المتنوعة و التي تتوجه بها نحو مستمعيها و مستمعاتها الأوفياء و خاصة من تلك الجهة حتى تحاول طرح مشاكلهم إيجاد حلول عملية لها.', 'Technology Boumaza Guelma 24000', 'Technologie Boumaza Guelma 24000', 'Guelma local Radio is an Algerian radio station that broadcasts from the Guelma region. It offers a range of diverse programs directed towards its loyal listeners, particularly those from the area, with the aim of addressing their problems and finding practical solutions', 'Radio Guelma est une radio algérienne qui émet depuis la région de Guelma. Elle propose une variété d’émissions destinées à ses auditeurs fidèles, notamment ceux de la région, dans l’objectif de mettre en lumière leurs problèmes et de proposer des solutions pratiques.', '24 -Guelma ', '24 -Guelma '),
+(NULL, '2024-04-24 14:51:49.000000', 2032, '2024-10-07 23:23:58.397078', 'شارع بنديدة محمد، سيدي بلعباس 22002', 'local', 'radiosbainfo@gmail.com', '+213 48 55 85 01', 'شارع بنديدة محمد، سيدي بلعباس 22002', ' 22 - سيدي بلعباس', '+213 48 55 23 23 ', 'https://my.radioalgerie.dz/player/sidibelabbes.html', 'public', 'https://radioalgerie.dz/player/ar/live/22-Sidi-Bel-Abbes', 'إذاعة بلعباس الجزائرية هي إذاعة محلية تبث برامج إخبارية ثقافية و رياضية. تحاول من خلال هذه البرامج الإستماع إلى مشاغل شعب الجهة و تتطرحها للتحاليل العلمية و الاجتماعية. كما تقدم أيضا فقرات ترفيهية و موسيقية تناسب جميع الأذواق', 'Bendida Mohamed Street, Sidi Bel Abbes 22002', 'Rue Bendida Mohamed, Sidi Bel Abbès 22002', 'Bel Abbes Radio is a local Algerian radio station that broadcasts news, cultural, and sports programs. Through these broadcasts, it seeks to address the concerns of the local community and presents them for scientific and social analysis. Additionally, it offers entertainment and musical segments that cater to all tastes', 'Radio Bel-Abbès est une station locale algérienne qui diffuse des programmes d\'information, culturels et sportifs. Elle s’engage, à travers ses émissions, à prendre en compte les préoccupations de la population locale et de les analyser sous des perspectives scientifiques et sociales. En outre, Radio Bel-Abbès propose également des émissions de divertissement et de musique, adaptés à tous les goûts, enrichissant ainsi l\'expérience de ses auditeurs.', '22 - Sidi Bel Abbes', '22 - Sidi Bel Abbes'),
+(4, '2024-04-24 14:54:52.000000', 2033, '2024-10-07 23:24:27.695199', 'شارع باجي مختار عنابة', 'local', 'annabafm@gmail.com', '+213 38 40 54 90', 'شارع باجي مختار عنابة', '23 - عنابة', '+213 38 40 53 53 ', 'https://my.radioalgerie.dz/player/annaba.html', 'public', 'https://radioalgerie.dz/player/ar/live/23-Annaba', 'تأسست إذاعة عنابة المحلية سنة 1997 و هي إذاعة جزائرية تبث برامجها من السابعة صباحا إلى الثامنة مساءا. تقدم برامج متنوعة تتناول العديد من المواضيع التي تشد اهتمام الكثير من المستمعين و المستمعات .', 'Badji Mokhtar Street, Annaba', 'Rue Badji Mokhtar, Annaba', 'Annaba Radio was established in 1997 and is a local Algerian radio station that broadcasts its programs from 7 AM to 8 PM. It offers a variety of programs covering many topics that capture the interest of many listeners.', 'Radio Annaba a été créée en 1997 et est une radio algérienne locale qui émet de sept heures du matin à huit heures du soir. Elle propose divers programmes abordant de nombreux thématiques qui suscitent l’intérêt de nombreux auditeurs et auditrices. Radio Guelma est une radio algérienne qui émet depuis la région de Guelma. Elle propose une variété d’émissions destinées à ses auditeurs fidèles, notamment ceux de la région, dans l’objectif de mettre en lumière leurs problèmes et de proposer des solutions pratiques.', '23 - Annaba', '23 - Annaba'),
+(NULL, '2024-04-24 14:58:26.000000', 2034, '2024-10-07 23:25:02.702617', 'التكنولوجيا بومعزة قالمة 24000', 'local', 'kalamafm@gmail.com', '+213 37 14 31 75', 'التكنولوجيا بومعزة قالمة 24000', '24- قالمة', '+213 37 14 31 30 ', 'https://my.radioalgerie.dz/player/guelma.html', 'public', 'https://radioalgerie.dz/player/ar/live/24-Guelma', 'إذاعة قالمة المحلية هي إذاعة جزائرية تبث موجاتها من جهة قالمة. تقترح العديد من البرامج المتنوعة و التي تتوجه بها نحو مستمعيها و مستمعاتها الأوفياء و خاصة من تلك الجهة حتى تحاول طرح مشاكلهم إيجاد حلول عملية لها.', 'Technology Boumaza Guelma 24000', 'Technologie Boumaza Guelma 24000', 'Guelma local Radio is an Algerian radio station that broadcasts from the Guelma region. It offers a range of diverse programs directed towards its loyal listeners, particularly those from the area, with the aim of addressing their problems and finding practical solutions', 'Radio Guelma est une radio algérienne qui émet depuis la région de Guelma. Elle propose une variété d’émissions destinées à ses auditeurs fidèles, notamment ceux de la région, dans l’objectif de mettre en lumière leurs problèmes et de proposer des solutions pratiques.', '24 - Guelma ', '24 - Guelma '),
+(NULL, '2024-04-24 14:58:32.000000', 2035, '2024-10-07 23:43:46.541767', 'التكنولوجيا بومعزة قالمة 24000', 'local', 'kalamafm@gmail.com', '+213 37 14 31 75', 'التكنولوجيا بومعزة قالمة 24000', '24- قالمة', '+213 37 14 31 30 ', 'https://my.radioalgerie.dz/player/guelma.html', 'public', 'https://radioalgerie.dz/player/ar/live/24-Guelma', 'إذاعة قالمة المحلية هي إذاعة جزائرية تبث موجاتها من جهة قالمة. تقترح العديد من البرامج المتنوعة و التي تتوجه بها نحو مستمعيها و مستمعاتها الأوفياء و خاصة من تلك الجهة حتى تحاول طرح مشاكلهم إيجاد حلول عملية لها.', 'Technology Boumaza Guelma 24000', 'Technologie Boumaza Guelma 24000', 'Guelma local Radio is an Algerian radio station that broadcasts from the Guelma region. It offers a range of diverse programs directed towards its loyal listeners, particularly those from the area, with the aim of addressing their problems and finding practical solutions', 'Radio Guelma est une radio algérienne qui émet depuis la région de Guelma. Elle propose une variété d’émissions destinées à ses auditeurs fidèles, notamment ceux de la région, dans l’objectif de mettre en lumière leurs problèmes et de proposer des solutions pratiques.', '24 -Guelma ', '24 -Guelma '),
 (NULL, '2024-04-24 15:01:18.000000', 2036, '2024-10-07 23:25:40.830316', '19 شارع بلعيب باب القنطرة 25000', 'local', 'radiocirtafmconstantine@gmail.com', '+213 31 88 39 38', '19 شارع بلعيب باب القنطرة 25000', '25- قسنطينة', '+213 31 88 39 36', 'https://my.radioalgerie.dz/player/constantine.html', 'public', 'https://radioalgerie.dz/player/ar/live/25-Constantine', 'هي محطة للتعبير العام وهي جزء من الإذاعة الجزائرية. ويقدم برنامج متنوع من الخدمات والمعلومات. تتكون إذاعة سيدي بلعباس من مجموعة شابة جادة وديناميكية وذات خبرة.', '19 Belaieb Street, Bab El Qantara 25000', '19 rue Belaib, Bab Al-Qantara, 25000', 'Constantine Radio is a public expression station and part of Algerian radio. It offers a diverse program of services and information. It is comprised of a serious, dynamic, and experienced young team.', 'Radio Constantine est une station de radio d\'expression publique intégrée au réseau de la radio algérienne. Elle propose un programme diversifié de services et d\'informations. Radio Constantine est composée d’une équipe jeune, dynamique et expérimentée.', '25 -Constantine', '25 -Constantine'),
-(NULL, '2024-04-24 15:11:31.000000', 2037, '2024-10-07 23:26:06.677836', 'المدية، الجزائر', 'local', 'radiotitri@gmail.com', '+213 25 78 5', 'المدية، الجزائر', '26- المدية', '+213 25 78 5', 'https://my.radioalgerie.dz/player/medea.html', 'public', 'https://radioalgerie.dz/player/ar/live/26-Medea', 'إذاعة المدية هي إذاعة جزائرية محلية تبث موجاتها منذ سنة 2010. تقترح على مستمعيها برامج متنوعة و ثرية ذات محتوى جدي و هادف إلى تنمية حس المواطنة و التقدم في مستمعيها . كما تخصص أيضا برامج تثقيفية للأطفال .', 'Medea, Algeria', 'Médée, Algérie', 'Mostaganem Radio is a local radio station in the Algerian state of Mostaganem that broadcasts its programs in Arabic on FM. It began broadcasting on February 10, 2004, and was inaugurated by President Abdelaziz Bouteflika. This radio station offers a variety of diverse and rich programs with serious and meaningful content.', 'Radio Médéa est une station locale algérienne qui émet depuis 2010. Elle offre à ses auditeurs une programmation diversifiée et enrichissante, axée sur des contenus sérieux visant à promouvoir le sentiment de citoyenneté et de progrès chez ses auditeurs.  En outre, Radio Médéa propose également des programmes éducatifs destinés aux enfants.', '26 -Medea', '26 -Médea'),
-(NULL, '2024-04-24 15:13:47.000000', 2038, '2024-10-07 23:26:36.398566', 'يستشهد 5 يوليو مستغانم، مستغانم، الجزائر', 'local', 'contact@radiomostaganem.net', '+213 45 41 ', 'يستشهد 5 يوليو مستغانم، مستغانم، الجزائر', '27- مستغانم', '+213 45 41 ', 'https://my.radioalgerie.dz/player/mostaganem.html', 'public', 'https://radioalgerie.dz/player/ar/live/27-Mostaganem', 'إذاعة مستغانم هي إذاعة محلية بولاية مستغانم الجزائرية تبث برامجها باللغة العربية على موجة أف أم انطلق بثها بتاريخ 10 فبراير 2004 حيث تم تدشينها من طرف فخامة الرئيس عبد العزيز بوتفليقة. تقدم هذه الإذاعة العديد من البرامج المتنوعة و الثرية بمحتوى جدي و هادف', 'July 5, Mostaganem, Mostaganem, Algeria', 'Martyrisé le 5 juillet, Mostaganem, Mostaganem, Algérie', 'Mostaganem Radio is a local radio station in the Algerian state of Mostaganem that broadcasts its programs in Arabic on FM. It began broadcasting on February 10, 2004, and was inaugurated by President Abdelaziz Bouteflika. This radio station offers a variety of diverse and rich programs with engaging and meaningful content.', 'Radio Mostaganem est une station locale algérienne, située à Mostaganem. Elle diffuse ses programmes en arabe sur la bande FM. Radio Mostaganem a été inaugurée le 10 février 2004 par son excellence le président Abdelaziz Bouteflika, proposant une large gamme de programmes variés, avec un contenu sérieux et pertinent.', '27 -Mostaganem', '27 -Mostaganem'),
+(NULL, '2024-04-24 15:11:31.000000', 2037, '2024-10-07 23:26:06.677836', 'المدية، الجزائر', 'local', 'radiotitri@gmail.com', '+213 25 78 50 03', 'المدية، الجزائر', '26- المدية', '+213 25 78 50 29', 'https://my.radioalgerie.dz/player/medea.html', 'public', 'https://radioalgerie.dz/player/ar/live/26-Medea', 'إذاعة المدية هي إذاعة جزائرية محلية تبث موجاتها منذ سنة 2010. تقترح على مستمعيها برامج متنوعة و ثرية ذات محتوى جدي و هادف إلى تنمية حس المواطنة و التقدم في مستمعيها . كما تخصص أيضا برامج تثقيفية للأطفال .', 'Medea, Algeria', 'Médée, Algérie', 'Mostaganem Radio is a local radio station in the Algerian state of Mostaganem that broadcasts its programs in Arabic on FM. It began broadcasting on February 10, 2004, and was inaugurated by President Abdelaziz Bouteflika. This radio station offers a variety of diverse and rich programs with serious and meaningful content.', 'Radio Médéa est une station locale algérienne qui émet depuis 2010. Elle offre à ses auditeurs une programmation diversifiée et enrichissante, axée sur des contenus sérieux visant à promouvoir le sentiment de citoyenneté et de progrès chez ses auditeurs.  En outre, Radio Médéa propose également des programmes éducatifs destinés aux enfants.', '26 -Medea', '26 -Médea'),
+(NULL, '2024-04-24 15:13:47.000000', 2038, '2024-10-07 23:26:36.398566', 'يستشهد 5 يوليو مستغانم، مستغانم، الجزائر', 'local', 'contact@radiomostaganem.net', '+213 45 41 01 09', 'يستشهد 5 يوليو مستغانم، مستغانم، الجزائر', '27- مستغانم', '+213 45 41 01 77 ', 'https://my.radioalgerie.dz/player/mostaganem.html', 'public', 'https://radioalgerie.dz/player/ar/live/27-Mostaganem', 'إذاعة مستغانم هي إذاعة محلية بولاية مستغانم الجزائرية تبث برامجها باللغة العربية على موجة أف أم انطلق بثها بتاريخ 10 فبراير 2004 حيث تم تدشينها من طرف فخامة الرئيس عبد العزيز بوتفليقة. تقدم هذه الإذاعة العديد من البرامج المتنوعة و الثرية بمحتوى جدي و هادف', 'July 5, Mostaganem, Mostaganem, Algeria', 'Martyrisé le 5 juillet, Mostaganem, Mostaganem, Algérie', 'Mostaganem Radio is a local radio station in the Algerian state of Mostaganem that broadcasts its programs in Arabic on FM. It began broadcasting on February 10, 2004, and was inaugurated by President Abdelaziz Bouteflika. This radio station offers a variety of diverse and rich programs with engaging and meaningful content.', 'Radio Mostaganem est une station locale algérienne, située à Mostaganem. Elle diffuse ses programmes en arabe sur la bande FM. Radio Mostaganem a été inaugurée le 10 février 2004 par son excellence le président Abdelaziz Bouteflika, proposant une large gamme de programmes variés, avec un contenu sérieux et pertinent.', '27 -Mostaganem', '27 -Mostaganem'),
 (NULL, '2024-04-24 15:17:33.000000', 2039, '2024-10-07 23:27:11.006457', 'ص.ب 1400 البريد المركزي المسيلة، المسيلة (28)، الجزائر', 'local', 'radiomsila@gmail.com', '+213 35 54 82 32', ' المسيلة ، الجزائر', '28- المسيلة', '+213 35 547414 ', 'https://my.radioalgerie.dz/player/msila.html', 'public', 'https://radioalgerie.dz/player/ar/live/28-M%27sila', 'إذاعة المسيلة المحلية هي إذاعة جزائرية تبث موجاتها منذ سنة 2003 . تقدم الإذاعة برامج متنوعة تتناول من خلالها مواضيع مثيرة للاهتمام كما تقدم فقرات ترفيهية و موسيقية تناسب جميع أذواق المستمعين .', 'P.O. Box 1400 Central Post Office M\'Sila, M\'Sila (28), Algeria', 'B.P. 1400, Poste Centrale, M\'sila, M\'sila (28), Algérie', 'M\'Sila Radio is a local Algerian radio station that has been broadcasting since 2003. The station offers a variety of programs covering interesting topics, along with entertainment and musical segments that cater to all listeners\' tastes.', 'Radio M\'sila est une station algérienne en activité depuis 2003. Elle propose une programmation diversifiée, abordant des sujets captivants, tout en intégrant des émissions de divertissement et de musique qui convient à tous les goûts des auditeurs.', '28 -M\'Sila', '28 -M\'Sila'),
-(NULL, '2024-04-24 15:21:19.000000', 2040, '2024-10-07 23:28:17.933460', 'شارع نصر الدين، معسكر.', 'local', 'radiomascara@gmail.com', '+213 45 8', 'شارع نصر الدين، معسكر.', '29- معسكر', '+213 45 82 54 91', 'https://my.radioalgerie.dz/player/mascara.html', 'public', 'https://radioalgerie.dz/player/ar/live/29-Mascara', 'محطة تعبير عام وهي جزء من الإذاعة الجزائرية. ويقدم برنامج متنوع من الخدمات والمعلومات.', 'Nasreddine Street, Camp.', 'Rue Nasr al-Din, camp.', 'A public radio station that supports the connection of Algerian radios. She proposes a program with a variety of services and information.', 'Une station de radio d\'expression publique qui fait partie du réseau des radios algériennes. Elle propose une programmation variée de services et d\'informations.', '29 -Maskar', '29 -Maskar'),
-(NULL, '2024-04-24 15:24:35.000000', 2041, '2024-10-07 23:28:45.340671', 'ورقلة الجزائر', 'local', 'radioouargla@gmail.com.', '+213 29 7', 'ورقلة الجزائر', '30- ورقلة', '+213 29 7', 'https://my.radioalgerie.dz/player/ouargla.html', 'public', 'https://radioalgerie.dz/player/ar/live/30-Ouargla', 'إذاعة ورقلة هي إذاعة جزائرية محلية تبث برامجها منذ سنة 1995. تقترح على مستمعيها العديد من البرامج الثرية و الغنية بمواضيع هامة و مثيرة تشد انتباه المستمعين و المستمعات خاصة من تلك الجهة.', 'Ouargla Algeria', 'Ouargla, Algérie', 'Ouargla Radio is a local Algerian radio station that has been broadcasting since 1995. It offers its listeners a variety of rich and engaging programs covering important and intriguing topics that capture the attention of the audience, especially from that area.', 'Radio Ouargla est une station locale algérienne qui émet depuis 1995. Elle propose une vaste gamme d\'émissions riches, traitant de sujets importants et captivants qui attirent l\'attention de son auditoire, hommes et femmes, confondues, en particulier au niveau régional.', '30 -Ouargla', '30 -Ouargla'),
+(NULL, '2024-04-24 15:21:19.000000', 2040, '2024-10-07 23:28:17.933460', 'شارع نصر الدين، معسكر.', 'local', 'radiomascara@gmail.com', '+213 45 80 48 95', 'شارع نصر الدين، معسكر.', '29- معسكر', '+213 45 82 54 91', 'https://my.radioalgerie.dz/player/mascara.html', 'public', 'https://radioalgerie.dz/player/ar/live/29-Mascara', 'محطة تعبير عام وهي جزء من الإذاعة الجزائرية. ويقدم برنامج متنوع من الخدمات والمعلومات.', 'Nasreddine Street, Camp.', 'Rue Nasr al-Din, camp.', 'A public radio station that supports the connection of Algerian radios. She proposes a program with a variety of services and information.', 'Une station de radio d\'expression publique qui fait partie du réseau des radios algériennes. Elle propose une programmation variée de services et d\'informations.', '29 -Maskar', '29 -Maskar'),
+(NULL, '2024-04-24 15:24:35.000000', 2041, '2024-10-07 23:28:45.340671', 'ورقلة الجزائر', 'local', 'radioouargla@gmail.com.', '+213 29 70 88 88', 'ورقلة الجزائر', '30- ورقلة', '+213 29 70 14 14', 'https://my.radioalgerie.dz/player/ouargla.html', 'public', 'https://radioalgerie.dz/player/ar/live/30-Ouargla', 'إذاعة ورقلة هي إذاعة جزائرية محلية تبث برامجها منذ سنة 1995. تقترح على مستمعيها العديد من البرامج الثرية و الغنية بمواضيع هامة و مثيرة تشد انتباه المستمعين و المستمعات خاصة من تلك الجهة.', 'Ouargla Algeria', 'Ouargla, Algérie', 'Ouargla Radio is a local Algerian radio station that has been broadcasting since 1995. It offers its listeners a variety of rich and engaging programs covering important and intriguing topics that capture the attention of the audience, especially from that area.', 'Radio Ouargla est une station locale algérienne qui émet depuis 1995. Elle propose une vaste gamme d\'émissions riches, traitant de sujets importants et captivants qui attirent l\'attention de son auditoire, hommes et femmes, confondues, en particulier au niveau régional.', '30 -Ouargla', '30 -Ouargla'),
 (1, '2024-04-24 15:27:04.000000', 2042, '2024-10-07 23:29:37.752911', '04 مكان عيسى المسعودي وهران، الجزائر.', 'local', 'oranradio@gmail.com', '+213 41 28 17 17', '04 مكان عيسى المسعودي وهران، الجزائر.', '31- وهران', '+213 41 45 21 21 / 45 16 15', 'https://my.radioalgerie.dz/player/oran.html', 'public', 'https://radioalgerie.dz/player/ar/live/31-Oran', 'إذاعة وهران هي من أشهر الإذاعات المحاية الجزائرية فهي تتميز ببرامجها الغنية و الفريدة من نوعها. كما تخصص العديد من الفقرات الموسيقية و الترفيهية التي تنال اعجاب العديد من المستمعين .', '04 Place Issa Massoudi Oran, Algeria.', '04 Place Issa Masoudi, Oran, Algérie.', 'Oran Radio is one of the most popular local Algerian radio stations, distinguished by its rich and unique programs. It also features numerous musical and entertainment segments that appeal to many listeners.', 'Radio Oran est l\'une des stations de radio algériennes les plus reconnues, réputée pour la qualité et la diversité de ses programmes. Elle consacre également une part importante de sa programmation à des émissions musicaux et de divertissement, ce qui lui permet de susciter l\'intérêt d\'un large public d\'auditeurs.', '31 -Radio Oran', '31 -Radio Oran'),
 (6, '2024-04-24 15:32:16.000000', 2043, '2024-10-07 23:30:27.023447', 'شارع رحماني عبد القادر, البيض, الجزائر, 32000.', 'local', ' radiofm.elbayadh@gmail.com', '+213 49 61 37 75', 'شارع رحماني عبد القادر, البيض, الجزائر, 32000.', '32- البيض', '+213 49 61 36 26 ', 'https://my.radioalgerie.dz/player/elbayadh.html', 'public', 'https://my.radioalgerie.dz/ar/elbayadh', 'أذاعة البيض هي إذاعة محلية جزائرية تبث موجاتها من الساعة السابعة صباحا إلى الساعة الثامنة مساء. تخصص برمجياتها لنقل و بث الأخبار المحلية الوطنية و العالمية و إيصالها حينيا للمستمعين الأوفياء لها.', 'Rahmani Abdelkader Street, El Bayadh, Algeria, 32000.', 'Rue Rahmani Abdelkader, El Bayadh, Algérie, 32000.', 'El Bayadh Radio is a local Algerian radio station that broadcasts from 7:00 am to 8:00 pm. Its programs are dedicated to transmitting and broadcasting local, national and international news and delivering it to its loyal listeners.', 'Radio El Bayadh est une station locale algérienne qui émet de sept heures du matin à huit heures du soir. Sa programmation est exclusivement dédiée à la transmission et à la diffusion d\'informations locales, nationales et internationales, à ses fidèles auditeurs.', '32 -Radio El Bayadh', '32 -Radio El Bayadh'),
-(1, '2024-04-24 15:34:49.000000', 2044, '2024-10-07 23:31:57.734456', 'حي الوئام , إليزي, الجزائر', 'local', ' radioillizi33@gmail.com', '+213 29 41 ', 'حي الوئام , إليزي, الجزائر', '33- اليزي', '+213 29 41 ', 'https://my.radioalgerie.dz/player/illizi.html', 'public', 'https://radioalgerie.dz/player/ar/live/33-Illizi', 'إذاعة إليزي المحلية هي إذاعة جزائرية تبث برامجها على مدار الساعة و باللغة العربية. تقترح برامج متنوعة تتضمن فقرات إخبارية ثقافية ترفيهية و موسيقية لتناسب جميع أذواق المستمعين و تستقطب العديد منهم .', 'Harmony District, Illizi, Algeria', 'Quartier Al-Weam, Illizi, Algérie', 'Ilizi Radio is a local Algerian radio station that broadcasts its programs 24/7 in Arabic. It offers a variety of programs that include news, cultural, entertainment, and musical segments to cater to a wide range of tastes and attract numerous listeners.', 'Radio Ilizi est une station locale algérienne qui émet 24 heures sur 24 en langue arabe. Elle propose une programmation variée, incluant des émissions d\'information, des programmes culturels, de divertissement et de musique, afin de répondre à tous les goûts des auditeurs et d\'attirer un large public.', '33- Radio Ilizi', '33- Radio Ilizi'),
+(1, '2024-04-24 15:34:49.000000', 2044, '2024-10-07 23:31:57.734456', 'حي الوئام , إليزي, الجزائر', 'local', ' radioillizi33@gmail.com', '+213 29 41 00 06', 'حي الوئام , إليزي, الجزائر', '33- اليزي', '+213 29 41 00 03', 'https://my.radioalgerie.dz/player/illizi.html', 'public', 'https://radioalgerie.dz/player/ar/live/33-Illizi', 'إذاعة إليزي المحلية هي إذاعة جزائرية تبث برامجها على مدار الساعة و باللغة العربية. تقترح برامج متنوعة تتضمن فقرات إخبارية ثقافية ترفيهية و موسيقية لتناسب جميع أذواق المستمعين و تستقطب العديد منهم .', 'Harmony District, Illizi, Algeria', 'Quartier Al-Weam, Illizi, Algérie', 'Ilizi Radio is a local Algerian radio station that broadcasts its programs 24/7 in Arabic. It offers a variety of programs that include news, cultural, entertainment, and musical segments to cater to a wide range of tastes and attract numerous listeners.', 'Radio Ilizi est une station locale algérienne qui émet 24 heures sur 24 en langue arabe. Elle propose une programmation variée, incluant des émissions d\'information, des programmes culturels, de divertissement et de musique, afin de répondre à tous les goûts des auditeurs et d\'attirer un large public.', '33- Radio Ilizi', '33- Radio Ilizi'),
 (1, '2024-04-24 15:38:17.000000', 2045, '2024-10-07 23:31:26.454841', 'برج بوعريريج، برج بوعريريج، الجزائر', 'local', 'radiobba@hotmail.fr', '+213 35 74 83 37', 'برج بوعريريج، برج بوعريريج، الجزائر', '34- برج بوعريرج', '+213 35 68 33 22', 'https://my.radioalgerie.dz/player/bordjbouarreridj.html', 'public', 'https://radioalgerie.dz/player/ar/live/34-Bordj-Bou-Arreridj', 'الإذاعة المحلية برج بوعريريج هي إذاعة جزائرية تبث برامجها. تتكون من فريق شبابي جاد و كاد في العمل يسهر على تقديم أرقى البرامج و الفقرات المتنوعة لينال استحسان المستمعين و المستمعات .', 'Bordj Bou Arreridj, Bordj Bou Arreridj, Algeria', 'Bordj Bou Arreridj, Bordj Bou Arreridj, Algérie', 'Bordj Bou Arreridj Radio is an Algerian radio station that broadcasts its programs. It is composed of a dedicated and hardworking young team that strives to deliver high-quality and diverse programs and segments, aiming to earn the appreciation of its listeners.', 'Radio Bordj Bou Arreridj est une station algérienne qui émet.  Constituée d\'une équipe jeune et dynamique, qui s\'efforce de proposer des émissions variées et de qualité, visant à satisfaire les attentes de ses auditeurs.', '34- Radio Bordj Bou Arreridj', '34- Radio Bordj Bou Arreridj');
 INSERT INTO `radio` (`complexe_id`, `created_at`, `id`, `updated_at`, `adresse`, `categorie`, `email`, `fax`, `localisation`, `name`, `phone`, `streaminglink`, `type`, `website`, `description`, `adresse_en`, `adresse_fr`, `description_en`, `description_fr`, `name_en`, `name_fr`) VALUES
-(NULL, '2024-04-24 15:41:22.000000', 2046, '2024-10-07 23:32:43.724728', 'حي فراتز فانون, بومرداس, الجزائر', 'local', 'radioboumerdes@gmail.com', '+213 24 94 14 23', 'حي فراتز فانون, بومرداس, الجزائر', '35- بومرداس', '+213 24 94 1', 'https://my.radioalgerie.dz/player/boumerdes.html', 'public', 'https://radioalgerie.dz/player/ar/live/35-Boumerdes', 'إذاعة بومرداس المحلية هي إذاعة جزائرية شبابية تقترح العديد من البرامج المتنوعة و الثرية ذات محتوى مثير للاهتمام كما تسمح المجال لمستمعيها للتدخل المباشر و تفتح لهم باب النقاش و الحوار .', 'Fratz Fanon neighborhood, Boumerdes, Algeria', 'Quartier Fratz Fanon, Boumerdes, Algérie', 'Boumerdès Radio is a local Algerian youth radio station that offers a variety of diverse and rich programs with interesting content. It also allows listeners to participate directly, opening the floor for discussion and dialogue.', 'Radio Boumerdès est une radio locale algérienne dédiée à la jeunesse, proposant une vaste gamme de programmes variés et enrichissants, axés sur des contenus captivants. Elle permet également à ses auditeurs d\'intervenir directement, créant ainsi un espace de discussion et de dialogue constructif.', '35 -Radio Boumerdès', '35 -Radio Boumerdès'),
-(NULL, '2024-04-24 15:44:59.000000', 2047, '2024-10-07 23:33:16.685692', 'الطارف، الجزائر', 'local', 'contact@radioalgerie.dz', '+213 38 6', 'الطارف، الجزائر', '36- الطارف', '+213 38 6', 'https://my.radioalgerie.dz/player/eltarf.html', 'public', 'https://radioalgerie.dz/player/ar/live/36-El-Tarf', 'إذاعة الطارف هي إذاعة محليّة . تهتمّ هذه الإذاعة بنقل الأخبار المحليّة و الوطنيّة كما تخصّص فقرات تثقيفيّة و ترفيهيّة. تضمّ الإذاعة فريق إعداد و تقديم شبابيّ يطرحون خلال برامجهم العديد من المواضيع الجديّة و يفتحون من خلالها باب الحوار و التّعبير في محاولة للاستماع للشّباب و تشريكهم في الحياة السّياسية و الإجتماعية. تلاقي هذه الإذاعة اهتماما كبيرا من المستمعين من جميع الأعمار.', 'El Tarf, Algeria', 'El Tarf, Algérie', 'El Tarf Radio is a local radio station focused on delivering local and national news while also featuring educational and entertainment segments. The station has a young team of producers and presenters who address various serious topics in their programs, opening the door for dialogue and expression in an effort to listen to the youth and engage them in political and social life. This radio station garners significant interest from listeners of all ages.', 'Radio El Taraf est une station de radio locale algérienne dédiée à la diffusion d\'actualités tant locales que nationales. Elle propose également des émissions éducatives et de divertissement. L\'équipe de préparation et de présentation, composée de jeunes professionnels, aborde des thématiques sérieuses et favorise le dialogue, permettant ainsi aux jeunes de s\'exprimer et de participer activement à la vie politique et sociale. Radio El Taraf éveille un intérêt considérable de la part d\'un public de tout âge.', '36 -Radio El Taraf', '36 -Radio El Taraf'),
+(NULL, '2024-04-24 15:41:22.000000', 2046, '2024-10-07 23:32:43.724728', 'حي فراتز فانون, بومرداس, الجزائر', 'local', 'radioboumerdes@gmail.com', '+213 24 94 14 23', 'حي فراتز فانون, بومرداس, الجزائر', '35- بومرداس', '+213 24 94 10 10 ', 'https://my.radioalgerie.dz/player/boumerdes.html', 'public', 'https://radioalgerie.dz/player/ar/live/35-Boumerdes', 'إذاعة بومرداس المحلية هي إذاعة جزائرية شبابية تقترح العديد من البرامج المتنوعة و الثرية ذات محتوى مثير للاهتمام كما تسمح المجال لمستمعيها للتدخل المباشر و تفتح لهم باب النقاش و الحوار .', 'Fratz Fanon neighborhood, Boumerdes, Algeria', 'Quartier Fratz Fanon, Boumerdes, Algérie', 'Boumerdès Radio is a local Algerian youth radio station that offers a variety of diverse and rich programs with interesting content. It also allows listeners to participate directly, opening the floor for discussion and dialogue.', 'Radio Boumerdès est une radio locale algérienne dédiée à la jeunesse, proposant une vaste gamme de programmes variés et enrichissants, axés sur des contenus captivants. Elle permet également à ses auditeurs d\'intervenir directement, créant ainsi un espace de discussion et de dialogue constructif.', '35 -Radio Boumerdès', '35 -Radio Boumerdès'),
+(NULL, '2024-04-24 15:44:59.000000', 2047, '2024-10-07 23:33:16.685692', 'الطارف، الجزائر', 'local', 'contact@radioalgerie.dz', '+213 38 60 05 34', 'الطارف، الجزائر', '36- الطارف', '+213 38 60 20 95', 'https://my.radioalgerie.dz/player/eltarf.html', 'public', 'https://radioalgerie.dz/player/ar/live/36-El-Tarf', 'إذاعة الطارف هي إذاعة محليّة . تهتمّ هذه الإذاعة بنقل الأخبار المحليّة و الوطنيّة كما تخصّص فقرات تثقيفيّة و ترفيهيّة. تضمّ الإذاعة فريق إعداد و تقديم شبابيّ يطرحون خلال برامجهم العديد من المواضيع الجديّة و يفتحون من خلالها باب الحوار و التّعبير في محاولة للاستماع للشّباب و تشريكهم في الحياة السّياسية و الإجتماعية. تلاقي هذه الإذاعة اهتماما كبيرا من المستمعين من جميع الأعمار.', 'El Tarf, Algeria', 'El Tarf, Algérie', 'El Tarf Radio is a local radio station focused on delivering local and national news while also featuring educational and entertainment segments. The station has a young team of producers and presenters who address various serious topics in their programs, opening the door for dialogue and expression in an effort to listen to the youth and engage them in political and social life. This radio station garners significant interest from listeners of all ages.', 'Radio El Taraf est une station de radio locale algérienne dédiée à la diffusion d\'actualités tant locales que nationales. Elle propose également des émissions éducatives et de divertissement. L\'équipe de préparation et de présentation, composée de jeunes professionnels, aborde des thématiques sérieuses et favorise le dialogue, permettant ainsi aux jeunes de s\'exprimer et de participer activement à la vie politique et sociale. Radio El Taraf éveille un intérêt considérable de la part d\'un public de tout âge.', '36 -Radio El Taraf', '36 -Radio El Taraf'),
 (NULL, '2024-04-24 15:48:43.000000', 2048, '2024-10-07 23:33:53.382291', 'حي البدر تندوف،  الجزائر', 'local', 'radio.tindouf1999@gmail.com', '+213 49 92 34 63', 'حي البدر تندوف، الجزائر', '37- تندوف', '+213 49 92 34 66', 'https://my.radioalgerie.dz/player/tindouf.html', 'public', 'https://radioalgerie.dz/player/ar/live/37-Tindouf', 'إذاعة تندوف الجزائرية هي إذاعة محلية تبث موجاتها من جهة تندوف و تعمل على تقديم برامج و فقرات متنوعة تحتوي على مواضيع مهمة و خاصة في تلك الجهة فهي تلاقي استحسانا كبيرا من المستمعين .', 'Al-Badr neighborhood, Tindouf, Algeria', 'Quartier Al-Badr, Tindouf, Algérie', 'Tindouf Radio is a local radio station broadcasting from the Tindouf region. It provides a variety of programs and segments covering important topics, particularly relevant to the area, and  receives a great deal of appreciation from its listeners.', 'Radio Tindouf est une station de radio locale algérienne émettant depuis la région de Tindouf, proposant de fournir une programmation diversifiée, traitant des thématiques importantes et pertinentes pour cette région, elle bénéficie d\'un accueil très favorable de la part de ses auditeurs.', '37 -Radio Tindouf', '37 -Radio Tindouf'),
 (NULL, '2024-04-24 15:52:37.000000', 2049, '2024-10-07 23:34:30.221441', '15 نهج بن بديس, تيسمسيلت, الجزائر', 'local', 'radio38000@gmail.com', '+213 46 49 67 67', '15 نهج بن بديس, تيسمسيلت, الجزائر', '38- تيسمسيلت', '+213 46 49 63 63', 'https://my.radioalgerie.dz/player/tissemsilt.html', 'public', 'https://radioalgerie.dz/player/ar/live/38-Tissemsilt', 'إذاعة تيسلميست المحلية هي إذاعة جزائرية تبث العديد من البرامج المتنوعة إخبارية و ثقافية و ترفيهية لتحاول الوصول بها إلى جميع الشرائح العمرية للمستمعين و المستمعات و تنال استحسانهم .', '15 Ben Badis Street, Tissemsilt, Algeria', '15 Avenue Ben Badis, Tissemsilt, Algérie', 'Tissemsilt Radio is a local Algerian radio station that broadcasts a variety of news, cultural, and entertainment programs aimed at reaching listeners of all age groups and earning their appreciation.', 'Radio Tissemsilt est une station locale algérienne qui propose une programmation diversifiée, englobant des émissions d\'information, des contenus culturels et de divertissement. Son objectif est de s\'adresser à toutes les tranches d\'âge des auditeurs, en veillant à satisfaire leurs attentes et à stimuler leur intérêt.', '38 -Radio Tissemsilt', '38 -Radio Tissemsilt'),
-(NULL, '2024-04-24 15:55:48.000000', 2050, '2024-10-07 23:35:11.734478', 'حي الرمال الوادي', 'local', 'radiosouf@gmail.com', '+213 32 24 ', 'حي الرمال الوادي', '39- الوادي', '+213 32 24 ', 'https://my.radioalgerie.dz/player/eloued.html', 'public', 'https://radioalgerie.dz/player/ar/live/39-El-Oued', 'إذاعة الوادي هي إذاعة محلية جزائريّة تبثّ موجاتها عبر الأثير و الأنترنت. تهتم هذه الإذاعة بنقل الأخبار المحليّة و الوطنيّة و فتح المجال لتدارس الأوضاع الصحيّة و الإجتماعيّة و الإقتصاديّة. تخصص الإذاعة برامجها لبث برامج هادفة تمدّ مستمعيها بآخر المستجدّات و تفتح لهم المجال للتّعبير عن ما يخالجهم في محاولة للقيام بدور همزة الوصل بين الشّعب و آخذي القرار.', 'Al Ramal Valley District', 'Quartier de la Vallée de Sable', 'El Oued Radio is a local Algerian radio station that broadcasts both on air and online. It focuses on delivering local and national news while providing a space to discuss health, social, and economic issues.  The station dedicates its programs to broadcasting meaningful content that informs its listeners of the latest developments while also giving them a voice to express their thoughts, aiming to act as a bridge between the public and decision-makers.', 'Radio El Oued est une station locale algérienne qui diffuse ses programmes par voie hertzienne et par Internet. Elle s\'engage à fournir des informations locales et nationales tout en abordant des thématiques essentielles telles que la santé, les questions sociales et économiques. La station propose des émissions spécifiques qui informent ses auditeurs des dernières actualités, tout en leur offrant un espace d\'expression pour partager leurs préoccupations. Ainsi, Radio El Oued vise à établir un lien constructif entre la population et les décideurs.', '39 -Radio El Oued', '39 -Radio El Oued'),
+(NULL, '2024-04-24 15:55:48.000000', 2050, '2024-10-07 23:35:11.734478', 'حي الرمال الوادي', 'local', 'radiosouf@gmail.com', '+213 32 24 09 69', 'حي الرمال الوادي', '39- الوادي', '+213 32 24 04 64', 'https://my.radioalgerie.dz/player/eloued.html', 'public', 'https://radioalgerie.dz/player/ar/live/39-El-Oued', 'إذاعة الوادي هي إذاعة محلية جزائريّة تبثّ موجاتها عبر الأثير و الأنترنت. تهتم هذه الإذاعة بنقل الأخبار المحليّة و الوطنيّة و فتح المجال لتدارس الأوضاع الصحيّة و الإجتماعيّة و الإقتصاديّة. تخصص الإذاعة برامجها لبث برامج هادفة تمدّ مستمعيها بآخر المستجدّات و تفتح لهم المجال للتّعبير عن ما يخالجهم في محاولة للقيام بدور همزة الوصل بين الشّعب و آخذي القرار.', 'Al Ramal Valley District', 'Quartier de la Vallée de Sable', 'El Oued Radio is a local Algerian radio station that broadcasts both on air and online. It focuses on delivering local and national news while providing a space to discuss health, social, and economic issues.  The station dedicates its programs to broadcasting meaningful content that informs its listeners of the latest developments while also giving them a voice to express their thoughts, aiming to act as a bridge between the public and decision-makers.', 'Radio El Oued est une station locale algérienne qui diffuse ses programmes par voie hertzienne et par Internet. Elle s\'engage à fournir des informations locales et nationales tout en abordant des thématiques essentielles telles que la santé, les questions sociales et économiques. La station propose des émissions spécifiques qui informent ses auditeurs des dernières actualités, tout en leur offrant un espace d\'expression pour partager leurs préoccupations. Ainsi, Radio El Oued vise à établir un lien constructif entre la population et les décideurs.', '39 -Radio El Oued', '39 -Radio El Oued'),
 (NULL, '2024-04-24 15:58:15.000000', 2053, '2024-10-07 23:35:51.821206', 'خنشلة الجزائر', 'local', 'radio.khenchela.fb@gmail.com', '+213 32 72 75 72', 'خنشلة', '40 -خنشلة', '+213 32 31 86 33 ', 'https://my.radioalgerie.dz/player/khenchela.html', 'public', 'https://radioalgerie.dz/player/ar/live/40-Khenchla', 'إذاعة خنشلة المحلية هي إذاعة جزائرية توجه برامجها و مواضيعها نحو الشباب. تقدم لهم فقرات إخبارية و ثقافية هادفة و مثيرة للاهتمام كما تقترح فقرات ترفيهية و موسيقية تنال استحسانهم .', 'Khenchela Algeria', 'Khenchela, Algérie', 'Khenchela Radio is a local Algerian radio station that targets its programs and topics toward youth. It offers them meaningful and interesting news and cultural segments, as well as entertaining and musical features that resonate with them.', 'Radio Khenchela est une station locale algérienne qui oriente ses programmes et ses thématiques principalement vers un public jeune. Elle propose des émissions d\'information et des contenus culturels à la fois pertinents et stimulants, tout en offrant des émissions de divertissement et des sélections musicales appréciées par ses auditeurs.', '40 -Radio Khenchela', '40 -Radio Khenchela'),
 (NULL, '2024-04-24 15:58:30.000000', 2058, '2024-10-07 23:36:23.078168', 'سوق  أهراس الجزائر', 'local', 'radioahras@gmail.com', '+213 37 32 95 95', 'سوق أهراس', '41-سوق اهراس', '+213 37 82 47 65 / 82 47 66', 'https://my.radioalgerie.dz/player/soukahras.html', 'public', 'أذاعة منوعات', 'سوق أهراس هي إذاعة جزائرية محلية مهمة جدا للمستمعين و خاصة في تلك الجهة نظرا لجدية برامجها و مصداقيتها الإخبارية و تعاملها مع المشاكل المعصرة للجهة. كما تقترح أيضا برامج ترفيهية و ثقافية غنية بالمعلومات و الإفادة', 'Souk Ahras Algeria', 'Souk Ahras, Algérie', 'Souk Ahras Radio is a local Algerian radio station that that holds great significance for its listeners, especially in that region, due to its serious programs and reliable news coverage, as well as its engagement with contemporary issues facing the area. It also offers entertaining and cultural programs rich in information and benefits.', 'Radio Souk Ahras est une station locale algérienne d\'une importance considérable pour ses auditeurs, en particulier dans cette région, étant donné la rigueur de ses programmes et à la fiabilité de ses informations. Elle traite des problématiques contemporaines spécifiques à la région tout en proposant des émissions de divertissement et des contenus culturels enrichis d\'informations pertinentes et utiles. ', '41 -Radio Souk Ahras', '41 -Radio Souk Ahras'),
 (NULL, '2024-04-24 16:40:31.000000', 2060, '2024-10-07 23:36:59.213451', 'المدينة الإدارية 42000 تيبازة تيبازة الجزائر', 'local', 'inforadiotipaza@gmail.com', '+213 24 37 62 61', 'المدينة الإدارية 42000 تيبازة تيبازة الجزائر', '42- تيبازة', '+213 24 37 63 74 ', 'https://my.radioalgerie.dz/player/tipaza.html', 'public', 'https://radioalgerie.dz/player/ar/live/42-Tipaza', 'إذاعة تيبازة المحلية هي إذاعة فريدة من نوعها في تلك الجهة من الجزائر إذ أنها تبث برامجها باللغتين العربية و المحلية. تقترح العديد من البرامج الإخبارية و الثقافية التي تنال استحسان المستمعين', 'Administrative City 42000 Tipaza Tipaza Algeria', 'Cité Administrative 42000 Tipaza Tipaza Algérie', 'Tipaza Radio is a unique radio station in this part of Algeria, as it broadcasts its programs in both Arabic and local languages. It offers a variety of news and cultural programs that appeal to listeners.', 'Radio Tipaza est une station locale distincte dans cette région de l\'Algérie, diffusant ses programmes en arabe ainsi qu\'en langue locale. Elle propose une gamme variée de contenus d\'information et culturels qui suscitent un intérêt marqué auprès de ses auditeurs.', '42 -Radio Tipaza', '42 -Radio Tipaza'),
-(NULL, '2024-04-24 16:44:20.000000', 2061, '2024-10-07 23:37:31.453846', '14 شارع القدس، ميلة، الجزائر', 'local', 'radiomilev@gmail.com', '+213 31 47 47 ', '14 شارع القدس، ميلة، الجزائر', '43- ميلة', '+213 31 47 47 ', 'https://my.radioalgerie.dz/player/mila.html', 'public', 'https://radioalgerie.dz/player/ar/live/43-Mila', 'إذاعة ميلة هي إذاعة محلية من الجزائر من جهة ميلة. تبث لمستمعيها فقرات إخبارية لزودهم بآخر الأخبار و المستجدات على الصعيد الوطني و العالمي كما تقترح العديد من الفقرات الموسيقية تبث من خلالها المموسيقى المحلية و العالمية', '14 Jerusalem Street, Mila, Algeria', '14 rue Al Quds, Mila, Algérie', 'Mila Radio is a local Algerian radio station from the Mila region. It broadcasts news segments to keep its listeners updated with the latest national and international developments, as well as offering a variety of musical segments featuring both local and international music.', 'Radio Mila est une station locale algérienne basée à Mila. Elle s\'engage à fournir à ses auditeurs des émissions d\'information, les tenant ainsi informés des dernières actualités sur le plan national et international. Radio Mila propose une gamme variée de programmes musicaux, mettant en avant tant la musique locale et internationale.', '43-Radio Mila', '43-Radio Mila'),
-(NULL, '2024-04-24 16:46:19.000000', 2062, '2024-10-07 23:38:06.660540', 'عين الدفلئ الجزائر', 'local', ' ', '+213 27 6', 'عين الدفلئ', '44-عين الدفلى', '+213 27 6', 'https://my.radioalgerie.dz/player/aindefla.html', 'public', 'https://radioalgerie.dz/player/ar/live/44-Ain-Defla', 'إذاعة عين الدفلى الجزائرية هي إذاعة محلية تبث برامج متنوعة تهدف إلى الوصول إلى المستمعين و مشاركتهم حياتهم و تفتح باب الحوار و التعبير بكل حرية. كما تقدم فقرات موسيقية و ترفيهية شيقة ', 'Ain Defla Algeria', 'Aïn Defla, Algérie', 'Aïn Defla Radio is a local Algerian radio station that broadcasts a variety of programs aimed at connecting with its listeners and sharing their life while encouraging open dialogue and expression. It also offers engaging musical and entertainment segments.', 'Radio Ain Defla est une station locale algérienne qui offre une programmation diversifiée, visant à établir un lien étroit avec ses auditeurs et à les impliquer dans leur quotidien, tout en favorisant le dialogue et l\'expression libre. La station propose également des émissions musicales et de divertissement qui sont captivants', '44 -Radio Ain Defla', '44 -Radio Ain Defla'),
-(NULL, '2024-04-24 16:47:24.000000', 2063, '2024-10-07 23:40:38.829553', 'ساحة الشهداء الأربعة, النعامة', 'local', 'direction@radionaamafm.com', '+213 49 79 73 ', 'ساحة الشهداء الأربعة, النعامة', '45- النعامة', '+213 49 79 73 ', 'https://my.radioalgerie.dz/player/naama.html', 'public', 'https://radioalgerie.dz/player/ar/live/45-Naama', 'إذاعة النعامة هي إذاعة محلية تبث موجاتها من جهة النعامة بالجزائر. تقترح عليكم العديد من البرامج المتنوعة و الثرية بمحتوى ثقافي و تنويري. كما تتناول الأحداث السياسية و الإجتماعية و تعالجها و خاصة التابعة لتلك الجهة .', 'Four Martyrs Square, Naama', 'Place des Quatre Martyrs, Naama', 'Naâma Radio is a local radio station broadcasting from the Naâma region in Algeria. It offers a variety of diverse and rich programs with cultural and enlightening content. The station also tackles and analyzes political and social events, particularly those relevant to the local area.', 'Radio Naama est une station locale algérienne qui diffuse depuis la région de Naama. Elle offre une programmation variée, riche en contenus culturels et éducatifs. La station aborde et analyse des événements politiques et sociaux, notamment ceux relatifs à la région', '45 -Radio Naama', '45 -Radio Naama'),
-(NULL, '2024-04-24 16:48:59.000000', 2064, '2024-10-07 23:41:07.875779', ' عين تموشنت الجزائر', 'local', ' ', '+213 43 61 3', ' عين تيموشنت', '46-عين تيموشنت ', '+213 43 6', 'https://my.radioalgerie.dz/player/aintemouchent.html', 'public', 'https://radioalgerie.dz/player/ar/live/46-Ain-Timouchent', 'إذاعة عين تموشنت هي إذاعة محلية من من غرب الجزائر من منطقة عين تموشنت. تقترح هذه الإذاعة العديد من البرامج ذات محتوى جدي و راقي ههي الأكثر استماعا لها في تلك المنطقة إذ تغطي أكثر من نصف مساحة الولاية.', 'Ain Temouchent Algeria', 'Aïn Témouchent, Algérie', 'Ain Témouchent Radio is a local radio station from western Algeria, located in the Ain Témouchent region. This station offers a variety of programs with meaningful and high-quality content, making it the most listened to in that area, as it covers over half of the province\'s territory.', 'Radio Ain Témouchent est une station locale située dans l\'ouest de l\'Algérie, dans la région d\'Ain Témouchent. Elle propose une gamme variée de programmes au contenu sérieux et de haute qualité, ce qui en fait l\'une des stations les plus écoutées de la région, couvrant plus de la moitié de la superficie de la wilaya.', '46- Radio Ain Témouchent', '46- Radio Ain Témouchent'),
-(NULL, '2024-04-24 16:49:59.000000', 2065, '2024-10-07 23:42:24.516861', 'غرداية, الجزائر', 'local', 'proradio47@gmail.com', '+213 29 88 19 ', 'غرداية, الجزائر', '47- غرداية', '+213 29 88 52 53', 'https://my.radioalgerie.dz/player/ghardaia.html', 'public', 'https://radioalgerie.dz/player/ar/live/47-Ghardaia', 'إذاعة غرداية الجزائرية هي إذاعة محلية شبابية مهتمة بشأن الشباب. تقترح العديد من البرامج التي تنال اعجاب الشباب و تحاول من خلالها تحصيل الإفادة لهم في مجالات متعددة مما يجعل منها إذاعة مسموعة جدا في تلك الجهة .', 'Ghardaia, Algeria', 'Ghardaïa, Algérie', 'Ghardaïa Radio is a local youth radio station focused on issues concerning young people. It offers a variety of programs that appeal to the youth and aims to provide valuable insights across multiple fields, making it a widely listened-to station in that region.', 'Radio Ghardaïa est une station locale algérienne spécifiquement orientée vers la jeunesse. Elle propose une gamme variée de programmes qui répondent aux intérêts des jeunes, tout en s\'efforçant de leur fournir des connaissances utiles dans divers domaines, ce qui la rend la radio la plus écoutée de la région.', '47- Radio Ghardaïa', '47- Radio Ghardaïa'),
+(NULL, '2024-04-24 16:44:20.000000', 2061, '2024-10-07 23:37:31.453846', '14 شارع القدس، ميلة، الجزائر', 'local', 'radiomilev@gmail.com', '+213 31 47 47 01', '14 شارع القدس، ميلة، الجزائر', '43- ميلة', '+213 31 47 47 03 ', 'https://my.radioalgerie.dz/player/mila.html', 'public', 'https://radioalgerie.dz/player/ar/live/43-Mila', 'إذاعة ميلة هي إذاعة محلية من الجزائر من جهة ميلة. تبث لمستمعيها فقرات إخبارية لزودهم بآخر الأخبار و المستجدات على الصعيد الوطني و العالمي كما تقترح العديد من الفقرات الموسيقية تبث من خلالها المموسيقى المحلية و العالمية', '14 Jerusalem Street, Mila, Algeria', '14 rue Al Quds, Mila, Algérie', 'Mila Radio is a local Algerian radio station from the Mila region. It broadcasts news segments to keep its listeners updated with the latest national and international developments, as well as offering a variety of musical segments featuring both local and international music.', 'Radio Mila est une station locale algérienne basée à Mila. Elle s\'engage à fournir à ses auditeurs des émissions d\'information, les tenant ainsi informés des dernières actualités sur le plan national et international. Radio Mila propose une gamme variée de programmes musicaux, mettant en avant tant la musique locale et internationale.', '43-Radio Mila', '43-Radio Mila'),
+(NULL, '2024-04-24 16:46:19.000000', 2062, '2024-10-07 23:38:06.660540', 'عين الدفلئ الجزائر', 'local', ' ', '+213 27 60 16 66', 'عين الدفلئ', '44-عين الدفلى', '+213 27 60 58 58', 'https://my.radioalgerie.dz/player/aindefla.html', 'public', 'https://radioalgerie.dz/player/ar/live/44-Ain-Defla', 'إذاعة عين الدفلى الجزائرية هي إذاعة محلية تبث برامج متنوعة تهدف إلى الوصول إلى المستمعين و مشاركتهم حياتهم و تفتح باب الحوار و التعبير بكل حرية. كما تقدم فقرات موسيقية و ترفيهية شيقة ', 'Ain Defla Algeria', 'Aïn Defla, Algérie', 'Aïn Defla Radio is a local Algerian radio station that broadcasts a variety of programs aimed at connecting with its listeners and sharing their life while encouraging open dialogue and expression. It also offers engaging musical and entertainment segments.', 'Radio Ain Defla est une station locale algérienne qui offre une programmation diversifiée, visant à établir un lien étroit avec ses auditeurs et à les impliquer dans leur quotidien, tout en favorisant le dialogue et l\'expression libre. La station propose également des émissions musicales et de divertissement qui sont captivants', '44 -Radio Ain Defla', '44 -Radio Ain Defla'),
+(NULL, '2024-04-24 16:47:24.000000', 2063, '2024-10-07 23:40:38.829553', 'ساحة الشهداء الأربعة, النعامة', 'local', 'direction@radionaamafm.com', '+213 49 79 73 00', 'ساحة الشهداء الأربعة, النعامة', '45- النعامة', '+213 49 79 73 01', 'https://my.radioalgerie.dz/player/naama.html', 'public', 'https://radioalgerie.dz/player/ar/live/45-Naama', 'إذاعة النعامة هي إذاعة محلية تبث موجاتها من جهة النعامة بالجزائر. تقترح عليكم العديد من البرامج المتنوعة و الثرية بمحتوى ثقافي و تنويري. كما تتناول الأحداث السياسية و الإجتماعية و تعالجها و خاصة التابعة لتلك الجهة .', 'Four Martyrs Square, Naama', 'Place des Quatre Martyrs, Naama', 'Naâma Radio is a local radio station broadcasting from the Naâma region in Algeria. It offers a variety of diverse and rich programs with cultural and enlightening content. The station also tackles and analyzes political and social events, particularly those relevant to the local area.', 'Radio Naama est une station locale algérienne qui diffuse depuis la région de Naama. Elle offre une programmation variée, riche en contenus culturels et éducatifs. La station aborde et analyse des événements politiques et sociaux, notamment ceux relatifs à la région', '45 -Radio Naama', '45 -Radio Naama'),
+(NULL, '2024-04-24 16:48:59.000000', 2064, '2024-10-07 23:41:07.875779', ' عين تموشنت الجزائر', 'local', ' ', '+213 43 61 30 69', ' عين تيموشنت', '46-عين تيموشنت ', '+213 43 60 99 66', 'https://my.radioalgerie.dz/player/aintemouchent.html', 'public', 'https://radioalgerie.dz/player/ar/live/46-Ain-Timouchent', 'إذاعة عين تموشنت هي إذاعة محلية من من غرب الجزائر من منطقة عين تموشنت. تقترح هذه الإذاعة العديد من البرامج ذات محتوى جدي و راقي ههي الأكثر استماعا لها في تلك المنطقة إذ تغطي أكثر من نصف مساحة الولاية.', 'Ain Temouchent Algeria', 'Aïn Témouchent, Algérie', 'Ain Témouchent Radio is a local radio station from western Algeria, located in the Ain Témouchent region. This station offers a variety of programs with meaningful and high-quality content, making it the most listened to in that area, as it covers over half of the province\'s territory.', 'Radio Ain Témouchent est une station locale située dans l\'ouest de l\'Algérie, dans la région d\'Ain Témouchent. Elle propose une gamme variée de programmes au contenu sérieux et de haute qualité, ce qui en fait l\'une des stations les plus écoutées de la région, couvrant plus de la moitié de la superficie de la wilaya.', '46- Radio Ain Témouchent', '46- Radio Ain Témouchent'),
+(NULL, '2024-04-24 16:49:59.000000', 2065, '2024-10-07 23:42:24.516861', 'غرداية, الجزائر', 'local', 'proradio47@gmail.com', '+213 29 88 19 00', 'غرداية, الجزائر', '47- غرداية', '+213 29 88 52 53', 'https://my.radioalgerie.dz/player/ghardaia.html', 'public', 'https://radioalgerie.dz/player/ar/live/47-Ghardaia', 'إذاعة غرداية الجزائرية هي إذاعة محلية شبابية مهتمة بشأن الشباب. تقترح العديد من البرامج التي تنال اعجاب الشباب و تحاول من خلالها تحصيل الإفادة لهم في مجالات متعددة مما يجعل منها إذاعة مسموعة جدا في تلك الجهة .', 'Ghardaia, Algeria', 'Ghardaïa, Algérie', 'Ghardaïa Radio is a local youth radio station focused on issues concerning young people. It offers a variety of programs that appeal to the youth and aims to provide valuable insights across multiple fields, making it a widely listened-to station in that region.', 'Radio Ghardaïa est une station locale algérienne spécifiquement orientée vers la jeunesse. Elle propose une gamme variée de programmes qui répondent aux intérêts des jeunes, tout en s\'efforçant de leur fournir des connaissances utiles dans divers domaines, ce qui la rend la radio la plus écoutée de la région.', '47- Radio Ghardaïa', '47- Radio Ghardaïa'),
 (NULL, '2024-04-24 16:51:19.000000', 2066, '2024-10-07 23:39:51.942565', ' غليزان الجزائر', 'local', 'contact@radiorelizane.net', '+213 46 71 83 83', ' غليزان', '48- غليزان', '+213 46 71 87 87 ', 'https://my.radioalgerie.dz/player/relizane.html', 'public', 'https://radioalgerie.dz/player/ar/live/48-Relizane', 'إذاعة غليزان الجزائرية التابعة للإذاعة الجزائرية هي إذاعة محلية تبث موجاتها من العاصمة الجزائرية تقترح العديد من البرامج ذات محتوى غني بالفقرات الإخبارية الثقافية الموسيقية الترفيهية و الرياضية.', 'Glizan Algeria', 'Relizane, Algérie', 'Relizane Radio, part of the Algerian Radi, is a local station broadcasting from the capital city of Algeria. It offers a variety of programs featuring rich content, including news, cultural, musical, entertainment, and sports segments.', 'Radio Relizane relevant de la radio algérienne, est une station locale qui diffuse ses programmes depuis la capitale algérienne. Elle propose une gamme variée de contenus, incluant des émissions d\'information, des programmes culturels, musicaux, de divertissement et sportifs.', '48 -Radio Relizane', '48 -Radio Relizane');
 
 -- --------------------------------------------------------
@@ -1210,22 +1166,19 @@ INSERT INTO `radio` (`complexe_id`, `created_at`, `id`, `updated_at`, `adresse`,
 -- Structure de la table `sous_direction`
 --
 
-DROP TABLE IF EXISTS `sous_direction`;
-CREATE TABLE IF NOT EXISTS `sous_direction` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
+CREATE TABLE `sous_direction` (
+  `id` bigint(20) NOT NULL,
   `email_sousdirecteur` varchar(255) DEFAULT NULL,
   `nom_sousdirecteur` varchar(255) DEFAULT NULL,
   `nom_sousdirecteur_fr` varchar(255) DEFAULT NULL,
   `nom_sousdirection` varchar(255) DEFAULT NULL,
   `nom_sousdirection_en` varchar(255) DEFAULT NULL,
   `nom_sousdirection_fr` varchar(255) DEFAULT NULL,
-  `phone_sousdirecteur` int DEFAULT NULL,
+  `phone_sousdirecteur` int(11) DEFAULT NULL,
   `prenom_sousdirecteur` varchar(255) DEFAULT NULL,
   `prenom_sousdirecteur_fr` varchar(255) DEFAULT NULL,
-  `direction` bigint DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK7j8cy0dl2p6o2fxt9tbcth8tl` (`direction`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 ;
+  `direction` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `sous_direction`
@@ -1254,22 +1207,19 @@ INSERT INTO `sous_direction` (`id`, `email_sousdirecteur`, `nom_sousdirecteur`, 
 -- Structure de la table `textjuridique`
 --
 
-DROP TABLE IF EXISTS `textjuridique`;
-CREATE TABLE IF NOT EXISTS `textjuridique` (
+CREATE TABLE `textjuridique` (
   `created_at` datetime(6) DEFAULT NULL,
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `lois_id` bigint DEFAULT NULL,
+  `id` bigint(20) NOT NULL,
+  `lois_id` bigint(20) DEFAULT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_en` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_fr` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `name_en` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name_fr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK2l1t2o3rqxoh8k48ajpi6oa6b` (`lois_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `name` varchar(255) DEFAULT NULL,
+  `path` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `description_en` text DEFAULT NULL,
+  `description_fr` text DEFAULT NULL,
+  `name_en` varchar(255) DEFAULT NULL,
+  `name_fr` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `textjuridique`
@@ -1297,33 +1247,29 @@ INSERT INTO `textjuridique` (`created_at`, `id`, `lois_id`, `updated_at`, `name`
 -- Structure de la table `tv`
 --
 
-DROP TABLE IF EXISTS `tv`;
-CREATE TABLE IF NOT EXISTS `tv` (
-  `categorie_chaine_id` bigint DEFAULT NULL,
-  `complexe_id` bigint DEFAULT NULL,
+CREATE TABLE `tv` (
+  `categorie_chaine_id` bigint(20) DEFAULT NULL,
+  `complexe_id` bigint(20) DEFAULT NULL,
   `created_at` datetime(6) DEFAULT NULL,
-  `id` bigint NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) NOT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
-  `adresse` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `fax` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `localisation` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `streaminglink` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `website` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `adresse_en` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `adresse_fr` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_en` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `description_fr` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `name_en` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `name_fr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FKpny5gwqm9eo9ey8oos8wi7pan` (`categorie_chaine_id`),
-  KEY `FKdad0jmisj9hfap0ag4u5p5ks3` (`complexe_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1753 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `adresse` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `fax` varchar(255) DEFAULT NULL,
+  `localisation` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `streaminglink` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `website` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `adresse_en` text DEFAULT NULL,
+  `adresse_fr` text DEFAULT NULL,
+  `description_en` text DEFAULT NULL,
+  `description_fr` text DEFAULT NULL,
+  `name_en` varchar(255) DEFAULT NULL,
+  `name_fr` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `tv`
@@ -1368,23 +1314,21 @@ INSERT INTO `tv` (`categorie_chaine_id`, `complexe_id`, `created_at`, `id`, `upd
 -- Structure de la table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
+CREATE TABLE `user` (
   `created_at` datetime(6) DEFAULT NULL,
-  `id` bigint NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) NOT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
-  `addressoffice` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `firstname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `fonction` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `lastname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `mobile` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `phoneoffice` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `role` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `addressoffice` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `firstname` varchar(255) DEFAULT NULL,
+  `fonction` varchar(255) DEFAULT NULL,
+  `lastname` varchar(255) DEFAULT NULL,
+  `mobile` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `phoneoffice` varchar(255) DEFAULT NULL,
+  `role` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `user`
@@ -1392,6 +1336,242 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`created_at`, `id`, `updated_at`, `addressoffice`, `email`, `firstname`, `fonction`, `lastname`, `mobile`, `password`, `phoneoffice`, `role`, `username`) VALUES
 ('2024-04-23 09:53:02.000000', 1, '2024-04-23 09:53:02.000000', NULL, 'ayoub20104@live.com', 'Sidi', 'ENG', 'Ahmed', '213792300752', '123', NULL, 'admin', 'admin');
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `agrument`
+--
+ALTER TABLE `agrument`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `caracteristique`
+--
+ALTER TABLE `caracteristique`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK6lrlshlcqe75wn0cqobxwos3k` (`radio_id`),
+  ADD KEY `FK5d7jdnxcusvdaulf94k706dvv` (`tv_id`);
+
+--
+-- Index pour la table `categorie_chaine`
+--
+ALTER TABLE `categorie_chaine`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `complexe`
+--
+ALTER TABLE `complexe`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `complexe_agrument`
+--
+ALTER TABLE `complexe_agrument`
+  ADD KEY `FKaaq6ue4im06m21545xapadpdi` (`agrument_id`),
+  ADD KEY `FKcx832gfsnj6t4617ayn6a6gk2` (`complexe_id`);
+
+--
+-- Index pour la table `direction`
+--
+ALTER TABLE `direction`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `etablissement`
+--
+ALTER TABLE `etablissement`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `UK_80odl28njpub882o8qo5u35yg` (`complexe_id`);
+
+--
+-- Index pour la table `event_publication`
+--
+ALTER TABLE `event_publication`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `lois`
+--
+ALTER TABLE `lois`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `minister`
+--
+ALTER TABLE `minister`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `UK_eqosespnllwcj7bdqatuc4uyb` (`profile_picture_id`);
+
+--
+-- Index pour la table `multimedia`
+--
+ALTER TABLE `multimedia`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK430s9iwxejdhgykl5mksxiwnc` (`etablissement_id`),
+  ADD KEY `FKthv4bidn8m41cugevxi64rhhb` (`presse_id`),
+  ADD KEY `FK6ke2068jfg5ygjmey2u59r39o` (`radio_id`),
+  ADD KEY `FKg0hfeer38vyuwtit258wamuce` (`text_juridique_id`),
+  ADD KEY `FK841iiluy2pexb2qg6exqhbws0` (`tv_id`),
+  ADD KEY `FKqetdote85qjqxe9namkmfygww` (`user_id`),
+  ADD KEY `FKs37vceteeeh5w6sf235bk8rtm` (`minister_id`);
+
+--
+-- Index pour la table `presse`
+--
+ALTER TABLE `presse`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FKaoretyhavt4aqy7vilaxfydp8` (`complexe_id`);
+
+--
+-- Index pour la table `presse_categorie`
+--
+ALTER TABLE `presse_categorie`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `presse_pressecatrgorie`
+--
+ALTER TABLE `presse_pressecatrgorie`
+  ADD KEY `FKjq9h8cefjywb5f7ux0ywu8279` (`pressecatrgorie_id`);
+
+--
+-- Index pour la table `radio`
+--
+ALTER TABLE `radio`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FKisi1wxcawcfe4irb6mdvwp1mt` (`complexe_id`);
+
+--
+-- Index pour la table `sous_direction`
+--
+ALTER TABLE `sous_direction`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK7j8cy0dl2p6o2fxt9tbcth8tl` (`direction`);
+
+--
+-- Index pour la table `textjuridique`
+--
+ALTER TABLE `textjuridique`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK2l1t2o3rqxoh8k48ajpi6oa6b` (`lois_id`);
+
+--
+-- Index pour la table `tv`
+--
+ALTER TABLE `tv`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FKpny5gwqm9eo9ey8oos8wi7pan` (`categorie_chaine_id`),
+  ADD KEY `FKdad0jmisj9hfap0ag4u5p5ks3` (`complexe_id`);
+
+--
+-- Index pour la table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `agrument`
+--
+ALTER TABLE `agrument`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT pour la table `caracteristique`
+--
+ALTER TABLE `caracteristique`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=938;
+
+--
+-- AUTO_INCREMENT pour la table `categorie_chaine`
+--
+ALTER TABLE `categorie_chaine`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT pour la table `complexe`
+--
+ALTER TABLE `complexe`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT pour la table `direction`
+--
+ALTER TABLE `direction`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT pour la table `etablissement`
+--
+ALTER TABLE `etablissement`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1566;
+
+--
+-- AUTO_INCREMENT pour la table `lois`
+--
+ALTER TABLE `lois`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT pour la table `minister`
+--
+ALTER TABLE `minister`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
+-- AUTO_INCREMENT pour la table `multimedia`
+--
+ALTER TABLE `multimedia`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=412;
+
+--
+-- AUTO_INCREMENT pour la table `presse`
+--
+ALTER TABLE `presse`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1119;
+
+--
+-- AUTO_INCREMENT pour la table `presse_categorie`
+--
+ALTER TABLE `presse_categorie`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT pour la table `radio`
+--
+ALTER TABLE `radio`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2067;
+
+--
+-- AUTO_INCREMENT pour la table `sous_direction`
+--
+ALTER TABLE `sous_direction`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT pour la table `textjuridique`
+--
+ALTER TABLE `textjuridique`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT pour la table `tv`
+--
+ALTER TABLE `tv`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1753;
+
+--
+-- AUTO_INCREMENT pour la table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Contraintes pour les tables déchargées
