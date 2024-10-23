@@ -35,13 +35,13 @@ public class DefaultController {
     public DefaultController() {
     }
 
-    @GetMapping({"/home"})
+    /*@GetMapping({"/home"})
     public String index1(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
         model.addAttribute("username", username);
         return "authenticated/home";
-    }
+    }*/
 
     @GetMapping({"/index", "", "/"})
     public String index(Model model) {
@@ -66,8 +66,8 @@ public class DefaultController {
         return "notAuthenticated/index";
     }
 
-     @GetMapping({"/login"})
+   /*   @GetMapping({"/login"})
     public String login() {
         return "notAuthenticated/login";
-    }
+    }*/
 }
