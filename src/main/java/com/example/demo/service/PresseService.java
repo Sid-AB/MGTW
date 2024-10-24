@@ -130,6 +130,8 @@ public class PresseService {
             press.setFax(Presse.getFax());
             press.setCategoriePresse(Presse.getCategoriePresse());
 
+            press.setPressejr(Presse.getPressejr());
+
             if (multimediaFiles != null && !multimediaFiles.isEmpty()) {
                 List<Multimedia> multimediaList = new ArrayList<>();
                 for (MultipartFile file : multimediaFiles) {
