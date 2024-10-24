@@ -18,6 +18,7 @@ public class PresseDTO {
     private String categorie;
     private List<Long> selectedCategorie;
     private Long complexe;
+    private Long categoriePresses;
     private String adresse;
     private String adresseFr;
     private String adresseEn;
@@ -55,7 +56,7 @@ public class PresseDTO {
 
     public PresseDTO(final String name, final String nameFr, final String nameEn, final String description,
             final String descriptionFr, final String descriptionEn, final String type, final String website,
-            final String categorie, final List<Long> selectedCategorie, final Long complexe, final String adresse,final String adresseFr, final String adresseEn,
+            final String categorie, final List<Long> selectedCategorie, final Long complexe,final Long categoriePresses, final String adresse,final String adresseFr, final String adresseEn,
             final String phone, final String fax, final String email, final String site, final String localisation,
             final List<MultipartFile> profilFiles) {
         this.name = name; // Nom en arabe
@@ -67,6 +68,7 @@ public class PresseDTO {
         this.type = type;
         this.website = website;
         this.categorie = categorie;
+        this.categoriePresses=categoriePresses;
         this.selectedCategorie = selectedCategorie;
         this.complexe = complexe;
         this.adresse = adresse;
@@ -123,6 +125,11 @@ public class PresseDTO {
 
     public Long getComplexe() {
         return this.complexe;
+    }
+
+    public Long getCategoriePresses()
+    {
+        return this.categoriePresses;
     }
 
     public String getAdresse() {
@@ -198,6 +205,11 @@ public class PresseDTO {
 
     public void setComplexe(final Long complexe) {
         this.complexe = complexe;
+    }
+
+    public void setCategoriePresses(final Long categoriePresses)
+    {
+        this.categoriePresses=categoriePresses;
     }
 
     public void setAdresse(final String adresse) {
