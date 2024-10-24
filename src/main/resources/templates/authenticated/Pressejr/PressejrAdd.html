@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="authenticated/fragments/header::header(${'title'},${'description'},${'keywords'})">
+</head>
+
+
+<body>
+
+<!-- ======= Header ======= -->
+<header th:replace="authenticated/fragments/navbar::header"></header>
+<!-- End Header -->
+
+<!-- ======= Sidebar ======= -->
+<aside th:replace="authenticated/fragments/navside::sidebar"></aside>
+<!-- End Sidebar-->
+
+
+<main id="main" class="main">
+    <div class="card">
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between">
+                <div class="p-2"><h5 class="card-title">presse jours Add</h5></div>
+            </div>
+
+            <form id="profileForm" th:action="@{/Pressejr/save}" method="post" enctype="multipart/form-data">
+
+                <div class="row mb-3 ">
+                    <label for="name" class="col-md-4 col-lg-3 col-form-label"> Name</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="name" type="text" class="form-control"
+                               id="name" placeholder="name">
+                    </div>
+                </div>
+
+                <div class="row mb-3 ">
+                    <label for="nameFr" class="col-md-4 col-lg-3 col-form-label"> Name Fr</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="nameFr" type="text" class="form-control"
+                               id="nameFr" placeholder="nameFr">
+                    </div>
+                </div>
+
+                <div class="row mb-3 ">
+                    <label for="nameEn" class="col-md-4 col-lg-3 col-form-label"> Name En</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="nameEn" type="text" class="form-control"
+                               id="nameEn" placeholder="nameEn">
+                    </div>
+                </div>
+
+                
+
+
+            
+            
+            
+
+
+
+                <div class="text-center">
+                    <button type="submit"
+                            class="btn btn-primary">Save
+                    </button>
+                </div>
+            </form><!-- End Profile Edit Form -->
+
+        </div>
+    </div>
+</main><!-- End #main -->
+
+
+<!-- ======= Footer ======= -->
+<footer th:replace="authenticated/fragments/footer::footer" class="footer">
+</footer><!-- End Footer -->
+
+<!-- Template Main JS File -->
+<div th:replace="authenticated/fragments/js::js"></div>
+
+
+</body>
+</html>
