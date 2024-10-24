@@ -128,6 +128,7 @@ public class PresseService {
          //   press.setPresseCategories(Presse.getPresseCategories());
             press.setPhone(Presse.getPhone());
             press.setFax(Presse.getFax());
+            press.setCategoriePresse(Presse.getCategoriePresse());
 
             if (multimediaFiles != null && !multimediaFiles.isEmpty()) {
                 List<Multimedia> multimediaList = new ArrayList<>();

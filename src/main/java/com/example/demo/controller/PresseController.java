@@ -45,6 +45,8 @@ public class PresseController {
 
     @Autowired
     private EtablissementService etablissementService;
+    @Autowired
+    private CategoriePresseService categoriePresseService;
 
     public PresseController() {
     }
@@ -53,9 +55,12 @@ public class PresseController {
     public String presseAdd(Model model) {
         List<Complexe> complexes = this.complexeService.findAll();
         List<PresseCategorie> presseCategories = this.presseCategorieService.findAll();
+        List<CategoriePress> categoriePresses = this.categoriePresseService.findAll();
+        model.addAttribute("categoriePresses", categoriePresses);
         model.addAttribute("complexes", complexes);
         model.addAttribute("presseDTO", new PresseDTO());
         model.addAttribute("presseCategories", presseCategories);
+        model.addAttribute("categoriePresses", categoriePresses);
         return "authenticated/presse/presseAdd";
     }
 
@@ -370,6 +375,8 @@ public String findTVById(Model model, @PathVariable Long id) {
         model.addAttribute("presseDTO", new PresseDTO());
         model.addAttribute("presseCategories", presseCategories);
         model.addAttribute("Selected", selectCate);
+        List<CategoriePress> categoriePresses = this.categoriePresseService.findAll();
+        model.addAttribute("categoriePresses", categoriePresses);
         return "authenticated/presse/PressEdit";
     }
 

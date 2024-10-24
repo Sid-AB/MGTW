@@ -17,6 +17,7 @@ public class SecurityConfig {
     }
  
    /*@Bean
+  /* @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((authRequest) -> {
            ((AuthorizedUrl) authRequest.requestMatchers(new String[] { "/authenticated/**", "/user/**", "/tv/tvs",
@@ -53,5 +54,6 @@ public class SecurityConfig {
         http.headers(AbstractHttpConfigurer::disable);
         return (SecurityFilterChain) http.build();
     }*/
+   
         
 }

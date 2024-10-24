@@ -27,6 +27,6 @@ public class CategoriePresseController {
     @PostMapping({"/save"})
     public String saveProfile(@ModelAttribute("userDTO") CategoriePresseDTO categoriePresseDTO) {
         this.categoriePresseService.saveCategorie(categoriePresseDTO);
-        return "redirect:/tv/tvs";
+        return "redirect:/presse/presses";
     }
 }
