@@ -47,7 +47,9 @@ public class PresseController {
     private EtablissementService etablissementService;
     @Autowired
     private CategoriePresseService categoriePresseService;
-
+    
+    @Autowired
+    private PressejrService PressejrService;
     public PresseController() {
     }
 
@@ -56,11 +58,13 @@ public class PresseController {
         List<Complexe> complexes = this.complexeService.findAll();
         List<PresseCategorie> presseCategories = this.presseCategorieService.findAll();
         List<CategoriePress> categoriePresses = this.categoriePresseService.findAll();
-        model.addAttribute("categoriePresses", categoriePresses);
+        List<Pressejr> Pressejr = this.PressejrService.findAll();
+
         model.addAttribute("complexes", complexes);
         model.addAttribute("presseDTO", new PresseDTO());
         model.addAttribute("presseCategories", presseCategories);
         model.addAttribute("categoriePresses", categoriePresses);
+        model.addAttribute("Pressejr", Pressejr);
         return "authenticated/presse/presseAdd";
     }
 
@@ -128,6 +132,9 @@ public class PresseController {
         List<CategoriePress> presseListDistinctByCategoriePresse=this.categoriePresseService.findAll();
         System.out.println("size of "+pressesEcritPublic.get(0).getNameFr());
         model.addAttribute("presseListDistinctByCategoriePresses", presseListDistinctByCategoriePresse);
+
+        List<Pressejr> presseListDistinctByPressejr=this.PressejrService.findAll();
+        model.addAttribute("presseListDistinctByPressejr", presseListDistinctByPressejr);
         // Retourner la vue
         return "notAuthenticated/presse/presseGeneral";
     }
@@ -223,6 +230,9 @@ public class PresseController {
         model.addAttribute("etablissementImprssion", etablissementImprssion);
         List<CategoriePress> presseListDistinctByCategoriePresse=this.categoriePresseService.findAll();
         model.addAttribute("presseListDistinctByCategoriePresses", presseListDistinctByCategoriePresse);
+
+       /*  List<Pressejr> presseListDistinctByPressejr=this.PressejrService.findAll();
+        model.addAttribute("presseListDistinctByPressejr", presseListDistinctByPressejr);*/
         // Retourner la vue
         return "notAuthenticated/presse/presseGeneralelectronique";
     }
@@ -382,6 +392,9 @@ public String findTVById(Model model, @PathVariable Long id) {
         model.addAttribute("Selected", selectCate);
         List<CategoriePress> categoriePresses = this.categoriePresseService.findAll();
         model.addAttribute("categoriePresses", categoriePresses);
+
+        List<Pressejr> Pressejr = this.PressejrService.findAll();
+        model.addAttribute("Pressejr", Pressejr);
         return "authenticated/presse/PressEdit";
     }
 

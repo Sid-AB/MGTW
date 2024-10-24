@@ -250,6 +250,18 @@
                     </div>
                 </div>
 
+                <div class="row mb-3">
+                    <label for="Pressejr" class="col-md-4 col-lg-3 col-form-label">Presse jours</label>
+                    <div class="col-md-8 col-lg-9">
+                        <select id="Pressejr" name="Pressejr" class="form-control"
+                                onchange="">
+                            <option value="" disabled>Select presse jours</option>
+                            <option th:each="Pressejr : ${Pressejr}" th:value="${Pressejr.id}"
+                                    th:text="${Pressejr.name}"></option>
+                        </select>
+                    </div>
+                </div>
+
                             <!--div class="row mb-3">
                                 <label for="Email" class="col-md-4 col-lg-12 col-form-label">Categorie of News Paper</label>
                                 <div class="col-md-8 col-lg-9">
