@@ -41,13 +41,13 @@ public class SecurityConfig {
                     "/etablissement/{id}", "/etablissement/lugo/{id}", "/search", "/ministers/list",
                     "/ministers/pic/{id}","/search/**","/Direction/all" ,"/sousDirection/all","/etablissement/societe-imp ression","/etablissement/societe-impression/{id}","/etablissement/aps/"})).permitAll();
         });
-           http.formLogin((formLogin) -> {
+         /*  http.formLogin((formLogin) -> {
             ((FormLoginConfigurer) formLogin.loginPage("/login").defaultSuccessUrl("/home", true)).permitAll();
         });
          http.logout((logout) -> {
             logout.invalidateHttpSession(true).deleteCookies(new String[] { "JSESSIONID" }).clearAuthentication(true)
                     .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login?logout");
-        }); 
+        });  */
         http.cors(AbstractHttpConfigurer::disable);
         http.csrf(AbstractHttpConfigurer::disable);
         http.headers(AbstractHttpConfigurer::disable);

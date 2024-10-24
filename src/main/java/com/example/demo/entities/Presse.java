@@ -88,6 +88,9 @@ public class Presse {
             name = "complexe_id"
     )
     private Complexe complexe;
+    @ManyToOne
+    @JoinColumn(name = "categoriePresse_id")
+    private CategoriePress categoriePresse;
     @OneToMany(
             mappedBy = "presse",
             cascade = {CascadeType.ALL}
