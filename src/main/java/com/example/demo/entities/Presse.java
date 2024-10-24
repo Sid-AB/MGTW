@@ -206,7 +206,7 @@ public class Presse {
 
     public CategoriePress getCategoriePresse()
     {
-        return categoriePresse;
+        return this.categoriePresse;
     }
 
     public void setId(final Long id) {
