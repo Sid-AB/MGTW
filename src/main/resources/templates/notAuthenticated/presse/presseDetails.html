@@ -149,11 +149,11 @@
                                             <span th:case="'رقمية'" th:text="#{pressElect}"></span>
                                             <span th:case="'رقمية/مكتوبة'" th:text="#{pressElect}"></span>
                                             <span th:case="'غير متوفر'" th:text="#{pressNonDispo}"></span>
-                                            <span th:text="${#locale.language == 'ar' ? presse.getPressejr().getName():
+                                            <!--span th:text="${#locale.language == 'ar' ? presse.getPressejr().getName():
                                             #locale.language == 'fr' ? presse.getPressejr().getNameFr(): presse.getPressejr().getNameEn()} "></span>
                       
                                             <span th:text="${#locale.language == 'ar' ? presse.getCategoriePresse().getName():
-                                                             #locale.language == 'fr' ? presse.getCategoriePresse().getNameFr(): presse.getCategoriePresse().getNameEn()} "></span>
+                                                             #locale.language == 'fr' ? presse.getCategoriePresse().getNameFr(): presse.getCategoriePresse().getNameEn()} "></span-->
                                         </div>
                                     </li>
                                         <!-- Ajout de la condition à l'intérieur du bloc th:each -->
