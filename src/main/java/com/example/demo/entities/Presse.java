@@ -204,6 +204,11 @@ public class Presse {
         return this.updatedAt;
     }
 
+    public CategoriePress getCategoriePresse()
+    {
+        return categoriePresse;
+    }
+
     public void setId(final Long id) {
         this.id = id;
     }
@@ -294,6 +299,11 @@ public class Presse {
 
     public void setUpdatedAt(final LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public void setCategoriePresse(CategoriePress categoriePresse)
+    {
+        this.categoriePresse=categoriePresse;
     }
 
     public boolean equals(final Object o) {
@@ -558,6 +568,16 @@ public class Presse {
                     return false;
                 }
 
+                Object this$categoriePresse = this.getCategoriePresse();
+                Object other$categoriePresse = other.getCategoriePresse();
+                if (this$categoriePresse == null) {
+                    if (other$categoriePresse != null) {
+                        return false;
+                    }
+                } else if (!this$categoriePresse.equals(other$categoriePresse)) {
+                    return false;
+                }
+
                 Object this$createdAt = this.getCreatedAt();
                 Object other$createdAt = other.getCreatedAt();
                 if (this$createdAt == null) {
@@ -652,6 +672,9 @@ public int hashCode() {
     Object $multimediaList = this.getMultimediaList();
     result = result * 59 + ($multimediaList == null ? 43 : $multimediaList.hashCode());
 
+    Object $categoriePresse = this.getCategoriePresse();
+    result = result * 59 + ($multimediaList == null ? 43 : $categoriePresse.hashCode());
+
     Object $createdAt = this.getCreatedAt();
     result = result * 59 + ($createdAt == null ? 43 : $createdAt.hashCode());
 
@@ -692,7 +715,7 @@ public String toString() {
 public Presse(final Long id, final String name, final String nameFr, final String nameEn, final String description,
         final String descriptionFr, final String descriptionEn, final String website, final String typepbpr,
         final String categorieelec, final String adresse, final String adresseFr, final String adresseEn, final String phone, final String fax, final String email,
-        final String site, final List<PresseCategorie> presseCategories,
+        final String site, final List<PresseCategorie> presseCategories,final CategoriePress categoriePresse,
         final Complexe complexe, final List<Multimedia> multimediaList, final LocalDateTime createdAt,
         final LocalDateTime updatedAt) {
     this.id = id;
@@ -712,6 +735,7 @@ public Presse(final Long id, final String name, final String nameFr, final Strin
     this.fax = fax;
     this.email = email;
     this.site = site;
+    this.categoriePresse=categoriePresse;
     this.presseCategories = presseCategories;
     this.complexe = complexe;
     this.multimediaList = multimediaList;
@@ -740,6 +764,7 @@ public Presse(final Long id, final String name, final String nameFr, final Strin
         private String fax;
         private String email;
         private String site;
+        private CategoriePress categoriePresse;
         private List<PresseCategorie> presseCategories;
         private Complexe complexe;
         private List<Multimedia> multimediaList;
@@ -839,6 +864,12 @@ public Presse(final Long id, final String name, final String nameFr, final Strin
             return this;
         }
 
+        public Presse.PresseBuilder categoriePresse(final CategoriePress categoriePresse)
+        {
+            this.categoriePresse=categoriePresse;
+            return this;
+        }
+
         public Presse.PresseBuilder complexe(final Complexe complexe) {
             this.complexe = complexe;
             return this;
@@ -862,7 +893,7 @@ public Presse(final Long id, final String name, final String nameFr, final Strin
         // Méthode pour construire l'objet Presse
         public Presse build() {
             return new Presse(id, name, nameFr, nameEn, description, descriptionFr, descriptionEn, website, typepbpr,
-                    categorieelec, adresse, adresseEn, adresseFr, phone, fax, email, site, presseCategories, complexe,
+                    categorieelec, adresse, adresseEn, adresseFr, phone, fax, email, site, presseCategories,categoriePresse ,complexe,
                     multimediaList, createdAt, updatedAt);
         }
 
@@ -886,6 +917,7 @@ public Presse(final Long id, final String name, final String nameFr, final Strin
                    ", email=" + this.email + 
                    ", site=" + this.site + 
                    ", presseCategories=" + String.valueOf(this.presseCategories) + 
+                   ",categoriePresse="+String.valueOf(this.categoriePresse)+
                    ", complexe=" + String.valueOf(this.complexe) + 
                    ", multimediaList=" + String.valueOf(this.multimediaList) + 
                    ", createdAt=" + String.valueOf(this.createdAt) + 
