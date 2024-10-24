@@ -56,7 +56,13 @@ public class CategoriePress {
     public static CategoriePress.CategoriePressBuilder builder() {
         return new CategoriePress.CategoriePressBuilder();
     }
-
+    public CategoriePress(Long id,String name,String nameFr,String nameEn)
+    {
+        this.id=id;
+        this.name=name;
+        this.nameFr=nameFr;
+        this.nameEn=nameEn;
+    }
     public Long getId() {
         return this.id;
     }
@@ -252,8 +258,8 @@ public class CategoriePress {
             final List<Presse> PresseList, final LocalDateTime createdAt, final LocalDateTime updatedAt) {
         this.id = id;
         this.name = name;
-        this.nameFr = nameFr; // Initialisation de nameFr
-        this.nameEn = nameEn; // Initialisation de nameEn
+        this.nameFr = nameFr; 
+        this.nameEn = nameEn; 
         this.PresseList = PresseList;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
