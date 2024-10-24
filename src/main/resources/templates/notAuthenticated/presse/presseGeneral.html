@@ -15,12 +15,27 @@
 
     <div style="height: 70px"
     ></div>
+    <div>
+    <section id="portfolio" class="portfolio">
+    <div class="container aos-init aos-animate">
+    <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up"
+    data-aos-delay="100">
+    <li data-filter="*" class="filter-active" th:text="#{channel}">جميع القنوات</li>
 
-
+    <li th:if="presseListDistinctByCategoriePresses"
+        th:each="presseListDistinctByCategoriePresse : ${presseListDistinctByCategoriePresses}"
+        th:attr="data-filter='.' + ${presseListDistinctByCategoriePresse.getName()}"
+        th:text="${#locale.language == 'fr' ? presseListDistinctByCategoriePresse.getNameFr() : (#locale.language == 'en' ? presseListDistinctByCategoriePresse.getNameEn() : presseListDistinctByCategoriePresse.getName())}">
+    </li>
+    </ul>
+    </div>
+    </div>
+    </section>
     <!-- ======= Breadcrumbs ======= -->
     <section th:if="pressesEcritPublic" id="publicEcrit" class="breadcrumbs m-0">
         <div class="container">
-
+            
+       
             <h2 th:text="#{pressEcrit}+' '+#{public}"> الصحافة المكتوبة العمومية </h2>
 
         </div>
@@ -33,7 +48,8 @@
 
             <div class="row">
 
-                 <div th:if="${pressesEcritPublic}" th:each="presseEcritPublic : ${pressesEcritPublic}" class="col-6 col-sm-3 col-md-3 mb-5">
+                 <div th:if="${pressesEcritPublic}" th:each="presseEcritPublic : ${pressesEcritPublic}" 
+                      class="col-6 col-sm-3 col-md-3 mb-5">
                     <div class="post-entry">
                         <a th:href="@{'/presse/' + ${presseEcritPublic.getId().toString()}}" class="post-thumbnail">
                             <img th:src="@{${'/presse/lugo/' + presseEcritPublic.getId()}}"
@@ -41,7 +57,7 @@
                         </a>
                         <div class="post-content-entry">
   
-                            <h3 style="font-size: 20px">
+                            <h3 style="font-size: 20px" th:text="${presseEcritPublic.getCategoriePresse().getName()}">
                                 <a th:href="@{'/presse/' + ${presseEcritPublic.getId().toString()}}" 
                                    th:text="${#locale.language == 'fr' ? presseEcritPublic.getNameFr() : 
                                              #locale.language == 'en' ? presseEcritPublic.getNameEn() : 

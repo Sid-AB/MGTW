@@ -125,6 +125,9 @@ public class PresseController {
     
         List  <Etablissement> etablissementImprssion= etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
         model.addAttribute("etablissementImprssion", etablissementImprssion);
+        List<CategoriePress> presseListDistinctByCategoriePresse=this.categoriePresseService.findAll();
+        System.out.println("size of "+presseListDistinctByCategoriePresse.size());
+        model.addAttribute("presseListDistinctByCategoriePresses", presseListDistinctByCategoriePresse);
         // Retourner la vue
         return "notAuthenticated/presse/presseGeneral";
     }
@@ -218,6 +221,8 @@ public class PresseController {
         
         List  <Etablissement> etablissementImprssion= etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
         model.addAttribute("etablissementImprssion", etablissementImprssion);
+        List<CategoriePress> presseListDistinctByCategoriePresse=this.categoriePresseService.findAll();
+        model.addAttribute("presseListDistinctByCategoriePresses", presseListDistinctByCategoriePresse);
         // Retourner la vue
         return "notAuthenticated/presse/presseGeneralelectronique";
     }
