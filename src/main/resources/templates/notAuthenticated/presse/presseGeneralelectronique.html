@@ -23,7 +23,22 @@
     <div style="height: 70px"
     ></div>
 
-
+    <div>
+        <section id="portfolio" class="portfolio">
+        <div class="container aos-init aos-animate">
+        <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up"
+        data-aos-delay="100">
+        <li data-filter="*" class="filter-active" th:text="#{presseActivite}">جميع القنوات</li>
+    
+        <li th:if="presseListDistinctByCategoriePresses"
+            th:each="presseListDistinctByCategoriePresse : ${presseListDistinctByCategoriePresses}"
+            th:attr="data-filter='.' + ${presseListDistinctByCategoriePresse.getName()}"
+            th:text="${#locale.language == 'fr' ? presseListDistinctByCategoriePresse.getNameFr() : (#locale.language == 'en' ? presseListDistinctByCategoriePresse.getNameEn() : presseListDistinctByCategoriePresse.getName())}">
+        </li>
+        </ul>
+        </div>
+        
+       
    
 
     <section  th:if="pressesElectroniquePrive" id="publicElectronique" class="breadcrumbs m-0">
@@ -92,7 +107,7 @@
                     </h3>
                 </div>
                 
-                <div th:if="${!pressesElectroniquePrive.isEmpty()}" th:each="presseElectroniquePrive : ${pressesElectroniquePrive}" class="col-6 col-sm-3 col-md-3 mb-5">
+                <div th:if="${!pressesElectroniquePrive.isEmpty()}" th:each="presseElectroniquePrive : ${pressesElectroniquePrive}" th:attr="class=${presseElectroniquePrive.getCategoriePresse() != null ? 'col-6 col-sm-3 col-md-3 mb-5 portfolio-item '+presseElectroniquePrive.getCategoriePresse().getName() : 'col-6 col-sm-3 col-md-3 mb-5 portfolio-item'}">
                     <div class="post-entry">
                         <a th:href="@{'/presse/'+${presseElectroniquePrive.getId().toString()}}" class="post-thumbnail">
                             <img th:src="@{'/presse/lugo/'+${presseElectroniquePrive.getId()}}" style="height: 100px; width: 100px" alt="Image" class="img-fluid">
@@ -206,7 +221,7 @@
 
             <!-- Affichage des presses électroniques publiques si la liste n'est pas vide -->
             <div th:if="${!pressesElectroniquePublic.isEmpty()}"
-                th:each="presseElectroniquePublic : ${pressesElectroniquePublic}" class="col-6 col-sm-3 col-md-3 mb-5">
+                th:each="presseElectroniquePublic : ${pressesElectroniquePublic}" th:attr="class=${presseElectroniquePublic.getCategoriePresse() != null ? 'col-6 col-sm-3 col-md-3 mb-5 portfolio-item '+presseElectroniquePublic.getCategoriePresse().getName() : 'col-6 col-sm-3 col-md-3 mb-5 portfolio-item'}">
                 <div class="post-entry">
                     <a th:href="@{'/presse/'+${presseElectroniquePublic.getId().toString()}}" class="post-thumbnail">
                         <img th:src="@{'/presse/lugo/'+${presseElectroniquePublic.getId()}}"
@@ -242,6 +257,8 @@
     </section><!-- End Breadcrumbs -->
 
     <!-- ======= Portfolio Details Section ======= -->
+</section>
+</div>
     <!-- Start Blog Section -->
     <div class="blog-section">
         <div class="container">
@@ -291,7 +308,42 @@
     <svg th:include="notAuthenticated/fragments/logosvg::logosvg" width="120" height="120" viewBox="0 0 2342 2004" version="1.1" class="inSide">
     </svg>  
 </div>
-
+<script>
+  
+    const filterElements = document.querySelectorAll('[data-filter]');
+    
+    // Add a click evnt listener to each element
+    filterElements.forEach(element => {
+      element.addEventListener('click', () => {
+        // Hide all the list of items
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+          item.style.display = 'none';
+        });
+       
+    
+        document.querySelectorAll('.filter-active').forEach(item => {
+          item.classList.remove('filter-active');
+        });
+        const filterGroup = element.getAttribute('data-filter');
+        //for all elements
+        if(filterGroup === "*")
+        {
+            document.querySelectorAll('.portfolio-item').forEach(item => {
+            item.style.display = 'block';
+            element.classList.add('filter-active');
+          });
+        }
+        else
+        {
+            //with types
+        document.querySelectorAll(`.portfolio-item${filterGroup}`).forEach(item => {
+          item.style.display = 'block';
+          element.classList.add('filter-active');
+        });
+        }
+      });
+    });
+  </script>
 <div th:replace="notAuthenticated/fragments/js::js"></div>
 
 </body>

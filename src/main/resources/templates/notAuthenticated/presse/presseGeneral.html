@@ -29,8 +29,9 @@
     </li>
     </ul>
     </div>
-    </div>
+    
     </section>
+    </div>
     <!-- ======= Breadcrumbs ======= -->
     <section th:if="pressesEcritPublic" id="publicEcrit" class="breadcrumbs m-0">
         <div class="container">
@@ -49,7 +50,7 @@
             <div class="row">
 
                  <div th:if="${pressesEcritPublic}" th:each="presseEcritPublic : ${pressesEcritPublic}" 
-                      class="col-6 col-sm-3 col-md-3 mb-5">
+                 th:attr="class=${presseEcritPublic.getCategoriePresse() != null ? 'col-6 col-sm-3 col-md-3 mb-5 portfolio-item '+presseEcritPublic.getCategoriePresse().getName() : 'col-6 col-sm-3 col-md-3 mb-5 portfolio-item'}">
                     <div class="post-entry">
                         <a th:href="@{'/presse/' + ${presseEcritPublic.getId().toString()}}" class="post-thumbnail">
                             <img th:src="@{${'/presse/lugo/' + presseEcritPublic.getId()}}"
@@ -121,7 +122,7 @@
                         </div>
                     </div>
                 </div> -->
-                <div th:if="${pressesEcritPrive}" th:each="presseEcritPrive : ${pressesEcritPrive}" class="col-6 col-sm-3 col-md-3 mb-5">
+                <div th:if="${pressesEcritPrive}" th:each="presseEcritPrive : ${pressesEcritPrive}"  th:attr="class=${presseEcritPrive.getCategoriePresse() != null ? 'col-6 col-sm-3 col-md-3 mb-5 portfolio-item '+presseEcritPrive.getCategoriePresse().getName() : 'col-6 col-sm-3 col-md-3 mb-5 portfolio-item'}">
                     <div class="post-entry">
                         <a th:href="@{'/presse/' + ${presseEcritPrive.getId().toString()}}" class="post-thumbnail">
                             <img th:src="@{${'/presse/lugo/' + presseEcritPrive.getId()}}"
@@ -168,7 +169,42 @@
     <svg th:include="notAuthenticated/fragments/logosvg::logosvg" width="120" height="120" viewBox="0 0 2342 2004" version="1.1" class="inSide">
     </svg>  
 </div>
-
+<script>
+  
+    const filterElements = document.querySelectorAll('[data-filter]');
+    
+    // Add a click evnt listener to each element
+    filterElements.forEach(element => {
+      element.addEventListener('click', () => {
+        // Hide all the list of items
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+          item.style.display = 'none';
+        });
+       
+    
+        document.querySelectorAll('.filter-active').forEach(item => {
+          item.classList.remove('filter-active');
+        });
+        const filterGroup = element.getAttribute('data-filter');
+        //for all elements
+        if(filterGroup === "*")
+        {
+            document.querySelectorAll('.portfolio-item').forEach(item => {
+            item.style.display = 'block';
+            element.classList.add('filter-active');
+          });
+        }
+        else
+        {
+            //with types
+        document.querySelectorAll(`.portfolio-item${filterGroup}`).forEach(item => {
+          item.style.display = 'block';
+          element.classList.add('filter-active');
+        });
+        }
+      });
+    });
+  </script>
 <div th:replace="notAuthenticated/fragments/js::js"></div>
 
 </body>
