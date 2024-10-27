@@ -141,30 +141,42 @@
                             </li>
                         
                             <li>
+                                
                                 <strong th:text="#{typpress}">نوع الصحيفة</strong>:
                                 <ul>
                                     <li th:each="category : ${presse.getPresseCategories()}">
                                         <div th:switch="${category.getName()}">
-                                            <span th:case="'مكتوبة'" th:text="#{pressEcrit}"></span>
-                                            <span th:case="'رقمية'" th:text="#{pressElect}"></span>
-                                            <span th:case="'رقمية/مكتوبة'" th:text="#{pressElect}"></span>
+                                            <span th:case="'مكتوبة'" th:text="#{pressecrite}"></span>
+                                            <span th:case="'رقمية'" th:text="#{presselct}"></span>
+                                            <span th:case="'رقمية/مكتوبة'" th:text="#{presselct}"></span>
                                             <span th:case="'غير متوفر'" th:text="#{pressNonDispo}"></span>
+
                                             <span th:text="${presse.getPressejr() != null ?
                                                 (#locale.language == 'ar' ? presse.getPressejr().getName():
                                             #locale.language == 'fr' ? presse.getPressejr().getNameFr(): 
                                             presse.getPressejr().getNameEn()) : ''}"></span>
                       
-                                            <span th:text="${presse.getCategoriePresse() != null ? 
-                                                (#locale.language == 'ar' ? presse.getCategoriePresse().getName() :
+                                            <!--span th:text="${presse.getCategoriePresse() != null ? 
+                                                (#locale.language == 'ar' ? presse. ().getName() :
                                                  #locale.language == 'fr' ? presse.getCategoriePresse().getNameFr() : 
-                                                 presse.getCategoriePresse().getNameEn()) : ''}"></span>
+                                                 presse.getCategoriePresse().getNameEn()) : ''}"></span-->
                                         </div>
                                     </li>
-
+                                    <div th:each="category : ${presse.getPresseCategories()}">
+                                        <li>
+                                            <span th:text="#{presseActivite} + ':'">موضوع النشاط:</span>
+                                            <span th:text="${presse.getCategoriePresse() != null ? 
+                                                    (#locale.language == 'ar' ? presse.getCategoriePresse().getName() : 
+                                                     #locale.language == 'fr' ? presse.getCategoriePresse().getNameFr() : 
+                                                     presse.getCategoriePresse().getNameEn()) : ''}">
+                                            </span>
+                                        </li>
+                                    </div>
+                                    
                                         <!-- Ajout de la condition à l'intérieur du bloc th:each -->
                                         <div th:each="category : ${presse.getPresseCategories()}">
                                             <li th:if="${category.getName()} == 'رقمية/مكتوبة'">
-                                                <span th:text="#{pressEcrit}"></span>
+                                                <span th:text="#{pressecrite}"></span>
                                             </li>
                                         </div>
                                     
@@ -181,8 +193,8 @@
                                 <ul>
                                     <li>
                                         <div th:switch="${presse.getTypepbpr()}">
-                                            <span th:case="'public'" th:text="#{public}"></span>
-                                            <span th:case="'prive'" th:text="#{prive}"></span>
+                                            <span th:case="'public'" th:text="#{publicc}"></span>
+                                            <span th:case="'prive'" th:text="#{privee}"></span>
                                         </div>
                                     </li>
                                 </ul>
