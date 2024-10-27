@@ -160,12 +160,13 @@
                                                  presse.getCategoriePresse().getNameEn()) : ''}"></span>
                                         </div>
                                     </li>
+
                                         <!-- Ajout de la condition à l'intérieur du bloc th:each -->
-                                    <div th:each="category : ${presse.getPresseCategories()}">
-                                        <li th:if="${category.getName()} == 'رقمية/مكتوبة'">
-                                            <span th:text="#{pressEcrit}"></span>
-                                        </li>
-                                    </div>
+                                        <div th:each="category : ${presse.getPresseCategories()}">
+                                            <li th:if="${category.getName()} == 'رقمية/مكتوبة'">
+                                                <span th:text="#{pressEcrit}"></span>
+                                            </li>
+                                        </div>
                                     
                                 </ul>
                                 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : dim. 27 oct. 2024 à 10:14
+-- Généré le : dim. 27 oct. 2024 à 10:26
 -- Version du serveur : 8.2.0
 -- Version de PHP : 8.2.13
 
@@ -874,7 +874,7 @@ CREATE TABLE IF NOT EXISTS `presse` (
 --
 
 INSERT INTO `presse` (`complexe_id`, `created_at`, `id`, `updated_at`, `adresse`, `categorieelec`, `email`, `fax`, `localisation`, `name`, `phone`, `site`, `typepbpr`, `website`, `description`, `adresse_en`, `adresse_fr`, `description_en`, `description_fr`, `name_en`, `name_fr`, `categorie_presse_id`, `pressejr_id`) VALUES
-(1, '2024-04-23 16:08:02.000000', 1005, '2024-10-27 10:53:35.518379', NULL, '', 'webredact@elwatan-dz.com', '+213 21 68 21 87', 'P3JV+7WX، Rue Zouioueche Farid, Kouba', 'الوطن', '+213 21 68 21 83 ', 'https://elwatan-dz.com/', 'prive', 'https://elwatan-dz.com/', 'يومية جزائرية مستقلة', 'Dar Al-Sahafa Al-Tahir Jout, 1 Bashir Attar St, El-Mai, Algiers', 'Dar El Sahafa El Tahar Jaout 1, Boulevard Béchir Attar, El-Madania, Alger', 'An independent Algerian daily newspaper', 'Journal indépendant algérien', 'El-watan-dz', 'El-watan-dz', 10, 1),
+(1, '2024-04-23 16:08:02.000000', 1005, '2024-10-27 10:53:35.518379', NULL, '', 'webredact@elwatan-dz.com', '+213 21 68 21 87', 'P3JV+7WX، Rue Zouioueche Farid, Kouba', 'الوطن', '+213 21 68 21 83 ', 'https://elwatan-dz.com/', 'prive', 'https://elwatan-dz.com/', 'يومية جزائرية مستقلة', 'Dar Al-Sahafa Al-Tahir Jout, 1 Bashir Attar St, El-Mai, Algiers', 'Dar El Sahafa El Tahar Jaout 1, Boulevard Béchir Attar, El-Madania, Alger', 'An independent Algerian daily newspaper', 'Journal indépendant algérien', 'El-watan-dz', 'El-watan-dz', 12, 1),
 (5, '2024-04-23 16:13:51.000000', 1006, '2024-04-23 16:13:51.000000', 'حي سعيدون محمد فيلا رقم 166 - القبة، الجزائر', '', 'info@echorouk.net', '+213 23 71 39 82', 'P3FH+8MQ, Kouba', 'الشروق أونلاين', '+213 23 71 39 90', 'https://www.echoroukonline.com/', 'prive', 'https://www.echoroukonline.com/', 'الشروق أونلاين موقع إخباري يصدر من الجزائر، ويوفر تغطية آنية ومستمرة للأحداث في الجزائر والعالم', '166 Villa, Mohamed Saidoun, El-Quba, Algiers', 'Hay Saïdoun Mohamed, Villa n° 166, El-Houari, Alger', 'Echorouk Online is a news site published from Algeria, providing continuous coverage of events in Algeria and the world', 'Chorouk Online est un site d’actualités algérien qui fournit une couverture en temps réel des événements en Algérie et dans le monde', 'Echorouk online', 'Echorouk online', NULL, NULL),
 (2, '2024-04-23 16:20:11.000000', 1007, '2024-04-23 16:20:11.000000', 'بئر مراد رايس، الجزائر العاصمة', '', 'contact@ennahartv.tv', '+213 23 59 91 14', 'CW 116, Bir Mourad Raïs', 'جريدة النهار', '+213 23 59 91 14', 'https://nhar.tv/LQlnU', 'prive', 'https://nhar.tv/LQlnU', 'جريدة يومية جزائرية مستقلة، صدرت عام 2007', 'Bir Mourad Raïs, Algiers', 'Bir Mourad Raïs, Alger', 'An independent daily Algerian newspaper established in 2007', 'Journal quotidien algérien indépendant, fondé en 2007', 'Ennahar Newspaper', 'Journal Ennahar', NULL, NULL),
 (1, '2024-04-23 16:27:06.000000', 1008, '2024-10-21 10:27:38.744999', NULL, '', 'info@elmoudjahid.dz', '+213 21 73 90 43', ' ', 'المجاهد', '+213 21 73 70 81', 'https://www.elmoudjahid.com/', 'public', 'https://www.elmoudjahid.com/', 'الأخبار اليومية الوطنية', '20 Liberation St, Algiers', '20, Rue de la Liberté, Alger', 'Daily national news', 'Actualités nationales quotidiennes', 'El Moudjahid', 'El Moudjahid', NULL, NULL),
