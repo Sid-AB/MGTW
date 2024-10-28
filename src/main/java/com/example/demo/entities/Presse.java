@@ -101,6 +101,11 @@ public class Presse {
     @JoinColumn(name = "Pressejr_id")
     private Pressejr Pressejr;
 
+    //pour les langues des presses 
+    @ManyToOne
+    @JoinColumn(name = "Language_id")
+    private Language Language;
+
     @OneToMany(
             mappedBy = "presse",
             cascade = {CascadeType.ALL}
@@ -195,8 +200,10 @@ public class Presse {
     public Pressejr getPressejr() {
         return this.Pressejr;
     }
-
-
+    
+    public Language getLanguage() {
+        return this.Language;
+    }
     public List<PresseCategorie> getPresseCategories() {
         return this.presseCategories;
     }
@@ -291,7 +298,7 @@ public class Presse {
         this.site = site;
     }
 
-   
+    
 
     @JsonIgnore
     public void setPresseCategories(final List<PresseCategorie> presseCategories) {
@@ -318,6 +325,9 @@ public class Presse {
         this.Pressejr = Pressejr;
     }
     
+    public void setLanguage(Language Language) {
+        this.Language = Language;
+    }
     public void setCategoriePresse(CategoriePress categoriePresse)
     {
         this.categoriePresse=categoriePresse;
@@ -560,7 +570,7 @@ public class Presse {
                 } else if (!this$presseCategories.equals(other$presseCategories)) {
                     return false;
                 }
-
+                
                 ///pour les presse jours
                 Object this$Pressejr = this.getPressejr();
                 Object other$Pressejr = other.getPressejr();
@@ -571,7 +581,17 @@ public class Presse {
                 } else if (!this$Pressejr.equals(other$Pressejr)) {
                     return false;
                 }
-
+  
+                 ///pour les langues des presses 
+                 Object this$Language = this.getLanguage();
+                 Object other$Language = other.getLanguage();
+                 if (this$Language == null) {
+                     if (other$Language != null) {
+                         return false;
+                     }
+                 } else if (!this$Language.equals(other$Language)) {
+                     return false;
+                 }
                 label124: {
                     Object this$complexe = this.getComplexe();
                     Object other$complexe = other.getComplexe();
@@ -697,6 +717,9 @@ public int hashCode() {
 
     Object $Pressejr = this.getPressejr();
     result = result * 59 + ($Pressejr == null ? 43 : $Pressejr.hashCode());
+    
+    Object $Language = this.getLanguage();
+    result = result * 59 + ($Language == null ? 43 : $Language.hashCode());
 
     Object $complexe = this.getComplexe();
     result = result * 59 + ($complexe == null ? 43 : $complexe.hashCode());
@@ -739,6 +762,7 @@ public String toString() {
         + ", presseCategories=" + String.valueOf(this.getPresseCategories()) 
         + ", complexe=" + String.valueOf(this.getComplexe()) 
         + ", Pressejr=" + String.valueOf(this.getPressejr())
+        + ", Language=" + String.valueOf(this.getLanguage())
         + ", multimediaList=" + String.valueOf(this.getMultimediaList()) 
         + ", createdAt=" + String.valueOf(this.getCreatedAt()) 
         + ", updatedAt=" + String.valueOf(this.getUpdatedAt()) 
@@ -749,7 +773,7 @@ public Presse(final Long id, final String name, final String nameFr, final Strin
         final String descriptionFr, final String descriptionEn, final String website, final String typepbpr,
         final String categorieelec, final String adresse, final String adresseFr, final String adresseEn, final String phone, final String fax, final String email,
         final String site, final List<PresseCategorie> presseCategories,
-        final Complexe complexe, final CategoriePress categoriePresse,final Pressejr Pressejr, final List<Multimedia> multimediaList, final LocalDateTime createdAt,
+        final Complexe complexe, final CategoriePress categoriePresse,final Pressejr Pressejr, final Language Language,final List<Multimedia> multimediaList, final LocalDateTime createdAt,
        
         final LocalDateTime updatedAt) {
     this.id = id;
@@ -776,6 +800,7 @@ public Presse(final Long id, final String name, final String nameFr, final Strin
     this.multimediaList = multimediaList;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
+    this.Language=Language;
 }
 
     public Presse() {
@@ -803,6 +828,7 @@ public Presse(final Long id, final String name, final String nameFr, final Strin
         private List<PresseCategorie> presseCategories;
         private Complexe complexe;
         private Pressejr Pressejr;
+        private Language Language;
         private List<Multimedia> multimediaList;
         private LocalDateTime createdAt;
         private LocalDateTime updatedAt;
@@ -915,6 +941,12 @@ public Presse(final Long id, final String name, final String nameFr, final Strin
             this.Pressejr = Pressejr;
             return this;
         }
+
+        
+        public Presse.PresseBuilder Language(final Language Language) {
+            this.Language = Language;
+            return this;
+        }
         public Presse.PresseBuilder multimediaList(final List<Multimedia> multimediaList) {
             this.multimediaList = multimediaList;
             return this;
@@ -933,7 +965,8 @@ public Presse(final Long id, final String name, final String nameFr, final Strin
         // Méthode pour construire l'objet Presse
         public Presse build() {
             return new Presse(id, name, nameFr, nameEn, description, descriptionFr, descriptionEn, website, typepbpr,
-                    categorieelec, adresse, adresseEn, adresseFr, phone, fax, email, site, presseCategories, complexe,categoriePresse ,Pressejr,
+                    categorieelec, adresse, adresseEn, adresseFr, phone, fax, email, site, presseCategories, complexe,
+                    categoriePresse ,Pressejr,Language,
                     multimediaList, createdAt, updatedAt);
         }
 
@@ -960,6 +993,7 @@ public Presse(final Long id, final String name, final String nameFr, final Strin
                    ",categoriePresse="+String.valueOf(this.categoriePresse)+
                    ", complexe=" + String.valueOf(this.complexe) + 
                    ", Pressejr=" +String.valueOf(this.Pressejr)+
+                   ", Language=" +String.valueOf(this.Language)+
                    ", multimediaList=" + String.valueOf(this.multimediaList) + 
                    ", createdAt=" + String.valueOf(this.createdAt) + 
                    ", updatedAt=" + String.valueOf(this.updatedAt) + ")";
