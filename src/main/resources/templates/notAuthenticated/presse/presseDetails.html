@@ -162,16 +162,6 @@
                                                  presse.getCategoriePresse().getNameEn()) : ''}"></span-->
                                         </div>
                                     </li>
-                                    <div th:each="category : ${presse.getPresseCategories()}">
-                                        <li>
-                                            <span th:text="#{presseActivite} + ':'">موضوع النشاط:</span>
-                                            <span th:text="${presse.getCategoriePresse() != null ? 
-                                                    (#locale.language == 'ar' ? presse.getCategoriePresse().getName() : 
-                                                     #locale.language == 'fr' ? presse.getCategoriePresse().getNameFr() : 
-                                                     presse.getCategoriePresse().getNameEn()) : ''}">
-                                            </span>
-                                        </li>
-                                    </div>
                                     
                                         <!-- Ajout de la condition à l'intérieur du bloc th:each -->
                                         <div th:each="category : ${presse.getPresseCategories()}">
@@ -186,7 +176,21 @@
                                 
                             </li>
 
-                            
+                            <li>
+                                <strong th:text="#{presseActivite} + ':'">موضوع النشاط </strong>
+                                    <ul>
+                                        <li>
+                                            <div th:each="category : ${presse.getPresseCategories()}">
+                                                    <span th:text="${presse.getCategoriePresse() != null ? 
+                                                            (#locale.language == 'ar' ? presse.getCategoriePresse().getName() : 
+                                                             #locale.language == 'fr' ? presse.getCategoriePresse().getNameFr() : 
+                                                             presse.getCategoriePresse().getNameEn()) : ''}">
+                                                    </span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                               
+                            </li>
                         
                             <li>
                                 <strong th:text="#{catpress}">طبيعة الصحيفة</strong>:

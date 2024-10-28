@@ -1063,7 +1063,6 @@ CREATE TABLE IF NOT EXISTS `presse_pressecatrgorie` (
 
 INSERT INTO `presse_pressecatrgorie` (`presse_id`, `pressecatrgorie_id`) VALUES
 (1009, 2),
-(1010, 1),
 (1011, 3),
 (1012, 3),
 (1015, 1),
@@ -1167,7 +1166,7 @@ INSERT INTO `presse_pressecatrgorie` (`presse_id`, `pressecatrgorie_id`) VALUES
 (1116, 1),
 (1117, 1),
 (1118, 1),
-(1005, 2);
+(1005, 3);
 
 -- --------------------------------------------------------
 
