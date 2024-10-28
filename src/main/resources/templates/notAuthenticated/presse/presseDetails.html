@@ -175,33 +175,32 @@
                                 
                                 
                             </li>
-
-                            
                             <li>
                                 <strong th:text="#{presseActivite} + ':'">موضوع النشاط </strong>
                                     <ul>
                                         <li>
-                                            <div th:each="category : ${presse.getPresseCategories()}">
-                                                    <span th:text="${presse.getCategoriePresse() != null ? 
-                                                            (#locale.language == 'ar' ? presse.getCategoriePresse().getName() : 
-                                                             #locale.language == 'fr' ? presse.getCategoriePresse().getNameFr() : 
-                                                             presse.getCategoriePresse().getNameEn()) : ''}">
+                                            <div th:each="category : ${presse.getCategoriePresse()}">
+                                                    <span th:text="${category!= null ? 
+                                                            (#locale.language == 'ar' ? category.getName() : 
+                                                             #locale.language == 'fr' ? category.getNameFr() : 
+                                                             category.getNameEn()) : ''}">
                                                     </span>
+                                                   
                                             </div>
                                         </li>
                                     </ul>
                                
                             </li>
-                            
+
                             <li>
                                 <strong th:text="#{languagePress}"> </strong>:
                                 <ul>
                                     <li>
                                         <div th:each="category : ${presse.getLanguage()}">
-                                            <span th:text="${presse.getLanguage() != null ? 
-                                                (#locale.language == 'ar' ? presse. ().getName() :
-                                                 #locale.language == 'fr' ? Language.getLanguage.getNameFr() : 
-                                                 Language.getLanguage().getNameEn()) : ''}"></span>
+                                            <span th:text="${category != null ? 
+                                                (#locale.language == 'ar' ? category.getName() :
+                                                 #locale.language == 'fr' ? category.getNameFr() : 
+                                                 category.getNameEn()) : ''}"></span>
                                            
                                         </div>
                                     </li>
@@ -209,6 +208,8 @@
                             </li>
                       
                         
+                            
+                           
                             <li>
                                 <strong th:text="#{catpress}">طبيعة الصحيفة</strong>:
                                 <ul>
