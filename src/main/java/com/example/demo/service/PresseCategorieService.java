@@ -16,12 +16,13 @@ public class PresseCategorieService {
 
     public PresseCategorieService() {
     }
-
+    public void deleteByIdCat(PresseCategorie presseCategorie)
+    {
+     this.presseCategorieRepository.delete(presseCategorie);
+    }
     public Optional<PresseCategorie> findPresseCategorieById(Long id) {
         return this.presseCategorieRepository.findPresseCategorieById(id);
     }
-
-   
 
     public List<PresseCategorie> findAll() {
         return this.presseCategorieRepository.findAll();

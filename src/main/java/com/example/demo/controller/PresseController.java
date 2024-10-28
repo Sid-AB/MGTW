@@ -25,6 +25,7 @@ import java.nio.file.Files;
 import java.util.*;
 import java.util.stream.Collectors;
 
+
 @Controller
 @RequestMapping({"/presse"})
 public class PresseController {
@@ -423,5 +424,10 @@ public String findTVById(Model model, @PathVariable Long id) {
        //return "authenticated/etablissement/etablissementsEdit.html";
        return new RedirectView("/presse/presses");
     }
-
+    @GetMapping("/delete/{id}")
+    public RedirectView Deletepress(@PathVariable Long id) {
+        this.presseService.deletePressByid(id);
+        return new RedirectView("/presse/presses");
+    }
+    
 }
