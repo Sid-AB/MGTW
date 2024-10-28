@@ -176,7 +176,22 @@
                                 
                             </li>
 
-<<<<<<< HEAD
+                            
+                            <li>
+                                <strong th:text="#{presseActivite} + ':'">موضوع النشاط </strong>
+                                    <ul>
+                                        <li>
+                                            <div th:each="category : ${presse.getPresseCategories()}">
+                                                    <span th:text="${presse.getCategoriePresse() != null ? 
+                                                            (#locale.language == 'ar' ? presse.getCategoriePresse().getName() : 
+                                                             #locale.language == 'fr' ? presse.getCategoriePresse().getNameFr() : 
+                                                             presse.getCategoriePresse().getNameEn()) : ''}">
+                                                    </span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                               
+                            </li>
                             
                             <li>
                                 <strong th:text="#{languagePress}"> </strong>:
@@ -193,24 +208,7 @@
                                 </ul>
                             </li>
                       
-=======
-                            <li>
-                                <strong th:text="#{presseActivite} + ':'">موضوع النشاط </strong>
-                                    <ul>
-                                        <li>
-                                            <div th:each="category : ${presse.getPresseCategories()}">
-                                                    <span th:text="${presse.getCategoriePresse() != null ? 
-                                                            (#locale.language == 'ar' ? presse.getCategoriePresse().getName() : 
-                                                             #locale.language == 'fr' ? presse.getCategoriePresse().getNameFr() : 
-                                                             presse.getCategoriePresse().getNameEn()) : ''}">
-                                                    </span>
-                                            </div>
-                                        </li>
-                                    </ul>
-                               
-                            </li>
                         
->>>>>>> 009f55820af2022af081e91462e4e23d6538bfaf
                             <li>
                                 <strong th:text="#{catpress}">طبيعة الصحيفة</strong>:
                                 <ul>
