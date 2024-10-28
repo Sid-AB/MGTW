@@ -187,7 +187,21 @@
                             </li>
 
                             
-                        
+                            <li>
+                                <strong th:text="#{languagePress}"> </strong>:
+                                <ul>
+                                    <li>
+                                        <div th:each="category : ${presse.getLanguage()}">
+                                            <span th:text="${presse.getLanguage() != null ? 
+                                                (#locale.language == 'ar' ? presse. ().getName() :
+                                                 #locale.language == 'fr' ? Language.getLanguage.getNameFr() : 
+                                                 Language.getLanguage().getNameEn()) : ''}"></span>
+                                           
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                      
                             <li>
                                 <strong th:text="#{catpress}">طبيعة الصحيفة</strong>:
                                 <ul>
@@ -201,6 +215,9 @@
                             </li>
                         </ul>
                     </div> 
+
+                 
+
 
 
 

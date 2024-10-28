@@ -49,6 +49,9 @@ public class PresseController {
     private CategoriePresseService categoriePresseService;
     
     @Autowired
+    private LanguageService LanguageService;
+    
+    @Autowired
     private PressejrService PressejrService;
     public PresseController() {
     }
@@ -59,12 +62,14 @@ public class PresseController {
         List<PresseCategorie> presseCategories = this.presseCategorieService.findAll();
         List<CategoriePress> categoriePresses = this.categoriePresseService.findAll();
         List<Pressejr> Pressejr = this.PressejrService.findAll();
+        List<Language> Language = this.LanguageService.findAll();
 
         model.addAttribute("complexes", complexes);
         model.addAttribute("presseDTO", new PresseDTO());
         model.addAttribute("presseCategories", presseCategories);
         model.addAttribute("categoriePresses", categoriePresses);
         model.addAttribute("Pressejr", Pressejr);
+        model.addAttribute("Language", Language);
         return "authenticated/presse/presseAdd";
     }
 
@@ -135,6 +140,9 @@ public class PresseController {
 
         List<Pressejr> presseListDistinctByPressejr=this.PressejrService.findAll();
         model.addAttribute("presseListDistinctByPressejr", presseListDistinctByPressejr);
+
+        List<Language> presseListDistinctByLanguage=this.LanguageService.findAll();
+        model.addAttribute("presseListDistinctByLanguage", presseListDistinctByLanguage);
         // Retourner la vue
         return "notAuthenticated/presse/presseGeneral";
     }
@@ -233,6 +241,8 @@ public class PresseController {
 
        /*  List<Pressejr> presseListDistinctByPressejr=this.PressejrService.findAll();
         model.addAttribute("presseListDistinctByPressejr", presseListDistinctByPressejr);*/
+        List<Language> presseListDistinctByLanguage=this.LanguageService.findAll();
+        model.addAttribute("presseListDistinctByLanguage", presseListDistinctByLanguage);
         // Retourner la vue
         return "notAuthenticated/presse/presseGeneralelectronique";
     }
@@ -395,6 +405,9 @@ public String findTVById(Model model, @PathVariable Long id) {
 
         List<Pressejr> Pressejr = this.PressejrService.findAll();
         model.addAttribute("Pressejr", Pressejr);
+
+        List<Language> Language = this.LanguageService.findAll();
+        model.addAttribute("Language", Language);
         return "authenticated/presse/PressEdit";
     }
 

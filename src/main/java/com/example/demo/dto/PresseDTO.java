@@ -1,7 +1,10 @@
 package com.example.demo.dto;
 
 
+import com.example.demo.entities.CategoriePress;
 import com.example.demo.entities.Presse;
+import com.example.demo.entities.Pressejr;
+import com.example.demo.entities.Language;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -26,6 +29,8 @@ public class PresseDTO {
     private String fax;
     private String email;
     private String site;
+    private Long Pressejr;
+    private Long Language;
     private List<MultipartFile> profilFiles;
 
     public Presse toEPresse() {
@@ -46,6 +51,9 @@ public class PresseDTO {
         presse.setEmail(this.getEmail()); // Email
         presse.setSite(this.getSite()); // Autre site
         presse.setNameEn(this.getNameEn()); // Ajout de nameEn
+        /*presse.setCategoriePresse(this.getCategoriePresses());
+        presse.setPressejr(this.getPressejr()); 
+        presse.setLanguage(this.getLanguage()); */
         return presse;
     }
     
@@ -56,7 +64,8 @@ public class PresseDTO {
 
     public PresseDTO(final String name, final String nameFr, final String nameEn, final String description,
             final String descriptionFr, final String descriptionEn, final String type, final String website,
-            final String categorie, final List<Long> selectedCategorie, final Long complexe,final Long categoriePresses, final String adresse,final String adresseFr, final String adresseEn,
+            final String categorie, final List<Long> selectedCategorie, final Long complexe,final Long categoriePresses, 
+            final long Pressejr,final long Language, final String adresse,final String adresseFr, final String adresseEn,
             final String phone, final String fax, final String email, final String site, final String localisation,
             final List<MultipartFile> profilFiles) {
         this.name = name; // Nom en arabe
@@ -79,6 +88,8 @@ public class PresseDTO {
         this.email = email;
         this.site = site;
         this.profilFiles = profilFiles;
+        this.Pressejr = Pressejr;
+        this.Language = Language;
     }
     
 
@@ -134,8 +145,15 @@ public class PresseDTO {
 
     public String getAdresse() {
         return this.adresse;
-    }
+    }  
 
+    public Long getPressejr() {
+        return this.Pressejr;
+    }
+    
+    public Long getLanguage() {
+        return this.Language;
+    }
     public String getAdresseFr() {
         return this.adresseFr;
     }
@@ -219,6 +237,12 @@ public class PresseDTO {
     public void setAdresseFr(final String adresseFr) {
         this.adresseFr = adresseFr;
     }
+    public void setPressejr(final Long Pressejr) {
+        this.Pressejr = Pressejr;
+    }
+    public void setLanguage(final Long Language) {
+        this.Language = Language;
+    }
     public void setAdresseEn(final String adresseEn) {
         this.adresseEn = adresseEn;
     }
@@ -295,6 +319,37 @@ public class PresseDTO {
                     return false;
                 }
 
+                Object this$Pressejr = this.getPressejr();
+                Object other$Pressejr = other.getPressejr();
+                if (this$Pressejr == null) {
+                    if (other$Pressejr != null) {
+                        return false;
+                    }
+                } else if (!this$Pressejr.equals(other$Pressejr)) {
+                    return false;
+                }
+
+                
+                Object this$Language = this.getLanguage();
+                Object other$Language = other.getLanguage();
+                if (this$Language == null) {
+                    if (other$Language != null) {
+                        return false;
+                    }
+                } else if (!this$Language.equals(other$Language)) {
+                    return false;
+                }
+
+                Object this$categoriePresse = this.getCategoriePresses();
+                Object other$categoriePresse = other.getCategoriePresses();
+                if (this$categoriePresse == null) {
+                    if (other$categoriePresse != null) {
+                        return false;
+                    }
+                } else if (!this$categoriePresse.equals(other$categoriePresse)) {
+                    return false;
+                }
+
                 Object this$descriptionFr = this.getDescriptionFr();
                 Object other$descriptionFr = other.getDescriptionFr();
                 if (this$descriptionFr == null) {
@@ -354,6 +409,7 @@ public class PresseDTO {
                     return false;
                 }
 
+                
                 label137: {
                     Object this$selectedCategorie = this.getSelectedCategorie();
                     Object other$selectedCategorie = other.getSelectedCategorie();
@@ -539,7 +595,15 @@ public class PresseDTO {
     
         Object $profilFiles = this.getProfilFiles();
         result = result * 59 + ($profilFiles == null ? 43 : $profilFiles.hashCode());
-    
+        
+        Object $Pressejr = this.getPressejr();
+        result = result * 59 + ($Pressejr == null ? 43 : $Pressejr.hashCode());
+            
+        Object $Language = this.getLanguage();
+        result = result * 59 + ($Language == null ? 43 : $Language.hashCode());
+            
+        Object $categoriePresse = this.getCategoriePresses();
+        result = result * 59 + ($categoriePresse == null ? 43 : $categoriePresse.hashCode());
         return result;
     }
     
@@ -564,6 +628,9 @@ public class PresseDTO {
                ", fax=" + this.getFax() + 
                ", email=" + this.getEmail() + 
                ", site=" + this.getSite() + 
+               ", Pressejr=" + this.getPressejr() + 
+               ", Language=" + this.getLanguage() + 
+               ", categoriePresse=" + this.getCategoriePresses() + 
                ", profilFiles=" + String.valueOf(this.getProfilFiles()) + 
                ")";
     }

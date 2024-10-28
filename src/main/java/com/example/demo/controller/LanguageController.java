@@ -1,9 +1,10 @@
 package com.example.demo.controller;
 
-
+import com.example.demo.dto.LanguageDTO;
 import com.example.demo.dto.PressejrDTO;
-
+import com.example.demo.entities.Language;
 import com.example.demo.entities.Pressejr;
+import com.example.demo.service.LanguageService;
 import com.example.demo.service.PressejrService;
 
 import java.util.List;
@@ -17,30 +18,31 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping({"/Pressejr"})
-public class PressejrController {
+@RequestMapping({"/Language"})
+public class LanguageController {
     @Autowired
-    private PressejrService PressejrService;
+    private LanguageService LanguageService;
 
-    public PressejrController() {
+    public LanguageController() {
     }
 
     @GetMapping({"/add"})
     public String agrumentAdd(Model model) {
-        return "authenticated/Pressejr/PressejrAdd";
+        return "authenticated/Language/LanguageAdd";
     }
 
     @PostMapping({"/save"})
-    public String saveProfile(@ModelAttribute("userDTO") PressejrDTO PressejrDTO) {
-        this.PressejrService.saveCategorie(PressejrDTO);
-        return "redirect:/Pressejr/Pressejrr";
+    public String saveProfile(@ModelAttribute("userDTO") LanguageDTO LanguageDTO) {
+        this.LanguageService.saveLangue(LanguageDTO);
+       // return "redirect:/Language/Languagee";
+       return "redirect:/presse/presses";
     }
 
     
-    @GetMapping({"/Pressejrr"})
+    /*@GetMapping({"/Languagee"})
     public String users(Model model) {
-        List<Pressejr>  Pressejr = this.PressejrService.findAll();
-        model.addAttribute("Pressejr", Pressejr);
-        return "authenticated/Pressejr/Pressejr";
-    }
+        List<Language>  Language = this.LanguageService.findAll();
+        model.addAttribute("Language", Language);
+        return "authenticated/Language/Language";
+    }*/
 }
