@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import lombok.extern.slf4j.Slf4j;
 import com.example.demo.dto.PresseDTO;
+import com.example.demo.entities.CategoriePress;
 import com.example.demo.entities.Multimedia;
 import com.example.demo.entities.Presse;
 import com.example.demo.entities.PresseCategorie;
@@ -31,6 +32,8 @@ public class PresseService {
     private MultimediaService multimediaService;
     @Autowired
     private PresseCategorieService presseCategorieService;
+    @Autowired
+    private CategoriePresseService categoriePresseService;
 
     public PresseService() {
     }
@@ -69,6 +72,7 @@ public class PresseService {
         Presse presse = presseDTO.toEPresse();
         this.presseRepository.save(presse);
         List<Long> categoriepressesID = presseDTO.getSelectedCategorie();
+        Long categoriePress=presseDTO.getCategoriePresses();
         Iterator multimedia;
         if (!categoriepressesID.isEmpty()) {
             multimedia = categoriepressesID.iterator();
@@ -80,7 +84,8 @@ public class PresseService {
                 this.presseRepository.save(presse);
             }
         }
-
+        presse.setCategoriePresse(this.categoriePresseService.findCategoriePresseById(categoriePress));
+        this.presseRepository.save(presse);
         multimedia = null;
         List<Multimedia> multimedias = new ArrayList();
         if (!((MultipartFile)presseDTO.getProfilFiles().get(0)).isEmpty()) {

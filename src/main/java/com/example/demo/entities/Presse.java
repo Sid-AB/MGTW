@@ -705,7 +705,7 @@ public int hashCode() {
     result = result * 59 + ($multimediaList == null ? 43 : $multimediaList.hashCode());
 
     Object $categoriePresse = this.getCategoriePresse();
-    result = result * 59 + ($multimediaList == null ? 43 : $categoriePresse.hashCode());
+    result = result * 59 + ($categoriePresse == null ? 43 : $categoriePresse.hashCode());
 
     Object $createdAt = this.getCreatedAt();
     result = result * 59 + ($createdAt == null ? 43 : $createdAt.hashCode());

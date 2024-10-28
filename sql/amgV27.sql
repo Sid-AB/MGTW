@@ -193,7 +193,7 @@ CREATE TABLE IF NOT EXISTS `categorie_presse` (
   `name_fr` varchar(255) DEFAULT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Déchargement des données de la table `categorie_presse`
@@ -1003,7 +1003,7 @@ CREATE TABLE IF NOT EXISTS `pressejr` (
   `name_fr` varchar(255) DEFAULT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Déchargement des données de la table `pressejr`
@@ -1286,7 +1286,7 @@ CREATE TABLE IF NOT EXISTS `sous_direction` (
   `direction` bigint DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK7j8cy0dl2p6o2fxt9tbcth8tl` (`direction`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Déchargement des données de la table `sous_direction`
