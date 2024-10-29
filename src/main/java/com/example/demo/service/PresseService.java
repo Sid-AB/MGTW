@@ -1,26 +1,22 @@
 package com.example.demo.service;
 
-import lombok.extern.slf4j.Slf4j;
 
-import com.example.demo.dto.LanguageDTO;
 import com.example.demo.dto.PresseDTO;
-import com.example.demo.dto.PressejrDTO;
-import com.example.demo.entities.CategoriePress;
+
 import com.example.demo.entities.Multimedia;
 import com.example.demo.entities.Presse;
 import com.example.demo.entities.PresseCategorie;
-import com.example.demo.entities.Pressejr;
+
 import com.example.demo.repository.ComplexeRepository;
 import com.example.demo.repository.MultimediaRepository;
-import com.example.demo.repository.PresseCategorieRepository;
+
 import com.example.demo.repository.PresseRepository;
-import com.example.demo.repository.PressejrRepository;
 
 import jakarta.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
@@ -210,10 +206,12 @@ public class PresseService {
       //  return existingPresse;
     }
     @Transactional
-public Boolean deletePressByid(Long Id)
-{
-    this.presseRepository.deleteById(Id);
+    public Boolean deletePressByid(Long Id)
+    {
+    // this.presseCategorieService.deleteCatByidPress(Id);
+     this.presseCategorieService.deleteCatByidPress(Id);
+     this.presseRepository.deleteById(Id);
 
-return true;
-}
+    return true;
+    }
 }

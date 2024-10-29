@@ -16,6 +16,10 @@ public class PresseCategorieService {
 
     public PresseCategorieService() {
     }
+    public void deleteCatByidPress(Long id)
+    {
+        this.presseCategorieRepository.deletePresseCatrgorieById(id);
+    }
     public void deleteByIdCat(PresseCategorie presseCategorie)
     {
      this.presseCategorieRepository.delete(presseCategorie);
