@@ -26,6 +26,9 @@ import java.nio.file.Files;
 import java.util.List;
 import java.util.Optional;
 import java.util.Locale;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 @RequestMapping({"/complexe"})
@@ -93,4 +96,11 @@ public class ComplexeController {
        Boolean  check= this.complexeService.updateDataComplexe(updateComplexe,id,existingTV/*,multimedia */,arg);
        return new RedirectView("/complexe/complexes");
     }
+    @GetMapping("/delete/{id}")
+    public RedirectView getMethodName(@PathVariable Long id) {
+
+        this.complexeService.DeleteComplexByid(id);
+        return new RedirectView("/complexe/complexes");
+    }
+    
 }
