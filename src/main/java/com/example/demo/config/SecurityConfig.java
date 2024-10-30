@@ -21,13 +21,13 @@ public class SecurityConfig {
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((authRequest) -> {
         /*   ((AuthorizedUrl) authRequest.requestMatchers(new String[] { "/authenticated/**", "/user/**", "/tv/tvs",
-                    "/tv/add", "/tv/save", "/tv/TVEdit/{id}", "/tv/update/{id}", "/textJuridique/textJuridiques",
-                    "/textJuridique/add", "/textJuridique/save", "/radio/radios", "/radio/add", "/radio/save",
-                    "/radio/RadioEdit/{id}", "/radio/update/{id}", "/presse/presses", "/presse/add", "/presse/save",
+                    "/tv/add", "/tv/save", "/tv/TVEdit/{id}", "/tv/update/{id}", "/tv/delete/{id}","/textJuridique/textJuridiques",
+                    "/textJuridique/add", "/textJuridique/save", "/radio/radios", "/radio/add", "/radio/save","/radio/delete/{id}",
+                    "/radio/RadioEdit/{id}", "/radio/update/{id}", "/presse/presses", "/presse/add", "/presse/save","/presse/delete/{id}",
                     "/presse/pressesEdit/{id}", "/pressecategorie/pressecategories", "/pressecategorie/add",
                     "/pressecategorie/save", "/lois/lois", "/lois/add", "/lois/save", "/etablissement/etablissements",
-                    "/etablissement/add", "/etablissement/save", "/etablissement/EditEtablissement/{id}",
-                    "/etablissement/update/{id}", "/home", "/complexe/complexes", "/complexe/add", "/complexe/save",
+                    "/etablissement/add", "/etablissement/save", "/etablissement/EditEtablissement/{id}","/etablissement/delete/{id}",
+                    "/etablissement/update/{id}", "/home", "/complexe/complexes", "/complexe/add", "/complexe/save","/complexe/delete/{id}",
                     "/categorieChaine/add", "/categorieChaine/save", "/caracterstique/tv/{id}/add",
                     "/caracterstique/radio/{id}/add", "/caracterstique/saveradio", "/caracterstique/save","/caracterstique/TvDelete/{id}","/caracterstique/RadioDelete/{id}",
                     "/agrument/agruments", "/agrument/add", "/agrument/save", "/ministers/add", "/ministers/Mins","/ministers/MinistersEdit/{id}","/ministers/update/{id}",

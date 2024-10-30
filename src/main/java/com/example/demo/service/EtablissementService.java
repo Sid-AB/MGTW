@@ -159,5 +159,10 @@ public class EtablissementService {
     }
       //  return existingEtablissement;
     }
+    public void DeleteEtablissementById(Long id)
+    {
+        Etablissement etbm=this.etablissementRepository.findEtablissementById(id);
+        this.etablissementRepository.delete(etbm);
+    }
     
 }

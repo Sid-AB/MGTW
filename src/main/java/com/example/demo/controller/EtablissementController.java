@@ -24,6 +24,9 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 @RequestMapping({"/etablissement"})
@@ -234,5 +237,11 @@ public class EtablissementController {
          model.addAttribute("etablissementImprssion", etablissementImprssion);
          return "notAuthenticated/etablissement/etablissementDetails";
      }
+     @GetMapping("/delete/{id}")
+     public RedirectView getMethodName(@PathVariable Long id) {
+        this.etablissementService.DeleteEtablissementById(id);
+        return new RedirectView("/etablissement/etablissements");
+     }
+     
 
 }
