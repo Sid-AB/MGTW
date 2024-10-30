@@ -20,6 +20,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 @RequestMapping({"/radio"})
@@ -147,4 +150,11 @@ public class RadioController {
        //return "authenticated/etablissement/etablissementsEdit.html";
        return new RedirectView("/radio/radios");
     }
+    @GetMapping("/delete/{id}")
+    public RedirectView DeleteRadioById(@PathVariable Long id)
+     {
+        this.radioService.DeleteRadioById(id);
+        return new RedirectView("/radio/radios");
+    }
+    
 }

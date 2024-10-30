@@ -150,4 +150,9 @@ public class RadioService {
     }
       //  return existingRadio;
     }
+    public void DeleteRadioById(Long Id)
+    {
+        Radio rd=this.findRadioById(Id);
+        this.radioRepository.delete(rd);
+    }
 }

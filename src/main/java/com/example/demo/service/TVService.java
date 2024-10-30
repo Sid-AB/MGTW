@@ -210,5 +210,10 @@ public class TVService {
     }
       //  return existingTV;
     }
+    public void DeleteTvById(Long Id)
+    {
+        TV tv=this.findTVById(Id);
+        this.tvRepository.delete(tv);
+    }
     
 }

@@ -106,7 +106,34 @@
 
 <div th:replace="authenticated/fragments/js::js"></div>
 
-
+<script>
+        
+    $(document).ready(function(){
+        
+    $(".pt-2 button").on('click',function(){
+        console.log('tetsing')
+     
+      let dele = confirm('Voulez-vous supprime Cette Journal ?');
+      if(dele)
+    {
+     var id= $(this).attr("id");
+     console.log('click function'+ id)
+      $.ajax({
+          url:"/presse/delete/"+id,
+          type:"GET",
+          success:function(response)
+          {
+            location.reload();
+          },
+          error:function(error)
+          {
+              alert('Error de Supprission')
+          }
+      })
+    }
+      })
+    });
+    </script>
 
 </body>
 </html>
