@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+
 @Controller
 @RequestMapping({"/tv"})
 public class TVController {
@@ -186,4 +187,11 @@ public class TVController {
        //return "authenticated/etablissement/etablissementsEdit.html";
        return new RedirectView("/tv/tvs");
     }
+    @GetMapping("/delete/{id}")
+    public RedirectView DeleteTvById(@PathVariable Long id)
+     {
+        this.tvService.DeleteTvById(id);
+        return new RedirectView("/tv/tvs");
+    }
+    
 }

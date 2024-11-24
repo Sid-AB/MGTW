@@ -1,15 +1,22 @@
 package com.example.demo.service;
 
-import lombok.extern.slf4j.Slf4j;
+
 import com.example.demo.dto.PresseDTO;
+
 import com.example.demo.entities.Multimedia;
 import com.example.demo.entities.Presse;
 import com.example.demo.entities.PresseCategorie;
+
 import com.example.demo.repository.ComplexeRepository;
 import com.example.demo.repository.MultimediaRepository;
+
 import com.example.demo.repository.PresseRepository;
+
+import jakarta.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
@@ -21,6 +28,7 @@ import java.util.Optional;
 public class PresseService {
     @Autowired
     private PresseRepository presseRepository;
+  
     @Autowired
     private ComplexeRepository complexeRepository;
     @Autowired
@@ -31,7 +39,12 @@ public class PresseService {
     private MultimediaService multimediaService;
     @Autowired
     private PresseCategorieService presseCategorieService;
-
+    @Autowired
+    private CategoriePresseService categoriePresseService;
+    @Autowired
+    private PressejrService PressejrService;
+    @Autowired
+    private LanguageService LanguageService;
     public PresseService() {
     }
 
@@ -69,6 +82,9 @@ public class PresseService {
         Presse presse = presseDTO.toEPresse();
         this.presseRepository.save(presse);
         List<Long> categoriepressesID = presseDTO.getSelectedCategorie();
+        Long categoriePress=presseDTO.getCategoriePresses();
+        Long Pressejr=presseDTO.getPressejr();
+        Long Language=presseDTO.getLanguage();
         Iterator multimedia;
         if (!categoriepressesID.isEmpty()) {
             multimedia = categoriepressesID.iterator();
@@ -80,15 +96,23 @@ public class PresseService {
                 this.presseRepository.save(presse);
             }
         }
+        presse.setCategoriePresse(this.categoriePresseService.findCategoriePresseById(categoriePress));
+        this.presseRepository.save(presse);
 
+        presse.setPressejr(this.PressejrService.findPressejrById(Pressejr));
+        this.presseRepository.save(presse);
+
+        presse.setLanguage(this.LanguageService.findLanguageById(Language));
+        this.presseRepository.save(presse);
         multimedia = null;
         List<Multimedia> multimedias = new ArrayList();
         if (!((MultipartFile)presseDTO.getProfilFiles().get(0)).isEmpty()) {
             multimedias.addAll(this.filesStorageService.saveFiles(presseDTO.getProfilFiles(), "profileDoc"));
-        }
+        } 
 
         Presse presse1 = this.saveUserAndMultimedias(multimedias, presse);
         presse1.setComplexe(this.complexeRepository.findComplexeById(presseDTO.getComplexe()));
+       //presse1.setPressejr(this.complexeRepository.findComplexeById(presseDTO.getComplexe()));
         this.presseRepository.save(presse1);
         return presse1;
     }
@@ -131,6 +155,8 @@ public class PresseService {
             press.setCategoriePresse(Presse.getCategoriePresse());
 
             press.setPressejr(Presse.getPressejr());
+            
+            press.setLanguage(Presse.getLanguage());
 
             if (multimediaFiles != null && !multimediaFiles.isEmpty()) {
                 List<Multimedia> multimediaList = new ArrayList<>();
@@ -178,5 +204,14 @@ public class PresseService {
         return false;
     }
       //  return existingPresse;
+    }
+    @Transactional
+    public Boolean deletePressByid(Long Id)
+    {
+    // this.presseCategorieService.deleteCatByidPress(Id);
+     this.presseCategorieService.deleteCatByidPress(Id);
+     this.presseRepository.deleteById(Id);
+
+    return true;
     }
 }

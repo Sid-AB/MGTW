@@ -134,7 +134,7 @@
                             <a th:href="@{'/tv/TVEdit/'+${tv.getId()}}" class="btn btn-info btn-sm"
                                title="Update"><i class="ri-edit-2-line text-white"></i></a>
 
-                            <a href="#" class="btn btn-danger btn-sm" title="Remove"><i class="bi bi-trash"></i></a>
+                               <button class="btn btn-danger btn-sm" title="Remove" th:id="${tv.getId()}"><i class="bi bi-trash"></i></button>
                         </div>
                     </td>
 
@@ -157,6 +157,35 @@
 
 
 </body>
+
+<script>
+        
+    $(document).ready(function(){
+        
+    $(".pt-2 button").on('click',function(){
+        console.log('tetsing')
+     
+      let dele = confirm('Voulez-vous supprime Cette chaine Television ?');
+      if(dele)
+    {
+     var id= $(this).attr("id");
+     console.log('click function'+ id)
+      $.ajax({
+          url:"/tv/delete/"+id,
+          type:"GET",
+          success:function(response)
+          {
+            location.reload();
+          },
+          error:function(error)
+          {
+              alert('Error de Supprission')
+          }
+      })
+    }
+      })
+    });
+    </script>
 <script>
     
     function deleteTV(TVId) {

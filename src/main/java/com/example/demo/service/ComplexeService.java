@@ -111,4 +111,9 @@ public class ComplexeService {
     }
       //  return existingTV;
     }
+    public void DeleteComplexByid(Long id)
+    {
+        Complexe cmp=this.findComplexeById(id);
+        this.complexeRepository.delete(cmp);
+    }
 }
