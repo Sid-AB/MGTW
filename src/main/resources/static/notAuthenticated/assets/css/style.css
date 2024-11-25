@@ -2318,7 +2318,7 @@ section {
 /*****--------------------------------------***/
 @keyframes circleichi {
   0% {
-    transform: rotate(0deg);
+    transform: rotate(90deg);
   }
   /*50% {
     transform: rotate(180deg);
@@ -2329,7 +2329,7 @@ section {
 }
 @keyframes circlenino {
   0% {
-    transform: rotate(360deg);
+    transform: rotate(180deg);
   }
   /*50% {
     transform: rotate(180deg);
@@ -2346,41 +2346,46 @@ section {
   }
   50%
   {
-    transform: translateY(80px);
+    transform: translateY(20px);
   }
   100%
   {
     transform: translateY(0px);
   }
 }
-#circlRed
-{
-  transform-origin: 50% 50%;
-  animation: circleichi 10s linear infinite;
-}
-/*#circlGreen
+.cnter svg
 {
   transform-origin: 50% 50%;
   animation: bounce 5s linear infinite;
 }
-#mincontient
-{
-  animation: bounce 5s linear infinite;
-}*/
-.inSide #circlRed
+.cnter #circlRed
 {
   transform-origin: 50% 50%;
-  animation: circlenino 2s linear infinite;
+  animation: circleichi 2s linear forwards;
+}
+.cnter #circlGreen
+{
+  transform-origin: 50% 50%;
+  animation: circlenino 2s linear forwards;
+}
+.cnter #mincontient
+{
+  animation: bounce 5s linear forwards;
+}
+.inSide 
+{
+  transform-origin: 50% 50%;
+  animation: bounce 2s linear infinite;
 }
 /*.inSide #circlGreen
 {
   transform-origin: 50% 50%;
-  animation: circleichi 20s linear infinite;
+  animation: circleichi 20s linear forwards;
 }
 .inSide #mincontient
 {
   transform-origin: 50% 50%;
-  animation: bounce 1s forwards ease-in;
+  animation: bounce 1s forwards forwards;
 }*/
 .inSide
 {
@@ -2462,7 +2467,8 @@ section {
 }
 .flag-alg img
 {
-    width: 360px;
+  border-radius: 50%;
+  width: 210px;
 }
 .all-handler
 {
@@ -2496,7 +2502,7 @@ section {
 
 .header-main
 {
-  background-image: url(/notAuthenticated/assets/img/flagone.png);
+  /*background-image: url(/notAuthenticated/assets/img/champ.gif);*/
   background-size: contain; /* Adjust the size to cover the div */
   background-position: left; /* Center the image in the div */
   background-repeat: no-repeat;
