@@ -145,10 +145,12 @@ public class FilesStorageServiceImpl implements FilesStorageService {
     public List<Multimedia> saveFilesPdfText(List<MultipartFile> multipartFiles, String docType,String lang) {
         List<Multimedia> savedMultimedias = new ArrayList();
         Iterator var4 = multipartFiles.iterator();
-
-        while(var4.hasNext()) {
+       
+        String[] langs=lang.split("_");
+        while(var4.hasNext() ) {
             MultipartFile file = (MultipartFile)var4.next();
             savedMultimedias.add(this.savepdfText(file, docType,lang));
+            
         }
 
         return savedMultimedias;

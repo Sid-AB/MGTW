@@ -59,9 +59,21 @@ public class TextJuridiqueService {
         this.textJuridiqueRepository.save(textJuridique);
         Lois lois = this.loisRepository.findLoisById(textJuridiqueDTO.getLois());
         List<Multimedia> multimedias = new ArrayList<>();
-        if (!((MultipartFile)textJuridiqueDTO.getProfilFiles().get(0)).isEmpty()) {
-            String lang = textJuridique.getPath();
+        if (!((MultipartFile)textJuridiqueDTO.getProfilFiles().get(0)).isEmpty() && !((MultipartFile)textJuridiqueDTO.getProfilFilesFr().get(0)).isEmpty()) {
+            String lang=textJuridique.getPath();
+            System.out.println("befor insertion"+lang+" leng"+lang.split("_").length);
+            int leng=lang.split("_").length;
+            if(leng >= 2)
+            {
+                System.out.println("Both inserition"+lang);
+                multimedias.addAll(this.filesStorageService.saveFilesPdfText(textJuridiqueDTO.getProfilFiles(), "profileDoc","ar"));
+                multimedias.addAll(this.filesStorageService.saveFilesPdfText(textJuridiqueDTO.getProfilFilesFr(), "profileDoc","fr"));
+            }
+            else
+            {
+            System.out.println("Singl inseretion"+lang);
             multimedias.addAll(this.filesStorageService.saveFilesPdfText(textJuridiqueDTO.getProfilFiles(), "profileDoc",lang));
+            }
         }
 
         this.saveUserAndMultimedias(multimedias, textJuridique);
@@ -72,12 +84,23 @@ public class TextJuridiqueService {
 
     public TextJuridique saveUserAndMultimedias(List<Multimedia> multimedias, TextJuridique textJuridique) {
         this.textJuridiqueRepository.save(textJuridique);
+       
         if (multimedias != null && !multimedias.isEmpty()) {
             List<Multimedia> savedMultimedias = new ArrayList<>();
-            multimedias.forEach((multimedia) -> {
-                multimedia.setTextJuridique(textJuridique);
-                multimedia.setFilePath("pdfs/ar");
-            });
+           
+            String lang=textJuridique.getPath();
+            String[] langs=lang.split("_");
+            int i = 0;
+            for (Multimedia multimedia : multimedias) {
+                if (langs[i].equals("ar")) {  // Use .equals() instead of ==
+                    multimedia.setTextJuridique(textJuridique);
+                    multimedia.setFilePath("pdfs/ar");
+                } else {
+                    multimedia.setTextJuridique(textJuridique);
+                    multimedia.setFilePath("pdfs/fr");
+                }
+                i++;
+            }
             savedMultimedias.addAll(multimedias);
             textJuridique.setMultimediaList(savedMultimedias);
             this.multimediaRepository.saveAll(savedMultimedias);
@@ -119,5 +142,10 @@ public class TextJuridiqueService {
         return false;
     }
       //  return existingRadio;
+    }
+    public void deleteTextJuridique(Long id)
+    {
+        TextJuridique mins = this.textJuridiqueRepository.findTextJuridiqueById(id);
+        this.textJuridiqueRepository.delete(mins);
     }
 }

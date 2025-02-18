@@ -15,12 +15,13 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig {
     public SecurityConfig() {
     }
- 
+ /* 
 
    @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((authRequest) -> {
-           ((AuthorizedUrl) authRequest.requestMatchers(new String[] { "/authenticated/**", "/user/**", "/tv/tvs","/textJuridique/Edit/{id}","/textJuridique/update/{id}",
+           ((AuthorizedUrl) authRequest.requestMatchers(new String[] { "/authenticated/**", "/user/**", "/tv/tvs",
+                    "/textJuridique/Edit/{id}","/textJuridique/update/{id}","/textJuridique/delete/{id}",
                     "/tv/add", "/tv/save", "/tv/TVEdit/{id}", "/tv/update/{id}", "/tv/delete/{id}","/textJuridique/textJuridiques",
                     "/textJuridique/add", "/textJuridique/save", "/radio/radios", "/radio/add", "/radio/save","/radio/delete/{id}",
                     "/radio/RadioEdit/{id}", "/radio/update/{id}", "/presse/presses", "/presse/add", "/presse/save","/presse/delete/{id}",
@@ -54,6 +55,6 @@ public class SecurityConfig {
         http.headers(AbstractHttpConfigurer::disable);
         return (SecurityFilterChain) http.build();
     }
-   
+   */
         
 }
