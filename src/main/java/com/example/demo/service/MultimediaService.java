@@ -66,4 +66,7 @@ public class MultimediaService {
     public Optional<Multimedia> findFirstByTextJuridique(TextJuridique textJuridique) {
         return this.multimediaRepository.findFirstByTextJuridique(textJuridique);
     }
+    public Multimedia findByTextJuridiqueAndFilePath(TextJuridique textJuridique,String filePath) {
+        return this.multimediaRepository.findByTextJuridiqueAndFilePath(textJuridique,filePath);
+    }
 }

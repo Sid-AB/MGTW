@@ -58,6 +58,7 @@ public class MinisterService {
         minister.setAddress(ministerDTO.getAddress());
         minister.setStartFrom(ministerDTO.getStartFrom());
         minister.setUntil(ministerDTO.getUntil());
+        minister.setprofilePicture(multimedia);
 
         return ministerRepository.save(minister);
     }

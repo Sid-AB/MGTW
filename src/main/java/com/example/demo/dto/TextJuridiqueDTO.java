@@ -15,6 +15,7 @@ public class TextJuridiqueDTO {
     private String path;
     private Long lois;
     private List<MultipartFile> profilFiles;
+    private List<MultipartFile> profilFilesFr;
 
     public TextJuridique toTextJuridique() {
         TextJuridique textJuridique = new TextJuridique();
@@ -34,7 +35,7 @@ public class TextJuridiqueDTO {
 
     public TextJuridiqueDTO(final String name, final String description, final String nameFr, final String nameEn, final String descriptionFr,
     final String descriptionEn, final String path, final Long lois,
-            final List<MultipartFile> profilFiles) {
+            final List<MultipartFile> profilFiles,final List<MultipartFile> profilFilesFr) {
         this.name = name;
         this.description = description;
         this.nameFr = nameFr; // Initialiser nameFr
@@ -44,6 +45,7 @@ public class TextJuridiqueDTO {
         this.path = path;
         this.lois = lois;
         this.profilFiles = profilFiles;
+        this.profilFilesFr = profilFilesFr;
     }
 
     public TextJuridiqueDTO() {
@@ -86,6 +88,10 @@ public class TextJuridiqueDTO {
         return this.profilFiles;
     }
 
+    public List<MultipartFile> getProfilFilesFr() {
+        return this.profilFilesFr;
+    }
+
     public void setName(final String name) {
         this.name = name;
     }
@@ -121,6 +127,10 @@ public class TextJuridiqueDTO {
 
     public void setProfilFiles(final List<MultipartFile> profilFiles) {
         this.profilFiles = profilFiles;
+    }
+
+    public void setProfilFilesFr(final List<MultipartFile> profilFilesFr) {
+        this.profilFilesFr = profilFilesFr;
     }
 
     public boolean equals(final Object o) {
@@ -239,6 +249,16 @@ public class TextJuridiqueDTO {
                     return true;
                 }
 
+                Object this$profilFilesFr = this.getProfilFilesFr();
+                Object other$profilFilesFr = other.getProfilFilesFr();
+                if (this$profilFilesFr == null) {
+                    if (other$profilFilesFr == null) {
+                        return true;
+                    }
+                } else if (this$profilFilesFr.equals(other$profilFilesFr)) {
+                    return true;
+                }
+
                 return false;
             }
         }
@@ -273,6 +293,8 @@ public class TextJuridiqueDTO {
         result = result * 59 + ($path == null ? 43 : $path.hashCode());
         Object $profilFiles = this.getProfilFiles();
         result = result * 59 + ($profilFiles == null ? 43 : $profilFiles.hashCode());
+        Object $profilFilesFr = this.getProfilFilesFr();
+        result = result * 59 + ($profilFilesFr == null ? 43 : $profilFilesFr.hashCode());
         return result;
     }
 
@@ -287,6 +309,7 @@ public class TextJuridiqueDTO {
           ", path=" + this.getPath() + 
           ", lois=" + this.getLois() +
            ", profilFiles=" + String.valueOf(this.getProfilFiles()) +
+           ", profilFilesFr=" + String.valueOf(this.getProfilFilesFr()) +
             ")";
     }
 

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="authenticated/fragments/header::header(${'title'},${'description'},${'keywords'})">
+</head>
+
+
+<body>
+
+<!-- ======= Header ======= -->
+<header th:replace="authenticated/fragments/navbar::header"></header>
+<!-- End Header -->
+
+<!-- ======= Sidebar ======= -->
+<aside th:replace="authenticated/fragments/navside::sidebar"></aside>
+<!-- End Sidebar-->
+
+
+<main id="main" class="main">
+    <div class="card">
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between">
+                <div class="p-2"><h5 class="card-title">Text Juridique Edit</h5></div>
+            </div>
+
+            <form id="profileForm" th:action="@{'/textJuridique/update/'+${textJuridique.getId()}}" method="post" enctype="multipart/form-data">
+
+
+                <div class="row mb-3 ">
+                    <label for="name" class="col-md-4 col-lg-3 col-form-label"> Name</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="name" type="text" class="form-control"
+                               id="name" placeholder="name" th:value="${textJuridique.getName()}"  required >
+                    </div>
+                </div>
+
+                <div class="row mb-3 ">
+                    <label for="name" class="col-md-4 col-lg-3 col-form-label"> Name Franche</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="nameFr" type="text" class="form-control"
+                               id="nameFr" placeholder="nameFr" th:value="${textJuridique.getNameFr()}"  required >
+                    </div>
+                </div>
+
+                <div class="row mb-3 ">
+                    <label for="name" class="col-md-4 col-lg-3 col-form-label"> Name English</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="nameEn" type="text" class="form-control"
+                               id="nameEn" placeholder="nameEn" th:value="${textJuridique.getNameEn()}"  required >
+                    </div>
+                </div>
+
+
+                <div class="row mb-3">
+                    <label for="description" class="col-md-4 col-lg-3 col-form-label">Description</label>
+                    <div class="col-md-8 col-lg-9 ">
+                        <input name="description" type="text" class="form-control" id="description"
+                               placeholder="description" th:value="${textJuridique.getDescription()}" required >
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="description" class="col-md-4 col-lg-3 col-form-label">Description Francais</label>
+                    <div class="col-md-8 col-lg-9 ">
+                        <input name="descriptionFr" type="text" class="form-control" id="descriptionFr"
+                               placeholder="description" th:value="${textJuridique.getDescriptionFr()}" required >
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="description" class="col-md-4 col-lg-3 col-form-label">Description englais</label>
+                    <div class="col-md-8 col-lg-9 ">
+                        <input name="descriptionEn" type="text" class="form-control" id="descriptionEn"
+                               placeholder="description" th:value="${textJuridique.getDescriptionEn()}" required >
+                    </div>
+                </div>
+
+
+                <!--div class="row mb-3">
+                    <label for="path" class="col-md-4 col-lg-3 col-form-label">Path</label>
+                    <div class="col-md-8 col-lg-9">
+                        <select name="path" class="form-control" id="path" onchange="">
+                        <option value="ar">Arabic</option>
+                        <option value="fr">Latin</option>
+                        </select>
+                    </div>
+                </div-->
+              
+
+                <div class="row mb-3">
+                    <label for="lois" class="col-md-4 col-lg-3 col-form-label">Loi</label>
+                    <div class="col-md-8 col-lg-9">
+
+
+                        <select id="lois" name="lois" class="form-control"
+                                onchange="">
+                            <option value="">Select Loi</option>
+                            <option th:each="loi : ${lois}" th:value="${loi.id}"
+                                    th:text="${loi.name}"></option>
+                        </select>
+                    </div>
+                </div>
+
+                <!--div class="row mb-3">
+                    <label for="profilFiles" class="col-md-4 col-lg-3 col-form-label"> Files</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input type="file" class="form-control-file" id="profilFiles"
+                               name="profilFiles"  accept="application/pdf" disabled>
+                    </div>
+                </div-->
+
+                <div class="text-center">
+                    <button type="submit"
+                            class="btn btn-primary">Save
+                    </button>
+                </div>
+            </form><!-- End Profile Edit Form -->
+
+        </div>
+    </div>
+</main><!-- End #main -->
+
+
+<!-- ======= Footer ======= -->
+<footer th:replace="authenticated/fragments/footer::footer" class="footer">
+</footer><!-- End Footer -->
+
+<!-- Template Main JS File -->
+<div th:replace="authenticated/fragments/js::js"></div>
+
+
+</body>
+</html>

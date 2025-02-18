@@ -46,5 +46,8 @@ public interface MultimediaRepository extends JpaRepository<Multimedia, Long> {
 
     Optional<Multimedia> findFirstByTextJuridique(TextJuridique textJuridique);
 
+   @Query("SELECT m FROM Multimedia m WHERE m.textJuridique = :textJuridique AND m.filePath = :filePath")
+   Multimedia findByTextJuridiqueAndFilePath(@Param("textJuridique") TextJuridique textJuridique, 
+                                                @Param("filePath") String filePath);
     Optional<Multimedia> findFirstByMinister(Minister minister);
 }
