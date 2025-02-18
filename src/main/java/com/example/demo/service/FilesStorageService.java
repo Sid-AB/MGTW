@@ -13,12 +13,13 @@ public interface FilesStorageService {
     void init();
 
     Multimedia save(MultipartFile file, String docType);
-
+    Multimedia savepdfText(MultipartFile file, String docType,String lang);
     Resource load(String filename);
 
     boolean delete(String filename);
 
     List<Multimedia> saveFiles(List<MultipartFile> multipartFiles, String docType);
+    List<Multimedia> saveFilesPdfText(List<MultipartFile> multipartFiles, String docType,String lang);
 
     void deleteAll();
 

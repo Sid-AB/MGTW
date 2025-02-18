@@ -3,6 +3,7 @@ package com.example.demo.service;
 
 import com.example.demo.dto.TextJuridiqueDTO;
 import com.example.demo.entities.Lois;
+import com.example.demo.entities.Minister;
 import com.example.demo.entities.Multimedia;
 import com.example.demo.entities.TextJuridique;
 import com.example.demo.repository.LoisRepository;
@@ -15,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TextJuridiqueService {
@@ -35,7 +37,9 @@ public class TextJuridiqueService {
     public List<TextJuridique> findAll() {
         return this.textJuridiqueRepository.findAll();
     }
-
+    public Optional<TextJuridique> findById(Long id) {
+        return this.textJuridiqueRepository.findById(id);
+    }
     public TextJuridique findTextJuridiqueById(Long id) {
         return this.textJuridiqueRepository.findTextJuridiqueById(id);
     }
@@ -56,7 +60,8 @@ public class TextJuridiqueService {
         Lois lois = this.loisRepository.findLoisById(textJuridiqueDTO.getLois());
         List<Multimedia> multimedias = new ArrayList<>();
         if (!((MultipartFile)textJuridiqueDTO.getProfilFiles().get(0)).isEmpty()) {
-            multimedias.addAll(this.filesStorageService.saveFiles(textJuridiqueDTO.getProfilFiles(), "profileDoc"));
+            String lang = textJuridique.getPath();
+            multimedias.addAll(this.filesStorageService.saveFilesPdfText(textJuridiqueDTO.getProfilFiles(), "profileDoc",lang));
         }
 
         this.saveUserAndMultimedias(multimedias, textJuridique);
@@ -71,6 +76,7 @@ public class TextJuridiqueService {
             List<Multimedia> savedMultimedias = new ArrayList<>();
             multimedias.forEach((multimedia) -> {
                 multimedia.setTextJuridique(textJuridique);
+                multimedia.setFilePath("pdfs/ar");
             });
             savedMultimedias.addAll(multimedias);
             textJuridique.setMultimediaList(savedMultimedias);
@@ -78,5 +84,40 @@ public class TextJuridiqueService {
         }
 
         return textJuridique;
+    }
+
+    public Boolean updateDataMins(TextJuridique textjuridique, Long userId,Optional<TextJuridique> existingMin/*, Optional<Multimedia> multimedias */) {
+        if (existingMin.isPresent()) {
+            TextJuridique mins = existingMin.get();
+            mins.setName(textjuridique.getName());
+            mins.setNameFr(textjuridique.getNameFr());
+            mins.setNameEn(textjuridique.getNameEn());
+            mins.setDescription(textjuridique.getDescription());
+            mins.setDescriptionFr(textjuridique.getDescriptionFr());
+            mins.setDescriptionEn(textjuridique.getDescriptionEn());
+            this.textJuridiqueRepository.save(mins);
+          /* List<Multimedia> multimedias = new ArrayList<>();
+            if (!((MultipartFile)textJuridiqueDTO.getProfilFiles().get(0)).isEmpty()) {
+                String lang = mins.getPath();
+                multimedias.addAll(this.filesStorageService.saveFilesPdfText(textJuridiqueDTO.getProfilFiles(), "profileDoc",lang));
+            }
+    
+            this.saveUserAndMultimedias(multimedias, textJuridique);*/ 
+      /*  if (multimedias.isPresent()) {
+            List<Multimedia> savedMultimedias = new ArrayList();
+            multimedias.ifPresent((multimedia) -> {
+                multimedia.setRadio(existingRadio);
+            });
+            multimedias.ifPresent(savedMultimedias::addAll);
+            savedMultimedias.ifPresent(existingRadio::setMultimediaList);
+            this.multimediaRepository.saveAll(savedMultimedias);
+        } */
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+      //  return existingRadio;
     }
 }

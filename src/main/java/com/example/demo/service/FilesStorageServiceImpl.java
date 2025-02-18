@@ -56,6 +56,49 @@ public class FilesStorageServiceImpl implements FilesStorageService {
         }
     }
 
+
+
+    public Multimedia savepdfText(MultipartFile file, String docType,String lang) {
+        Multimedia multimedia = new Multimedia();
+
+        try {
+            String fileType = this.determineFileType(file.getContentType());
+            String var10000 = UUID.randomUUID().toString();
+            String fileName = var10000 + "_" + file.getOriginalFilename();
+            Path subFolderPath = Paths.get(this.uploadPath, fileType);
+            if(lang == "en" || lang =="fr")
+            {
+                String newPath= fileType+"/"+lang;
+                 subFolderPath = Paths.get(this.uploadPath, newPath);
+                Files.createDirectories(subFolderPath);
+            }
+            else
+            {
+                String newPath= fileType+"/"+lang;
+              
+                subFolderPath = Paths.get(this.uploadPath, newPath);
+                //System.out.println("new path to save"+subFolderPath);
+                Files.createDirectories(subFolderPath);
+            }
+            
+            Path filePath = subFolderPath.resolve(fileName);
+            Files.copy(file.getInputStream(), filePath, new CopyOption[0]);
+            multimedia.setDocType(docType);
+            multimedia.setFileName(fileName);
+           
+            multimedia.setType(file.getContentType());
+            multimedia.setFilePath(fileType);
+            return multimedia;
+        } catch (Exception var8) {
+            if (var8 instanceof FileAlreadyExistsException) {
+                throw new RuntimeException("A file of that name already exists.");
+            } else {
+                throw new RuntimeException(var8.getMessage());
+            }
+        }
+    }
+
+
     public Resource load(String filename) {
         try {
             Path file = this.root.resolve(filename);
@@ -94,6 +137,18 @@ public class FilesStorageServiceImpl implements FilesStorageService {
         while(var4.hasNext()) {
             MultipartFile file = (MultipartFile)var4.next();
             savedMultimedias.add(this.save(file, docType));
+        }
+
+        return savedMultimedias;
+    }
+
+    public List<Multimedia> saveFilesPdfText(List<MultipartFile> multipartFiles, String docType,String lang) {
+        List<Multimedia> savedMultimedias = new ArrayList();
+        Iterator var4 = multipartFiles.iterator();
+
+        while(var4.hasNext()) {
+            MultipartFile file = (MultipartFile)var4.next();
+            savedMultimedias.add(this.savepdfText(file, docType,lang));
         }
 
         return savedMultimedias;

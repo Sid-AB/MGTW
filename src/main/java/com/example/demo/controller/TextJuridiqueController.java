@@ -1,9 +1,14 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.TextJuridiqueDTO;
+import com.example.demo.entities.Complexe;
+import com.example.demo.entities.Etablissement;
 import com.example.demo.entities.Lois;
+import com.example.demo.entities.Minister;
 import com.example.demo.entities.Multimedia;
 import com.example.demo.entities.TextJuridique;
+import com.example.demo.service.ComplexeService;
+import com.example.demo.service.EtablissementService;
 import com.example.demo.service.FilesStorageService;
 import com.example.demo.service.LoisService;
 import com.example.demo.service.MultimediaService;
@@ -17,6 +22,7 @@ import org.springframework.http.ResponseEntity.BodyBuilder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -34,6 +40,12 @@ public class TextJuridiqueController {
     private TextJuridiqueService textJuridiqueService;
     @Autowired
     private MultimediaService multimediaService;
+
+    @Autowired
+    private ComplexeService complexeService;
+
+    @Autowired
+    private EtablissementService etablissementService;
 
     public TextJuridiqueController() {
     }
@@ -56,6 +68,23 @@ public class TextJuridiqueController {
         List<TextJuridique> textJuridiques = this.textJuridiqueService.findAll();
         model.addAttribute("textJuridiques", textJuridiques);
         return "authenticated/textJuridique/textJuridiques";
+    }
+
+    @GetMapping({"/Edit/{id}"})
+    public String usersEdit(Model model,@PathVariable Long id) {
+        TextJuridique textJuridique = this.textJuridiqueService.findTextJuridiqueById(id);
+        model.addAttribute("textJuridique", textJuridique);
+        List<Complexe> complexesForNavBar = this.complexeService.findComplexesByType("prive");
+        model.addAttribute("complexesForNavBar", complexesForNavBar);
+        List<Lois> loisForNavBar = this.loisService.findAll();
+        model.addAttribute("loisForNavBar", loisForNavBar);
+        List<Lois> lois = this.loisService.findAll();
+        model.addAttribute("lois", lois);
+
+
+        List  <Etablissement> etablissementImprssion= etablissementService.findEtablissementsByTypeEtablissmnt("société d'impression");
+        model.addAttribute("etablissementImprssion", etablissementImprssion);
+        return "authenticated/textJuridique/textJuridiqueEdit";
     }
 
     @GetMapping({"/multimedia/{folder}/{filename}"})
@@ -166,7 +195,24 @@ public class TextJuridiqueController {
     
     
 
-
+ @PostMapping({"/update/{id}"})
+    public RedirectView updatedRadio(@PathVariable Long id,@ModelAttribute  TextJuridique updateMin)
+    {
+        TextJuridique mins = this.textJuridiqueService.findTextJuridiqueById(id);
+       // Optional<Multimedia> multimedia=this.multimediaService.findFirstByEtablissement(etablissement);
+       Optional<TextJuridique> existingMins = this.textJuridiqueService.findById(id);
+       Boolean  check= this.textJuridiqueService.updateDataMins(updateMin,id,existingMins/*,multimedia */);
+        if(check)
+        {
+            return new RedirectView("/textJuridique/textJuridiques");
+        }
+        else
+        {
+            return new RedirectView("/home");
+        }
+     
+    }
+      
 
     
     

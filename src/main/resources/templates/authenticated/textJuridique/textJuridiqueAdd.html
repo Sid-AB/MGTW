@@ -35,6 +35,22 @@
                     </div>
                 </div>
 
+                <div class="row mb-3 ">
+                    <label for="name" class="col-md-4 col-lg-3 col-form-label"> Name Franche</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="name" type="text" class="form-control"
+                               id="nameFr" placeholder="nameFr"   required >
+                    </div>
+                </div>
+
+                <div class="row mb-3 ">
+                    <label for="name" class="col-md-4 col-lg-3 col-form-label"> Name English</label>
+                    <div class="col-md-8 col-lg-9">
+                        <input name="name" type="text" class="form-control"
+                               id="nameEn" placeholder="nameEn"   required >
+                    </div>
+                </div>
+
 
                 <div class="row mb-3">
                     <label for="description" class="col-md-4 col-lg-3 col-form-label">Description</label>
@@ -44,13 +60,30 @@
                     </div>
                 </div>
 
+                
+                <div class="row mb-3">
+                    <label for="description" class="col-md-4 col-lg-3 col-form-label">Description Francais</label>
+                    <div class="col-md-8 col-lg-9 ">
+                        <input name="descriptionFr" type="text" class="form-control" id="descriptionFr"
+                               placeholder="description"  required >
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="description" class="col-md-4 col-lg-3 col-form-label">Description englais</label>
+                    <div class="col-md-8 col-lg-9 ">
+                        <input name="descriptionEn" type="text" class="form-control" id="descriptionEn"
+                               placeholder="description"  required >
+                    </div>
+                </div>
 
                 <div class="row mb-3">
                     <label for="path" class="col-md-4 col-lg-3 col-form-label">Path</label>
                     <div class="col-md-8 col-lg-9">
-                        <input name="path" type="text" class="form-control" id="path"
-                               placeholder="path"
-                        >
+                        <select name="path" class="form-control" id="path" onchange="">
+                        <option value="ar">Arabic</option>
+                        <option value="fr">Latin</option>
+                        </select>
                     </div>
                 </div>
 
