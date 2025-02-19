@@ -139,17 +139,22 @@ public class TextJuridiqueController {
         TextJuridique textJuridique = this.textJuridiqueService.findTextJuridiqueById(id);
         Optional<Multimedia> multimedia = this.multimediaService.findFirstByTextJuridique(textJuridique);
        
-    
+        String folderFr="pdfs/fr";
+        String folderAr="pdfs/ar";
         if (multimedia.isPresent()) {
             String filename = multimedia.get().getFileName(); // Supposons que ce soit la colonne unique
     
             // Vérifie la langue et change "en" en "fr"
-            if ("en".equals(lang)) {
-                lang = "fr"; // Change lang à "fr" si il est "en"
+            if ("en".equals(lang) || "fr".equals(lang)) {
+                folder = folderFr; // Change lang à "fr" si il est "en"
+            }
+            else
+            {
+                folder=folderAr;
             }
     
             // Construire le chemin du fichier
-            String filePath = folder.concat("/" + lang + "/" + filename);
+            String filePath = folder.concat( "/" + filename);
          //   System.out.println("hb55 "+ filePath); // Log du chemin
     
             Resource file = this.filesStorageService.load(filePath);
