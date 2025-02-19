@@ -137,21 +137,26 @@ public class TextJuridiqueController {
     public ResponseEntity<Resource> getImage(@PathVariable("id") Long id, @PathVariable("lang") String lang) {
         String folder = "pdfs";
         TextJuridique textJuridique = this.textJuridiqueService.findTextJuridiqueById(id);
-        Optional<Multimedia> multimedia = this.multimediaService.findFirstByTextJuridique(textJuridique);
+
+
+       
        
         String folderFr="pdfs/fr";
         String folderAr="pdfs/ar";
-        if (multimedia.isPresent()) {
-            String filename = multimedia.get().getFileName(); // Supposons que ce soit la colonne unique
+
+        if ("en".equals(lang) || "fr".equals(lang)) {
+            folder = folderFr; // Change lang à "fr" si il est "en"
+        }
+        else
+        {
+            folder=folderAr;
+        }
+        Multimedia multimedia = this.multimediaService.findByTextJuridiqueAndFilePath(textJuridique,folder);
+        if (multimedia != null) {
+            String filename = multimedia.getFileName(); // Supposons que ce soit la colonne unique
     
             // Vérifie la langue et change "en" en "fr"
-            if ("en".equals(lang) || "fr".equals(lang)) {
-                folder = folderFr; // Change lang à "fr" si il est "en"
-            }
-            else
-            {
-                folder=folderAr;
-            }
+          
     
             // Construire le chemin du fichier
             String filePath = folder.concat( "/" + filename);
