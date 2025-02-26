@@ -3,11 +3,7 @@
     <h1 hidden="" class="logo me-auto" style=""><a href="index.html"></a></h1>
     <div th:class="${'header-main '+hiden}"  data-aos="zoom-in" data-aos-delay="200" style="background-color: #0E2F4A">
         <div class="justify-content-center pt-3" data-aos="zoom-in" data-aos-delay="200" style="text-align: center;display: flex;flex-direction: column;align-items: center">
-            <div style="width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-direction: row;">
+            <div class="all-handler" >
              <div class="image-pres">
                <div style="width: 238px;
                height: 310px;
@@ -159,6 +155,7 @@
                         <li th:each="lois:${myObjectlFNBar}"  >
                             <a  th:href="@{'/lois/'+${lois.getId()}}" th:if="${lois.getId() == 5}" th:text="#{textApp}"></a>
                             <a  th:href="@{'/lois/'+${lois.getId()}}" th:if="${lois.getId() == 6}" th:text="#{dectios}"></a>
+                            <a  th:href="@{'/lois/'+${lois.getId()}}" th:if="${lois.getId() == 7}" th:text="#{textpres}"></a>
                             <a  th:href="@{'/lois/'+${lois.getId()}}" th:if="${lois.getId() == 2}" th:text="#{lois}"></a>
                         </li>
 
