@@ -152,11 +152,11 @@
                
                 <li class="dropdown"> <a  href="#"> <span th:text="#{textju}"> النصوص القانونية </span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li th:each="lois:${myObjectlFNBar}"  >
-                            <a  th:href="@{'/lois/'+${lois.getId()}}" th:if="${lois.getId() == 5}" th:text="#{textApp}"></a>
-                            <a  th:href="@{'/lois/'+${lois.getId()}}" th:if="${lois.getId() == 6}" th:text="#{dectios}"></a>
-                            <a  th:href="@{'/lois/'+${lois.getId()}}" th:if="${lois.getId() == 7}" th:text="#{textpres}"></a>
-                            <a  th:href="@{'/lois/'+${lois.getId()}}" th:if="${lois.getId() == 2}" th:text="#{lois}"></a>
+                        <li   >
+                            <a  href="/lois/2" th:text="#{lois}"></a>
+                            <a  href="/lois/7" th:text="#{textpres}"></a>
+                            <a  href="/lois/5" th:text="#{textApp}"></a>
+                            <a  href="/lois/6" th:text="#{dectios}"></a>
                         </li>
 
 
