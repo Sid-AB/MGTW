@@ -25,7 +25,7 @@ public class SecurityConfig {
                     "/tv/add", "/tv/save", "/tv/TVEdit/{id}", "/tv/update/{id}", "/tv/delete/{id}",
                     "/textJuridique/add", "/textJuridique/save", "/radio/radios", "/radio/add", "/radio/save","/radio/delete/{id}",
                     "/radio/RadioEdit/{id}", "/radio/update/{id}", "/presse/presses", "/presse/add", "/presse/save","/presse/delete/{id}",
-                    "/presse/pressesEdit/{id}", "/pressecategorie/pressecategories", "/pressecategorie/add",
+                    "/presse/pressesEdit/{id}","/presse/update/{id}", "/pressecategorie/pressecategories", "/pressecategorie/add",
                     "/pressecategorie/save", "/lois/lois", "/lois/add", "/lois/save", "/etablissement/etablissements",
                     "/etablissement/add", "/etablissement/save", "/etablissement/EditEtablissement/{id}","/etablissement/delete/{id}",
                     "/etablissement/update/{id}", "/home", "/complexe/complexes", "/complexe/add", "/complexe/save","/complexe/delete/{id}",
