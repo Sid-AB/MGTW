@@ -123,7 +123,11 @@ CREATE TABLE `categorie_presse` (
   `name_fr` varchar(255) DEFAULT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`id`)
+<<<<<<< HEAD
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 ;
+>>>>>>> 456febbe2affdfc553f2525f9c5071459db40fc0
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -323,7 +327,11 @@ CREATE TABLE `language` (
   `name_fr` varchar(255) DEFAULT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`id`)
+<<<<<<< HEAD
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 ;
+>>>>>>> 456febbe2affdfc553f2525f9c5071459db40fc0
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -579,7 +587,11 @@ CREATE TABLE `pressejr` (
   `name_fr` varchar(255) DEFAULT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`id`)
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+>>>>>>> 456febbe2affdfc553f2525f9c5071459db40fc0
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -658,7 +670,11 @@ CREATE TABLE `sous_direction` (
   PRIMARY KEY (`id`),
   KEY `FK7j8cy0dl2p6o2fxt9tbcth8tl` (`direction`),
   CONSTRAINT `FK7j8cy0dl2p6o2fxt9tbcth8tl` FOREIGN KEY (`direction`) REFERENCES `direction` (`id`)
+<<<<<<< HEAD
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 ;
+>>>>>>> 456febbe2affdfc553f2525f9c5071459db40fc0
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

@@ -28,6 +28,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 @RequestMapping({"/textJuridique"})
@@ -223,6 +226,11 @@ public class TextJuridiqueController {
      
     }
       
+@GetMapping("/delete/{id}")
+public RedirectView getMethodName(@PathVariable Long id) {
+    this.textJuridiqueService.deleteTextJuridique(id);
+    return new RedirectView("/textJuridique/textJuridiques");
+}
 
     
     

@@ -114,6 +114,10 @@ public class ComplexeService {
     public void DeleteComplexByid(Long id)
     {
         Complexe cmp=this.findComplexeById(id);
+        if(cmp !=null)
+        {
+            complexeRepository.deleteComplexeById(id);
+        }
         this.complexeRepository.delete(cmp);
     }
 }

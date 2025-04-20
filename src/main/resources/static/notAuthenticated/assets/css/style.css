@@ -60,7 +60,14 @@ h6 {
     transform: rotate(360deg);
   }
 }
-
+.all-handler
+{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: row;
+}
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
@@ -289,8 +296,22 @@ h6 {
   {
     display: none;
   }
+  .flag-alg
+  {
+    display: none;
+  }
   .navbar ul {
     display: none;
+  }
+  .all-handler
+  {
+    
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    
   }
 }
 
