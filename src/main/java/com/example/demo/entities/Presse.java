@@ -769,11 +769,30 @@ public String toString() {
         + ")";
 }
 
-public Presse(final Long id, final String name, final String nameFr, final String nameEn, final String description,
-        final String descriptionFr, final String descriptionEn, final String website, final String typepbpr,
-        final String categorieelec, final String adresse, final String adresseFr, final String adresseEn, final String phone, final String fax, final String email,
-        final String site, final List<PresseCategorie> presseCategories,
-        final Complexe complexe, final CategoriePress categoriePresse,final Pressejr Pressejr, final Language Language,final List<Multimedia> multimediaList, final LocalDateTime createdAt,
+public Presse(final Long id,
+ final String name,
+  final String nameFr, 
+  final String nameEn, 
+  final String description,
+        final String descriptionFr,
+        final String descriptionEn,
+        final String website,
+        final String typepbpr,
+        final String categorieelec,
+        final String adresse,
+        final String adresseFr,
+        final String adresseEn,
+        final String phone,
+        final String fax,
+        final String email,
+        final String site,
+        final List<PresseCategorie> presseCategories,
+        final Complexe complexe,
+        final CategoriePress categoriePresse,
+        final Pressejr Pressejr, 
+        final Language Language,
+        final List<Multimedia> multimediaList,
+        final LocalDateTime createdAt,
        
         final LocalDateTime updatedAt) {
     this.id = id;
@@ -964,10 +983,31 @@ public Presse(final Long id, final String name, final String nameFr, final Strin
 
         // Méthode pour construire l'objet Presse
         public Presse build() {
-            return new Presse(id, name, nameFr, nameEn, description, descriptionFr, descriptionEn, website, typepbpr,
-                    categorieelec, adresse, adresseEn, adresseFr, phone, fax, email, site, presseCategories, complexe,
-                    categoriePresse ,Pressejr,Language,
-                    multimediaList, createdAt, updatedAt);
+            return new Presse(id,
+            name,
+            nameFr,
+            nameEn, 
+            description, 
+            descriptionFr, 
+            descriptionEn, 
+            website, 
+            typepbpr,
+            categorieelec, 
+            adresse, 
+            adresseEn, 
+            adresseFr, 
+            phone, 
+            fax, 
+            email, 
+            site, 
+            presseCategories, 
+            complexe,
+            categoriePresse ,
+            Pressejr,
+            Language,
+            multimediaList, 
+            createdAt, 
+            updatedAt);
         }
 
         public String toString() {

@@ -135,7 +135,7 @@ public class PresseService {
 
     public Boolean updateDataPresse(Presse Presse, Long userId,Optional<Presse> existingPress,List<MultipartFile> multimediaFiles,Optional<Long> cat) {
         if (existingPress.isPresent()) {
-          
+            //System.out.println("i will check it"+Presse.getAdresse());
             Presse press = existingPress.get();
             press.setName(Presse.getName());
             press.setNameFr(Presse.getNameFr());

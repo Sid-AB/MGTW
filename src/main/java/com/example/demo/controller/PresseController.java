@@ -416,13 +416,13 @@ public String findTVById(Model model, @PathVariable Long id) {
     @PostMapping({"/update/{id}"})
     public RedirectView updatedPress(@PathVariable Long id,@ModelAttribute  Presse updatePress,@RequestParam("profilFiles") List<MultipartFile> multimediaFiles,@RequestParam("selectedCategorie") Optional<Long> cat)
     {
-        Presse presse = this.presseService.findPresseById(id);
+      //  Presse presse = this.presseService.findPresseById(id);
       // Optional<Multimedia> multimedia=this.multimediaService.findFirstByEtablissement(etablissement);
        Optional<Presse> existingPress = this.presseService.findById(id);
-       System.out.println(cat+" testing");
+       System.out.println(updatePress.getAdresse()+" testing adr");
        Boolean  check= this.presseService.updateDataPresse(updatePress,id,existingPress,multimediaFiles,cat);
        //return "authenticated/etablissement/etablissementsEdit.html";
-       return new RedirectView("/presse/presses");
+       return new RedirectView("/presse/pressesEdit/"+id);
     }
     @GetMapping("/delete/{id}")
     public RedirectView Deletepress(@PathVariable Long id) {
